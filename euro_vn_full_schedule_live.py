@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 """
 Tìm kênh phát sóng các trận đấu từ giải Ngoại hạng Anh, Bundesliga, Serie A, La Liga, Ligue 1,
 tennis, F1, golf dựa trên ESPN API và EPG.
