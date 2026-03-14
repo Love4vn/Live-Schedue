@@ -1,11 +1,18 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 """
 Tìm kênh phát sóng các trận đấu từ giải Ngoại hạng Anh, Bundesliga, Serie A, La Liga, Ligue 1,
 tennis, F1, golf dựa trên ESPN API và EPG.
+- Nhóm theo giải
+- Sắp xếp theo thời gian tăng dần trong mỗi nhóm
+- Hiển thị thời gian AM/PM
 """
 
 import sys
 import subprocess
 import importlib.util
+from datetime import datetime, timedelta, timezone
 
 def install_and_import(package):
     try:
@@ -19,7 +26,7 @@ def install_and_import(package):
 
 # Các module cần thiết
 install_and_import('requests')
-install_and_import('lxml')  # Tăng tốc XML parsing (tùy chọn)
+install_and_import('lxml')  # Tăng tốc XML parsing
 
 import requests
 import re
@@ -29,7 +36,6 @@ import xml.etree.ElementTree as ET
 from urllib.parse import unquote
 import gzip
 from io import BytesIO
-from datetime import datetime, timedelta
 
 # ========== CẤU HÌNH ==========
 EPG_SOURCES = [
@@ -51,9 +57,6 @@ LEAGUES = [
     {"name": "Golf", "endpoint": "golf/pga", "keywords": ["golf", "pga"]}
 ]
 
-# Tạo mapping tên giải -> keywords
-LEAGUES_BY_NAME = {league['name']: league for league in LEAGUES}
-
 # ========== HÀM TIỆN ÍCH ==========
 def safe_request(url, timeout=10):
     try:
@@ -73,6 +76,10 @@ def normalize_string(s):
 def time_diff_minutes(t1, t2):
     return abs((t1 - t2).total_seconds() / 60)
 
+def format_time(dt):
+    """Định dạng thời gian hiển thị AM/PM"""
+    return dt.strftime('%I:%M %p').lstrip('0').replace(' 0', ' ')  # Bỏ số 0 đầu giờ nếu có
+
 # ========== 1. LẤY LỊCH TỪ ESPN ==========
 def fetch_espn_events(league):
     url = f"http://site.api.espn.com/apis/site/v2/sports/{league['endpoint']}/scoreboard"
@@ -88,10 +95,12 @@ def fetch_espn_events(league):
             if not date_str:
                 continue
             try:
+                # Chuyển đổi chuỗi ISO 8601 (có Z) thành datetime với UTC timezone
                 start_time = datetime.fromisoformat(date_str.replace('Z', '+00:00'))
             except:
                 continue
             name = event.get('name', '')
+            # Thu thập tên kênh từ ESPN (nếu có)
             channels = set()
             competitions = event.get('competitions', [])
             for comp in competitions:
@@ -115,8 +124,10 @@ def get_all_espn_events():
     for league in LEAGUES:
         events = fetch_espn_events(league)
         all_events.extend(events)
-        time.sleep(0.5)
-    now = datetime.now()
+        time.sleep(0.5)  # Tránh quá tải API
+
+    # Lọc trong 24 giờ tới
+    now = datetime.now(timezone.utc)  # Lấy thời gian hiện tại có timezone UTC
     cutoff = now + timedelta(hours=24)
     filtered = [e for e in all_events if now <= e['start'] <= cutoff]
     return filtered
@@ -173,8 +184,10 @@ def parse_epg_programmes(epg_url, start_time, end_time):
             stop_str = programme.get('stop', '')
             channel_id = programme.get('channel', '')
             try:
-                prog_start = datetime.strptime(start_str[:14], '%Y%m%d%H%M%S')
-                prog_stop = datetime.strptime(stop_str[:14], '%Y%m%d%H%M%S')
+                # EPG time thường ở dạng YYYYMMDDHHMMSS +0000, parse thành naive? Nhưng cần aware
+                # Giả sử EPG sử dụng UTC, ta thêm timezone UTC
+                prog_start = datetime.strptime(start_str[:14], '%Y%m%d%H%M%S').replace(tzinfo=timezone.utc)
+                prog_stop = datetime.strptime(stop_str[:14], '%Y%m%d%H%M%S').replace(tzinfo=timezone.utc)
                 if prog_start <= end_time and prog_stop >= start_time:
                     title_elem = programme.find('title')
                     title = title_elem.text if title_elem is not None else ''
@@ -184,7 +197,8 @@ def parse_epg_programmes(epg_url, start_time, end_time):
                         'stop': prog_stop,
                         'title': title
                     })
-            except:
+            except Exception as e:
+                # Bỏ qua chương trình không parse được
                 continue
     except Exception as e:
         print(f"Lỗi parse EPG programmes từ {epg_url}: {str(e)}")
@@ -210,9 +224,13 @@ def match_event_with_epg(event, epg_programmes, epg_channels, time_window=15):
             prog_title_norm = normalize_string(prog['title'])
             if (event_name_norm in prog_title_norm) or (prog_title_norm in event_name_norm):
                 candidates.append(prog)
-            elif any(keyword in prog_title_norm for keyword in LEAGUES_BY_NAME[event['league']]['keywords']):
-                candidates.append(prog)
+            else:
+                # Kiểm tra từ khóa giải trong title
+                league_keywords = next((item['keywords'] for item in LEAGUES if item['name'] == event['league']), [])
+                if any(kw in prog_title_norm for kw in league_keywords):
+                    candidates.append(prog)
     if candidates:
+        # Chọn chương trình gần nhất về thời gian
         candidates.sort(key=lambda p: time_diff_minutes(p['start'], event_start))
         return candidates[0]['channel_id']
     return None
@@ -273,6 +291,7 @@ def match_channel_with_epg_id(channel_name, epg_id, epg_channels):
             norm_epg_name = normalize_string(name)
             if norm_epg_name in norm_ch_name or norm_ch_name in norm_epg_name:
                 return True
+    # Nếu không tìm thấy trong tên hiển thị, thử so sánh với chính epg_id
     norm_epg_id = normalize_string(epg_id)
     if norm_epg_id in norm_ch_name or norm_ch_name in norm_epg_id:
         return True
@@ -289,7 +308,7 @@ def check_channel_health(url, timeout=5):
 # ========== 5. MAIN ==========
 def main():
     start_total = time.time()
-    now = datetime.now()
+    now = datetime.now(timezone.utc)
     end_time = now + timedelta(hours=24)
 
     # 1. ESPN events
@@ -307,7 +326,7 @@ def main():
     print(f"Thu thập {len(epg_channels)} kênh EPG và {len(epg_programmes)} chương trình.\n")
 
     # 3. Match events với EPG
-    matched_events = []
+    matched_events = []  # list of dict {event, channel_id, channel_info}
     for event in espn_events:
         channel_id = match_event_with_epg(event, epg_programmes, epg_channels)
         if channel_id:
@@ -316,9 +335,9 @@ def main():
                 'channel_id': channel_id,
                 'channel_info': epg_channels.get(channel_id, {})
             })
-            print(f"✅ {event['start'].strftime('%H:%M')} - {event['name']} -> {channel_id}")
+            print(f"✅ {format_time(event['start'])} - {event['name']} -> {channel_id}")
         else:
-            print(f"⚠️  {event['start'].strftime('%H:%M')} - {event['name']} (Không tìm thấy channel_id từ EPG)")
+            print(f"⚠️  {format_time(event['start'])} - {event['name']} (Không tìm thấy channel_id từ EPG)")
 
     if not matched_events:
         print("\nKhông có trận đấu nào khớp với EPG. Dừng.")
@@ -348,7 +367,7 @@ def main():
     print(f"Tổng số kênh từ M3U: {len(all_m3u_channels)}")
 
     # 6. Tìm kênh phù hợp cho từng event đã match
-    results = []
+    results = []  # list of dict {event, channel, channel_id}
     for item in matched_events:
         event = item['event']
         channel_id = item['channel_id']
@@ -357,7 +376,7 @@ def main():
             if match_channel_with_epg_id(ch['name'], channel_id, epg_channels):
                 candidates.append(ch)
         if candidates:
-            print(f"\n{event['start'].strftime('%H:%M')} - {event['name']}:")
+            print(f"\n{format_time(event['start'])} - {event['name']}:")
             healthy = []
             with ThreadPoolExecutor(max_workers=10) as executor:
                 future_to_ch = {executor.submit(check_channel_health, ch['url']): ch for ch in candidates[:5]}
@@ -369,35 +388,51 @@ def main():
                     else:
                         print(f"  ❌ {ch['name']} - Không khả dụng")
             if healthy:
-                best = healthy[0]  # Có thể chọn theo resolution cao hơn nếu muốn
+                # Chọn kênh đầu tiên (hoặc có thể chọn theo resolution cao nhất)
+                best = healthy[0]
                 results.append({
                     'event': event,
                     'channel': best,
                     'channel_id': channel_id
                 })
         else:
-            print(f"\n{event['start'].strftime('%H:%M')} - {event['name']}: Không tìm thấy kênh nào khớp.")
+            print(f"\n{format_time(event['start'])} - {event['name']}: Không tìm thấy kênh nào khớp.")
 
-    # 7. Xuất file M3U
+    # 7. Xuất file M3U theo nhóm giải
     if results:
+        # Nhóm kết quả theo giải
+        grouped = {}
+        for item in results:
+            league = item['event']['league']
+            if league not in grouped:
+                grouped[league] = []
+            grouped[league].append(item)
+
+        # Sắp xếp mỗi nhóm theo thời gian tăng dần
+        for league in grouped:
+            grouped[league].sort(key=lambda x: x['event']['start'])
+
         with open('sports_channels.m3u', 'w', encoding='utf-8') as f:
             f.write('#EXTM3U\n')
-            results.sort(key=lambda x: x['event']['start'])
-            for item in results:
-                event = item['event']
-                ch = item['channel']
-                match_time = event['start'].strftime('%H:%M %d/%m')
-                title = f"{match_time} - {event['name']}"
-                extinf = f'#EXTINF:-1 tvg-id="{item["channel_id"]}" group-title="{event["league"]}"'
-                if ch.get('params', {}).get('tvg-logo'):
-                    extinf += f' tvg-logo="{ch["params"]["tvg-logo"]}"'
-                extinf += f',{title} - {ch["name"]}'
-                f.write(extinf + '\n')
-                if 'extra' in ch:
-                    for extra in ch['extra']:
-                        f.write(extra + '\n')
-                f.write(ch['url'] + '\n')
-        print(f"\n✅ Đã tạo file sports_channels.m3u với {len(results)} kênh.")
+            for league, items in grouped.items():
+                f.write(f'\n# Group: {league}\n')
+                for item in items:
+                    event = item['event']
+                    ch = item['channel']
+                    match_time = format_time(event['start'])
+                    # Định dạng ngày/tháng
+                    day = event['start'].strftime('%d/%m')
+                    title = f"{match_time} {day} - {event['name']}"
+                    extinf = f'#EXTINF:-1 tvg-id="{item["channel_id"]}" group-title="{league}"'
+                    if ch.get('params', {}).get('tvg-logo'):
+                        extinf += f' tvg-logo="{ch["params"]["tvg-logo"]}"'
+                    extinf += f',{title} - {ch["name"]}'
+                    f.write(extinf + '\n')
+                    if 'extra' in ch:
+                        for extra in ch['extra']:
+                            f.write(extra + '\n')
+                    f.write(ch['url'] + '\n')
+        print(f"\n✅ Đã tạo file sports_channels.m3u với {len(results)} kênh theo {len(grouped)} nhóm.")
     else:
         print("\n❌ Không có kênh nào hoạt động.")
 
