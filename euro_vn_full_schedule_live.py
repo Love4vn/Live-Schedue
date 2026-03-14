@@ -1,9 +1,33 @@
+"""
+Script tìm kênh phát sóng các trận đấu thể thao dựa trên EPG và danh sách M3U.
+Tự động cài đặt requests nếu chưa có (dành cho GitHub Actions).
+"""
+
+import sys
+import subprocess
+import importlib.util
+
+# Kiểm tra và cài đặt requests nếu chưa có
+def install_and_import(package):
+    try:
+        spec = importlib.util.find_spec(package)
+        if spec is None:
+            print(f"Thiếu module '{package}'. Đang tiến hành cài đặt...")
+            subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+            print(f"Đã cài đặt '{package}' thành công.")
+    except Exception as e:
+        print(f"Lỗi khi cài đặt {package}: {e}")
+        sys.exit(1)
+
+install_and_import('requests')
+
+# Import các module sau khi đã cài đặt
 import requests
 import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import time
 import xml.etree.ElementTree as ET
-from urllib.parse import unquote, urlparse
+from urllib.parse import unquote
 import gzip
 from io import BytesIO
 from datetime import datetime, timedelta
