@@ -1,21 +1,12 @@
-"""
-EURO_VN_EPG_FINAL.py
-================================
-GIẢI PHÁP LẤY LỊCH TỪ EPG (XML) - CHUẨN XÁC & KHÔNG LO BỊ CHẶN
-- Nguồn EPG: hnlive, mrprince, bit.ly, karepech, epgshare01
-- Tính năng: Tự động giải nén .gz, lọc trận bóng đá LIVE, khớp kênh M3U
-- Output: schedule.json (phân theo ngày) và live_schedule.m3u (phân theo giải)
-"""
-
 import json
 import re
 import urllib.request
 import gzip
 import time
+import io
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
-from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # ================== CẤU HÌNH ==================
 TIMEZONE = ZoneInfo("Asia/Ho_Chi_Minh")
@@ -31,184 +22,134 @@ EPG_SOURCES = [
     "https://epgshare01.online/epgshare01/epg_ripper_DUMMY_CHANNELS.xml.gz"
 ]
 
-# Từ khóa nhận diện bóng đá trực tiếp
-FOOTBALL_KEYWORDS = ["vs", "premier league", "laliga", "serie a", "bundesliga", "ligue 1", "champions league", "europa league", "v-league", "ngoại hạng anh"]
-LEAGUE_MAP = {
-    "premier league": "Giải Ngoại Hạng Anh",
-    "ngoại hạng anh": "Giải Ngoại Hạng Anh",
-    "laliga": "Giải Tây Ban Nha",
-    "serie a": "Giải Ý",
-    "bundesliga": "Giải Đức",
-    "ligue 1": "Giải Pháp",
-    "champions league": "UEFA Champions League",
-    "europa league": "UEFA Europa League",
-    "conference league": "UEFA Conference League",
-    "v-league": "V-League"
-}
+FOOTBALL_KEYWORDS = ["vs", "premier league", "laliga", "serie a", "bundesliga", "ligue 1", "champions league", "v-league"]
+LEAGUE_MAP = {"premier": "Ngoại hạng Anh", "laliga": "La Liga", "serie": "Serie A", "bundesliga": "Bundesliga", "ucl": "Champions League"}
 
-# ================== HELPER ==================
-def fetch_epg(url):
-    print(f"📥 Đang tải EPG: {url}")
-    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
-    try:
-        req = urllib.request.Request(url, headers=headers)
-        with urllib.request.urlopen(req, timeout=45) as r:
-            content = r.read()
-            if url.endswith(".gz") or content[:2] == b'\x1f\x8b':
-                return gzip.decompress(content).decode("utf-8", errors="ignore")
-            return content.decode("utf-8", errors="ignore")
-    except Exception as e:
-        print(f"   ⚠️ Lỗi tải {url}: {e}")
-        return None
-
-def parse_epg_time(t_str):
-    if not t_str: return None
-    try:
-        base = t_str.split()[0][:14]
-        dt = datetime.strptime(base, "%Y%m%d%H%M%S")
-        # Nếu có offset múi giờ trong chuỗi (ví dụ +0000)
-        if " +0000" in t_str:
-            dt = dt.replace(tzinfo=ZoneInfo("UTC")).astimezone(TIMEZONE)
-        else:
-            dt = dt.replace(tzinfo=TIMEZONE)
-        return dt
-    except: return None
-
-# ================== M3U PARSER ==================
+# ================== BỘ ĐỌC M3U CẢI TIẾN ==================
 def get_m3u_channels():
-    """Phân tích file M3U_list.txt để lấy thông tin kênh, tvg-id, logo"""
     channels = []
     try:
         with open(M3U_LIST_FILE, 'r', encoding='utf-8') as f:
-            content = f.read()
+            lines = f.readlines()
         
-        segments = re.finditer(r'#EXTINF:(?P<info>.*?),(?P<name>.*?)\n(?P<url>http.*)', content, re.MULTILINE)
-        for seg in segments:
-            info = seg.group('info')
-            name = seg.group('name').strip()
-            url = seg.group('url').strip()
-            
-            tvg_id = re.search(r'tvg-id="([^"]*)"', info)
-            tvg_logo = re.search(r'tvg-logo="([^"]*)"', info)
-            
-            channels.append({
-                "name": name,
-                "name_low": name.lower(),
-                "tvg_id": tvg_id.group(1).lower() if tvg_id else "",
-                "logo": tvg_logo.group(1) if tvg_logo else "",
-                "url": url,
-                "raw_info": info
-            })
+        current_ch = {}
+        for line in lines:
+            line = line.strip()
+            if line.startswith("#EXTINF"):
+                # Lấy tvg-id
+                tid = re.search(r'tvg-id="([^"]*)"', line, re.I)
+                logo = re.search(r'tvg-logo="([^"]*)"', line, re.I)
+                # Lấy tên kênh (phần sau dấu phẩy cuối cùng)
+                name = line.split(",")[-1].strip()
+                current_ch = {
+                    "name": name.lower(),
+                    "display": name,
+                    "tvg_id": tid.group(1).lower() if tid else "",
+                    "logo": logo.group(1) if logo else ""
+                }
+            elif line.startswith("http") and current_ch:
+                current_ch["url"] = line
+                channels.append(current_ch)
+                current_ch = {}
     except Exception as e:
-        print(f"❌ Lỗi đọc M3U: {e}")
+        print(f"❌ Lỗi file M3U: {e}")
     return channels
 
-# ================== MAIN ==================
-def main():
-    start_time = time.time()
+# ================== XỬ LÝ XML TIẾT KIỆM RAM ==================
+def stream_epg(url, m3u_channels):
+    print(f"📥 Đang xử lý: {url}")
+    headers = {"User-Agent": "Mozilla/5.0"}
+    found = []
     vn_now = datetime.now(TIMEZONE)
-    print(f"🚀 Bắt đầu quét EPG [{vn_now.strftime('%H:%M:%S')}]")
-
-    # 1. Nạp danh sách kênh M3U
-    m3u_list = get_m3u_channels()
-    print(f"✅ Đã nạp {len(m3u_list)} kênh từ {M3U_LIST_FILE}")
-
-    found_matches = []
-    processed_programs = set() # Tránh trùng lặp trận đấu trên cùng 1 kênh
-
-    # 2. Quét lần lượt các nguồn EPG
-    for url in EPG_SOURCES:
-        xml_data = fetch_epg(url)
-        if not xml_data: continue
-        
-        try:
-            root = ET.fromstring(xml_data)
+    
+    try:
+        req = urllib.request.Request(url, headers=headers)
+        with urllib.request.urlopen(req, timeout=60) as response:
+            content = response.read()
+            if url.endswith(".gz") or content[:2] == b'\x1f\x8b':
+                content = gzip.decompress(content)
             
-            # Tạo map ID kênh -> Display Name trong EPG
+            # Dùng iterparse để không bị Out Of Memory
+            context = ET.iterparse(io.BytesIO(content), events=('start', 'end'))
             epg_ch_map = {}
-            for ch in root.findall('channel'):
-                c_id = ch.get('id')
-                d_name = ch.find('display-name').text if ch.find('display-name') is not None else ""
-                if c_id: epg_ch_map[c_id.lower()] = d_name.lower()
-
-            # Quét các chương trình
-            for prog in root.findall('programme'):
-                title = prog.find('title').text if prog.find('title') is not None else ""
-                title_low = title.lower()
+            
+            for event, elem in context:
+                if event == 'end' and elem.tag == 'channel':
+                    c_id = elem.get('id')
+                    d_name = elem.findtext('display-name')
+                    if c_id: epg_ch_map[c_id.lower()] = (d_name or "").lower()
+                    elem.clear() # Giải phóng bộ nhớ
                 
-                # Điều kiện 1: Phải là bóng đá (có 'vs' hoặc tên giải)
-                if any(kw in title_low for kw in FOOTBALL_KEYWORDS):
-                    start_dt = parse_epg_time(prog.get('start'))
-                    
-                    # Điều kiện 2: Trận đấu sắp diễn ra hoặc đang diễn ra (trong 24h tới)
-                    if start_dt and (vn_now - timedelta(hours=2)) <= start_dt <= (vn_now + timedelta(hours=24)):
-                        ch_id = prog.get('channel', '').lower()
-                        epg_ch_name = epg_ch_map.get(ch_id, "")
-                        
-                        # Điều kiện 3: Khớp kênh EPG với kênh M3U (theo ID hoặc Tên)
-                        match_ch = None
-                        for c in m3u_list:
-                            if (ch_id and c['tvg_id'] == ch_id) or (epg_ch_name and epg_ch_name == c['name_low']):
-                                match_ch = c
-                                break
-                        
-                        if match_ch:
-                            prog_key = f"{start_dt.strftime('%H%M')}_{match_ch['url']}"
-                            if prog_key not in processed_programs:
-                                # Xác định giải đấu để phân nhóm
-                                group = "Lịch trực tiếp"
-                                for kw, vn_name in LEAGUE_MAP.items():
-                                    if kw in title_low:
-                                        group = vn_name
-                                        break
+                elif event == 'end' and elem.tag == 'programme':
+                    title = (elem.findtext('title') or "").lower()
+                    if any(k in title for k in FOOTBALL_KEYWORDS):
+                        start_raw = elem.get('start')
+                        # Convert time
+                        try:
+                            t_str = start_raw.split()[0][:14]
+                            dt = datetime.strptime(t_str, "%Y%m%d%H%M%S").replace(tzinfo=ZoneInfo("UTC")).astimezone(TIMEZONE)
+                            
+                            if vn_now <= dt <= (vn_now + timedelta(hours=24)):
+                                ch_id = (elem.get('channel') or "").lower()
+                                ch_name_epg = epg_ch_map.get(ch_id, "")
                                 
-                                found_matches.append({
-                                    "time": start_dt.strftime("%I:%M %p"),
-                                    "date_key": start_dt.strftime("%Y%m%d"),
-                                    "date_display": start_dt.strftime("%A, %d/%m"),
-                                    "datetime": start_dt,
-                                    "match": title,
-                                    "league": group,
-                                    "channel_name": match_ch['name'],
-                                    "url": match_ch['url'],
-                                    "tvg_id": match_ch['tvg_id'],
-                                    "logo": match_ch['logo']
-                                })
-                                processed_programs.add(prog_key)
-        except Exception as e:
-            print(f"   ⚠️ Lỗi Parse XML: {e}")
+                                # So khớp với M3U
+                                for m_ch in m3u_channels:
+                                    if (ch_id and m_ch['tvg_id'] == ch_id) or (ch_name_epg and m_ch['name'] == ch_name_epg):
+                                        found.append({
+                                            "time": dt.strftime("%H:%M"),
+                                            "datetime": dt,
+                                            "match": elem.findtext('title'),
+                                            "channel": m_ch['display'],
+                                            "url": m_ch['url'],
+                                            "logo": m_ch['logo'],
+                                            "tvg_id": m_ch['tvg_id']
+                                        })
+                                        break
+                        except: pass
+                    elem.clear() # Quan trọng: Xóa tag đã xử lý để giải phóng RAM
+            del content
+    except Exception as e:
+        print(f"   ⚠️ Lỗi: {e}")
+    return found
 
-    # 3. Xuất file kết quả
-    found_matches.sort(key=lambda x: x["datetime"])
+def main():
+    start_t = time.time()
+    m3u_channels = get_m3u_channels()
+    print(f"✅ Đã nạp {len(m3u_channels)} kênh từ M3U_list.txt")
+    
+    if not m3u_channels:
+        print("❌ Cảnh báo: Không có kênh nào trong file M3U. Hãy kiểm tra định dạng file!")
+        return
 
-    # Tạo schedule.json (theo mẫu đầu tiên: phân theo ngày)
-    schedule_data = {"updated": vn_now.strftime("%Y-%m-%d %H:%M VN"), "days": {}}
-    for m in found_matches:
-        d_key = m["date_key"]
-        if d_key not in schedule_data["days"]:
-            schedule_data["days"][d_key] = {"date": m["date_display"], "games": []}
-        
-        schedule_data["days"][d_key]["games"].append({
-            "league": m["league"],
-            "time": m["time"],
-            "match": m["match"],
-            "source": m["channel_name"]
-        })
+    all_matches = []
+    for url in EPG_SOURCES:
+        all_matches.extend(stream_epg(url, m3u_channels))
 
-    with open(SCHEDULE_FILE, "w", encoding="utf-8") as f:
-        json.dump(schedule_data, f, indent=2, ensure_ascii=False)
+    # Loại bỏ trùng lặp (nếu cùng 1 trận trên cùng 1 kênh từ nhiều nguồn EPG)
+    unique_matches = {}
+    for m in all_matches:
+        key = f"{m['time']}_{m['channel']}"
+        unique_matches[key] = m
+    
+    final_list = sorted(unique_matches.values(), key=lambda x: x['datetime'])
 
-    # Tạo live_schedule.m3u (theo mẫu đầu tiên: phân theo giải)
+    # Ghi file M3U
     with open(LIVE_M3U, "w", encoding="utf-8") as f:
         f.write("#EXTM3U\n")
-        for m in found_matches:
-            extinf = f'#EXTINF:-1 tvg-id="{m["tvg_id"]}" tvg-logo="{m["logo"]}" group-title="{m["league"]}",{m["time"]} | {m["match"]} ({m["channel_name"]})'
-            f.write(extinf + "\n")
-            f.write(m["url"] + "\n")
+        for m in final_list:
+            f.write(f'#EXTINF:-1 tvg-id="{m["tvg_id"]}" tvg-logo="{m["logo"]}" group-title="EPG LIVE", ⚽ {m["time"]} | {m["match"]} ({m["channel"]})\n')
+            f.write(f"{m['url']}\n")
 
-    print(f"\n🎉 HOÀN THÀNH!")
-    print(f"   • Tìm thấy: {len(found_matches)} trận đấu có link live.")
-    print(f"   • Thời gian chạy: {time.time() - start_time:.1f}s")
+    # Ghi file JSON
+    output = {"updated": datetime.now(TIMEZONE).strftime("%d/%m %H:%M"), "total": len(final_list), "matches": []}
+    for m in final_list:
+        output["matches"].append({"time": m["time"], "match": m["match"], "source": m["channel"]})
+    
+    with open(SCHEDULE_FILE, "w", encoding="utf-8") as f:
+        json.dump(output, f, indent=2, ensure_ascii=False)
+
+    print(f"🎉 Xong! Tìm thấy {len(final_list)} trận. Thời gian: {time.time()-start_t:.1f}s")
 
 if __name__ == "__main__":
     main()
