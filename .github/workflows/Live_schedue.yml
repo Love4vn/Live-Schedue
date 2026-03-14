@@ -1,0 +1,17 @@
+name: Euro VN Schedule + Live M3U
+on:
+  schedule:
+    - cron: '0 23 * * *'   # 6h sáng VN
+  workflow_dispatch:
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python euro_vn_full_schedule_live.py
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Auto update schedule.json + live_schedule.m3u"
