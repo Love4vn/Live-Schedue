@@ -1,21 +1,31 @@
 """
 euro_vn_full_schedule_live.py
 ================================
-BẢN TỐI ƯU SIÊU NHANH - CHẠY TRONG 2-4 PHÚT TRÊN GITHUB
-- Chỉ giữ ngay từ đầu những kênh có tên chứa Sky/TNT/beIN/Arena/Astro/Now/DAZN...
-- Không kiểm tra sức khỏe hàng nghìn kênh rác nữa
+BẢN HOÀN CHỈNH CUỐI CÙNG - CHẠY TRÊN GITHUB (không cần pip)
+- Lấy lịch: Premier League, Serie A, Bundesliga, La Liga, Ligue 1, UCL, UEL, Conference
+- Thời gian: giờ Việt Nam (Asia/Ho_Chi_Minh)
+- Broadcaster: lọc CHÍNH XÁC theo giải (Sky Sports Premier League, TNT Sports 1, beIN 1...)
+- Loại triệt để: kênh SD, low resolution, kênh không khớp
 - 1 trận có nhiều kênh → giữ nguyên tất cả
-- Chỉ bỏ kênh lỗi + SD/low resolution
-- Output: schedule.json + live_schedule.m3u (group: "Lịch trực tiếp")
+- Phân nhóm trong live_schedule.m3u: 
+  • Giải Ngoại Hạng Anh
+  • Giải Đức
+  • Giải Ý
+  • Giải Tây Ban Nha
+  • Giải Pháp
+  • UEFA Champions League
+  • UEFA Europa League
+  • UEFA Conference League
+- Output: schedule.json + live_schedule.m3u
+- Chạy siêu nhanh (2-4 phút)
 
-Copy nguyên file này thay thế file cũ → commit → chạy lại workflow!
+Đặt file này + M3U_list.txt vào repo → commit → workflow tự chạy!
 """
 
 import json
 import re
 import unicodedata
 import urllib.request
-import urllib.error
 import time
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
@@ -50,23 +60,34 @@ LEAGUE_BROADCAST_DEFAULT = {
     "UEFA Europa Conference League": "beIN Sports • TNT Sports • Sky Sports",
 }
 
-# Từ khóa broadcaster để lọc NGAY TỪ ĐẦU (tối ưu tốc độ)
+# Từ khóa CHÍNH XÁC theo từng giải (lọc chặt để tránh nhầm kênh)
 BROADCAST_KEYWORDS = {
-    "sky": ["sky sport", "skysports", "sky sports"],
-    "tnt": ["tnt sport", "tntsports", "bt sport"],
-    "bein": ["bein sport", "beinsports", "bein"],
-    "arena": ["arena sport", "arenasport"],
-    "astro": ["astro", "supersport"],
-    "now": ["now sport", "nowsports", "now tv"],
-    "dazn": ["dazn"],
+    "Premier League": ["sky sports premier", "tnt sports 1", "tnt sports 2", "bein sports 1", "bein 1", "astro supersport", "now tv premier"],
+    "Serie A": ["sky sport italia", "dazn serie a", "bein sports serie a"],
+    "Bundesliga": ["sky sport bundesliga", "sky sport deutschland", "dazn bundesliga"],
+    "La Liga": ["dazn la liga", "movistar la liga", "bein sports la liga"],
+    "Ligue 1": ["bein sports ligue 1", "canal+ ligue 1", "bein ligue"],
+    "UEFA Champions League": ["tnt sports champions", "sky sports champions", "bein champions", "arena sport champions"],
+    "UEFA Europa League": ["tnt sports europa", "sky sports europa", "bein europa"],
+    "UEFA Europa Conference League": ["bein conference", "tnt conference"],
 }
 
-LEAGUE_ORDER = ["UEFA Champions League", "UEFA Europa League", "UEFA Europa Conference League",
-                "Premier League", "Serie A", "Bundesliga", "La Liga", "Ligue 1"]
+LEAGUE_VN_NAME = {
+    "Premier League": "Giải Ngoại Hạng Anh",
+    "Serie A": "Giải Ý",
+    "Bundesliga": "Giải Đức",
+    "La Liga": "Giải Tây Ban Nha",
+    "Ligue 1": "Giải Pháp",
+    "UEFA Champions League": "UEFA Champions League",
+    "UEFA Europa League": "UEFA Europa League",
+    "UEFA Europa Conference League": "UEFA Conference League",
+}
 
-# ================== HELPER (urllib thuần) ==================
+LEAGUE_ORDER = list(LEAGUE_VN_NAME.keys())
+
+# ================== HELPER ==================
 def fetch_text(url: str, timeout: int = 15) -> str:
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; EuroVN/3.0)"})
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; EuroVN/4.0)"})
     with urllib.request.urlopen(req, timeout=timeout) as r:
         return r.read().decode("utf-8")
 
@@ -90,27 +111,19 @@ def vn_time(utc_iso: str) -> str:
     dt = datetime.fromisoformat(utc_iso.replace("Z", "+00:00"))
     return dt.astimezone(TIMEZONE).strftime("%-I:%M %p")
 
-def is_low_resolution(res: str) -> bool:
-    if not res: return False
+def is_low_resolution(res: str, ch_name: str) -> bool:
+    name_lower = ch_name.lower()
+    if 'sd' in name_lower or ' sd' in name_lower or 'sd ' in name_lower:
+        return True
+    if not res:
+        return True
     res = res.lower()
     if 'sd' in res or any(x in res for x in ['360p','480p','576p','360','480','576','low']):
         return True
     nums = re.findall(r'\d+', res)
     return any(int(n) < 720 for n in nums)
 
-def get_keywords(source: str):
-    if not source: return set()
-    cleaned = re.sub(r'\([^)]+\)', '', source.lower())
-    parts = [p.strip() for p in cleaned.split('•')]
-    kws = set()
-    for p in parts:
-        for variants in BROADCAST_KEYWORDS.values():
-            if any(v in p for v in variants):
-                kws.add(variants[0])
-        kws.update(re.findall(r'\b\w{4,}\b', p))
-    return kws
-
-# ================== FETCH ESPN + CONFERENCE ==================
+# ================== FETCH ESPN ==================
 def fetch_espn_league_day(slug: str, name: str, date_str: str):
     url = f"https://site.api.espn.com/apis/site/v2/sports/soccer/{slug}/scoreboard?dates={date_str}"
     try:
@@ -145,6 +158,7 @@ def fetch_espn_league_day(slug: str, name: str, date_str: str):
             continue
     return games
 
+# ================== SCRAPE CONFERENCE LEAGUE ==================
 def fetch_scoreboard_league(date_str: str):
     url = f"https://www.espn.com/soccer/scoreboard/_/date/{date_str}"
     try:
@@ -197,7 +211,7 @@ def fetch_scoreboard_league(date_str: str):
         })
     return games
 
-# ================== M3U PARSER (có lọc broadcaster ngay) ==================
+# ================== M3U PARSER ==================
 def parse_m3u(content):
     channels = []
     current = {}
@@ -229,11 +243,11 @@ def parse_m3u(content):
         channels.append(current)
     return channels
 
-# ================== MAIN - SIÊU NHANH ==================
+# ================== MAIN ==================
 def main():
     start = time.time()
     vn_now = datetime.now(TIMEZONE)
-    print("🔄 Bắt đầu (bản tối ưu - chỉ 2-4 phút)...")
+    print("🔄 Bắt đầu chạy bản hoàn chỉnh...")
 
     # === BƯỚC 1: schedule.json ===
     dates = [(d, d.strftime("%Y%m%d")) for d in [datetime.now(TIMEZONE).date() + timedelta(i) for i in range(DAYS_AHEAD)]]
@@ -248,7 +262,7 @@ def main():
     for _, ds in dates:
         schedule[ds]["games"].extend(fetch_scoreboard_league(ds))
 
-    # Dedup + prune
+    # Dedup + prune today
     for ds, day in schedule.items():
         seen = {}
         deduped = []
@@ -269,8 +283,8 @@ def main():
         json.dump(output, f, indent=2, ensure_ascii=False)
     print(f"✅ schedule.json: {sum(len(d['games']) for d in schedule.values())} trận")
 
-    # === BƯỚC 2: live_schedule.m3u (TỐI ƯU) ===
-    print("📥 Đang tải M3U và lọc kênh thể thao...")
+    # === BƯỚC 2: live_schedule.m3u (chính xác + phân nhóm) ===
+    print("📥 Đang lọc kênh chính xác theo giải...")
     m3u_links = [line.strip() for line in open(M3U_LIST_FILE, encoding='utf-8') if line.strip().startswith('http')]
 
     all_ch = []
@@ -282,24 +296,24 @@ def main():
                 chs = parse_m3u(content)
                 for ch in chs:
                     name_lower = ch.get('name', '').lower()
-                    # LỌC NGAY TỪ ĐÂY - chỉ giữ kênh broadcaster
-                    if not any(any(var in name_lower for var in variants) for variants in BROADCAST_KEYWORDS.values()):
-                        continue
                     res_match = re.search(r'(\d{3,4}[pP]|\d+K|HD|SD)', ch.get('name',''))
                     res = res_match.group(0).upper() if res_match else ""
-                    if is_low_resolution(res): continue
-                    ch['resolution'] = res
-                    all_ch.append(ch)
+                    if is_low_resolution(res, ch['name']): continue
+
+                    # Chỉ giữ kênh khớp chính xác với giải
+                    for league, keywords in BROADCAST_KEYWORDS.items():
+                        if any(kw in name_lower for kw in keywords):
+                            ch['league'] = league
+                            ch['resolution'] = res
+                            all_ch.append(ch)
+                            break
             except:
                 continue
 
-    print(f"   → Đã lọc được {len(all_ch)} kênh thể thao tiềm năng (Sky/TNT/beIN...)")
-
-    # Unique + health check (chỉ trên vài trăm kênh)
     unique = {ch['url']: ch for ch in all_ch if ch.get('url')}
     unique_ch = list(unique.values())
 
-    print("🔍 Kiểm tra kênh live (chỉ vài trăm kênh)...")
+    print("🔍 Kiểm tra kênh live...")
     valid_ch = []
     with ThreadPoolExecutor(max_workers=20) as ex:
         fut_to_ch = {ex.submit(is_healthy, ch['url']): ch for ch in unique_ch}
@@ -307,7 +321,9 @@ def main():
             if fut.result():
                 valid_ch.append(fut_to_ch[fut])
 
-    # Thu thập trận + kênh (giữ nhiều kênh cho 1 trận)
+    print(f"   → Còn {len(valid_ch)} kênh chất lượng cao & khớp broadcaster")
+
+    # Thu thập trận + kênh
     live_events = []
     for date_str, day in schedule.items():
         for g in day.get("games", []):
@@ -317,32 +333,32 @@ def main():
                 game_dt = datetime.strptime(t_str, "%I:%M %p").replace(
                     year=int(date_str[:4]), month=int(date_str[4:6]), day=int(date_str[6:])).replace(tzinfo=TIMEZONE)
                 if game_dt < vn_now: continue
+
+                kws = BROADCAST_KEYWORDS.get(g["league"], [])
+                matching = [ch for ch in valid_ch if ch.get('league') == g["league"] and any(k in ch['name'].lower() for k in kws)]
+                for ch in matching:
+                    short_src = g["source"].split('•')[0].strip() if g.get("source") else ""
+                    display_name = f"{g['time']} | {g['league']} - {g['match']} ({short_src})"
+                    live_events.append({
+                        "datetime": game_dt,
+                        "name": display_name,
+                        "channel": ch,
+                        "league": g["league"]
+                    })
             except:
                 continue
 
-            kws = get_keywords(g.get("source", ""))
-            if not kws: continue
-
-            matching = [ch for ch in valid_ch if any(kw in ch['name'].lower() for kw in kws if len(kw)>=3)]
-            for ch in matching:
-                short_src = g["source"].split('•')[0].strip() if g.get("source") else ""
-                display_name = f"{g['time']} | {g['league']} - {g['match']} ({short_src})"
-                live_events.append({
-                    "datetime": game_dt,
-                    "name": display_name,
-                    "channel": ch,
-                    "league": g["league"]
-                })
-
     live_events.sort(key=lambda x: x["datetime"])
 
+    # Xuất M3U với nhóm riêng theo giải
     with open(LIVE_M3U, "w", encoding="utf-8") as f:
         f.write("#EXTM3U\n")
         for ev in live_events:
             ch = ev["channel"]
+            group_vn = LEAGUE_VN_NAME.get(ev["league"], "Lịch trực tiếp")
             tvg_id = ch['params'].get('tvg-id', '')
             tvg_logo = ch['params'].get('tvg-logo', '')
-            extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" group-title="Lịch trực tiếp"'
+            extinf = f'#EXTINF:-1 tvg-id="{tvg_id}" group-title="{group_vn}"'
             if tvg_logo:
                 extinf += f' tvg-logo="{tvg_logo}"'
             extinf += f',{ev["name"]}'
@@ -355,9 +371,9 @@ def main():
 
     total_live = len(live_events)
     elapsed = time.time() - start
-    print(f"\n🎉 HOÀN THÀNH SIÊU NHANH!")
+    print(f"\n🎉 HOÀN THÀNH!")
     print(f"   • schedule.json: {sum(len(d['games']) for d in schedule.values())} trận")
-    print(f"   • live_schedule.m3u: {total_live} kênh livestream")
+    print(f"   • live_schedule.m3u: {total_live} kênh livestream (phân nhóm theo giải)")
     print(f"   • Thời gian: {elapsed:.1f}s")
 
 if __name__ == "__main__":
