@@ -2,7 +2,7 @@
 euro_vn_full_schedule_live.py
 ================================
 BẢN HOÀN CHỈNH CUỐI CÙNG – LẤY TRẬN TRONG 24 GIỜ TỚI (từ lúc chạy)
-- Bóng đá: CHỈ trận có đội trong list bạn đưa + chỉ các giải Premier, Serie A, Bundesliga, La Liga, Ligue 1, UCL, UEL, Conference
+- Bóng đá: CHỈ trận có đội trong list + chỉ các giải bạn muốn (Premier, Serie A, Bundesliga, La Liga, Ligue 1, UCL, UEL, Conference)
 - Tennis: lấy tất cả
 - Group-title chính xác: "Live Premier League", "Live Serie A", ...
 - Tên trận: "DD/MM HH:MM | Arsenal vs Man City (Sky Sports Premier League)"
@@ -39,10 +39,11 @@ ALLOWED_TEAMS = {
     "olympique marseille"
 }
 
-ALLOWED_LEAGUES = {
-    "Premier League", "Serie A", "Bundesliga", "La Liga", "Ligue 1",
-    "UEFA Champions League", "UEFA Europa League", "UEFA Europa Conference League"
-}
+# Từ khóa giải đấu (substring để tránh miss "LaLiga" hoặc "La Liga EA Sports")
+ALLOWED_LEAGUE_KEYWORDS = [
+    "premier league", "serie a", "bundesliga", "la liga", "ligue 1",
+    "uefa champions league", "uefa europa league", "uefa europa conference league"
+]
 
 LEAGUE_GROUP_NAME = {
     "Premier League": "Live Premier League",
@@ -58,7 +59,7 @@ LEAGUE_GROUP_NAME = {
 
 # ================== HELPER ==================
 def fetch_text_sync(url: str, timeout=12):
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; EuroVN/8.0)"})
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; EuroVN/9.0)"})
     try:
         with urllib.request.urlopen(req, timeout=timeout) as r:
             return r.read().decode("utf-8")
@@ -85,7 +86,7 @@ def vn_time(timestamp: int) -> str:
     dt = datetime.fromtimestamp(timestamp, tz=ZoneInfo("UTC")).astimezone(TIMEZONE)
     return dt.strftime("%d/%m %I:%M %p")
 
-# ================== SOFASCORE ASYNC (24 GIỜ TỚI) ==================
+# ================== SOFASCORE ASYNC ==================
 async def get_channel_name(session, channel_id):
     url = f"https://api.sofascore.com/api/v1/tv/channel/{channel_id}/schedule"
     try:
@@ -129,13 +130,38 @@ async def fetch_event(session, event_id, sport, now_ts):
             league = "Tennis"
             match = f"{ev.get('homeTeam', {}).get('name', '')} vs {ev.get('awayTeam', {}).get('name', '')}"
         else:
-            league = ev.get('tournament', {}).get('name', 'Unknown')
-            if league not in ALLOWED_LEAGUES:
+            league_raw = ev.get('tournament', {}).get('name', 'Unknown')
+            league_lower = league_raw.lower()
+
+            # Lọc giải đấu bằng từ khóa (fix miss "LaLiga" / "La Liga EA Sports")
+            if not any(kw in league_lower for kw in ALLOWED_LEAGUE_KEYWORDS):
                 return None
+
             home = ev.get('homeTeam', {}).get('name', '').lower()
             away = ev.get('awayTeam', {}).get('name', '').lower()
             if not (any(t in home for t in ALLOWED_TEAMS) or any(t in away for t in ALLOWED_TEAMS)):
                 return None
+
+            # Chuẩn hóa tên giải để group đúng
+            if "premier" in league_lower:
+                league = "Premier League"
+            elif "serie" in league_lower:
+                league = "Serie A"
+            elif "bundes" in league_lower:
+                league = "Bundesliga"
+            elif "la liga" in league_lower or "laliga" in league_lower:
+                league = "La Liga"
+            elif "ligue" in league_lower:
+                league = "Ligue 1"
+            elif "champions" in league_lower:
+                league = "UEFA Champions League"
+            elif "europa league" in league_lower:
+                league = "UEFA Europa League"
+            elif "conference" in league_lower:
+                league = "UEFA Europa Conference League"
+            else:
+                league = league_raw
+
             match = f"{ev.get('homeTeam', {}).get('name', '')} vs {ev.get('awayTeam', {}).get('name', '')}"
 
         return {
@@ -149,18 +175,22 @@ async def fetch_event(session, event_id, sport, now_ts):
         return None
 
 async def process_24h(session, sport):
-    today = datetime.now()
-    date_str = today.strftime("%Y-%m-%d")
-    url = f"https://www.sofascore.com/api/v1/sport/{sport}/scheduled-events/{date_str}"
+    now = datetime.now()
+    dates = [now.strftime("%Y-%m-%d"), (now + timedelta(days=1)).strftime("%Y-%m-%d")]
     print(f"Fetching {sport} trong 24 giờ tới...")
-    res = await session.get(url, impersonate="chrome120", timeout=30)
-    if res.status_code != 200: return []
-
-    events = res.json().get('events', [])
+    all_results = []
     now_ts = int(datetime.now(TIMEZONE).timestamp())
-    tasks = [fetch_event(session, e['id'], sport, now_ts) for e in events]
-    results = await asyncio.gather(*tasks)
-    return [r for r in results if r]
+
+    for date_str in dates:
+        url = f"https://www.sofascore.com/api/v1/sport/{sport}/scheduled-events/{date_str}"
+        res = await session.get(url, impersonate="chrome120", timeout=30)
+        if res.status_code != 200: continue
+        events = res.json().get('events', [])
+        tasks = [fetch_event(session, e['id'], sport, now_ts) for e in events]
+        results = await asyncio.gather(*tasks)
+        all_results.extend([r for r in results if r])
+
+    return all_results
 
 # ================== M3U PARSER – GIỮ NGUYÊN TẤT CẢ EXTRA LINES ==================
 def parse_m3u(content):
@@ -187,8 +217,8 @@ def parse_m3u(content):
                 channels.append(current)
                 current = {}
                 extra = []
-        elif line.startswith('#'):                     # <--- GIỮ TẤT CẢ DÒNG BẮT ĐẦU BẰNG #
-            extra.append(line)                         # bao gồm #KODIPROP, #EXTHTTP, #EXTVLCOPT, #EXTGRP, #EXT-X-...
+        elif line.startswith('#'):                     # GIỮ TẤT CẢ DÒNG BẮT ĐẦU BẰNG #
+            extra.append(line)                         # #KODIPROP, #EXTHTTP, #EXTVLCOPT, #EXTGRP, #EXT-X-...
     if current.get('name') and current.get('url'):
         if extra: current['extra'] = extra[:]
         channels.append(current)
@@ -198,7 +228,7 @@ def parse_m3u(content):
 async def main():
     start = time.time()
     vn_now = datetime.now(TIMEZONE)
-    print("🔄 Bắt đầu lấy lịch SofaScore TRONG 24 GIỜ TỚI (chỉ đội bạn liệt kê)...")
+    print("🔄 Bắt đầu lấy lịch SofaScore TRONG 24 GIỜ TỚI...")
 
     all_games = []
     async with AsyncSession() as session:
@@ -207,7 +237,7 @@ async def main():
             all_games.extend(games)
             await asyncio.sleep(2)
 
-    # schedule.json (chỉ 24h)
+    # schedule.json
     today_str = datetime.now().strftime("%Y%m%d")
     schedule = {
         today_str: {
