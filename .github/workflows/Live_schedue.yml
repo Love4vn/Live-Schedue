@@ -1,7 +1,7 @@
 name: Euro VN Schedule SofaScore (Chỉ hôm nay)
 on:
   schedule:
-    - cron: '0 23 * * *'   # 6h sáng VN
+    - cron: '0 23 * * *'
   workflow_dispatch:
 
 jobs:
