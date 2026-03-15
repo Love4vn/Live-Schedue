@@ -1,4 +1,4 @@
-name: Euro VN Schedule SofaScore (Chỉ hôm nay)
+name: Euro VN Schedule SofaScore (24h tới)
 on:
   schedule:
     - cron: '0 23 * * *'
@@ -17,4 +17,4 @@ jobs:
       - run: python euro_vn_full_schedule_live.py
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Auto update schedule.json + live_schedule.m3u (SofaScore hôm nay)"
+          commit_message: "Auto update schedule.json + live_schedule.m3u (SofaScore 24h)"
