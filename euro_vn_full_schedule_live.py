@@ -1,14 +1,7 @@
 """
 euro_vn_full_schedule_live.py
 ================================
-BẢN HOÀN CHỈNH CUỐI CÙNG – LẤY TRẬN TRONG 24 GIỜ TỚI (từ lúc chạy)
-- Bóng đá: CHỈ trận có đội trong list + chỉ các giải bạn muốn (Premier, Serie A, Bundesliga, La Liga, Ligue 1, UCL, UEL, Conference)
-- Tennis: lấy tất cả
-- Group-title chính xác: "Live Premier League", "Live Serie A", ...
-- Tên trận: "DD/MM HH:MM | Arsenal vs Man City (Sky Sports Premier League)"
-- Dedup URL triệt để + GIỮ NGUYÊN TẤT CẢ extra lines (#KODIPROP, #EXTHTTP, #EXTVLCOPT, #EXTGRP, #EXT-X-..., ...)
-- Loại SD/low-res + kênh lỗi
-- Sắp xếp theo giờ Việt Nam
+BẢN HOÀN CHỈNH – 24 GIỜ TỚI + LỌC THEO GIẢI + ĐỘI RIÊNG
 """
 
 import asyncio
@@ -30,20 +23,21 @@ M3U_LIST_FILE = "M3U_list.txt"
 SCHEDULE_FILE = "schedule.json"
 LIVE_M3U = "live_schedule.m3u"
 
-ALLOWED_TEAMS = {
-    "arsenal", "aston villa", "bournemouth", "brentford", "brighton", "chelsea",
-    "crystal palace", "everton", "fulham", "leeds united", "liverpool", "manchester city",
-    "manchester united", "newcastle", "nottingham forest", "sunderland", "tottenham hotspur",
-    "west ham united", "wolverhampton", "bayern", "borussia dortmund", "bayer leverkusen",
-    "inter milan", "ac milan", "napoli", "barcelona", "real madrid", "atlético", "psg",
-    "olympique marseille"
+# DANH SÁCH ĐỘI RIÊNG TỪNG GIẢI (theo yêu cầu mới nhất của bạn)
+ALLOWED_TEAMS_PER_LEAGUE = {
+    "Premier League": {"arsenal", "aston villa", "bournemouth", "brentford", "brighton", "chelsea",
+                       "crystal palace", "everton", "fulham", "leeds united", "liverpool", "manchester city",
+                       "manchester united", "newcastle", "nottingham forest", "sunderland", "tottenham hotspur",
+                       "west ham united", "wolverhampton"},
+    "Serie A": {"inter milan", "ac milan", "napoli", "juventus", "roma", "atalanta", "lazio"},
+    "La Liga": {"barcelona", "real madrid", "atlético"},
+    "Bundesliga": {"bayern", "borussia dortmund", "bayer leverkusen"},
+    "Ligue 1": {"psg", "olympique marseille"},
+    # UEFA leagues: không giới hạn đội
+    "UEFA Champions League": None,
+    "UEFA Europa League": None,
+    "UEFA Europa Conference League": None,
 }
-
-# Từ khóa giải đấu (substring để tránh miss "LaLiga" hoặc "La Liga EA Sports")
-ALLOWED_LEAGUE_KEYWORDS = [
-    "premier league", "serie a", "bundesliga", "la liga", "ligue 1",
-    "uefa champions league", "uefa europa league", "uefa europa conference league"
-]
 
 LEAGUE_GROUP_NAME = {
     "Premier League": "Live Premier League",
@@ -86,7 +80,7 @@ def vn_time(timestamp: int) -> str:
     dt = datetime.fromtimestamp(timestamp, tz=ZoneInfo("UTC")).astimezone(TIMEZONE)
     return dt.strftime("%d/%m %I:%M %p")
 
-# ================== SOFASCORE ASYNC ==================
+# ================== SOFASCORE (24 GIỜ TỚI + LỌC NGHIÊM) ==================
 async def get_channel_name(session, channel_id):
     url = f"https://api.sofascore.com/api/v1/tv/channel/{channel_id}/schedule"
     try:
@@ -133,24 +127,19 @@ async def fetch_event(session, event_id, sport, now_ts):
             league_raw = ev.get('tournament', {}).get('name', 'Unknown')
             league_lower = league_raw.lower()
 
-            # Lọc giải đấu bằng từ khóa (fix miss "LaLiga" / "La Liga EA Sports")
-            if not any(kw in league_lower for kw in ALLOWED_LEAGUE_KEYWORDS):
+            # Lọc giải đấu (fix LaLiga EA Sports, La Liga, Laliga...)
+            if not any(kw in league_lower for kw in ["premier league", "serie a", "bundesliga", "la liga", "laliga", "ligue 1", "uefa champions", "uefa europa league", "conference league"]):
                 return None
 
-            home = ev.get('homeTeam', {}).get('name', '').lower()
-            away = ev.get('awayTeam', {}).get('name', '').lower()
-            if not (any(t in home for t in ALLOWED_TEAMS) or any(t in away for t in ALLOWED_TEAMS)):
-                return None
-
-            # Chuẩn hóa tên giải để group đúng
-            if "premier" in league_lower:
+            # Xác định tên giải chuẩn
+            if "la liga" in league_lower or "laliga" in league_lower:
+                league = "La Liga"
+            elif "premier" in league_lower:
                 league = "Premier League"
             elif "serie" in league_lower:
                 league = "Serie A"
             elif "bundes" in league_lower:
                 league = "Bundesliga"
-            elif "la liga" in league_lower or "laliga" in league_lower:
-                league = "La Liga"
             elif "ligue" in league_lower:
                 league = "Ligue 1"
             elif "champions" in league_lower:
@@ -161,6 +150,14 @@ async def fetch_event(session, event_id, sport, now_ts):
                 league = "UEFA Europa Conference League"
             else:
                 league = league_raw
+
+            # Lọc đội theo giải
+            allowed_teams = ALLOWED_TEAMS_PER_LEAGUE.get(league)
+            if allowed_teams is not None:  # chỉ kiểm tra nếu có danh sách
+                home = ev.get('homeTeam', {}).get('name', '').lower()
+                away = ev.get('awayTeam', {}).get('name', '').lower()
+                if not (any(t in home for t in allowed_teams) or any(t in away for t in allowed_teams)):
+                    return None
 
             match = f"{ev.get('homeTeam', {}).get('name', '')} vs {ev.get('awayTeam', {}).get('name', '')}"
 
@@ -192,7 +189,7 @@ async def process_24h(session, sport):
 
     return all_results
 
-# ================== M3U PARSER – GIỮ NGUYÊN TẤT CẢ EXTRA LINES ==================
+# ================== M3U PARSER – GIỮ NGUYÊN TẤT CẢ EXTRA ==================
 def parse_m3u(content):
     channels = []
     current = {}
@@ -217,8 +214,8 @@ def parse_m3u(content):
                 channels.append(current)
                 current = {}
                 extra = []
-        elif line.startswith('#'):                     # GIỮ TẤT CẢ DÒNG BẮT ĐẦU BẰNG #
-            extra.append(line)                         # #KODIPROP, #EXTHTTP, #EXTVLCOPT, #EXTGRP, #EXT-X-...
+        elif line.startswith('#'):   # GIỮ TẤT CẢ: #KODIPROP, #EXTHTTP, #EXTVLCOPT...
+            extra.append(line)
     if current.get('name') and current.get('url'):
         if extra: current['extra'] = extra[:]
         channels.append(current)
@@ -228,7 +225,7 @@ def parse_m3u(content):
 async def main():
     start = time.time()
     vn_now = datetime.now(TIMEZONE)
-    print("🔄 Bắt đầu lấy lịch SofaScore TRONG 24 GIỜ TỚI...")
+    print("🔄 Bắt đầu lấy lịch SofaScore 24 GIỜ TỚI (lọc nghiêm theo giải + đội)...")
 
     all_games = []
     async with AsyncSession() as session:
@@ -239,12 +236,7 @@ async def main():
 
     # schedule.json
     today_str = datetime.now().strftime("%Y%m%d")
-    schedule = {
-        today_str: {
-            "date": datetime.now().strftime("%A, %d/%m"),
-            "games": all_games
-        }
-    }
+    schedule = {today_str: {"date": datetime.now().strftime("%A, %d/%m"), "games": all_games}}
 
     day = schedule[today_str]
     seen = {}
@@ -259,9 +251,9 @@ async def main():
     output = {"updated": vn_now.strftime("%Y-%m-%d %H:%M VN"), "days": schedule}
     with open(SCHEDULE_FILE, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
-    print(f"✅ schedule.json: {len(day['games'])} trận trong 24 giờ tới")
+    print(f"✅ schedule.json: {len(day['games'])} trận")
 
-    # ================== TẠO live_schedule.m3u ==================
+    # ================== M3U ==================
     print("📥 Đang lọc kênh M3U...")
     m3u_links = [line.strip() for line in open(M3U_LIST_FILE, encoding='utf-8') if line.strip().startswith('http')]
 
@@ -285,8 +277,7 @@ async def main():
     seen_urls = set()
     for g in day["games"]:
         try:
-            if datetime.fromtimestamp(g['kick_utc']).astimezone(TIMEZONE) <= vn_now:
-                continue
+            if datetime.fromtimestamp(g['kick_utc']).astimezone(TIMEZONE) <= vn_now: continue
             for tv in g.get("tv_channels", []):
                 for ch_name in tv.get("channels", []):
                     matching = [ch for ch in valid_ch if ch_name.lower() in ch['name'].lower()]
@@ -324,9 +315,8 @@ async def main():
 
     elapsed = time.time() - start
     print(f"\n🎉 HOÀN THÀNH!")
-    print(f"   • schedule.json: {len(day['games'])} trận trong 24 giờ tới")
-    print(f"   • live_schedule.m3u: {len(live_events)} kênh (9 nhóm chính xác + tất cả extra lines)")
-    print(f"   • Thời gian: {elapsed:.1f}s")
+    print(f"   • schedule.json: {len(day['games'])} trận")
+    print(f"   • live_schedule.m3u: {len(live_events)} kênh (9 nhóm chính xác)")
 
 if __name__ == "__main__":
     asyncio.run(main())
