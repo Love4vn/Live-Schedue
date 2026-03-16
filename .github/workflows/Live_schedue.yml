@@ -1,4 +1,5 @@
 name: Euro VN Schedule SofaScore (24h tới)
+
 on:
   schedule:
     - cron: '0 23 * * *'
@@ -7,14 +8,22 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
+
     steps:
+
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
+
       - name: Install dependencies
-        run: pip install curl_cffi pycountry
-      - run: python euro_vn_full_schedule_live.py
+        run: |
+          pip install curl_cffi pycountry requests beautifulsoup4
+
+      - name: Run script
+        run: python euro_vn_full_schedule_live.py
+
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Auto update schedule.json + live_schedule.m3u (SofaScore 24h)"
+          commit_message: "Auto update schedule.json + live_schedule.m3u (SofaScore + WTM)"
