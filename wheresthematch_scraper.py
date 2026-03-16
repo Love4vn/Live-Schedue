@@ -6,7 +6,7 @@ import re
 from datetime import datetime
 
 async def scrape_wheresthematch():
-    # Danh sách các đội bóng yêu cầu (Cập nhật đầy đủ hơn)
+    # Cấu hình danh sách đội và giải đấu cần lấy
     leagues_config = {
         "Premier League": {"teams": {"arsenal", "aston villa", "bournemouth", "brentford", "brighton",
                                      "chelsea", "crystal palace", "everton", "fulham", "liverpool", 
@@ -23,86 +23,74 @@ async def scrape_wheresthematch():
     }
 
     all_games = []
-    today_date = datetime.now().strftime("%A %d%s %B %Y") # Định dạng khớp với tiêu đề web
+    today_day = datetime.now().strftime("%d") # Lấy ngày hiện tại để đối chiếu
 
     async with async_playwright() as p:
-        print("🚀 Khởi động trình duyệt lấy lịch chuẩn xác...")
+        print("🚀 Khởi động trình duyệt...")
         browser = await p.chromium.launch(headless=True)
         page = await browser.new_page()
         
         url = "https://www.wheresthematch.com/live-football-on-tv/"
         try:
-            await page.goto(url, wait_until="networkidle", timeout=60000)
-            # Chờ thêm một chút để các icon kênh kịp load
-            await asyncio.sleep(3)
+            await page.goto(url, wait_until="domcontentloaded", timeout=60000)
+            # Cuộn trang nhẹ để kích hoạt load ảnh logo kênh
+            await page.mouse.wheel(0, 2000)
+            await asyncio.sleep(2)
             html = await page.content()
             soup = BeautifulSoup(html, 'html.parser')
         except Exception as e:
-            print(f"❌ Lỗi tải trang: {e}")
+            print(f"❌ Lỗi: {e}")
             await browser.close()
             return
 
         await browser.close()
 
-        # 1. Tìm tất cả các cụm ngày (fixtures-group)
-        # Trang này chia lịch theo từng block ngày
+        # Tìm các nhóm ngày (fixtures-group)
         fixture_groups = soup.select('.fixtures-group')
         
         for group in fixture_groups:
-            # Kiểm tra xem group này có phải của "Today" hoặc "Tonight" không
+            # Kiểm tra tiêu đề ngày
             date_header = group.select_one('.fixture-date')
             date_text = date_header.get_text(strip=True).lower() if date_header else ""
             
-            is_today = any(x in date_text for x in ["today", "tonight", datetime.now().strftime("%d").lower()])
-            if not is_today:
+            # Chỉ xử lý nếu là "Today", "Tonight" hoặc khớp ngày hiện tại
+            if not any(x in date_text for x in ["today", "tonight", today_day]):
                 continue
 
-            # 2. Duyệt từng trận trong group ngày hôm nay
-            matches = group.select('.fixture-item') # Thẻ chứa thông tin trận đấu
+            # Duyệt từng trận đấu trong nhóm ngày này
+            matches = group.select('.fixture-item') 
             for match_card in matches:
                 try:
-                    # Lấy tên đội
+                    # 1. Lấy tên đội (Dùng selector chính xác của web)
                     teams = match_card.select('.team-name')
                     if len(teams) < 2: continue
                     
-                    home_team = teams[0].get_text(strip=True)
-                    away_team = teams[1].get_text(strip=True)
-                    matchup = f"{home_team} vs {away_team}"
+                    home = teams[0].get_text(strip=True)
+                    away = teams[1].get_text(strip=True)
+                    matchup = f"{home} vs {away}"
 
-                    # Lấy giờ thi đấu
-                    time_val = match_card.select_one('.kick-off-time')
-                    kickoff = time_val.get_text(strip=True) if time_val else "Unknown"
+                    # 2. Lấy giờ và Giải đấu
+                    kickoff = match_card.select_one('.kick-off-time').get_text(strip=True) if match_card.select_one('.kick-off-time') else "Tonight"
+                    league_name = match_card.select_one('.competition-name').get_text(strip=True) if match_card.select_one('.competition-name') else "Unknown"
 
-                    # Lấy giải đấu
-                    competition = match_card.select_one('.competition-name')
-                    league_name = competition.get_text(strip=True) if competition else "Unknown League"
-
-                    # Lấy danh sách kênh (từ thẻ img và text)
+                    # 3. Lấy danh sách kênh phát sóng
                     channels = []
-                    # Cách 1: Từ các icon đài truyền hình
-                    channel_imgs = match_card.select('.broadcaster-logos img')
-                    for img in channel_imgs:
-                        alt = img.get('alt', '').replace(' logo', '').strip()
-                        if alt and alt not in channels:
-                            channels.append(alt)
-                    
-                    # Cách 2: Nếu có text đài truyền hình bổ sung
-                    channel_texts = match_card.select('.broadcaster-name')
-                    for ct in channel_texts:
-                        name = ct.get_text(strip=True)
-                        if name and name not in channels:
-                            channels.append(name)
+                    # Ưu tiên lấy từ alt của ảnh logo kênh
+                    for img in match_card.select('.broadcaster-logos img'):
+                        ch_name = img.get('alt', '').replace(' logo', '').strip()
+                        if ch_name and ch_name not in channels:
+                            channels.append(ch_name)
 
-                    # 3. Lọc theo danh sách đội yêu cầu
+                    # 4. Kiểm tra bộ lọc đội bóng/giải đấu
                     is_match_interested = False
                     for lg, cfg in leagues_config.items():
                         team_list = cfg.get("teams")
-                        # Nếu là giải đấu Cup (teams=None) hoặc đội bóng nằm trong list
+                        # Nếu là giải Cup (None) hoặc đội bóng nằm trong list yêu cầu
                         if team_list is None:
                             if lg.lower() in league_name.lower():
                                 is_match_interested = True
                                 break
-                        elif any(t in home_team.lower() or t in away_team.lower() for t in team_list):
+                        elif any(t in home.lower() or t in away.lower() for t in team_list):
                             is_match_interested = True
                             break
 
@@ -112,19 +100,20 @@ async def scrape_wheresthematch():
                             "Time": kickoff,
                             "League": league_name,
                             "Matchup": matchup,
-                            "Channels": list(dict.fromkeys(channels)) # Loại bỏ trùng
+                            "Channels": list(dict.fromkeys(channels))
                         })
 
-                except Exception as ex:
+                except:
                     continue
 
-    # Xuất kết quả
+    # Xuất kết quả ra file
     if all_games:
         with open("wheresthematch.json", 'w', encoding='utf-8') as f:
             json.dump(all_games, f, indent=4, ensure_ascii=False)
-        print(f"✅ Thành công: Đã lấy được {len(all_games)} trận đấu hôm nay.")
+        print(f"✅ Đã lưu {len(all_games)} trận vào wheresthematch.json")
     else:
-        print("⚠️ Không tìm thấy trận đấu nào khớp với yêu cầu hôm nay.")
+        print("⚠️ Không tìm thấy trận đấu nào khớp yêu cầu hôm nay.")
 
 if __name__ == "__main__":
-    async asyncio.run(scrape_wheresthematch())
+    # Đã sửa lỗi SyntaxError tại đây
+    asyncio.run(scrape_wheresthematch())
