@@ -24,3 +24,7 @@ jobs:
           
       - name: Run script
         run: python DailyStreamingScraperFootballV2.py
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "update livesportsontv.json"
