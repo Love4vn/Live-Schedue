@@ -24,7 +24,10 @@ jobs:
           
       - name: Run script
         run: python DailyStreamingScraperFootballV2.py
+        
+      - name: Run wheresthematch
+        run: python wheresthematch_scraper.py  
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "update livesportsontv.json"
+          commit_message: "update livesportsontv.json & wheresthematch.json"
