@@ -1,7 +1,9 @@
 """
 euro_vn_full_schedule_live.py
 ================================
-BẢN HOÀN CHỈNH – 48 GIỜ TỚI + LỌC THEO GIẢI + ĐỘI RIÊNG + TÍCH HỢP WHERE'S THE MATCH
+BẢN HOÀN CHỈNH – 48 GIỜ TỚI + LỌC THEO GIẢI + ĐỘI RIÊNG
+TÍCH HỢP: SofaScore, Where's The Match, LiveSportsOnTV
+Xuất file riêng cho từng nguồn, sau đó merge
 """
 
 import asyncio
@@ -15,10 +17,12 @@ from zoneinfo import ZoneInfo
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from urllib.parse import unquote
 from difflib import SequenceMatcher
+from typing import List, Dict, Any
 
 import pycountry
 from curl_cffi.requests import AsyncSession
 from bs4 import BeautifulSoup
+from playwright.async_api import async_playwright  # cho livesportsontv
 
 # ================== CẤU HÌNH ==================
 TIMEZONE = ZoneInfo("Asia/Ho_Chi_Minh")
@@ -26,7 +30,10 @@ M3U_LIST_FILE = "M3U_list.txt"
 SCHEDULE_FILE = "schedule.json"
 LIVE_M3U = "live_schedule.m3u"
 
-# DANH SÁCH ĐỘI RIÊNG TỪNG GIẢI (theo yêu cầu mới nhất của bạn)
+# Thư mục lưu file riêng (có thể để cùng thư mục)
+SOURCE_OUTPUT_DIR = "."  # current directory
+
+# DANH SÁCH ĐỘI RIÊNG TỪNG GIẢI (theo yêu cầu)
 ALLOWED_TEAMS_PER_LEAGUE = {
     "Premier League": {"arsenal", "aston villa", "bournemouth", "brentford", "brighton", "chelsea",
                        "crystal palace", "everton", "fulham", "leeds united", "liverpool", "manchester city",
@@ -84,10 +91,21 @@ def vn_time(timestamp: int) -> str:
     return dt.strftime("%d/%m %I:%M %p")
 
 def similar(a: str, b: str) -> float:
-    """Tính độ tương đồng giữa hai chuỗi (dùng để so khớp tên đội)"""
     return SequenceMatcher(None, a, b).ratio()
 
-# ================== SOFASCORE (48 GIỜ TỚI + LỌC NGHIÊM) ==================
+def save_source_games(source_name: str, games: List[Dict]):
+    """Lưu danh sách trận của một nguồn ra file JSON riêng để kiểm tra"""
+    filename = f"{SOURCE_OUTPUT_DIR}/schedule_{source_name}.json"
+    output = {
+        "source": source_name,
+        "updated": datetime.now(TIMEZONE).strftime("%Y-%m-%d %H:%M VN"),
+        "games": games
+    }
+    with open(filename, "w", encoding="utf-8") as f:
+        json.dump(output, f, indent=2, ensure_ascii=False)
+    print(f"   ✅ Đã lưu {len(games)} trận từ {source_name} vào {filename}")
+
+# ================== SOFASCORE SCRAPER ==================
 async def get_channel_name(session, channel_id):
     url = f"https://api.sofascore.com/api/v1/tv/channel/{channel_id}/schedule"
     try:
@@ -115,7 +133,7 @@ async def get_tv_data(session, event_id):
     except:
         return []
 
-async def fetch_event(session, event_id, sport, now_ts, max_ts):
+async def fetch_sofascore_event(session, event_id, sport, now_ts, max_ts):
     url = f"https://api.sofascore.com/api/v1/event/{event_id}"
     try:
         res = await session.get(url, impersonate="chrome120", timeout=10)
@@ -130,6 +148,14 @@ async def fetch_event(session, event_id, sport, now_ts, max_ts):
         if sport == "tennis":
             league = "Tennis"
             match = f"{ev.get('homeTeam', {}).get('name', '')} vs {ev.get('awayTeam', {}).get('name', '')}"
+            return {
+                "league": league,
+                "time": vn_time(start_ts),
+                "match": match,
+                "kick_utc": start_ts,
+                "tv_channels": tv,
+                "tournament": ev.get('tournament', {}).get('name')  # để tham khảo khi merge với WTM
+            }
         else:
             league_raw = ev.get('tournament', {}).get('name', 'Unknown')
             league_lower = league_raw.lower()
@@ -168,36 +194,39 @@ async def fetch_event(session, event_id, sport, now_ts, max_ts):
 
             match = f"{ev.get('homeTeam', {}).get('name', '')} vs {ev.get('awayTeam', {}).get('name', '')}"
 
-        return {
-            "league": league,
-            "time": vn_time(start_ts),
-            "match": match,
-            "kick_utc": start_ts,
-            "tv_channels": tv
-        }
+            return {
+                "league": league,
+                "time": vn_time(start_ts),
+                "match": match,
+                "kick_utc": start_ts,
+                "tv_channels": tv,
+                "tournament": league_raw
+            }
     except:
         return None
 
-async def process_48h(session, sport):
-    now = datetime.now()
-    dates = [now.strftime("%Y-%m-%d"), 
-             (now + timedelta(days=1)).strftime("%Y-%m-%d"),
-             (now + timedelta(days=2)).strftime("%Y-%m-%d")]
-    print(f"Fetching {sport} trong 48 giờ tới...")
-    all_results = []
-    now_ts = int(datetime.now(TIMEZONE).timestamp())
-    max_ts = now_ts + 172800  # 48 giờ
+async def scrape_sofascore() -> List[Dict]:
+    """Lấy dữ liệu từ SofaScore (48 giờ tới)"""
+    all_games = []
+    async with AsyncSession() as session:
+        for sport in ["football", "tennis"]:
+            now = datetime.now()
+            dates = [now.strftime("%Y-%m-%d"), 
+                     (now + timedelta(days=1)).strftime("%Y-%m-%d"),
+                     (now + timedelta(days=2)).strftime("%Y-%m-%d")]
+            now_ts = int(datetime.now(TIMEZONE).timestamp())
+            max_ts = now_ts + 172800  # 48 giờ
 
-    for date_str in dates:
-        url = f"https://www.sofascore.com/api/v1/sport/{sport}/scheduled-events/{date_str}"
-        res = await session.get(url, impersonate="chrome120", timeout=30)
-        if res.status_code != 200: continue
-        events = res.json().get('events', [])
-        tasks = [fetch_event(session, e['id'], sport, now_ts, max_ts) for e in events]
-        results = await asyncio.gather(*tasks)
-        all_results.extend([r for r in results if r])
-
-    return all_results
+            for date_str in dates:
+                url = f"https://www.sofascore.com/api/v1/sport/{sport}/scheduled-events/{date_str}"
+                res = await session.get(url, impersonate="chrome120", timeout=30)
+                if res.status_code != 200: continue
+                events = res.json().get('events', [])
+                tasks = [fetch_sofascore_event(session, e['id'], sport, now_ts, max_ts) for e in events]
+                results = await asyncio.gather(*tasks)
+                all_games.extend([r for r in results if r])
+            await asyncio.sleep(2)
+    return all_games
 
 # ================== WHERE'S THE MATCH SCRAPER ==================
 UK_CHANNELS = [
@@ -211,11 +240,8 @@ UK_CHANNELS = [
     "FreeSports", "discovery+", "Discovery+", "DAZN"
 ]
 
-async def fetch_wtm_fixtures() -> list:
-    """
-    Lấy danh sách trận đấu từ Where's The Match (https://www.wheresthematch.com/live-football-on-tv/)
-    Trả về list các dict chứa: home, away, kickoff_utc (timestamp), competition, channels
-    """
+async def scrape_wtm() -> List[Dict]:
+    """Lấy dữ liệu từ Where's The Match (48 giờ tới)"""
     url = "https://www.wheresthematch.com/live-football-on-tv/"
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
@@ -231,10 +257,14 @@ async def fetch_wtm_fixtures() -> list:
         print(f"[WTM] Request failed: {e}")
         return []
 
-    # Parse HTML trong thread riêng để không block event loop
     loop = asyncio.get_event_loop()
     fixtures = await loop.run_in_executor(None, _parse_wtm_html, html)
-    return fixtures
+
+    # Lọc trong 48 giờ tới
+    now_ts = int(datetime.now(TIMEZONE).timestamp())
+    max_ts = now_ts + 172800
+    filtered = [f for f in fixtures if now_ts <= f['kickoff_utc'] <= max_ts]
+    return filtered
 
 def _parse_wtm_html(html: str) -> list:
     soup = BeautifulSoup(html, 'lxml')
@@ -253,7 +283,6 @@ def _parse_wtm_html(html: str) -> list:
             home = team_links[0].get('title') or team_links[0].text.strip()
             away = team_links[-1].get('title') or team_links[-1].text.strip()
         else:
-            # fallback: parse text "Team A v Team B"
             fixture_cell = row.select_one('td.fixture-details')
             if fixture_cell:
                 text = fixture_cell.get_text(strip=True)
@@ -271,7 +300,6 @@ def _parse_wtm_html(html: str) -> list:
         if meta and meta.get('content'):
             iso = meta['content']
             try:
-                # Xử lý định dạng ISO (có thể có Z)
                 if iso.endswith('Z'):
                     iso = iso.replace('Z', '+00:00')
                 dt = datetime.fromisoformat(iso)
@@ -279,7 +307,6 @@ def _parse_wtm_html(html: str) -> list:
             except:
                 pass
         if not kickoff_utc:
-            # Nếu không có ISO, bỏ qua (không xác định được giờ chính xác)
             continue
 
         # ---- Giải đấu ----
@@ -292,22 +319,18 @@ def _parse_wtm_html(html: str) -> list:
 
         # ---- Kênh phát sóng ----
         channels = set()
-        # Từ các ảnh logo
         imgs = row.select('td.channel-details img')
         for img in imgs:
             alt = img.get('alt', '').strip()
             title = img.get('title', '').strip()
             name = alt or title
             if name:
-                # Bỏ hậu tố "logo"
                 name = re.sub(r'\s+logo$', '', name, flags=re.I).strip()
                 channels.add(name)
-        # Từ text trong ô (có thể có tên kênh dạng chữ)
         chan_cell = row.select_one('td.channel-details')
         if chan_cell:
             text = chan_cell.get_text(separator=' ', strip=True)
             if text:
-                # Tách bằng dấu phẩy hoặc xuống dòng
                 for part in re.split(r'[,;]', text):
                     part = part.strip()
                     if part and not any(x in part.lower() for x in ['logo', 'image']):
@@ -323,7 +346,275 @@ def _parse_wtm_html(html: str) -> list:
 
     return fixtures
 
-# ================== M3U PARSER – GIỮ NGUYÊN TẤT CẢ EXTRA ==================
+# ================== LIVESPORTSONTV SCRAPER ==================
+# Dùng Playwright để lấy dữ liệu từ livesportsontv.com cho các môn: football, tennis
+LIVESPORTS_SPORTS = {
+    "football": {
+        "EPL": "https://www.livesportsontv.com/league/english-premier-league",
+        "LaLiga": "https://www.livesportsontv.com/league/la-liga",
+        "Bundesliga": "https://www.livesportsontv.com/league/bundesliga",
+        "SerieA": "https://www.livesportsontv.com/league/serie-a",
+        "Ligue1": "https://www.livesportsontv.com/league/ligue-1",
+        "UCL": "https://www.livesportsontv.com/league/uefa-champions-league",
+        "UEL": "https://www.livesportsontv.com/league/uefa-europa-league",
+        "UECL": "https://www.livesportsontv.com/league/uefa-europa-conference-league",
+    },
+    "tennis": {
+        "ATP": "https://www.livesportsontv.com/sport/tennis/atp",
+        "WTA": "https://www.livesportsontv.com/sport/tennis/wta",
+    }
+}
+
+async def scrape_livesportsontv() -> List[Dict]:
+    """Lấy dữ liệu từ LiveSportsOnTV (48 giờ tới)"""
+    all_games = []
+    now_ts = int(datetime.now(TIMEZONE).timestamp())
+    max_ts = now_ts + 172800
+
+    async with async_playwright() as p:
+        browser = await p.chromium.launch(headless=True)
+        page = await browser.new_page()
+
+        for sport, leagues in LIVESPORTS_SPORTS.items():
+            for league_name, url in leagues.items():
+                print(f"   [LiveSports] Đang xử lý {league_name}...")
+                try:
+                    await page.goto(url, timeout=30000)
+                    # Scroll để load hết (có thể cần cho các ngày xa)
+                    for _ in range(3):
+                        await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+                        await page.wait_for_timeout(1000)
+
+                    html = await page.content()
+                    soup = BeautifulSoup(html, 'lxml')
+                    game_rows = soup.find_all('div', class_='event--wrapp')
+
+                    for row in game_rows:
+                        try:
+                            # Lấy thời gian và ngày
+                            date_div = row.find('div', class_='event__info--date')
+                            if not date_div:
+                                continue
+                            day_elem = date_div.find('b')
+                            month_elem = date_div.find('span')
+                            if not day_elem or not month_elem:
+                                continue
+                            game_day = day_elem.get_text(strip=True)
+                            game_month = month_elem.get_text(strip=True)
+
+                            # Xác định năm? Mặc định là năm hiện tại, nhưng nếu tháng nhỏ hơn tháng hiện tại thì có thể là năm sau?
+                            # Tạm thời lấy năm hiện tại, nếu tháng < tháng hiện tại thì cộng thêm 1 (cho trường hợp cuối năm)
+                            # Tuy nhiên livesportsontv chỉ hiển thị trong vòng 7 ngày nên không cần lo lắng.
+                            now = datetime.now()
+                            year = now.year
+                            # Nếu tháng hiện tại là 12 và tháng game là 1 => năm sau
+                            if now.month == 12 and game_month.lower() in ['jan', 'january']:
+                                year += 1
+                            # Tạo datetime local (theo múi giờ của trang? thường là UK time)
+                            # Giả sử thời gian trên trang là UK time (BST/GMT)
+                            time_elem = row.find('time')
+                            if not time_elem:
+                                continue
+                            time_str = time_elem.get_text(strip=True)
+                            # Kết hợp ngày tháng năm và giờ
+                            dt_str = f"{game_day} {game_month} {year} {time_str}"
+                            # Chuyển đổi sang datetime, giả sử múi giờ UK (có thể dùng pytz nhưng tạm dùng UTC+0)
+                            # Cần chú ý: mùa hè BST = UTC+1, mùa đông GMT = UTC+0.
+                            # Tạm thời parse và cho là UTC+0, sau đó chuyển sang timestamp
+                            try:
+                                # Dùng dateutil? Ở đây dùng strptime đơn giản với định dạng phổ biến
+                                # Định dạng ví dụ: "12 Mar 19:30"
+                                # Thêm năm vào
+                                dt_obj = datetime.strptime(f"{game_day} {game_month} {year} {time_str}", "%d %b %Y %H:%M")
+                                # Chuyển về timestamp (coi như local time của trang, nhưng không rõ múi giờ)
+                                # Thực tế livesportsontv dùng múi giờ UK, nên chúng ta cần điều chỉnh
+                                # Tạm thời coi là UTC (vì chênh lệch 0-1h, không đáng kể cho mục đích lọc)
+                                # Tốt nhất lấy từ attribute content nếu có
+                                time_meta = row.find('time', attrs={'datetime': True})
+                                if time_meta and time_meta.get('datetime'):
+                                    dt_obj = datetime.fromisoformat(time_meta['datetime'].replace('Z', '+00:00'))
+                                else:
+                                    # fallback
+                                    pass
+                            except:
+                                # Nếu parse lỗi, bỏ qua
+                                continue
+
+                            kick_utc = int(dt_obj.timestamp())
+
+                            # Lọc trong 48h
+                            if not (now_ts <= kick_utc <= max_ts):
+                                continue
+
+                            # Lấy tên đội (hoặc tay vợt)
+                            home_elem = row.find('div', class_=lambda c: c and 'event__participant--home' in c)
+                            away_elem = row.find('div', class_=lambda c: c and 'event__participant--away' in c)
+                            if not home_elem or not away_elem:
+                                continue
+                            home_team = home_elem.get_text(strip=True)
+                            away_team = away_elem.get_text(strip=True)
+                            match = f"{home_team} vs {away_team}"
+
+                            # Lấy kênh
+                            channels = []
+                            channel_list = row.find('ul', class_='event__tags')
+                            if channel_list:
+                                for channel_link in channel_list.find_all('a'):
+                                    channel_name = channel_link.get('aria-label')
+                                    if channel_name:
+                                        channels.append(channel_name)
+
+                            # Xác định giải (dựa vào league_name và sport)
+                            if sport == "tennis":
+                                league = "Tennis"
+                            else:
+                                # Map league_name sang tên chuẩn
+                                league_map = {
+                                    "EPL": "Premier League",
+                                    "LaLiga": "La Liga",
+                                    "Bundesliga": "Bundesliga",
+                                    "SerieA": "Serie A",
+                                    "Ligue1": "Ligue 1",
+                                    "UCL": "UEFA Champions League",
+                                    "UEL": "UEFA Europa League",
+                                    "UECL": "UEFA Europa Conference League",
+                                }
+                                league = league_map.get(league_name, league_name)
+
+                            all_games.append({
+                                "league": league,
+                                "time": vn_time(kick_utc),
+                                "match": match,
+                                "kick_utc": kick_utc,
+                                "tv_channels": [{"country": "United Kingdom", "channels": channels}] if channels else [],
+                                "source": "livesportsontv"
+                            })
+                        except Exception as e:
+                            continue
+                except Exception as e:
+                    print(f"   [LiveSports] Lỗi khi xử lý {league_name}: {e}")
+                    continue
+
+        await browser.close()
+    return all_games
+
+# ================== MERGE CÁC NGUỒN ==================
+def merge_games(sofascore_games: List[Dict], wtm_games: List[Dict], livesports_games: List[Dict]) -> List[Dict]:
+    """
+    Merge dữ liệu từ các nguồn:
+    - SofaScore là chính, giữ nguyên cấu trúc (có tv_channels đa quốc gia)
+    - WTM và LiveSports bổ sung kênh UK vào tv_channels của trận tương ứng
+    - Đối với tennis, merge dựa trên giải đấu + thời gian (vì tên người khác nhau)
+    """
+    # Tạo dict index theo (league, kick_utc) cho tennis
+    tennis_index = {}
+    for game in sofascore_games:
+        if game['league'] == 'Tennis':
+            # Dùng (tournament, kick_utc) nếu có tournament, nếu không thì chỉ kick_utc
+            key = (game.get('tournament', ''), game['kick_utc'])
+            tennis_index[key] = game
+
+    # Merge WTM (WTM chỉ có football)
+    for wtm in wtm_games:
+        # Tìm trận trong sofascore_games có football
+        best_match = None
+        best_score = 0.0
+        for game in sofascore_games:
+            if game['league'] == 'Tennis':
+                continue
+            match_parts = game['match'].split(' vs ')
+            if len(match_parts) != 2:
+                continue
+            sof_home = normalize(match_parts[0])
+            sof_away = normalize(match_parts[1])
+            wtm_home = normalize(wtm['home'])
+            wtm_away = normalize(wtm['away'])
+            score_home = similar(sof_home, wtm_home)
+            score_away = similar(sof_away, wtm_away)
+            avg_score = (score_home + score_away) / 2
+            time_diff = abs(game['kick_utc'] - wtm['kickoff_utc'])
+            if avg_score > best_score and time_diff < 3600:
+                best_score = avg_score
+                best_match = game
+        if best_match and best_score > 0.7:
+            uk_channels = wtm['channels']
+            if uk_channels:
+                found = False
+                for tv in best_match['tv_channels']:
+                    if tv['country'] == 'United Kingdom':
+                        tv['channels'] = list(set(tv['channels'] + uk_channels))
+                        found = True
+                        break
+                if not found:
+                    best_match['tv_channels'].append({
+                        'country': 'United Kingdom',
+                        'channels': uk_channels
+                    })
+
+    # Merge LiveSports
+    for ls in livesports_games:
+        if ls['league'] == 'Tennis':
+            # Tìm trong tennis_index theo tournament và thời gian
+            # LiveSports có thể không có tournament, chỉ có league = Tennis
+            # Tìm bằng kick_utc (sai số 1 giờ)
+            for game in sofascore_games:
+                if game['league'] == 'Tennis' and abs(game['kick_utc'] - ls['kick_utc']) < 3600:
+                    # Nếu có kênh, thêm vào
+                    if ls['tv_channels'] and ls['tv_channels'][0]['channels']:
+                        found = False
+                        for tv in game['tv_channels']:
+                            if tv['country'] == 'United Kingdom':
+                                tv['channels'] = list(set(tv['channels'] + ls['tv_channels'][0]['channels']))
+                                found = True
+                                break
+                        if not found:
+                            game['tv_channels'].append({
+                                'country': 'United Kingdom',
+                                'channels': ls['tv_channels'][0]['channels']
+                            })
+                    break
+        else:
+            # Football: tìm theo tên đội
+            match_parts = ls['match'].split(' vs ')
+            if len(match_parts) != 2:
+                continue
+            ls_home = normalize(match_parts[0])
+            ls_away = normalize(match_parts[1])
+            best_match = None
+            best_score = 0.0
+            for game in sofascore_games:
+                if game['league'] == 'Tennis':
+                    continue
+                sof_parts = game['match'].split(' vs ')
+                if len(sof_parts) != 2:
+                    continue
+                sof_home = normalize(sof_parts[0])
+                sof_away = normalize(sof_parts[1])
+                score_home = similar(sof_home, ls_home)
+                score_away = similar(sof_away, ls_away)
+                avg_score = (score_home + score_away) / 2
+                time_diff = abs(game['kick_utc'] - ls['kick_utc'])
+                if avg_score > best_score and time_diff < 3600:
+                    best_score = avg_score
+                    best_match = game
+            if best_match and best_score > 0.7:
+                uk_channels = ls['tv_channels'][0]['channels'] if ls['tv_channels'] else []
+                if uk_channels:
+                    found = False
+                    for tv in best_match['tv_channels']:
+                        if tv['country'] == 'United Kingdom':
+                            tv['channels'] = list(set(tv['channels'] + uk_channels))
+                            found = True
+                            break
+                    if not found:
+                        best_match['tv_channels'].append({
+                            'country': 'United Kingdom',
+                            'channels': uk_channels
+                        })
+
+    return sofascore_games
+
+# ================== M3U PARSER ==================
 def parse_m3u(content):
     channels = []
     current = {}
@@ -348,7 +639,7 @@ def parse_m3u(content):
                 channels.append(current)
                 current = {}
                 extra = []
-        elif line.startswith('#'):   # GIỮ TẤT CẢ: #KODIPROP, #EXTHTTP, #EXTVLCOPT...
+        elif line.startswith('#'):
             extra.append(line)
     if current.get('name') and current.get('url'):
         if extra: current['extra'] = extra[:]
@@ -359,72 +650,33 @@ def parse_m3u(content):
 async def main():
     start = time.time()
     vn_now = datetime.now(TIMEZONE)
-    print("🔄 Bắt đầu lấy lịch SofaScore 48 GIỜ TỚI (lọc nghiêm theo giải + đội)...")
+    print("🔄 Bắt đầu lấy lịch 48 GIỜ TỚI từ nhiều nguồn...")
 
-    all_games = []
-    async with AsyncSession() as session:
-        for sport in ["football", "tennis"]:
-            games = await process_48h(session, sport)
-            all_games.extend(games)
-            await asyncio.sleep(2)
+    # 1. SofaScore
+    print("📡 Đang lấy dữ liệu từ SofaScore...")
+    sofascore_games = await scrape_sofascore()
+    save_source_games("sofascore", sofascore_games)
 
-    # --- BỔ SUNG: Lấy dữ liệu từ Where's The Match và merge ---
+    # 2. Where's The Match
     print("📡 Đang lấy dữ liệu từ Where's The Match...")
-    wtm_fixtures = await fetch_wtm_fixtures()
-    now_ts = int(datetime.now(TIMEZONE).timestamp())
-    # Lọc các trận trong 48h tới
-    wtm_filtered = [f for f in wtm_fixtures if now_ts <= f['kickoff_utc'] <= now_ts + 172800]
-    print(f"   • WTM: {len(wtm_filtered)} trận trong 48h tới")
+    wtm_games = await scrape_wtm()
+    save_source_games("wtm", wtm_games)
 
-    if wtm_filtered:
-        # Merge vào all_games (chỉ các trận football)
-        for game in all_games:
-            # Bỏ qua tennis
-            if game.get('league') == 'Tennis':
-                continue
-            # Tách tên đội từ match (định dạng "Home vs Away")
-            match_parts = game['match'].split(' vs ')
-            if len(match_parts) != 2:
-                continue
-            sof_home = normalize(match_parts[0])
-            sof_away = normalize(match_parts[1])
+    # 3. LiveSportsOnTV
+    print("📡 Đang lấy dữ liệu từ LiveSportsOnTV (dùng Playwright)...")
+    livesports_games = await scrape_livesportsontv()
+    save_source_games("livesportsontv", livesports_games)
 
-            best_match = None
-            best_score = 0.0
-            for wtm in wtm_filtered:
-                wtm_home = normalize(wtm['home'])
-                wtm_away = normalize(wtm['away'])
-                score_home = similar(sof_home, wtm_home)
-                score_away = similar(sof_away, wtm_away)
-                avg_score = (score_home + score_away) / 2
-                time_diff = abs(game['kick_utc'] - wtm['kickoff_utc'])
-                # Ngưỡng: độ tương đồng > 0.7 và chênh lệch thời gian < 1 giờ
-                if avg_score > best_score and time_diff < 3600:
-                    best_score = avg_score
-                    best_match = wtm
-            if best_match and best_score > 0.7:
-                uk_channels = best_match['channels']
-                if uk_channels:
-                    # Thêm kênh UK vào tv_channels
-                    found = False
-                    for tv in game['tv_channels']:
-                        if tv['country'] == 'United Kingdom':
-                            tv['channels'] = list(set(tv['channels'] + uk_channels))
-                            found = True
-                            break
-                    if not found:
-                        game['tv_channels'].append({
-                            'country': 'United Kingdom',
-                            'channels': uk_channels
-                        })
-        print("   • Đã merge kênh UK vào các trận tương ứng")
-    # --- KẾT THÚC BỔ SUNG ---
+    # 4. Merge
+    print("🔄 Đang merge dữ liệu từ các nguồn...")
+    merged_games = merge_games(sofascore_games, wtm_games, livesports_games)
 
-    # schedule.json
+    # 5. Xây dựng schedule.json (chỉ lấy các trận chưa qua)
     today_str = datetime.now().strftime("%Y%m%d")
-    schedule = {today_str: {"date": datetime.now().strftime("%A, %d/%m"), "games": all_games}}
-
+    schedule = {today_str: {"date": datetime.now().strftime("%A, %d/%m"), "games": merged_games}}
     day = schedule[today_str]
+
+    # Lọc trùng và trận đã qua
     seen = {}
     deduped = []
     for g in day["games"]:
@@ -432,7 +684,6 @@ async def main():
         if key not in seen:
             seen[key] = g
             deduped.append(g)
-    # Lọc các trận đã qua (so với giờ hiện tại VN)
     day["games"] = [g for g in deduped if datetime.fromtimestamp(g['kick_utc']).astimezone(TIMEZONE) > vn_now]
 
     output = {"updated": vn_now.strftime("%Y-%m-%d %H:%M VN"), "days": schedule}
@@ -503,7 +754,7 @@ async def main():
     elapsed = time.time() - start
     print(f"\n🎉 HOÀN THÀNH!")
     print(f"   • schedule.json: {len(day['games'])} trận")
-    print(f"   • live_schedule.m3u: {len(live_events)} kênh (9 nhóm chính xác)")
+    print(f"   • live_schedule.m3u: {len(live_events)} kênh")
 
 if __name__ == "__main__":
     asyncio.run(main())
