@@ -154,7 +154,7 @@ async def scrape_league_schedules():
         print("\n✅ Hoàn tất scrape!")
 
     # ====================== XUẤT JSON ======================
-    filename = "schedule_livesportsontv.json"
+    filename = "livesportsontv.json"
     if all_games:
         with open(filename, 'w', encoding='utf-8') as f:
             json.dump(all_games, f, indent=4, ensure_ascii=False)
