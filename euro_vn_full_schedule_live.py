@@ -1,4 +1,3 @@
-```python
 import asyncio
 import json
 import re
