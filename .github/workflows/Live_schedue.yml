@@ -19,7 +19,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install curl_cffi pycountry requests beautifulsoup4
+          pip install curl_cffi pycountry beautifulsoup4 lxml
 
       - name: Run script
         run: python euro_vn_full_schedule_live.py
