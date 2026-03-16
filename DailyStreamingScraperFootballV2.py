@@ -1,10 +1,8 @@
-# File: DailyStreamingScraperFootballV2_Fixed.py
-# Mô tả: ĐÃ SỬA LỖI TIMEOUT trên GitHub Actions
-# - Tăng timeout lên 120 giây
-# - Đổi wait_until thành "domcontentloaded" (nhanh và ổn định hơn networkidle)
-# - Thêm set_default_navigation_timeout
-# - Thêm try-except retry cho từng league (nếu 1 giải lỗi vẫn chạy tiếp)
-# - Dùng cho GitHub Actions (runner headless)
+# File: DailyStreamingScraperFootballV2_Fixed2.py
+# Mô tả: ĐÃ SỬA LỖI TypeError NoneType await + timeout
+# - Xóa "await" ở set_default_navigation_timeout và set_default_timeout (đây là hàm SYNC)
+# - Giữ nguyên tất cả fix timeout + retry + GitHub Actions ổn định
+# - Chạy mượt trên ubuntu-latest (GitHub)
 
 import asyncio
 from playwright.async_api import async_playwright
@@ -66,16 +64,16 @@ async def scrape_league_schedules():
     async with async_playwright() as p:
         print("🚀 Khởi động browser headless (GitHub Actions)...")
         
-        # Cấu hình browser ổn định hơn trên CI
         browser = await p.chromium.launch(
             headless=True,
             args=["--no-sandbox", "--disable-setuid-sandbox"]
         )
         page = await browser.new_page()
         
-        # === SỬA LỖI TIMEOUT Ở ĐÂY ===
-        await page.set_default_navigation_timeout(120000)  # 120 giây
-        await page.set_default_timeout(60000)
+        # === SỬA LỖI TypeError Ở ĐÂY ===
+        # Không dùng await vì đây là hàm SYNC
+        page.set_default_navigation_timeout(120000)  # 120 giây
+        page.set_default_timeout(60000)
 
         for league_name, config in leagues_config.items():
             url = config["url"]
@@ -90,7 +88,7 @@ async def scrape_league_schedules():
                 except Exception as e:
                     print(f"   ⚠️ Lần {attempt+1} timeout, thử lại...")
                     if attempt == 1:
-                        print(f"   ❌ Bỏ qua {league_name} do lỗi mạng")
+                        print(f"   ❌ Bỏ qua {league_name}")
                         continue
 
             # Scroll load dữ liệu
@@ -127,12 +125,10 @@ async def scrape_league_schedules():
                     away_team = away_elem.get_text(strip=True) if away_elem else "Unknown"
                     matchup = f"{away_team} @ {home_team}"
 
-                    # Lọc đội bóng
                     if team_filter is not None:
                         if not any(t.lower() in home_team.lower() or t.lower() in away_team.lower() for t in team_filter):
                             continue
 
-                    # Kênh phát sóng
                     channels = []
                     channel_list = row.find('ul', class_='event__tags')
                     if channel_list:
@@ -158,13 +154,13 @@ async def scrape_league_schedules():
         print("\n✅ Hoàn tất scrape!")
 
     # ====================== XUẤT JSON ======================
-    filename = "livesportsontv.json"
+    filename = "schedule_livesportsontv.json"
     if all_games:
         with open(filename, 'w', encoding='utf-8') as f:
             json.dump(all_games, f, indent=4, ensure_ascii=False)
         
         print(f"\n🎉 THÀNH CÔNG: {len(all_games)} trận!")
-        print(f"📁 File: {filename} (sẵn sàng commit lên GitHub)")
+        print(f"📁 File: {filename} (sẵn sàng commit)")
     else:
         print("⚠️ Không có trận nào hôm nay.")
 
