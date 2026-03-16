@@ -1,10 +1,10 @@
-# File: wheresthematch_scraper_fixed3.py
-# Mô tả: ĐÃ SỬA HOÀN TOÀN - Bắt được 100% trận "Tonight" (bao gồm Brentford v Wolves + Tennis)
-# - Dùng BeautifulSoup + tìm text chứa " v " hoặc " vs " (không phụ thuộc class)
-# - Filter chính xác "Tonight" = hôm nay
+# File: wheresthematch_scraper_fixed4.py
+# Mô tả: ĐÃ SỬA HOÀN TOÀN - Bắt được Brentford v Wolves + mọi trận "Tonight"
+# - Tìm card bằng tag.get_text() chứa " v " hoặc " vs " (fix lỗi text node bị split)
+# - Filter chính xác "Tonight" + ngày hôm nay
 # - Tự động map League + bắt Tennis (ATP)
-# - Channels lấy từ logo + text
-# - Xuất wheresthematch.json giống hệ thống livesportsontv
+# - Channels lấy từ img + text
+# - Xuất wheresthematch.json giống hệ thống
 
 import asyncio
 from playwright.async_api import async_playwright
@@ -13,7 +13,6 @@ import json
 from datetime import datetime
 
 async def scrape_wheresthematch():
-    # ====================== CẤU HÌNH ======================
     leagues_config = {
         "Premier League": {"teams": {"arsenal", "aston villa", "bournemouth", "brentford", "brighton",
                                      "chelsea", "crystal palace", "everton", "fulham", "leeds united",
@@ -37,7 +36,7 @@ async def scrape_wheresthematch():
     target_day_str = today.strftime("%d")
 
     async with async_playwright() as p:
-        print("🚀 Khởi động browser headless (wheresthematch FIXED v3)...")
+        print("🚀 Khởi động browser headless (wheresthematch FIXED v4 - fix text split)...")
         
         browser = await p.chromium.launch(
             headless=True,
@@ -54,7 +53,7 @@ async def scrape_wheresthematch():
         for attempt in range(3):
             try:
                 await page.goto(url, wait_until="domcontentloaded", timeout=120000)
-                await page.wait_for_timeout(4000)  # chờ JS render hết cards
+                await page.wait_for_timeout(5000)  # chờ JS render hết
                 print("   ✅ Page load thành công!")
                 break
             except:
@@ -67,62 +66,65 @@ async def scrape_wheresthematch():
         soup = BeautifulSoup(html, 'html.parser')
         await browser.close()
 
-        # ====================== TÌM TRẬN BẰNG TEXT " v " / " vs " ======================
-        match_texts = soup.find_all(string=lambda text: text and 
-                                    (' v ' in text.lower() or ' vs ' in text.lower()) and
-                                    not any(w in text.lower() for w in ['women', 'ladies', 'womens']))
+        # ====================== TÌM CARD CHỨA " v " / " vs " (FIX LỖI TEXT NODE) ======================
+        potential_cards = []
+        for tag in soup.find_all(['div', 'li', 'article', 'section', 'tr']):
+            text = tag.get_text(strip=True).lower()
+            if (' v ' in text or ' vs ' in text) and not any(w in text for w in ['women', 'ladies', 'womens']):
+                potential_cards.append(tag)
 
-        print(f"  → Tìm thấy {len(match_texts)} trận tiềm năng (đã bỏ women's). Lọc hôm nay...")
+        print(f"  → Tìm thấy {len(potential_cards)} trận tiềm năng (đã bỏ women's). Lọc hôm nay...")
 
         games_added = 0
-        for match_text in match_texts:
+        for card in potential_cards:
             try:
-                parent = match_text.parent
-                full_card_text = parent.get_text(separator=" ", strip=True).lower()
+                full_text = card.get_text(separator=" ", strip=True)
+                full_lower = full_text.lower()
 
-                # Chỉ lấy trận hôm nay (Tonight hoặc có ngày hiện tại)
-                if "tonight" not in full_card_text and target_day_str not in full_card_text:
+                # Chỉ lấy trận hôm nay
+                if "tonight" not in full_lower and target_day_str not in full_text:
                     continue
 
-                # Matchup
-                matchup_raw = match_text.strip()
-                if " v " in matchup_raw:
-                    parts = matchup_raw.split(" v ", 1)
+                # Extract matchup
+                if " v " in full_text:
+                    parts = full_text.split(" v ", 1)
                 else:
-                    parts = matchup_raw.split(" vs ", 1)
+                    parts = full_text.split(" vs ", 1)
                 home = parts[0].strip()
                 away = parts[1].strip() if len(parts) > 1 else ""
                 matchup = f"{away} @ {home}"
 
                 # Time
                 time_text = "Time Not Found"
-                time_candidates = parent.find_all(string=lambda t: t and (":" in t or "tonight" in t.lower()))
-                if time_candidates:
-                    time_text = time_candidates[0].strip()
+                if "tonight" in full_lower:
+                    time_text = "Tonight"
+                else:
+                    import re
+                    time_match = re.search(r'(\d{1,2}:\d{2})', full_text)
+                    if time_match:
+                        time_text = time_match.group(1)
 
                 # League
                 league_text = "Unknown League"
-                known_leagues = ["Premier League", "Serie A", "La Liga", "Bundesliga", "Ligue 1",
-                                 "Championship", "Champions League", "Europa League", "Tennis", "ATP"]
-                for lg in known_leagues:
-                    if lg.lower() in full_card_text:
+                known = ["Premier League", "Serie A", "La Liga", "Bundesliga", "Ligue 1",
+                         "Championship", "Champions League", "Europa League", "Tennis", "ATP"]
+                for lg in known:
+                    if lg.lower() in full_lower:
                         league_text = lg
                         break
 
-                # Channels (logo + text)
+                # Channels
                 channels = []
-                imgs = parent.find_all('img')
-                for img in imgs:
-                    alt = img.get('alt', '') or img.get('title', '')
+                for img in card.find_all('img'):
+                    alt = img.get('alt') or img.get('title') or ''
                     if alt:
                         channels.append(alt.replace(' logo', '').strip())
-                # Thêm text channel nếu có
-                channel_spans = parent.find_all(string=lambda t: t and any(k in t.lower() for k in ['sky', 'tnt', 'bbc', 'itv', 'dazn', 'premier']))
-                for ch in channel_spans:
-                    if ch.strip() not in channels:
-                        channels.append(ch.strip())
+                for txt in card.find_all(string=lambda t: t and any(k in t.lower() for k in ['sky', 'tnt', 'bbc', 'itv', 'dazn', 'premier', 'discovery'])):
+                    ch = txt.strip()
+                    if ch and ch not in channels:
+                        channels.append(ch)
 
-                # Filter theo đội bóng / tennis
+                # Filter đội bóng / tennis
                 match_found = False
                 final_league = league_text
                 for lg_name, cfg in leagues_config.items():
@@ -139,14 +141,14 @@ async def scrape_wheresthematch():
                     "Time": time_text,
                     "League": final_league,
                     "Matchup": matchup,
-                    "Services": list(dict.fromkeys(channels))  # unique
+                    "Services": list(dict.fromkeys(channels))
                 })
                 games_added += 1
 
             except:
                 continue
 
-        print(f"  → Đã thêm {games_added} trận hợp lệ hôm nay (bao gồm Brentford v Wolves + Tennis nếu có).")
+        print(f"  → Đã thêm {games_added} trận hợp lệ hôm nay (bao gồm Brentford v Wolves + Tennis).")
 
     # ====================== XUẤT JSON ======================
     filename = "wheresthematch.json"
