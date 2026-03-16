@@ -2,105 +2,94 @@ import asyncio
 from playwright.async_api import async_playwright
 from bs4 import BeautifulSoup
 import json
+import re
 from datetime import datetime
 
 async def scrape_wheresthematch():
-    # Danh sách đội bóng quan tâm
-    interested_teams = {
-        "brentford", "wolves", "arsenal", "chelsea", "liverpool", 
-        "man city", "man utd", "tottenham", "real madrid", "barcelona"
-    }
+    # Danh sách từ khóa cần tìm (không phân biệt hoa thường)
+    keywords = ["brentford", "wolves", "arsenal", "chelsea", "liverpool", "man city", "man utd", "tottenham"]
 
     async with async_playwright() as p:
-        print("🚀 Khởi động trình duyệt (Bản V9: Stealth Mode)...")
-        # Thêm các args để vượt qua rào cản bot
-        browser = await p.chromium.launch(headless=True, args=[
-            '--disable-blink-features=AutomationControlled',
-            '--no-sandbox'
-        ])
-        
+        print("🚀 Khởi động trình duyệt (Bản V10: XPath & Regex Scanner)...")
+        browser = await p.chromium.launch(headless=True)
         context = await browser.new_context(
-            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
-            viewport={'width': 1920, 'height': 1080}
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
         )
-        
         page = await context.new_page()
-        url = "https://www.wheresthematch.com/live-football-on-tv/"
         
         try:
-            # Tăng timeout và thử tải trang
-            print(f"📡 Đang kết nối tới: {url}")
-            response = await page.goto(url, wait_until="domcontentloaded", timeout=90000)
+            await page.goto("https://www.wheresthematch.com/live-football-on-tv/", wait_until="networkidle", timeout=60000)
+            # Cuộn trang sâu để đảm bảo dữ liệu hiển thị
+            await page.evaluate("window.scrollTo(0, document.body.scrollHeight/2)")
+            await asyncio.sleep(3)
             
-            if response.status != 200:
-                print(f"❌ Trang web phản hồi lỗi: {response.status}")
-                await browser.close()
-                return
-
-            # Chờ thêm một chút để script bảo mật của trang web chạy xong
-            await asyncio.sleep(5)
-            
-            # Cuộn xuống để load dữ liệu
-            await page.evaluate("window.scrollTo(0, 1500)")
-            await asyncio.sleep(2)
-            
-            html = await page.content()
-            soup = BeautifulSoup(html, 'html.parser')
-            
+            # Lấy toàn bộ HTML sau khi đã render xong
+            content = await page.content()
+            soup = BeautifulSoup(content, 'html.parser')
         except Exception as e:
-            print(f"❌ Lỗi kết nối (Connection Reset): {e}")
+            print(f"❌ Lỗi: {e}")
             await browser.close()
             return
 
-        all_games = []
-        today_str = datetime.now().strftime("%d").lstrip('0') # Ví dụ: "16"
-
-        # Tìm các khối ngày
-        groups = soup.select('.fixtures-group')
-        print(f"🔍 Đang phân tích {len(groups)} nhóm ngày...")
-
-        for group in groups:
-            date_text = group.select_one('.fixture-date-wrapper').get_text(strip=True).lower() if group.select_one('.fixture-date-wrapper') else ""
-            
-            # Chỉ xử lý nếu là ngày hôm nay
-            if "today" in date_text or today_str in date_text:
-                matches = group.select('.fixture-item')
-                for match in matches:
-                    try:
-                        home = match.select_one('.team-home').get_text(strip=True)
-                        away = match.select_one('.team-away').get_text(strip=True)
-                        matchup = f"{home} vs {away}"
-                        
-                        time_val = match.select_one('.kick-off-time').get_text(strip=True) if match.select_one('.kick-off-time') else "Live"
-                        
-                        # Lấy kênh từ logo
-                        channels = []
-                        logos = match.select('.broadcaster-logos img')
-                        for img in logos:
-                            alt = img.get('alt', '').replace(' logo', '').strip()
-                            if alt: channels.append(alt)
-                        
-                        # Lọc: Chỉ lấy nếu trùng đội bóng hoặc có kênh Sky/TNT/beIN
-                        match_lower = matchup.lower()
-                        if any(team in match_lower for team in interested_teams):
-                            all_games.append({
-                                "Time": time_val,
-                                "Matchup": matchup,
-                                "Channels": channels
-                            })
-                    except:
-                        continue
-        
         await browser.close()
+        all_games = []
 
-        if all_games:
-            print(f"✅ Đã tìm thấy {len(all_games)} trận đấu phù hợp!")
-            with open("wheresthematch.json", "w", encoding="utf-8") as f:
-                json.dump(all_games, f, indent=4, ensure_ascii=False)
-            for g in all_games:
-                print(f"  ⚽ {g['Time']} | {g['Matchup']} | Kênh: {', '.join(g['Channels'])}")
-        else:
-            print("⚠️ Không tìm thấy trận nào khớp với tiêu chí lọc của bạn.")
+        # Tìm tất cả các thẻ chứa thông tin trận đấu (thường là .fixture-item)
+        items = soup.find_all(class_=re.compile("fixture-item|match-item"))
+        
+        for item in items:
+            full_text = item.get_text(" ", strip=True)
+            text_lower = full_text.lower()
+
+            # 1. Kiểm tra xem có chứa từ khóa đội bóng mình cần không
+            if any(k in text_lower for k in keywords):
+                try:
+                    # Tách tên đội (thường cách nhau bởi chữ 'v' hoặc 'vs')
+                    # Tìm thẻ chứa team-home/away hoặc dùng regex bóc tách
+                    home = item.select_one('.team-home, .team-name')
+                    away = item.select_one('.team-away, .team-name:nth-of-type(2)')
+                    
+                    home_name = home.get_text(strip=True) if home else "Unknown"
+                    away_name = away.get_text(strip=True) if away else "Unknown"
+                    
+                    # Nếu lấy class bị lỗi, dùng Regex bóc từ full_text
+                    if home_name == "Unknown":
+                        match = re.search(r'([A-Za-z\s]+)\sv\s([A-Za-z\s]+)', full_text)
+                        if match:
+                            home_name, away_name = match.groups()
+
+                    time_match = re.search(r'(\d{1,2}:\d{2})', full_text)
+                    kickoff = time_match.group(1) if time_match else "Live/Tonight"
+
+                    # Lấy kênh phát sóng (quan trọng nhất)
+                    channels = []
+                    for img in item.find_all('img'):
+                        alt = img.get('alt', '').replace(' logo', '').strip()
+                        if alt and home_name not in alt and away_name not in alt:
+                            channels.append(alt)
+                    
+                    # Nếu ko có ảnh, tìm text đài truyền hình
+                    if not channels:
+                        broadcaster = item.select_one('.broadcaster-name, .channel')
+                        if broadcaster: channels.append(broadcaster.get_text(strip=True))
+
+                    all_games.append({
+                        "Time": kickoff,
+                        "Matchup": f"{home_name} vs {away_name}",
+                        "Channels": list(dict.fromkeys(channels))
+                    })
+                except:
+                    continue
+
+    # Lưu và in kết quả
+    if all_games:
+        with open("wheresthematch.json", "w", encoding="utf-8") as f:
+            json.dump(all_games, f, indent=4, ensure_ascii=False)
+        print(f"✅ ĐÃ TÌM THẤY {len(all_games)} TRẬN!")
+        for g in all_games:
+            print(f"  ⚽ {g['Time']} | {g['Matchup']} | Kênh: {', '.join(g['Channels'])}")
+    else:
+        print("⚠️ Vẫn chưa tìm thấy trận nào. Có thể trang web đang hiển thị cấu trúc khác. Bạn hãy thử mở file wheresthematch.json xem có nội dung gì không nhé.")
 
 if __name__ == "__main__":
     asyncio.run(scrape_wheresthematch())
