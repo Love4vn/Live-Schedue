@@ -1,7 +1,7 @@
 """
 euro_vn_full_schedule_live.py
 ================================
-BẢN HOÀN CHỈNH – 24 GIỜ TỚI + LỌC THEO GIẢI + ĐỘI RIÊNG + TÍCH HỢP WHERE'S THE MATCH
+BẢN HOÀN CHỈNH – 48 GIỜ TỚI + LỌC THEO GIẢI + ĐỘI RIÊNG + TÍCH HỢP WHERE'S THE MATCH
 """
 
 import asyncio
@@ -14,11 +14,11 @@ from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from urllib.parse import unquote
-from difflib import SequenceMatcher  # dùng để so sánh tên đội mờ
+from difflib import SequenceMatcher
 
 import pycountry
 from curl_cffi.requests import AsyncSession
-from bs4 import BeautifulSoup  # cho WTM
+from bs4 import BeautifulSoup
 
 # ================== CẤU HÌNH ==================
 TIMEZONE = ZoneInfo("Asia/Ho_Chi_Minh")
@@ -87,7 +87,7 @@ def similar(a: str, b: str) -> float:
     """Tính độ tương đồng giữa hai chuỗi (dùng để so khớp tên đội)"""
     return SequenceMatcher(None, a, b).ratio()
 
-# ================== SOFASCORE (24 GIỜ TỚI + LỌC NGHIÊM) ==================
+# ================== SOFASCORE (48 GIỜ TỚI + LỌC NGHIÊM) ==================
 async def get_channel_name(session, channel_id):
     url = f"https://api.sofascore.com/api/v1/tv/channel/{channel_id}/schedule"
     try:
@@ -115,14 +115,14 @@ async def get_tv_data(session, event_id):
     except:
         return []
 
-async def fetch_event(session, event_id, sport, now_ts):
+async def fetch_event(session, event_id, sport, now_ts, max_ts):
     url = f"https://api.sofascore.com/api/v1/event/{event_id}"
     try:
         res = await session.get(url, impersonate="chrome120", timeout=10)
         if res.status_code != 200: return None
         ev = res.json().get('event', {})
         start_ts = ev.get('startTimestamp')
-        if not start_ts or not (now_ts <= start_ts <= now_ts + 86400):
+        if not start_ts or not (now_ts <= start_ts <= max_ts):
             return None
 
         tv = await get_tv_data(session, event_id)
@@ -178,19 +178,22 @@ async def fetch_event(session, event_id, sport, now_ts):
     except:
         return None
 
-async def process_24h(session, sport):
+async def process_48h(session, sport):
     now = datetime.now()
-    dates = [now.strftime("%Y-%m-%d"), (now + timedelta(days=1)).strftime("%Y-%m-%d")]
-    print(f"Fetching {sport} trong 24 giờ tới...")
+    dates = [now.strftime("%Y-%m-%d"), 
+             (now + timedelta(days=1)).strftime("%Y-%m-%d"),
+             (now + timedelta(days=2)).strftime("%Y-%m-%d")]
+    print(f"Fetching {sport} trong 48 giờ tới...")
     all_results = []
     now_ts = int(datetime.now(TIMEZONE).timestamp())
+    max_ts = now_ts + 172800  # 48 giờ
 
     for date_str in dates:
         url = f"https://www.sofascore.com/api/v1/sport/{sport}/scheduled-events/{date_str}"
         res = await session.get(url, impersonate="chrome120", timeout=30)
         if res.status_code != 200: continue
         events = res.json().get('events', [])
-        tasks = [fetch_event(session, e['id'], sport, now_ts) for e in events]
+        tasks = [fetch_event(session, e['id'], sport, now_ts, max_ts) for e in events]
         results = await asyncio.gather(*tasks)
         all_results.extend([r for r in results if r])
 
@@ -310,9 +313,6 @@ def _parse_wtm_html(html: str) -> list:
                     if part and not any(x in part.lower() for x in ['logo', 'image']):
                         channels.add(part)
 
-        # (Tùy chọn) Lọc giữ lại các kênh có trong UK_CHANNELS – có thể bỏ comment dòng dưới nếu muốn lọc
-        # channels = {ch for ch in channels if any(uk in ch for uk in UK_CHANNELS)}
-
         fixtures.append({
             'home': home,
             'away': away,
@@ -359,12 +359,12 @@ def parse_m3u(content):
 async def main():
     start = time.time()
     vn_now = datetime.now(TIMEZONE)
-    print("🔄 Bắt đầu lấy lịch SofaScore 24 GIỜ TỚI (lọc nghiêm theo giải + đội)...")
+    print("🔄 Bắt đầu lấy lịch SofaScore 48 GIỜ TỚI (lọc nghiêm theo giải + đội)...")
 
     all_games = []
     async with AsyncSession() as session:
         for sport in ["football", "tennis"]:
-            games = await process_24h(session, sport)
+            games = await process_48h(session, sport)
             all_games.extend(games)
             await asyncio.sleep(2)
 
@@ -372,9 +372,9 @@ async def main():
     print("📡 Đang lấy dữ liệu từ Where's The Match...")
     wtm_fixtures = await fetch_wtm_fixtures()
     now_ts = int(datetime.now(TIMEZONE).timestamp())
-    # Lọc các trận trong 24h tới
-    wtm_filtered = [f for f in wtm_fixtures if now_ts <= f['kickoff_utc'] <= now_ts + 86400]
-    print(f"   • WTM: {len(wtm_filtered)} trận trong 24h tới")
+    # Lọc các trận trong 48h tới
+    wtm_filtered = [f for f in wtm_fixtures if now_ts <= f['kickoff_utc'] <= now_ts + 172800]
+    print(f"   • WTM: {len(wtm_filtered)} trận trong 48h tới")
 
     if wtm_filtered:
         # Merge vào all_games (chỉ các trận football)
@@ -432,6 +432,7 @@ async def main():
         if key not in seen:
             seen[key] = g
             deduped.append(g)
+    # Lọc các trận đã qua (so với giờ hiện tại VN)
     day["games"] = [g for g in deduped if datetime.fromtimestamp(g['kick_utc']).astimezone(TIMEZONE) > vn_now]
 
     output = {"updated": vn_now.strftime("%Y-%m-%d %H:%M VN"), "days": schedule}
