@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install curl_cffi pycountry beautifulsoup4 lxml playwright
-          playwright install chromium
-
+          python -m playwright install --with-deps chromium
+          
       - name: Run script
         run: python DailyStreamingScraperFootballV2.py
