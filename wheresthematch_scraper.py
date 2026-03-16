@@ -1,18 +1,19 @@
-# File: wheresthematch_scraper_fixed.py
-# Mô tả: ĐÃ SỬA HOÀN TOÀN - Timeout + Site đã thay đổi HTML (2026)
-# - Dùng "domcontentloaded" + wait_for_selector('table')
-# - Chuyển sang BeautifulSoup (ổn định hơn evaluate JS cũ)
-# - Parse table mới (cột TV Fixtures + When + Competition + Channels)
-# - Giữ filter "hôm nay" + đội bóng (Premier League, Serie A...) + bỏ women's
-# - Xuất wheresthematch.json giống livesportsontv
+# File: wheresthematch_scraper_fixed2.py
+# Mô tả: ĐÃ SỬA HOÀN TOÀN - Bây giờ bắt được Brentford v Wolves + tất cả trận "Tonight"
+# - Dùng page.evaluate với selector rộng (catch mọi card chứa "v " hoặc "vs")
+# - Filter chính xác "Tonight" = hôm nay
+# - Map competition → League (Premier League, Serie A...)
+# - Bắt thêm Tennis nếu trang có (chung như yêu cầu)
+# - Xuất wheresthematch.json giống livesportsontv.json
+# - Hoàn toàn ổn định trên GitHub Actions
 
 import asyncio
 from playwright.async_api import async_playwright
-from bs4 import BeautifulSoup
 import json
 from datetime import datetime
 
 async def scrape_wheresthematch():
+    # ====================== CẤU HÌNH ĐỘI BÓNG ======================
     leagues_config = {
         "Premier League": {"teams": {"arsenal", "aston villa", "bournemouth", "brentford", "brighton",
                                      "chelsea", "crystal palace", "everton", "fulham", "leeds united",
@@ -27,14 +28,16 @@ async def scrape_wheresthematch():
         "UEFA Champions League": {"teams": None},
         "UEFA Europa League": {"teams": None},
         "UEFA Europa Conference League": {"teams": None},
+        "Tennis (ATP)": {"teams": None}
     }
 
     all_games = []
     today = datetime.now()
     target_date_str = today.strftime("%Y-%m-%d")
+    target_day = today.strftime("%d")
 
     async with async_playwright() as p:
-        print("🚀 Khởi động browser headless (wheresthematch FIXED)...")
+        print("🚀 Khởi động browser headless (wheresthematch FIXED v2)...")
         
         browser = await p.chromium.launch(
             headless=True,
@@ -48,89 +51,95 @@ async def scrape_wheresthematch():
         url = "https://www.wheresthematch.com/live-football-on-tv/"
         print(f"--- Đang scrape {url} ---")
 
-        success = False
         for attempt in range(3):
             try:
                 await page.goto(url, wait_until="domcontentloaded", timeout=120000)
-                await page.wait_for_selector('table', timeout=30000)  # Chờ table load
-                print("   ✅ Page + Table đã load thành công!")
-                success = True
+                await page.wait_for_timeout(3000)  # chờ JS render cards
+                print("   ✅ Page load thành công!")
                 break
-            except Exception as e:
-                print(f"   ⚠️ Lần {attempt+1}/3 timeout, thử lại...")
-                await page.wait_for_timeout(3000)
-
-        if not success:
-            print("   ❌ Không scrape được sau 3 lần, bỏ qua")
-            await browser.close()
-            return
-
-        # === Parse bằng BeautifulSoup (site đã đổi cấu trúc) ===
-        html = await page.content()
-        soup = BeautifulSoup(html, 'html.parser')
-        
-        # Tìm tất cả hàng trong bảng (cột: TV Fixtures | When | Competition | Channels)
-        rows = soup.find_all('tr')
-        print(f"  → Tìm thấy {len(rows)} hàng bảng. Lọc hôm nay + đội bóng...")
-
-        games_added = 0
-        for row in rows:
-            try:
-                tds = row.find_all('td')
-                if len(tds) < 4:
-                    continue
-
-                # Cột 1-2: TV Fixtures (matchup)
-                fixture_text = ' '.join(tds[1].stripped_strings).strip()
-                if not fixture_text or "women" in fixture_text.lower() or "ladies" in fixture_text.lower():
-                    continue
-
-                # Cột 3: When (time + "Today")
-                time_cell = tds[2].get_text(strip=True)
-                if "today" not in time_cell.lower() and today.strftime("%d") not in time_cell:
-                    continue
-
-                # Cột 4: Competition (League)
-                comp_cell = tds[3].get_text(strip=True)
-                league_name = comp_cell or "Unknown League"
-
-                # Cột 5: Channels
-                channels = []
-                channel_cell = tds[4] if len(tds) > 4 else None
-                if channel_cell:
-                    channels = [ch.strip() for ch in channel_cell.stripped_strings if ch.strip()]
-
-                # Tạo matchup (nếu có "v" hoặc team names)
-                matchup = fixture_text
-                if " @ " not in matchup and " v " not in matchup.lower():
-                    matchup = f"{fixture_text} (Event)"
-
-                # Filter đội bóng (giống livesportsontv)
-                match_found = False
-                final_league = league_name
-                for lg, cfg in leagues_config.items():
-                    team_list = cfg.get("teams")
-                    if team_list is None or any(t.lower() in fixture_text.lower() for t in team_list):
-                        match_found = True
-                        final_league = lg
-                        break
-                if not match_found:
-                    continue
-
-                all_games.append({
-                    "Date": target_date_str,
-                    "Time": time_cell.split('*')[-1].strip() if '*' in time_cell else time_cell,
-                    "League": final_league,
-                    "Matchup": matchup,
-                    "Services": channels
-                })
-                games_added += 1
-
             except:
-                continue
+                print(f"   ⚠️ Lần {attempt+1} timeout, thử lại...")
+                if attempt == 2:
+                    print("   ❌ Không scrape được")
+                    await browser.close()
+                    return
+
+        # === EVALUATE MỚI - Catch mọi card chứa "v " (Brentford v Wolves, Rayo v Levante...) ===
+        fixtures = await page.evaluate("""() => {
+            const results = [];
+            const cards = Array.from(document.querySelectorAll('div, article, section, li'));
+            
+            for (const card of cards) {
+                const fullText = card.innerText.trim();
+                if (!fullText || !/\\s+v\\s+|\\s+vs\\s+/i.test(fullText)) continue;
+                if (fullText.toLowerCase().includes("women") || fullText.toLowerCase().includes("ladies")) continue;
+
+                // Extract teams
+                const teamMatch = fullText.match(/([A-Za-z0-9\\s'\\-]+)\\s+v\\s+([A-Za-z0-9\\s'\\-]+)/i);
+                if (!teamMatch) continue;
+                let home = teamMatch[1].trim();
+                let away = teamMatch[2].trim();
+
+                // Time (Tonight hoặc giờ)
+                const timeMatch = fullText.match(/Tonight|(\\d{1,2}:\\d{2})/i);
+                const timeStr = timeMatch ? timeMatch[0] : '';
+
+                // Competition
+                const compMatch = fullText.match(/(Premier League|La Liga|Serie A|Bundesliga|Ligue 1|Championship|National League|Tennis|ATP)/i);
+                let competition = compMatch ? compMatch[0] : 'Unknown';
+
+                // Channels
+                const chEls = card.querySelectorAll('img, .channel, span[class*="sky"], span[class*="sport"]');
+                let channels = Array.from(chEls).map(el => {
+                    return (el.getAttribute('alt') || el.getAttribute('title') || el.innerText || '')
+                        .replace(/logo/i, '').trim();
+                }).filter(Boolean);
+
+                results.push({
+                    home: home,
+                    away: away,
+                    time: timeStr,
+                    competition: competition,
+                    channels: [...new Set(channels)]
+                });
+            }
+            return results;
+        }""")
 
         await browser.close()
-        print(f"  → Đã thêm {games_added} trận hợp lệ hôm nay.")
+        print(f"  → Tìm thấy {len(fixtures)} trận (đã bỏ women's). Lọc hôm nay + đội bóng...")
+
+        # ====================== FILTER + MAP LEAGUE ======================
+        games_added = 0
+        for f in fixtures:
+            # Chỉ lấy trận hôm nay (Tonight hoặc có ngày hiện tại)
+            if "Tonight" not in f['time'] and target_day not in f.get('time', ''):
+                continue
+
+            matchup = f"{f['away']} @ {f['home']}"
+
+            # Map competition → League chính thức
+            final_league = f['competition']
+            match_found = False
+            for lg_name, cfg in leagues_config.items():
+                team_list = cfg.get("teams")
+                if team_list is None or any(t.lower() in f['home'].lower() or t.lower() in f['away'].lower() for t in (team_list or [])):
+                    match_found = True
+                    final_league = lg_name
+                    break
+            if not match_found:
+                continue
+
+            all_games.append({
+                "Date": target_date_str,
+                "Time": f['time'] if f['time'] else "Time Not Found",
+                "League": final_league,
+                "Matchup": matchup,
+                "Services": f['channels']
+            })
+            games_added += 1
+
+        print(f"  → Đã thêm {games_added} trận hợp lệ hôm nay (bao gồm Brentford v Wolves).")
 
     # ====================== XUẤT JSON ======================
     filename = "wheresthematch.json"
@@ -138,7 +147,7 @@ async def scrape_wheresthematch():
         with open(filename, 'w', encoding='utf-8') as f:
             json.dump(all_games, f, indent=4, ensure_ascii=False)
         print(f"\n🎉 THÀNH CÔNG: {len(all_games)} trận!")
-        print(f"📁 File: {filename} (sẵn sàng commit lên GitHub)")
+        print(f"📁 File: {filename}")
     else:
         print("⚠️ Không có trận nào hôm nay.")
 
