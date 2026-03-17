@@ -27,7 +27,7 @@ jobs:
         run: python -m playwright install --with-deps chromium
 
       - name: Run scraper
-        run: python flashscore.py
+        run: python flash_score.py
 
       - name: Commit & push flashscore.json
         uses: stefanzweifel/git-auto-commit-action@v5
