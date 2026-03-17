@@ -2,7 +2,7 @@ name: flash_score scraper
 
 on:
   schedule:
-    - cron: '0 23 * * *'      # Chạy 1 lần/ngày lúc 23:00 UTC (bạn có thể đổi thành */10 * * * * để chạy mỗi 10 phút)
+    - cron: '0 23 * * *'
   workflow_dispatch:
 
 jobs:
@@ -18,8 +18,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install curl_cffi pycountry beautifulsoup4 lxml playwright playwright-stealth
-          python -m playwright install --with-deps chromium
+          pip install requests pytz
 
       - name: Run script
         run: python flash_score.py
