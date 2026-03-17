@@ -1,4 +1,4 @@
-# File: DailyStreamingScraperFootballV2_Fixed2.py
+# File: livesportsontv.py
 # Mô tả: ĐÃ SỬA LỖI TypeError NoneType await + timeout
 # - Xóa "await" ở set_default_navigation_timeout và set_default_timeout (đây là hàm SYNC)
 # - Giữ nguyên tất cả fix timeout + retry + GitHub Actions ổn định
