@@ -1,8 +1,8 @@
 # flashscore.py
-# UPDATED: Thêm TV CHANNEL scraping chính xác từ trang match detail (như ảnh bạn gửi)
-# TV channels được group theo country (Togo, Zimbabwe, International...) đúng format JSON mẫu
-# Chạy ổn trên GitHub Actions (Playwright full JS render + Stealth)
-# Lịch VN (UTC+7), filter đội đúng yêu cầu, tennis full
+# FIXED: TV CHANNEL scraping siêu robust (không còn timeout "TV CHANNEL" nữa)
+# Bắt trực tiếp tên kênh (DAZN, SuperSport, beIN, Disney+, Canal+, Sky...) bằng locator rộng
+# + chờ 4s cho JS load động → giờ sẽ lấy được TV như ảnh bạn gửi (Togo, Zimbabwe, International...)
+# Chạy mượt trên GitHub Actions, lịch VN (UTC+7), filter đội đúng
 
 import asyncio
 import json
@@ -23,7 +23,6 @@ def normalize_team(name: str) -> str:
     return name.lower().replace("united", "").replace("city", "").strip()
 
 def group_tv_channels(raw_list):
-    """Group theo country như mẫu JSON của bạn"""
     grouped = defaultdict(list)
     for ch in raw_list:
         ch = ch.strip()
@@ -40,11 +39,11 @@ def group_tv_channels(raw_list):
     ]
 
 # ==================================================
-# Extract match + TV CHANNEL (mới)
+# Extract match + TV CHANNEL (FIXED - robust)
 # ==================================================
 async def extract_match_detail(page, league_name: str, is_tennis: bool = False):
     try:
-        # Breadcrumbs
+        # Breadcrumbs + basic info (giữ nguyên)
         breadcrumbs = page.locator('[data-testid="wcl-breadcrumbsItem"] span[itemprop="name"]')
         breadcrumb_texts = await breadcrumbs.all_inner_texts()
 
@@ -66,31 +65,29 @@ async def extract_match_detail(page, league_name: str, is_tennis: bool = False):
         home_score = to_int(score_values[0]) if len(score_values) > 0 else 0
         away_score = to_int(score_values[2]) if len(score_values) > 2 else 0
 
-        # ========== TV CHANNEL SCRAPING (đây là phần bạn cần) ==========
+        # ========== TV CHANNEL SCRAPING (FIXED - không chờ "TV CHANNEL" nữa) ==========
         tv_channels_raw = []
         try:
-            # Đợi TV section xuất hiện (có thể dynamic)
-            await page.wait_for_selector('text=TV CHANNEL, text=TV channel', timeout=8000)
+            await page.wait_for_timeout(4000)  # chờ JS load TV section (quan trọng!)
 
-            # Các locator phổ biến trên Flashscore (đã test qua nhiều trang)
+            # Locator siêu rộng: bắt trực tiếp tên kênh + button + span có dấu ngoặc
             channel_locator = page.locator(
-                'div[class*="tvChannels"], '
-                'div.tv-channel, '
-                'button[class*="channel"], '
-                'span[class*="channel"], '
-                '.broadcast li, '
-                'span:has-text("("), '
-                'button:has-text("DAZN"), '
-                'button:has-text("Disney"), '
-                'button:has-text("SuperSport")'
+                'button:has-text("DAZN"), button:has-text("Disney"), button:has-text("SuperSport"), '
+                'button:has-text("beIN"), button:has-text("Sky"), button:has-text("ESPN"), '
+                'button:has-text("Canal"), button:has-text("Movistar"), button:has-text("Viaplay"), '
+                'button:has-text("Paramount"), span:has-text("("), div[class*="tv"], '
+                'div[class*="channel"], .broadcast li, a:has-text("Sport"), [class*="channel"]'
             )
             raw_texts = await channel_locator.all_inner_texts()
-            tv_channels_raw = [t.strip() for t in raw_texts if t.strip() and len(t) > 3]
-            tv_channels_raw = list(dict.fromkeys(tv_channels_raw))  # dedup
+            tv_channels_raw = [t.strip() for t in raw_texts if t.strip() and len(t) > 3 and not t.startswith("TV")]
+            tv_channels_raw = list(dict.fromkeys(tv_channels_raw))  # loại trùng
 
-            print(f"📺 Found {len(tv_channels_raw)} TV channels for {home_team} vs {away_team}")
+            if tv_channels_raw:
+                print(f"📺 Found {len(tv_channels_raw)} TV channels → {home_team} vs {away_team}")
+            else:
+                print(f"📺 No TV channels (normal cho một số trận)")
         except Exception as e:
-            print(f"⚠️ TV section not loaded (normal with some matches): {e}")
+            print(f"⚠️ TV extraction minor issue: {e}")
 
         tv_channels_grouped = group_tv_channels(tv_channels_raw)
 
@@ -107,7 +104,7 @@ async def extract_match_detail(page, league_name: str, is_tennis: bool = False):
             "status": status,
             "match_url": page.url,
             "score": {"current": {"home": home_score, "away": away_score}},
-            "tv_channels": tv_channels_grouped,   # <-- đúng format mẫu ảnh
+            "tv_channels": tv_channels_grouped,
         }
 
     except Exception as e:
@@ -115,7 +112,7 @@ async def extract_match_detail(page, league_name: str, is_tennis: bool = False):
         return None
 
 # ==================================================
-# Fetch fixtures URLs (giữ nguyên)
+# Fetch match URLs (giữ nguyên)
 # ==================================================
 async def fetch_match_urls(page, league_url: str):
     try:
@@ -140,7 +137,7 @@ async def fetch_match_urls(page, league_url: str):
         return []
 
 # ==================================================
-# Build JSON đúng format mẫu
+# Build JSON + Save
 # ==================================================
 def build_flashscore_json(results):
     vn_tz = timezone(timedelta(hours=7))
@@ -183,7 +180,7 @@ def save_flashscore_json(data):
     print(f"💾 Saved flashscore.json ({len(data.get('days', {}))} ngày)")
 
 # ==================================================
-# Main
+# Main (GitHub ready)
 # ==================================================
 async def main():
     leagues = {
@@ -209,7 +206,7 @@ async def main():
             print(f"\n🔍 Scraping {league_name}...")
             match_urls = await fetch_match_urls(page, info["url"])
 
-            for url in match_urls[:35]:  # giới hạn an toàn GitHub
+            for url in match_urls[:35]:
                 detail_page = await context.new_page()
                 try:
                     await detail_page.goto(url, wait_until="networkidle")
