@@ -23,11 +23,11 @@ jobs:
           python -m playwright install --with-deps chromium
           
       - name: Run script
-        run: python DailyStreamingScraperFootballV2.py
+        run: python livesportsontv.py
         
-      - name: Run wheresthematch
-        run: python wheresthematch_scraper.py  
+      #- name: Run wheresthematch
+      #  run: python wheresthematch_scraper.py  
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "update livesportsontv.json & wheresthematch.json"
+          commit_message: "update livesportsontv.json"
