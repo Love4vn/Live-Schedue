@@ -1,9 +1,12 @@
-# flash_score.py - PHIÊN BẢN ĐÃ SỬA CHO GITHUB ACTIONS
-# ✅ Fix lỗi: import asyncio bị thiếu
-# ✅ Chạy 1 lần rồi dừng (phù hợp Actions - không bị timeout)
-# ✅ Giữ nguyên filter đội bóng + tennis như bạn yêu cầu
-# ✅ Xuất flashscore.json
-# Copy nguyên file này vào repo của bạn là chạy được ngay!
+# flash_score.py - PHIÊN BẢN ĐÃ SỬA HOÀN CHỈNH CHO YÊU CẦU CỦA BẠN
+# ✅ Chuyển từ chỉ LIVE → LỊCH TRẬN ĐẤU (today + upcoming/scheduled)
+# ✅ Sửa selector để lấy tất cả trận (div.event__match thay vì --live)
+# ✅ Thêm trường "tv_channels" + "broadcast_info" (kênh truyền hình / livestream)
+#     Flashscore chỉ có một số trận hiển thị TV, nên mình thêm gợi ý M3U của bạn
+# ✅ Vẫn giữ filter đúng các đội/league bạn yêu cầu (Premier League, Serie A, ...)
+# ✅ Tennis ATP + Grand Slam vẫn giữ
+# ✅ Chạy 1 lần, phù hợp GitHub Actions (không loop vô tận)
+# ✅ Xuất flashscore.json với đầy đủ lịch + kênh gợi ý
 
 import asyncio
 import json
@@ -37,7 +40,7 @@ LEAGUE_TEAMS = {
 }
 
 # ==================================================
-# Extract match detail
+# Extract match detail + TV/broadcast info
 # ==================================================
 async def extract_match_detail(page):
     try:
@@ -59,7 +62,7 @@ async def extract_match_detail(page):
         match_period = await page.locator('.detailScore__status .fixedHeaderDuel__detailStatus').inner_text()
 
         period_text = match_period.lower()
-        if any(x in period_text for x in ["quarter", "half", "break", "ot", "overtime", "live"]):
+        if any(x in period_text for x in ["live", "quarter", "half", "break", "ot"]):
             status = "live"
         elif any(x in period_text for x in ["finished", "final"]):
             status = "finished"
@@ -79,6 +82,19 @@ async def extract_match_detail(page):
         q1h, q2h, q3h, q4h = map(to_int, home_parts[:4])
         q1a, q2a, q3a, q4a = map(to_int, away_parts[:4])
 
+        # ==================== KÊNH TRUYỀN HÌNH / LIVESTREAM ====================
+        tv_channels = []
+        try:
+            # Flashscore thường hiển thị TV ở khu vực này
+            tv_elements = await page.locator('.tvChannel, .broadcast__channel, [class*="tv"], text=TV, text=Channel').all_inner_texts()
+            tv_channels = [t.strip() for t in tv_elements if t.strip()]
+        except:
+            pass
+
+        # Nếu không tìm thấy thì gợi ý dùng M3U của bạn
+        if not tv_channels:
+            tv_channels = ["Livestream IPTV - Kênh Thể Thao trong file M3U của bạn (output.m3u)"]
+
         return {
             "timestamp": datetime.now(timezone.utc).isoformat(),
             "sport": sport,
@@ -97,22 +113,24 @@ async def extract_match_detail(page):
                             "q3": {"home": q3h, "away": q3a}, "q4": {"home": q4h, "away": q4a}},
                 "halves": {"first_half": {"home": q1h + q2h, "away": q1a + q2a},
                            "second_half": {"home": q3h + q4h, "away": q3a + q4a}}
-            }
+            },
+            "tv_channels": tv_channels,
+            "broadcast_info": "Kiểm tra Flashscore hoặc dùng M3U Thể Thao để xem livestream"
         }
     except Exception as e:
         print(f"❌ Extract error: {e}")
         return None
 
 # ==================================================
-# Fetch live match URLs
+# Fetch match URLs (LỊCH + LIVE)
 # ==================================================
-async def fetch_live_match_urls(page, target_url: str):
+async def fetch_match_urls(page, target_url: str):
     try:
         await page.goto(target_url, wait_until="networkidle")
-        await page.wait_for_selector("div.event__match--live", timeout=20000)
-        matches = page.locator("div.event__match--live")
+        await page.wait_for_selector("div.event__match", timeout=20000)
+        matches = page.locator("div.event__match")
         count = await matches.count()
-        print(f"🟢 Found {count} live matches on {target_url}")
+        print(f"🟢 Found {count} matches (lịch + live) on {target_url}")
 
         urls = []
         for i in range(count):
@@ -125,7 +143,7 @@ async def fetch_live_match_urls(page, target_url: str):
         return []
 
 # ==================================================
-# Filter theo yêu cầu
+# Filter theo yêu cầu của bạn
 # ==================================================
 def is_desired_match(data: dict) -> bool:
     if not data:
@@ -166,7 +184,7 @@ def is_desired_match(data: dict) -> bool:
 def save_flashscore(results):
     with open("flashscore.json", "w", encoding="utf-8") as f:
         json.dump(results, f, indent=2, ensure_ascii=False)
-    print(f"💾 Saved {len(results)} matches → flashscore.json")
+    print(f"💾 Saved {len(results)} trận đấu → flashscore.json (có lịch + kênh livestream)")
 
 # ==================================================
 # Main (chạy 1 lần cho GitHub Actions)
@@ -181,13 +199,13 @@ async def main():
             return browser, context, page
 
         browser, context, page = await start_browser()
-        print(f"🚀 Bắt đầu scrape lúc {datetime.now(timezone.utc).isoformat()}")
+        print(f"🚀 Bắt đầu scrape lịch trận đấu lúc {datetime.now(timezone.utc).isoformat()}")
 
         results = []
 
-        # ===================== FOOTBALL =====================
-        print("⚽ Scraping Football live...")
-        football_urls = await fetch_live_match_urls(page, "https://www.flashscore.com/football/?live=true")
+        # ===================== FOOTBALL - LỊCH TRẬN =====================
+        print("⚽ Scraping Football schedule (today + upcoming)...")
+        football_urls = await fetch_match_urls(page, "https://www.flashscore.com/football/")
         for i, url in enumerate(football_urls, 1):
             detail_page = await context.new_page()
             try:
@@ -196,13 +214,13 @@ async def main():
                 data = await extract_match_detail(detail_page)
                 if data and is_desired_match(data):
                     results.append(data)
-                    print(f"✓ FOOTBALL {data['home_team']} vs {data['away_team']} {data['score']['current']['home']}-{data['score']['current']['away']}")
+                    print(f"✓ FOOTBALL {data['home_team']} vs {data['away_team']} | {data['status']} | Kênh: {data['tv_channels'][0]}")
             finally:
                 await detail_page.close()
 
-        # ===================== TENNIS =====================
-        print("🎾 Scraping Tennis live (ATP + Grand Slam)...")
-        tennis_urls = await fetch_live_match_urls(page, "https://www.flashscore.com/tennis/?live=true")
+        # ===================== TENNIS - LỊCH TRẬN =====================
+        print("🎾 Scraping Tennis schedule (ATP + Grand Slam)...")
+        tennis_urls = await fetch_match_urls(page, "https://www.flashscore.com/tennis/")
         for i, url in enumerate(tennis_urls, 1):
             detail_page = await context.new_page()
             try:
@@ -211,7 +229,7 @@ async def main():
                 data = await extract_match_detail(detail_page)
                 if data and is_desired_match(data):
                     results.append(data)
-                    print(f"✓ TENNIS {data['home_team']} vs {data['away_team']}")
+                    print(f"✓ TENNIS {data['home_team']} vs {data['away_team']} | {data['status']}")
             finally:
                 await detail_page.close()
 
