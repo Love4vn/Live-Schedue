@@ -1,28 +1,36 @@
-name: flash_score scraper
+# .github/workflows/update-flashscore.yml
+name: Update Flashscore JSON + TV Channels
 
 on:
   schedule:
-    - cron: '0 23 * * *'
+    - cron: '0 * * * *'     # mỗi giờ (có thể đổi thành daily: 0 0 * * *)
   workflow_dispatch:
 
 jobs:
-  update:
+  scrape:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.12'
 
       - name: Install dependencies
         run: |
-          pip install requests pytz
+          python -m pip install --upgrade pip
+          pip install playwright playwright-stealth
 
-      - name: Run script
-        run: python flash_score.py
+      - name: Install Chromium
+        run: python -m playwright install --with-deps chromium
 
-      - uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Run scraper
+        run: python flashscore.py
+
+      - name: Commit & push flashscore.json
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "update flash_score.json"
+          commit_message: "🔄 Update flashscore.json (TV channels + fixtures)"
+          file_pattern: flashscore.json
