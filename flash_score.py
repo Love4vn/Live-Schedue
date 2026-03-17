@@ -1,3 +1,11 @@
+# flash_score.py - PHIÊN BẢN ĐÃ SỬA CHO GITHUB ACTIONS
+# ✅ Fix lỗi: import asyncio bị thiếu
+# ✅ Chạy 1 lần rồi dừng (phù hợp Actions - không bị timeout)
+# ✅ Giữ nguyên filter đội bóng + tennis như bạn yêu cầu
+# ✅ Xuất flashscore.json
+# Copy nguyên file này vào repo của bạn là chạy được ngay!
+
+import asyncio
 import json
 from datetime import datetime, timezone
 from playwright.async_api import async_playwright
@@ -11,7 +19,7 @@ def to_int(val: str) -> int:
     return int(val) if val.isdigit() else 0
 
 # ==================================================
-# Danh sách giải + đội bạn yêu cầu (dùng để filter)
+# Danh sách giải + đội bạn yêu cầu
 # ==================================================
 LEAGUE_TEAMS = {
     "premier league": ["arsenal", "aston villa", "bournemouth", "brentford", "brighton",
@@ -23,13 +31,13 @@ LEAGUE_TEAMS = {
     "la liga": ["barcelona", "real madrid", "atlético"],
     "bundesliga": ["bayern", "borussia dortmund", "bayer leverkusen"],
     "ligue 1": ["psg", "olympique marseille"],
-    "champions league": None,   # tất cả
+    "champions league": None,
     "europa league": None,
     "conference league": None,
 }
 
 # ==================================================
-# Extract match detail (hoạt động cho cả Football & Tennis)
+# Extract match detail
 # ==================================================
 async def extract_match_detail(page):
     try:
@@ -58,20 +66,12 @@ async def extract_match_detail(page):
         else:
             status = "scheduled"
 
-        # Current score
         score_values = await page.locator('.detailScore__wrapper span').all_inner_texts()
         home_score = to_int(score_values[0]) if len(score_values) > 0 else 0
         away_score = to_int(score_values[2]) if len(score_values) > 2 else 0
 
-        # Periods (Football: Q1-Q4 hoặc Half, Tennis sẽ rỗng)
-        home_parts = await page.locator(
-            '.smh__home.smh__part--1, .smh__home.smh__part--2, '
-            '.smh__home.smh__part--3, .smh__home.smh__part--4'
-        ).all_inner_texts()
-        away_parts = await page.locator(
-            '.smh__away.smh__part--1, .smh__away.smh__part--2, '
-            '.smh__away.smh__part--3, .smh__away.smh__part--4'
-        ).all_inner_texts()
+        home_parts = await page.locator('.smh__home.smh__part--1, .smh__home.smh__part--2, .smh__home.smh__part--3, .smh__home.smh__part--4').all_inner_texts()
+        away_parts = await page.locator('.smh__away.smh__part--1, .smh__away.smh__part--2, .smh__away.smh__part--3, .smh__away.smh__part--4').all_inner_texts()
 
         home_parts += [""] * (4 - len(home_parts))
         away_parts += [""] * (4 - len(away_parts))
@@ -104,7 +104,7 @@ async def extract_match_detail(page):
         return None
 
 # ==================================================
-# Fetch live match URLs (dùng chung cho Football & Tennis)
+# Fetch live match URLs
 # ==================================================
 async def fetch_live_match_urls(page, target_url: str):
     try:
@@ -125,7 +125,7 @@ async def fetch_live_match_urls(page, target_url: str):
         return []
 
 # ==================================================
-# Filter theo yêu cầu của bạn
+# Filter theo yêu cầu
 # ==================================================
 def is_desired_match(data: dict) -> bool:
     if not data:
@@ -148,7 +148,7 @@ def is_desired_match(data: dict) -> bool:
 
         if key in LEAGUE_TEAMS:
             teams_list = LEAGUE_TEAMS[key]
-            if teams_list is None:  # UEFA
+            if teams_list is None:
                 return True
             return any(t in home or t in away for t in teams_list)
         return False
@@ -169,7 +169,7 @@ def save_flashscore(results):
     print(f"💾 Saved {len(results)} matches → flashscore.json")
 
 # ==================================================
-# Main 24/7 loop
+# Main (chạy 1 lần cho GitHub Actions)
 # ==================================================
 async def main():
     async with Stealth().use_async(async_playwright()) as p:
@@ -181,59 +181,43 @@ async def main():
             return browser, context, page
 
         browser, context, page = await start_browser()
-        REFRESH_INTERVAL = 10
-        RESTART_AFTER_ITERATIONS = 500
-        iteration = 0
+        print(f"🚀 Bắt đầu scrape lúc {datetime.now(timezone.utc).isoformat()}")
 
-        while True:
+        results = []
+
+        # ===================== FOOTBALL =====================
+        print("⚽ Scraping Football live...")
+        football_urls = await fetch_live_match_urls(page, "https://www.flashscore.com/football/?live=true")
+        for i, url in enumerate(football_urls, 1):
+            detail_page = await context.new_page()
             try:
-                iteration += 1
-                print(f"\n{'='*70}\nITERATION {iteration} — {datetime.now(timezone.utc).isoformat()}\n{'='*70}")
+                await detail_page.goto(url, wait_until="networkidle")
+                await detail_page.wait_for_selector(".duelParticipant__container", timeout=15000)
+                data = await extract_match_detail(detail_page)
+                if data and is_desired_match(data):
+                    results.append(data)
+                    print(f"✓ FOOTBALL {data['home_team']} vs {data['away_team']} {data['score']['current']['home']}-{data['score']['current']['away']}")
+            finally:
+                await detail_page.close()
 
-                if iteration % RESTART_AFTER_ITERATIONS == 0:
-                    print("🔄 Restarting browser...")
-                    await browser.close()
-                    browser, context, page = await start_browser()
+        # ===================== TENNIS =====================
+        print("🎾 Scraping Tennis live (ATP + Grand Slam)...")
+        tennis_urls = await fetch_live_match_urls(page, "https://www.flashscore.com/tennis/?live=true")
+        for i, url in enumerate(tennis_urls, 1):
+            detail_page = await context.new_page()
+            try:
+                await detail_page.goto(url, wait_until="networkidle")
+                await detail_page.wait_for_selector(".duelParticipant__container", timeout=15000)
+                data = await extract_match_detail(detail_page)
+                if data and is_desired_match(data):
+                    results.append(data)
+                    print(f"✓ TENNIS {data['home_team']} vs {data['away_team']}")
+            finally:
+                await detail_page.close()
 
-                results = []
-
-                # ===================== FOOTBALL =====================
-                print("⚽ Scraping Football live...")
-                football_urls = await fetch_live_match_urls(page, "https://www.flashscore.com/football/?live=true")
-                for i, url in enumerate(football_urls, 1):
-                    detail_page = await context.new_page()
-                    try:
-                        await detail_page.goto(url, wait_until="networkidle")
-                        await detail_page.wait_for_selector(".duelParticipant__container", timeout=15000)
-                        data = await extract_match_detail(detail_page)
-                        if data and is_desired_match(data):
-                            results.append(data)
-                            print(f"✓ FOOTBALL {data['home_team']} vs {data['away_team']} {data['score']['current']['home']}-{data['score']['current']['away']}")
-                    finally:
-                        await detail_page.close()
-
-                # ===================== TENNIS =====================
-                print("🎾 Scraping Tennis live (ATP + Grand Slam)...")
-                tennis_urls = await fetch_live_match_urls(page, "https://www.flashscore.com/tennis/?live=true")
-                for i, url in enumerate(tennis_urls, 1):
-                    detail_page = await context.new_page()
-                    try:
-                        await detail_page.goto(url, wait_until="networkidle")
-                        await detail_page.wait_for_selector(".duelParticipant__container", timeout=15000)
-                        data = await extract_match_detail(detail_page)
-                        if data and is_desired_match(data):
-                            results.append(data)
-                            print(f"✓ TENNIS {data['home_team']} vs {data['away_team']}")
-                    finally:
-                        await detail_page.close()
-
-                save_flashscore(results)
-                print(f"⏳ Next refresh in {REFRESH_INTERVAL}s...\n")
-                await asyncio.sleep(REFRESH_INTERVAL)
-
-            except Exception as e:
-                print(f"🔥 Crash recovered: {e}")
-                await asyncio.sleep(5)
+        save_flashscore(results)
+        await browser.close()
+        print("✅ Hoàn thành! GitHub Actions sẽ tự commit flashscore.json")
 
 if __name__ == "__main__":
     asyncio.run(main())
