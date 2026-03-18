@@ -2,7 +2,7 @@ name: Euro VN Schedule SofaScore (24h tới)
 
 on:
   schedule:
-    - cron: '0 23 * * *'
+    - cron: '0 */6 * * *'
   workflow_dispatch:
 
 jobs:
