@@ -1,34 +1,31 @@
-name: Update JSON + TV Channels
+name: Premier League TV Scraper
 
 on:
-  #schedule:
-  #  - cron: '0 * * * *'     # mỗi giờ (có thể đổi thành daily: 0 0 * * *)
+  schedule:
+    - cron: '0 1 * * *'      # 8h sáng VN
   workflow_dispatch:
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Python 3.12
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Install dependencies
+      - name: Install Playwright
         run: |
-          pip install curl_cffi pycountry beautifulsoup4 lxml playwright
-
-      - name: Install Chromium
-        run: python -m playwright install --with-deps chromium
+          pip install playwright
+          python -m playwright install --with-deps chromium
 
       - name: Run scraper
         run: python football_tv_scraper.py
 
-      - name: Commit & push schedule files
-        uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Upload JSON
+        uses: actions/upload-artifact@v4
         with:
-          commit_message: "🔄 Update TV channels + fixtures"
-          file_pattern: schedule_*.json
+          name: premier-league-tv
+          path: premier_league_tv.json
