@@ -1,4 +1,3 @@
-# .github/workflows/update-flashscore.yml
 name: Update JSON + TV Channels
 
 on:
@@ -21,16 +20,15 @@ jobs:
       - name: Install dependencies
         run: |
           pip install curl_cffi beautifulsoup4 lxml playwright
-          #playwright install chromium
 
       - name: Install Chromium
         run: python -m playwright install --with-deps chromium
 
       - name: Run scraper
-        run: football_tv_scraper.py
+        run: python football_tv_scraper.py
 
-      - name: Commit & push flashscore.json
+      - name: Commit & push schedule files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "🔄 Update TV channels + fixtures"
-          file_pattern: schedule_merged.json
+          file_pattern: schedule_*.json
