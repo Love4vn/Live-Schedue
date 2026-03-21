@@ -25,6 +25,11 @@ jobs:
       - name: Run script
         run: python euro_vn_full_schedule_live.py
 
-      - uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Auto update schedule.json + live_schedule.m3u (SofaScore + WTM)"
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add schedule.json live_schedule.m3u
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto update schedule.json + live_schedule.m3u (SofaScore + WTM)"
+          git pull --rebase origin ${{ github.ref_name }}
+          git push origin ${{ github.ref_name }}
