@@ -75,7 +75,8 @@ const tennisKeywords = new Set([
 
 // ========== HÀM TIỆN ÍCH ==========
 function normalize(str) {
-  return (str || "").trim().toLowerCase().replace(/\s+/g, " ");
+  // Chuyển về chữ thường, thay dấu gạch ngang/gạch dưới bằng khoảng trắng, xóa khoảng trắng thừa
+  return (str || "").trim().toLowerCase().replace(/[-_]/g, " ").replace(/\s+/g, " ");
 }
 
 function getCurrentVietnamTime() {
@@ -111,7 +112,7 @@ function isoToVietnamParts(isoZ) {
   if (!isoZ) return null;
   const dt = new Date(isoZ);
   if (isNaN(dt.getTime())) return null;
-  // Convert to UTC+7 (Vietnam)
+  // Chuyển sang UTC+7
   const vnTime = new Date(dt.getTime() + 7 * 3600000);
   const yyyy = vnTime.getUTCFullYear();
   const mm = String(vnTime.getUTCMonth() + 1).padStart(2, '0');
@@ -119,7 +120,7 @@ function isoToVietnamParts(isoZ) {
   let HH = String(vnTime.getUTCHours()).padStart(2, '0');
   const MM = String(vnTime.getUTCMinutes()).padStart(2, '0');
   const hari = new Intl.DateTimeFormat('id-ID', { timeZone: 'Asia/Ho_Chi_Minh', weekday: 'long' }).format(dt);
-  // Fix giờ 24 thành 00
+  // Sửa giờ 24 thành 00
   if (HH === '24') HH = '00';
   return { hari, tanggal: `${dd}-${mm}-${yyyy}`, time: `${HH}:${MM}` };
 }
@@ -414,8 +415,10 @@ async function main() {
   // Debug: in ra các sự kiện có chứa Milan, Torino và tennis
   console.log("\n--- Debug: events containing 'milan' or 'torino' ---");
   allEvents.forEach(e => {
-    if (normalize(e.home).includes('milan') || normalize(e.away).includes('milan') ||
-        normalize(e.home).includes('torino') || normalize(e.away).includes('torino')) {
+    const homeLow = normalize(e.home);
+    const awayLow = normalize(e.away);
+    if (homeLow.includes('milan') || awayLow.includes('milan') ||
+        homeLow.includes('torino') || awayLow.includes('torino')) {
       console.log(`${e.home} vs ${e.away} | ${e.competition} | ${e.tanggal} ${e.time}`);
     }
   });
