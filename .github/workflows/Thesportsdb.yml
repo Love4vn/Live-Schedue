@@ -18,8 +18,8 @@ jobs:
         with:
           persist-credentials: true
 
-      - name: Mark directory as safe
-        run: git config --global --add safe.directory /__w/Live-Schedue/Live-Schedue
+      #- name: Mark directory as safe
+      #  run: git config --global --add safe.directory /__w/Live-Schedue/Live-Schedue
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -32,7 +32,7 @@ jobs:
       - name: Run TheSportsDB scraper
         env:
           SPORTSDB_API_KEY: ${{ secrets.SPORTSDB_API_KEY }}
-        run: node scr/thesportsdb_scr.js
+        run: node src/thesportsdb_scr.js
 
       # (Optional) Run other scrapers if you want
       # - name: Run other scrapers
