@@ -4,8 +4,9 @@
   "description": "Scrape live sports schedule from wheresthematch.com and ausportguide.com",
   "main": "src/scrape-wtm.js",
   "scripts": {
-    "start": "node src/scrape-wtm.js",
-    "ausport": "node src/ausport_scraper.js"
+  "start": "node src/scrape-wtm.js",
+  "ausport": "node src/ausport_scraper.js",
+  "thesportsdb": "node scr/thesportsdb_scr.js"
   },
   "dependencies": {
     "axios": "^1.6.0",
