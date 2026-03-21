@@ -1,8 +1,8 @@
-name: Scrape WTM (daily)
+name: Scrape WTM (daily list)
 
 on:
   schedule:
-    - cron: "5 0 * * *"   # setiap hari 00:05 UTC (có thể điều chỉnh)
+    - cron: "5 0 * * *"   # setiap hari 00:05 UTC (bisa disesuaikan)
   workflow_dispatch:
 
 permissions:
@@ -23,10 +23,10 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Install deps
-        run: npm ci
+      - name: Install dependencies
+        run: npm install
 
-      - name: Run scraper (filtered 24h, football & tennis)
+      - name: Run scraper
         run: node src/scrape-wtm.js
 
       - name: Commit output
