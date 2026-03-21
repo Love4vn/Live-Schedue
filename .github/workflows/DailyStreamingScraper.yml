@@ -2,7 +2,7 @@ name: DailyStreamingScraper livesportsontv
 
 on:
   #schedule:
-    #- cron: '0 23 * * *'
+    - cron: '20 6 * * *'
   workflow_dispatch:
 
 jobs:
