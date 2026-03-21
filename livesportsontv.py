@@ -1,12 +1,25 @@
 # File: livesportsontv.py
-# Optimized for broader coverage including tennis and international football
+# Optimized with Vietnam time conversion (UTC+7)
 
 import asyncio
 import json
 import re
-from datetime import datetime
+from datetime import datetime, time
+import zoneinfo
 from playwright.async_api import async_playwright
 from bs4 import BeautifulSoup
+
+# ------------------------------------------------------------
+# Timezone setup
+# ------------------------------------------------------------
+UK_TZ = zoneinfo.ZoneInfo("Europe/London")
+VIETNAM_TZ = zoneinfo.ZoneInfo("Asia/Ho_Chi_Minh")
+
+# Month abbreviation to number mapping
+MONTH_MAP = {
+    "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
+    "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12
+}
 
 # ------------------------------------------------------------
 # Helper functions for friendly match filtering
@@ -27,37 +40,23 @@ AMERICAS_TEAMS = {"argentina", "brazil"}
 ASIA_TEAMS = {"japan", "south korea"}
 
 def is_european_team(team_name: str) -> bool:
-    """Check if team name matches any European country."""
     team_lower = team_name.lower()
-    for country in EUROPEAN_COUNTRIES:
-        if country in team_lower:
-            return True
-    return False
+    return any(country in team_lower for country in EUROPEAN_COUNTRIES)
 
 def is_americas_team(team_name: str) -> bool:
-    """Check if team is Argentina or Brazil."""
     team_lower = team_name.lower()
     return any(t in team_lower for t in AMERICAS_TEAMS)
 
 def is_asia_team(team_name: str) -> bool:
-    """Check if team is Japan or South Korea."""
     team_lower = team_name.lower()
     return any(t in team_lower for t in ASIA_TEAMS)
 
 def include_friendly_match(home: str, away: str) -> bool:
-    """
-    Decide whether to include a friendly match based on the filter rules:
-    - European teams: all (any European country involved)
-    - Americas: only Argentina or Brazil
-    - Asia: only Japan or South Korea
-    """
-    # If either team is European, include (all European teams)
+    """Include friendly if any team matches the criteria."""
     if is_european_team(home) or is_european_team(away):
         return True
-    # If either team is Argentina or Brazil, include
     if is_americas_team(home) or is_americas_team(away):
         return True
-    # If either team is Japan or South Korea, include
     if is_asia_team(home) or is_asia_team(away):
         return True
     return False
@@ -67,7 +66,7 @@ def include_friendly_match(home: str, away: str) -> bool:
 # ------------------------------------------------------------
 async def scrape_league_schedules():
     leagues_config = {
-        # Existing club leagues (unchanged)
+        # Existing club leagues
         "Premier League": {
             "url": "https://www.livesportsontv.com/league/premier-league",
             "teams": {"arsenal", "aston villa", "bournemouth", "brentford", "brighton",
@@ -109,8 +108,6 @@ async def scrape_league_schedules():
             "url": "https://www.livesportsontv.com/league/atp",
             "teams": None
         },
-
-        # ----- New additions -----
         # Tennis: WTA
         "Tennis (WTA)": {
             "url": "https://www.livesportsontv.com/league/wta",
@@ -142,18 +139,20 @@ async def scrape_league_schedules():
             "url": "https://www.livesportsontv.com/league/fifa-world-cup",
             "teams": None
         },
-        # International friendlies (special filter)
+        # International friendlies (custom filter)
         "International Friendlies": {
             "url": "https://www.livesportsontv.com/league/friendly",
-            "teams": None,                # filter handled separately
+            "teams": None,
             "custom_filter": include_friendly_match
         }
     }
 
     all_games = []
-    today = datetime.now()
-    target_day = str(today.day)
-    target_month = today.strftime("%b").lower()
+    # Today's UK date (for filtering)
+    now_uk = datetime.now(UK_TZ)
+    target_day_uk = str(now_uk.day)
+    target_month_uk = now_uk.strftime("%b").lower()
+    current_year = now_uk.year
 
     async with async_playwright() as p:
         print("🚀 Starting browser headless...")
@@ -163,8 +162,8 @@ async def scrape_league_schedules():
         )
         page = await browser.new_page()
 
-        # Sync timeouts (no await)
-        page.set_default_navigation_timeout(120000)  # 120s
+        # Set timeouts (sync methods)
+        page.set_default_navigation_timeout(120000)
         page.set_default_timeout(60000)
 
         for league_name, config in leagues_config.items():
@@ -195,34 +194,52 @@ async def scrape_league_schedules():
             html_content = await page.content()
             soup = BeautifulSoup(html_content, 'html.parser')
 
-            # Find all match blocks (same structure for football and tennis)
             game_rows = soup.find_all('div', class_='event--wrapp')
-            print(f"  → Found {len(game_rows)} events. Filtering for today...")
+            print(f"  → Found {len(game_rows)} events. Filtering for today (UK time)...")
 
             games_added = 0
             for row in game_rows:
                 try:
-                    # Date check
+                    # --- Date check (UK date) ---
                     date_div = row.find('div', class_='event__info--date')
                     if not date_div:
                         continue
                     game_day = date_div.find('b').get_text(strip=True) if date_div.find('b') else ""
-                    game_month = date_div.find('span').get_text(strip=True).lower() if date_div.find('span') else ""
-                    if game_day != target_day or game_month != target_month:
+                    game_month_abbr = date_div.find('span').get_text(strip=True).lower() if date_div.find('span') else ""
+                    if game_day != target_day_uk or game_month_abbr != target_month_uk:
                         continue
 
-                    # Time
-                    time_div = row.find('time')
-                    event_time = time_div.get_text(strip=True) if time_div else "Time Not Found"
+                    # --- Match time (UK time) ---
+                    time_tag = row.find('time')
+                    if not time_tag:
+                        continue
+                    time_str = time_tag.get_text(strip=True)
+                    # Expected format "HH:MM" (24h)
+                    time_parts = time_str.split(':')
+                    if len(time_parts) < 2:
+                        continue
+                    hour = int(time_parts[0])
+                    minute = int(time_parts[1])
 
-                    # Home / Away (participants)
+                    # --- Construct UK datetime for this match ---
+                    month_num = MONTH_MAP.get(game_month_abbr, 1)
+                    uk_date = datetime(current_year, month_num, int(game_day), hour, minute)
+                    # Localize to UK timezone (assume the website uses UK local time)
+                    uk_dt = uk_date.replace(tzinfo=UK_TZ)
+
+                    # --- Convert to Vietnam time ---
+                    vn_dt = uk_dt.astimezone(VIETNAM_TZ)
+                    vn_date = vn_dt.strftime("%Y-%m-%d")
+                    vn_time = vn_dt.strftime("%H:%M")
+
+                    # --- Teams and matchup ---
                     home_elem = row.find('div', class_=lambda c: c and 'event__participant--home' in c)
                     away_elem = row.find('div', class_=lambda c: c and 'event__participant--away' in c)
                     home_team = home_elem.get_text(strip=True) if home_elem else "Unknown"
                     away_team = away_elem.get_text(strip=True) if away_elem else "Unknown"
                     matchup = f"{away_team} @ {home_team}"
 
-                    # Apply team filter if defined (for club leagues)
+                    # Apply team filter if defined
                     if team_filter is not None:
                         if not any(t.lower() in home_team.lower() or t.lower() in away_team.lower() for t in team_filter):
                             continue
@@ -232,7 +249,7 @@ async def scrape_league_schedules():
                         if not custom_filter(home_team, away_team):
                             continue
 
-                    # Channels (TV broadcasters)
+                    # Channels
                     channels = []
                     channel_list = row.find('ul', class_='event__tags')
                     if channel_list:
@@ -241,8 +258,8 @@ async def scrape_league_schedules():
                                 channels.append(aria.strip())
 
                     all_games.append({
-                        "Date": today.strftime("%Y-%m-%d"),
-                        "Time": event_time,
+                        "Date": vn_date,
+                        "Time": vn_time,
                         "League": league_name,
                         "Matchup": matchup,
                         "Services": channels
@@ -258,7 +275,7 @@ async def scrape_league_schedules():
         await browser.close()
         print("\n✅ Scraping completed!")
 
-    # Save results to JSON
+    # Save results
     filename = "schedule_livesportsontv.json"
     if all_games:
         with open(filename, 'w', encoding='utf-8') as f:
