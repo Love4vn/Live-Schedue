@@ -4,7 +4,6 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const fs = require("fs");
-const crypto = require("crypto");
 const { wrapper } = require("axios-cookiejar-support");
 const { CookieJar } = require("tough-cookie");
 
@@ -18,6 +17,8 @@ const client = wrapper(
     headers: {
       "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
       Accept: "text/html,application/xhtml+xml,application/xml;q=0.9",
+      "Accept-Language": "en-US,en;q=0.9",
+      "Accept-Encoding": "gzip, deflate, br",
     },
   })
 );
@@ -167,8 +168,10 @@ function uniqKeepOrder(arr) {
 function parseWTMEvents($, pageNum, sourceDate) {
   const rows = [];
 
+  // Duyệt tất cả các hàng trong bảng có class 'schedule' (hoặc không có class)
   $("table tr").each((_, tr) => {
     const $tr = $(tr);
+    // Kiểm tra xem có chứa cột fixture-details không (đặc trưng của dòng sự kiện)
     const $fx = $tr.find("td.fixture-details");
     if ($fx.length === 0) return;
 
@@ -236,14 +239,6 @@ function dedupRows(rows) {
   return Array.from(map.values());
 }
 
-function getPageHash(html) {
-  // Loại bỏ các phần tử có thể thay đổi
-  const $ = cheerio.load(html);
-  $("script, style, meta[content*='timestamp'], input[type='hidden']").remove();
-  const body = $("body").text();
-  return crypto.createHash("md5").update(body).digest("hex");
-}
-
 // ========== SCRAPE MỘT NGÀY (cải tiến paging) ==========
 async function scrapeOneDate(dateYYYYMMDD, opts = {}) {
   const urlBase = buildDailyUrl(dateYYYYMMDD);
@@ -256,9 +251,6 @@ async function scrapeOneDate(dateYYYYMMDD, opts = {}) {
   let currentHtml = "";
   const res1 = await client.get(urlBase);
   currentHtml = res1.data;
-
-  // Debug: in ra một phần nhỏ của page để kiểm tra
-  console.log("First 500 chars of page 1:", currentHtml.substring(0, 500));
 
   const $1 = cheerio.load(currentHtml);
   const p1 = parseWTMEvents($1, 1, dateYYYYMMDD);
@@ -274,14 +266,12 @@ async function scrapeOneDate(dateYYYYMMDD, opts = {}) {
     return allData;
   }
 
-  let lastHash = getPageHash(currentHtml);
   let pageNum = 2;
-  let consecutiveEmptyOrDuplicate = 0;
+  let consecutiveEmpty = 0;
 
   for (let idx = 0; idx <= maxPagingIndex; idx++) {
     const $prev = cheerio.load(currentHtml);
     const hidden = extractHiddenFields($prev);
-    console.log("Hidden fields on page:", Object.keys(hidden).join(", "));
 
     const payload = new URLSearchParams({
       ...hidden,
@@ -309,32 +299,13 @@ async function scrapeOneDate(dateYYYYMMDD, opts = {}) {
     }
 
     currentHtml = resNext.data;
-    console.log("Response length:", currentHtml.length);
-    console.log("First 500 chars of response:", currentHtml.substring(0, 500));
-
-    const hash = getPageHash(currentHtml);
-    console.log(`Page ${pageNum} hash: ${hash}`);
-    console.log(`Last hash: ${lastHash}`);
-
-    if (hash === lastHash) {
-      console.log(`Page ${pageNum}: duplicate page (same hash).`);
-      consecutiveEmptyOrDuplicate++;
-      if (consecutiveEmptyOrDuplicate >= 2) {
-        console.log(`Duplicate for 2 times => stop.`);
-        break;
-      }
-    } else {
-      consecutiveEmptyOrDuplicate = 0;
-    }
-    lastHash = hash;
-
     const $n = cheerio.load(currentHtml);
     const pData = parseWTMEvents($n, pageNum, dateYYYYMMDD);
 
     if (pData.length === 0) {
       console.log(`Page ${pageNum}: 0 rows.`);
-      consecutiveEmptyOrDuplicate++;
-      if (consecutiveEmptyOrDuplicate >= 2) {
+      consecutiveEmpty++;
+      if (consecutiveEmpty >= 2) {
         console.log(`Empty for 2 times => stop.`);
         break;
       }
@@ -345,18 +316,17 @@ async function scrapeOneDate(dateYYYYMMDD, opts = {}) {
     allData.push(...pData);
     allData = dedupRows(allData);
     const after = allData.length;
+    const added = after - before;
+    console.log(`Page ${pageNum}: rows ${pData.length} | added unique: ${added}`);
 
-    console.log(`Page ${pageNum}: rows ${pData.length} | added unique: ${after - before}`);
-
-    if (after === before) {
-      console.log(`No unique added.`);
-      consecutiveEmptyOrDuplicate++;
-      if (consecutiveEmptyOrDuplicate >= 2) {
+    if (added === 0) {
+      consecutiveEmpty++;
+      if (consecutiveEmpty >= 2) {
         console.log(`No unique for 2 times => stop.`);
         break;
       }
     } else {
-      consecutiveEmptyOrDuplicate = 0;
+      consecutiveEmpty = 0;
     }
 
     pageNum++;
