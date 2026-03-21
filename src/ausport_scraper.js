@@ -41,7 +41,6 @@ const FOOTBALL_CONFIG = {
     'UEFA European Championship': 'all',
   },
   friendlyAllowedTeams: ['argentina', 'brazil', 'japan', 'south korea', 'nhật bản', 'hàn quốc'],
-  // Chỉ loại trừ các giải phụ rõ ràng, không loại nhầm giải chính
   excludeKeywords: ['u18', 'u19', 'u20', 'u21', 'u23', 'women', 'girls', 'boys', 'youth', 'junior', 'reserves', 'woman'],
 };
 
@@ -79,6 +78,7 @@ function convertToVietnamTime(baseDate, timeStr) {
   if (ampm.toUpperCase() === 'PM' && hour !== 12) hour += 12;
   if (ampm.toUpperCase() === 'AM' && hour === 12) hour = 0;
 
+  // Tạo datetime ở múi giờ AEDT (UTC+11) với ngày baseDate
   const aedtTime = dayjs(baseDate).tz('Australia/Sydney').hour(hour).minute(minute).second(0);
   const vietnamTime = aedtTime.tz('Asia/Ho_Chi_Minh');
   return vietnamTime;
@@ -162,7 +162,7 @@ function isEventRelevant(event) {
 // --- Lọc theo thời gian (48h tới) ---
 function isWithinTimeRange(event) {
   if (!event.vietnam_datetime) {
-    console.log('Event missing vietnam_datetime:', event);
+    console.log('Event missing vietnam_datetime:', event.home, event.away);
     return false;
   }
   const eventTime = dayjs(event.vietnam_datetime);
@@ -170,13 +170,12 @@ function isWithinTimeRange(event) {
   const diffHours = eventTime.diff(now, 'hour', true);
   const within = diffHours >= 0 && diffHours <= CONFIG.TIME_RANGE_HOURS;
   if (!within && diffHours > 0) {
-    // Log để debug
     console.log(`Event ${event.home} vs ${event.away} at ${event.vietnam_jam} on ${event.vietnam_tanggal} is ${diffHours.toFixed(1)} hours away (beyond ${CONFIG.TIME_RANGE_HOURS})`);
   }
   return within;
 }
 
-// --- Các hàm parse, scrape (giữ nguyên như cũ) ---
+// --- Các hàm parse, scrape ---
 function resolveDateForPage($, pathSuffix) {
   const headerText = $('h2.dayInfo').first().text().trim();
   if (headerText) {
@@ -318,6 +317,7 @@ async function scrapeDay(pathSuffix) {
 
   const $ = cheerio.load(response.data);
   const dateInfo = resolveDateForPage($, pathSuffix);
+  console.log(`  Base date for ${pathSuffix}: ${dateInfo.baseDate.toISOString()}`);
 
   const rows = [];
   let currentCompetition = '';
@@ -410,14 +410,12 @@ function dedupeRows(rows) {
   });
 }
 
-// --- Xuất JSON đơn giản ---
 function writeJSON(rows, outputPath) {
-  // Chỉ giữ các trường cần thiết theo yêu cầu
   const simplified = rows.map(r => ({
     competition: r.competition,
     home: r.home,
     away: r.away,
-    vietnam_time: r.vietnam_jam,    // chỉ giờ HH:MM
+    vietnam_time: r.vietnam_jam,
     vietnam_date: r.vietnam_tanggal,
     channels: r.channels,
     sport: r.sport,
@@ -426,7 +424,7 @@ function writeJSON(rows, outputPath) {
   console.log(`JSON written: ${outputPath}`);
 }
 
-// --- Hàm chính (chạy tuần tự, không gửi Google Sheets) ---
+// --- Hàm chính ---
 (async () => {
   let allRows = [];
   for (const day of CONFIG.DAYS) {
@@ -441,6 +439,12 @@ function writeJSON(rows, outputPath) {
   // Lọc theo môn thể thao và giải đấu
   let filteredRows = allRows.filter(isEventRelevant);
   console.log('After sport/league filter:', filteredRows.length);
+
+  // Debug: in ra 5 trận đầu tiên sau lọc giải
+  console.log("Sample events after sport/league filter (before time filter):");
+  filteredRows.slice(0, 5).forEach((r, i) => {
+    console.log(`${i+1}: ${r.home} vs ${r.away} - ${r.vietnam_datetime} (${r.vietnam_jam} ${r.vietnam_tanggal})`);
+  });
 
   // Lọc theo thời gian (48h)
   filteredRows = filteredRows.filter(isWithinTimeRange);
