@@ -69,7 +69,6 @@ const allowedFriendlyCountries = new Set([
   "argentina", "brazil", "japan", "south korea", "korea republic"
 ]);
 
-// Thêm "miami open" và mở rộng từ khóa tennis
 const tennisKeywords = new Set([
   "atp", "wta", "grand slam", "us open", "wimbledon", "roland garros", "australian open",
   "miami open", "miami", "open"
@@ -238,14 +237,14 @@ function dedupRows(rows) {
 }
 
 function getPageHash(html) {
-  // Loại bỏ các phần tử có thể thay đổi (ví dụ timestamp, script) để hash ổn định
+  // Loại bỏ các phần tử có thể thay đổi
   const $ = cheerio.load(html);
-  $("script, style, meta[content*='timestamp']").remove();
+  $("script, style, meta[content*='timestamp'], input[type='hidden']").remove();
   const body = $("body").text();
   return crypto.createHash("md5").update(body).digest("hex");
 }
 
-// ========== SCRAPE MỘT NGÀY (không dùng fingerprint) ==========
+// ========== SCRAPE MỘT NGÀY (cải tiến paging) ==========
 async function scrapeOneDate(dateYYYYMMDD, opts = {}) {
   const urlBase = buildDailyUrl(dateYYYYMMDD);
   const maxPagingIndex = Number.isFinite(opts.maxPagingIndex) ? opts.maxPagingIndex : 60;
@@ -257,6 +256,9 @@ async function scrapeOneDate(dateYYYYMMDD, opts = {}) {
   let currentHtml = "";
   const res1 = await client.get(urlBase);
   currentHtml = res1.data;
+
+  // Debug: in ra một phần nhỏ của page để kiểm tra
+  console.log("First 500 chars of page 1:", currentHtml.substring(0, 500));
 
   const $1 = cheerio.load(currentHtml);
   const p1 = parseWTMEvents($1, 1, dateYYYYMMDD);
@@ -274,10 +276,12 @@ async function scrapeOneDate(dateYYYYMMDD, opts = {}) {
 
   let lastHash = getPageHash(currentHtml);
   let pageNum = 2;
+  let consecutiveEmptyOrDuplicate = 0;
 
   for (let idx = 0; idx <= maxPagingIndex; idx++) {
     const $prev = cheerio.load(currentHtml);
     const hidden = extractHiddenFields($prev);
+    console.log("Hidden fields on page:", Object.keys(hidden).join(", "));
 
     const payload = new URLSearchParams({
       ...hidden,
@@ -305,11 +309,22 @@ async function scrapeOneDate(dateYYYYMMDD, opts = {}) {
     }
 
     currentHtml = resNext.data;
+    console.log("Response length:", currentHtml.length);
+    console.log("First 500 chars of response:", currentHtml.substring(0, 500));
+
     const hash = getPageHash(currentHtml);
+    console.log(`Page ${pageNum} hash: ${hash}`);
+    console.log(`Last hash: ${lastHash}`);
 
     if (hash === lastHash) {
-      console.log(`Page ${pageNum}: duplicate page (same hash) => stop.`);
-      break;
+      console.log(`Page ${pageNum}: duplicate page (same hash).`);
+      consecutiveEmptyOrDuplicate++;
+      if (consecutiveEmptyOrDuplicate >= 2) {
+        console.log(`Duplicate for 2 times => stop.`);
+        break;
+      }
+    } else {
+      consecutiveEmptyOrDuplicate = 0;
     }
     lastHash = hash;
 
@@ -317,8 +332,13 @@ async function scrapeOneDate(dateYYYYMMDD, opts = {}) {
     const pData = parseWTMEvents($n, pageNum, dateYYYYMMDD);
 
     if (pData.length === 0) {
-      console.log(`Page ${pageNum}: 0 rows => stop paging.`);
-      break;
+      console.log(`Page ${pageNum}: 0 rows.`);
+      consecutiveEmptyOrDuplicate++;
+      if (consecutiveEmptyOrDuplicate >= 2) {
+        console.log(`Empty for 2 times => stop.`);
+        break;
+      }
+      continue;
     }
 
     const before = allData.length;
@@ -329,8 +349,14 @@ async function scrapeOneDate(dateYYYYMMDD, opts = {}) {
     console.log(`Page ${pageNum}: rows ${pData.length} | added unique: ${after - before}`);
 
     if (after === before) {
-      console.log(`No unique added => stop paging.`);
-      break;
+      console.log(`No unique added.`);
+      consecutiveEmptyOrDuplicate++;
+      if (consecutiveEmptyOrDuplicate >= 2) {
+        console.log(`No unique for 2 times => stop.`);
+        break;
+      }
+    } else {
+      consecutiveEmptyOrDuplicate = 0;
     }
 
     pageNum++;
@@ -424,16 +450,24 @@ async function main() {
 
   console.log(`Total unique events (before filter): ${allEvents.length}`);
 
-  let filteredByTime = filterEventsByTime(allEvents, nowVN, endVN);
-  console.log(`After time filter (24h): ${filteredByTime.length}`);
-
-  // In ra tất cả tennis trước khi lọc để debug
-  console.log("\n--- Tennis events before sport filter ---");
-  filteredByTime.forEach(e => {
-    if (isTennis(e.sport, e.competition)) {
-      console.log(`- ${e.title} | ${e.competition} | ${e.tanggal} ${e.time}`);
+  // Debug: in ra các sự kiện liên quan đến AC Milan, Torino, tennis
+  console.log("\n--- Debug: events containing 'milan' or 'torino' ---");
+  allEvents.forEach(e => {
+    if (normalize(e.home).includes('milan') || normalize(e.away).includes('milan') ||
+        normalize(e.home).includes('torino') || normalize(e.away).includes('torino')) {
+      console.log(`${e.home} vs ${e.away} | ${e.competition} | ${e.tanggal} ${e.time}`);
     }
   });
+
+  console.log("\n--- Debug: tennis events (before time filter) ---");
+  allEvents.forEach(e => {
+    if (isTennis(e.sport, e.competition)) {
+      console.log(`${e.title} | ${e.competition} | ${e.tanggal} ${e.time}`);
+    }
+  });
+
+  let filteredByTime = filterEventsByTime(allEvents, nowVN, endVN);
+  console.log(`After time filter (24h): ${filteredByTime.length}`);
 
   let finalEvents = filterEventsBySport(filteredByTime);
   console.log(`After sport filter: ${finalEvents.length}`);
