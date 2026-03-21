@@ -79,9 +79,25 @@ function normalize(str) {
 
 function getCurrentVietnamTime() {
   const now = new Date();
-  // Convert to UTC+7 (Vietnam)
-  const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-  return new Date(utc + (7 * 3600000));
+  // Sử dụng Intl để lấy ngày tháng theo múi giờ Việt Nam
+  const formatter = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Ho_Chi_Minh",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false
+  });
+  const parts = formatter.formatToParts(now);
+  const year = parts.find(p => p.type === "year").value;
+  const month = parts.find(p => p.type === "month").value;
+  const day = parts.find(p => p.type === "day").value;
+  const hour = parts.find(p => p.type === "hour").value;
+  const minute = parts.find(p => p.type === "minute").value;
+  const second = parts.find(p => p.type === "second").value;
+  return new Date(`${year}-${month}-${day}T${hour}:${minute}:${second}+07:00`);
 }
 
 function getDatesToScrape() {
@@ -113,16 +129,14 @@ function isoToVietnamParts(isoZ) {
   const dt = new Date(isoZ);
   if (isNaN(dt.getTime())) return null;
 
-  // Convert to UTC+7 (Vietnam)
-  const vietnamTime = new Date(dt.getTime() + (7 * 3600000));
-  
+  // Format trực tiếp với múi giờ Việt Nam
   const options = { timeZone: "Asia/Ho_Chi_Minh", hour12: false };
-  const yyyy = new Intl.DateTimeFormat("en", { ...options, year: "numeric" }).format(vietnamTime);
-  const mm = new Intl.DateTimeFormat("en", { ...options, month: "2-digit" }).format(vietnamTime);
-  const dd = new Intl.DateTimeFormat("en", { ...options, day: "2-digit" }).format(vietnamTime);
-  const HH = new Intl.DateTimeFormat("en", { ...options, hour: "2-digit" }).format(vietnamTime);
-  const MM = new Intl.DateTimeFormat("en", { ...options, minute: "2-digit" }).format(vietnamTime);
-  const hari = new Intl.DateTimeFormat("id-ID", { ...options, weekday: "long" }).format(vietnamTime);
+  const yyyy = new Intl.DateTimeFormat("en", { ...options, year: "numeric" }).format(dt);
+  const mm = new Intl.DateTimeFormat("en", { ...options, month: "2-digit" }).format(dt);
+  const dd = new Intl.DateTimeFormat("en", { ...options, day: "2-digit" }).format(dt);
+  const HH = new Intl.DateTimeFormat("en", { ...options, hour: "2-digit" }).format(dt);
+  const MM = new Intl.DateTimeFormat("en", { ...options, minute: "2-digit" }).format(dt);
+  const hari = new Intl.DateTimeFormat("id-ID", { ...options, weekday: "long" }).format(dt);
 
   return { hari, tanggal: `${dd}-${mm}-${yyyy}`, time: `${HH}:${MM}` };
 }
@@ -167,7 +181,6 @@ function parseWTMEvents($, pageNum, sourceDate) {
     const $sportImg = $fx.find(".fixture-sport img");
     let sport = $sportImg.attr("alt")?.trim() || $sportImg.attr("title")?.trim() || "";
     if (!sport) {
-      // fallback: lấy text của span hoặc div
       sport = $fx.find(".fixture-sport").text().trim();
     }
 
@@ -281,9 +294,9 @@ function filterFootballEvent(event) {
     }
   }
 
-  // Các giải quốc nội
+  // Các giải quốc nội (kiểm tra chứa từ khóa)
   for (const [league, teams] of Object.entries(footballAllowedLeagues)) {
-    if (competitionLow === league) {
+    if (competitionLow.includes(league)) {
       return teams.has(homeLow) || teams.has(awayLow);
     }
   }
@@ -401,6 +414,8 @@ async function main() {
 
   const dates = getDatesToScrape();
   console.log("Scraping dates:", dates);
+  console.log("Now (VN):", nowVN.toISOString());
+  console.log("End (VN):", endVN.toISOString());
 
   let allEvents = [];
   for (const d of dates) {
@@ -416,6 +431,11 @@ async function main() {
 
   let finalEvents = filterEventsBySport(filteredByTime);
   console.log(`After sport filter: ${finalEvents.length}`);
+
+  // In ra các trận Serie A để debug (nếu có)
+  const serieAEvents = finalEvents.filter(e => normalize(e.competition).includes("serie a"));
+  console.log("Serie A matches found:", serieAEvents.length);
+  serieAEvents.forEach(e => console.log(`- ${e.home} vs ${e.away} at ${e.tanggal} ${e.time}`));
 
   const output = finalEvents.map(({ source_date, page, ...rest }) => rest);
   fs.writeFileSync("results.json", JSON.stringify(output, null, 2));
