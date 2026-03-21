@@ -19,7 +19,7 @@ const CONFIG = {
   TIMEOUT_MS: 30000,
   USER_AGENT: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0 Safari/537.36',
   OUTPUT_FILE: './ausport_schedule.json',
-  TIME_RANGE_HOURS: 48,   // lấy thêm 1 ngày so với trước
+  TIME_RANGE_HOURS: 48,
 };
 
 // --- Danh sách giải/đội hợp lệ ---
@@ -41,7 +41,8 @@ const FOOTBALL_CONFIG = {
     'UEFA European Championship': 'all',
   },
   friendlyAllowedTeams: ['argentina', 'brazil', 'japan', 'south korea', 'nhật bản', 'hàn quốc'],
-  excludeKeywords: ['u18', 'u19', 'u20', 'u21', 'u23', 'woman', 'women', 'girls', 'boys', 'youth', 'junior', 'reserves'],
+  // Chỉ loại trừ các giải phụ rõ ràng, không loại nhầm giải chính
+  excludeKeywords: ['u18', 'u19', 'u20', 'u21', 'u23', 'women', 'girls', 'boys', 'youth', 'junior', 'reserves', 'woman'],
 };
 
 // --- Hàm tiện ích ---
@@ -102,21 +103,21 @@ function isFootballRelevant(event) {
   const away = (event.away || '').toLowerCase();
   const title = (event.title || '').toLowerCase();
 
-  // Loại trừ các giải phụ (U18, Women, v.v.) dựa trên từ khóa
+  // Loại trừ các giải phụ
   for (const kw of FOOTBALL_CONFIG.excludeKeywords) {
-    if (competition.includes(kw) || title.includes(kw) || home.includes(kw) || away.includes(kw)) {
+    if (competition.includes(kw) || title.includes(kw)) {
       return false;
     }
   }
 
-  // 1. Các giải đặc biệt (UEFA, World Cup, Euro) -> lấy tất cả
+  // 1. Các giải đặc biệt
   const specialLeagues = ['uefa champions league', 'uefa europa league', 'uefa europa conference league',
                           'world cup', 'euro', 'uefa european championship'];
   if (specialLeagues.some(l => competition.includes(l))) {
     return true;
   }
 
-  // 2. Các giải có danh sách đội cụ thể
+  // 2. Các giải có danh sách đội
   for (const [league, teams] of Object.entries(FOOTBALL_CONFIG.leagues)) {
     if (competition.includes(league.toLowerCase())) {
       if (teams === 'all') return true;
@@ -127,7 +128,7 @@ function isFootballRelevant(event) {
     }
   }
 
-  // 3. Giao hữu: chỉ lấy nếu có đội từ danh sách cho phép
+  // 3. Giao hữu
   if (competition.includes('friendly') || title.includes('friendly')) {
     const allowed = FOOTBALL_CONFIG.friendlyAllowedTeams;
     if (allowed.some(team => home.includes(team) || away.includes(team))) {
@@ -147,7 +148,6 @@ function isTennisRelevant(event) {
   return allowed.some(key => competition.includes(key));
 }
 
-// --- Kiểm tra tổng thể ---
 function isEventRelevant(event) {
   const sport = (event.sport || '').toLowerCase();
   if (sport === 'soccer' || sport === 'football') {
@@ -159,16 +159,24 @@ function isEventRelevant(event) {
   return false;
 }
 
-// --- Lọc theo thời gian (giờ tới) ---
+// --- Lọc theo thời gian (48h tới) ---
 function isWithinTimeRange(event) {
-  if (!event.vietnam_datetime) return false;
+  if (!event.vietnam_datetime) {
+    console.log('Event missing vietnam_datetime:', event);
+    return false;
+  }
   const eventTime = dayjs(event.vietnam_datetime);
   const now = dayjs();
   const diffHours = eventTime.diff(now, 'hour', true);
-  return diffHours >= 0 && diffHours <= CONFIG.TIME_RANGE_HOURS;
+  const within = diffHours >= 0 && diffHours <= CONFIG.TIME_RANGE_HOURS;
+  if (!within && diffHours > 0) {
+    // Log để debug
+    console.log(`Event ${event.home} vs ${event.away} at ${event.vietnam_jam} on ${event.vietnam_tanggal} is ${diffHours.toFixed(1)} hours away (beyond ${CONFIG.TIME_RANGE_HOURS})`);
+  }
+  return within;
 }
 
-// --- Các hàm parse, scrape giữ nguyên ---
+// --- Các hàm parse, scrape (giữ nguyên như cũ) ---
 function resolveDateForPage($, pathSuffix) {
   const headerText = $('h2.dayInfo').first().text().trim();
   if (headerText) {
@@ -402,30 +410,23 @@ function dedupeRows(rows) {
   });
 }
 
+// --- Xuất JSON đơn giản ---
 function writeJSON(rows, outputPath) {
-  fs.writeFileSync(outputPath, JSON.stringify(rows, null, 2));
+  // Chỉ giữ các trường cần thiết theo yêu cầu
+  const simplified = rows.map(r => ({
+    competition: r.competition,
+    home: r.home,
+    away: r.away,
+    vietnam_time: r.vietnam_jam,    // chỉ giờ HH:MM
+    vietnam_date: r.vietnam_tanggal,
+    channels: r.channels,
+    sport: r.sport,
+  }));
+  fs.writeFileSync(outputPath, JSON.stringify(simplified, null, 2));
   console.log(`JSON written: ${outputPath}`);
 }
 
-async function sendToGoogleSheets(rows) {
-  const webappUrl = process.env.WEBAPP_URL;
-  if (!webappUrl) {
-    console.log('WEBAPP_URL not set, skipping Google Sheets upload');
-    return;
-  }
-  try {
-    const response = await axios.post(webappUrl, rows, {
-      headers: { 'Content-Type': 'application/json' },
-      timeout: 30000,
-    });
-    console.log('GAS status:', response.status);
-    console.log('GAS response:', response.data);
-  } catch (error) {
-    console.error('Failed sending to Google Sheets:', error.response?.data || error.message);
-  }
-}
-
-// --- Main (chạy tuần tự) ---
+// --- Hàm chính (chạy tuần tự, không gửi Google Sheets) ---
 (async () => {
   let allRows = [];
   for (const day of CONFIG.DAYS) {
@@ -457,5 +458,4 @@ async function sendToGoogleSheets(rows) {
   });
 
   writeJSON(filteredRows, CONFIG.OUTPUT_FILE);
-  await sendToGoogleSheets(filteredRows);
 })();
