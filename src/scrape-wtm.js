@@ -17,8 +17,6 @@ const client = wrapper(
     headers: {
       "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
       Accept: "text/html,application/xhtml+xml,application/xml;q=0.9",
-      "Accept-Language": "en-US,en;q=0.9",
-      "Accept-Encoding": "gzip, deflate, br",
     },
   })
 );
@@ -82,24 +80,7 @@ function normalize(str) {
 
 function getCurrentVietnamTime() {
   const now = new Date();
-  const formatter = new Intl.DateTimeFormat("en-CA", {
-    timeZone: "Asia/Ho_Chi_Minh",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: false
-  });
-  const parts = formatter.formatToParts(now);
-  const year = parts.find(p => p.type === "year").value;
-  const month = parts.find(p => p.type === "month").value;
-  const day = parts.find(p => p.type === "day").value;
-  const hour = parts.find(p => p.type === "hour").value;
-  const minute = parts.find(p => p.type === "minute").value;
-  const second = parts.find(p => p.type === "second").value;
-  return new Date(`${year}-${month}-${day}T${hour}:${minute}:${second}+07:00`);
+  return new Date(now.getTime() + 7 * 3600000);
 }
 
 function getDatesToScrape() {
@@ -130,16 +111,34 @@ function isoToVietnamParts(isoZ) {
   if (!isoZ) return null;
   const dt = new Date(isoZ);
   if (isNaN(dt.getTime())) return null;
-
-  const options = { timeZone: "Asia/Ho_Chi_Minh", hour12: false };
-  const yyyy = new Intl.DateTimeFormat("en", { ...options, year: "numeric" }).format(dt);
-  const mm = new Intl.DateTimeFormat("en", { ...options, month: "2-digit" }).format(dt);
-  const dd = new Intl.DateTimeFormat("en", { ...options, day: "2-digit" }).format(dt);
-  const HH = new Intl.DateTimeFormat("en", { ...options, hour: "2-digit" }).format(dt);
-  const MM = new Intl.DateTimeFormat("en", { ...options, minute: "2-digit" }).format(dt);
-  const hari = new Intl.DateTimeFormat("id-ID", { ...options, weekday: "long" }).format(dt);
-
+  // Convert to UTC+7 (Vietnam)
+  const vnTime = new Date(dt.getTime() + 7 * 3600000);
+  const yyyy = vnTime.getUTCFullYear();
+  const mm = String(vnTime.getUTCMonth() + 1).padStart(2, '0');
+  const dd = String(vnTime.getUTCDate()).padStart(2, '0');
+  let HH = String(vnTime.getUTCHours()).padStart(2, '0');
+  const MM = String(vnTime.getUTCMinutes()).padStart(2, '0');
+  const hari = new Intl.DateTimeFormat('id-ID', { timeZone: 'Asia/Ho_Chi_Minh', weekday: 'long' }).format(dt);
+  // Fix giờ 24 thành 00
+  if (HH === '24') HH = '00';
   return { hari, tanggal: `${dd}-${mm}-${yyyy}`, time: `${HH}:${MM}` };
+}
+
+function parseEventDateTimeVN(tanggal, time) {
+  const [dd, mm, yyyy] = tanggal.split('-');
+  let [HH, MM] = time.split(':');
+  if (!HH || !MM) return null;
+  let addDay = 0;
+  if (HH === '24') {
+    HH = '0';
+    addDay = 1;
+  }
+  let eventDate = new Date(`${yyyy}-${mm}-${dd}T${HH}:${MM}:00+07:00`);
+  if (isNaN(eventDate.getTime())) return null;
+  if (addDay) {
+    eventDate.setDate(eventDate.getDate() + addDay);
+  }
+  return eventDate;
 }
 
 function extractHiddenFields($) {
@@ -168,10 +167,8 @@ function uniqKeepOrder(arr) {
 function parseWTMEvents($, pageNum, sourceDate) {
   const rows = [];
 
-  // Duyệt tất cả các hàng trong bảng có class 'schedule' (hoặc không có class)
   $("table tr").each((_, tr) => {
     const $tr = $(tr);
-    // Kiểm tra xem có chứa cột fixture-details không (đặc trưng của dòng sự kiện)
     const $fx = $tr.find("td.fixture-details");
     if ($fx.length === 0) return;
 
@@ -193,7 +190,11 @@ function parseWTMEvents($, pageNum, sourceDate) {
       $tr.find('meta[itemprop="startDate"]').attr("content") ||
       "";
 
-    const w = isoToVietnamParts(isoZ) || { hari: "", tanggal: "", time: "" };
+    const w = isoToVietnamParts(isoZ);
+    if (!w) {
+      // Nếu không parse được thời gian, bỏ qua event
+      return;
+    }
 
     const channels = [];
     $tr.find("td.channel-details img").each((_, img) => {
@@ -239,7 +240,7 @@ function dedupRows(rows) {
   return Array.from(map.values());
 }
 
-// ========== SCRAPE MỘT NGÀY (cải tiến paging) ==========
+// ========== SCRAPE MỘT NGÀY ==========
 async function scrapeOneDate(dateYYYYMMDD, opts = {}) {
   const urlBase = buildDailyUrl(dateYYYYMMDD);
   const maxPagingIndex = Number.isFinite(opts.maxPagingIndex) ? opts.maxPagingIndex : 60;
@@ -340,9 +341,8 @@ async function scrapeOneDate(dateYYYYMMDD, opts = {}) {
 // ========== BỘ LỌC ==========
 function filterEventsByTime(events, nowVN, endVN) {
   return events.filter(event => {
-    const [dd, mm, yyyy] = event.tanggal.split('-');
-    const [HH, MM] = event.time.split(':');
-    const eventDate = new Date(`${yyyy}-${mm}-${dd}T${HH}:${MM}:00+07:00`);
+    const eventDate = parseEventDateTimeVN(event.tanggal, event.time);
+    if (!eventDate) return false;
     return eventDate >= nowVN && eventDate <= endVN;
   });
 }
@@ -369,27 +369,18 @@ function filterFootballEvent(event) {
   const awayLow = normalize(event.away);
 
   if (uefaLegues.has(competitionLow)) return true;
-
-  for (const kw of worldCupKeywords) {
-    if (competitionLow.includes(kw)) return true;
-  }
-
-  for (const kw of euroKeywords) {
-    if (competitionLow.includes(kw)) return true;
-  }
-
+  for (const kw of worldCupKeywords) if (competitionLow.includes(kw)) return true;
+  for (const kw of euroKeywords) if (competitionLow.includes(kw)) return true;
   for (const kw of friendlyKeywords) {
     if (competitionLow.includes(kw)) {
       return allowedFriendlyCountries.has(homeLow) && allowedFriendlyCountries.has(awayLow);
     }
   }
-
   for (const [league, teams] of Object.entries(footballAllowedLeagues)) {
     if (competitionLow.includes(league)) {
       return teams.has(homeLow) || teams.has(awayLow);
     }
   }
-
   return false;
 }
 
@@ -420,7 +411,7 @@ async function main() {
 
   console.log(`Total unique events (before filter): ${allEvents.length}`);
 
-  // Debug: in ra các sự kiện liên quan đến AC Milan, Torino, tennis
+  // Debug: in ra các sự kiện có chứa Milan, Torino và tennis
   console.log("\n--- Debug: events containing 'milan' or 'torino' ---");
   allEvents.forEach(e => {
     if (normalize(e.home).includes('milan') || normalize(e.away).includes('milan') ||
