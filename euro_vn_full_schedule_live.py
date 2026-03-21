@@ -66,8 +66,18 @@ LEAGUE_GROUP_NAME = {
     "International Friendly": "Live International Friendly" # Giao hữu quốc tế
 }
 
-# Danh sách quốc gia châu Âu (lấy từ pycountry)
-EUROPEAN_COUNTRIES = {c.name.lower() for c in pycountry.countries if c.continent == 'Europe'}
+# Danh sách quốc gia châu Âu (tên thường dùng trong tên giải đấu)
+EUROPEAN_COUNTRIES = {
+    "albania", "andorra", "armenia", "austria", "azerbaijan", "belarus", "belgium",
+    "bosnia and herzegovina", "bulgaria", "croatia", "cyprus", "czech republic", "denmark",
+    "estonia", "finland", "france", "georgia", "germany", "greece", "hungary", "iceland",
+    "ireland", "italy", "kazakhstan", "kosovo", "latvia", "liechtenstein", "lithuania",
+    "luxembourg", "malta", "moldova", "monaco", "montenegro", "netherlands", "north macedonia",
+    "norway", "poland", "portugal", "romania", "russia", "san marino", "serbia", "slovakia",
+    "slovenia", "spain", "sweden", "switzerland", "turkey", "ukraine", "united kingdom", "england",
+    "scotland", "wales", "northern ireland"
+}
+
 # Danh sách các đội tuyển được phép ngoài châu Âu
 ALLOWED_NON_EURO_TEAMS = {"argentina", "brazil", "japan", "south korea"}
 
@@ -188,15 +198,15 @@ def is_friendly_match(home_team: str, away_team: str) -> bool:
     home_country = None
     away_country = None
     for country in pycountry.countries:
-        if country.name.lower() == home_norm or country.common_name.lower() == home_norm:
+        if country.name.lower() == home_norm or (hasattr(country, 'common_name') and country.common_name.lower() == home_norm):
             home_country = country
-        if country.name.lower() == away_norm or country.common_name.lower() == away_norm:
+        if country.name.lower() == away_norm or (hasattr(country, 'common_name') and country.common_name.lower() == away_norm):
             away_country = country
     if home_country and away_country:
         # Cả hai là đội tuyển quốc gia
-        if home_country.continent == 'Europe' or away_country.continent == 'Europe':
+        if home_country.name.lower() in EUROPEAN_COUNTRIES or away_country.name.lower() in EUROPEAN_COUNTRIES:
             return True
-        if home_country.name in ALLOWED_NON_EURO_TEAMS or away_country.name in ALLOWED_NON_EURO_TEAMS:
+        if home_country.name.lower() in ALLOWED_NON_EURO_TEAMS or away_country.name.lower() in ALLOWED_NON_EURO_TEAMS:
             return True
         return False
     # Nếu không phải đội tuyển quốc gia, có thể là CLB -> không lấy
