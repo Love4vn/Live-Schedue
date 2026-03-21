@@ -21,7 +21,45 @@ const client = wrapper(
   })
 );
 
-// ========== DANH SÁCH ĐỘI & GIẢI ĐẤU ==========
+// ========== DANH SÁCH ĐỘI VỚI CÁC BIẾN THỂ ==========
+const teamVariants = {
+  "arsenal": ["arsenal"],
+  "aston villa": ["aston villa"],
+  "bournemouth": ["bournemouth"],
+  "brentford": ["brentford"],
+  "brighton": ["brighton", "brighton & hove albion"],
+  "chelsea": ["chelsea"],
+  "crystal palace": ["crystal palace"],
+  "everton": ["everton"],
+  "fulham": ["fulham"],
+  "leeds united": ["leeds united", "leeds"],
+  "liverpool": ["liverpool"],
+  "manchester city": ["manchester city", "man city"],
+  "manchester united": ["manchester united", "man utd", "manchester u"],
+  "newcastle": ["newcastle", "newcastle united"],
+  "nottingham forest": ["nottingham forest", "forest"],
+  "sunderland": ["sunderland"],
+  "tottenham hotspur": ["tottenham hotspur", "tottenham", "spurs"],
+  "west ham united": ["west ham united", "west ham"],
+  "wolverhampton": ["wolverhampton", "wolves"],
+  "inter milan": ["inter milan", "inter", "internazionale"],
+  "ac milan": ["ac milan", "milan", "acmilan"],
+  "napoli": ["napoli"],
+  "juventus": ["juventus", "juve"],
+  "roma": ["roma"],
+  "atalanta": ["atalanta"],
+  "lazio": ["lazio"],
+  "barcelona": ["barcelona", "barça"],
+  "real madrid": ["real madrid", "real"],
+  "atlético": ["atlético", "atletico madrid", "atletico"],
+  "bayern": ["bayern", "bayern munich"],
+  "borussia dortmund": ["borussia dortmund", "dortmund"],
+  "bayer leverkusen": ["bayer leverkusen", "leverkusen"],
+  "psg": ["psg", "paris saint germain", "paris st germain", "paris"],
+  "olympique marseille": ["olympique marseille", "marseille", "om"]
+};
+
+// Các giải đấu và danh sách đội (dùng key trong teamVariants)
 const footballAllowedLeagues = {
   "premier league": new Set([
     "arsenal", "aston villa", "bournemouth", "brentford", "brighton", "chelsea",
@@ -79,6 +117,17 @@ function normalize(str) {
   return (str || "").trim().toLowerCase().replace(/[-_]/g, " ").replace(/\s+/g, " ");
 }
 
+function isTeamInLeague(teamName, leagueTeams) {
+  const normTeam = normalize(teamName);
+  for (const teamKey of leagueTeams) {
+    const variants = teamVariants[teamKey] || [teamKey];
+    for (const variant of variants) {
+      if (normTeam === normalize(variant)) return true;
+    }
+  }
+  return false;
+}
+
 function getCurrentVietnamTime() {
   const now = new Date();
   return new Date(now.getTime() + 7 * 3600000);
@@ -112,7 +161,6 @@ function isoToVietnamParts(isoZ) {
   if (!isoZ) return null;
   const dt = new Date(isoZ);
   if (isNaN(dt.getTime())) return null;
-  // Chuyển sang UTC+7
   const vnTime = new Date(dt.getTime() + 7 * 3600000);
   const yyyy = vnTime.getUTCFullYear();
   const mm = String(vnTime.getUTCMonth() + 1).padStart(2, '0');
@@ -120,7 +168,6 @@ function isoToVietnamParts(isoZ) {
   let HH = String(vnTime.getUTCHours()).padStart(2, '0');
   const MM = String(vnTime.getUTCMinutes()).padStart(2, '0');
   const hari = new Intl.DateTimeFormat('id-ID', { timeZone: 'Asia/Ho_Chi_Minh', weekday: 'long' }).format(dt);
-  // Sửa giờ 24 thành 00
   if (HH === '24') HH = '00';
   return { hari, tanggal: `${dd}-${mm}-${yyyy}`, time: `${HH}:${MM}` };
 }
@@ -192,10 +239,7 @@ function parseWTMEvents($, pageNum, sourceDate) {
       "";
 
     const w = isoToVietnamParts(isoZ);
-    if (!w) {
-      // Nếu không parse được thời gian, bỏ qua event
-      return;
-    }
+    if (!w) return;
 
     const channels = [];
     $tr.find("td.channel-details img").each((_, img) => {
@@ -379,7 +423,7 @@ function filterFootballEvent(event) {
   }
   for (const [league, teams] of Object.entries(footballAllowedLeagues)) {
     if (competitionLow.includes(league)) {
-      return teams.has(homeLow) || teams.has(awayLow);
+      if (isTeamInLeague(homeLow, teams) || isTeamInLeague(awayLow, teams)) return true;
     }
   }
   return false;
@@ -412,13 +456,15 @@ async function main() {
 
   console.log(`Total unique events (before filter): ${allEvents.length}`);
 
-  // Debug: in ra các sự kiện có chứa Milan, Torino và tennis
-  console.log("\n--- Debug: events containing 'milan' or 'torino' ---");
+  // Debug: in ra các sự kiện có chứa Milan, Torino, PSG
+  console.log("\n--- Debug: events containing 'milan', 'torino', 'psg' ---");
   allEvents.forEach(e => {
     const homeLow = normalize(e.home);
     const awayLow = normalize(e.away);
     if (homeLow.includes('milan') || awayLow.includes('milan') ||
-        homeLow.includes('torino') || awayLow.includes('torino')) {
+        homeLow.includes('torino') || awayLow.includes('torino') ||
+        homeLow.includes('psg') || awayLow.includes('psg') ||
+        homeLow.includes('paris') || awayLow.includes('paris')) {
       console.log(`${e.home} vs ${e.away} | ${e.competition} | ${e.tanggal} ${e.time}`);
     }
   });
@@ -439,6 +485,10 @@ async function main() {
   const serieAEvents = finalEvents.filter(e => normalize(e.competition).includes("serie a"));
   console.log("\nSerie A matches found:", serieAEvents.length);
   serieAEvents.forEach(e => console.log(`- ${e.home} vs ${e.away} at ${e.tanggal} ${e.time}`));
+
+  const ligue1Events = finalEvents.filter(e => normalize(e.competition).includes("ligue 1"));
+  console.log("\nLigue 1 matches found:", ligue1Events.length);
+  ligue1Events.forEach(e => console.log(`- ${e.home} vs ${e.away} at ${e.tanggal} ${e.time}`));
 
   const tennisEvents = finalEvents.filter(e => isTennis(e.sport, e.competition));
   console.log("\nTennis matches found:", tennisEvents.length);
