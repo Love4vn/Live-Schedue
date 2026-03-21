@@ -30,8 +30,8 @@ jobs:
         run: npm install
 
       - name: Run TheSportsDB scraper
-        env:
-          SPORTSDB_API_KEY: ${{ secrets.SPORTSDB_API_KEY }}
+        #env:
+        #  SPORTSDB_API_KEY: ${{ secrets.SPORTSDB_API_KEY }}
         run: node src/thesportsdb_scr.js
 
       # (Optional) Run other scrapers if you want
