@@ -1,0 +1,47 @@
+name: Update Sports Schedules Site: Thesportsdb
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # Runs daily at 06:00 UTC
+  workflow_dispatch:      # manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  update-schedules:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Mark directory as safe
+        run: git config --global --add safe.directory /__w/Live-Schedue/Live-Schedue
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run TheSportsDB scraper
+        env:
+          SPORTSDB_API_KEY: ${{ secrets.SPORTSDB_API_KEY }}
+        run: node scr/thesportsdb_scr.js
+
+      # (Optional) Run other scrapers if you want
+      # - name: Run other scrapers
+      #   run: npm start && npm run ausport
+
+      - name: Commit and push
+        run: |
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add thesportsdb_schedue.json
+          git commit -m "Update thesportsdb_schedue.json [skip ci]" || echo "No changes to commit"
+          git push
