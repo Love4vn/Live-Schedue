@@ -1,8 +1,9 @@
 # File: livesportsontv.py
-# Fixed: correct league URLs, added debug for date filtering, keep Vietnam time
+# Fixed: better logging, tennis support, time parsing with AM/PM, Vietnam time
 
 import asyncio
 import json
+import re
 from datetime import datetime
 import zoneinfo
 from playwright.async_api import async_playwright
@@ -18,7 +19,7 @@ MONTH_MAP = {
 }
 
 # ------------------------------------------------------------
-# Helper for friendly matches (unchanged)
+# Helper for friendly matches
 # ------------------------------------------------------------
 EUROPEAN_COUNTRIES = {
     "albania", "andorra", "armenia", "austria", "azerbaijan", "belarus", "belgium",
@@ -51,6 +52,33 @@ def include_friendly_match(home: str, away: str) -> bool:
     return (is_european_team(home) or is_european_team(away) or
             is_americas_team(home) or is_americas_team(away) or
             is_asia_team(home) or is_asia_team(away))
+
+def parse_time_with_ampm(time_str: str) -> tuple[int, int]:
+    """Convert time string like '10:00 PM' to 24h hour and minute."""
+    time_str = time_str.strip().upper()
+    # Handle possible absence of space, e.g., "10:00PM"
+    if ' ' not in time_str and ('AM' in time_str or 'PM' in time_str):
+        if 'AM' in time_str:
+            time_str = time_str.replace('AM', ' AM')
+        elif 'PM' in time_str:
+            time_str = time_str.replace('PM', ' PM')
+    parts = time_str.split()
+    if len(parts) == 2:
+        time_part, meridiem = parts
+    else:
+        time_part = parts[0]
+        meridiem = None
+    hour_min = time_part.split(':')
+    if len(hour_min) < 2:
+        raise ValueError(f"Invalid time format: {time_str}")
+    hour = int(hour_min[0])
+    minute = int(hour_min[1])
+    if meridiem:
+        if meridiem == 'PM' and hour != 12:
+            hour += 12
+        elif meridiem == 'AM' and hour == 12:
+            hour = 0
+    return hour, minute
 
 # ------------------------------------------------------------
 # Main scraping
@@ -95,7 +123,6 @@ async def scrape_league_schedules():
             "url": "https://www.livesportsontv.com/league/uefa-conference-league",
             "teams": None
         },
-        # International tournaments
         "UEFA European Championship": {
             "url": "https://www.livesportsontv.com/league/uefa-european-championship",
             "teams": None
@@ -112,27 +139,33 @@ async def scrape_league_schedules():
         # Tennis
         "Tennis (ATP)": {
             "url": "https://www.livesportsontv.com/league/atp",
-            "teams": None
+            "teams": None,
+            "is_tennis": True
         },
         "Tennis (WTA)": {
             "url": "https://www.livesportsontv.com/league/wta",
-            "teams": None
+            "teams": None,
+            "is_tennis": True
         },
         "Australian Open": {
             "url": "https://www.livesportsontv.com/league/australian-open",
-            "teams": None
+            "teams": None,
+            "is_tennis": True
         },
         "French Open": {
             "url": "https://www.livesportsontv.com/league/french-open",
-            "teams": None
+            "teams": None,
+            "is_tennis": True
         },
         "Wimbledon": {
             "url": "https://www.livesportsontv.com/league/wimbledon",
-            "teams": None
+            "teams": None,
+            "is_tennis": True
         },
         "US Open": {
             "url": "https://www.livesportsontv.com/league/us-open",
-            "teams": None
+            "teams": None,
+            "is_tennis": True
         }
     }
 
@@ -153,13 +186,13 @@ async def scrape_league_schedules():
             url = config["url"]
             team_filter = config.get("teams")
             custom_filter = config.get("custom_filter")
+            is_tennis = config.get("is_tennis", False)
             print(f"\n--- {league_name}: {url} ---")
 
-            # Retry once
             try:
                 await page.goto(url, wait_until="domcontentloaded", timeout=120000)
             except Exception as e:
-                print(f"   ❌ Failed: {e}")
+                print(f"   ❌ Failed to load: {e}")
                 continue
 
             # Scroll
@@ -186,42 +219,55 @@ async def scrape_league_schedules():
                     game_day = day_tag.get_text(strip=True)
                     game_month = month_tag.get_text(strip=True).lower()
 
-                    # DEBUG: print first few dates to see actual values
-                    if added == 0 and league_name == "Premier League":
-                        print(f"   Sample date: day='{game_day}', month='{game_month}'")
-                        print(f"   Target: day='{target_day_uk}', month='{target_month_uk}'")
-
                     if game_day != target_day_uk or game_month != target_month_uk:
                         continue
 
-                    # Time parsing
+                    # Time parsing (handle AM/PM)
                     time_tag = row.find('time')
                     if not time_tag:
                         continue
                     time_str = time_tag.get_text(strip=True)
-                    if ':' not in time_str:
+                    try:
+                        hour, minute = parse_time_with_ampm(time_str)
+                    except Exception as e:
+                        print(f"   Time parse error: {e} for '{time_str}'")
                         continue
-                    hh, mm = map(int, time_str.split(':')[:2])
 
                     # Build UK datetime
                     month_num = MONTH_MAP.get(game_month, 1)
-                    uk_dt = datetime(current_year, month_num, int(game_day), hh, mm)
+                    uk_dt = datetime(current_year, month_num, int(game_day), hour, minute)
                     uk_dt = uk_dt.replace(tzinfo=UK_TZ)
                     vn_dt = uk_dt.astimezone(VIETNAM_TZ)
 
-                    # Teams
-                    home_elem = row.find('div', class_=lambda c: c and 'event__participant--home' in c)
-                    away_elem = row.find('div', class_=lambda c: c and 'event__participant--away' in c)
-                    home = home_elem.get_text(strip=True) if home_elem else "Unknown"
-                    away = away_elem.get_text(strip=True) if away_elem else "Unknown"
-                    matchup = f"{away} @ {home}"
+                    # Get matchup text
+                    if is_tennis:
+                        # Tennis: the event title is usually inside an <a> or <span>
+                        title_elem = row.find('a', class_='event__title')
+                        if not title_elem:
+                            title_elem = row.find('div', class_='event__title')
+                        matchup = title_elem.get_text(strip=True) if title_elem else "Tennis Match"
+                    else:
+                        home_elem = row.find('div', class_=lambda c: c and 'event__participant--home' in c)
+                        away_elem = row.find('div', class_=lambda c: c and 'event__participant--away' in c)
+                        home = home_elem.get_text(strip=True) if home_elem else "Unknown"
+                        away = away_elem.get_text(strip=True) if away_elem else "Unknown"
+                        matchup = f"{away} @ {home}"
+                        if home == "Unknown" and away == "Unknown":
+                            # Fallback to title if available
+                            title_elem = row.find('a', class_='event__title')
+                            if title_elem:
+                                matchup = title_elem.get_text(strip=True)
 
-                    # Filters
+                    # Apply filters
                     if team_filter is not None:
-                        if not any(t.lower() in home.lower() or t.lower() in away.lower() for t in team_filter):
+                        if not any(t.lower() in matchup.lower() for t in team_filter):
                             continue
                     if custom_filter is not None:
-                        if not custom_filter(home, away):
+                        # For friendlies, we need home/away names; if not available, skip
+                        if home_elem and away_elem:
+                            if not custom_filter(home, away):
+                                continue
+                        else:
                             continue
 
                     # Channels
@@ -242,7 +288,7 @@ async def scrape_league_schedules():
                     added += 1
 
                 except Exception as e:
-                    # Silent skip on individual row errors
+                    print(f"   Error processing row: {e}")
                     continue
 
             print(f"   → Added {added} matches")
