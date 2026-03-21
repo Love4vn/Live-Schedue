@@ -4,6 +4,7 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const fs = require("fs");
+const crypto = require("crypto");
 const { wrapper } = require("axios-cookiejar-support");
 const { CookieJar } = require("tough-cookie");
 
@@ -68,8 +69,10 @@ const allowedFriendlyCountries = new Set([
   "argentina", "brazil", "japan", "south korea", "korea republic"
 ]);
 
+// Thêm "miami open" và mở rộng từ khóa tennis
 const tennisKeywords = new Set([
-  "atp", "wta", "grand slam", "us open", "wimbledon", "roland garros", "australian open"
+  "atp", "wta", "grand slam", "us open", "wimbledon", "roland garros", "australian open",
+  "miami open", "miami", "open"
 ]);
 
 // ========== HÀM TIỆN ÍCH ==========
@@ -79,7 +82,6 @@ function normalize(str) {
 
 function getCurrentVietnamTime() {
   const now = new Date();
-  // Sử dụng Intl để lấy ngày tháng theo múi giờ Việt Nam
   const formatter = new Intl.DateTimeFormat("en-CA", {
     timeZone: "Asia/Ho_Chi_Minh",
     year: "numeric",
@@ -129,7 +131,6 @@ function isoToVietnamParts(isoZ) {
   const dt = new Date(isoZ);
   if (isNaN(dt.getTime())) return null;
 
-  // Format trực tiếp với múi giờ Việt Nam
   const options = { timeZone: "Asia/Ho_Chi_Minh", hour12: false };
   const yyyy = new Intl.DateTimeFormat("en", { ...options, year: "numeric" }).format(dt);
   const mm = new Intl.DateTimeFormat("en", { ...options, month: "2-digit" }).format(dt);
@@ -177,7 +178,6 @@ function parseWTMEvents($, pageNum, sourceDate) {
     const home = parts[0]?.trim() || "";
     const away = parts[1]?.trim() || "";
 
-    // Lấy sport từ alt hoặc title của img
     const $sportImg = $fx.find(".fixture-sport img");
     let sport = $sportImg.attr("alt")?.trim() || $sportImg.attr("title")?.trim() || "";
     if (!sport) {
@@ -237,10 +237,108 @@ function dedupRows(rows) {
   return Array.from(map.values());
 }
 
-function fingerprintOfFirstRow(rows) {
-  if (!rows || rows.length === 0) return "";
-  const r = rows[0];
-  return (r.event_url && r.event_url.trim()) || `${r.tanggal}|${r.time}|${r.home}|${r.away}`;
+function getPageHash(html) {
+  // Loại bỏ các phần tử có thể thay đổi (ví dụ timestamp, script) để hash ổn định
+  const $ = cheerio.load(html);
+  $("script, style, meta[content*='timestamp']").remove();
+  const body = $("body").text();
+  return crypto.createHash("md5").update(body).digest("hex");
+}
+
+// ========== SCRAPE MỘT NGÀY (không dùng fingerprint) ==========
+async function scrapeOneDate(dateYYYYMMDD, opts = {}) {
+  const urlBase = buildDailyUrl(dateYYYYMMDD);
+  const maxPagingIndex = Number.isFinite(opts.maxPagingIndex) ? opts.maxPagingIndex : 60;
+  const delayMs = Number.isFinite(opts.delayMs) ? opts.delayMs : 1200;
+
+  console.log(`\n== DATE ${dateYYYYMMDD} ==`);
+  console.log(`GET Page 1: ${urlBase}`);
+
+  let currentHtml = "";
+  const res1 = await client.get(urlBase);
+  currentHtml = res1.data;
+
+  const $1 = cheerio.load(currentHtml);
+  const p1 = parseWTMEvents($1, 1, dateYYYYMMDD);
+
+  let allData = [];
+  allData.push(...p1);
+  allData = dedupRows(allData);
+
+  console.log(`Page 1 rows: ${p1.length} | unique total: ${allData.length}`);
+
+  if (p1.length === 0) {
+    console.log(`No rows on Page 1. Stop date ${dateYYYYMMDD}.`);
+    return allData;
+  }
+
+  let lastHash = getPageHash(currentHtml);
+  let pageNum = 2;
+
+  for (let idx = 0; idx <= maxPagingIndex; idx++) {
+    const $prev = cheerio.load(currentHtml);
+    const hidden = extractHiddenFields($prev);
+
+    const payload = new URLSearchParams({
+      ...hidden,
+      __EVENTTARGET: `pagetotalhp${idx}`,
+      __EVENTARGUMENT: "",
+    });
+
+    console.log(`POST Page ${pageNum} (target=pagetotalhp${idx})`);
+
+    let resNext;
+    try {
+      resNext = await client.post(
+        "https://www.wheresthematch.com/live-sport-on-tv/?paging=true",
+        payload.toString(),
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            Referer: urlBase,
+          },
+        }
+      );
+    } catch (e) {
+      console.log(`POST failed on idx ${idx}: ${e.message}`);
+      break;
+    }
+
+    currentHtml = resNext.data;
+    const hash = getPageHash(currentHtml);
+
+    if (hash === lastHash) {
+      console.log(`Page ${pageNum}: duplicate page (same hash) => stop.`);
+      break;
+    }
+    lastHash = hash;
+
+    const $n = cheerio.load(currentHtml);
+    const pData = parseWTMEvents($n, pageNum, dateYYYYMMDD);
+
+    if (pData.length === 0) {
+      console.log(`Page ${pageNum}: 0 rows => stop paging.`);
+      break;
+    }
+
+    const before = allData.length;
+    allData.push(...pData);
+    allData = dedupRows(allData);
+    const after = allData.length;
+
+    console.log(`Page ${pageNum}: rows ${pData.length} | added unique: ${after - before}`);
+
+    if (after === before) {
+      console.log(`No unique added => stop paging.`);
+      break;
+    }
+
+    pageNum++;
+    await new Promise((r) => setTimeout(r, delayMs));
+  }
+
+  console.log(`DATE ${dateYYYYMMDD} DONE. unique rows: ${allData.length}`);
+  return allData;
 }
 
 // ========== BỘ LỌC ==========
@@ -274,27 +372,22 @@ function filterFootballEvent(event) {
   const homeLow = normalize(event.home);
   const awayLow = normalize(event.away);
 
-  // UEFA
   if (uefaLegues.has(competitionLow)) return true;
 
-  // World Cup
   for (const kw of worldCupKeywords) {
     if (competitionLow.includes(kw)) return true;
   }
 
-  // Euro
   for (const kw of euroKeywords) {
     if (competitionLow.includes(kw)) return true;
   }
 
-  // Friendly
   for (const kw of friendlyKeywords) {
     if (competitionLow.includes(kw)) {
       return allowedFriendlyCountries.has(homeLow) && allowedFriendlyCountries.has(awayLow);
     }
   }
 
-  // Các giải quốc nội (kiểm tra chứa từ khóa)
   for (const [league, teams] of Object.entries(footballAllowedLeagues)) {
     if (competitionLow.includes(league)) {
       return teams.has(homeLow) || teams.has(awayLow);
@@ -310,101 +403,6 @@ function filterTennisEvent(event) {
 
 function filterEventsBySport(events) {
   return events.filter(event => filterFootballEvent(event) || filterTennisEvent(event));
-}
-
-// ========== SCRAPE MỘT NGÀY ==========
-async function scrapeOneDate(dateYYYYMMDD, opts = {}) {
-  const urlBase = buildDailyUrl(dateYYYYMMDD);
-  const maxPagingIndex = Number.isFinite(opts.maxPagingIndex) ? opts.maxPagingIndex : 60;
-  const delayMs = Number.isFinite(opts.delayMs) ? opts.delayMs : 1200;
-
-  console.log(`\n== DATE ${dateYYYYMMDD} ==`);
-  console.log(`GET Page 1: ${urlBase}`);
-
-  let currentHtml = "";
-  const res1 = await client.get(urlBase);
-  currentHtml = res1.data;
-
-  const $1 = cheerio.load(currentHtml);
-  const p1 = parseWTMEvents($1, 1, dateYYYYMMDD);
-
-  let allData = [];
-  allData.push(...p1);
-  allData = dedupRows(allData);
-
-  console.log(`Page 1 rows: ${p1.length} | unique total: ${allData.length}`);
-
-  if (p1.length === 0) {
-    console.log(`No rows on Page 1. Stop date ${dateYYYYMMDD}.`);
-    return allData;
-  }
-
-  let lastFp = fingerprintOfFirstRow(p1);
-  let pageNum = 2;
-
-  for (let idx = 0; idx <= maxPagingIndex; idx++) {
-    const $prev = cheerio.load(currentHtml);
-    const hidden = extractHiddenFields($prev);
-
-    const payload = new URLSearchParams({
-      ...hidden,
-      __EVENTTARGET: `pagetotalhp${idx}`,
-      __EVENTARGUMENT: "",
-    });
-
-    console.log(`POST Page ${pageNum} (target=pagetotalhp${idx})`);
-
-    let resNext;
-    try {
-      resNext = await client.post(
-        "https://www.wheresthematch.com/live-sport-on-tv/?paging=true",
-        payload.toString(),
-        {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            Referer: urlBase,
-          },
-        }
-      );
-    } catch (e) {
-      console.log(`POST failed on idx ${idx}: ${e.message}`);
-      break;
-    }
-
-    currentHtml = resNext.data;
-    const $n = cheerio.load(currentHtml);
-    const pData = parseWTMEvents($n, pageNum, dateYYYYMMDD);
-
-    if (pData.length === 0) {
-      console.log(`Page ${pageNum}: 0 rows => stop paging.`);
-      break;
-    }
-
-    const fp = fingerprintOfFirstRow(pData);
-    if (fp && fp === lastFp) {
-      console.log(`Page ${pageNum}: duplicate page returned (same fingerprint) => stop.`);
-      break;
-    }
-    lastFp = fp || lastFp;
-
-    const before = allData.length;
-    allData.push(...pData);
-    allData = dedupRows(allData);
-    const after = allData.length;
-
-    console.log(`Page ${pageNum}: rows ${pData.length} | added unique: ${after - before}`);
-
-    if (after === before) {
-      console.log(`No unique added => stop paging.`);
-      break;
-    }
-
-    pageNum++;
-    await new Promise((r) => setTimeout(r, delayMs));
-  }
-
-  console.log(`DATE ${dateYYYYMMDD} DONE. unique rows: ${allData.length}`);
-  return allData;
 }
 
 // ========== MAIN ==========
@@ -429,13 +427,24 @@ async function main() {
   let filteredByTime = filterEventsByTime(allEvents, nowVN, endVN);
   console.log(`After time filter (24h): ${filteredByTime.length}`);
 
+  // In ra tất cả tennis trước khi lọc để debug
+  console.log("\n--- Tennis events before sport filter ---");
+  filteredByTime.forEach(e => {
+    if (isTennis(e.sport, e.competition)) {
+      console.log(`- ${e.title} | ${e.competition} | ${e.tanggal} ${e.time}`);
+    }
+  });
+
   let finalEvents = filterEventsBySport(filteredByTime);
   console.log(`After sport filter: ${finalEvents.length}`);
 
-  // In ra các trận Serie A để debug (nếu có)
   const serieAEvents = finalEvents.filter(e => normalize(e.competition).includes("serie a"));
-  console.log("Serie A matches found:", serieAEvents.length);
+  console.log("\nSerie A matches found:", serieAEvents.length);
   serieAEvents.forEach(e => console.log(`- ${e.home} vs ${e.away} at ${e.tanggal} ${e.time}`));
+
+  const tennisEvents = finalEvents.filter(e => isTennis(e.sport, e.competition));
+  console.log("\nTennis matches found:", tennisEvents.length);
+  tennisEvents.forEach(e => console.log(`- ${e.title} | ${e.competition} | ${e.tanggal} ${e.time}`));
 
   const output = finalEvents.map(({ source_date, page, ...rest }) => rest);
   fs.writeFileSync("results.json", JSON.stringify(output, null, 2));
