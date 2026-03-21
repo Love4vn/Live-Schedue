@@ -1,0 +1,20 @@
+{
+  "name": "ausport-scraper",
+  "version": "2.0.0",
+  "description": "Scraper for ausportguide.com with filtering for football and tennis, 24-hour schedule in Vietnam time",
+  "main": "ausport_scraper.js",
+  "scripts": {
+    "start": "node ausport_scraper.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "cheerio": "^1.0.0-rc.12",
+    "dayjs": "^1.11.10",
+    "p-limit": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "author": "",
+  "license": "MIT"
+}
