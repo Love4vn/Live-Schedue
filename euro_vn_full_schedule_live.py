@@ -61,12 +61,12 @@ LEAGUE_GROUP_NAME = {
     "UEFA Europa League": "Live UEFA Europa League",
     "UEFA Europa Conference League": "Live UEFA Conference League",
     "Tennis": "Live Tennis",
-    "UEFA Euro": "Live Euro",                     # Giải vô địch châu Âu (đội tuyển)
+    "UEFA Euro": "Live Euro",               # Giải vô địch châu Âu (đội tuyển)
     "FIFA World Cup": "Live Fifa World Cup",
     "International Friendly": "Live International Friendly"
 }
 
-# Danh sách các quốc gia châu Âu (vẫn giữ để nhận diện giải quốc gia nếu cần, nhưng sẽ không dùng để lấy)
+# Danh sách các quốc gia châu Âu (dùng cho giải vô địch châu Âu - đội tuyển)
 EUROPEAN_COUNTRIES = {
     "albania", "andorra", "armenia", "austria", "azerbaijan", "belarus", "belgium",
     "bosnia and herzegovina", "bulgaria", "croatia", "cyprus", "czech republic", "denmark",
@@ -177,39 +177,38 @@ async def get_tv_data(session, event_id):
     except:
         return []
 
-def is_european_league(tournament_name: str) -> bool:
-    """Kiểm tra giải đấu có phải là UEFA Euro (giải vô địch châu Âu đội tuyển)"""
-    # Chỉ nhận diện nếu tên giải có chứa "euro" và không chứa "uefa euro" nếu có nhưng vẫn OK
-    # Để tránh nhầm với các giải khác có chữ euro (ví dụ Euro U21), có thể thêm điều kiện
-    # Ở đây ta đơn giản hóa: nếu có "euro" và không có "u-", "u21", "u19" thì coi là Euro chính
+def is_euro_qualifier_or_tournament(tournament_name: str) -> bool:
+    """Kiểm tra giải đấu có phải là UEFA Euro (vòng loại hoặc vòng chung kết)"""
     name_lower = tournament_name.lower()
-    if "euro" in name_lower:
-        # Loại trừ các giải trẻ
-        if any(x in name_lower for x in ["u-", "u21", "u19", "youth"]):
-            return False
-        # Có thể kiểm tra thêm để chắc chắn là đội tuyển quốc gia (không có tên câu lạc bộ)
+    # Các cụm từ chính xác
+    if "uefa euro" in name_lower or "european championship" in name_lower or "euro 202" in name_lower:
+        return True
+    # Có thể có các cụm "UEFA Euro Qualifiers", "Euro Qualifiers", v.v.
+    if "euro" in name_lower and ("qualif" in name_lower or "euro" in name_lower) and not any(x in name_lower for x in ["champions league", "europa league", "conference league"]):
         return True
     return False
 
-def is_friendly_match(home_team: str, away_team: str) -> bool:
-    """Kiểm tra trận giao hữu có được phép hay không (dựa trên đội tuyển)"""
-    home_norm = normalize(home_team)
-    away_norm = normalize(away_team)
-    home_country = None
-    away_country = None
-    for country in pycountry.countries:
-        if country.name.lower() == home_norm or (hasattr(country, 'common_name') and country.common_name.lower() == home_norm):
-            home_country = country
-        if country.name.lower() == away_norm or (hasattr(country, 'common_name') and country.common_name.lower() == away_norm):
-            away_country = country
-    if home_country and away_country:
-        home_in_europe = home_country.name.lower() in EUROPEAN_COUNTRIES
-        away_in_europe = away_country.name.lower() in EUROPEAN_COUNTRIES
-        if home_in_europe or away_in_europe:
-            return True
-        if home_country.name.lower() in ALLOWED_NON_EURO_TEAMS or away_country.name.lower() in ALLOWED_NON_EURO_TEAMS:
-            return True
+def is_uefa_champions_league(tournament_name: str) -> bool:
+    """Chỉ nhận đúng UEFA Champions League, không nhầm với CAF Champions League, USL Championship, v.v."""
+    name_lower = tournament_name.lower()
+    # Chỉ nhận nếu có "uefa champions league" hoặc "uefa champions" chính xác
+    if "uefa champions league" in name_lower:
+        return True
+    # Tránh nhầm với CAF Champions League
+    if "caf champions league" in name_lower:
         return False
+    # Tránh nhầm với USL Championship, Danish Superliga Championship round, v.v.
+    if "championship" in name_lower and "uefa" not in name_lower:
+        return False
+    # Nếu chỉ có "champions league" nhưng không có "uefa", có thể là CAF hoặc khác
+    if "champions league" in name_lower and "uefa" not in name_lower:
+        return False
+    # Trường hợp còn lại
+    return "champions league" in name_lower
+
+def is_european_national_league(tournament_name: str) -> bool:
+    """Kiểm tra giải vô địch quốc gia châu Âu (ngoài top 5) - hiện tại không dùng, giữ để tham khảo"""
+    # Bỏ qua vì theo yêu cầu chỉ lấy UEFA Euro
     return False
 
 async def fetch_sofascore_event(session, event_id, sport, now_ts, max_ts):
@@ -244,7 +243,7 @@ async def fetch_sofascore_event(session, event_id, sport, now_ts, max_ts):
             home_team = ev.get('homeTeam', {}).get('name', '')
             away_team = ev.get('awayTeam', {}).get('name', '')
 
-            # Xác định loại giải
+            # Xác định loại giải theo thứ tự ưu tiên
             if "premier league" in league_lower:
                 league = "Premier League"
                 allowed = ALLOWED_TEAMS_PER_LEAGUE[league]
@@ -270,11 +269,11 @@ async def fetch_sofascore_event(session, event_id, sport, now_ts, max_ts):
                 allowed = ALLOWED_TEAMS_PER_LEAGUE[league]
                 if allowed and not (any(t in home_team.lower() for t in allowed) or any(t in away_team.lower() for t in allowed)):
                     return None
-            elif "champions" in league_lower:
+            elif is_uefa_champions_league(league_raw):
                 league = "UEFA Champions League"
             elif "europa league" in league_lower:
                 league = "UEFA Europa League"
-            elif "conference" in league_lower:
+            elif "conference league" in league_lower:
                 league = "UEFA Europa Conference League"
             elif "world cup" in league_lower or "fifa world cup" in league_lower:
                 league = "FIFA World Cup"
@@ -282,8 +281,9 @@ async def fetch_sofascore_event(session, event_id, sport, now_ts, max_ts):
                 league = "International Friendly"
                 if not is_friendly_match(home_team, away_team):
                     return None
-            elif is_european_league(league_raw):
+            elif is_euro_qualifier_or_tournament(league_raw):
                 league = "UEFA Euro"
+                # Không lọc đội
             else:
                 return None  # Không phải giải quan tâm
 
@@ -546,18 +546,20 @@ async def main():
     valid_ch = [ch for ch in unique_ch if is_healthy(ch['url'])]
 
     live_events = []
-    seen_urls = set()
     for g in all_games:
         try:
             if datetime.fromtimestamp(g['kick_utc']).astimezone(TIMEZONE) <= vn_now: continue
+            # Dùng set để tránh trùng URL trong cùng một trận
+            used_urls_in_match = set()
             # Match theo tên kênh
             for tv in g.get("tv_channels", []):
                 for ch_name in tv.get("channels", []):
                     matching = [ch for ch in valid_ch if is_channel_match(ch_name, ch['name'])]
                     for ch in matching:
                         url = ch['url']
-                        if url in seen_urls: continue
-                        seen_urls.add(url)
+                        if url in used_urls_in_match:
+                            continue
+                        used_urls_in_match.add(url)
                         display_name = f"{g['time']} | {g['match']} ({ch_name})"
                         live_events.append({
                             "datetime": datetime.fromtimestamp(g['kick_utc']).astimezone(TIMEZONE),
@@ -571,8 +573,9 @@ async def main():
                 for ch in valid_ch:
                     if is_team_match(match_norm, ch['name']):
                         url = ch['url']
-                        if url in seen_urls: continue
-                        seen_urls.add(url)
+                        if url in used_urls_in_match:
+                            continue
+                        used_urls_in_match.add(url)
                         display_name = f"{g['time']} | {g['match']} (M3U: {ch['name']})"
                         live_events.append({
                             "datetime": datetime.fromtimestamp(g['kick_utc']).astimezone(TIMEZONE),
