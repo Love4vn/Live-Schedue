@@ -18,8 +18,8 @@ jobs:
         with:
           persist-credentials: true
 
-      #- name: Mark directory as safe
-      #  run: git config --global --add safe.directory /__w/Live-Schedue/Live-Schedue
+      - name: Mark directory as safe
+        run: git config --global --add safe.directory /__w/Live-Schedue/Live-Schedue
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
