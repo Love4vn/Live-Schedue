@@ -1,7 +1,6 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const fs = require('fs');
-const pLimit = require('p-limit');
 const dayjs = require('dayjs');
 const utc = require('dayjs/plugin/utc');
 const timezone = require('dayjs/plugin/timezone');
@@ -15,13 +14,10 @@ dayjs.extend(customParseFormat);
 const CONFIG = {
   BASE_URL: 'https://ausportguide.com',
   DAYS: ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'],
-  CONCURRENCY: 3,
   RETRY_COUNT: 2,
   RETRY_DELAY_MS: 2000,
   TIMEOUT_MS: 30000,
   USER_AGENT: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0 Safari/537.36',
-  AEDT_OFFSET: 11,        // UTC+11
-  VIETNAM_OFFSET: 7,      // UTC+7
   OUTPUT_FILE: './ausport_schedule.json',
 };
 
@@ -142,7 +138,6 @@ function isTennisRelevant(event) {
   const sport = (event.sport || '').toLowerCase();
   const competition = (event.competition || '').toLowerCase();
   if (sport !== 'tennis') return false;
-  // Chỉ giữ ATP, WTA, Grand Slam
   const allowed = ['atp', 'wta', 'grand slam'];
   return allowed.some(key => competition.includes(key));
 }
@@ -229,7 +224,7 @@ function findSportForEvent($, eventDiv) {
   return '';
 }
 
-// --- Xử lý Hot Events (giống như cũ nhưng có điều chỉnh) ---
+// --- Xử lý Hot Events ---
 function extractTimeFromHotText(text) {
   const m = text.match(/\bfrom\s+(\d{1,2}:\d{2}(?:AM|PM))\b/i);
   return m ? m[1].toUpperCase() : '';
@@ -433,23 +428,16 @@ async function sendToGoogleSheets(rows) {
   }
 }
 
-// --- Hàm chính ---
+// --- Hàm chính (chạy tuần tự) ---
 (async () => {
-  const limit = pLimit(CONFIG.CONCURRENCY);
-  const promises = CONFIG.DAYS.map(day => limit(() => scrapeDay(day)));
-
   let allRows = [];
-  try {
-    const results = await Promise.allSettled(promises);
-    for (const result of results) {
-      if (result.status === 'fulfilled') {
-        allRows = allRows.concat(result.value);
-      } else {
-        console.error('Day scrape failed:', result.reason);
-      }
+  for (const day of CONFIG.DAYS) {
+    try {
+      const rows = await scrapeDay(day);
+      allRows = allRows.concat(rows);
+    } catch (error) {
+      console.error(`Error scraping ${day}:`, error.message);
     }
-  } catch (error) {
-    console.error('Unexpected error during scraping:', error);
   }
 
   // Lọc theo môn thể thao và giải đấu
