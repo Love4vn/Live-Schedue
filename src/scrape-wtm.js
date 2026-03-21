@@ -1,17 +1,13 @@
 // src/scrape-wtm.js
-// WTM SCRAPER - Lọc theo 24h tới, chỉ lấy bóng đá và tennis theo tiêu chí
-// Output: results.json
+// WTM SCRAPER - Lọc 24h tới, giờ Việt Nam, chỉ bóng đá/tennis, xuất JSON
 
 const axios = require("axios");
 const cheerio = require("cheerio");
 const fs = require("fs");
-const path = require("path");
 const { wrapper } = require("axios-cookiejar-support");
 const { CookieJar } = require("tough-cookie");
 
-/* =========================
-   AXIOS CLIENT + COOKIE JAR
-   ========================= */
+// ========== AXIOS CLIENT ==========
 const jar = new CookieJar();
 const client = wrapper(
   axios.create({
@@ -19,18 +15,13 @@ const client = wrapper(
     withCredentials: true,
     timeout: 60000,
     headers: {
-      "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
-      Accept:
-        "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
-      "Accept-Language": "en-US,en;q=0.9",
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+      Accept: "text/html,application/xhtml+xml,application/xml;q=0.9",
     },
   })
 );
 
-/* =========================
-   DANH SÁCH ĐỘI & GIẢI ĐẤU
-   ========================= */
+// ========== DANH SÁCH ĐỘI & GIẢI ĐẤU ==========
 const footballAllowedLeagues = {
   "premier league": new Set([
     "arsenal", "aston villa", "bournemouth", "brentford", "brighton", "chelsea",
@@ -56,19 +47,10 @@ const uefaLegues = new Set([
   "uefa champions league", "uefa europa league", "uefa europa conference league"
 ]);
 
-const worldCupKeywords = new Set([
-  "world cup", "fifa world cup"
-]);
+const worldCupKeywords = new Set(["world cup", "fifa world cup"]);
+const euroKeywords = new Set(["european championship", "uefa euro", "euro"]);
+const friendlyKeywords = new Set(["friendly", "international friendlies"]);
 
-const euroKeywords = new Set([
-  "european championship", "uefa euro", "euro"
-]);
-
-const friendlyKeywords = new Set([
-  "friendly", "international friendlies"
-]);
-
-// Danh sách quốc gia châu Âu (viết thường, không dấu)
 const europeanCountries = new Set([
   "albania", "andorra", "armenia", "austria", "azerbaijan", "belarus", "belgium",
   "bosnia and herzegovina", "bulgaria", "croatia", "cyprus", "czech republic",
@@ -86,24 +68,26 @@ const allowedFriendlyCountries = new Set([
   "argentina", "brazil", "japan", "south korea", "korea republic"
 ]);
 
-// Từ khóa tennis
 const tennisKeywords = new Set([
   "atp", "wta", "grand slam", "us open", "wimbledon", "roland garros", "australian open"
 ]);
 
-/* =========================
-   HÀM TIỆN ÍCH
-   ========================= */
-function getCurrentWITA() {
+// ========== HÀM TIỆN ÍCH ==========
+function normalize(str) {
+  return (str || "").trim().toLowerCase().replace(/\s+/g, " ");
+}
+
+function getCurrentVietnamTime() {
   const now = new Date();
+  // Convert to UTC+7 (Vietnam)
   const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-  return new Date(utc + (8 * 3600000));
+  return new Date(utc + (7 * 3600000));
 }
 
 function getDatesToScrape() {
-  const nowWITA = getCurrentWITA();
-  const today = new Date(nowWITA);
-  const tomorrow = new Date(nowWITA);
+  const nowVN = getCurrentVietnamTime();
+  const today = new Date(nowVN);
+  const tomorrow = new Date(nowVN);
   tomorrow.setDate(today.getDate() + 1);
 
   const formatDate = (date) => {
@@ -120,31 +104,25 @@ function getDatesToScrape() {
   return dates;
 }
 
-function parseEventDateTimeWITA(tanggal, time) {
-  const [dd, mm, yyyy] = tanggal.split('-');
-  const [HH, MM] = time.split(':');
-  return new Date(`${yyyy}-${mm}-${dd}T${HH}:${MM}:00+08:00`);
-}
-
-function safeCsv(v) {
-  return (v ?? "").toString().replace(/"/g, '""');
-}
-
 function buildDailyUrl(dateYYYYMMDD) {
   return `https://www.wheresthematch.com/live-sport-on-tv/?showdatestart=${dateYYYYMMDD}`;
 }
 
-function isoToWitaPartsISO(isoZ) {
+function isoToVietnamParts(isoZ) {
+  if (!isoZ) return null;
   const dt = new Date(isoZ);
   if (isNaN(dt.getTime())) return null;
 
-  const options = { timeZone: "Asia/Makassar", hour12: false };
-  const yyyy = new Intl.DateTimeFormat("en", { ...options, year: "numeric" }).format(dt);
-  const mm = new Intl.DateTimeFormat("en", { ...options, month: "2-digit" }).format(dt);
-  const dd = new Intl.DateTimeFormat("en", { ...options, day: "2-digit" }).format(dt);
-  const HH = new Intl.DateTimeFormat("en", { ...options, hour: "2-digit" }).format(dt);
-  const MM = new Intl.DateTimeFormat("en", { ...options, minute: "2-digit" }).format(dt);
-  const hari = new Intl.DateTimeFormat("id-ID", { ...options, weekday: "long" }).format(dt);
+  // Convert to UTC+7 (Vietnam)
+  const vietnamTime = new Date(dt.getTime() + (7 * 3600000));
+  
+  const options = { timeZone: "Asia/Ho_Chi_Minh", hour12: false };
+  const yyyy = new Intl.DateTimeFormat("en", { ...options, year: "numeric" }).format(vietnamTime);
+  const mm = new Intl.DateTimeFormat("en", { ...options, month: "2-digit" }).format(vietnamTime);
+  const dd = new Intl.DateTimeFormat("en", { ...options, day: "2-digit" }).format(vietnamTime);
+  const HH = new Intl.DateTimeFormat("en", { ...options, hour: "2-digit" }).format(vietnamTime);
+  const MM = new Intl.DateTimeFormat("en", { ...options, minute: "2-digit" }).format(vietnamTime);
+  const hari = new Intl.DateTimeFormat("id-ID", { ...options, weekday: "long" }).format(vietnamTime);
 
   return { hari, tanggal: `${dd}-${mm}-${yyyy}`, time: `${HH}:${MM}` };
 }
@@ -185,7 +163,14 @@ function parseWTMEvents($, pageNum, sourceDate) {
     const home = parts[0]?.trim() || "";
     const away = parts[1]?.trim() || "";
 
-    const sport = $fx.find(".fixture-sport img").attr("alt")?.trim() || "";
+    // Lấy sport từ alt hoặc title của img
+    const $sportImg = $fx.find(".fixture-sport img");
+    let sport = $sportImg.attr("alt")?.trim() || $sportImg.attr("title")?.trim() || "";
+    if (!sport) {
+      // fallback: lấy text của span hoặc div
+      sport = $fx.find(".fixture-sport").text().trim();
+    }
+
     const competition = $fx.find(".fixture-comp a").first().text().trim() || "";
 
     const isoZ =
@@ -193,7 +178,7 @@ function parseWTMEvents($, pageNum, sourceDate) {
       $tr.find('meta[itemprop="startDate"]').attr("content") ||
       "";
 
-    const w = isoToWitaPartsISO(isoZ) || { hari: "", tanggal: "", time: "" };
+    const w = isoToVietnamParts(isoZ) || { hari: "", tanggal: "", time: "" };
 
     const channels = [];
     $tr.find("td.channel-details img").each((_, img) => {
@@ -245,23 +230,24 @@ function fingerprintOfFirstRow(rows) {
   return (r.event_url && r.event_url.trim()) || `${r.tanggal}|${r.time}|${r.home}|${r.away}`;
 }
 
-/* =========================
-   BỘ LỌC SỰ KIỆN
-   ========================= */
-function filterEventsByTime(events, nowWITA, endWITA) {
+// ========== BỘ LỌC ==========
+function filterEventsByTime(events, nowVN, endVN) {
   return events.filter(event => {
-    const eventDate = parseEventDateTimeWITA(event.tanggal, event.time);
-    return eventDate >= nowWITA && eventDate <= endWITA;
+    const [dd, mm, yyyy] = event.tanggal.split('-');
+    const [HH, MM] = event.time.split(':');
+    const eventDate = new Date(`${yyyy}-${mm}-${dd}T${HH}:${MM}:00+07:00`);
+    return eventDate >= nowVN && eventDate <= endVN;
   });
 }
 
 function isFootball(sport) {
-  return sport.toLowerCase().includes("football") || sport.toLowerCase().includes("soccer");
+  return normalize(sport).includes("football") || normalize(sport).includes("soccer");
 }
 
 function isTennis(sport, competition) {
-  if (!sport.toLowerCase().includes("tennis")) return false;
-  const compLow = competition.toLowerCase();
+  const sportLow = normalize(sport);
+  const compLow = normalize(competition);
+  if (sportLow.includes("tennis")) return true;
   for (const kw of tennisKeywords) {
     if (compLow.includes(kw)) return true;
   }
@@ -269,14 +255,13 @@ function isTennis(sport, competition) {
 }
 
 function filterFootballEvent(event) {
-  const sportLow = event.sport.toLowerCase();
   if (!isFootball(event.sport)) return false;
 
-  const competitionLow = event.competition.toLowerCase();
-  const homeLow = event.home.toLowerCase();
-  const awayLow = event.away.toLowerCase();
+  const competitionLow = normalize(event.competition);
+  const homeLow = normalize(event.home);
+  const awayLow = normalize(event.away);
 
-  // UEFA các giải
+  // UEFA
   if (uefaLegues.has(competitionLow)) return true;
 
   // World Cup
@@ -289,10 +274,9 @@ function filterFootballEvent(event) {
     if (competitionLow.includes(kw)) return true;
   }
 
-  // Giao hữu
+  // Friendly
   for (const kw of friendlyKeywords) {
     if (competitionLow.includes(kw)) {
-      // Chỉ giữ nếu cả hai đội đều thuộc danh sách quốc gia cho phép
       return allowedFriendlyCountries.has(homeLow) && allowedFriendlyCountries.has(awayLow);
     }
   }
@@ -300,7 +284,6 @@ function filterFootballEvent(event) {
   // Các giải quốc nội
   for (const [league, teams] of Object.entries(footballAllowedLeagues)) {
     if (competitionLow === league) {
-      // Nếu home hoặc away nằm trong danh sách đội cho phép
       return teams.has(homeLow) || teams.has(awayLow);
     }
   }
@@ -313,19 +296,12 @@ function filterTennisEvent(event) {
 }
 
 function filterEventsBySport(events) {
-  return events.filter(event => {
-    return filterFootballEvent(event) || filterTennisEvent(event);
-  });
+  return events.filter(event => filterFootballEvent(event) || filterTennisEvent(event));
 }
 
-/* =========================
-   SCRAPE MỘT NGÀY
-   ========================= */
+// ========== SCRAPE MỘT NGÀY ==========
 async function scrapeOneDate(dateYYYYMMDD, opts = {}) {
   const urlBase = buildDailyUrl(dateYYYYMMDD);
-  const outDir = path.join("out", dateYYYYMMDD);
-  fs.mkdirSync(outDir, { recursive: true });
-
   const maxPagingIndex = Number.isFinite(opts.maxPagingIndex) ? opts.maxPagingIndex : 60;
   const delayMs = Number.isFinite(opts.delayMs) ? opts.delayMs : 1200;
 
@@ -335,7 +311,6 @@ async function scrapeOneDate(dateYYYYMMDD, opts = {}) {
   let currentHtml = "";
   const res1 = await client.get(urlBase);
   currentHtml = res1.data;
-  fs.writeFileSync(path.join(outDir, `page-1.html`), currentHtml);
 
   const $1 = cheerio.load(currentHtml);
   const p1 = parseWTMEvents($1, 1, dateYYYYMMDD);
@@ -384,8 +359,6 @@ async function scrapeOneDate(dateYYYYMMDD, opts = {}) {
     }
 
     currentHtml = resNext.data;
-    fs.writeFileSync(path.join(outDir, `page-${pageNum}.html`), currentHtml);
-
     const $n = cheerio.load(currentHtml);
     const pData = parseWTMEvents($n, pageNum, dateYYYYMMDD);
 
@@ -421,17 +394,13 @@ async function scrapeOneDate(dateYYYYMMDD, opts = {}) {
   return allData;
 }
 
-/* =========================
-   MAIN
-   ========================= */
+// ========== MAIN ==========
 async function main() {
-  const nowWITA = getCurrentWITA();
-  const endWITA = new Date(nowWITA.getTime() + 24 * 3600000);
+  const nowVN = getCurrentVietnamTime();
+  const endVN = new Date(nowVN.getTime() + 24 * 3600000);
 
   const dates = getDatesToScrape();
   console.log("Scraping dates:", dates);
-
-  fs.mkdirSync("out", { recursive: true });
 
   let allEvents = [];
   for (const d of dates) {
@@ -442,20 +411,13 @@ async function main() {
 
   console.log(`Total unique events (before filter): ${allEvents.length}`);
 
-  // Lọc theo thời gian 24h
-  let filteredByTime = filterEventsByTime(allEvents, nowWITA, endWITA);
+  let filteredByTime = filterEventsByTime(allEvents, nowVN, endVN);
   console.log(`After time filter (24h): ${filteredByTime.length}`);
 
-  // Lọc theo thể thao
   let finalEvents = filterEventsBySport(filteredByTime);
   console.log(`After sport filter: ${finalEvents.length}`);
 
-  // Loại bỏ các trường không cần xuất
-  const output = finalEvents.map(event => {
-    const { source_date, page, ...rest } = event;
-    return rest;
-  });
-
+  const output = finalEvents.map(({ source_date, page, ...rest }) => rest);
   fs.writeFileSync("results.json", JSON.stringify(output, null, 2));
   console.log(`\nDONE. Saved results.json with ${output.length} events.`);
 }
