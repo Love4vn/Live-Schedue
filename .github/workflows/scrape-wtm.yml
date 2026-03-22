@@ -2,7 +2,7 @@ name: Scrape WTM (daily list)
 
 on:
   schedule:
-    - cron: "5 7 * * *"   # setiap hari 00:05 UTC (bisa disesuaikan)
+    - cron: "5 8 * * *"
   workflow_dispatch:
 
 permissions:
@@ -33,6 +33,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add results.json out || true
+          git add results.json
           git commit -m "Update WTM results" || echo "No changes"
           git push
