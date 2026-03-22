@@ -2,7 +2,7 @@
 euro_vn_full_schedule_live.py
 ================================
 BẢN HOÀN CHỈNH – 24 GIỜ TỚI + LỌC THEO GIẢI + ĐỘI RIÊNG
-TÍCH HỢP: SofaScore (chính) + Các nguồn JSON phụ (Wheresthematch, LiveSportsOnTV, Ausport)
+TÍCH HỢP: SofaScore (chính) + Các nguồn JSON phụ (Wheresthematch, LiveSportsOnTV, Ausport, FootOnSat)
 Tối ưu ghép kênh M3U với matching thông minh (tên kênh + tên trận)
 """
 
@@ -49,7 +49,7 @@ ALLOWED_FOOTBALL_LEAGUES = {
     "UEFA Euro"
 }
 
-# Danh sách đội riêng từng giải (tên chuẩn, viết thường)
+# Danh sách đội riêng từng giải (tên chuẩn, viết thường, đã loại bỏ hậu tố)
 ALLOWED_TEAMS_PER_LEAGUE = {
     "Premier League": {"arsenal", "aston villa", "bournemouth", "brentford", "brighton", "chelsea",
                        "crystal palace", "everton", "fulham", "leeds united", "liverpool", "manchester city",
@@ -106,11 +106,9 @@ def normalize(s: str) -> str:
 
 def normalize_team_name(name: str) -> str:
     """Chuẩn hóa tên đội bóng để so sánh với danh sách cho phép"""
-    # Bỏ dấu, lowercase, loại bỏ ký tự đặc biệt
     name = unicodedata.normalize("NFKD", name.lower()).encode("ASCII", "ignore").decode("ascii")
-    # Loại bỏ các từ phổ biến như "fc", "afc", "sc", "united", "city", "wanderers"
-    name = re.sub(r'\b(fc|afc|sc|united|city|wanderers|rovers|athletic|albion|town|county)\b', '', name)
-    # Loại bỏ dấu gạch ngang và khoảng trắng thừa
+    # Loại bỏ các từ phổ biến
+    name = re.sub(r'\b(fc|afc|sc|united|city|wanderers|rovers|athletic|albion|town|county|real|club|sporting)\b', '', name)
     name = re.sub(r'[^\w\s]', ' ', name)
     name = ' '.join(name.split())
     return name
@@ -141,7 +139,6 @@ def normalize_channel_name(name: str) -> str:
     return name
 
 def is_channel_match(ch_name: str, m3u_name: str) -> bool:
-    """Kiểm tra khớp tên kênh (từ lịch) với tên kênh trong M3U"""
     if not ch_name or not m3u_name:
         return False
     ch_norm = normalize_channel_name(ch_name)
@@ -153,7 +150,6 @@ def is_channel_match(ch_name: str, m3u_name: str) -> bool:
     return similar(ch_norm, m3u_norm) >= 0.9
 
 def is_team_match(team_name: str, m3u_name: str) -> bool:
-    """Kiểm tra xem tên trận (trong M3U) có khớp với đội bóng trong trận đấu không"""
     team_norm = normalize(team_name)
     m3u_norm = normalize_channel_name(m3u_name)
     return similar(team_norm, m3u_norm) >= 0.7
@@ -187,20 +183,17 @@ async def get_tv_data(session, event_id):
         return []
 
 def is_uefa_euro(tournament_name: str) -> bool:
-    """Kiểm tra giải có phải UEFA Euro không"""
     name_lower = tournament_name.lower()
     euro_keywords = ["euro", "uefa european championship", "european championship"]
     return any(kw in name_lower for kw in euro_keywords)
 
 def is_uefa_champions(tournament_name: str) -> bool:
-    """Kiểm tra giải có phải UEFA Champions League (không phải CAF, AFC, etc.)"""
     name_lower = tournament_name.lower()
     if "uefa champions league" in name_lower:
         return True
     return False
 
 def is_friendly_match(home_team: str, away_team: str) -> bool:
-    """Kiểm tra trận giao hữu có được phép hay không (dựa trên đội tuyển)"""
     home_norm = normalize(home_team)
     away_norm = normalize(away_team)
     home_country = None
@@ -263,7 +256,6 @@ async def fetch_sofascore_event(session, event_id, sport, now_ts, max_ts):
             elif "uefa conference league" in league_lower:
                 league = "UEFA Europa Conference League"
             elif "premier league" in league_lower:
-                # Kiểm tra tên đội chính xác
                 home_norm = normalize_team_name(home_team)
                 away_norm = normalize_team_name(away_team)
                 allowed = ALLOWED_TEAMS_PER_LEAGUE["Premier League"]
@@ -278,7 +270,6 @@ async def fetch_sofascore_event(session, event_id, sport, now_ts, max_ts):
                     return None
                 league = "Serie A"
             elif "bundesliga" in league_lower:
-                # Loại bỏ giải nữ (Frauen)
                 if "frauen" in league_lower:
                     return None
                 home_norm = normalize_team_name(home_team)
@@ -327,7 +318,6 @@ async def fetch_sofascore_event(session, event_id, sport, now_ts, max_ts):
         return None
 
 async def scrape_sofascore() -> List[Dict]:
-    """Lấy dữ liệu từ SofaScore trong 24 giờ tới"""
     all_games = []
     async with AsyncSession() as session:
         for sport in ["football", "tennis"]:
@@ -363,7 +353,6 @@ def parse_livesportsontv(entry: dict) -> Optional[Dict]:
         kick_utc = int(dt.timestamp())
 
         league = entry.get('League', '')
-        # Chuẩn hóa tên giải
         if "Premier League" in league:
             league = "Premier League"
         elif "Serie A" in league:
@@ -415,7 +404,6 @@ def parse_wheresthematch(entry: dict) -> Optional[Dict]:
         kick_utc = int(dt.timestamp())
 
         league = entry.get('competition', '')
-        # Chuẩn hóa
         if "Premier League" in league:
             league = "Premier League"
         elif "Serie A" in league:
@@ -472,7 +460,6 @@ def parse_ausport(entry: dict) -> Optional[Dict]:
         kick_utc = int(dt.timestamp())
 
         league = entry.get('competition', '')
-        # Chuẩn hóa
         if "Premier League" in league:
             league = "Premier League"
         elif "Serie A" in league:
@@ -518,6 +505,101 @@ def parse_ausport(entry: dict) -> Optional[Dict]:
     except:
         return None
 
+# ================== FOOTONSAT ==================
+def download_footonsat() -> dict:
+    """Tải dữ liệu từ footonsat API"""
+    url = "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/premierleague.json"
+    try:
+        with urllib.request.urlopen(url, timeout=15) as response:
+            data = json.loads(response.read().decode('utf-8'))
+            return data
+    except Exception as e:
+        print(f"   Lỗi tải footonsat: {e}")
+        return None
+
+def parse_footonsat(item: dict) -> Optional[Dict]:
+    """Parse một item trong footonsat (trận đấu hoặc kênh)"""
+    try:
+        if 'compet' in item and 'match' in item:
+            # Đây là thông tin trận đấu
+            compet = item.get('compet', '')
+            if "Premier League" not in compet:
+                return None
+            match = item.get('match', '').strip()
+            if not match:
+                return None
+            date_str = item.get('date')
+            time_str = item.get('time')
+            if not date_str or not time_str:
+                return None
+            dt_str = f"{date_str} {time_str}"
+            dt = datetime.strptime(dt_str, "%Y-%m-%d %H:%M")
+            dt = dt.replace(tzinfo=TIMEZONE)
+            kick_utc = int(dt.timestamp())
+            return {
+                "type": "match",
+                "match": match,
+                "kick_utc": kick_utc,
+                "time": vn_time(kick_utc),
+                "date": date_str,
+                "time_str": time_str
+            }
+        elif 'channel' in item and 'related_to' in item:
+            # Đây là kênh
+            channel = item.get('channel', '').strip()
+            related_to = item.get('related_to', '').strip()
+            if not channel or not related_to:
+                return None
+            return {
+                "type": "channel",
+                "channel": channel,
+                "related_to": related_to
+            }
+        return None
+    except:
+        return None
+
+def load_footonsat_data() -> List[Dict]:
+    """Đọc và ghép dữ liệu từ footonsat"""
+    games = []
+    data = download_footonsat()
+    if not data or 'footonsat' not in data:
+        return games
+
+    matches = {}      # key = (match, date) -> thông tin trận
+    channels_by_match = {}  # key = related_to -> list of channels
+
+    for item in data['footonsat']:
+        parsed = parse_footonsat(item)
+        if not parsed:
+            continue
+        if parsed['type'] == 'match':
+            match_name = parsed['match']
+            date = parsed['date']
+            key = (match_name, date)
+            matches[key] = parsed
+        elif parsed['type'] == 'channel':
+            related = parsed['related_to']
+            if related not in channels_by_match:
+                channels_by_match[related] = []
+            channels_by_match[related].append(parsed['channel'])
+
+    # Ghép kênh vào trận
+    for key, match in matches.items():
+        match_name = match['match']
+        channels = channels_by_match.get(match_name, [])
+        if channels:
+            channels = list(set(channels))  # loại trùng
+            games.append({
+                "league": "Premier League",
+                "match": match_name,
+                "kick_utc": match['kick_utc'],
+                "time": match['time'],
+                "tv_channels": [{"country": "FootOnSat", "channels": channels}],
+                "source": "footonsat"
+            })
+    return games
+
 def load_all_secondary_sources() -> List[Dict]:
     games = []
     ls_data = load_json_file("schedule_livesportsontv.json")
@@ -535,6 +617,8 @@ def load_all_secondary_sources() -> List[Dict]:
         g = parse_ausport(entry)
         if g:
             games.append(g)
+    footonsat_games = load_footonsat_data()
+    games.extend(footonsat_games)
     return games
 
 # ================== MERGE ==================
@@ -572,7 +656,7 @@ def merge_games(primary: List[Dict], secondary: List[Dict]) -> List[Dict]:
         else:
             primary_football.append(sec)
 
-    # Tennis: không merge, chỉ thêm tất cả
+    # Tennis: không merge, chỉ thêm tất cả, sau đó sẽ loại trùng kênh sau
     all_tennis = primary_tennis + secondary_tennis
     # Loại bỏ trùng lặp dựa trên (kick_utc, match) nhưng giữ tất cả kênh
     seen = {}
@@ -729,7 +813,6 @@ async def main():
         key = (ev['channel']['url'], ev['league'])
         if key not in grouped_tennis:
             grouped_tennis[key] = ev
-        # Nếu đã có, không thêm lại (giữ một đại diện)
     tennis_events_dedup = list(grouped_tennis.values())
 
     live_events = other_events + tennis_events_dedup
@@ -739,10 +822,9 @@ async def main():
         f.write("#EXTM3U\n")
         for ev in live_events:
             ch = ev["channel"]
-            group_title = LEAGUE_GROUP_NAME.get(ev["league"], None)
+            group_title = LEAGUE_GROUP_NAME.get(ev["league"])
             if not group_title:
-                # Nếu không có group, bỏ qua không ghi
-                continue
+                continue  # bỏ qua nếu không có group
             extinf = f'#EXTINF:-1 tvg-id="{ch["params"].get("tvg-id","")}" group-title="{group_title}"'
             if ch["params"].get("tvg-logo"):
                 extinf += f' tvg-logo="{ch["params"]["tvg-logo"]}"'
