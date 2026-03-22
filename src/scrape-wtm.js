@@ -13,13 +13,27 @@ const client = wrapper(
   axios.create({
     jar,
     withCredentials: true,
-    timeout: 60000,
+    timeout: 120000, // 120 seconds
     headers: {
       "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
       Accept: "text/html,application/xhtml+xml,application/xml;q=0.9",
     },
   })
 );
+
+// ========== RETRY HELPER ==========
+async function getWithRetry(url, retries = 3, delay = 1000) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      const response = await client.get(url);
+      return response;
+    } catch (error) {
+      if (i === retries - 1) throw error;
+      console.log(`Retry ${i + 1} for ${url} after error: ${error.message}`);
+      await new Promise(resolve => setTimeout(resolve, delay * (i + 1)));
+    }
+  }
+}
 
 // ========== DANH SÁCH ĐỘI VỚI CÁC BIẾN THỂ ==========
 const teamVariants = {
@@ -59,7 +73,6 @@ const teamVariants = {
   "olympique marseille": ["olympique marseille", "marseille", "om"]
 };
 
-// Các giải đấu và danh sách đội (dùng key trong teamVariants)
 const footballAllowedLeagues = {
   "premier league": new Set([
     "arsenal", "aston villa", "bournemouth", "brentford", "brighton", "chelsea",
@@ -113,7 +126,6 @@ const tennisKeywords = new Set([
 
 // ========== HÀM TIỆN ÍCH ==========
 function normalize(str) {
-  // Chuyển về chữ thường, thay dấu gạch ngang/gạch dưới bằng khoảng trắng, xóa khoảng trắng thừa
   return (str || "").trim().toLowerCase().replace(/[-_]/g, " ").replace(/\s+/g, " ");
 }
 
@@ -285,7 +297,7 @@ function dedupRows(rows) {
   return Array.from(map.values());
 }
 
-// ========== SCRAPE MỘT NGÀY ==========
+// ========== SCRAPE MỘT NGÀY (có retry) ==========
 async function scrapeOneDate(dateYYYYMMDD, opts = {}) {
   const urlBase = buildDailyUrl(dateYYYYMMDD);
   const maxPagingIndex = Number.isFinite(opts.maxPagingIndex) ? opts.maxPagingIndex : 60;
@@ -295,8 +307,13 @@ async function scrapeOneDate(dateYYYYMMDD, opts = {}) {
   console.log(`GET Page 1: ${urlBase}`);
 
   let currentHtml = "";
-  const res1 = await client.get(urlBase);
-  currentHtml = res1.data;
+  try {
+    const res1 = await getWithRetry(urlBase, 3, 1000);
+    currentHtml = res1.data;
+  } catch (error) {
+    console.error(`Failed to fetch ${urlBase} after retries: ${error.message}`);
+    return [];
+  }
 
   const $1 = cheerio.load(currentHtml);
   const p1 = parseWTMEvents($1, 1, dateYYYYMMDD);
