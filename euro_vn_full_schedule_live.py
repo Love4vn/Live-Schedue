@@ -549,7 +549,7 @@ def parse_footonsat(entry: dict) -> Optional[Dict]:
         print(f"   Lỗi parse footonsat: {e}")
         return None
 
-def load_footonsat_data() -> List[Dict]:
+def load_footonsat_data(now_ts: int, max_ts: int) -> List[Dict]:
     games = []
     data = download_footonsat()
     if not data or 'footonsat' not in data:
@@ -563,10 +563,12 @@ def load_footonsat_data() -> List[Dict]:
         if not parsed:
             continue
         if parsed['type'] == 'match':
-            match_name = parsed['match']
-            date = parsed['date']
-            key = (match_name, date)
-            matches[key] = parsed
+            # Chỉ lấy trận trong 24 giờ
+            if now_ts <= parsed['kick_utc'] <= max_ts:
+                match_name = parsed['match']
+                date = parsed['date']
+                key = (match_name, date)
+                matches[key] = parsed
         elif parsed['type'] == 'channel':
             related = parsed['related_to']
             if related not in channels_by_match:
@@ -646,28 +648,28 @@ def merge_games(primary: List[Dict], secondary: List[Dict]) -> List[Dict]:
 
     return primary_football + unique_tennis
 
-def load_all_secondary_sources() -> List[Dict]:
+def load_all_secondary_sources(now_ts: int, max_ts: int) -> List[Dict]:
     games = []
     # LiveSportsOnTV
     ls_data = load_json_file("schedule_livesportsontv.json")
     for entry in ls_data:
         g = parse_livesportsontv(entry)
-        if g:
+        if g and now_ts <= g['kick_utc'] <= max_ts:
             games.append(g)
     # Wheresthematch
     wm_data = load_json_file("results.json")
     for entry in wm_data:
         g = parse_wheresthematch(entry)
-        if g:
+        if g and now_ts <= g['kick_utc'] <= max_ts:
             games.append(g)
     # Ausport
     aus_data = load_json_file("ausport_schedule.json")
     for entry in aus_data:
         g = parse_ausport(entry)
-        if g:
+        if g and now_ts <= g['kick_utc'] <= max_ts:
             games.append(g)
     # FootOnSat
-    footonsat_games = load_footonsat_data()
+    footonsat_games = load_footonsat_data(now_ts, max_ts)
     games.extend(footonsat_games)
     return games
 
@@ -707,6 +709,9 @@ def parse_m3u(content):
 async def main():
     start = time.time()
     vn_now = datetime.now(TIMEZONE)
+    now_ts = int(datetime.now(TIMEZONE).timestamp())
+    max_ts = now_ts + 86400
+
     print("🔄 Bắt đầu lấy lịch 24 GIỜ TỚI từ SofaScore và các nguồn JSON phụ...")
 
     print("📡 Đang lấy dữ liệu từ SofaScore...")
@@ -714,7 +719,7 @@ async def main():
     print(f"   ✅ SofaScore: {len(sofascore_games)} trận")
 
     print("📡 Đang đọc các nguồn JSON phụ...")
-    secondary_games = load_all_secondary_sources()
+    secondary_games = load_all_secondary_sources(now_ts, max_ts)
     print(f"   ✅ Các nguồn phụ: {len(secondary_games)} trận")
 
     print("🔄 Đang merge dữ liệu...")
