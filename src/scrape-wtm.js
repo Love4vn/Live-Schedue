@@ -1,5 +1,4 @@
-// src/scrape-wtm.js
-// WTM SCRAPER - Lọc 24h tới, giờ Việt Nam, chỉ bóng đá/tennis, xuất JSON
+// src/scrape-wtm.js (phiên bản 48h)
 
 const axios = require("axios");
 const cheerio = require("cheerio");
@@ -13,7 +12,7 @@ const client = wrapper(
   axios.create({
     jar,
     withCredentials: true,
-    timeout: 120000, // 120 seconds
+    timeout: 120000,
     headers: {
       "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
       Accept: "text/html,application/xhtml+xml,application/xml;q=0.9",
@@ -147,20 +146,16 @@ function getCurrentVietnamTime() {
 
 function getDatesToScrape() {
   const nowVN = getCurrentVietnamTime();
-  const today = new Date(nowVN);
-  const tomorrow = new Date(nowVN);
-  tomorrow.setDate(today.getDate() + 1);
-
-  const formatDate = (date) => {
-    const yyyy = date.getFullYear();
-    const mm = String(date.getMonth() + 1).padStart(2, '0');
-    const dd = String(date.getDate()).padStart(2, '0');
-    return `${yyyy}${mm}${dd}`;
-  };
-
-  const dates = [formatDate(today)];
-  if (formatDate(tomorrow) !== formatDate(today)) {
-    dates.push(formatDate(tomorrow));
+  const dates = [];
+  // Lấy hôm nay, ngày mai và ngày kia (đủ để phủ 48h)
+  for (let i = 0; i <= 2; i++) {
+    const d = new Date(nowVN);
+    d.setDate(nowVN.getDate() + i);
+    const yyyy = d.getFullYear();
+    const mm = String(d.getMonth() + 1).padStart(2, '0');
+    const dd = String(d.getDate()).padStart(2, '0');
+    const ymd = `${yyyy}${mm}${dd}`;
+    if (!dates.includes(ymd)) dates.push(ymd);
   }
   return dates;
 }
@@ -297,7 +292,7 @@ function dedupRows(rows) {
   return Array.from(map.values());
 }
 
-// ========== SCRAPE MỘT NGÀY (có retry) ==========
+// ========== SCRAPE MỘT NGÀY ==========
 async function scrapeOneDate(dateYYYYMMDD, opts = {}) {
   const urlBase = buildDailyUrl(dateYYYYMMDD);
   const maxPagingIndex = Number.isFinite(opts.maxPagingIndex) ? opts.maxPagingIndex : 60;
@@ -457,7 +452,7 @@ function filterEventsBySport(events) {
 // ========== MAIN ==========
 async function main() {
   const nowVN = getCurrentVietnamTime();
-  const endVN = new Date(nowVN.getTime() + 24 * 3600000);
+  const endVN = new Date(nowVN.getTime() + 48 * 3600000); // 48 giờ
 
   const dates = getDatesToScrape();
   console.log("Scraping dates:", dates);
@@ -494,7 +489,7 @@ async function main() {
   });
 
   let filteredByTime = filterEventsByTime(allEvents, nowVN, endVN);
-  console.log(`After time filter (24h): ${filteredByTime.length}`);
+  console.log(`After time filter (48h): ${filteredByTime.length}`);
 
   let finalEvents = filterEventsBySport(filteredByTime);
   console.log(`After sport filter: ${finalEvents.length}`);
