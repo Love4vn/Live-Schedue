@@ -36,6 +36,19 @@ ALLOWED_TENNIS_TOURNAMENTS = {
     "atp masters", "atp 1000", "atp 500", "atp 250"
 }
 
+# Danh sách các giải bóng đá được phép
+ALLOWED_FOOTBALL_LEAGUES = {
+    "Premier League",
+    "Serie A",
+    "La Liga",
+    "Bundesliga",
+    "Ligue 1",
+    "UEFA Champions League",
+    "UEFA Europa League",
+    "UEFA Europa Conference League",
+    "UEFA Euro"
+}
+
 # Danh sách đội riêng từng giải (chỉ áp dụng cho 5 giải lớn)
 ALLOWED_TEAMS_PER_LEAGUE = {
     "Premier League": {"arsenal", "aston villa", "bournemouth", "brentford", "brighton", "chelsea",
@@ -46,9 +59,6 @@ ALLOWED_TEAMS_PER_LEAGUE = {
     "La Liga": {"barcelona", "real madrid", "atlético"},
     "Bundesliga": {"bayern", "borussia dortmund", "bayer leverkusen"},
     "Ligue 1": {"psg", "olympique marseille"},
-    "UEFA Champions League": None,
-    "UEFA Europa League": None,
-    "UEFA Europa Conference League": None,
 }
 
 LEAGUE_GROUP_NAME = {
@@ -60,22 +70,10 @@ LEAGUE_GROUP_NAME = {
     "UEFA Champions League": "Live UEFA Champions League",
     "UEFA Europa League": "Live UEFA Europa League",
     "UEFA Europa Conference League": "Live UEFA Conference League",
+    "UEFA Euro": "Live Euro",
     "Tennis": "Live Tennis",
-    "UEFA Euro": "Live Euro",          # Giải vô địch châu Âu (đội tuyển)
     "FIFA World Cup": "Live Fifa World Cup",
     "International Friendly": "Live International Friendly"
-}
-
-# Danh sách các quốc gia châu Âu (vẫn giữ để xác định giải quốc gia châu Âu nhưng sẽ không dùng để lấy)
-EUROPEAN_COUNTRIES = {
-    "albania", "andorra", "armenia", "austria", "azerbaijan", "belarus", "belgium",
-    "bosnia and herzegovina", "bulgaria", "croatia", "cyprus", "czech republic", "denmark",
-    "estonia", "finland", "france", "georgia", "germany", "greece", "hungary", "iceland",
-    "ireland", "italy", "kazakhstan", "kosovo", "latvia", "liechtenstein", "lithuania",
-    "luxembourg", "malta", "moldova", "monaco", "montenegro", "netherlands", "north macedonia",
-    "norway", "poland", "portugal", "romania", "russia", "san marino", "serbia", "slovakia",
-    "slovenia", "spain", "sweden", "switzerland", "turkey", "ukraine", "united kingdom", "england",
-    "scotland", "wales", "northern ireland"
 }
 
 # Danh sách các đội tuyển được phép ngoài châu Âu (cho giao hữu)
@@ -180,14 +178,19 @@ async def get_tv_data(session, event_id):
 def is_uefa_euro(tournament_name: str) -> bool:
     """Kiểm tra giải có phải UEFA Euro không"""
     name_lower = tournament_name.lower()
-    return "euro" in name_lower and "uefa" in name_lower and "qualif" not in name_lower
+    # Các từ khóa nhận dạng Euro
+    euro_keywords = ["euro", "uefa european championship", "european championship"]
+    return any(kw in name_lower for kw in euro_keywords)
 
-def is_uefa_club_competition(tournament_name: str) -> bool:
-    """Kiểm tra giải có phải UEFA Champions League, Europa League, Conference League không"""
+def is_uefa_champions(tournament_name: str) -> bool:
+    """Kiểm tra giải có phải UEFA Champions League (không phải CAF, AFC, etc.)"""
     name_lower = tournament_name.lower()
-    return ("uefa champions league" in name_lower or 
-            "uefa europa league" in name_lower or 
-            "uefa conference league" in name_lower)
+    if "uefa champions league" in name_lower:
+        return True
+    # Nếu chỉ có "champions league" nhưng không có uefa, có thể là giải khác (CAF, AFC)
+    if "champions league" in name_lower and "uefa" not in name_lower:
+        return False
+    return False
 
 def is_friendly_match(home_team: str, away_team: str) -> bool:
     """Kiểm tra trận giao hữu có được phép hay không (dựa trên đội tuyển)"""
@@ -201,8 +204,10 @@ def is_friendly_match(home_team: str, away_team: str) -> bool:
         if country.name.lower() == away_norm or (hasattr(country, 'common_name') and country.common_name.lower() == away_norm):
             away_country = country
     if home_country and away_country:
-        home_in_europe = home_country.name.lower() in EUROPEAN_COUNTRIES
-        away_in_europe = away_country.name.lower() in EUROPEAN_COUNTRIES
+        # Kiểm tra châu Âu (dùng tên quốc gia)
+        european_names = {"albania","andorra","armenia","austria","azerbaijan","belarus","belgium","bosnia and herzegovina","bulgaria","croatia","cyprus","czech republic","denmark","estonia","finland","france","georgia","germany","greece","hungary","iceland","ireland","italy","kazakhstan","kosovo","latvia","liechtenstein","lithuania","luxembourg","malta","moldova","monaco","montenegro","netherlands","north macedonia","norway","poland","portugal","romania","russia","san marino","serbia","slovakia","slovenia","spain","sweden","switzerland","turkey","ukraine","united kingdom","england","scotland","wales","northern ireland"}
+        home_in_europe = home_country.name.lower() in european_names
+        away_in_europe = away_country.name.lower() in european_names
         if home_in_europe or away_in_europe:
             return True
         if home_country.name.lower() in ALLOWED_NON_EURO_TEAMS or away_country.name.lower() in ALLOWED_NON_EURO_TEAMS:
@@ -243,39 +248,40 @@ async def fetch_sofascore_event(session, event_id, sport, now_ts, max_ts):
             away_team = ev.get('awayTeam', {}).get('name', '')
 
             # Xác định loại giải
-            if "premier league" in league_lower:
-                league = "Premier League"
-                allowed = ALLOWED_TEAMS_PER_LEAGUE[league]
-                if allowed and not (any(t in home_team.lower() for t in allowed) or any(t in away_team.lower() for t in allowed)):
-                    return None
-            elif "serie a" in league_lower:
-                league = "Serie A"
-                allowed = ALLOWED_TEAMS_PER_LEAGUE[league]
-                if allowed and not (any(t in home_team.lower() for t in allowed) or any(t in away_team.lower() for t in allowed)):
-                    return None
-            elif "bundesliga" in league_lower:
-                league = "Bundesliga"
-                allowed = ALLOWED_TEAMS_PER_LEAGUE[league]
-                if allowed and not (any(t in home_team.lower() for t in allowed) or any(t in away_team.lower() for t in allowed)):
-                    return None
-            elif "la liga" in league_lower or "laliga" in league_lower:
-                league = "La Liga"
-                allowed = ALLOWED_TEAMS_PER_LEAGUE[league]
-                if allowed and not (any(t in home_team.lower() for t in allowed) or any(t in away_team.lower() for t in allowed)):
-                    return None
-            elif "ligue 1" in league_lower:
-                league = "Ligue 1"
-                allowed = ALLOWED_TEAMS_PER_LEAGUE[league]
-                if allowed and not (any(t in home_team.lower() for t in allowed) or any(t in away_team.lower() for t in allowed)):
-                    return None
+            if is_uefa_euro(league_raw):
+                league = "UEFA Euro"
             elif "uefa champions league" in league_lower:
                 league = "UEFA Champions League"
             elif "uefa europa league" in league_lower:
                 league = "UEFA Europa League"
             elif "uefa conference league" in league_lower:
                 league = "UEFA Europa Conference League"
-            elif is_uefa_euro(league_raw):
-                league = "UEFA Euro"
+            elif "premier league" in league_lower:
+                # Chỉ lấy nếu có đội trong danh sách Premier League Anh
+                if not any(t in home_team.lower() for t in ALLOWED_TEAMS_PER_LEAGUE["Premier League"]) and \
+                   not any(t in away_team.lower() for t in ALLOWED_TEAMS_PER_LEAGUE["Premier League"]):
+                    return None
+                league = "Premier League"
+            elif "serie a" in league_lower:
+                if not any(t in home_team.lower() for t in ALLOWED_TEAMS_PER_LEAGUE["Serie A"]) and \
+                   not any(t in away_team.lower() for t in ALLOWED_TEAMS_PER_LEAGUE["Serie A"]):
+                    return None
+                league = "Serie A"
+            elif "bundesliga" in league_lower:
+                if not any(t in home_team.lower() for t in ALLOWED_TEAMS_PER_LEAGUE["Bundesliga"]) and \
+                   not any(t in away_team.lower() for t in ALLOWED_TEAMS_PER_LEAGUE["Bundesliga"]):
+                    return None
+                league = "Bundesliga"
+            elif "la liga" in league_lower or "laliga" in league_lower:
+                if not any(t in home_team.lower() for t in ALLOWED_TEAMS_PER_LEAGUE["La Liga"]) and \
+                   not any(t in away_team.lower() for t in ALLOWED_TEAMS_PER_LEAGUE["La Liga"]):
+                    return None
+                league = "La Liga"
+            elif "ligue 1" in league_lower:
+                if not any(t in home_team.lower() for t in ALLOWED_TEAMS_PER_LEAGUE["Ligue 1"]) and \
+                   not any(t in away_team.lower() for t in ALLOWED_TEAMS_PER_LEAGUE["Ligue 1"]):
+                    return None
+                league = "Ligue 1"
             elif "world cup" in league_lower or "fifa world cup" in league_lower:
                 league = "FIFA World Cup"
             elif "friendly" in league_lower or "international friendly" in league_lower:
@@ -283,7 +289,11 @@ async def fetch_sofascore_event(session, event_id, sport, now_ts, max_ts):
                 if not is_friendly_match(home_team, away_team):
                     return None
             else:
-                # Không lấy bất kỳ giải nào khác, kể cả các giải quốc gia châu Âu ngoài top 5
+                # Không thuộc giải được phép
+                return None
+
+            # Chỉ giữ lại nếu league nằm trong danh sách cho phép
+            if league not in ALLOWED_FOOTBALL_LEAGUES and league not in ["FIFA World Cup", "International Friendly"]:
                 return None
 
             match = f"{home_team} vs {away_team}"
@@ -335,6 +345,10 @@ def parse_livesportsontv(entry: dict) -> Optional[Dict]:
         kick_utc = int(dt.timestamp())
 
         league = entry.get('League', '')
+        # Chỉ giữ lại nếu league thuộc danh sách cho phép
+        if league not in ALLOWED_FOOTBALL_LEAGUES:
+            return None
+
         match_raw = entry.get('Matchup', '')
         match = match_raw.replace(' @ ', ' vs ')
         channels = entry.get('Services', [])
@@ -362,6 +376,31 @@ def parse_wheresthematch(entry: dict) -> Optional[Dict]:
         kick_utc = int(dt.timestamp())
 
         league = entry.get('competition', '')
+        # Chuẩn hóa tên giải từ Wheresthematch
+        if "Premier League" in league:
+            league = "Premier League"
+        elif "Serie A" in league:
+            league = "Serie A"
+        elif "La Liga" in league:
+            league = "La Liga"
+        elif "Bundesliga" in league:
+            league = "Bundesliga"
+        elif "Ligue 1" in league:
+            league = "Ligue 1"
+        elif "UEFA Champions League" in league:
+            league = "UEFA Champions League"
+        elif "UEFA Europa League" in league:
+            league = "UEFA Europa League"
+        elif "UEFA Europa Conference League" in league:
+            league = "UEFA Europa Conference League"
+        elif "Euro" in league:
+            league = "UEFA Euro"
+        else:
+            return None
+
+        if league not in ALLOWED_FOOTBALL_LEAGUES:
+            return None
+
         match = entry.get('title', '')
         if not match:
             home = entry.get('home', '')
@@ -392,6 +431,30 @@ def parse_ausport(entry: dict) -> Optional[Dict]:
         kick_utc = int(dt.timestamp())
 
         league = entry.get('competition', '')
+        if "Premier League" in league:
+            league = "Premier League"
+        elif "Serie A" in league:
+            league = "Serie A"
+        elif "La Liga" in league:
+            league = "La Liga"
+        elif "Bundesliga" in league:
+            league = "Bundesliga"
+        elif "Ligue 1" in league:
+            league = "Ligue 1"
+        elif "UEFA Champions League" in league:
+            league = "UEFA Champions League"
+        elif "UEFA Europa League" in league:
+            league = "UEFA Europa League"
+        elif "UEFA Europa Conference League" in league:
+            league = "UEFA Europa Conference League"
+        elif "ATP" in league or "WTA" in league:
+            league = "Tennis"
+        else:
+            return None
+
+        if league not in ALLOWED_FOOTBALL_LEAGUES and league != "Tennis":
+            return None
+
         home = entry.get('home', '')
         away = entry.get('away', '')
         match = f"{home} vs {away}" if home and away else ''
@@ -545,15 +608,18 @@ async def main():
     valid_ch = [ch for ch in unique_ch if is_healthy(ch['url'])]
 
     live_events = []
-    # Không dùng seen_urls nữa để cho phép một kênh xuất hiện nhiều lần cho các trận khác nhau
     for g in all_games:
         try:
             if datetime.fromtimestamp(g['kick_utc']).astimezone(TIMEZONE) <= vn_now: continue
+            used_urls_in_match = set()  # Để tránh trùng link trong cùng một trận
             # Match theo tên kênh
             for tv in g.get("tv_channels", []):
                 for ch_name in tv.get("channels", []):
                     matching = [ch for ch in valid_ch if is_channel_match(ch_name, ch['name'])]
                     for ch in matching:
+                        url = ch['url']
+                        if url in used_urls_in_match: continue
+                        used_urls_in_match.add(url)
                         display_name = f"{g['time']} | {g['match']} ({ch_name})"
                         live_events.append({
                             "datetime": datetime.fromtimestamp(g['kick_utc']).astimezone(TIMEZONE),
@@ -561,11 +627,14 @@ async def main():
                             "channel": ch,
                             "league": g["league"]
                         })
-            # Nếu chưa có, match theo tên trận
-            if not any(ev['league'] == g['league'] and ev['name'].startswith(g['time']) for ev in live_events):
+            # Nếu chưa có kênh nào, match theo tên trận
+            if not used_urls_in_match:
                 match_norm = normalize(g['match'])
                 for ch in valid_ch:
                     if is_team_match(match_norm, ch['name']):
+                        url = ch['url']
+                        if url in used_urls_in_match: continue
+                        used_urls_in_match.add(url)
                         display_name = f"{g['time']} | {g['match']} (M3U: {ch['name']})"
                         live_events.append({
                             "datetime": datetime.fromtimestamp(g['kick_utc']).astimezone(TIMEZONE),
