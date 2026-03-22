@@ -120,27 +120,56 @@ def similar(a: str, b: str) -> float:
     return SequenceMatcher(None, a, b).ratio()
 
 def normalize_channel_name(name: str) -> str:
-    """Chuẩn hóa tên kênh: loại bỏ từ thừa, cờ, tốc độ, nội dung ngoặc"""
+    """Chuẩn hóa tên kênh: loại bỏ từ thừa, cờ, tốc độ, nội dung ngoặc, nhưng giữ lại số"""
     name = name.lower()
+    # Loại bỏ các từ phổ biến
     name = re.sub(r'\b(hd|uhd|4k|fhd|vip|plus|extra|usa|uk|us|tv|channel|network|sports?|premium|maximo?|4mbps|4g|mbps|kbps|bitrate)\b', '', name)
+    # Loại bỏ biểu tượng cờ
     name = re.sub(r'[🇬🇧🇺🇸🇨🇦🇦🇺🇩🇪🇫🇷🇮🇹🇪🇸🇵🇹🇳🇱🇧🇪🇨🇭🇦🇹🇸🇪🇳🇴🇩🇰🇫🇮🇵🇱🇨🇿🇭🇺🇷🇴🇧🇬🇬🇷🇹🇷]', '', name)
+    # Loại bỏ nội dung trong ngoặc
     name = re.sub(r'\([^)]*\)', '', name)
     name = re.sub(r'\[[^\]]*\]', '', name)
+    # Loại bỏ ký tự đặc biệt (giữ lại chữ, số và khoảng trắng)
     name = re.sub(r'[^\w\s]', ' ', name)
+    # Chuẩn hóa khoảng trắng
     name = ' '.join(name.split())
+    # Bỏ dấu
     name = unicodedata.normalize('NFKD', name).encode('ASCII', 'ignore').decode('ascii')
     return name
+
+def split_name_and_number(name: str):
+    """Tách tên kênh thành phần chữ và phần số (nếu có)"""
+    # Tìm số ở cuối (có thể có nhiều số, nhưng thường là số cuối)
+    match = re.search(r'(\d+)$', name)
+    if match:
+        number = match.group(1)
+        text = name[:match.start()].strip()
+        return text, number
+    return name, None
 
 def is_channel_match(ch_name: str, m3u_name: str) -> bool:
     if not ch_name or not m3u_name:
         return False
     ch_norm = normalize_channel_name(ch_name)
     m3u_norm = normalize_channel_name(m3u_name)
-    if len(ch_norm) <= 5:
-        return ch_norm == m3u_norm
-    if abs(len(ch_norm) - len(m3u_norm)) > 3:
+    
+    # Tách số
+    ch_text, ch_num = split_name_and_number(ch_norm)
+    m3u_text, m3u_num = split_name_and_number(m3u_norm)
+    
+    # So sánh phần chữ với ngưỡng 0.9
+    text_similarity = similar(ch_text, m3u_text)
+    if text_similarity < 0.9:
         return False
-    return similar(ch_norm, m3u_norm) >= 0.9
+    
+    # So sánh số: nếu cả hai đều có số, phải khớp chính xác
+    if ch_num is not None and m3u_num is not None:
+        return ch_num == m3u_num
+    # Nếu một bên có số, bên kia không: không match (để tránh nhầm)
+    if ch_num is not None or m3u_num is not None:
+        return False
+    # Nếu không có số, coi như match
+    return True
 
 def is_team_match(team_name: str, m3u_name: str) -> bool:
     team_norm = normalize(team_name)
@@ -510,7 +539,6 @@ def download_footonsat() -> dict:
 def parse_footonsat(entry: dict) -> Optional[Dict]:
     try:
         if 'compet' in entry and 'match' in entry:
-            # Đây là thông tin trận đấu
             compet = entry.get('compet', '')
             if "Premier League" not in compet:
                 return None
@@ -521,7 +549,7 @@ def parse_footonsat(entry: dict) -> Optional[Dict]:
             time_str = entry.get('time')
             if not date_str or not time_str:
                 return None
-            # Giả sử time_str là giờ UTC (vì nói kém VN 7h)
+            # Giả sử time_str là giờ UTC (kém VN 7h)
             dt_utc = datetime.strptime(f"{date_str} {time_str}", "%Y-%m-%d %H:%M")
             dt_utc = dt_utc.replace(tzinfo=ZoneInfo("UTC"))
             kick_utc = int(dt_utc.timestamp())
@@ -534,7 +562,6 @@ def parse_footonsat(entry: dict) -> Optional[Dict]:
                 "time_str": time_str
             }
         elif 'channel' in entry and 'related_to' in entry:
-            # Đây là kênh
             channel = entry.get('channel', '').strip()
             related_to = entry.get('related_to', '').strip()
             if not channel or not related_to:
@@ -546,7 +573,6 @@ def parse_footonsat(entry: dict) -> Optional[Dict]:
             }
         return None
     except Exception as e:
-        print(f"   Lỗi parse footonsat: {e}")
         return None
 
 def load_footonsat_data(now_ts: int, max_ts: int) -> List[Dict]:
@@ -555,15 +581,14 @@ def load_footonsat_data(now_ts: int, max_ts: int) -> List[Dict]:
     if not data or 'footonsat' not in data:
         return games
 
-    matches = {}      # key = (match, date) -> thông tin trận
-    channels_by_match = {}  # key = related_to -> list of channels
+    matches = {}
+    channels_by_match = {}
 
     for item in data['footonsat']:
         parsed = parse_footonsat(item)
         if not parsed:
             continue
         if parsed['type'] == 'match':
-            # Chỉ lấy trận trong 24 giờ
             if now_ts <= parsed['kick_utc'] <= max_ts:
                 match_name = parsed['match']
                 date = parsed['date']
@@ -575,7 +600,6 @@ def load_footonsat_data(now_ts: int, max_ts: int) -> List[Dict]:
                 channels_by_match[related] = []
             channels_by_match[related].append(parsed['channel'])
 
-    # Ghép kênh vào trận
     for key, match in matches.items():
         match_name = match['match']
         channels = channels_by_match.get(match_name, [])
@@ -591,9 +615,33 @@ def load_footonsat_data(now_ts: int, max_ts: int) -> List[Dict]:
             })
     return games
 
+def load_all_secondary_sources(now_ts: int, max_ts: int) -> List[Dict]:
+    games = []
+    # LiveSportsOnTV
+    ls_data = load_json_file("schedule_livesportsontv.json")
+    for entry in ls_data:
+        g = parse_livesportsontv(entry)
+        if g and now_ts <= g['kick_utc'] <= max_ts:
+            games.append(g)
+    # Wheresthematch
+    wm_data = load_json_file("results.json")
+    for entry in wm_data:
+        g = parse_wheresthematch(entry)
+        if g and now_ts <= g['kick_utc'] <= max_ts:
+            games.append(g)
+    # Ausport
+    aus_data = load_json_file("ausport_schedule.json")
+    for entry in aus_data:
+        g = parse_ausport(entry)
+        if g and now_ts <= g['kick_utc'] <= max_ts:
+            games.append(g)
+    # FootOnSat
+    footonsat_games = load_footonsat_data(now_ts, max_ts)
+    games.extend(footonsat_games)
+    return games
+
 # ================== MERGE ==================
 def merge_games(primary: List[Dict], secondary: List[Dict]) -> List[Dict]:
-    # Chỉ merge cho football (loại tennis vì tên trận khác nhau)
     primary_football = [g for g in primary if g['league'] != "Tennis"]
     primary_tennis = [g for g in primary if g['league'] == "Tennis"]
     secondary_football = [g for g in secondary if g['league'] != "Tennis"]
@@ -647,31 +695,6 @@ def merge_games(primary: List[Dict], secondary: List[Dict]) -> List[Dict]:
                     seen[key]['tv_channels'].append(sec_ch)
 
     return primary_football + unique_tennis
-
-def load_all_secondary_sources(now_ts: int, max_ts: int) -> List[Dict]:
-    games = []
-    # LiveSportsOnTV
-    ls_data = load_json_file("schedule_livesportsontv.json")
-    for entry in ls_data:
-        g = parse_livesportsontv(entry)
-        if g and now_ts <= g['kick_utc'] <= max_ts:
-            games.append(g)
-    # Wheresthematch
-    wm_data = load_json_file("results.json")
-    for entry in wm_data:
-        g = parse_wheresthematch(entry)
-        if g and now_ts <= g['kick_utc'] <= max_ts:
-            games.append(g)
-    # Ausport
-    aus_data = load_json_file("ausport_schedule.json")
-    for entry in aus_data:
-        g = parse_ausport(entry)
-        if g and now_ts <= g['kick_utc'] <= max_ts:
-            games.append(g)
-    # FootOnSat
-    footonsat_games = load_footonsat_data(now_ts, max_ts)
-    games.extend(footonsat_games)
-    return games
 
 # ================== M3U PARSER ==================
 def parse_m3u(content):
