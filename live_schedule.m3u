@@ -1,25 +1,8 @@
 #EXTM3U
-#EXTINF:-1 tvg-id="" group-title="Live Tennis",22/03 11:00 PM |  (M3U: SPORTS TV HD)
-http://96587.premiumstream.in:80/GokselSonmez/MxxnCxr25v9w/59
-#EXTINF:-1 tvg-id="" group-title="Live Ligue 1",22/03 11:15 PM | Lille vs Olympique Marseille (beIN Sport USA)
-http://boski.streamtv.to:8080/live/8gULQeqH3I/kbuahRdUJV/8510.m3u8
-#EXTINF:-1 tvg-id="beINSports" group-title="Live Ligue 1" tvg-logo="http://linear-poster.astro.com.my/prod/logo/beINSPORT1.png",22/03 11:15 PM | Lille vs Olympique Marseille (beIN Sport USA)
-#KODIPROP:inputstreamaddon=inputstream.adaptive
-#KODIPROP:inputstream.adaptive.manifest_type=dash
-#KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
-#KODIPROP:inputstream.adaptive.license_key=d48b6088253c443eb94d27cb7828f707:e9776141f9e949273a072b0e035070ab
-https://get.perfecttv.net/myunifi.mpd?username=vip_3klp0es8&password=wg3piwEs&channel=Bein1&kid=d48b6088-253c-443e-b94d-27cb7828f707
-#EXTINF:-1 tvg-id="" group-title="Live Ligue 1",22/03 11:15 PM | Lille vs Olympique Marseille (beIN Sport USA)
-http://96587.premiumstream.in:80/GokselSonmez/MxxnCxr25v9w/269805
-#EXTINF:-1 tvg-id="" group-title="Live Ligue 1",22/03 11:15 PM | Lille vs Olympique Marseille (beIN Sport USA)
-http://154.197.91.169:8000/play/a0f3/index.m3u8
 #EXTINF:-1 tvg-id="ssport.tr" group-title="Live Serie A" tvg-logo="https://gbzottvsc25.tvplus.com.tr:33207/CPS/images/universal/film/logo/202506/20250623/54/1002317544415eb9542c_op_0_XL.webp",23/03 12:00 AM | Roma vs Lecce (S Sport+)
 https://goldvod.site/live/hpgdiscoo/123456/519.m3u8
-#EXTINF:-1 tvg-id="AstroArenaBola" group-title="Live Serie A" tvg-logo="http://linear-poster.astro.com.my/prod/logo/AstroArenaBola_2024.png",23/03 12:00 AM | Roma vs Lecce (Astro Arena Bola 2)
-#KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=499a8f368064b11cc092b7b013db0710:e151bb81468a8426d6ab12860d314aa3
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 13; UltraBox Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/136.0.7103.61 Mobile Safari/537.36
-https://load.perfecttv.net/rwt.m3u8?username=vip_3klp0es8&password=wg3piwEs&channel=bola1
+#EXTINF:-1 tvg-id="ssportplus.tr" group-title="Live Serie A" tvg-logo="https://img.sporekrani.com/channels/VmyIJfY9ujeeFQv90fWj3b5tqulXoou0Q3BSJ1pF.png",23/03 12:00 AM | Roma vs Lecce (S Sport+)
+https://goldvod.site/live/hpgdiscoo/123456/430.m3u8
 #EXTINF:-1 tvg-id="446427" group-title="Live Serie A" tvg-logo="https://linear-poster.astro.com.my/prod/logo/AstroArenaBola2_2024.png",23/03 12:00 AM | Roma vs Lecce (Astro Arena Bola 2)
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=62a7b7917aad5123cd4df65c561c7010:b1effa9e51cf38b3ae676bc264937efb
@@ -38,10 +21,10 @@ http://213.169.39.30:5142
 https://arwen1.panaka1.cfd/puk2/usergenrnd0clv03fyt.m3u8
 #EXTINF:-1 tvg-id="" group-title="Live Serie A" tvg-logo="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiPvRU5_2VI2ZrYUQF5HkfJ7eTPbpytm1-R5QKTQXckOuYgJSDP0ERiUVNQHXe0oInDR8sFTwMglQ3pcIRQJQ273ZtoDm9k9ihIVRJDc8R_K5FvvAJ2OCtRtXCxgNlC9DDzHwNUT5c2Zq_QtBCh0gphhdq7yzyHbCYGIPLvkPri9Fnnpp1BYjyBW6WL_j_e/s700/PRIMA%20SPORT%202.png",23/03 12:00 AM | Roma vs Lecce (Prima Sport 2)
 https://arwen1.panaka.cfd/puk2/usergenrnd0clv03fyt.m3u8
-#EXTINF:-1 tvg-id="" group-title="Live Serie A" tvg-logo="http://smartillusion.feniks.team:25002/images/sport/arenasport2.png",23/03 12:00 AM | Roma vs Lecce (Arena Sport 2 HR)
-http://moj.feniks.team:25461/411dariocacic/a1Uni9hC0D/1176
 #EXTINF:-1 tvg-id="" group-title="Live Serie A",23/03 12:00 AM | Roma vs Lecce (Ziggo Sport 5)
 http://vipnorseman.top:8080/VIP0171172364679510/81750162830398/128995
+#EXTINF:-1 tvg-id="" group-title="Live Serie A" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT8JLJOuh_bd5xRoUioPmyMDwXEUsAdefcmw&usqp=CAU",23/03 12:00 AM | Roma vs Lecce (Ziggo Sport 5)
+https://raw.githubusercontent.com/B-inal-123/s-eropa/inal-22/ZiggoSport5.m3u8
 #EXTINF:-1 tvg-id="" group-title="Live Serie A",23/03 12:00 AM | Roma vs Lecce (Sport 1)
 http://77.137.40.221:8000/play/a016
 #EXTINF:-1 tvg-id="374694" group-title="Live Serie A" tvg-logo="https://r2.thesportsdb.com/images/media/channel/logo/t1k26d1616932441.png",23/03 12:00 AM | Roma vs Lecce (Sport 1)
@@ -77,9 +60,9 @@ http://185.132.134.159:80/sport3/index.m3u8
 #EXTINF:-1 tvg-id="" group-title="Live Serie A",23/03 12:00 AM | Roma vs Lecce (Sport 3)
 http://77.137.40.221:8000/play/a01a
 #EXTINF:-1 tvg-id="SPORT.TV3.HD.pt" group-title="Live Serie A" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sport-tv-3.png",23/03 12:00 AM | Roma vs Lecce (Sport 3)
-https://restream-live.realiptv.to/53420573/53717218/844
-#EXTINF:-1 tvg-id="SPORT.TV3.HD.pt" group-title="Live Serie A" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sport-tv-3.png",23/03 12:00 AM | Roma vs Lecce (Sport 3)
 https://restream-live.realiptv.to/53420573/53717218/845
+#EXTINF:-1 tvg-id="SPORT.TV3.HD.pt" group-title="Live Serie A" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sport-tv-3.png",23/03 12:00 AM | Roma vs Lecce (Sport 3)
+https://restream-live.realiptv.to/53420573/53717218/844
 #EXTINF:-1 tvg-id="SPORT.TV3.HD.pt" group-title="Live Serie A" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sport-tv-3.png",23/03 12:00 AM | Roma vs Lecce (Sport 3)
 http://tvmate.icu:8080/sales@dellerstechshop.ca/sales@4889/167744
 #EXTINF:-1 tvg-id="beinsport3hd.tr" group-title="Live Serie A" tvg-logo="http://mediacms01.digiturkplay.com/channel_logo/w2_Bein_Sport3_250x150_2022.png",23/03 12:00 AM | Roma vs Lecce (beIN SPORTS 3)
@@ -90,7 +73,7 @@ http://99.27.51.147:8080/BeinSport3/index.m3u8
 http://145.239.5.177:80/559/index.m3u8
 #EXTINF:-1 tvg-id="7763" group-title="Live Serie A",23/03 12:00 AM | Roma vs Lecce (beIN SPORTS 3)
 http://77.137.40.221:8000/play/a01h
-#EXTINF:-1 tvg-id="531582" group-title="Live Serie A" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/313_144.png",23/03 12:00 AM | Roma vs Lecce (beIN SPORTS 3)
+#EXTINF:-1 tvg-id="214" group-title="Live Serie A" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/313_144.png",23/03 12:00 AM | Roma vs Lecce (beIN SPORTS 3)
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=7995c724a13748ed970840a8ab5bb9b3:67bdaf1e2175b9ff682fcdf0e2354b1e
 https://otte.live.fly.ww.aiv-cdn.net/syd-nitro/live/clients/dash/enc/q4u5nwaogz/out/v1/18de6d3e65934f3a8de4358e69eab86c/cenc.mpd
@@ -101,22 +84,14 @@ https://otte.live.fly.ww.aiv-cdn.net/syd-nitro/live/clients/dash/enc/q4u5nwaogz/
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=7995c724a13748ed970840a8ab5bb9b3:67bdaf1e2175b9ff682fcdf0e2354b1e
 https://a122aivottlinear-a.akamaihd.net/OTTB/syd-nitro/live/clients/dash/enc/q4u5nwaogz/out/v1/18de6d3e65934f3a8de4358e69eab86c/cenc.mpd
-#EXTINF:-1 tvg-id="" group-title="Live La Liga" tvg-logo="https://docdog.top/logo/countries/africa/supersportlaliga.png",23/03 03:00 AM | Real Madrid vs Atlético Madrid (SuperSport LaLiga)
-http://uu246.neqwcop.top:8080/live/8251723372661174/ee9d128eabd9/52180.m3u8
-#EXTINF:-1 tvg-id="" group-title="Live La Liga" tvg-logo="https://docdog.top/logo/countries/africa/supersportlaliga.png",23/03 03:00 AM | Real Madrid vs Atlético Madrid (SuperSport LaLiga)
-http://uu246.neqwcop.top:8080/live/1761748316851777/182deb976e8f/52180.m3u8
 #EXTINF:-1 tvg-id="" group-title="Live La Liga",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Canal+ Sport 2)
 http://gr.seetv.cc/play/1137/FB4F94DA00C3BE0/video.m3u8
-#EXTINF:-1 tvg-id="" group-title="Live La Liga" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZC-ziqZMsoRYfc6wGnXmOAUd0TZ2cGABVvxVJA2ZUZIG2BeY-bN5TMCoI&s=10",23/03 03:00 AM | Real Madrid vs Atlético Madrid (LaLiga TV (Bar))
-https://a166aivottlinear-a.akamaihd.net/OTTB/dub-nitro/live/clients/dash/enc/k0duzgfejg/out/v1/70a50b1bda944628b8e7e66ab4069419/cenc.mpd
-#EXTINF:-1 tvg-id="" group-title="Live La Liga" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZC-ziqZMsoRYfc6wGnXmOAUd0TZ2cGABVvxVJA2ZUZIG2BeY-bN5TMCoI&s=10",23/03 03:00 AM | Real Madrid vs Atlético Madrid (LaLiga TV (Bar))
-https://otte.live.fly.ww.aiv-cdn.net/dub-nitro/live/clients/dash/enc/k0duzgfejg/out/v1/70a50b1bda944628b8e7e66ab4069419/cenc.mpd
-#EXTINF:-1 tvg-id="" group-title="Live La Liga" tvg-logo="https://i.postimg.cc/hvy62Phn/image.jpg",23/03 03:00 AM | Real Madrid vs Atlético Madrid (LaLiga TV (Bar))
-https://crichd.workspace-sultanarabi161.workers.dev/live/laligauk.m3u8
-#EXTINF:-1 tvg-id="" group-title="Live La Liga" tvg-logo="https://docdog.top/logo/countries/uk/laligatv.png",23/03 03:00 AM | Real Madrid vs Atlético Madrid (LaLiga TV (Bar))
-http://uu246.neqwcop.top:8080/live/1761748316851777/182deb976e8f/29926.m3u8
-#EXTINF:-1 tvg-id="" group-title="Live La Liga" tvg-logo="https://docdog.top/logo/countries/uk/laligatv.png",23/03 03:00 AM | Real Madrid vs Atlético Madrid (LaLiga TV (Bar))
-http://uu246.neqwcop.top:8080/live/8251723372661174/ee9d128eabd9/29926.m3u8
+#EXTINF:-1 tvg-id="521272" group-title="Live La Liga",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Canal+)
+http://151.80.18.177:86/Canal+_sport_HD/index.m3u8
+#EXTINF:-1 tvg-id="521272" group-title="Live La Liga",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Canal+)
+http://gr.seetv.cc/play/1135/FB4F94DA00C3BE0/video.m3u8
+#EXTINF:-1 tvg-id="521272" group-title="Live La Liga",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Canal+)
+http://gr.seetv.cc/play/1136/FB4F94DA00C3BE0/video.m3u8
 #EXTINF:-1 tvg-id="7761" group-title="Live La Liga" tvg-logo="http://mediacms01.digiturkplay.com/channel_logo/w2_Bein_Sport1_250x150_2022.png",23/03 03:00 AM | Real Madrid vs Atlético Madrid (beIN SPORTS 1)
 https://goldvod.site/live/hpgdiscoo/123456/345.m3u8
 #EXTINF:-1 tvg-id="7761" group-title="Live La Liga",23/03 03:00 AM | Real Madrid vs Atlético Madrid (beIN SPORTS 1)
@@ -124,11 +99,32 @@ http://99.27.51.147:8080/BeinSport/index.m3u8
 #EXTINF:-1 tvg-id="7761" group-title="Live La Liga",23/03 03:00 AM | Real Madrid vs Atlético Madrid (beIN SPORTS 1)
 http://77.137.40.221:8000/play/a01e
 #EXTINF:-1 tvg-id="524189" group-title="Live La Liga" tvg-logo="http://mediacms01.digiturkplay.com/channel_logo/w2_Bein_Sport1_250x150_2022.png",23/03 03:00 AM | Real Madrid vs Atlético Madrid (beIN SPORTS 1)
-https://goldvod.site/live/hpgdiscoo/123456/150.m3u8
-#EXTINF:-1 tvg-id="524189" group-title="Live La Liga" tvg-logo="http://mediacms01.digiturkplay.com/channel_logo/w2_Bein_Sport1_250x150_2022.png",23/03 03:00 AM | Real Madrid vs Atlético Madrid (beIN SPORTS 1)
 https://goldvod.site/live/hpgdiscoo/123456/141.m3u8
+#EXTINF:-1 tvg-id="524189" group-title="Live La Liga" tvg-logo="http://mediacms01.digiturkplay.com/channel_logo/w2_Bein_Sport1_250x150_2022.png",23/03 03:00 AM | Real Madrid vs Atlético Madrid (beIN SPORTS 1)
+https://goldvod.site/live/hpgdiscoo/123456/150.m3u8
 #EXTINF:-1 tvg-id="524189" group-title="Live La Liga",23/03 03:00 AM | Real Madrid vs Atlético Madrid (beIN SPORTS 1)
 http://superintendent.whatevergos.com:8080/ABDULLAH/aHVzDrpCMh/142755
+#EXTINF:-1 tvg-id="" group-title="Live La Liga" tvg-logo="https://docdog.top/logo/countries/africa/supersportlaliga.png",23/03 03:00 AM | Real Madrid vs Atlético Madrid (SuperSport LaLiga)
+http://uu246.neqwcop.top:8080/live/1761748316851777/182deb976e8f/52180.m3u8
+#EXTINF:-1 tvg-id="" group-title="Live La Liga" tvg-logo="https://docdog.top/logo/countries/africa/supersportlaliga.png",23/03 03:00 AM | Real Madrid vs Atlético Madrid (SuperSport LaLiga)
+http://uu246.neqwcop.top:8080/live/8251723372661174/ee9d128eabd9/52180.m3u8
+#EXTINF:-1 tvg-id="Premier Sport 1.cz" group-title="Live La Liga" tvg-logo="https://iili.io/d9i4ecb.png",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Premier Sports 1 HD)
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (iPhone14,6; U; CPU iPhone OS 15_4 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Mobile/19E241 Safari/602.1
+#KODIPROP:inputstreamaddon=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=dash
+#KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
+#KODIPROP:inputstream.adaptive.license_key=1444f4235529f183f0a5a486befe9cdb:e5e3fec67a1bb3472a2089c8a0a2557f
+https://a151aivottlinear-a.akamaihd.net/OTTB/lhr-nitro/live/clients/dash/enc/m6sqanvm2m/out/v1/f6beb46c6e9a4132ad739f3ca27df6aa/cenc.mpd
+#EXTINF:-1 tvg-id="" group-title="Live La Liga" tvg-logo="https://i.postimg.cc/7ZW7qvGQ/image.jpg",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Premier Sports 1 HD)
+https://crichd.workspace-sultanarabi161.workers.dev/live/premieruk.m3u8
+#EXTINF:-1 tvg-id="" group-title="Live La Liga",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Premier Sports 1 HD)
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=1444f4235529f183f0a5a486befe9cdb:e5e3fec67a1bb3472a2089c8a0a2557f
+https://otte.live.fly.ww.aiv-cdn.net/gru-nitro/live/clients/dash/enc/m6sqanvm2m/out/v1/f6beb46c6e9a4132ad739f3ca27df6aa/cenc.mpd
+#EXTINF:-1 tvg-id="" group-title="Live La Liga",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Premier Sports 1 HD)
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=56b79c1782b30e6b6fc973b0e8fd4104:fa38aaa865a57eda7c77444697ba8ed3
+https://otte.live.fly.ww.aiv-cdn.net/gru-nitro/live/clients/dash/enc/nelfyucw9a/out/v1/6ffb2c365ad14f88b154591beb43d1f6/cenc.mpd
 #EXTINF:-1 tvg-id="" group-title="Live La Liga",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Setanta Sports 2)
 http://boxviptv.net:25461/Mhmn0028/3U3smSKML8/1113
 #EXTINF:-1 tvg-id="" group-title="Live La Liga",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Setanta Sports 2)
@@ -141,50 +137,6 @@ http://94.43.1.138:8081/setanta2/index.m3u8
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=9552bcbabfbd4ac19744422143bfb875:e6daacaced7eba147d2b667441060a4f
 https://v4-kun-nk16-cdn-01.live.cdn.cgates.lt/live/dash/561504/index.mpd
-#EXTINF:-1 tvg-id="" group-title="Live La Liga" tvg-logo="https://i.ibb.co/wSkpMyv/Ziggosport.png",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Ziggo Sport)
-http://xtream.eshost.xyz//Lbs0U2/tFMZlx/121
-#EXTINF:-1 tvg-id="Ziggo.Sport.nl" group-title="Live La Liga" tvg-logo="https://i.imgur.com/jVI5bge.png",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Ziggo Sport)
-https://7pal.short.gy/ZiggoSport
-#EXTINF:-1 tvg-id="5862" group-title="Live La Liga" tvg-logo="https://www.unblockitall.com/wp-content/uploads/2018/07/digi-sport.jpg",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Digi Sport 1)
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (iPhone14,6; U; CPU iPhone OS 15_4 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Mobile/19E241 Safari/602.1
-#EXTVLCOPT:http-referrer=https://canale-tv.com/
-https://jardo111.jardomany1.cfd/kuk1/usergendx472snx93kdgwqrnd.m3u8
-#EXTINF:-1 tvg-id="5862" group-title="Live La Liga" tvg-logo="https://r2.thesportsdb.com/images/media/channel/logo/svrprs1436105433.png",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Digi Sport 1)
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (iPhone14,6; U; CPU iPhone OS 15_4 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Mobile/19E241 Safari/602.1
-#EXTVLCOPT:http-referrer=https://cool-tv.net/
-https://bintangstreaming.my.id/connect/index.m3u8?channel=digisports1&type=m3u8
-#EXTINF:-1 tvg-id="5862" group-title="Live La Liga",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Digi Sport 1)
-http://91.201.172.14:35005/
-#EXTINF:-1 tvg-id="PrimaSport1.ro" group-title="Live La Liga" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYeh83SinE7EU9kd4zaZ5e3GkKC2_VDlQPTA&s",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Prima Sport 1)
-#EXTVLCOPT:http-referrer=https://ballsod24hrs.com/
-https://ww.dooballfree.vip/live/primasport1/playlist.m3u8
-#EXTINF:-1 tvg-id="" group-title="Live La Liga" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYeh83SinE7EU9kd4zaZ5e3GkKC2_VDlQPTA&s",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Prima Sport 1)
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36
-#EXTVLCOPT:http-referrer=https://rohan116.ultronx1.cfd/000/
-https://rohan116.ultronx1.cfd/puk1/usergenrx0cir27aq.m3u8
-#EXTINF:-1 tvg-id="7612" group-title="Live La Liga",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Nova Sport 4)
-http://pl.online24.pm/play/1709/C0D18CDEC14EAF8/video.m3u8
-#EXTINF:-1 tvg-id="Premier Sport 1.cz" group-title="Live La Liga" tvg-logo="https://iili.io/d9i4ecb.png",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Premier Sports 1 HD)
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (iPhone14,6; U; CPU iPhone OS 15_4 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Mobile/19E241 Safari/602.1
-#KODIPROP:inputstreamaddon=inputstream.adaptive
-#KODIPROP:inputstream.adaptive.manifest_type=dash
-#KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
-#KODIPROP:inputstream.adaptive.license_key=1444f4235529f183f0a5a486befe9cdb:e5e3fec67a1bb3472a2089c8a0a2557f
-https://a151aivottlinear-a.akamaihd.net/OTTB/lhr-nitro/live/clients/dash/enc/m6sqanvm2m/out/v1/f6beb46c6e9a4132ad739f3ca27df6aa/cenc.mpd
-#EXTINF:-1 tvg-id="ap1sr" group-title="Live La Liga" tvg-logo="http://103.127.132.205/wiki/wikipedia/commons/8/8c/PS_Logo_STACKED_4.png",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Premier Sports 1 HD)
-#KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=1444f4235529f183f0a5a486befe9cdb:e5e3fec67a1bb3472a2089c8a0a2557f
-https://a151aivottlinear-a.akamaihd.net/OTTB/sin-nitro/live/clients/dash/enc/vwq77hfgzw/out/v1/b858e0b845c64cec953887bd4269e4ea/cenc.mpd
-#EXTINF:-1 tvg-id="" group-title="Live La Liga" tvg-logo="https://i.postimg.cc/7ZW7qvGQ/image.jpg",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Premier Sports 1 HD)
-https://crichd.workspace-sultanarabi161.workers.dev/live/premieruk.m3u8
-#EXTINF:-1 tvg-id="" group-title="Live La Liga",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Premier Sports 1 HD)
-#KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=1444f4235529f183f0a5a486befe9cdb:e5e3fec67a1bb3472a2089c8a0a2557f
-https://otte.live.fly.ww.aiv-cdn.net/gru-nitro/live/clients/dash/enc/m6sqanvm2m/out/v1/f6beb46c6e9a4132ad739f3ca27df6aa/cenc.mpd
-#EXTINF:-1 tvg-id="" group-title="Live La Liga",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Premier Sports 1 HD)
-#KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=56b79c1782b30e6b6fc973b0e8fd4104:fa38aaa865a57eda7c77444697ba8ed3
-https://otte.live.fly.ww.aiv-cdn.net/gru-nitro/live/clients/dash/enc/nelfyucw9a/out/v1/6ffb2c365ad14f88b154591beb43d1f6/cenc.mpd
 #EXTINF:-1 tvg-id="" group-title="Live La Liga" tvg-logo="https://i.imgur.com/BAxLcEX.jpg",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Go3 Sport 1)
 http://de.online24.pm/play/6709/0E5BF0B5A9755BD/video.m3u8
 #EXTINF:-1 tvg-id="" group-title="Live La Liga" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRWAJ-1yR1EcopzaJBWBh5fDHcUriZkuthgg&s",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Go3 Sport 1)
@@ -199,6 +151,8 @@ https://cors-proxy.wangzhishi.net/http://origin.thetvapp.to/hls/espn-deportes/mo
 http://46.151.196.243:80/play/ZcGYC1mvTUxgtBD7K_MCNgjV2TY8doY3wUWCWHEdAbA
 #EXTINF:-1 tvg-id="ssport.tr" group-title="Live La Liga" tvg-logo="https://gbzottvsc25.tvplus.com.tr:33207/CPS/images/universal/film/logo/202506/20250623/54/1002317544415eb9542c_op_0_XL.webp",23/03 03:00 AM | Real Madrid vs Atlético Madrid (S Sport)
 https://goldvod.site/live/hpgdiscoo/123456/519.m3u8
+#EXTINF:-1 tvg-id="ssportplus.tr" group-title="Live La Liga" tvg-logo="https://img.sporekrani.com/channels/VmyIJfY9ujeeFQv90fWj3b5tqulXoou0Q3BSJ1pF.png",23/03 03:00 AM | Real Madrid vs Atlético Madrid (S Sport)
+https://goldvod.site/live/hpgdiscoo/123456/430.m3u8
 #EXTINF:-1 tvg-id="" group-title="Live La Liga" tvg-logo="https://msatcable.com/wp-content/uploads/2023/05/xoceudhlccd61ha1z10u8orii5.png",23/03 03:00 AM | Real Madrid vs Atlético Madrid (MAX Sport 4)
 http://filex.me:8080/live/drzain/002808/318167.ts
 #EXTINF:-1 tvg-id="531000" group-title="Live La Liga",23/03 03:00 AM | Real Madrid vs Atlético Madrid (MAX Sport 4)
@@ -209,8 +163,14 @@ http://213.169.39.30:5130
 http://92.247.25.42:11173/
 #EXTINF:-1 tvg-id="381848" group-title="Live La Liga",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Arena Sport Premium 2)
 http://88.212.15.19/live/test_arenasport_dva/playlist.m3u8
+#EXTINF:-1 tvg-id="7612" group-title="Live La Liga",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Nova Sport 4)
+http://pl.online24.pm/play/1709/C0D18CDEC14EAF8/video.m3u8
+#EXTINF:-1 tvg-id="beinsport2fhd.tr" group-title="Live La Liga" tvg-logo="http://mediacms01.digiturkplay.com/channel_logo/w2_Bein_Sport2_250x150_2022.png",23/03 03:00 AM | Real Madrid vs Atlético Madrid (beIN SPORTS 2)
+https://goldvod.site/live/hpgdiscoo/123456/349.m3u8
 #EXTINF:-1 tvg-id="" group-title="Live La Liga",23/03 03:00 AM | Real Madrid vs Atlético Madrid (beIN SPORTS 2)
 http://99.27.51.147:8080/BeinSport2/index.m3u8
+#EXTINF:-1 tvg-id="beinsport2hd.tr" group-title="Live La Liga" tvg-logo="http://mediacms01.digiturkplay.com/channel_logo/w2_Bein_Sport2_250x150_2022.png",23/03 03:00 AM | Real Madrid vs Atlético Madrid (beIN SPORTS 2)
+https://goldvod.site/live/hpgdiscoo/123456/347.m3u8
 #EXTINF:-1 tvg-id="" group-title="Live La Liga",23/03 03:00 AM | Real Madrid vs Atlético Madrid (beIN SPORTS 2)
 http://77.137.40.221:8000/play/a01g
 #EXTINF:-1 tvg-id="524174" group-title="Live La Liga" tvg-logo="http://linear-poster.astro.com.my/prod/logo/beINSPORTS2.png",23/03 03:00 AM | Real Madrid vs Atlético Madrid (beIN SPORTS 2)
@@ -219,12 +179,35 @@ http://77.137.40.221:8000/play/a01g
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=efa6ff1acefa43048e8b7adc21d98871:5d0f448b52a92035e3763c4a60275933
 https://get.perfecttv.net/myunifi.mpd?username=vip_3klp0es8&password=wg3piwEs&channel=Bein2&kid=efa6ff1a-cefa-4304-8e8b-7adc21d98871
-#EXTINF:-1 tvg-id="521272" group-title="Live La Liga",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Canal+ Sport HD)
-http://151.80.18.177:86/Canal+_sport_HD/index.m3u8
-#EXTINF:-1 tvg-id="521272" group-title="Live La Liga",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Canal+ Sport HD)
-http://gr.seetv.cc/play/1135/FB4F94DA00C3BE0/video.m3u8
-#EXTINF:-1 tvg-id="521272" group-title="Live La Liga",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Canal+ Sport HD)
-http://gr.seetv.cc/play/1136/FB4F94DA00C3BE0/video.m3u8
+#EXTINF:-1 tvg-id="" group-title="Live La Liga" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZC-ziqZMsoRYfc6wGnXmOAUd0TZ2cGABVvxVJA2ZUZIG2BeY-bN5TMCoI&s=10",23/03 03:00 AM | Real Madrid vs Atlético Madrid (LaLiga TV (Bar))
+https://otte.live.fly.ww.aiv-cdn.net/dub-nitro/live/clients/dash/enc/k0duzgfejg/out/v1/70a50b1bda944628b8e7e66ab4069419/cenc.mpd
+#EXTINF:-1 tvg-id="" group-title="Live La Liga" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZC-ziqZMsoRYfc6wGnXmOAUd0TZ2cGABVvxVJA2ZUZIG2BeY-bN5TMCoI&s=10",23/03 03:00 AM | Real Madrid vs Atlético Madrid (LaLiga TV (Bar))
+https://a166aivottlinear-a.akamaihd.net/OTTB/dub-nitro/live/clients/dash/enc/k0duzgfejg/out/v1/70a50b1bda944628b8e7e66ab4069419/cenc.mpd
+#EXTINF:-1 tvg-id="" group-title="Live La Liga" tvg-logo="https://i.postimg.cc/hvy62Phn/image.jpg",23/03 03:00 AM | Real Madrid vs Atlético Madrid (LaLiga TV (Bar))
+https://crichd.workspace-sultanarabi161.workers.dev/live/laligauk.m3u8
+#EXTINF:-1 tvg-id="" group-title="Live La Liga" tvg-logo="https://docdog.top/logo/countries/uk/laligatv.png",23/03 03:00 AM | Real Madrid vs Atlético Madrid (LaLiga TV (Bar))
+http://uu246.neqwcop.top:8080/live/1761748316851777/182deb976e8f/29926.m3u8
+#EXTINF:-1 tvg-id="" group-title="Live La Liga" tvg-logo="https://docdog.top/logo/countries/uk/laligatv.png",23/03 03:00 AM | Real Madrid vs Atlético Madrid (LaLiga TV (Bar))
+http://uu246.neqwcop.top:8080/live/8251723372661174/ee9d128eabd9/29926.m3u8
+#EXTINF:-1 tvg-id="" group-title="Live La Liga" tvg-logo="https://i.ibb.co/wSkpMyv/Ziggosport.png",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Ziggo Sport)
+http://xtream.eshost.xyz//Lbs0U2/tFMZlx/121
+#EXTINF:-1 tvg-id="Ziggo.Sport.nl" group-title="Live La Liga" tvg-logo="https://i.imgur.com/jVI5bge.png",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Ziggo Sport)
+https://7pal.short.gy/ZiggoSport
+#EXTINF:-1 tvg-id="5862" group-title="Live La Liga" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVycPrqcSQ74386GOn1z8JGgOC-9Pg5mvSGw&s",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Digi Sport 1)
+http://cmskos.bekaks.net:777/live/valard_klient2/PhcWLtKTuc/2466.m3u8
+#EXTINF:-1 tvg-id="5862" group-title="Live La Liga" tvg-logo="https://r2.thesportsdb.com/images/media/channel/logo/svrprs1436105433.png",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Digi Sport 1)
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (iPhone14,6; U; CPU iPhone OS 15_4 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Mobile/19E241 Safari/602.1
+#EXTVLCOPT:http-referrer=https://cool-tv.net/
+https://bintangstreaming.my.id/connect/index.m3u8?channel=digisports1&type=m3u8
+#EXTINF:-1 tvg-id="5862" group-title="Live La Liga",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Digi Sport 1)
+http://91.201.172.14:35005/
+#EXTINF:-1 tvg-id="PrimaSport1.ro" group-title="Live La Liga" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYeh83SinE7EU9kd4zaZ5e3GkKC2_VDlQPTA&s",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Prima Sport 1)
+#EXTVLCOPT:http-referrer=https://ballsod24hrs.com/
+https://ww.dooballfree.vip/live/primasport1/playlist.m3u8
+#EXTINF:-1 tvg-id="" group-title="Live La Liga" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYeh83SinE7EU9kd4zaZ5e3GkKC2_VDlQPTA&s",23/03 03:00 AM | Real Madrid vs Atlético Madrid (Prima Sport 1)
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36
+#EXTVLCOPT:http-referrer=https://rohan116.ultronx1.cfd/000/
+https://rohan116.ultronx1.cfd/puk1/usergenrx0cir27aq.m3u8
 #EXTINF:-1 tvg-id="us#69050186/espn-deportes" group-title="Live La Liga",23/03 03:00 AM | Atletico Madrid vs Real Madrid (ESPN Deportes)
 https://cors-proxy.wangzhishi.net/http://origin.thetvapp.to/hls/espn-deportes/mono.m3u8
 #EXTINF:-1 tvg-id="us#69050186/espn-deportes" group-title="Live La Liga",23/03 03:00 AM | Atletico Madrid vs Real Madrid (ESPN Deportes)
@@ -236,8 +219,10 @@ http://99.27.51.147:8080/BeinSport/index.m3u8
 #EXTINF:-1 tvg-id="7761" group-title="Live Tennis",23/03 04:00 AM |  (beIN SPORTS 1)
 http://77.137.40.221:8000/play/a01e
 #EXTINF:-1 tvg-id="524189" group-title="Live Tennis" tvg-logo="http://mediacms01.digiturkplay.com/channel_logo/w2_Bein_Sport1_250x150_2022.png",23/03 04:00 AM |  (beIN SPORTS 1)
-https://goldvod.site/live/hpgdiscoo/123456/150.m3u8
-#EXTINF:-1 tvg-id="524189" group-title="Live Tennis" tvg-logo="http://mediacms01.digiturkplay.com/channel_logo/w2_Bein_Sport1_250x150_2022.png",23/03 04:00 AM |  (beIN SPORTS 1)
 https://goldvod.site/live/hpgdiscoo/123456/141.m3u8
+#EXTINF:-1 tvg-id="524189" group-title="Live Tennis" tvg-logo="http://mediacms01.digiturkplay.com/channel_logo/w2_Bein_Sport1_250x150_2022.png",23/03 04:00 AM |  (beIN SPORTS 1)
+https://goldvod.site/live/hpgdiscoo/123456/150.m3u8
 #EXTINF:-1 tvg-id="524189" group-title="Live Tennis",23/03 04:00 AM |  (beIN SPORTS 1)
 http://superintendent.whatevergos.com:8080/ABDULLAH/aHVzDrpCMh/142755
+#EXTINF:-1 tvg-id="" group-title="Live Tennis" tvg-logo="https://mimipipi22.github.io/logo/sports/sportstv.jpg",23/03 06:00 AM |  (M3U: SPORTS TV)
+https://cdnjkt913.transvision.co.id:1000/live/master/1/4028c6857fe540a1018060afdef540bc/manifest.mpd
