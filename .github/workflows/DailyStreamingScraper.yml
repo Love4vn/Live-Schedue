@@ -1,7 +1,7 @@
 name: DailyStreamingScraper livesportsontv
 
 on:
-  #schedule:
+  schedule:
     - cron: '20 6 * * *'
   workflow_dispatch:
 
