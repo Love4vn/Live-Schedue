@@ -139,7 +139,6 @@ def normalize_channel_name(name: str) -> str:
 
 def split_name_and_number(name: str):
     """Tách tên kênh thành phần chữ và phần số (nếu có)"""
-    # Tìm số ở cuối (có thể có nhiều số, nhưng thường là số cuối)
     match = re.search(r'(\d+)$', name)
     if match:
         number = match.group(1)
@@ -153,22 +152,17 @@ def is_channel_match(ch_name: str, m3u_name: str) -> bool:
     ch_norm = normalize_channel_name(ch_name)
     m3u_norm = normalize_channel_name(m3u_name)
     
-    # Tách số
     ch_text, ch_num = split_name_and_number(ch_norm)
     m3u_text, m3u_num = split_name_and_number(m3u_norm)
     
-    # So sánh phần chữ với ngưỡng 0.9
     text_similarity = similar(ch_text, m3u_text)
     if text_similarity < 0.9:
         return False
     
-    # So sánh số: nếu cả hai đều có số, phải khớp chính xác
     if ch_num is not None and m3u_num is not None:
         return ch_num == m3u_num
-    # Nếu một bên có số, bên kia không: không match (để tránh nhầm)
     if ch_num is not None or m3u_num is not None:
         return False
-    # Nếu không có số, coi như match
     return True
 
 def is_team_match(team_name: str, m3u_name: str) -> bool:
@@ -373,28 +367,32 @@ def parse_livesportsontv(entry: dict) -> Optional[Dict]:
         kick_utc = int(dt.timestamp())
 
         league = entry.get('League', '')
-        if "Premier League" in league:
-            league = "Premier League"
-        elif "Serie A" in league:
-            league = "Serie A"
-        elif "Bundesliga" in league:
-            league = "Bundesliga"
-        elif "La Liga" in league:
-            league = "La Liga"
-        elif "Ligue 1" in league:
-            league = "Ligue 1"
-        elif "UEFA Champions League" in league:
-            league = "UEFA Champions League"
-        elif "UEFA Europa League" in league:
-            league = "UEFA Europa League"
-        elif "UEFA Europa Conference League" in league:
-            league = "UEFA Europa Conference League"
-        elif "Euro" in league:
-            league = "UEFA Euro"
+        # Xử lý tennis
+        if "Tennis" in league:
+            league = "Tennis"
         else:
-            return None
+            if "Premier League" in league:
+                league = "Premier League"
+            elif "Serie A" in league:
+                league = "Serie A"
+            elif "Bundesliga" in league:
+                league = "Bundesliga"
+            elif "La Liga" in league:
+                league = "La Liga"
+            elif "Ligue 1" in league:
+                league = "Ligue 1"
+            elif "UEFA Champions League" in league:
+                league = "UEFA Champions League"
+            elif "UEFA Europa League" in league:
+                league = "UEFA Europa League"
+            elif "UEFA Europa Conference League" in league:
+                league = "UEFA Europa Conference League"
+            elif "Euro" in league:
+                league = "UEFA Euro"
+            else:
+                return None
 
-        if league not in ALLOWED_FOOTBALL_LEAGUES:
+        if league not in ALLOWED_FOOTBALL_LEAGUES and league != "Tennis":
             return None
 
         match_raw = entry.get('Matchup', '')
@@ -411,7 +409,8 @@ def parse_livesportsontv(entry: dict) -> Optional[Dict]:
             "tv_channels": [{"country": "LiveSportsOnTV", "channels": channels}],
             "source": "livesportsontv"
         }
-    except:
+    except Exception as e:
+        print(f"   Lỗi parse livesportsontv: {e}")
         return None
 
 def parse_wheresthematch(entry: dict) -> Optional[Dict]:
@@ -424,28 +423,31 @@ def parse_wheresthematch(entry: dict) -> Optional[Dict]:
         kick_utc = int(dt.timestamp())
 
         league = entry.get('competition', '')
-        if "Premier League" in league:
-            league = "Premier League"
-        elif "Serie A" in league:
-            league = "Serie A"
-        elif "Bundesliga" in league:
-            league = "Bundesliga"
-        elif "La Liga" in league:
-            league = "La Liga"
-        elif "Ligue 1" in league:
-            league = "Ligue 1"
-        elif "UEFA Champions League" in league:
-            league = "UEFA Champions League"
-        elif "UEFA Europa League" in league:
-            league = "UEFA Europa League"
-        elif "UEFA Europa Conference League" in league:
-            league = "UEFA Europa Conference League"
-        elif "Euro" in league:
-            league = "UEFA Euro"
-        elif "Tennis" in league:
+        sport = entry.get('sport', '')
+        # Xử lý tennis
+        if sport == "Tennis" or "Tennis" in league:
             league = "Tennis"
         else:
-            return None
+            if "Premier League" in league:
+                league = "Premier League"
+            elif "Serie A" in league:
+                league = "Serie A"
+            elif "Bundesliga" in league:
+                league = "Bundesliga"
+            elif "La Liga" in league:
+                league = "La Liga"
+            elif "Ligue 1" in league:
+                league = "Ligue 1"
+            elif "UEFA Champions League" in league:
+                league = "UEFA Champions League"
+            elif "UEFA Europa League" in league:
+                league = "UEFA Europa League"
+            elif "UEFA Europa Conference League" in league:
+                league = "UEFA Europa Conference League"
+            elif "Euro" in league:
+                league = "UEFA Euro"
+            else:
+                return None
 
         if league not in ALLOWED_FOOTBALL_LEAGUES and league != "Tennis":
             return None
@@ -467,7 +469,8 @@ def parse_wheresthematch(entry: dict) -> Optional[Dict]:
             "tv_channels": [{"country": "Wheresthematch", "channels": channels}],
             "source": "wheresthematch"
         }
-    except:
+    except Exception as e:
+        print(f"   Lỗi parse wheresthematch: {e}")
         return None
 
 def parse_ausport(entry: dict) -> Optional[Dict]:
@@ -684,6 +687,7 @@ def merge_games(primary: List[Dict], secondary: List[Dict]) -> List[Dict]:
             seen[key] = g
             unique_tennis.append(g)
         else:
+            # Gộp kênh cho tennis trùng thời gian
             for sec_ch in g['tv_channels']:
                 found = False
                 for pri_ch in seen[key]['tv_channels']:
@@ -751,11 +755,26 @@ async def main():
     seen = {}
     deduped = []
     for g in all_games:
-        key = normalize(g["match"]) + "|" + g["time"] if g["match"] else g["time"] + "|" + str(g["kick_utc"])
+        if g['league'] == "Tennis" and not g['match']:
+            key = (g['kick_utc'], g['league'])
+        else:
+            key = normalize(g["match"]) + "|" + g["time"] if g["match"] else g["time"] + "|" + str(g["kick_utc"])
         if key not in seen:
             seen[key] = g
             if datetime.fromtimestamp(g['kick_utc']).astimezone(TIMEZONE) > vn_now:
                 deduped.append(g)
+        else:
+            # Gộp kênh cho tennis cùng thời gian
+            if g['league'] == "Tennis" and not g['match']:
+                for sec_ch in g['tv_channels']:
+                    found = False
+                    for pri_ch in seen[key]['tv_channels']:
+                        if pri_ch['country'] == sec_ch['country']:
+                            pri_ch['channels'] = list(set(pri_ch['channels'] + sec_ch['channels']))
+                            found = True
+                            break
+                    if not found:
+                        seen[key]['tv_channels'].append(sec_ch)
     all_games = deduped
 
     today_str = datetime.now().strftime("%Y%m%d")
