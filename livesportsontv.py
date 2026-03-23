@@ -1,5 +1,5 @@
 # File: livesportsontv.py
-# Fixed: better logging, tennis support, time parsing with AM/PM, Vietnam time
+# Improved: better matchup and channel extraction for tennis
 
 import asyncio
 import json
@@ -56,7 +56,6 @@ def include_friendly_match(home: str, away: str) -> bool:
 def parse_time_with_ampm(time_str: str) -> tuple[int, int]:
     """Convert time string like '10:00 PM' to 24h hour and minute."""
     time_str = time_str.strip().upper()
-    # Handle possible absence of space, e.g., "10:00PM"
     if ' ' not in time_str and ('AM' in time_str or 'PM' in time_str):
         if 'AM' in time_str:
             time_str = time_str.replace('AM', ' AM')
@@ -79,6 +78,75 @@ def parse_time_with_ampm(time_str: str) -> tuple[int, int]:
         elif meridiem == 'AM' and hour == 12:
             hour = 0
     return hour, minute
+
+def extract_matchup(row, is_tennis=False):
+    """Extract matchup text from row."""
+    if is_tennis:
+        # Try multiple possible selectors
+        selectors = [
+            ('a', 'event__title'),
+            ('div', 'event__title'),
+            ('span', 'event__title'),
+            ('a', 'event__link'),
+            ('div', 'event__name'),
+            ('a', 'event__name'),
+            ('a', 'title')  # sometimes just "title" class
+        ]
+        for tag, cls in selectors:
+            elem = row.find(tag, class_=cls)
+            if elem:
+                return elem.get_text(strip=True)
+        # Fallback: look for any <a> with href containing /event/ maybe
+        a_tags = row.find_all('a', href=True)
+        for a in a_tags:
+            if '/event/' in a['href']:
+                return a.get_text(strip=True)
+        # If still nothing, use any <a> text
+        a = row.find('a')
+        if a:
+            return a.get_text(strip=True)
+        return "Tennis Match"
+    else:
+        home_elem = row.find('div', class_=lambda c: c and 'event__participant--home' in c)
+        away_elem = row.find('div', class_=lambda c: c and 'event__participant--away' in c)
+        if home_elem and away_elem:
+            home = home_elem.get_text(strip=True)
+            away = away_elem.get_text(strip=True)
+            return f"{away} @ {home}"
+        # Fallback to title
+        title_elem = row.find('a', class_='event__title')
+        if title_elem:
+            return title_elem.get_text(strip=True)
+        return "Match"
+
+def extract_channels(row):
+    """Extract channel names from row."""
+    channels = []
+    # First try event__tags list
+    tags_ul = row.find('ul', class_='event__tags')
+    if tags_ul:
+        for link in tags_ul.find_all('a'):
+            # Get text or aria-label
+            text = link.get_text(strip=True)
+            if text:
+                channels.append(text)
+            else:
+                aria = link.get('aria-label')
+                if aria:
+                    channels.append(aria.strip())
+    else:
+        # Alternative: look for any <a> inside event__tags div
+        tags_div = row.find('div', class_='event__tags')
+        if tags_div:
+            for link in tags_div.find_all('a'):
+                text = link.get_text(strip=True)
+                if text:
+                    channels.append(text)
+                else:
+                    aria = link.get('aria-label')
+                    if aria:
+                        channels.append(aria.strip())
+    return channels
 
 # ------------------------------------------------------------
 # Main scraping
@@ -222,7 +290,7 @@ async def scrape_league_schedules():
                     if game_day != target_day_uk or game_month != target_month_uk:
                         continue
 
-                    # Time parsing (handle AM/PM)
+                    # Time parsing
                     time_tag = row.find('time')
                     if not time_tag:
                         continue
@@ -239,44 +307,27 @@ async def scrape_league_schedules():
                     uk_dt = uk_dt.replace(tzinfo=UK_TZ)
                     vn_dt = uk_dt.astimezone(VIETNAM_TZ)
 
-                    # Get matchup text
-                    if is_tennis:
-                        # Tennis: the event title is usually inside an <a> or <span>
-                        title_elem = row.find('a', class_='event__title')
-                        if not title_elem:
-                            title_elem = row.find('div', class_='event__title')
-                        matchup = title_elem.get_text(strip=True) if title_elem else "Tennis Match"
-                    else:
-                        home_elem = row.find('div', class_=lambda c: c and 'event__participant--home' in c)
-                        away_elem = row.find('div', class_=lambda c: c and 'event__participant--away' in c)
-                        home = home_elem.get_text(strip=True) if home_elem else "Unknown"
-                        away = away_elem.get_text(strip=True) if away_elem else "Unknown"
-                        matchup = f"{away} @ {home}"
-                        if home == "Unknown" and away == "Unknown":
-                            # Fallback to title if available
-                            title_elem = row.find('a', class_='event__title')
-                            if title_elem:
-                                matchup = title_elem.get_text(strip=True)
+                    # Get matchup
+                    matchup = extract_matchup(row, is_tennis)
 
                     # Apply filters
                     if team_filter is not None:
                         if not any(t.lower() in matchup.lower() for t in team_filter):
                             continue
                     if custom_filter is not None:
-                        # For friendlies, we need home/away names; if not available, skip
+                        # For friendlies, we need home/away; if not available, skip
+                        home_elem = row.find('div', class_=lambda c: c and 'event__participant--home' in c)
+                        away_elem = row.find('div', class_=lambda c: c and 'event__participant--away' in c)
                         if home_elem and away_elem:
+                            home = home_elem.get_text(strip=True)
+                            away = away_elem.get_text(strip=True)
                             if not custom_filter(home, away):
                                 continue
                         else:
                             continue
 
                     # Channels
-                    channels = []
-                    channel_list = row.find('ul', class_='event__tags')
-                    if channel_list:
-                        for link in channel_list.find_all('a'):
-                            if aria := link.get('aria-label'):
-                                channels.append(aria.strip())
+                    channels = extract_channels(row)
 
                     all_games.append({
                         "Date": vn_dt.strftime("%Y-%m-%d"),
