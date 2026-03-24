@@ -123,7 +123,7 @@ def normalize_channel_name(name: str) -> str:
     """Chuẩn hóa tên kênh: loại bỏ từ thừa, cờ, tốc độ, nội dung ngoặc, nhưng giữ lại số"""
     name = name.lower()
     # Loại bỏ các từ phổ biến
-    name = re.sub(r'\b(hd|uhd|4k|fhd|vip|plus|extra|usa|uk|us|tv|channel|network|sports?|premium|maximo?|4mbps|4g|mbps|kbps|bitrate)\b', '', name)
+    name = re.sub(r'\b(hd|uhd|4k|fhd|vip|plus|extra|usa|uk|us|tv|channel|network|sports?|premium|maximo?|4mbps|4g|mbps|kbps|bitrate|stream|live|online)\b', '', name)
     # Loại bỏ biểu tượng cờ
     name = re.sub(r'[🇬🇧🇺🇸🇨🇦🇦🇺🇩🇪🇫🇷🇮🇹🇪🇸🇵🇹🇳🇱🇧🇪🇨🇭🇦🇹🇸🇪🇳🇴🇩🇰🇫🇮🇵🇱🇨🇿🇭🇺🇷🇴🇧🇬🇬🇷🇹🇷]', '', name)
     # Loại bỏ nội dung trong ngoặc
@@ -152,17 +152,31 @@ def is_channel_match(ch_name: str, m3u_name: str) -> bool:
     ch_norm = normalize_channel_name(ch_name)
     m3u_norm = normalize_channel_name(m3u_name)
     
+    # Nếu một trong hai quá ngắn (<3), dùng so khớp chính xác
+    if len(ch_norm) <= 3 or len(m3u_norm) <= 3:
+        return ch_norm == m3u_norm
+    
+    # Tách số
     ch_text, ch_num = split_name_and_number(ch_norm)
     m3u_text, m3u_num = split_name_and_number(m3u_norm)
     
+    # So sánh phần chữ
     text_similarity = similar(ch_text, m3u_text)
-    if text_similarity < 0.9:
+    if text_similarity < 0.85:   # Tăng ngưỡng lên 0.85
         return False
     
+    # Nếu có số, bắt buộc khớp
     if ch_num is not None and m3u_num is not None:
         return ch_num == m3u_num
+    # Nếu chỉ một bên có số, không match
     if ch_num is not None or m3u_num is not None:
         return False
+    
+    # Nếu không có số, so sánh độ dài và tỷ lệ
+    # Độ dài chênh lệch không quá 70%
+    if abs(len(ch_text) - len(m3u_text)) > max(len(ch_text), len(m3u_text)) * 0.7:
+        return False
+    
     return True
 
 def is_team_match(team_name: str, m3u_name: str) -> bool:
@@ -261,6 +275,10 @@ async def fetch_sofascore_event(session, event_id, sport, now_ts, max_ts):
             league_lower = league_raw.lower()
             home_team = ev.get('homeTeam', {}).get('name', '')
             away_team = ev.get('awayTeam', {}).get('name', '')
+
+            # Lọc giải nữ
+            if "women" in league_lower or "frauen" in league_lower:
+                return None
 
             if is_uefa_euro(league_raw):
                 league = "UEFA Euro"
@@ -822,7 +840,7 @@ async def main():
                             "channel": ch,
                             "league": g["league"]
                         })
-            if not used_urls_in_match:
+            if not used_urls_in_match and g['match']:
                 match_norm = normalize(g['match'])
                 for ch in valid_ch:
                     if is_team_match(match_norm, ch['name']):
