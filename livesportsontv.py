@@ -1,5 +1,5 @@
 # File: livesportsontv.py
-# Fixed tennis matchup and channel extraction
+# Improved tennis matchup and channel extraction
 
 import asyncio
 import json
@@ -56,7 +56,6 @@ def include_friendly_match(home: str, away: str) -> bool:
 def parse_time_with_ampm(time_str: str) -> tuple[int, int]:
     """Convert time string like '10:00 PM' to 24h hour and minute."""
     time_str = time_str.strip().upper()
-    # Handle possible absence of space, e.g., "10:00PM"
     if ' ' not in time_str and ('AM' in time_str or 'PM' in time_str):
         if 'AM' in time_str:
             time_str = time_str.replace('AM', ' AM')
@@ -206,7 +205,7 @@ async def scrape_league_schedules():
             print(f"   Found {len(rows)} events.")
 
             added = 0
-            for row in rows:
+            for idx, row in enumerate(rows):
                 try:
                     # Date extraction
                     date_div = row.find('div', class_='event__info--date')
@@ -241,19 +240,56 @@ async def scrape_league_schedules():
 
                     # Get matchup text
                     if is_tennis:
-                        # Try multiple selectors for event title (tournament name)
+                        # Debug: print first row HTML for ATP
+                        if league_name == "Tennis (ATP)" and added == 0 and idx == 0:
+                            print("\n=== DEBUG: First ATP row HTML ===")
+                            print(row.prettify())
+                            print("==================================\n")
+                        
+                        # Try multiple selectors
+                        matchup = None
+                        # 1. Look for a.event__title
                         title_elem = row.find('a', class_='event__title')
                         if not title_elem:
-                            title_elem = row.find('div', class_='event__title')
+                            title_elem = row.find('a', class_='title')
                         if not title_elem:
-                            title_elem = row.find('span', class_='event__title')
+                            title_elem = row.find('a', href=True, text=True)
+                            if title_elem and len(title_elem.get_text(strip=True)) > 3:
+                                matchup = title_elem.get_text(strip=True)
+                        if not title_elem:
+                            # 2. Look for any div/span with class containing 'title'
+                            title_elem = row.find('div', class_=lambda c: c and 'title' in c)
+                            if not title_elem:
+                                title_elem = row.find('span', class_=lambda c: c and 'title' in c)
                         if title_elem:
                             matchup = title_elem.get_text(strip=True)
-                            # Clean up: remove any stray date/time if present (e.g., "24Mar3:00 PM")
-                            matchup = re.sub(r'\d{1,2}[a-z]{3}\d{1,2}:\d{2}\s*(?:AM|PM)?', '', matchup, flags=re.I)
-                            matchup = matchup.strip()
-                        else:
+                        # If still None, look for text in the row that doesn't contain date/time
+                        if not matchup:
+                            # Get all text from the row, split, and find the longest likely name
+                            text = row.get_text(separator=' ')
+                            # Remove date/time patterns
+                            text = re.sub(r'\d{1,2}[a-z]{3}\s*\d{1,2}:\d{2}\s*(?:AM|PM)?', '', text, flags=re.I)
+                            # Remove channel names (common channels)
+                            text = re.sub(r'Tennis Channel|TSN\d|RDS|DAZN|T2|TVA Sports|ESPN|SKY|BT Sport', '', text, flags=re.I)
+                            # Clean up
+                            words = text.split()
+                            # Assume the tournament name is the longest sequence of words
+                            if words:
+                                # Find the longest word sequence that doesn't look like a channel
+                                # For simplicity, take the first few words that are not numbers
+                                parts = []
+                                for w in words:
+                                    if w.isdigit() or w in ['AM', 'PM']:
+                                        continue
+                                    if w.lower() in ['atp', 'wta']:
+                                        continue
+                                    parts.append(w)
+                                if parts:
+                                    matchup = ' '.join(parts[:3])  # First 3 words
+                        if not matchup:
                             matchup = "Tennis Match"
+                        # Clean up any remaining stray text
+                        matchup = matchup.strip()
                     else:
                         home_elem = row.find('div', class_=lambda c: c and 'event__participant--home' in c)
                         away_elem = row.find('div', class_=lambda c: c and 'event__participant--away' in c)
@@ -284,14 +320,14 @@ async def scrape_league_schedules():
                         tags_container = row.find('div', class_='event__tags')
                     if tags_container:
                         for link in tags_container.find_all('a'):
-                            # Prefer aria-label, else use link text
-                            aria = link.get('aria-label')
-                            if aria:
-                                channels.append(aria.strip())
+                            # Prefer text, fallback to aria-label
+                            text = link.get_text(strip=True)
+                            if text:
+                                channels.append(text)
                             else:
-                                text = link.get_text(strip=True)
-                                if text:
-                                    channels.append(text)
+                                aria = link.get('aria-label')
+                                if aria:
+                                    channels.append(aria.strip())
                     # Also check for direct channel names in spans (fallback)
                     if not channels:
                         channel_spans = row.find_all('span', class_='event__tag')
