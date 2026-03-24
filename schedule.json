@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-24 19:38 VN",
+  "updated": "2026-03-25 01:43 VN",
   "days": {
     "20260324": {
       "date": "Tuesday, 24/03",
@@ -53,25 +53,87 @@
           "tournament": "U19 UEFA European Championship, Elite round Gr. 6"
         },
         {
-          "league": "Tennis",
-          "match": "24Mar3:00 PM",
-          "kick_utc": 1774364400,
-          "time": "24/03 10:00 PM",
+          "league": "UEFA Euro",
+          "time": "26/03 12:00 AM",
+          "match": "Germany U19 vs Sweden U19",
+          "kick_utc": 1774458000,
           "tv_channels": [
             {
-              "country": "LiveSportsOnTV",
+              "country": "Germany",
               "channels": [
-                "Tennis Channel",
-                "TSN1",
-                "RDS 2"
+                "Sky Sport News HD"
               ]
             }
           ],
-          "source": "livesportsontv"
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 1"
+        },
+        {
+          "league": "UEFA Euro",
+          "time": "25/03 11:00 PM",
+          "match": "Poland U19 vs Portugal U19",
+          "kick_utc": 1774454400,
+          "tv_channels": [],
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 2"
+        },
+        {
+          "league": "UEFA Euro",
+          "time": "25/03 09:15 PM",
+          "match": "Norway U19 vs France U19",
+          "kick_utc": 1774448100,
+          "tv_channels": [],
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 3"
+        },
+        {
+          "league": "UEFA Euro",
+          "time": "25/03 08:00 PM",
+          "match": "Czechia U19 vs Latvia U19",
+          "kick_utc": 1774443600,
+          "tv_channels": [],
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 4"
+        },
+        {
+          "league": "UEFA Euro",
+          "time": "25/03 11:00 PM",
+          "match": "Belgium U19 vs Denmark U19",
+          "kick_utc": 1774454400,
+          "tv_channels": [],
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 4"
+        },
+        {
+          "league": "UEFA Euro",
+          "time": "25/03 10:00 PM",
+          "match": "Kazakhstan U19 vs Romania U19",
+          "kick_utc": 1774450800,
+          "tv_channels": [],
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 5"
+        },
+        {
+          "league": "UEFA Euro",
+          "time": "25/03 11:00 PM",
+          "match": "Italy U19 vs Hungary U19",
+          "kick_utc": 1774454400,
+          "tv_channels": [],
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 6"
+        },
+        {
+          "league": "UEFA Euro",
+          "time": "25/03 09:00 PM",
+          "match": "Finland U19 vs Netherlands U19",
+          "kick_utc": 1774447200,
+          "tv_channels": [],
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 7"
+        },
+        {
+          "league": "UEFA Euro",
+          "time": "26/03 12:00 AM",
+          "match": "Spain U19 vs Slovenia U19",
+          "kick_utc": 1774458000,
+          "tv_channels": [],
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 7"
         },
         {
           "league": "Tennis",
-          "match": "24Mar9:00 PM",
+          "match": "Miami Open",
           "kick_utc": 1774386000,
           "time": "25/03 04:00 AM",
           "tv_channels": [
@@ -86,23 +148,7 @@
         },
         {
           "league": "Tennis",
-          "match": "24Mar6:00 PM",
-          "kick_utc": 1774375200,
-          "time": "25/03 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "TVA Sports",
-                "DAZN Canada"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "24Mar11:00 PM",
+          "match": "Miami Open",
           "kick_utc": 1774393200,
           "time": "25/03 06:00 AM",
           "tv_channels": [
@@ -114,6 +160,15 @@
                 "TVA Sports 2",
                 "DAZN Canada"
               ]
+            },
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Sky Sports Tennis",
+                "Sky Sports Main Event",
+                "Sky Sports Ultra HDR",
+                "Sky Sports+"
+              ]
             }
           ],
           "source": "livesportsontv"
@@ -121,8 +176,8 @@
         {
           "league": "Tennis",
           "match": "Miami Open",
-          "kick_utc": 1774364400,
-          "time": "24/03 10:00 PM",
+          "kick_utc": 1774456200,
+          "time": "25/03 11:30 PM",
           "tv_channels": [
             {
               "country": "Wheresthematch",
@@ -135,56 +190,6 @@
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Miami Open",
-          "kick_utc": 1774393200,
-          "time": "25/03 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Tennis",
-                "Sky Sports Main Event",
-                "Sky Sports Ultra HDR",
-                "Sky Sports+"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1774364400,
-          "time": "24/03 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 1",
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1774375200,
-          "time": "25/03 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 2",
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -212,6 +217,22 @@
               "country": "Ausport",
               "channels": [
                 "beIN SPORTS 2",
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1774458000,
+          "time": "26/03 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN SPORTS 1",
                 "beIN Sports Connect"
               ]
             }
