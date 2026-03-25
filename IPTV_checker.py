@@ -1655,7 +1655,7 @@ def parse_m3u8_files(playlists, config):
                         )
 
                         # --- Filtering by resolution ---
-                        # Chỉ giữ kênh nếu filter_min_res được chỉ định và resolution thỏa mãn
+                        # Nếu filter_min_res được chỉ định, chỉ giữ các kênh đáp ứng
                         if filter_min_res:
                             res = result.get('resolution', 'Unknown')
                             keep = False
@@ -1665,28 +1665,21 @@ def parse_m3u8_files(playlists, config):
                                 keep = True
                             elif filter_min_res == '4K' and res == '4K':
                                 keep = True
-                            if keep:
-                                stream_url = check_entry['stream_line']
-                                with filtered_lock:
-                                    if stream_url not in all_seen_urls:
-                                        all_seen_urls.add(stream_url)
-                                        all_filtered_entries.append((
-                                            check_entry['extinf_line'],
-                                            list(check_entry['metadata_lines']),
-                                            stream_url
-                                        ))
+                            # Nếu không có filter, giữ tất cả Alive (sẽ xử lý ở ngoài)
                         else:
-                            # Nếu không có filter, giữ tất cả kênh alive (không lọc theo res)
-                            if status == 'Alive':
-                                stream_url = check_entry['stream_line']
-                                with filtered_lock:
-                                    if stream_url not in all_seen_urls:
-                                        all_seen_urls.add(stream_url)
-                                        all_filtered_entries.append((
-                                            check_entry['extinf_line'],
-                                            list(check_entry['metadata_lines']),
-                                            stream_url
-                                        ))
+                            keep = (status == 'Alive')
+
+                        # Thêm vào danh sách lọc nếu thỏa mãn
+                        if (filter_min_res and keep) or (not filter_min_res and status == 'Alive'):
+                            stream_url = check_entry['stream_line']
+                            with filtered_lock:
+                                if stream_url not in all_seen_urls:
+                                    all_seen_urls.add(stream_url)
+                                    all_filtered_entries.append((
+                                        check_entry['extinf_line'],
+                                        list(check_entry['metadata_lines']),
+                                        stream_url
+                                    ))
 
                     write_resume_entry(url_resume_hash(check_entry['stream_line']), check_entry['stream_line'], check_entry['channel_index'])
             except KeyboardInterrupt:
@@ -1848,9 +1841,9 @@ def main():
     parser.add_argument("--workers", "-w", type=int, default=4, help="Number of concurrent workers for channel checking (1-20, default: 4)")
     parser.add_argument("--insecure", "-k", action="store_true", help="Disable SSL certificate verification for HTTPS streams")
     parser.add_argument("--filter-min-res", type=str, choices=['720p', '1080p', '4K'], default=None,
-                        help="Only keep channels with resolution at least this value (720p, 1080p, 4K)")
+                        help="Only keep channels with resolution at least this value (720p, 1080p, 4K). If not set, keep all alive channels.")
     parser.add_argument("--output-playlist", type=str, default=None,
-                        help="Output filtered playlist file (default: Output_check.m3u in same folder as input)")
+                        help="Output filtered playlist file (e.g., live_schedule_check.m3u). If not set, no filtered playlist is written.")
 
     args = parser.parse_args()
 
