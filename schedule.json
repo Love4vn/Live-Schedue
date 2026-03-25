@@ -1,8 +1,8 @@
 {
-  "updated": "2026-03-25 01:43 VN",
+  "updated": "2026-03-25 08:00 VN",
   "days": {
-    "20260324": {
-      "date": "Tuesday, 24/03",
+    "20260325": {
+      "date": "Wednesday, 25/03",
       "games": [
         {
           "league": "UEFA Euro",
@@ -11,46 +11,6 @@
           "kick_utc": 1774436400,
           "tv_channels": [],
           "tournament": "U19 UEFA European Championship, Elite round Gr. 1"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "25/03 06:00 PM",
-          "match": "England U19 vs Serbia U19",
-          "kick_utc": 1774436400,
-          "tv_channels": [],
-          "tournament": "U19 UEFA European Championship, Elite round Gr. 2"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "25/03 06:00 PM",
-          "match": "Croatia U19 vs Switzerland U19",
-          "kick_utc": 1774436400,
-          "tv_channels": [],
-          "tournament": "U19 UEFA European Championship, Elite round Gr. 3"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "25/03 04:00 PM",
-          "match": "Ukraine U19 vs Northern Ireland U19",
-          "kick_utc": 1774429200,
-          "tv_channels": [],
-          "tournament": "U19 UEFA European Championship, Elite round Gr. 5"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "25/03 05:00 PM",
-          "match": "Ukraine U19 vs Ireland U19",
-          "kick_utc": 1774432800,
-          "tv_channels": [],
-          "tournament": "U19 UEFA European Championship, Elite round Gr. 5"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "25/03 06:00 PM",
-          "match": "Slovakia U19 vs Türkiye U19",
-          "kick_utc": 1774436400,
-          "tv_channels": [],
-          "tournament": "U19 UEFA European Championship, Elite round Gr. 6"
         },
         {
           "league": "UEFA Euro",
@@ -69,11 +29,34 @@
         },
         {
           "league": "UEFA Euro",
+          "time": "25/03 06:00 PM",
+          "match": "England U19 vs Serbia U19",
+          "kick_utc": 1774436400,
+          "tv_channels": [],
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 2"
+        },
+        {
+          "league": "UEFA Euro",
           "time": "25/03 11:00 PM",
           "match": "Poland U19 vs Portugal U19",
           "kick_utc": 1774454400,
           "tv_channels": [],
           "tournament": "U19 UEFA European Championship, Elite round Gr. 2"
+        },
+        {
+          "league": "UEFA Euro",
+          "time": "25/03 06:00 PM",
+          "match": "Croatia U19 vs Switzerland U19",
+          "kick_utc": 1774436400,
+          "tv_channels": [
+            {
+              "country": "Croatia",
+              "channels": [
+                "MAXSport 1"
+              ]
+            }
+          ],
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 3"
         },
         {
           "league": "UEFA Euro",
@@ -101,11 +84,35 @@
         },
         {
           "league": "UEFA Euro",
+          "time": "25/03 04:00 PM",
+          "match": "Ukraine U19 vs Northern Ireland U19",
+          "kick_utc": 1774429200,
+          "tv_channels": [],
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 5"
+        },
+        {
+          "league": "UEFA Euro",
+          "time": "25/03 05:00 PM",
+          "match": "Ukraine U19 vs Ireland U19",
+          "kick_utc": 1774432800,
+          "tv_channels": [],
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 5"
+        },
+        {
+          "league": "UEFA Euro",
           "time": "25/03 10:00 PM",
           "match": "Kazakhstan U19 vs Romania U19",
           "kick_utc": 1774450800,
           "tv_channels": [],
           "tournament": "U19 UEFA European Championship, Elite round Gr. 5"
+        },
+        {
+          "league": "UEFA Euro",
+          "time": "25/03 06:00 PM",
+          "match": "Slovakia U19 vs Türkiye U19",
+          "kick_utc": 1774436400,
+          "tv_channels": [],
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 6"
         },
         {
           "league": "UEFA Euro",
@@ -134,48 +141,6 @@
         {
           "league": "Tennis",
           "match": "Miami Open",
-          "kick_utc": 1774386000,
-          "time": "25/03 04:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "RDS Info"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Miami Open",
-          "kick_utc": 1774393200,
-          "time": "25/03 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "T2",
-                "TVA Sports 2",
-                "DAZN Canada"
-              ]
-            },
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Tennis",
-                "Sky Sports Main Event",
-                "Sky Sports Ultra HDR",
-                "Sky Sports+"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Miami Open",
           "kick_utc": 1774456200,
           "time": "25/03 11:30 PM",
           "tv_channels": [
@@ -193,9 +158,27 @@
         },
         {
           "league": "Tennis",
+          "match": "Miami Open",
+          "kick_utc": 1774476000,
+          "time": "26/03 05:00 AM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Sky Sports Tennis",
+                "Sky Sports Main Event",
+                "Sky Sports Ultra HDR",
+                "Sky Sports+"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
           "match": "",
-          "kick_utc": 1774386000,
-          "time": "25/03 04:00 AM",
+          "kick_utc": 1774458000,
+          "time": "26/03 12:00 AM",
           "tv_channels": [
             {
               "country": "Ausport",
@@ -210,13 +193,13 @@
         {
           "league": "Tennis",
           "match": "",
-          "kick_utc": 1774393200,
-          "time": "25/03 06:00 AM",
+          "kick_utc": 1774465200,
+          "time": "26/03 02:00 AM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
-                "beIN SPORTS 2",
+                "beIN SPORTS 1",
                 "beIN Sports Connect"
               ]
             }
@@ -226,8 +209,24 @@
         {
           "league": "Tennis",
           "match": "",
-          "kick_utc": 1774458000,
-          "time": "26/03 12:00 AM",
+          "kick_utc": 1774479600,
+          "time": "26/03 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN SPORTS 1",
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1774486800,
+          "time": "26/03 08:00 AM",
           "tv_channels": [
             {
               "country": "Ausport",
