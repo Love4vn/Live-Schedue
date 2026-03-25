@@ -49,6 +49,7 @@ ACTIVE_SUBPROCESSES = set()
 _subprocess_lock = threading.Lock()
 cancel_event = threading.Event()
 
+
 def setup_logging(verbose_level):
     if verbose_level == 1:
         logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -56,6 +57,7 @@ def setup_logging(verbose_level):
         logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
     else:
         logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
+
 
 def terminate_process(process):
     if process is None:
@@ -81,6 +83,7 @@ def terminate_process(process):
         except Exception:
             pass
 
+
 def cleanup_active_subprocesses():
     with _subprocess_lock:
         procs = list(ACTIVE_SUBPROCESSES)
@@ -88,6 +91,7 @@ def cleanup_active_subprocesses():
         terminate_process(process)
     with _subprocess_lock:
         ACTIVE_SUBPROCESSES.clear()
+
 
 def run_managed_subprocess(command, timeout):
     popen_kwargs = {
@@ -117,12 +121,15 @@ def run_managed_subprocess(command, timeout):
             with _subprocess_lock:
                 ACTIVE_SUBPROCESSES.discard(process)
 
+
 def handle_sigint(signum, frame):
     logging.info("Interrupt received, stopping...")
     cancel_event.set()
     cleanup_active_subprocesses()
 
+
 signal.signal(signal.SIGINT, handle_sigint)
+
 
 def get_video_bitrate(url):
     """
@@ -169,6 +176,7 @@ def get_video_bitrate(url):
         logging.error(f"Error when attempting to retrieve video bitrate: {exc}")
         return "N/A"
 
+
 def check_ffmpeg_availability():
     """Check whether ffmpeg and ffprobe are available in the system PATH."""
     tool_status = {}
@@ -191,6 +199,7 @@ def check_ffmpeg_availability():
         tool_status[tool] = available
 
     return tool_status
+
 
 def test_with_proxy(url, proxy, timeout, retries=3):
     """
@@ -230,6 +239,7 @@ def test_with_proxy(url, proxy, timeout, retries=3):
             time.sleep(0.5 * (attempt + 1))
 
     return False
+
 
 def load_proxy_list(proxy_file):
     """
@@ -335,6 +345,7 @@ def load_proxy_list(proxy_file):
 
     return valid_proxies
 
+
 def summarize_error(exc):
     msg = str(exc).lower()
     if isinstance(exc, requests.Timeout):
@@ -350,6 +361,7 @@ def summarize_error(exc):
     if isinstance(exc, requests.TooManyRedirects):
         return "Redirect loop"
     return str(exc)[:80]
+
 
 def check_channel_status(url, timeout, retries=6, extended_timeout=None, proxy_list=None, test_geoblock=False, ffmpeg_available=True, backoff='linear', session=None):
     headers = {
@@ -663,6 +675,7 @@ def check_channel_status(url, timeout, retries=6, extended_timeout=None, proxy_l
 
     return status, stream_url, error_reason
 
+
 def build_screenshot_filename(output_path, channel_index, channel_name, max_length=200):
     illegal_chars_pattern = r'[\\/:*?"<>|]'
     windows_reserved_names = {
@@ -695,6 +708,7 @@ def build_screenshot_filename(output_path, channel_index, channel_name, max_leng
 
     return candidate
 
+
 def capture_frame(url, output_path, file_name):
     command = [
         'ffmpeg', '-y', '-i', url, '-frames:v', '1',
@@ -713,6 +727,7 @@ def capture_frame(url, output_path, file_name):
     except Exception as e:
         logging.error(f"Error capturing frame for {file_name}: {str(e)}")
         return False
+
 
 def get_detailed_stream_info(url, profile_bitrate=False):
     command = [
@@ -805,6 +820,7 @@ def get_detailed_stream_info(url, profile_bitrate=False):
         logging.error(f"Error getting stream info: {str(e)}")
         return "Unknown", "Unknown", "Unknown", None
 
+
 def format_stream_info(codec_name, video_bitrate, resolution, fps):
     if resolution != "Unknown" and fps:
         resolution_display = f"{resolution}{fps}"
@@ -821,6 +837,7 @@ def format_stream_info(codec_name, video_bitrate, resolution, fps):
     if video_bitrate and isinstance(video_bitrate, str) and video_bitrate not in ("Unknown", "N/A"):
         return f"{base_info} ({video_bitrate})"
     return base_info
+
 
 def get_audio_bitrate(url):
     command = [
@@ -855,6 +872,7 @@ def get_audio_bitrate(url):
         logging.error(f"Error getting audio bitrate: {str(e)}")
         return "Unknown"
 
+
 def check_label_mismatch(channel_name, resolution):
     channel_name_lower = channel_name.lower()
 
@@ -874,6 +892,7 @@ def check_label_mismatch(channel_name, resolution):
         mismatches.append(f"\033[91m4K channel not labeled as such\033[0m")
 
     return mismatches
+
 
 def parse_extinf_metadata(extinf_line):
     """
@@ -970,9 +989,11 @@ def parse_extinf_metadata(extinf_line):
 
     return attributes, channel_name
 
+
 def get_channel_name(extinf_line):
     _, channel_name = parse_extinf_metadata(extinf_line)
     return channel_name
+
 
 def get_group_name(extinf_line):
     attributes, _ = parse_extinf_metadata(extinf_line)
@@ -981,6 +1002,7 @@ def get_group_name(extinf_line):
         return group_name
     return "Unknown Group"
 
+
 def get_channel_id(url):
     if not url:
         return "Unknown"
@@ -988,6 +1010,7 @@ def get_channel_id(url):
     if segment:
         return segment.replace('.ts', '')
     return "Unknown"
+
 
 def get_channel_stream_entry(lines, extinf_index):
     """
@@ -1007,6 +1030,7 @@ def get_channel_stream_entry(lines, extinf_index):
         return candidate, metadata_lines, j
     return None, metadata_lines, len(lines) - 1
 
+
 def is_line_needed(line, group_title, pattern):
     if not line.startswith('#EXTINF'):
         return False
@@ -1020,6 +1044,7 @@ def is_line_needed(line, group_title, pattern):
             return False
     return True
 
+
 def compile_channel_pattern(channel_search):
     if not channel_search:
         return None
@@ -1027,6 +1052,7 @@ def compile_channel_pattern(channel_search):
         return re.compile(channel_search, flags=re.IGNORECASE)
     except re.error as exc:
         raise ValueError(f"Invalid channel search regex '{channel_search}': {exc}") from exc
+
 
 # Query parameters commonly used for tracking/auth tokens that change between sessions
 _TRACKING_PARAMS = frozenset({
@@ -1314,11 +1340,6 @@ def parse_m3u8_files(playlists, config):
     error_summary = {}
     url_dedup = UrlDeduplicator()
 
-    # Biến để lưu kết quả lọc toàn bộ các file
-    all_filtered_entries = []
-    all_seen_urls = set()
-    filtered_lock = threading.Lock()
-
     f_output = None
     if output_file:
         output_dir = os.path.dirname(output_file)
@@ -1335,6 +1356,11 @@ def parse_m3u8_files(playlists, config):
             except OSError as exc:
                 logging.error(f"Unable to open output file '{output_file}': {exc}")
                 f_output = None
+
+    # Initialize filtered entries list (global across playlists)
+    all_filtered_entries = []
+    all_seen_urls = set()
+    filtered_lock = threading.Lock()
 
     for file_path in playlists:
         playlist_file = os.path.basename(file_path)
@@ -1597,27 +1623,6 @@ def parse_m3u8_files(playlists, config):
                     check_entry['result'] = result
                     status = result['status']
 
-                    # Lọc theo độ phân giải
-                    if filter_min_res:
-                        res = result.get('resolution', 'Unknown')
-                        keep = False
-                        if filter_min_res == '720p' and res in ['720p', '1080p', '4K']:
-                            keep = True
-                        elif filter_min_res == '1080p' and res in ['1080p', '4K']:
-                            keep = True
-                        elif filter_min_res == '4K' and res == '4K':
-                            keep = True
-                        if keep:
-                            stream_url = check_entry['stream_line']
-                            with filtered_lock:
-                                if stream_url not in all_seen_urls:
-                                    all_seen_urls.add(stream_url)
-                                    all_filtered_entries.append((
-                                        check_entry['extinf_line'],
-                                        list(check_entry['metadata_lines']),
-                                        stream_url
-                                    ))
-
                     with print_lock:
                         if status == 'Alive' and ffprobe_available:
                             mismatches = check_label_mismatch(check_entry['channel_name'], result['resolution'])
@@ -1648,6 +1653,27 @@ def parse_m3u8_files(playlists, config):
                             result['resolution'], result['fps'], result['audio_info'],
                             error_reason=result.get('error_reason')
                         )
+
+                        # --- Filtering by resolution ---
+                        if filter_min_res:
+                            res = result.get('resolution', 'Unknown')
+                            keep = False
+                            if filter_min_res == '720p' and res in ['720p', '1080p', '4K']:
+                                keep = True
+                            elif filter_min_res == '1080p' and res in ['1080p', '4K']:
+                                keep = True
+                            elif filter_min_res == '4K' and res == '4K':
+                                keep = True
+                            if keep:
+                                stream_url = check_entry['stream_line']
+                                with filtered_lock:
+                                    if stream_url not in all_seen_urls:
+                                        all_seen_urls.add(stream_url)
+                                        all_filtered_entries.append((
+                                            check_entry['extinf_line'],
+                                            list(check_entry['metadata_lines']),
+                                            stream_url
+                                        ))
 
                     write_resume_entry(url_resume_hash(check_entry['stream_line']), check_entry['stream_line'], check_entry['channel_index'])
             except KeyboardInterrupt:
@@ -1724,7 +1750,7 @@ def parse_m3u8_files(playlists, config):
                         for entry_line in entry:
                             geoblocked_file.write(entry_line + "\n")
                 logging.info(f"Geoblocked channels playlist saved to {geoblocked_playlist_path}")
-        if rename:
+        if rename and renamed_lines:
             renamed_playlist_path = os.path.join(playlist_dir, f"{base_playlist_name}_renamed.m3u8")
             with open(renamed_playlist_path, 'w', encoding='utf-8') as renamed_file:
                 has_header = any(entry.upper().startswith("#EXTM3U") for entry in renamed_lines if entry)
@@ -1739,14 +1765,16 @@ def parse_m3u8_files(playlists, config):
     if f_output:
         f_output.close()
 
-    # Ghi file playlist đã lọc nếu có yêu cầu
+    # Write filtered playlist (global)
     if output_playlist and all_filtered_entries:
-        # Xác định đường dẫn đầy đủ
+        # Resolve output path
         if not os.path.isabs(output_playlist):
-            playlist_dir = os.path.dirname(playlists[0]) if playlists else '.'
-            output_playlist = os.path.join(playlist_dir, output_playlist)
-        # Tạo thư mục cha nếu cần
-        os.makedirs(os.path.dirname(output_playlist), exist_ok=True)
+            # Use directory of first input playlist as base
+            base_dir = os.path.dirname(playlists[0]) if playlists else '.'
+            output_playlist = os.path.join(base_dir, output_playlist)
+        output_dir = os.path.dirname(output_playlist)
+        if output_dir:
+            os.makedirs(output_dir, exist_ok=True)
         with open(output_playlist, 'w', encoding='utf-8') as f:
             f.write("#EXTM3U\n")
             for extinf, metadata, url in all_filtered_entries:
@@ -1785,6 +1813,7 @@ def parse_m3u8_files(playlists, config):
         for reason, count in sorted(error_summary.items(), key=lambda x: x[1], reverse=True):
             print(f"  {reason}: {count}")
             logging.info(f"Dead channels - {reason}: {count}")
+
 
 def main():
     parser = argparse.ArgumentParser(description="Check the status of channels in an IPTV M3U8 playlist and capture frames of live channels.")
@@ -1901,6 +1930,7 @@ def main():
         output_playlist=args.output_playlist,
     )
     parse_m3u8_files(playlists, config)
+
 
 if __name__ == "__main__":
     main()
