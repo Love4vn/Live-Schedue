@@ -1,20 +1,15 @@
 #EXTM3U
-#EXTINF:-1 tvg-id="532246" group-title="Live Euro",25/03 06:00 PM | Croatia U19 vs Switzerland U19 (MAXSport 1)
-http://45.9.44.143:5020/play/1f0a/index.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9MTIvMTIvMjAyNCAzOjI0OjIyIFBNJmhhc2hfdmFsdWU9ZmE3SCtlZTd3d1hFbUcrc1dydWh3UT09JnZhbGlkbWludXRlcz0xODA=
-#EXTINF:-1 tvg-id="532246" group-title="Live Euro" tvg-logo="http://smartillusion.feniks.team:25002/images/sport/maxsport1.png",25/03 06:00 PM | Croatia U19 vs Switzerland U19 (MAXSport 1)
-http://moj.feniks.team:25461/411dariocacic/a1Uni9hC0D/1165
-#EXTINF:-1 tvg-id="" group-title="Live Euro" tvg-logo="https://r2.thesportsdb.com/images/media/channel/logo/er6tz11641505761.png",25/03 06:00 PM | Croatia U19 vs Switzerland U19 (MAXSport 1)
-http://87.246.54.249:8080/MaxSport1/index.m3u8
-#EXTINF:-1 tvg-id="" group-title="Live Euro",25/03 06:00 PM | Croatia U19 vs Switzerland U19 (MAXSport 1)
-http://96587.premiumstream.in:80/GokselSonmez/MxxnCxr25v9w/61351
 #EXTINF:-1 tvg-id="" group-title="Live Tennis",25/03 11:30 PM | Miami Open (Sky Sports Main Event)
 https://7pal.short.gy/skspmaine
 #EXTINF:-1 tvg-id="" group-title="Live Tennis" tvg-logo="https://sonic.shliv.fun/crchd/assets/tvlogos/SkySportsMainEvent.jpg",25/03 11:30 PM | Miami Open (Sky Sports Main Event)
 https://v.antsports.tv/live/20/index.m3u8
-#EXTINF:-1 tvg-id="Sky.Sports.Main.Event.ie" group-title="Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-main-event.png",25/03 11:30 PM | Miami Open (Sky Sports Main Event)
-https://restream-live.realiptv.to/53420573/53717218/2184
+#EXTINF:-1 tvg-id="gb" group-title="Live Tennis" tvg-logo="https://api.cdn-live.tv/api/v1/channels/images6318/united-kingdom/sky-sport-main-event.svg",25/03 11:30 PM | Miami Open (Sky Sports Main Event)
+#EXTVLCOPT:http-referrer=https://edge.cdn-live.ru/
+https://edge.cdn-live.ru/secure/api/v1/gb-sky-sports-main-event/playlist.m3u8?token=06d237b0f13785ecea7d7f26aabc6a34dd992347db8f2a3bc28d206205c09b17.1774440181.1151cbd0c9f060ec7dae002c4f3d1549.b2beb40bf80055a537c54d34356780bf.0eeb122e69d2e6e3b53a5fa21644b8e3&signature=c49aadbd40b9d02742ce30be0171c9314e0224f8ce6e4476953905e786fb161b
 #EXTINF:-1 tvg-id="Sky.Sports.Main.Event.ie" group-title="Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-main-event.png",25/03 11:30 PM | Miami Open (Sky Sports Main Event)
 https://restream-live.realiptv.to/53420573/53717218/2185
+#EXTINF:-1 tvg-id="Sky.Sports.Main.Event.ie" group-title="Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-main-event.png",25/03 11:30 PM | Miami Open (Sky Sports Main Event)
+https://restream-live.realiptv.to/53420573/53717218/2184
 #EXTINF:-1 tvg-id="Sky.Sports.Main.Event.ie" group-title="Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-main-event.png",25/03 11:30 PM | Miami Open (Sky Sports Main Event)
 http://tvmate.icu:8080/sales@dellerstechshop.ca/sales@4889/35243
 #EXTINF:-1 tvg-id="Sky.Sports.Main.Event.ie" group-title="Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-main-event.png",25/03 11:30 PM | Miami Open (Sky Sports Main Event)
@@ -23,14 +18,22 @@ http://tvmate.icu:8080/sales@dellerstechshop.ca/sales@4889/137720
 https://a1xs.vip/2000001
 #EXTINF:-1 tvg-id="7673" group-title="Live Tennis" tvg-logo="https://i.imgur.com/gBtWXwY.png",25/03 11:30 PM | Miami Open (Sky Sports Main Event)
 https://7pal.short.gy/SkSpMainE
+#EXTINF:-1 tvg-id="SkySpMainEv.uk" group-title="Live Tennis" tvg-logo="https://i.imgur.com/zzeXXYF.png",25/03 11:30 PM | Miami Open (Sky Sports Main Event)
+https://7pal.short.gy/SSMEuhd
 #EXTINF:-1 tvg-id="SkySportsMainEvent.uk" group-title="Live Tennis" tvg-logo="https://github.com/K-yzu/Logos/blob/main/TV:UK/Sky%20Sports%20Main%20Event.png?raw=true",25/03 11:30 PM | Miami Open (Sky Sports Main Event)
 http://assarao4k.com:80/play/live.php?mac=00:1A:79:83:02:56&stream=1527639&extension=ts
 #EXTINF:-1 tvg-id="SkySpMainEv.uk" group-title="Live Tennis" tvg-logo="https://www.thesportsdb.com/images/media/tvlogo/Sky_Sport_UHD.png",25/03 11:30 PM | Miami Open (Sky Sports Main Event)
 https://a1xs.vip/2000015
 #EXTINF:-1 tvg-id="10634" group-title="Live Tennis" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Sky_Sport_Tennis.svg/1200px-Sky_Sport_Tennis.svg.png",25/03 11:30 PM | Miami Open (Sky Sports Tennis)
 http://lemon.catchmeifyo.com:8000/live/4914756410/8072556864/157768.ts
+#EXTINF:-1 tvg-id="10634" group-title="Live Tennis" tvg-logo="https://api.cdn-live.tv/api/v1/channels/images6318/germany/sky-sport-tennis.svg",25/03 11:30 PM | Miami Open (Sky Sports Tennis)
+#EXTVLCOPT:http-referrer=https://edge.cdn-live.ru/
+https://edge.cdn-live.ru/secure/api/v1/de-sky-sport-tennis/playlist.m3u8?token=3a7f0366440b97d7e183e5a19c7cb8278ed6d3218e218f4aeba855f690d3b6c4.1774440222.fcda59666bf65b10050b1076b08f8050.7472674d305587a764bce5743f371907.d51584699049a7a2ad53f8b686c661c3&signature=8e44d10aae66bfad4cfb20d4dddedc98be392d88930cdd5dabbb92f9d4e934d5
 #EXTINF:-1 tvg-id="" group-title="Live Tennis" tvg-logo="https://sonic.shliv.fun/crchd/assets/tvlogos/SkySportsTennis.jpg",25/03 11:30 PM | Miami Open (Sky Sports Tennis)
 https://v.antsports.tv/live/28/index.m3u8
+#EXTINF:-1 tvg-id="gb" group-title="Live Tennis" tvg-logo="https://api.cdn-live.tv/api/v1/channels/images6318/united-kingdom/sky-sport-tennis.svg",25/03 11:30 PM | Miami Open (Sky Sports Tennis)
+#EXTVLCOPT:http-referrer=https://edge.cdn-live.ru/
+https://edge.cdn-live.ru/secure/api/v1/gb-sky-sports-tennis/playlist.m3u8?token=b194db207544d6088e208ec5b2fa81b89bb1f3eb9f034286fc176c1ab5cbb4dc.1774440182.c6b6ac3bff15666b5d2f1acd80ba1b12.67a5ac7659019c18a4085356f0cb7470.bf329b2dd66cec044d06a5b89d944d4d&signature=5b36376650172ee508354162e18cbe023305cb80a20ff40e053f222bc2be039b
 #EXTINF:-1 tvg-id="SkySp.Tennis.HD.uk" group-title="Live Tennis" tvg-logo="https://i.imgur.com/ZNUDU1r.png",25/03 11:30 PM | Miami Open (Sky Sports Tennis)
 https://7pal.short.gy/ssportstn
 #EXTINF:-1 tvg-id="SkySportsTennis.uk" group-title="Live Tennis" tvg-logo="https://logo.m3uassets.com/skysportstennis.png",25/03 11:30 PM | Miami Open (Sky Sports Tennis)
@@ -38,36 +41,42 @@ http://assarao4k.com:80/play/live.php?mac=00:1A:79:83:02:56&stream=1527629&exten
 #EXTINF:-1 tvg-id="Sky.Sports.Plus.ie" group-title="Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-plus.png",25/03 11:30 PM | Miami Open (Sky Sports+)
 https://restream-live.realiptv.to/53420573/53717218/2193
 #EXTINF:-1 tvg-id="Sky.Sports.Plus.ie" group-title="Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-plus.png",25/03 11:30 PM | Miami Open (Sky Sports+)
-http://tvmate.icu:8080/sales@dellerstechshop.ca/sales@4889/35238
-#EXTINF:-1 tvg-id="Sky.Sports.Plus.ie" group-title="Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-plus.png",25/03 11:30 PM | Miami Open (Sky Sports+)
 http://tvmate.icu:8080/sales@dellerstechshop.ca/sales@4889/137719
+#EXTINF:-1 tvg-id="Sky.Sports.Plus.ie" group-title="Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-plus.png",25/03 11:30 PM | Miami Open (Sky Sports+)
+http://tvmate.icu:8080/sales@dellerstechshop.ca/sales@4889/35238
 #EXTINF:-1 tvg-id="SkySportsPlus.uk" group-title="Live Tennis" tvg-logo="https://static.skyassets.com/contentstack/assets/blt143e20b03d72047e/blt3b8488da02f05f25/66b2010b0d26b22d93e45755/Sky_Sports_Logo.png",25/03 11:30 PM | Miami Open (Sky Sports+)
 http://assarao4k.com:80/play/live.php?mac=00:1A:79:83:02:56&stream=1527619&extension=ts
 #EXTINF:-1 tvg-id="" group-title="Live Tennis",26/03 12:00 AM | Miami Open (TSN3)
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=f5c2b30eac11be1e8cdfc9585f5fe6af:a8198d17bf9b0da77450fbb919a38b2d
 https://netskrt.live.pv-cdn.net/OTTB/lhr-nitro/live/clients/dash/enc/lzhmuzmjsl/out/v1/c171eeb214c749f2b351c79df317b21e/cenc.mpd
-#EXTINF:-1 tvg-id="TSN3.ca" group-title="Live Tennis" tvg-logo="https://i.imgur.com/AYza8KO.png",26/03 12:00 AM | Miami Open (TSN3)
-#KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=f5c2b30eac11be1e8cdfc9585f5fe6af:a8198d17bf9b0da77450fbb919a38b2d
-https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/lzhmuzmjsl/out/v1/c171eeb214c749f2b351c79df317b21e/cenc.mpd
+#EXTINF:-1 tvg-id="" group-title="Live Tennis" tvg-logo="https://s3.aynaott.com/storage/1cb10107a47db353e35ad78d3160eda7",26/03 12:00 AM | Miami Open (TSN3)
+https://tvsen7.aynascope.net/tsn3/index.m3u8?e=1774443649&u=78be6644-0a65-48ec-81a4-089ac65a2619&token=7da002556dbbec26c32db515eb441702
 #EXTINF:-1 tvg-id="" group-title="Live Tennis" tvg-logo="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgU_KRPKTPLMzB56CYaJlcEsY0HaL7KClo8gPZoDc0_ytIJi9qYzcPbmyhnkRHmrf_D7pH3nG35kc3onQpwU_Mi5OmVOJnjEemkY5Iv3Bz8Xibf7qBkOJO9tolqIpDmGLVc488-QEWrnOhezCsXCz6EK8PmLUVFtRFzFB3MqxRIyXABxllTO3iMtZ3YKwlN/s700/TSN%203.png",26/03 12:00 AM | Miami Open (TSN3)
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=f5c2b30eac11be1e8cdfc9585f5fe6af:a8198d17bf9b0da77450fbb919a38b2d
 https://qw.live.pv-cdn.net/OTTB/sin-nitro/live/clients/dash/enc/lzhmuzmjsl/out/v1/c171eeb214c749f2b351c79df317b21e/cenc.mpd
+#EXTINF:-1 tvg-id="TSN3.ca" group-title="Live Tennis" tvg-logo="https://i.imgur.com/AYza8KO.png",26/03 12:00 AM | Miami Open (TSN3)
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=f5c2b30eac11be1e8cdfc9585f5fe6af:a8198d17bf9b0da77450fbb919a38b2d
+https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/lzhmuzmjsl/out/v1/c171eeb214c749f2b351c79df317b21e/cenc.mpd
 #EXTINF:-1 tvg-id="tsn3" group-title="Live Tennis" tvg-logo="http://103.127.132.205/wiki/wikipedia/commons/thumb/9/90/TSN_Logo.svg/2560px-TSN_Logo.svg.png",26/03 12:00 AM | Miami Open (TSN3)
 http://xxip9.top:8080/live/RKu2Hy/559290/10389.ts
 #EXTINF:-1 tvg-id="TSN.3.ca2" group-title="Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/tsn-3.png",26/03 12:00 AM | Miami Open (TSN3)
 https://restream-live.realiptv.to/53420573/53717218/3144
 #EXTINF:-1 tvg-id="TSN.3.ca2" group-title="Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/tsn-3.png",26/03 12:00 AM | Miami Open (TSN3)
-http://tvmate.icu:8080/sales@dellerstechshop.ca/sales@4889/10389
-#EXTINF:-1 tvg-id="TSN.3.ca2" group-title="Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/tsn-3.png",26/03 12:00 AM | Miami Open (TSN3)
 http://tvmate.icu:8080/sales@dellerstechshop.ca/sales@4889/47444
+#EXTINF:-1 tvg-id="TSN.3.ca2" group-title="Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/tsn-3.png",26/03 12:00 AM | Miami Open (TSN3)
+http://tvmate.icu:8080/sales@dellerstechshop.ca/sales@4889/10389
 #EXTINF:-1 tvg-id="" group-title="Live Tennis" tvg-logo=" https://i.imgur.com/XDDHZzi.jpeg ",26/03 12:00 AM | Miami Open (TSN3)
 http://117tv.icu:8080/live/X5xRz0/944877/47444.m3u8
-#EXTINF:-1 tvg-id="" group-title="Live Tennis" tvg-logo="https://logos-world.net/wp-content/uploads/2025/05/Most-Famous-Media-TV-Brands-and-Logos-in-the-USA.png",26/03 12:00 AM | Miami Open (TSN3)
-https://tvpass.org/live/tsn3/hd
+#EXTINF:-1 tvg-id="TSN3.ca" group-title="Live Tennis" tvg-logo="https://i.imgur.com/KBQSJxA.png",26/03 12:00 AM | Miami Open (TSN3)
+https://7pal.short.gy/tsn3ca
+#EXTINF:-1 tvg-id="TSN.3.ca2" group-title="Live Tennis" tvg-logo="https://i.ibb.co/0RMWTVX5/TSN3.png",26/03 12:00 AM | Miami Open (TSN3)
+https://a1xs.vip/6000003
+#EXTINF:-1 tvg-id="" group-title="Live Tennis",26/03 12:00 AM | Miami Open (TSN3)
+https://stream.decentdoubts.net/807/index.m3u8?token=M0lLeXQ4ZWIxNkxJZ0p1cmhhMjBtTWlvMDhsK3h0NS9zb21keGF5am5vSERxNEduaVp1UnBxU2VlWmF0ZnRlRGxaMm0wNStDbnJOOXJJM0puSytpbkE9PQ==
 #EXTINF:-1 tvg-id="463795" group-title="Live Tennis",26/03 12:00 AM | Miami Open (Tennis Channel)
 http://89.105.221.127/tennis/index.m3u8?token=test
 #EXTINF:-1 tvg-id="The.Tennis.Channel.us" group-title="Live Tennis" tvg-logo="https://i.imgur.com/QCT1frc.png",26/03 12:00 AM | Miami Open (Tennis Channel)
@@ -85,72 +94,86 @@ https://jmp2.uk/stvp-CHBA22000080G
 #EXTINF:-1 tvg-id="Tennis.Channel.HD.us2" group-title="Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/tennis-channel.png",26/03 12:00 AM | Miami Open (Tennis Channel)
 https://restream-live.realiptv.to/53420573/53717218/2386
 #EXTINF:-1 tvg-id="Tennis.Channel.HD.us2" group-title="Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/tennis-channel.png",26/03 12:00 AM | Miami Open (Tennis Channel)
-https://restream-live.realiptv.to/53420573/53717218/3762
+https://restream-live.realiptv.to/53420573/53717218/21607
 #EXTINF:-1 tvg-id="Tennis.Channel.HD.us2" group-title="Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/tennis-channel.png",26/03 12:00 AM | Miami Open (Tennis Channel)
 https://restream-live.realiptv.to/53420573/53717218/3685
 #EXTINF:-1 tvg-id="Tennis.Channel.HD.us2" group-title="Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/tennis-channel.png",26/03 12:00 AM | Miami Open (Tennis Channel)
-https://restream-live.realiptv.to/53420573/53717218/21607
+https://restream-live.realiptv.to/53420573/53717218/3762
 #EXTINF:-1 tvg-id="Tennis.Channel.HD.us2" group-title="Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/tennis-channel.png",26/03 12:00 AM | Miami Open (Tennis Channel)
 http://tvmate.icu:8080/sales@dellerstechshop.ca/sales@4889/20184
 #EXTINF:-1 tvg-id="Tennis.Channel.HD.us2" group-title="Live Tennis" tvg-logo="https://raw.githubusercontent.com/a1xmedia/m3u/refs/heads/main/img/tennis-channel.png",26/03 12:00 AM | Miami Open (Tennis Channel)
 https://a1xs.vip/40000040
+#EXTINF:-1 tvg-id="465236" group-title="Live Tennis" tvg-logo="https://github.com/tv-logo/tv-logos/blob/main/countries/united-states/tennis-channel-hz-us.png?raw=true",26/03 12:00 AM | Miami Open (Tennis Channel)
+https://v8.thetvapp.to/hls/TennisChannel/tracks-v1a1/mono.m3u8?token=YqOHM9jizPYLZ9KIIJ5cpg&expires=1774459227&user_id=ZEFSaUJoZTNOZHF5ZUJISUZTTjgzR2lUcDNzb2M1cFAxVWVUQXgxNg==
 #EXTINF:-1 tvg-id="" group-title="Live Tennis",26/03 12:00 AM | Miami Open (Tennis Channel)
 https://amg01935-amg01935c1-amgplt0020.playout.now3.amagi.tv/playlist/amg01935-amg01935c1-amgplt0020/playlist.m3u8
 #EXTINF:-1 tvg-id="687a783e928ee2ca866b7faa" group-title="Live Tennis" tvg-logo="https://media.unreel.me/prod/freelivesports/logo/5db9d9c0-666f-4153-a55b-0de074aba0c7",26/03 12:00 AM | Miami Open (Tennis Channel)
 https://amg01470-amg01470c1-freelivesports-emea-9021.playouts.now.amagi.tv/playlist/amg01470-atpmediaoperationsltdfast-tennistvclassics-freelivesportsemea/playlist.m3u8
 #EXTINF:-1 tvg-id="463795" group-title="Live Tennis" tvg-logo="https://provider-static.plex.tv/epg/cms/production/704e7af1-90a0-4ad4-94de-af2559c19fa6/1_Tennis_Plus_Logo__Dark_Mode__1500x1000px.png",26/03 12:00 AM | Miami Open (Tennis Channel)
-https://epg.provider.plex.tv/library/parts/646546f35db8ada4c8edd7e5-6761f91555e174e95ccc4e4c.m3u8?X-Plex-Token=71z7m9ucgGGogmZhH2kB
+https://epg.provider.plex.tv/library/parts/646546f35db8ada4c8edd7e5-6761f91555e174e95ccc4e4c.m3u8?X-Plex-Token=xxVzgqzPTNpsrJjvZSpR
 #EXTINF:-1 tvg-id="463795" group-title="Live Tennis" tvg-logo="https://images.sr.roku.com/idType/roku-trc/context/trc/id/c938a72f44eca56206b4b585ab01cad5/https%3A%2F%2Fimage.roku.com%2Fbh-uploads%2Fproduction%2FinfoHUDLogo%2F1763502607268_MR-25-027Tennis_Plus_Roku_HUD_260x147px.png",26/03 12:00 AM | Miami Open (Tennis Channel)
 https://jmp2.uk/rok-c938a72f44eca56206b4b585ab01cad5.m3u8
 #EXTINF:-1 tvg-id="" group-title="Live Tennis" tvg-logo="https://i1.wp.com/rakuten.today/wp-content/uploads/2018/06/one_logo.jpg?fit=2000%2C1350&ssl=1",26/03 12:00 AM | Miami Open (Tennis Channel)
 https://amg01935-amg01935c1-amgplt0165.playout.now3.amagi.tv/playlist.m3u8
-#EXTINF:-1 tvg-id="7761" group-title="Live Tennis" tvg-logo="http://mediacms01.digiturkplay.com/channel_logo/w2_Bein_Sport1_250x150_2022.png",26/03 12:00 AM |  (beIN SPORTS 1)
+#EXTINF:-1 tvg-id="beinsport1.tr" group-title="Live Tennis" tvg-logo="http://mediacms01.digiturkplay.com/channel_logo/w2_Bein_Sport1_250x150_2022.png",26/03 12:00 AM |  (beIN SPORTS 1)
 https://goldvod.site/live/hpgdiscoo/123456/180.m3u8
-#EXTINF:-1 tvg-id="7761" group-title="Live Tennis" tvg-logo="http://mediacms01.digiturkplay.com/channel_logo/w2_Bein_Sport1_250x150_2022.png",26/03 12:00 AM |  (beIN SPORTS 1)
+#EXTINF:-1 tvg-id="beinsport1f.tr" group-title="Live Tennis" tvg-logo="http://mediacms01.digiturkplay.com/channel_logo/w2_Bein_Sport1_250x150_2022.png",26/03 12:00 AM |  (beIN SPORTS 1)
 https://goldvod.site/live/hpgdiscoo/123456/10534.m3u8
-#EXTINF:-1 tvg-id="7761" group-title="Live Tennis" tvg-logo="https://i.hizliresim.com/1opo3ah.jpg",26/03 12:00 AM |  (beIN SPORTS 1)
+#EXTINF:-1 tvg-id="sport.tr" group-title="Live Tennis" tvg-logo="https://i.hizliresim.com/1opo3ah.jpg",26/03 12:00 AM |  (beIN SPORTS 1)
 https://purple-fog-7608.han686314.workers.dev/androstreamlivebiraz1.m3u8
-#EXTINF:-1 tvg-id="7761" group-title="Live Tennis" tvg-logo="https://i.hizliresim.com/1opo3ah.jpg",26/03 12:00 AM |  (beIN SPORTS 1)
+#EXTINF:-1 tvg-id="sport.tr" group-title="Live Tennis" tvg-logo="https://i.hizliresim.com/1opo3ah.jpg",26/03 12:00 AM |  (beIN SPORTS 1)
 https://purple-fog-7608.han686314.workers.dev/androstreamlivebs1.m3u8
-#EXTINF:-1 tvg-id="7761" group-title="Live Tennis" tvg-logo="https://i.hizliresim.com/1opo3ah.jpg",26/03 12:00 AM |  (beIN SPORTS 1)
+#EXTINF:-1 tvg-id="sport.tr" group-title="Live Tennis" tvg-logo="https://i.hizliresim.com/1opo3ah.jpg",26/03 12:00 AM |  (beIN SPORTS 1)
 https://atom.han686314.workers.dev/bein-sports-1.m3u8
-#EXTINF:-1 tvg-id="7761" group-title="Live Tennis" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg",26/03 12:00 AM |  (beIN SPORTS 1)
-https://bot-sport.aykara463.workers.dev/androstreamlivebs1.m3u8
-#EXTINF:-1 tvg-id="7761" group-title="Live Tennis" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg",26/03 12:00 AM |  (beIN SPORTS 1)
+#EXTINF:-1 tvg-id="" group-title="Live Tennis" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg",26/03 12:00 AM |  (beIN SPORTS 1)
 https://bot-sport.aykara463.workers.dev/androstreamlivebiraz1.m3u8
-#EXTINF:-1 tvg-id="7761" group-title="Live Tennis",26/03 12:00 AM |  (beIN SPORTS 1)
+#EXTINF:-1 tvg-id="" group-title="Live Tennis" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg",26/03 12:00 AM |  (beIN SPORTS 1)
+https://bot-sport.aykara463.workers.dev/androstreamlivebs1.m3u8
+#EXTINF:-1 tvg-id="" group-title="Live Tennis",26/03 12:00 AM |  (beIN SPORTS 1)
 http://99.27.51.147:8080/BeinSport/index.m3u8
-#EXTINF:-1 tvg-id="7761" group-title="Live Tennis",26/03 12:00 AM |  (beIN SPORTS 1)
+#EXTINF:-1 tvg-id="" group-title="Live Tennis",26/03 12:00 AM |  (beIN SPORTS 1)
 http://77.137.40.221:8000/play/a01e
-#EXTINF:-1 tvg-id="524189" group-title="Live Tennis",26/03 12:00 AM |  (beIN SPORTS 1)
+#EXTINF:-1 tvg-id="532981" group-title="Live Tennis",26/03 12:00 AM |  (beIN SPORTS 1)
 http://dragon1977.com:80/047306b75f/b5a06cc482d6/1178453
-#EXTINF:-1 tvg-id="524189" group-title="Live Tennis" tvg-logo="https://image-resizer-cloud-cdn.api.tmcms.quickplay.com/image/A0C43E09-6105-4CD5-9F44-390B57BCA1A5/0-16x9.png?width=530",26/03 12:00 AM |  (beIN SPORTS 1)
+#EXTINF:-1 tvg-id="532981" group-title="Live Tennis" tvg-logo="https://image-resizer-cloud-cdn.api.tmcms.quickplay.com/image/A0C43E09-6105-4CD5-9F44-390B57BCA1A5/0-16x9.png?width=530",26/03 12:00 AM |  (beIN SPORTS 1)
 #KODIPROP:inputstreamaddon=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=dash
 #KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
 #KODIPROP:inputstream.adaptive.license_key=d48b6088253c443eb94d27cb7828f707:e9776141f9e949273a072b0e035070ab
-https://sghost.mobileads.uno/uni5/uni5.mpd?id=Bein1
-#EXTINF:-1 tvg-id="524189" group-title="Live Tennis" tvg-logo="http://mediacms01.digiturkplay.com/channel_logo/w2_Bein_Sport1_250x150_2022.png",26/03 12:00 AM |  (beIN SPORTS 1)
+https://get.perfecttv.net/myunifi.mpd?username=vip_3klp0es8&password=wg3piwEs&channel=Bein1
+#EXTINF:-1 tvg-id="532981" group-title="Live Tennis" tvg-logo="http://mediacms01.digiturkplay.com/channel_logo/w2_Bein_Sport1_250x150_2022.png",26/03 12:00 AM |  (beIN SPORTS 1)
 https://goldvod.site/live/hpgdiscoo/123456/150.m3u8
-#EXTINF:-1 tvg-id="beIN_SPORTS1_DIGITAL_Mono_AR.bein" group-title="Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/bein-sports-1.png",26/03 12:00 AM |  (beIN SPORTS 1)
-https://restream-live.realiptv.to/53420573/53717218/714411
+#EXTINF:-1 tvg-id="532981" group-title="Live Tennis" tvg-logo="https://api.cdn-live.tv/api/v1/channels/images6318/united-states/bein-sports-1.svg",26/03 12:00 AM |  (beIN SPORTS 1)
+#EXTVLCOPT:http-referrer=https://edge.cdn-live.ru/
+https://edge.cdn-live.ru/secure/api/v1/us-bein-sports-1/playlist.m3u8?token=6bf4f8b2baaea56505fa2e234f2471a4e524683659a3b078d01217fb2a55beac.1774440172.430658e20ffd8940d4a1b066ceea007e.55bc7e94a3cab7deea9bc73d93b476ba.3706f72bfc92c5e263e9bee190540d35&signature=cb6a0073b6f0f005e7127c72ea8ba59b03d65bdfe32c0e6bcc9e4e64532ca960
+#EXTINF:-1 tvg-id="532981" group-title="Live Tennis" tvg-logo="https://api.cdn-live.tv/api/v1/channels/images6318/france/bein-sports-1.svg",26/03 12:00 AM |  (beIN SPORTS 1)
+#EXTVLCOPT:http-referrer=https://edge.cdn-live.ru/
+https://edge.cdn-live.ru/secure/api/v1/fr-bein-sports-1/playlist.m3u8?token=8e4ff65cf5d7b6c38cc8d49be2b751a023b04db8789d282e0f83c554fbbc97ac.1774440201.e9c35ff27c62bc3c9b0bd4a0dc1fbf09.d1f9bed1b4acc818268f4a7d5f03f5de.af2bbcd3caa9bb02250b51088f801f37&signature=7dcd99a3f60d458cf76bda9678d770f01594a58ad70fe54190153f4823e08cbc
+#EXTINF:-1 tvg-id="532981" group-title="Live Tennis" tvg-logo="https://api.cdn-live.tv/api/v1/channels/images6318/turkey/bein-sports-1.webp",26/03 12:00 AM |  (beIN SPORTS 1)
+#EXTVLCOPT:http-referrer=https://edge.cdn-live.ru/
+https://edge.cdn-live.ru/secure/api/v1/tr-bein-sports-1/playlist.m3u8?token=f3d92c0d3e7acec2ac9b097433ce0e23a99a4d0f5e9e2f20741563f0bd8b3e03.1774440258.d8c2d8d79eeb00a00b6b9c4c7101b85b.1c173f8fa257ab8359b1e579b509e429.23eca67d3bbbbb0b33188c43694ef13a&signature=8bb171a643ef25100349d43b671139795fa423686a91c4a55c7c01b837639926
+#EXTINF:-1 tvg-id="532981" group-title="Live Tennis" tvg-logo="https://api.cdn-live.tv/api/v1/channels/images6318/saudi-arabia/bein-sports-1.webp",26/03 12:00 AM |  (beIN SPORTS 1)
+#EXTVLCOPT:http-referrer=https://edge.cdn-live.ru/
+https://edge.cdn-live.ru/secure/api/v1/sa-bein-sports-1/playlist.m3u8?token=d7ca6804056bafceef45ede0e7b93b8c6474167c02d66ad6dad83ea4a3d0e319.1774440264.dcde12c7adceea8c33593c35e98bfeaf.71a07de348e2a4e32eb691720ac7ad58.233c26a6ee8818f02ff7d374c279958e&signature=1fd6d6177a1e8c268dc5a952ae24f2404c3de78ba285e3805b95e45ef261d141
 #EXTINF:-1 tvg-id="beIN_SPORTS1_DIGITAL_Mono_AR.bein" group-title="Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/bein-sports-1.png",26/03 12:00 AM |  (beIN SPORTS 1)
 https://restream-live.realiptv.to/53420573/53717218/659436
+#EXTINF:-1 tvg-id="beIN_SPORTS1_DIGITAL_Mono_AR.bein" group-title="Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/bein-sports-1.png",26/03 12:00 AM |  (beIN SPORTS 1)
+https://restream-live.realiptv.to/53420573/53717218/714411
 #EXTINF:-1 tvg-id="BS1" group-title="Live Tennis" tvg-logo="http://x12tv.co/mbc/bein-sport-1-logo.png",26/03 12:00 AM |  (beIN SPORTS 1)
 http://5678999.life:2082/adamusa1242025/attalah77448866/333799
 #EXTINF:-1 tvg-id="" group-title="Live Tennis" tvg-logo="http://x12tv.co/mbc/bein-sport-1-logo.png",26/03 12:00 AM |  (beIN SPORTS 1)
 http://5678999.life:2082/adamusa1242025/attalah77448866/333800
 #EXTINF:-1 tvg-id="" group-title="Live Tennis",26/03 12:00 AM |  (beIN SPORTS 1)
 http://96587.premiumstream.in:80/GokselSonmez/MxxnCxr25v9w/77238
-#EXTINF:-1 tvg-id="524097" group-title="Live Tennis",26/03 12:00 AM |  (beIN SPORTS 1)
-https://mn.shikoshqip.live:2083/216b00f216cc995b/VkakEYkB9Y/192
 #EXTINF:-1 tvg-id="524097" group-title="Live Tennis" tvg-logo="http://x12tv.co/mbc/bein-sport-1-logo.png",26/03 12:00 AM |  (beIN SPORTS 1)
 http://5678999.life:2082/adamusa1242025/attalah77448866/420133
 #EXTINF:-1 tvg-id="524097" group-title="Live Tennis",26/03 12:00 AM |  (beIN SPORTS 1)
+https://mn.shikoshqip.live:2083/216b00f216cc995b/VkakEYkB9Y/192
+#EXTINF:-1 tvg-id="524097" group-title="Live Tennis",26/03 12:00 AM |  (beIN SPORTS 1)
 http://96587.premiumstream.in:80/GokselSonmez/MxxnCxr25v9w/89
 #EXTINF:-1 tvg-id="524097" group-title="Live Tennis" tvg-logo="https://i.hizliresim.com/1opo3ah.jpg",26/03 12:00 AM |  (beIN SPORTS 1)
-https://purple-fog-7608.han686314.workers.dev/selcukobs1.m3u8
-#EXTINF:-1 tvg-id="524097" group-title="Live Tennis" tvg-logo="https://i.hizliresim.com/1opo3ah.jpg",26/03 12:00 AM |  (beIN SPORTS 1)
 https://purple-fog-7608.han686314.workers.dev/selcukbeinsports1.m3u8
-#EXTINF:-1 tvg-id="524189" group-title="Live Tennis",26/03 12:00 AM |  (beIN SPORTS 1)
+#EXTINF:-1 tvg-id="524097" group-title="Live Tennis" tvg-logo="https://i.hizliresim.com/1opo3ah.jpg",26/03 12:00 AM |  (beIN SPORTS 1)
+https://purple-fog-7608.han686314.workers.dev/selcukobs1.m3u8
+#EXTINF:-1 tvg-id="532981" group-title="Live Tennis",26/03 12:00 AM |  (beIN SPORTS 1)
 http://superintendent.whatevergos.com:8080/ABDULLAH/aHVzDrpCMh/142755

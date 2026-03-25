@@ -1,17 +1,9 @@
 {
-  "updated": "2026-03-25 13:46 VN",
+  "updated": "2026-03-25 19:35 VN",
   "days": {
     "20260325": {
       "date": "Wednesday, 25/03",
       "games": [
-        {
-          "league": "UEFA Euro",
-          "time": "25/03 06:00 PM",
-          "match": "Greece U19 vs Austria U19",
-          "kick_utc": 1774436400,
-          "tv_channels": [],
-          "tournament": "U19 UEFA European Championship, Elite round Gr. 1"
-        },
         {
           "league": "UEFA Euro",
           "time": "26/03 12:00 AM",
@@ -29,34 +21,11 @@
         },
         {
           "league": "UEFA Euro",
-          "time": "25/03 06:00 PM",
-          "match": "England U19 vs Serbia U19",
-          "kick_utc": 1774436400,
-          "tv_channels": [],
-          "tournament": "U19 UEFA European Championship, Elite round Gr. 2"
-        },
-        {
-          "league": "UEFA Euro",
           "time": "25/03 11:00 PM",
           "match": "Poland U19 vs Portugal U19",
           "kick_utc": 1774454400,
           "tv_channels": [],
           "tournament": "U19 UEFA European Championship, Elite round Gr. 2"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "25/03 06:00 PM",
-          "match": "Croatia U19 vs Switzerland U19",
-          "kick_utc": 1774436400,
-          "tv_channels": [
-            {
-              "country": "Croatia",
-              "channels": [
-                "MAXSport 1"
-              ]
-            }
-          ],
-          "tournament": "U19 UEFA European Championship, Elite round Gr. 3"
         },
         {
           "league": "UEFA Euro",
@@ -84,22 +53,6 @@
         },
         {
           "league": "UEFA Euro",
-          "time": "25/03 04:00 PM",
-          "match": "Ukraine U19 vs Northern Ireland U19",
-          "kick_utc": 1774429200,
-          "tv_channels": [],
-          "tournament": "U19 UEFA European Championship, Elite round Gr. 5"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "25/03 05:00 PM",
-          "match": "Ukraine U19 vs Ireland U19",
-          "kick_utc": 1774432800,
-          "tv_channels": [],
-          "tournament": "U19 UEFA European Championship, Elite round Gr. 5"
-        },
-        {
-          "league": "UEFA Euro",
           "time": "25/03 10:00 PM",
           "match": "Kazakhstan U19 vs Romania U19",
           "kick_utc": 1774450800,
@@ -108,18 +61,23 @@
         },
         {
           "league": "UEFA Euro",
-          "time": "25/03 06:00 PM",
-          "match": "Slovakia U19 vs Türkiye U19",
-          "kick_utc": 1774436400,
-          "tv_channels": [],
-          "tournament": "U19 UEFA European Championship, Elite round Gr. 6"
-        },
-        {
-          "league": "UEFA Euro",
           "time": "25/03 11:00 PM",
           "match": "Italy U19 vs Hungary U19",
           "kick_utc": 1774454400,
-          "tv_channels": [],
+          "tv_channels": [
+            {
+              "country": "Italy",
+              "channels": [
+                "Vivo Azzurro TV"
+              ]
+            },
+            {
+              "country": "San Marino",
+              "channels": [
+                "Vivo Azzurro TV"
+              ]
+            }
+          ],
           "tournament": "U19 UEFA European Championship, Elite round Gr. 6"
         },
         {
@@ -147,9 +105,9 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "DAZN Canada",
                 "TSN3",
                 "Tennis Channel",
+                "DAZN Canada",
                 "TVA Sports"
               ]
             }
