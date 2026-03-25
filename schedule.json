@@ -1,118 +1,806 @@
 {
-  "updated": "2026-03-25 19:35 VN",
+  "updated": "2026-03-26 01:38 VN",
   "days": {
     "20260325": {
       "date": "Wednesday, 25/03",
       "games": [
         {
-          "league": "UEFA Euro",
-          "time": "26/03 12:00 AM",
-          "match": "Germany U19 vs Sweden U19",
-          "kick_utc": 1774458000,
+          "league": "FIFA World Cup",
+          "time": "27/03 12:00 AM",
+          "match": "Türkiye vs Romania",
+          "kick_utc": 1774544400,
           "tv_channels": [
             {
-              "country": "Germany",
+              "country": "Central African Republic",
               "channels": [
-                "Sky Sport News HD"
+                "SuperSport Maximo 2"
               ]
-            }
-          ],
-          "tournament": "U19 UEFA European Championship, Elite round Gr. 1"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "25/03 11:00 PM",
-          "match": "Poland U19 vs Portugal U19",
-          "kick_utc": 1774454400,
-          "tv_channels": [],
-          "tournament": "U19 UEFA European Championship, Elite round Gr. 2"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "25/03 09:15 PM",
-          "match": "Norway U19 vs France U19",
-          "kick_utc": 1774448100,
-          "tv_channels": [],
-          "tournament": "U19 UEFA European Championship, Elite round Gr. 3"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "25/03 08:00 PM",
-          "match": "Czechia U19 vs Latvia U19",
-          "kick_utc": 1774443600,
-          "tv_channels": [],
-          "tournament": "U19 UEFA European Championship, Elite round Gr. 4"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "25/03 11:00 PM",
-          "match": "Belgium U19 vs Denmark U19",
-          "kick_utc": 1774454400,
-          "tv_channels": [],
-          "tournament": "U19 UEFA European Championship, Elite round Gr. 4"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "25/03 10:00 PM",
-          "match": "Kazakhstan U19 vs Romania U19",
-          "kick_utc": 1774450800,
-          "tv_channels": [],
-          "tournament": "U19 UEFA European Championship, Elite round Gr. 5"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "25/03 11:00 PM",
-          "match": "Italy U19 vs Hungary U19",
-          "kick_utc": 1774454400,
-          "tv_channels": [
+            },
             {
-              "country": "Italy",
+              "country": "Togo",
               "channels": [
-                "Vivo Azzurro TV"
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Morocco",
+              "channels": [
+                "beIN SPORTS 2"
+              ]
+            },
+            {
+              "country": "Malawi",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Uruguay",
+              "channels": [
+                "ESPN 2 Sur"
+              ]
+            },
+            {
+              "country": "Senegal",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Mauritania",
+              "channels": [
+                "SuperSport Maximo 2",
+                "beIN SPORTS 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Zimbabwe",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Syrian Arab Republic",
+              "channels": [
+                "beIN SPORTS 2"
+              ]
+            },
+            {
+              "country": "Burundi",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Poland",
+              "channels": [
+                "Polsat Sport 1"
+              ]
+            },
+            {
+              "country": "Eswatini",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Seychelles",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Sao Tome and Principe",
+              "channels": [
+                "SuperSport Maximo 2"
+              ]
+            },
+            {
+              "country": "Tunisia",
+              "channels": [
+                "beIN SPORTS 2"
+              ]
+            },
+            {
+              "country": "Faroe Islands",
+              "channels": [
+                "TV2 Play Denmark",
+                "TV2 Sport X"
+              ]
+            },
+            {
+              "country": "Brazil",
+              "channels": [
+                "Globoplay",
+                "Sportv 2"
+              ]
+            },
+            {
+              "country": "Argentina",
+              "channels": [
+                "ESPN 2 Sur"
+              ]
+            },
+            {
+              "country": "Bolivia, Plurinational State of",
+              "channels": [
+                "Disney+ Premium Chile",
+                "ESPN 2 Sur"
+              ]
+            },
+            {
+              "country": "Tanzania, United Republic of",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Réunion",
+              "channels": [
+                "SuperSport Maximo 2"
+              ]
+            },
+            {
+              "country": "France",
+              "channels": [
+                "L'Équipe",
+                "L'Équipe Live Foot"
+              ]
+            },
+            {
+              "country": "Burkina Faso",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Angola",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Ethiopia",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Denmark",
+              "channels": [
+                "TV2 Play Denmark",
+                "TV2 Sport X"
+              ]
+            },
+            {
+              "country": "Mexico",
+              "channels": [
+                "Sky Sports Mexico"
+              ]
+            },
+            {
+              "country": "Namibia",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Sweden",
+              "channels": [
+                "V Sport Extra",
+                "Viaplay"
+              ]
+            },
+            {
+              "country": "Kenya",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Chad",
+              "channels": [
+                "SuperSport Maximo 2",
+                "beIN SPORTS 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Bahrain",
+              "channels": [
+                "beIN SPORTS 2"
+              ]
+            },
+            {
+              "country": "Côte d'Ivoire",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Cameroon",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Uganda",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Ghana",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Paraguay",
+              "channels": [
+                "ESPN 2 Sur"
+              ]
+            },
+            {
+              "country": "Canada",
+              "channels": [
+                "DAZN"
+              ]
+            },
+            {
+              "country": "Eritrea",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Botswana",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Mauritius",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Gambia",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Liberia",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "South Sudan",
+              "channels": [
+                "SuperSport Maximo 2",
+                "beIN SPORTS 2",
+                "DStv Now"
               ]
             },
             {
               "country": "San Marino",
               "channels": [
-                "Vivo Azzurro TV"
+                "Sky Sport Calcio",
+                "NOW"
+              ]
+            },
+            {
+              "country": "Sudan",
+              "channels": [
+                "SuperSport Maximo 2",
+                "beIN SPORTS 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Algeria",
+              "channels": [
+                "beIN SPORTS 2"
+              ]
+            },
+            {
+              "country": "Niger",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Benin",
+              "channels": [
+                "SuperSport Maximo 2"
+              ]
+            },
+            {
+              "country": "Nigeria",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Djibouti",
+              "channels": [
+                "SuperSport Maximo 2",
+                "beIN SPORTS 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Congo, The Democratic Republic of the",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Sierra Leone",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Andorra",
+              "channels": [
+                "L'Équipe"
+              ]
+            },
+            {
+              "country": "Germany",
+              "channels": [
+                "DAZN"
+              ]
+            },
+            {
+              "country": "Italy",
+              "channels": [
+                "Sky Sport Calcio",
+                "NOW"
+              ]
+            },
+            {
+              "country": "Ukraine",
+              "channels": [
+                "Megogo",
+                "MEGOGO Football 2"
+              ]
+            },
+            {
+              "country": "Venezuela, Bolivarian Republic of",
+              "channels": [
+                "Disney+ Premium Sur"
+              ]
+            },
+            {
+              "country": "Romania",
+              "channels": [
+                "Antena 1",
+                "Antena Play",
+                "Prima TV",
+                "Prima Play"
+              ]
+            },
+            {
+              "country": "Guinea-Bissau",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Rwanda",
+              "channels": [
+                "SuperSport Maximo 2"
+              ]
+            },
+            {
+              "country": "Lesotho",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Azerbaijan",
+              "channels": [
+                "Ictimai TV"
+              ]
+            },
+            {
+              "country": "Somalia",
+              "channels": [
+                "SuperSport Maximo 2",
+                "beIN SPORTS 2"
+              ]
+            },
+            {
+              "country": "Bosnia and Herzegovina",
+              "channels": [
+                "Sport Klub 1 HR",
+                "Arena Sport Premium 1"
+              ]
+            },
+            {
+              "country": "Netherlands",
+              "channels": [
+                "Ziggo Sport",
+                "Ziggo Go",
+                "Ziggo Sport 2"
+              ]
+            },
+            {
+              "country": "Peru",
+              "channels": [
+                "Disney+ Premium Chile",
+                "ESPN 2 Sur"
+              ]
+            },
+            {
+              "country": "Slovakia",
+              "channels": [
+                "Sport 1"
+              ]
+            },
+            {
+              "country": "Equatorial Guinea",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Iran, Islamic Republic of",
+              "channels": [
+                "beIN SPORTS 2"
+              ]
+            },
+            {
+              "country": "Saudi Arabia",
+              "channels": [
+                "beIN SPORTS 2"
+              ]
+            },
+            {
+              "country": "Zambia",
+              "channels": [
+                "SuperSport Maximo 2"
+              ]
+            },
+            {
+              "country": "Norway",
+              "channels": [
+                "TV2 Play",
+                "Viaplay",
+                "TV2 Sport"
+              ]
+            },
+            {
+              "country": "Mozambique",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Congo",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "South Africa",
+              "channels": [
+                "SuperSport Maximo 2"
+              ]
+            },
+            {
+              "country": "United Arab Emirates",
+              "channels": [
+                "beIN SPORTS 2"
+              ]
+            },
+            {
+              "country": "Cabo Verde",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Iraq",
+              "channels": [
+                "beIN SPORTS 2"
+              ]
+            },
+            {
+              "country": "Ecuador",
+              "channels": [
+                "Disney+ Premium Sur",
+                "ESPN 2 Sur"
+              ]
+            },
+            {
+              "country": "Chile",
+              "channels": [
+                "Disney+ Premium Chile",
+                "ESPN 2 Sur"
+              ]
+            },
+            {
+              "country": "Qatar",
+              "channels": [
+                "beIN SPORTS 2"
+              ]
+            },
+            {
+              "country": "Oman",
+              "channels": [
+                "beIN SPORTS 2"
+              ]
+            },
+            {
+              "country": "Bulgaria",
+              "channels": [
+                "Diema Sport 3 HD"
+              ]
+            },
+            {
+              "country": "North Macedonia",
+              "channels": [
+                "Arena Sport Premium 1"
+              ]
+            },
+            {
+              "country": "Kuwait",
+              "channels": [
+                "beIN SPORTS 2"
+              ]
+            },
+            {
+              "country": "Monaco",
+              "channels": [
+                "L'Équipe"
+              ]
+            },
+            {
+              "country": "Lebanon",
+              "channels": [
+                "beIN SPORTS 2"
+              ]
+            },
+            {
+              "country": "Guinea",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Gabon",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Finland",
+              "channels": [
+                "MTV Urheilu 3"
+              ]
+            },
+            {
+              "country": "Colombia",
+              "channels": [
+                "Disney+ Premium Sur"
+              ]
+            },
+            {
+              "country": "Yemen",
+              "channels": [
+                "beIN SPORTS 2"
+              ]
+            },
+            {
+              "country": "Mali",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Jordan",
+              "channels": [
+                "beIN SPORTS 2"
+              ]
+            },
+            {
+              "country": "Portugal",
+              "channels": [
+                "Sport TV1"
+              ]
+            },
+            {
+              "country": "Madagascar",
+              "channels": [
+                "SuperSport Maximo 2",
+                "DStv Now"
+              ]
+            },
+            {
+              "country": "Türkiye",
+              "channels": [
+                "Exxen"
+              ]
+            },
+            {
+              "country": "Hungary",
+              "channels": [
+                "Spíler2"
+              ]
+            },
+            {
+              "country": "United States",
+              "channels": [
+                "Fox Sports 2"
+              ]
+            },
+            {
+              "country": "Serbia",
+              "channels": [
+                "Arena Sport Premium 1"
+              ]
+            },
+            {
+              "country": "Greece",
+              "channels": [
+                "Novasports | Extra 4"
+              ]
+            },
+            {
+              "country": "Mayotte",
+              "channels": [
+                "SuperSport Maximo 2"
+              ]
+            },
+            {
+              "country": "Egypt",
+              "channels": [
+                "beIN SPORTS 2"
+              ]
+            },
+            {
+              "country": "Libya",
+              "channels": [
+                "beIN SPORTS 2"
+              ]
+            },
+            {
+              "country": "Czechia",
+              "channels": [
+                "Sport 1"
+              ]
+            },
+            {
+              "country": "Comoros",
+              "channels": [
+                "SuperSport Maximo 2"
+              ]
+            },
+            {
+              "country": "Palestine, State of",
+              "channels": [
+                "beIN SPORTS 2"
+              ]
+            },
+            {
+              "country": "Croatia",
+              "channels": [
+                "Sport Klub 1 HR"
               ]
             }
           ],
-          "tournament": "U19 UEFA European Championship, Elite round Gr. 6"
+          "tournament": "World Cup Qual. UEFA Playoffs"
         },
         {
           "league": "UEFA Euro",
-          "time": "25/03 09:00 PM",
-          "match": "Finland U19 vs Netherlands U19",
-          "kick_utc": 1774447200,
+          "time": "27/03 12:00 AM",
+          "match": "San Marino U21 vs Finland U21",
+          "kick_utc": 1774544400,
           "tv_channels": [],
-          "tournament": "U19 UEFA European Championship, Elite round Gr. 7"
+          "tournament": "U21 EURO, Qualification, Group A"
         },
         {
           "league": "UEFA Euro",
-          "time": "26/03 12:00 AM",
-          "match": "Spain U19 vs Slovenia U19",
-          "kick_utc": 1774458000,
+          "time": "26/03 11:00 PM",
+          "match": "Iceland U21 vs Estonia U21",
+          "kick_utc": 1774540800,
           "tv_channels": [],
-          "tournament": "U19 UEFA European Championship, Elite round Gr. 7"
+          "tournament": "U21 EURO, Qualification, Group C"
         },
         {
-          "league": "Tennis",
-          "match": "Miami Open",
-          "kick_utc": 1774458000,
-          "time": "26/03 12:00 AM",
+          "league": "UEFA Euro",
+          "time": "27/03 01:30 AM",
+          "match": "Luxembourg U21 vs France U21",
+          "kick_utc": 1774549800,
+          "tv_channels": [],
+          "tournament": "U21 EURO, Qualification, Group C"
+        },
+        {
+          "league": "UEFA Euro",
+          "time": "27/03 12:15 AM",
+          "match": "Ireland U21 vs Moldova U21",
+          "kick_utc": 1774545300,
           "tv_channels": [
             {
-              "country": "LiveSportsOnTV",
+              "country": "Ireland",
               "channels": [
-                "TSN3",
-                "Tennis Channel",
-                "DAZN Canada",
-                "TVA Sports"
+                "Virgin Media Two"
               ]
             }
           ],
-          "source": "livesportsontv"
+          "tournament": "U21 EURO, Qualification, Group D"
+        },
+        {
+          "league": "UEFA Euro",
+          "time": "27/03 12:15 AM",
+          "match": "Italy U21 vs North Macedonia U21",
+          "kick_utc": 1774545300,
+          "tv_channels": [
+            {
+              "country": "San Marino",
+              "channels": [
+                "Rai 2",
+                "RaiPlay"
+              ]
+            },
+            {
+              "country": "Malta",
+              "channels": [
+                "Rai 2"
+              ]
+            },
+            {
+              "country": "Italy",
+              "channels": [
+                "Rai 2",
+                "RaiPlay"
+              ]
+            }
+          ],
+          "tournament": "U21 EURO, Qualification, Group E"
         },
         {
           "league": "Tennis",
@@ -150,24 +838,6 @@
         {
           "league": "Tennis",
           "match": "Miami Open",
-          "kick_utc": 1774456200,
-          "time": "25/03 11:30 PM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Main Event",
-                "Sky Sports Tennis",
-                "Sky Sports Ultra HDR",
-                "Sky Sports+"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Miami Open",
           "kick_utc": 1774476000,
           "time": "26/03 05:00 AM",
           "tv_channels": [
@@ -185,19 +855,19 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1774458000,
-          "time": "26/03 12:00 AM",
+          "match": "Miami Open",
+          "kick_utc": 1774544400,
+          "time": "27/03 12:00 AM",
           "tv_channels": [
             {
-              "country": "Ausport",
+              "country": "Wheresthematch",
               "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
+                "Sky Sports Tennis",
+                "Sky Sports+"
               ]
             }
           ],
-          "source": "ausport"
+          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
@@ -236,6 +906,22 @@
           "match": "",
           "kick_utc": 1774486800,
           "time": "26/03 08:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1774544400,
+          "time": "27/03 12:00 AM",
           "tv_channels": [
             {
               "country": "Ausport",
