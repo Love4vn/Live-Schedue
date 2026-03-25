@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-25 08:00 VN",
+  "updated": "2026-03-25 13:46 VN",
   "days": {
     "20260325": {
       "date": "Wednesday, 25/03",
@@ -141,6 +141,57 @@
         {
           "league": "Tennis",
           "match": "Miami Open",
+          "kick_utc": 1774458000,
+          "time": "26/03 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DAZN Canada",
+                "TSN3",
+                "Tennis Channel",
+                "TVA Sports"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Miami Open",
+          "kick_utc": 1774465200,
+          "time": "26/03 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "TSN3",
+                "RDS 2"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Miami Open",
+          "kick_utc": 1774479600,
+          "time": "26/03 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel",
+                "TSN3",
+                "DAZN Canada"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Miami Open",
           "kick_utc": 1774456200,
           "time": "25/03 11:30 PM",
           "tv_channels": [
@@ -183,8 +234,8 @@
             {
               "country": "Ausport",
               "channels": [
-                "beIN SPORTS 1",
-                "beIN Sports Connect"
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
               ]
             }
           ],
@@ -199,8 +250,8 @@
             {
               "country": "Ausport",
               "channels": [
-                "beIN SPORTS 1",
-                "beIN Sports Connect"
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
               ]
             }
           ],
@@ -215,8 +266,8 @@
             {
               "country": "Ausport",
               "channels": [
-                "beIN SPORTS 1",
-                "beIN Sports Connect"
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
               ]
             }
           ],
@@ -231,8 +282,8 @@
             {
               "country": "Ausport",
               "channels": [
-                "beIN SPORTS 1",
-                "beIN Sports Connect"
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
               ]
             }
           ],
