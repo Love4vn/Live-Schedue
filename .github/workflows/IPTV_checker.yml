@@ -2,11 +2,11 @@ name: IPTV Checker
 
 on:
   schedule:
-    - cron: '30 */6 * * *'
+    - cron: '30 */6 * * *'   # chạy mỗi 6 giờ, phút thứ 30
   push:
     paths:
-      - 'live_schedule.m3u'
-  workflow_dispatch:
+      - 'live_schedule.m3u'   # khi file này thay đổi
+  workflow_dispatch:          # cho phép chạy thủ công
 
 jobs:
   check:
