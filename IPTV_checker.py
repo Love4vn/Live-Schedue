@@ -1655,6 +1655,7 @@ def parse_m3u8_files(playlists, config):
                         )
 
                         # --- Filtering by resolution ---
+                        # Chỉ giữ kênh nếu filter_min_res được chỉ định và resolution thỏa mãn
                         if filter_min_res:
                             res = result.get('resolution', 'Unknown')
                             keep = False
@@ -1665,6 +1666,18 @@ def parse_m3u8_files(playlists, config):
                             elif filter_min_res == '4K' and res == '4K':
                                 keep = True
                             if keep:
+                                stream_url = check_entry['stream_line']
+                                with filtered_lock:
+                                    if stream_url not in all_seen_urls:
+                                        all_seen_urls.add(stream_url)
+                                        all_filtered_entries.append((
+                                            check_entry['extinf_line'],
+                                            list(check_entry['metadata_lines']),
+                                            stream_url
+                                        ))
+                        else:
+                            # Nếu không có filter, giữ tất cả kênh alive (không lọc theo res)
+                            if status == 'Alive':
                                 stream_url = check_entry['stream_line']
                                 with filtered_lock:
                                     if stream_url not in all_seen_urls:
