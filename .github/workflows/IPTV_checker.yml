@@ -1,6 +1,8 @@
 name: IPTV Checker
 
 on:
+  schedule:
+    - cron: '30 */6 * * *'
   push:
     paths:
       - 'live_schedue.m3u'
