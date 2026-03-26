@@ -1682,10 +1682,10 @@ def parse_m3u8_files(playlists, config):
                         else:
                             if filter_min_res:
                                 res = result.get('resolution', 'Unknown')
-                                # Nếu resolution là "Unknown" thì coi như đạt
-                                if res == "Unknown":
+                                # Nếu resolution là "Unknown" -> giữ lại
+                                if res == 'Unknown':
                                     keep = True
-                                    logging.debug(f"Channel with Unknown resolution kept: {check_entry['channel_name']}")
+                                    logging.debug(f"Unknown resolution channel kept: {check_entry['channel_name']}")
                                 else:
                                     keep = False
                                     if filter_min_res == '720p' and res in ['720p', '1080p', '4K']:
