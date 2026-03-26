@@ -1682,7 +1682,7 @@ def parse_m3u8_files(playlists, config):
                         else:
                             if filter_min_res:
                                 res = result.get('resolution', 'Unknown')
-                                # Nếu resolution là "Unknown" -> giữ lại
+                                # If resolution is Unknown, keep it (treat as meeting requirement)
                                 if res == 'Unknown':
                                     keep = True
                                     logging.debug(f"Unknown resolution channel kept: {check_entry['channel_name']}")
@@ -1875,7 +1875,7 @@ def main():
     parser.add_argument("--workers", "-w", type=int, default=4, help="Number of concurrent workers for channel checking (1-20, default: 4)")
     parser.add_argument("--insecure", "-k", action="store_true", help="Disable SSL certificate verification for HTTPS streams")
     parser.add_argument("--filter-min-res", type=str, choices=['720p', '1080p', '4K'], default=None,
-                        help="Only keep channels with resolution at least this value (720p, 1080p, 4K). Channels with Unknown resolution are always kept.")
+                        help="Only keep channels with resolution at least this value (720p, 1080p, 4K). If not set, keep all alive channels.")
     parser.add_argument("--output-playlist", type=str, default=None,
                         help="Output filtered playlist file (e.g., live_schedule_check.m3u). If not set, no filtered playlist is written.")
 
