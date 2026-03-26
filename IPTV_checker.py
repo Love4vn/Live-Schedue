@@ -588,9 +588,11 @@ def check_channel_status(url, timeout, retries=6, extended_timeout=None, proxy_l
                     min_bytes = min_data_threshold if depth == 0 else playlist_segment_threshold
                     return read_stream(resp, min_bytes)
                 else:
-                    if content_type.lower().startswith('text/'):
+                    # If content type clearly indicates HTML/text, treat as dead
+                    if content_type.lower().startswith('text/') or 'html' in content_type.lower():
                         logging.debug(f"Content-Type not recognized as stream: {content_type}")
                         return 'Dead', None, f'Unrecognized content type: {content_type}'
+                    # Fallback: try to read anyway, but with lower expectations
                     logging.debug(f"Unrecognized Content-Type '{content_type}'. Attempting fallback stream read.")
                     min_bytes = min_data_threshold if depth == 0 else playlist_segment_threshold
                     return read_stream(resp, min_bytes)
@@ -1682,10 +1684,10 @@ def parse_m3u8_files(playlists, config):
                         else:
                             if filter_min_res:
                                 res = result.get('resolution', 'Unknown')
-                                # If resolution is Unknown, keep it (treat as meeting requirement)
+                                # Giữ lại nếu resolution là "Unknown" hoặc đạt yêu cầu
                                 if res == 'Unknown':
                                     keep = True
-                                    logging.debug(f"Unknown resolution channel kept: {check_entry['channel_name']}")
+                                    logging.debug(f"Unknown resolution kept: {check_entry['channel_name']}")
                                 else:
                                     keep = False
                                     if filter_min_res == '720p' and res in ['720p', '1080p', '4K']:
