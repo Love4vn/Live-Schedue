@@ -1,39 +1,5 @@
 [
   {
-    "hari": "Rabu",
-    "tanggal": "25-03-2026",
-    "time": "23:30",
-    "sport": "Tennis",
-    "competition": "",
-    "title": "Miami Open",
-    "home": "Miami Open",
-    "away": "",
-    "channels": [
-      "Sky Sports Main Event",
-      "Sky Sports Tennis",
-      "Sky Sports Ultra HDR",
-      "Sky Sports+"
-    ],
-    "event_url": ""
-  },
-  {
-    "hari": "Kamis",
-    "tanggal": "26-03-2026",
-    "time": "05:00",
-    "sport": "Tennis",
-    "competition": "",
-    "title": "Miami Open",
-    "home": "Miami Open",
-    "away": "",
-    "channels": [
-      "Sky Sports Tennis",
-      "Sky Sports Main Event",
-      "Sky Sports Ultra HDR",
-      "Sky Sports+"
-    ],
-    "event_url": ""
-  },
-  {
     "hari": "Jumat",
     "tanggal": "27-03-2026",
     "time": "00:00",
@@ -72,8 +38,8 @@
     "home": "Italy",
     "away": "Northern-Ireland",
     "channels": [
-      "BBC1 Northern Ireland",
       "BBC iPlayer",
+      "BBC1 Northern Ireland",
       "BBC Sport Website",
       "BBC3"
     ],
@@ -180,8 +146,8 @@
     "home": "Miami Open",
     "away": "",
     "channels": [
-      "Sky Sports Main Event",
       "Sky Sports Tennis",
+      "Sky Sports Main Event",
       "Sky Sports Ultra HDR",
       "Sky Sports+"
     ],
@@ -214,6 +180,38 @@
     "channels": [
       "DAZN",
       "FIFA+"
+    ],
+    "event_url": ""
+  },
+  {
+    "hari": "Jumat",
+    "tanggal": "27-03-2026",
+    "time": "23:30",
+    "sport": "Tennis",
+    "competition": "",
+    "title": "Miami Open",
+    "home": "Miami Open",
+    "away": "",
+    "channels": [
+      "Sky Sports Tennis",
+      "Sky Sports+"
+    ],
+    "event_url": ""
+  },
+  {
+    "hari": "Sabtu",
+    "tanggal": "28-03-2026",
+    "time": "06:00",
+    "sport": "Tennis",
+    "competition": "",
+    "title": "Miami Open",
+    "home": "Miami Open",
+    "away": "",
+    "channels": [
+      "Sky Sports Main Event",
+      "Sky Sports Tennis",
+      "Sky Sports Ultra HDR",
+      "Sky Sports+"
     ],
     "event_url": ""
   }
