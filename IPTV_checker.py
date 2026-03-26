@@ -135,6 +135,8 @@ def get_video_bitrate(url):
     """
     Measure approximate video bitrate by sampling the stream for 10 seconds.
     """
+    if url.startswith('udp://'):
+        return "N/A"
     command = [
         'ffmpeg',
         '-v',
@@ -364,6 +366,11 @@ def summarize_error(exc):
 
 
 def check_channel_status(url, timeout, retries=6, extended_timeout=None, proxy_list=None, test_geoblock=False, ffmpeg_available=True, backoff='linear', session=None):
+    # Handle UDP streams
+    if url.startswith('udp://'):
+        logging.debug(f"UDP stream detected, treating as alive: {url}")
+        return 'Alive', url, None
+
     headers = {
         'User-Agent': 'VLC/3.0.14 LibVLC/3.0.14'
     }
@@ -581,9 +588,11 @@ def check_channel_status(url, timeout, retries=6, extended_timeout=None, proxy_l
                     min_bytes = min_data_threshold if depth == 0 else playlist_segment_threshold
                     return read_stream(resp, min_bytes)
                 else:
-                    if content_type.lower().startswith('text/'):
+                    # If Content-Type is not recognized but URL looks like a stream, try reading anyway
+                    if content_type.lower().startswith('text/') or 'html' in content_type:
                         logging.debug(f"Content-Type not recognized as stream: {content_type}")
                         return 'Dead', None, f'Unrecognized content type: {content_type}'
+                    # For unknown Content-Type (e.g., application/octet-stream), attempt fallback stream read
                     logging.debug(f"Unrecognized Content-Type '{content_type}'. Attempting fallback stream read.")
                     min_bytes = min_data_threshold if depth == 0 else playlist_segment_threshold
                     return read_stream(resp, min_bytes)
@@ -710,6 +719,9 @@ def build_screenshot_filename(output_path, channel_index, channel_name, max_leng
 
 
 def capture_frame(url, output_path, file_name):
+    if url.startswith('udp://'):
+        logging.debug(f"Skipping screenshot for UDP stream: {url}")
+        return False
     command = [
         'ffmpeg', '-y', '-i', url, '-frames:v', '1',
         os.path.join(output_path, f"{file_name}.png")
@@ -730,6 +742,9 @@ def capture_frame(url, output_path, file_name):
 
 
 def get_detailed_stream_info(url, profile_bitrate=False):
+    if url.startswith('udp://'):
+        logging.debug(f"UDP stream, skipping ffprobe: {url}")
+        return "Unknown", "N/A", "Unknown", None
     command = [
         'ffprobe', '-v', 'error',
         '-analyzeduration', '15000000', '-probesize', '15000000',
@@ -788,6 +803,7 @@ def get_detailed_stream_info(url, profile_bitrate=False):
                 audio_data = json.loads(audio_output) if audio_output else {}
                 audio_streams = audio_data.get('streams', []) if isinstance(audio_data, dict) else []
                 if audio_streams:
+                    logging.debug(f"Audio-only stream detected: {url}")
                     return "Audio Only", "N/A", "Audio Only", None
             except Exception:
                 pass
@@ -808,7 +824,7 @@ def get_detailed_stream_info(url, profile_bitrate=False):
                 resolution = "SD"
 
         video_bitrate = get_video_bitrate(url) if profile_bitrate else "N/A"
-
+        logging.debug(f"Stream info for {url}: codec={codec_name}, resolution={resolution}, fps={fps}")
         return codec_name, video_bitrate, resolution, fps
     except FileNotFoundError:
         logging.error(f"ffprobe not found. Please install ffprobe to get stream info.")
@@ -840,6 +856,8 @@ def format_stream_info(codec_name, video_bitrate, resolution, fps):
 
 
 def get_audio_bitrate(url):
+    if url.startswith('udp://'):
+        return "UDP Stream (No audio info)"
     command = [
         'ffprobe', '-v', 'error',
         '-analyzeduration', '15000000', '-probesize', '15000000',
@@ -1536,6 +1554,7 @@ def parse_m3u8_files(playlists, config):
                     'resolution': 'Unknown', 'fps': None, 'error_reason': 'Cancelled',
                 }
             s_line = check_entry['stream_line']
+            logging.debug(f"Checking channel {check_entry['channel_name']} with URL: {s_line}")
             action, cached = url_dedup.get_or_start(s_line)
             if action == 'cached':
                 logging.debug(f"Reusing cached check result for duplicate URL: {s_line}")
@@ -1583,6 +1602,7 @@ def parse_m3u8_files(playlists, config):
                     'resolution': resolution, 'fps': fps, 'error_reason': check_reason,
                 }
             except Exception as worker_exc:
+                logging.error(f"Unexpected error checking {check_entry['channel_name']}: {worker_exc}", exc_info=True)
                 result = {
                     'status': 'Dead', 'stream_url': None, 'target_url': None,
                     'video_info': 'Unknown', 'audio_info': 'Unknown',
@@ -1655,23 +1675,30 @@ def parse_m3u8_files(playlists, config):
                         )
 
                         # --- Filtering by resolution ---
-                        # Nếu filter_min_res được chỉ định, chỉ giữ các kênh đáp ứng
-                        if filter_min_res:
-                            res = result.get('resolution', 'Unknown')
-                            keep = False
-                            if filter_min_res == '720p' and res in ['720p', '1080p', '4K']:
-                                keep = True
-                            elif filter_min_res == '1080p' and res in ['1080p', '4K']:
-                                keep = True
-                            elif filter_min_res == '4K' and res == '4K':
-                                keep = True
-                            # Nếu không có filter, giữ tất cả Alive (sẽ xử lý ở ngoài)
+                        stream_url = check_entry['stream_line']
+                        if stream_url.startswith('udp://'):
+                            # UDP streams always considered alive and meet resolution requirement
+                            keep = True
+                            logging.debug(f"UDP stream {check_entry['channel_name']} kept unconditionally")
                         else:
-                            keep = (status == 'Alive')
+                            if filter_min_res:
+                                res = result.get('resolution', 'Unknown')
+                                keep = False
+                                if filter_min_res == '720p' and res in ['720p', '1080p', '4K']:
+                                    keep = True
+                                elif filter_min_res == '1080p' and res in ['1080p', '4K']:
+                                    keep = True
+                                elif filter_min_res == '4K' and res == '4K':
+                                    keep = True
+                                if not keep:
+                                    logging.debug(f"Channel {check_entry['channel_name']} resolution {res} does not meet filter {filter_min_res}, excluded")
+                            else:
+                                keep = (status == 'Alive')
+                                if not keep:
+                                    logging.debug(f"Channel {check_entry['channel_name']} status {status} not alive, excluded")
 
                         # Thêm vào danh sách lọc nếu thỏa mãn
-                        if (filter_min_res and keep) or (not filter_min_res and status == 'Alive'):
-                            stream_url = check_entry['stream_line']
+                        if keep:
                             with filtered_lock:
                                 if stream_url not in all_seen_urls:
                                     all_seen_urls.add(stream_url)
@@ -1680,6 +1707,9 @@ def parse_m3u8_files(playlists, config):
                                         list(check_entry['metadata_lines']),
                                         stream_url
                                     ))
+                                    logging.debug(f"Added channel {check_entry['channel_name']} to filtered playlist")
+                                else:
+                                    logging.debug(f"Duplicate URL for {check_entry['channel_name']}, skipped")
 
                     write_resume_entry(url_resume_hash(check_entry['stream_line']), check_entry['stream_line'], check_entry['channel_index'])
             except KeyboardInterrupt:
