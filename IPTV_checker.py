@@ -588,11 +588,9 @@ def check_channel_status(url, timeout, retries=6, extended_timeout=None, proxy_l
                     min_bytes = min_data_threshold if depth == 0 else playlist_segment_threshold
                     return read_stream(resp, min_bytes)
                 else:
-                    # If Content-Type is not recognized but URL looks like a stream, try reading anyway
-                    if content_type.lower().startswith('text/') or 'html' in content_type:
+                    if content_type.lower().startswith('text/'):
                         logging.debug(f"Content-Type not recognized as stream: {content_type}")
                         return 'Dead', None, f'Unrecognized content type: {content_type}'
-                    # For unknown Content-Type (e.g., application/octet-stream), attempt fallback stream read
                     logging.debug(f"Unrecognized Content-Type '{content_type}'. Attempting fallback stream read.")
                     min_bytes = min_data_threshold if depth == 0 else playlist_segment_threshold
                     return read_stream(resp, min_bytes)
@@ -743,98 +741,101 @@ def capture_frame(url, output_path, file_name):
 
 def get_detailed_stream_info(url, profile_bitrate=False):
     if url.startswith('udp://'):
-        logging.debug(f"UDP stream, skipping ffprobe: {url}")
         return "Unknown", "N/A", "Unknown", None
-    command = [
-        'ffprobe', '-v', 'error',
-        '-analyzeduration', '15000000', '-probesize', '15000000',
-        '-select_streams', 'v', '-show_entries',
-        'stream=codec_name,width,height,r_frame_rate', '-of', 'json', url
-    ]
-    try:
-        result = run_managed_subprocess(command, timeout=10)
-        output = result.stdout.decode(errors='ignore')
-        codec_name = "Unknown"
-        width = height = 0
-        fps = None
-        probe_data = json.loads(output) if output else {}
-        streams = probe_data.get('streams', []) if isinstance(probe_data, dict) else []
 
-        selected_stream = None
-        selected_pixels = -1
-        for stream in streams:
-            if not isinstance(stream, dict):
-                continue
-            stream_width = int(stream.get('width') or 0)
-            stream_height = int(stream.get('height') or 0)
-            pixel_count = stream_width * stream_height
-            if pixel_count > selected_pixels:
-                selected_pixels = pixel_count
-                selected_stream = stream
-
-        if selected_stream:
-            codec_name = (selected_stream.get('codec_name') or "Unknown").upper()
-            width = int(selected_stream.get('width') or 0)
-            height = int(selected_stream.get('height') or 0)
-            fps_data = selected_stream.get('r_frame_rate')
-            if fps_data:
-                try:
-                    if '/' in fps_data:
-                        numerator_str, denominator_str = fps_data.split('/', 1)
-                        numerator = float(numerator_str)
-                        denominator = float(denominator_str)
-                        if denominator > 0:
-                            fps = round(numerator / denominator)
-                    else:
-                        fps = round(float(fps_data))
-                except ValueError:
-                    logging.debug(f"Unable to parse frame rate '{fps_data}' for {url}")
-        else:
-            # No video streams found — check if audio-only
-            try:
-                audio_probe_cmd = [
-                    'ffprobe', '-v', 'error',
-                    '-analyzeduration', '15000000', '-probesize', '15000000',
-                    '-select_streams', 'a', '-show_entries', 'stream=codec_type',
-                    '-of', 'json', url
-                ]
-                audio_result = run_managed_subprocess(audio_probe_cmd, timeout=10)
-                audio_output = audio_result.stdout.decode(errors='ignore')
-                audio_data = json.loads(audio_output) if audio_output else {}
-                audio_streams = audio_data.get('streams', []) if isinstance(audio_data, dict) else []
-                if audio_streams:
-                    logging.debug(f"Audio-only stream detected: {url}")
-                    return "Audio Only", "N/A", "Audio Only", None
-            except Exception:
-                pass
-
-        if fps is not None and fps <= 0:
+    # Retry up to 2 times with increased timeout
+    for attempt in range(2):
+        try:
+            command = [
+                'ffprobe', '-v', 'error',
+                '-analyzeduration', '15000000', '-probesize', '15000000',
+                '-select_streams', 'v', '-show_entries',
+                'stream=codec_name,width,height,r_frame_rate', '-of', 'json', url
+            ]
+            result = run_managed_subprocess(command, timeout=15)  # increased from 10 to 15
+            output = result.stdout.decode(errors='ignore')
+            codec_name = "Unknown"
+            width = height = 0
             fps = None
+            probe_data = json.loads(output) if output else {}
+            streams = probe_data.get('streams', []) if isinstance(probe_data, dict) else []
 
-        # Determine resolution string with FPS
-        resolution = "Unknown"
-        if width > 0 and height > 0:
-            if width >= 3840 and height >= 2160:
-                resolution = "4K"
-            elif width >= 1920 and height >= 1080:
-                resolution = "1080p"
-            elif width >= 1280 and height >= 720:
-                resolution = "720p"
+            selected_stream = None
+            selected_pixels = -1
+            for stream in streams:
+                if not isinstance(stream, dict):
+                    continue
+                stream_width = int(stream.get('width') or 0)
+                stream_height = int(stream.get('height') or 0)
+                pixel_count = stream_width * stream_height
+                if pixel_count > selected_pixels:
+                    selected_pixels = pixel_count
+                    selected_stream = stream
+
+            if selected_stream:
+                codec_name = (selected_stream.get('codec_name') or "Unknown").upper()
+                width = int(selected_stream.get('width') or 0)
+                height = int(selected_stream.get('height') or 0)
+                fps_data = selected_stream.get('r_frame_rate')
+                if fps_data:
+                    try:
+                        if '/' in fps_data:
+                            numerator_str, denominator_str = fps_data.split('/', 1)
+                            numerator = float(numerator_str)
+                            denominator = float(denominator_str)
+                            if denominator > 0:
+                                fps = round(numerator / denominator)
+                        else:
+                            fps = round(float(fps_data))
+                    except ValueError:
+                        logging.debug(f"Unable to parse frame rate '{fps_data}' for {url}")
             else:
-                resolution = "SD"
+                # No video streams found — check if audio-only
+                try:
+                    audio_probe_cmd = [
+                        'ffprobe', '-v', 'error',
+                        '-analyzeduration', '15000000', '-probesize', '15000000',
+                        '-select_streams', 'a', '-show_entries', 'stream=codec_type',
+                        '-of', 'json', url
+                    ]
+                    audio_result = run_managed_subprocess(audio_probe_cmd, timeout=15)
+                    audio_output = audio_result.stdout.decode(errors='ignore')
+                    audio_data = json.loads(audio_output) if audio_output else {}
+                    audio_streams = audio_data.get('streams', []) if isinstance(audio_data, dict) else []
+                    if audio_streams:
+                        return "Audio Only", "N/A", "Audio Only", None
+                except Exception:
+                    pass
 
-        video_bitrate = get_video_bitrate(url) if profile_bitrate else "N/A"
-        logging.debug(f"Stream info for {url}: codec={codec_name}, resolution={resolution}, fps={fps}")
-        return codec_name, video_bitrate, resolution, fps
-    except FileNotFoundError:
-        logging.error(f"ffprobe not found. Please install ffprobe to get stream info.")
-        return "Unknown", "Unknown", "Unknown", None
-    except subprocess.TimeoutExpired:
-        logging.error(f"Timeout when trying to get stream info for {url}")
-        return "Unknown", "Unknown", "Unknown", None
-    except Exception as e:
-        logging.error(f"Error getting stream info: {str(e)}")
-        return "Unknown", "Unknown", "Unknown", None
+            if fps is not None and fps <= 0:
+                fps = None
+
+            # Determine resolution string with FPS
+            resolution = "Unknown"
+            if width > 0 and height > 0:
+                if width >= 3840 and height >= 2160:
+                    resolution = "4K"
+                elif width >= 1920 and height >= 1080:
+                    resolution = "1080p"
+                elif width >= 1280 and height >= 720:
+                    resolution = "720p"
+                else:
+                    resolution = "SD"
+
+            video_bitrate = get_video_bitrate(url) if profile_bitrate else "N/A"
+
+            return codec_name, video_bitrate, resolution, fps
+        except subprocess.TimeoutExpired:
+            logging.debug(f"Timeout (attempt {attempt+1}) when trying to get stream info for {url}")
+            if attempt == 0:
+                time.sleep(1)  # short delay before retry
+                continue
+            logging.error(f"Timeout when trying to get stream info for {url}")
+            return "Unknown", "Unknown", "Unknown", None
+        except Exception as e:
+            logging.error(f"Error getting stream info: {str(e)}")
+            return "Unknown", "Unknown", "Unknown", None
+    return "Unknown", "Unknown", "Unknown", None
 
 
 def format_stream_info(codec_name, video_bitrate, resolution, fps):
@@ -1554,7 +1555,6 @@ def parse_m3u8_files(playlists, config):
                     'resolution': 'Unknown', 'fps': None, 'error_reason': 'Cancelled',
                 }
             s_line = check_entry['stream_line']
-            logging.debug(f"Checking channel {check_entry['channel_name']} with URL: {s_line}")
             action, cached = url_dedup.get_or_start(s_line)
             if action == 'cached':
                 logging.debug(f"Reusing cached check result for duplicate URL: {s_line}")
@@ -1602,7 +1602,6 @@ def parse_m3u8_files(playlists, config):
                     'resolution': resolution, 'fps': fps, 'error_reason': check_reason,
                 }
             except Exception as worker_exc:
-                logging.error(f"Unexpected error checking {check_entry['channel_name']}: {worker_exc}", exc_info=True)
                 result = {
                     'status': 'Dead', 'stream_url': None, 'target_url': None,
                     'video_info': 'Unknown', 'audio_info': 'Unknown',
@@ -1679,23 +1678,28 @@ def parse_m3u8_files(playlists, config):
                         if stream_url.startswith('udp://'):
                             # UDP streams always considered alive and meet resolution requirement
                             keep = True
-                            logging.debug(f"UDP stream {check_entry['channel_name']} kept unconditionally")
+                            logging.debug(f"UDP channel kept: {check_entry['channel_name']}")
                         else:
                             if filter_min_res:
                                 res = result.get('resolution', 'Unknown')
-                                keep = False
-                                if filter_min_res == '720p' and res in ['720p', '1080p', '4K']:
+                                # Nếu resolution là "Unknown" thì coi như đạt
+                                if res == "Unknown":
                                     keep = True
-                                elif filter_min_res == '1080p' and res in ['1080p', '4K']:
-                                    keep = True
-                                elif filter_min_res == '4K' and res == '4K':
-                                    keep = True
-                                if not keep:
-                                    logging.debug(f"Channel {check_entry['channel_name']} resolution {res} does not meet filter {filter_min_res}, excluded")
+                                    logging.debug(f"Channel with Unknown resolution kept: {check_entry['channel_name']}")
+                                else:
+                                    keep = False
+                                    if filter_min_res == '720p' and res in ['720p', '1080p', '4K']:
+                                        keep = True
+                                    elif filter_min_res == '1080p' and res in ['1080p', '4K']:
+                                        keep = True
+                                    elif filter_min_res == '4K' and res == '4K':
+                                        keep = True
+                                    if not keep:
+                                        logging.debug(f"Channel excluded (res={res}): {check_entry['channel_name']}")
                             else:
                                 keep = (status == 'Alive')
                                 if not keep:
-                                    logging.debug(f"Channel {check_entry['channel_name']} status {status} not alive, excluded")
+                                    logging.debug(f"Channel excluded (status={status}): {check_entry['channel_name']}")
 
                         # Thêm vào danh sách lọc nếu thỏa mãn
                         if keep:
@@ -1707,9 +1711,9 @@ def parse_m3u8_files(playlists, config):
                                         list(check_entry['metadata_lines']),
                                         stream_url
                                     ))
-                                    logging.debug(f"Added channel {check_entry['channel_name']} to filtered playlist")
+                                    logging.debug(f"Added to filtered playlist: {check_entry['channel_name']} (res={result.get('resolution', 'Unknown')})")
                                 else:
-                                    logging.debug(f"Duplicate URL for {check_entry['channel_name']}, skipped")
+                                    logging.debug(f"Skipped duplicate URL: {check_entry['channel_name']}")
 
                     write_resume_entry(url_resume_hash(check_entry['stream_line']), check_entry['stream_line'], check_entry['channel_index'])
             except KeyboardInterrupt:
@@ -1871,7 +1875,7 @@ def main():
     parser.add_argument("--workers", "-w", type=int, default=4, help="Number of concurrent workers for channel checking (1-20, default: 4)")
     parser.add_argument("--insecure", "-k", action="store_true", help="Disable SSL certificate verification for HTTPS streams")
     parser.add_argument("--filter-min-res", type=str, choices=['720p', '1080p', '4K'], default=None,
-                        help="Only keep channels with resolution at least this value (720p, 1080p, 4K). If not set, keep all alive channels.")
+                        help="Only keep channels with resolution at least this value (720p, 1080p, 4K). Channels with Unknown resolution are always kept.")
     parser.add_argument("--output-playlist", type=str, default=None,
                         help="Output filtered playlist file (e.g., live_schedule_check.m3u). If not set, no filtered playlist is written.")
 
