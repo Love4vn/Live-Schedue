@@ -374,13 +374,15 @@ def check_channel_status(url, timeout, retries=6, extended_timeout=None, proxy_l
     headers = {
         'User-Agent': 'VLC/3.0.14 LibVLC/3.0.14'
     }
-    min_data_threshold = 1024 * 500  # 500KB minimum threshold for direct streams
-    playlist_segment_threshold = 1024 * 128  # Smaller threshold for HLS media segments
+    min_data_threshold = 1024 * 1024  # Increased to 1MB for more reliable detection
+    playlist_segment_threshold = 1024 * 256  # 256KB for HLS segments
     max_playlist_depth = 4
     initial_timeout = 5
     retryable_http_statuses = {408, 425, 429, 500, 502, 503, 504}
-    geoblock_statuses = {403, 451, 426}
-    secondary_geoblock_statuses = {401, 423, 451}
+    # Add 458 as non-retryable error (access denied)
+    error_http_statuses = {403, 451, 426, 458, 401, 423}
+    geoblock_statuses = {403, 451, 426, 458}  # treat 458 as geoblock-like
+    secondary_geoblock_statuses = {401, 423}
     backoff_mode = (backoff or 'linear').strip().lower()
     if backoff_mode not in {'none', 'linear', 'exponential'}:
         logging.warning(f"Unknown backoff mode '{backoff_mode}', defaulting to linear.")
@@ -527,6 +529,15 @@ def check_channel_status(url, timeout, retries=6, extended_timeout=None, proxy_l
 
     def read_stream(response, min_bytes):
         bytes_read = 0
+        # Check if response is HTML error page
+        content_type = response.headers.get('Content-Type', '').lower()
+        if 'text/html' in content_type:
+            # Read a small sample to detect error messages
+            sample = response.text[:1000].lower()
+            if any(err in sample for err in ['access denied', 'forbidden', 'not found', 'error', 'unauthorized']):
+                logging.debug(f"HTML error page detected: {sample[:100]}")
+                return 'Dead', None, f'HTML error: {sample[:50]}'
+
         for chunk in response.iter_content(1024 * 128):  # 128KB chunks
             if not chunk:
                 continue
@@ -566,12 +577,17 @@ def check_channel_status(url, timeout, retries=6, extended_timeout=None, proxy_l
                 timeout=(initial_timeout, current_timeout),
                 headers=headers
             ) as resp:
+                # Check for specific HTTP error codes
+                if resp.status_code in error_http_statuses:
+                    if resp.status_code in geoblock_statuses:
+                        logging.debug(f"Geoblock detected: HTTP {resp.status_code}")
+                        return 'Geoblocked', None, None
+                    else:
+                        logging.debug(f"Error HTTP status {resp.status_code} for {target_url}")
+                        return 'Dead', None, f'HTTP {resp.status_code}'
                 if resp.status_code in retryable_http_statuses:
                     logging.debug(f"Retryable HTTP status {resp.status_code} for {target_url}, retrying...")
                     return 'Retry', None, f'HTTP {resp.status_code}'
-                if resp.status_code in geoblock_statuses:
-                    logging.debug(f"Potential geoblock detected: HTTP {resp.status_code}")
-                    return 'Geoblocked', None, None
                 if resp.status_code != 200:
                     logging.debug(f"HTTP status code not OK: {resp.status_code}")
                     if resp.status_code in secondary_geoblock_statuses:
@@ -588,11 +604,11 @@ def check_channel_status(url, timeout, retries=6, extended_timeout=None, proxy_l
                     min_bytes = min_data_threshold if depth == 0 else playlist_segment_threshold
                     return read_stream(resp, min_bytes)
                 else:
-                    # If content type clearly indicates HTML/text, treat as dead
-                    if content_type.lower().startswith('text/') or 'html' in content_type.lower():
-                        logging.debug(f"Content-Type not recognized as stream: {content_type}")
-                        return 'Dead', None, f'Unrecognized content type: {content_type}'
-                    # Fallback: try to read anyway, but with lower expectations
+                    # Check if it's an HTML error page
+                    if 'text/html' in content_type:
+                        html_sample = resp.text[:1000].lower()
+                        if any(err in html_sample for err in ['access denied', 'forbidden', 'not found']):
+                            return 'Dead', None, f'HTTP {resp.status_code} - HTML error'
                     logging.debug(f"Unrecognized Content-Type '{content_type}'. Attempting fallback stream read.")
                     min_bytes = min_data_threshold if depth == 0 else playlist_segment_threshold
                     return read_stream(resp, min_bytes)
@@ -1684,20 +1700,19 @@ def parse_m3u8_files(playlists, config):
                         else:
                             if filter_min_res:
                                 res = result.get('resolution', 'Unknown')
-                                # Giữ lại nếu resolution là "Unknown" hoặc đạt yêu cầu
+                                # Keep if resolution is Unknown OR meets minimum requirement
                                 if res == 'Unknown':
                                     keep = True
                                     logging.debug(f"Unknown resolution kept: {check_entry['channel_name']}")
+                                elif filter_min_res == '720p' and res in ['720p', '1080p', '4K']:
+                                    keep = True
+                                elif filter_min_res == '1080p' and res in ['1080p', '4K']:
+                                    keep = True
+                                elif filter_min_res == '4K' and res == '4K':
+                                    keep = True
                                 else:
                                     keep = False
-                                    if filter_min_res == '720p' and res in ['720p', '1080p', '4K']:
-                                        keep = True
-                                    elif filter_min_res == '1080p' and res in ['1080p', '4K']:
-                                        keep = True
-                                    elif filter_min_res == '4K' and res == '4K':
-                                        keep = True
-                                    if not keep:
-                                        logging.debug(f"Channel excluded (res={res}): {check_entry['channel_name']}")
+                                    logging.debug(f"Channel excluded (res={res}): {check_entry['channel_name']}")
                             else:
                                 keep = (status == 'Alive')
                                 if not keep:
