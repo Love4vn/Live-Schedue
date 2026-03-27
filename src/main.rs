@@ -500,4 +500,4 @@ fn get_simple_timestamp() -> String {
 struct ValidationResult {
     is_valid: bool,
     error: Option<String>,
-                  }
+                     }
