@@ -59,7 +59,10 @@ async function fetchWithRetry(url, options, retries = CONFIG.RETRY_COUNT) {
       });
       return response;
     } catch (error) {
-      if (attempt === retries) throw error;
+      if (attempt === retries) {
+        const errMsg = error.response ? `Status ${error.response.status}: ${error.response.statusText}` : error.message;
+        throw new Error(`${url} failed after ${retries} attempts: ${errMsg}`);
+      }
       console.warn(`Retry ${attempt}/${retries} for ${url}: ${error.message}`);
       await sleep(CONFIG.RETRY_DELAY_MS);
     }
@@ -161,7 +164,7 @@ function isWithinTimeRange(event) {
   return diffHours >= 0 && diffHours <= CONFIG.TIME_RANGE_HOURS;
 }
 
-// --- SỬA LỖI resolveDateForPage (quan trọng) ---
+// --- SỬA LỖI resolveDateForPage ---
 function resolveDateForPage($, pathSuffix) {
   const headerText = $('h2.dayInfo').first().text().trim();
   if (headerText) {
@@ -179,7 +182,7 @@ function resolveDateForPage($, pathSuffix) {
   const targetDay = { mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6, sun: 0 }[pathSuffix];
   const currentDay = now.day();
   let diff = targetDay - currentDay;
-  if (diff < 0) diff += 7; // nếu ngày đó đã qua trong tuần này, lấy tuần tới
+  if (diff < 0) diff += 7;
   const baseDate = now.add(diff, 'day').toDate();
   const hariIndo = dayjs(baseDate).format('dddd');
   const tanggalFormatted = dayjs(baseDate).format('DD/MM/YYYY');
@@ -297,12 +300,20 @@ async function scrapeDay(pathSuffix) {
   const url = `${CONFIG.BASE_URL}/live-sports-tv-guide/${pathSuffix}`;
   console.log(`Scraping: ${url}`);
 
-  const response = await fetchWithRetry(url, {
-    headers: {
-      'User-Agent': CONFIG.USER_AGENT,
-      'Accept-Language': 'en-US,en;q=0.9',
-    },
-  });
+  let response;
+  try {
+    response = await fetchWithRetry(url, {
+      headers: {
+        'User-Agent': CONFIG.USER_AGENT,
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+        'Referer': CONFIG.BASE_URL,
+      },
+    });
+  } catch (error) {
+    console.error(`Error scraping ${pathSuffix}: ${error.message}`);
+    return []; // trả về mảng rỗng để không dừng toàn bộ
+  }
 
   const $ = cheerio.load(response.data);
   const dateInfo = resolveDateForPage($, pathSuffix);
@@ -398,7 +409,6 @@ function dedupeRows(rows) {
   });
 }
 
-// --- Xuất JSON đơn giản ---
 function writeJSON(rows, outputPath) {
   const simplified = rows.map(r => ({
     competition: r.competition,
@@ -428,7 +438,6 @@ function writeJSON(rows, outputPath) {
   let filteredRows = allRows.filter(isEventRelevant);
   console.log('After sport/league filter:', filteredRows.length);
 
-  // In thử 5 trận đầu để kiểm tra thời gian
   console.log('Sample events after sport/league filter (before time filter):');
   filteredRows.slice(0, 5).forEach((r, i) => {
     const dt = r.vietnam_datetime ? dayjs(r.vietnam_datetime).format('HH:mm DD/MM/YYYY') : 'N/A';
