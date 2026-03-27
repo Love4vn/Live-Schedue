@@ -1,8 +1,8 @@
 use std::fs::File;
 use std::io::{BufWriter, Write};
-use std::time::{Duration, SystemTime, UNIX_EPOCH};
+use std::time::Duration;
 
-use chrono::{DateTime, Local, TimeZone, Utc};
+use chrono::{Local, TimeZone};
 use futures::stream::{self, StreamExt};
 use reqwest::Client;
 use tokio::time::timeout;
@@ -76,31 +76,26 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         println!("🚫 Đã lọc bỏ {} stream (adult/MP4/cinehub)", filtered_count);
     }
 
-    // Chuẩn bị danh sách URL để kiểm tra, nhưng bỏ qua các udp://
-    let mut streams_to_validate = Vec::new();
-    let mut udp_entries = Vec::new(); // lưu các entry dạng UDP để đánh dấu hợp lệ ngay
-    for entry in &filtered_entries {
-        if entry.entry_type == EntryType::StreamUrl {
-            if entry.content.starts_with("udp://") || entry.content.starts_with("udp:") {
-                // UDP streams coi như hợp lệ mà không cần kiểm tra HTTP
-                udp_entries.push((entry.original_index, entry.content.clone()));
-            } else {
-                streams_to_validate.push((entry.original_index, entry.content.clone()));
-            }
-        }
-    }
+    // Tách các stream UDP và HTTP để xử lý riêng
+    let (udp_streams, http_streams): (Vec<_>, Vec<_>) = filtered_entries
+        .iter()
+        .filter(|e| e.entry_type == EntryType::StreamUrl)
+        .partition(|e| e.content.to_lowercase().starts_with("udp://"));
+
+    let udp_indices: Vec<usize> = udp_streams.iter().map(|e| e.original_index).collect();
+    let streams_to_validate: Vec<(usize, String)> = http_streams
+        .iter()
+        .map(|e| (e.original_index, e.content.clone()))
+        .collect();
     let total_to_check = streams_to_validate.len();
-    let udp_count = udp_entries.len();
-    if udp_count > 0 {
-        println!("🔹 Đã phát hiện {} stream dạng UDP (sẽ được giữ lại)", udp_count);
-    }
-    println!("🔬 Số stream cần kiểm tra HTTP: {}", total_to_check);
+    println!("🔬 Số HTTP stream cần kiểm tra: {}", total_to_check);
+    println!("📡 Số UDP stream (bỏ qua kiểm tra): {}", udp_streams.len());
 
     let client = create_http_client();
     let mut validation_results = validate_streams_batch(&client, &streams_to_validate).await;
 
-    // Thêm kết quả cho UDP entries: hợp lệ
-    for (idx, _) in udp_entries {
+    // Thêm kết quả cho UDP stream (coi như hợp lệ)
+    for idx in udp_indices {
         validation_results.push((idx, true, None, None));
     }
 
@@ -112,9 +107,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     playlist.valid_count = valid_count;
     playlist.total_count = original_count;
 
-    write_cleaned_playlist(output_file, &playlist, valid_count, total_to_check + udp_count)?;
+    write_cleaned_playlist(output_file, &playlist, valid_count, total_to_check + udp_streams.len())?;
 
-    print_summary(&playlist, valid_count, total_to_check + udp_count);
+    print_summary(&playlist, valid_count, total_to_check + udp_streams.len());
 
     Ok(())
 }
@@ -186,7 +181,7 @@ fn classify_line(line: &str) -> EntryType {
         EntryType::Metadata
     } else if line.starts_with("#EXT") || line.starts_with("#PLAYLIST") || line.starts_with("#EXTVLCOPT") {
         EntryType::Comment
-    } else if line.starts_with("http") || line.starts_with("udp://") || line.starts_with("udp:") {
+    } else if line.starts_with("http") || line.to_lowercase().starts_with("udp://") {
         EntryType::StreamUrl
     } else {
         EntryType::Comment
@@ -305,7 +300,6 @@ fn update_entries_with_validation(
 }
 
 async fn perform_deep_validation(client: &Client, url: &str) -> ValidationResult {
-    // Nếu là UDP, không cần kiểm tra (nhưng trước đó đã tách riêng)
     // Thử HEAD request trước
     match timeout(Duration::from_secs(REQUEST_TIMEOUT), client.head(url).send()).await {
         Ok(Ok(resp)) => {
@@ -387,10 +381,7 @@ fn extract_error_from_body(body: &str) -> Option<String> {
         // Lấy câu ngắn gọn, không quá dài
         let snippet = body
             .lines()
-            .find(|line| {
-                let l = line.to_lowercase();
-                l.contains("access") || l.contains("denied") || l.contains("unauthorized") || l.contains("forbidden")
-            })
+            .find(|line| line.to_lowercase().contains("access") || line.to_lowercase().contains("denied") || line.to_lowercase().contains("unauthorized") || line.to_lowercase().contains("forbidden"))
             .map(|s| s.trim().to_string())
             .unwrap_or_else(|| "Access denied/Geo-blocked".to_string());
         Some(snippet)
@@ -408,12 +399,10 @@ fn write_cleaned_playlist(
     let file = File::create(output_file)?;
     let mut writer = BufWriter::new(file);
 
-    let vietnam_time = get_vietnam_timestamp();
-
     writeln!(writer, "#EXTM3U")?;
     writeln!(writer, "#PLAYLIST:{} - Cleaned", playlist.name)?;
     writeln!(writer, "#GENERATED-BY: CXT Cleaner v2.0")?;
-    writeln!(writer, "#VALIDATION-DATE: {}", vietnam_time)?;
+    writeln!(writer, "#VALIDATION-DATE: {}", get_vietnam_timestamp())?;
     writeln!(writer, "#TOTAL-STREAMS-CHECKED: {}", total_checked)?;
     writeln!(writer, "#TOTAL-VALID-STREAMS: {}", valid_count)?;
     if total_checked > 0 {
@@ -508,15 +497,12 @@ fn shorten_url(url: &str) -> String {
 }
 
 fn get_vietnam_timestamp() -> String {
-    // Lấy thời gian hiện tại ở UTC+7
-    let utc_now = Utc::now();
-    let vietnam_now = utc_now.with_timezone(&Local).fixed_offset();
-    // Định dạng theo dd/MM/YYYY HH:MM:SS
-    vietnam_now.format("%d/%m/%Y %H:%M:%S").to_string()
+    let now = Local::now();
+    now.format("%Y-%m-%d %H:%M:%S").to_string()
 }
 
 #[derive(Debug)]
 struct ValidationResult {
     is_valid: bool,
     error: Option<String>,
-}
+                }
