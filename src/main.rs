@@ -106,9 +106,9 @@ fn print_banner() {
     println!(
         r#"
     ╔═══════════════════════════════════════╗
-    ║           🧹CXT M3U Cleaner          ║
+    ║              🧹 ECNTV Cleaner         ║
     ║       Local M3U Stream Validator      ║
-    ║       Order-Preserving System         ║
+    ║      Order-Preserving System          ║
     ╚═══════════════════════════════════════╝
     "#
     );
