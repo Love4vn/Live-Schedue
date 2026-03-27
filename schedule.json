@@ -1,73 +1,9 @@
 {
-  "updated": "2026-03-27 19:33 VN",
+  "updated": "2026-03-28 01:38 VN",
   "days": {
     "20260327": {
       "date": "Friday, 27/03",
       "games": [
-        {
-          "league": "UEFA Euro",
-          "time": "27/03 10:00 PM",
-          "match": "Cyprus U21 vs Spain U21",
-          "kick_utc": 1774623600,
-          "tv_channels": [
-            {
-              "country": "Switzerland",
-              "channels": [
-                "Teledeporte"
-              ]
-            },
-            {
-              "country": "Andorra",
-              "channels": [
-                "Teledeporte"
-              ]
-            },
-            {
-              "country": "Cyprus",
-              "channels": [
-                "Cytavision Sports 6HD"
-              ]
-            },
-            {
-              "country": "Spain",
-              "channels": [
-                "Teledeporte"
-              ]
-            }
-          ],
-          "tournament": "U21 EURO, Qualification, Group A"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "28/03 01:00 AM",
-          "match": "Kosovo U21 vs Romania U21",
-          "kick_utc": 1774634400,
-          "tv_channels": [
-            {
-              "country": "Romania",
-              "channels": [
-                "FRF TV",
-                "Pro Arena"
-              ]
-            }
-          ],
-          "tournament": "U21 EURO, Qualification, Group A"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "28/03 01:00 AM",
-          "match": "Gibraltar U21 vs Bulgaria U21",
-          "kick_utc": 1774634400,
-          "tv_channels": [
-            {
-              "country": "Bulgaria",
-              "channels": [
-                "Diema Sport HD"
-              ]
-            }
-          ],
-          "tournament": "U21 EURO, Qualification, Group B"
-        },
         {
           "league": "UEFA Euro",
           "time": "28/03 02:00 AM",
@@ -96,302 +32,6 @@
           "kick_utc": 1774638000,
           "tv_channels": [],
           "tournament": "U21 EURO, Qualification, Group C"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "27/03 10:00 PM",
-          "match": "Kazakhstan U21 vs Slovakia U21",
-          "kick_utc": 1774623600,
-          "tv_channels": [
-            {
-              "country": "Slovakia",
-              "channels": [
-                "STVR Šport"
-              ]
-            }
-          ],
-          "tournament": "U21 EURO, Qualification, Group D"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "28/03 01:30 AM",
-          "match": "Andorra U21 vs England U21",
-          "kick_utc": 1774636200,
-          "tv_channels": [],
-          "tournament": "U21 EURO, Qualification, Group D"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "28/03 12:00 AM",
-          "match": "Poland U21 vs Armenia U21",
-          "kick_utc": 1774630800,
-          "tv_channels": [
-            {
-              "country": "Poland",
-              "channels": [
-                "TVP Sport App",
-                "TVP Sport HD",
-                "sport.tvp.pl"
-              ]
-            }
-          ],
-          "tournament": "U21 EURO, Qualification, Group E"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "28/03 12:30 AM",
-          "match": "Sweden U21 vs Montenegro U21",
-          "kick_utc": 1774632600,
-          "tv_channels": [
-            {
-              "country": "Sweden",
-              "channels": [
-                "Viaplay"
-              ]
-            }
-          ],
-          "tournament": "U21 EURO, Qualification, Group E"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "27/03 10:00 PM",
-          "match": "Georgia U21 vs Latvia U21",
-          "kick_utc": 1774623600,
-          "tv_channels": [],
-          "tournament": "U21 EURO, Qualification, Group F"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "27/03 11:00 PM",
-          "match": "Greece U21 vs Malta U21",
-          "kick_utc": 1774627200,
-          "tv_channels": [],
-          "tournament": "U21 EURO, Qualification, Group F"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "28/03 12:00 AM",
-          "match": "Germany U21 vs Northern Ireland U21",
-          "kick_utc": 1774630800,
-          "tv_channels": [
-            {
-              "country": "Guatemala",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "Austria",
-              "channels": [
-                "ProSieben MAXX"
-              ]
-            },
-            {
-              "country": "United States",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "Nicaragua",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "Germany",
-              "channels": [
-                "Joyn",
-                "FIFA+",
-                "ProSieben MAXX"
-              ]
-            },
-            {
-              "country": "Argentina",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "Peru",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "Honduras",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "Uruguay",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "Switzerland",
-              "channels": [
-                "ProSieben MAXX"
-              ]
-            },
-            {
-              "country": "Spain",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "Paraguay",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "Sierra Leone",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "Venezuela, Bolivarian Republic of",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "Panama",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "El Salvador",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "Brazil",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "United Kingdom",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "Mexico",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "Colombia",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "Dominican Republic",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "Costa Rica",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "Italy",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "Chile",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "Bolivia, Plurinational State of",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "Ecuador",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "San Marino",
-              "channels": [
-                "FIFA+"
-              ]
-            }
-          ],
-          "tournament": "U21 EURO, Qualification, Group F"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "27/03 09:00 PM",
-          "match": "Bosnia & Herzegovina U21 vs Slovenia U21",
-          "kick_utc": 1774620000,
-          "tv_channels": [],
-          "tournament": "U21 EURO, Qualification, Group G"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "28/03 12:00 AM",
-          "match": "Norway U21 vs Netherlands U21",
-          "kick_utc": 1774630800,
-          "tv_channels": [
-            {
-              "country": "Norway",
-              "channels": [
-                "TV2 Play"
-              ]
-            }
-          ],
-          "tournament": "U21 EURO, Qualification, Group G"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "28/03 12:00 AM",
-          "match": "Ukraine U21 vs Lithuania U21",
-          "kick_utc": 1774630800,
-          "tv_channels": [],
-          "tournament": "U21 EURO, Qualification, Group H"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "28/03 12:30 AM",
-          "match": "Wales U21 vs Belarus U21",
-          "kick_utc": 1774632600,
-          "tv_channels": [
-            {
-              "country": "Ireland",
-              "channels": [
-                "BBC iPlayer"
-              ]
-            },
-            {
-              "country": "United Kingdom",
-              "channels": [
-                "BBC iPlayer"
-              ]
-            }
-          ],
-          "tournament": "U21 EURO, Qualification, Group I"
         },
         {
           "league": "UEFA Euro",
@@ -463,22 +103,248 @@
           "tournament": "U19 UEFA European Championship, Elite round Gr. 6"
         },
         {
-          "league": "Tennis",
-          "match": "Miami Open",
-          "kick_utc": 1774630800,
-          "time": "28/03 12:00 AM",
+          "league": "UEFA Euro",
+          "time": "29/03 12:00 AM",
+          "match": "Germany U19 vs Greece U19",
+          "kick_utc": 1774717200,
           "tv_channels": [
             {
-              "country": "LiveSportsOnTV",
+              "country": "San Marino",
               "channels": [
-                "Tennis Channel",
-                "T2",
-                "TSN2",
-                "RDS 2"
+                "FIFA+"
+              ]
+            },
+            {
+              "country": "El Salvador",
+              "channels": [
+                "FIFA+"
+              ]
+            },
+            {
+              "country": "Brazil",
+              "channels": [
+                "FIFA+"
+              ]
+            },
+            {
+              "country": "Guatemala",
+              "channels": [
+                "FIFA+"
+              ]
+            },
+            {
+              "country": "United States",
+              "channels": [
+                "FIFA+"
+              ]
+            },
+            {
+              "country": "Nicaragua",
+              "channels": [
+                "FIFA+"
+              ]
+            },
+            {
+              "country": "Argentina",
+              "channels": [
+                "FIFA+"
+              ]
+            },
+            {
+              "country": "United Kingdom",
+              "channels": [
+                "FIFA+"
+              ]
+            },
+            {
+              "country": "Peru",
+              "channels": [
+                "FIFA+"
+              ]
+            },
+            {
+              "country": "Mexico",
+              "channels": [
+                "FIFA+"
+              ]
+            },
+            {
+              "country": "Colombia",
+              "channels": [
+                "FIFA+"
+              ]
+            },
+            {
+              "country": "Dominican Republic",
+              "channels": [
+                "FIFA+"
+              ]
+            },
+            {
+              "country": "Germany",
+              "channels": [
+                "Sky Sport News HD",
+                "FIFA+"
+              ]
+            },
+            {
+              "country": "Honduras",
+              "channels": [
+                "FIFA+"
+              ]
+            },
+            {
+              "country": "Uruguay",
+              "channels": [
+                "FIFA+"
+              ]
+            },
+            {
+              "country": "Costa Rica",
+              "channels": [
+                "FIFA+"
+              ]
+            },
+            {
+              "country": "Italy",
+              "channels": [
+                "FIFA+"
+              ]
+            },
+            {
+              "country": "Chile",
+              "channels": [
+                "FIFA+"
+              ]
+            },
+            {
+              "country": "Bolivia, Plurinational State of",
+              "channels": [
+                "FIFA+"
+              ]
+            },
+            {
+              "country": "Spain",
+              "channels": [
+                "FIFA+"
+              ]
+            },
+            {
+              "country": "Paraguay",
+              "channels": [
+                "FIFA+"
+              ]
+            },
+            {
+              "country": "Ecuador",
+              "channels": [
+                "FIFA+"
+              ]
+            },
+            {
+              "country": "Sierra Leone",
+              "channels": [
+                "FIFA+"
+              ]
+            },
+            {
+              "country": "Venezuela, Bolivarian Republic of",
+              "channels": [
+                "FIFA+"
+              ]
+            },
+            {
+              "country": "Panama",
+              "channels": [
+                "FIFA+"
               ]
             }
           ],
-          "source": "livesportsontv"
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 1"
+        },
+        {
+          "league": "UEFA Euro",
+          "time": "28/03 11:00 PM",
+          "match": "Portugal U19 vs Serbia U19",
+          "kick_utc": 1774713600,
+          "tv_channels": [
+            {
+              "country": "Portugal",
+              "channels": [
+                "Canal 11"
+              ]
+            }
+          ],
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 2"
+        },
+        {
+          "league": "UEFA Euro",
+          "time": "28/03 09:15 PM",
+          "match": "France U19 vs Switzerland U19",
+          "kick_utc": 1774707300,
+          "tv_channels": [],
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 3"
+        },
+        {
+          "league": "UEFA Euro",
+          "time": "28/03 08:00 PM",
+          "match": "Czechia U19 vs Belgium U19",
+          "kick_utc": 1774702800,
+          "tv_channels": [],
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 4"
+        },
+        {
+          "league": "UEFA Euro",
+          "time": "28/03 11:00 PM",
+          "match": "Denmark U19 vs Latvia U19",
+          "kick_utc": 1774713600,
+          "tv_channels": [],
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 4"
+        },
+        {
+          "league": "UEFA Euro",
+          "time": "28/03 09:30 PM",
+          "match": "Romania U19 vs Northern Ireland U19",
+          "kick_utc": 1774708200,
+          "tv_channels": [],
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 5"
+        },
+        {
+          "league": "UEFA Euro",
+          "time": "28/03 11:00 PM",
+          "match": "Italy U19 vs Slovakia U19",
+          "kick_utc": 1774713600,
+          "tv_channels": [
+            {
+              "country": "Italy",
+              "channels": [
+                "Vivo Azzurro TV"
+              ]
+            },
+            {
+              "country": "San Marino",
+              "channels": [
+                "Vivo Azzurro TV"
+              ]
+            }
+          ],
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 6"
+        },
+        {
+          "league": "UEFA Euro",
+          "time": "28/03 09:00 PM",
+          "match": "Netherlands U19 vs Slovenia U19",
+          "kick_utc": 1774706400,
+          "tv_channels": [],
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 7"
+        },
+        {
+          "league": "UEFA Euro",
+          "time": "29/03 12:00 AM",
+          "match": "Spain U19 vs Finland U19",
+          "kick_utc": 1774717200,
+          "tv_channels": [],
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 7"
         },
         {
           "league": "Tennis",
@@ -509,8 +375,8 @@
         {
           "league": "Tennis",
           "match": "Miami Open",
-          "kick_utc": 1774629000,
-          "time": "27/03 11:30 PM",
+          "kick_utc": 1774719000,
+          "time": "29/03 12:30 AM",
           "tv_channels": [
             {
               "country": "Wheresthematch",
@@ -521,6 +387,53 @@
             }
           ],
           "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "Francisco Cerundolo vs Alexander Zverev",
+          "kick_utc": 1774653000,
+          "time": "28/03 06:10 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Aryna Sabalenka vs Elena Rybakina",
+          "kick_utc": 1774658400,
+          "time": "28/03 07:40 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1774717200,
+          "time": "29/03 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN SPORTS 2"
+              ]
+            }
+          ],
+          "source": "ausport"
         }
       ]
     }
