@@ -292,48 +292,24 @@ fn update_entries_with_validation(
 }
 
 async fn perform_deep_validation(client: &Client, url: &str) -> ValidationResult {
-    // Thử HEAD request trước
-    match timeout(Duration::from_secs(REQUEST_TIMEOUT), client.head(url).send()).await {
-        Ok(Ok(resp)) => {
-            let status = resp.status();
-            // Đọc nội dung dù status có thành công hay không, để kiểm tra lỗi ẩn
-            let body_text = match timeout(Duration::from_secs(5), resp.text()).await {
-                Ok(Ok(text)) => text,
-                _ => String::new(),
-            };
-            if let Some(error_msg) = extract_error_from_body(&body_text) {
-                // Log debug nếu muốn
-                // println!("   🔍 Error detected in HEAD response: {}", error_msg);
-                return ValidationResult { is_valid: false, error: Some(error_msg) };
-            }
-            if status.is_success() {
-                // Nếu status thành công và body không có lỗi, coi như hợp lệ
-                return ValidationResult { is_valid: true, error: None };
-            } else {
-                // Status lỗi nhưng không phát hiện lỗi trong body -> vẫn lỗi
-                return ValidationResult { is_valid: false, error: Some(format!("HTTP {}", status)) };
-            }
-        }
-        Ok(Err(e)) => {
-            return ValidationResult { is_valid: false, error: Some(format!("Request error: {}", e)) };
-        }
-        Err(_) => {}
-    }
-
-    // Thử GET với Range
+    // Thử HEAD request trước, nhưng không dùng kết quả ngay, vì cần nội dung
+    // Ta sẽ luôn dùng GET để lấy body
     let request_builder = client.get(url).header("Range", "bytes=0-1024");
     match timeout(Duration::from_secs(REQUEST_TIMEOUT), request_builder.send()).await {
         Ok(Ok(resp)) => {
             let status = resp.status();
+            // Đọc body, tăng timeout lên 5s để đảm bảo lấy được nội dung lỗi
             let body_text = match timeout(Duration::from_secs(5), resp.text()).await {
                 Ok(Ok(text)) => text,
                 _ => String::new(),
             };
+            // Kiểm tra nội dung lỗi trước tiên (kể cả khi status 200)
             if let Some(error_msg) = extract_error_from_body(&body_text) {
-                // println!("   🔍 Error detected in GET response: {}", error_msg);
                 return ValidationResult { is_valid: false, error: Some(error_msg) };
             }
+            // Nếu status thành công (2xx/206)
             if status.is_success() || status.as_u16() == 206 {
+                // Với HLS, kiểm tra nội dung có đúng format playlist không
                 if url.contains(".m3u8") {
                     if body_text.contains("#EXTM3U") || body_text.contains("#EXTINF") {
                         ValidationResult { is_valid: true, error: None }
@@ -341,10 +317,20 @@ async fn perform_deep_validation(client: &Client, url: &str) -> ValidationResult
                         ValidationResult { is_valid: false, error: Some("Invalid HLS playlist".to_string()) }
                     }
                 } else {
-                    ValidationResult { is_valid: true, error: None }
+                    // Không phải HLS: nếu body có vẻ là HTML (chứa <html, <body, hoặc các từ khóa lỗi) thì coi là lỗi
+                    if body_text.contains("<html") || body_text.contains("<body") {
+                        if let Some(html_error) = extract_html_error(&body_text) {
+                            ValidationResult { is_valid: false, error: Some(html_error) }
+                        } else {
+                            ValidationResult { is_valid: false, error: Some("Server returned HTML instead of stream".to_string()) }
+                        }
+                    } else {
+                        // Nội dung không phải HTML, coi như hợp lệ
+                        ValidationResult { is_valid: true, error: None }
+                    }
                 }
             } else {
-                // Status lỗi và không có lỗi trong body thì trả về status
+                // Status lỗi
                 let error_msg = if !body_text.is_empty() {
                     extract_error_from_body(&body_text).unwrap_or_else(|| format!("HTTP {}", status))
                 } else {
@@ -360,28 +346,37 @@ async fn perform_deep_validation(client: &Client, url: &str) -> ValidationResult
 
 fn extract_error_from_body(body: &str) -> Option<String> {
     let lower_body = body.to_lowercase();
-    if lower_body.contains("access denied")
-        || lower_body.contains("geo-blocked")
-        || lower_body.contains("geo blocked")
-        || lower_body.contains("unauthorized")
-        || lower_body.contains("forbidden")
-        || lower_body.contains("not authorized")
-        || lower_body.contains("401")
-        || lower_body.contains("403")
-        || lower_body.contains("this page isn’t working")
-        || lower_body.contains("http error 401")
-    {
-        // Lấy dòng đầu tiên có chứa từ khóa lỗi, hoặc trả về mặc định
+    let error_keywords = [
+        "access denied", "geo-blocked", "geo blocked", "unauthorized",
+        "forbidden", "not authorized", "401", "403", "this page isn’t working",
+        "http error 401", "error", "invalid request", "not found"
+    ];
+    if error_keywords.iter().any(|kw| lower_body.contains(kw)) {
         let snippet = body
             .lines()
             .find(|line| {
                 let l = line.to_lowercase();
-                l.contains("access") || l.contains("denied") || l.contains("unauthorized") 
-                    || l.contains("forbidden") || l.contains("this page isn’t working") 
-                    || l.contains("http error") || l.contains("401")
+                error_keywords.iter().any(|kw| l.contains(kw))
             })
             .map(|s| s.trim().to_string())
             .unwrap_or_else(|| "Access denied/Geo-blocked".to_string());
+        Some(snippet)
+    } else {
+        None
+    }
+}
+
+fn extract_html_error(body: &str) -> Option<String> {
+    let lower = body.to_lowercase();
+    if lower.contains("401") || lower.contains("unauthorized") || lower.contains("access denied") {
+        let snippet = body
+            .lines()
+            .find(|line| {
+                let l = line.to_lowercase();
+                l.contains("401") || l.contains("unauthorized") || l.contains("access denied")
+            })
+            .map(|s| s.trim().to_string())
+            .unwrap_or_else(|| "HTTP 401 Unauthorized".to_string());
         Some(snippet)
     } else {
         None
@@ -502,4 +497,4 @@ fn shorten_url(url: &str) -> String {
 struct ValidationResult {
     is_valid: bool,
     error: Option<String>,
-                }
+                    }
