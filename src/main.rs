@@ -1,7 +1,8 @@
 use std::fs::File;
 use std::io::{BufWriter, Write};
-use std::time::{Duration, SystemTime};
+use std::time::{Duration, SystemTime, UNIX_EPOCH};
 
+use chrono::{DateTime, Local, TimeZone, Utc};
 use futures::stream::{self, StreamExt};
 use reqwest::Client;
 use tokio::time::timeout;
@@ -75,16 +76,33 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         println!("🚫 Đã lọc bỏ {} stream (adult/MP4/cinehub)", filtered_count);
     }
 
-    let streams_to_validate: Vec<(usize, String)> = filtered_entries
-        .iter()
-        .filter(|e| e.entry_type == EntryType::StreamUrl)
-        .map(|e| (e.original_index, e.content.clone()))
-        .collect();
+    // Chuẩn bị danh sách URL để kiểm tra, nhưng bỏ qua các udp://
+    let mut streams_to_validate = Vec::new();
+    let mut udp_entries = Vec::new(); // lưu các entry dạng UDP để đánh dấu hợp lệ ngay
+    for entry in &filtered_entries {
+        if entry.entry_type == EntryType::StreamUrl {
+            if entry.content.starts_with("udp://") || entry.content.starts_with("udp:") {
+                // UDP streams coi như hợp lệ mà không cần kiểm tra HTTP
+                udp_entries.push((entry.original_index, entry.content.clone()));
+            } else {
+                streams_to_validate.push((entry.original_index, entry.content.clone()));
+            }
+        }
+    }
     let total_to_check = streams_to_validate.len();
-    println!("🔬 Số stream cần kiểm tra: {}", total_to_check);
+    let udp_count = udp_entries.len();
+    if udp_count > 0 {
+        println!("🔹 Đã phát hiện {} stream dạng UDP (sẽ được giữ lại)", udp_count);
+    }
+    println!("🔬 Số stream cần kiểm tra HTTP: {}", total_to_check);
 
     let client = create_http_client();
-    let validation_results = validate_streams_batch(&client, &streams_to_validate).await;
+    let mut validation_results = validate_streams_batch(&client, &streams_to_validate).await;
+
+    // Thêm kết quả cho UDP entries: hợp lệ
+    for (idx, _) in udp_entries {
+        validation_results.push((idx, true, None, None));
+    }
 
     let validated_entries = update_entries_with_validation(filtered_entries, validation_results);
     let valid_count = validated_entries.iter().filter(|e| e.is_valid).count();
@@ -94,9 +112,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     playlist.valid_count = valid_count;
     playlist.total_count = original_count;
 
-    write_cleaned_playlist(output_file, &playlist, valid_count, total_to_check)?;
+    write_cleaned_playlist(output_file, &playlist, valid_count, total_to_check + udp_count)?;
 
-    print_summary(&playlist, valid_count, total_to_check);
+    print_summary(&playlist, valid_count, total_to_check + udp_count);
 
     Ok(())
 }
@@ -105,7 +123,7 @@ fn print_banner() {
     println!(
         r#"
     ╔═══════════════════════════════════════╗
-    ║              🧹 ECNTV Cleaner         ║
+    ║              🧹 CXT Cleaner           ║
     ║       Local M3U Stream Validator      ║
     ║      Order-Preserving System          ║
     ╚═══════════════════════════════════════╝
@@ -118,7 +136,7 @@ fn create_http_client() -> Client {
         .timeout(Duration::from_secs(REQUEST_TIMEOUT))
         .tcp_keepalive(Duration::from_secs(10))
         .pool_max_idle_per_host(50)
-        .user_agent("ECNTV-Cleaner/2.0")
+        .user_agent("CXT-Cleaner/2.0")
         .default_headers({
             let mut headers = reqwest::header::HeaderMap::new();
             headers.insert(
@@ -168,7 +186,7 @@ fn classify_line(line: &str) -> EntryType {
         EntryType::Metadata
     } else if line.starts_with("#EXT") || line.starts_with("#PLAYLIST") || line.starts_with("#EXTVLCOPT") {
         EntryType::Comment
-    } else if line.starts_with("http") {
+    } else if line.starts_with("http") || line.starts_with("udp://") || line.starts_with("udp:") {
         EntryType::StreamUrl
     } else {
         EntryType::Comment
@@ -287,54 +305,65 @@ fn update_entries_with_validation(
 }
 
 async fn perform_deep_validation(client: &Client, url: &str) -> ValidationResult {
-    // Tạo request với Referer động (lấy domain từ URL)
-    let referer = url.split('/').take(3).collect::<Vec<&str>>().join("/");
-    let mut request_builder = client.get(url);
-    if !referer.is_empty() {
-        request_builder = request_builder.header("Referer", referer);
-    }
-
-    // Thử GET với Range 0-1024 để lấy một phần nội dung
-    let response = timeout(
-        Duration::from_secs(REQUEST_TIMEOUT),
-        request_builder.header("Range", "bytes=0-1024").send(),
-    )
-    .await;
-
-    match response {
+    // Nếu là UDP, không cần kiểm tra (nhưng trước đó đã tách riêng)
+    // Thử HEAD request trước
+    match timeout(Duration::from_secs(REQUEST_TIMEOUT), client.head(url).send()).await {
         Ok(Ok(resp)) => {
             let status = resp.status();
-            // Nếu status thành công (2xx hoặc 206)
+            if status.is_success() {
+                return ValidationResult { is_valid: true, error: None };
+            }
+            // Nếu không thành công, kiểm tra nội dung phản hồi (nếu có)
+            if let Ok(body) = timeout(Duration::from_secs(3), resp.text()).await {
+                if let Ok(text) = body {
+                    if let Some(error_msg) = extract_error_from_body(&text) {
+                        return ValidationResult { is_valid: false, error: Some(error_msg) };
+                    }
+                }
+            }
+        }
+        Ok(Err(e)) => {
+            // Lỗi mạng, timeout, v.v.
+            return ValidationResult { is_valid: false, error: Some(format!("Request error: {}", e)) };
+        }
+        Err(_) => {
+            // Timeout HEAD
+            // Không trả về ngay, sẽ thử GET Range
+        }
+    }
+
+    // Thử GET với Range
+    let request_builder = client.get(url).header("Range", "bytes=0-1024");
+    match timeout(Duration::from_secs(REQUEST_TIMEOUT), request_builder.send()).await {
+        Ok(Ok(resp)) => {
+            let status = resp.status();
             if status.is_success() || status.as_u16() == 206 {
-                // Đọc nội dung để kiểm tra lỗi ẩn
-                if let Ok(body) = timeout(Duration::from_secs(3), resp.text()).await {
-                    if let Ok(text) = body {
-                        // Kiểm tra xem có phải HTML lỗi không
-                        if is_error_response(&text) {
-                            let error_msg = extract_error_from_body(&text).unwrap_or_else(|| "Content indicates error".to_string());
-                            return ValidationResult { is_valid: false, error: Some(error_msg) };
-                        }
-                        // Nếu là HLS playlist, kiểm tra nội dung
-                        if url.contains(".m3u8") && !(text.contains("#EXTM3U") || text.contains("#EXTINF")) {
+                // Thành công về mặt HTTP
+                if url.contains(".m3u8") {
+                    // Kiểm tra nội dung HLS
+                    if let Ok(text) = resp.text().await {
+                        if text.contains("#EXTM3U") || text.contains("#EXTINF") {
+                            return ValidationResult { is_valid: true, error: None };
+                        } else {
                             return ValidationResult { is_valid: false, error: Some("Invalid HLS playlist".to_string()) };
                         }
-                        // Nếu là video, có thể coi là hợp lệ
-                        return ValidationResult { is_valid: true, error: None };
+                    } else {
+                        return ValidationResult { is_valid: false, error: Some("Cannot read HLS content".to_string()) };
                     }
                 }
-                // Không đọc được nội dung, vẫn coi là hợp lệ (có thể do timeout đọc)
+                // Không phải HLS, coi như hợp lệ
                 ValidationResult { is_valid: true, error: None }
             } else {
-                // Status lỗi (401, 403, 404, ...)
-                let error_msg = format!("HTTP {}", status);
-                // Thử đọc nội dung để biết chi tiết
-                if let Ok(body) = timeout(Duration::from_secs(3), resp.text()).await {
+                // Status lỗi: 401, 403, 404, v.v.
+                let error_msg = if let Ok(body) = timeout(Duration::from_secs(3), resp.text()).await {
                     if let Ok(text) = body {
-                        if let Some(detail) = extract_error_from_body(&text) {
-                            return ValidationResult { is_valid: false, error: Some(detail) };
-                        }
+                        extract_error_from_body(&text).unwrap_or_else(|| format!("HTTP {}", status))
+                    } else {
+                        format!("HTTP {}", status)
                     }
-                }
+                } else {
+                    format!("HTTP {}", status)
+                };
                 ValidationResult { is_valid: false, error: Some(error_msg) }
             }
         }
@@ -343,41 +372,28 @@ async fn perform_deep_validation(client: &Client, url: &str) -> ValidationResult
     }
 }
 
-/// Kiểm tra nội dung có phải là trang lỗi không (HTML hoặc chứa từ khóa lỗi)
-fn is_error_response(body: &str) -> bool {
-    let lower = body.to_lowercase();
-    // Nếu bắt đầu bằng <!DOCTYPE hoặc <html, rất có thể là trang HTML lỗi
-    if body.trim_start().starts_with("<!DOCTYPE") || body.trim_start().starts_with("<html") {
-        return true;
-    }
-    // Kiểm tra các từ khóa lỗi phổ biến
-    lower.contains("access denied")
-        || lower.contains("unauthorized")
-        || lower.contains("forbidden")
-        || lower.contains("geo-blocked")
-        || lower.contains("geo blocked")
-        || lower.contains("not authorized")
-        || lower.contains("401")
-        || lower.contains("403")
-}
-
+/// Trích xuất thông báo lỗi từ nội dung response (HTML/JSON)
 fn extract_error_from_body(body: &str) -> Option<String> {
-    let lower = body.to_lowercase();
-    if lower.contains("access denied") || lower.contains("unauthorized") || lower.contains("forbidden") {
-        // Lấy dòng đầu tiên có chứa từ khóa
-        for line in body.lines() {
-            let l = line.to_lowercase();
-            if l.contains("access denied") || l.contains("unauthorized") || l.contains("forbidden") {
-                let trimmed = line.trim();
-                if trimmed.len() > 80 {
-                    return Some(format!("{}...", &trimmed[..80]));
-                }
-                return Some(trimmed.to_string());
-            }
-        }
-        Some("Access denied/Unauthorized".to_string())
-    } else if lower.contains("geo-blocked") || lower.contains("geo blocked") {
-        Some("Geo-blocked".to_string())
+    let lower_body = body.to_lowercase();
+    if lower_body.contains("access denied")
+        || lower_body.contains("geo-blocked")
+        || lower_body.contains("geo blocked")
+        || lower_body.contains("unauthorized")
+        || lower_body.contains("forbidden")
+        || lower_body.contains("not authorized")
+        || lower_body.contains("401")
+        || lower_body.contains("403")
+    {
+        // Lấy câu ngắn gọn, không quá dài
+        let snippet = body
+            .lines()
+            .find(|line| {
+                let l = line.to_lowercase();
+                l.contains("access") || l.contains("denied") || l.contains("unauthorized") || l.contains("forbidden")
+            })
+            .map(|s| s.trim().to_string())
+            .unwrap_or_else(|| "Access denied/Geo-blocked".to_string());
+        Some(snippet)
     } else {
         None
     }
@@ -392,10 +408,12 @@ fn write_cleaned_playlist(
     let file = File::create(output_file)?;
     let mut writer = BufWriter::new(file);
 
+    let vietnam_time = get_vietnam_timestamp();
+
     writeln!(writer, "#EXTM3U")?;
     writeln!(writer, "#PLAYLIST:{} - Cleaned", playlist.name)?;
-    writeln!(writer, "#GENERATED-BY: ECNTV Cleaner v2.0")?;
-    writeln!(writer, "#VALIDATION-DATE: {}", get_simple_timestamp())?;
+    writeln!(writer, "#GENERATED-BY: CXT Cleaner v2.0")?;
+    writeln!(writer, "#VALIDATION-DATE: {}", vietnam_time)?;
     writeln!(writer, "#TOTAL-STREAMS-CHECKED: {}", total_checked)?;
     writeln!(writer, "#TOTAL-VALID-STREAMS: {}", valid_count)?;
     if total_checked > 0 {
@@ -438,7 +456,7 @@ fn write_cleaned_playlist(
 
     writeln!(writer, "########################################")?;
     writeln!(writer, "#END-OF-PLAYLIST")?;
-    writeln!(writer, "#ECNTV - Quality Streams Only - Order Preserved")?;
+    writeln!(writer, "#CXT - Quality Streams Only - Order Preserved")?;
 
     writer.flush()?;
     println!("\n💾 Playlist saved: {}", output_file);
@@ -447,7 +465,7 @@ fn write_cleaned_playlist(
 
 fn print_summary(playlist: &Playlist, valid_count: usize, total_checked: usize) {
     println!("\n=============================================");
-    println!("🧹 ECNTV - CLEANING COMPLETE");
+    println!("🧹 CXT - CLEANING COMPLETE");
     println!("=============================================");
     println!("📊 SUMMARY:");
     println!("   Input file: {}", playlist.url);
@@ -489,21 +507,16 @@ fn shorten_url(url: &str) -> String {
     }
 }
 
-fn get_simple_timestamp() -> String {
-    let now = SystemTime::now()
-        .duration_since(SystemTime::UNIX_EPOCH)
-        .unwrap_or_default()
-        .as_secs();
-
-    let days = now / 86400;
-    let hours = (now % 86400) / 3600;
-    let minutes = (now % 3600) / 60;
-
-    format!("Day {} - {:02}:{:02} UTC", days, hours, minutes)
+fn get_vietnam_timestamp() -> String {
+    // Lấy thời gian hiện tại ở UTC+7
+    let utc_now = Utc::now();
+    let vietnam_now = utc_now.with_timezone(&Local).fixed_offset();
+    // Định dạng theo dd/MM/YYYY HH:MM:SS
+    vietnam_now.format("%d/%m/%Y %H:%M:%S").to_string()
 }
 
 #[derive(Debug)]
 struct ValidationResult {
     is_valid: bool,
     error: Option<String>,
-        }
+}
