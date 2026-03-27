@@ -1,5 +1,5 @@
 [package]
-name = "ecntv_cleaner"
+name = "cxt_cleaner"
 version = "0.1.0"
 edition = "2021"
 
@@ -7,3 +7,4 @@ edition = "2021"
 reqwest = { version = "0.11", features = ["json", "stream"] }
 tokio = { version = "1.0", features = ["full"] }
 futures = "0.3"
+chrono = "0.4"
