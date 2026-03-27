@@ -2,7 +2,7 @@ use std::fs::File;
 use std::io::{BufWriter, Write};
 use std::time::Duration;
 
-use chrono::Local;
+use chrono::{Utc, TimeZone, Duration as ChronoDuration};
 use futures::stream::{self, StreamExt};
 use reqwest::Client;
 use tokio::time::timeout;
@@ -292,54 +292,43 @@ fn update_entries_with_validation(
 }
 
 async fn perform_deep_validation(client: &Client, url: &str) -> ValidationResult {
-    // Thử HEAD request trước
-    match timeout(Duration::from_secs(REQUEST_TIMEOUT), client.head(url).send()).await {
-        Ok(Ok(resp)) => {
-            let status = resp.status();
-            if status.is_success() {
-                return ValidationResult { is_valid: true, error: None };
-            }
-            if let Ok(body) = timeout(Duration::from_secs(3), resp.text()).await {
-                if let Ok(text) = body {
-                    if let Some(error_msg) = extract_error_from_body(&text) {
-                        return ValidationResult { is_valid: false, error: Some(error_msg) };
-                    }
-                }
-            }
-        }
-        Ok(Err(e)) => {
-            return ValidationResult { is_valid: false, error: Some(format!("Request error: {}", e)) };
-        }
-        Err(_) => {}
-    }
-
-    // Thử GET với Range
+    // Thử GET với Range trước vì HEAD có thể bị chặn
     let request_builder = client.get(url).header("Range", "bytes=0-1024");
     match timeout(Duration::from_secs(REQUEST_TIMEOUT), request_builder.send()).await {
         Ok(Ok(resp)) => {
             let status = resp.status();
-            if status.is_success() || status.as_u16() == 206 {
-                if url.contains(".m3u8") {
-                    if let Ok(text) = resp.text().await {
-                        if text.contains("#EXTM3U") || text.contains("#EXTINF") {
-                            return ValidationResult { is_valid: true, error: None };
-                        } else {
-                            return ValidationResult { is_valid: false, error: Some("Invalid HLS playlist".to_string()) };
-                        }
-                    } else {
-                        return ValidationResult { is_valid: false, error: Some("Cannot read HLS content".to_string()) };
-                    }
+            let status_code = status.as_u16();
+            
+            // Lấy nội dung để kiểm tra lỗi ẩn
+            let body_text = match timeout(Duration::from_secs(3), resp.text()).await {
+                Ok(Ok(text)) => text,
+                _ => String::new(),
+            };
+            
+            // Kiểm tra lỗi từ status code hoặc nội dung
+            if status.is_success() || status_code == 206 {
+                // Nếu status thành công nhưng nội dung chứa lỗi
+                if is_error_body(&body_text) {
+                    let error_msg = extract_error_from_body(&body_text)
+                        .unwrap_or_else(|| "Server returned error page".to_string());
+                    return ValidationResult { is_valid: false, error: Some(error_msg) };
                 }
-                ValidationResult { is_valid: true, error: None }
-            } else {
-                let error_msg = if let Ok(body) = timeout(Duration::from_secs(3), resp.text()).await {
-                    if let Ok(text) = body {
-                        extract_error_from_body(&text).unwrap_or_else(|| format!("HTTP {}", status))
+                // Kiểm tra HLS
+                if url.contains(".m3u8") {
+                    if body_text.contains("#EXTM3U") || body_text.contains("#EXTINF") {
+                        ValidationResult { is_valid: true, error: None }
                     } else {
-                        format!("HTTP {}", status)
+                        ValidationResult { is_valid: false, error: Some("Invalid HLS playlist".to_string()) }
                     }
                 } else {
-                    format!("HTTP {}", status)
+                    ValidationResult { is_valid: true, error: None }
+                }
+            } else {
+                // Status lỗi (401, 403, 404, etc.)
+                let error_msg = if !body_text.is_empty() {
+                    extract_error_from_body(&body_text).unwrap_or_else(|| format!("HTTP {}", status_code))
+                } else {
+                    format!("HTTP {}", status_code)
                 };
                 ValidationResult { is_valid: false, error: Some(error_msg) }
             }
@@ -347,6 +336,19 @@ async fn perform_deep_validation(client: &Client, url: &str) -> ValidationResult
         Ok(Err(e)) => ValidationResult { is_valid: false, error: Some(format!("Request error: {}", e)) },
         Err(_) => ValidationResult { is_valid: false, error: Some("Timeout".to_string()) },
     }
+}
+
+fn is_error_body(body: &str) -> bool {
+    let lower = body.to_lowercase();
+    lower.contains("401")
+        || lower.contains("unauthorized")
+        || lower.contains("access denied")
+        || lower.contains("forbidden")
+        || lower.contains("geo-blocked")
+        || lower.contains("geo blocked")
+        || lower.contains("not authorized")
+        || lower.contains("this page isn’t working")
+        || lower.contains("http error")
 }
 
 fn extract_error_from_body(body: &str) -> Option<String> {
@@ -359,15 +361,20 @@ fn extract_error_from_body(body: &str) -> Option<String> {
         || lower_body.contains("not authorized")
         || lower_body.contains("401")
         || lower_body.contains("403")
+        || lower_body.contains("this page isn’t working")
+        || lower_body.contains("http error")
     {
+        // Lấy dòng có chứa thông báo lỗi
         let snippet = body
             .lines()
             .find(|line| {
                 let l = line.to_lowercase();
-                l.contains("access") || l.contains("denied") || l.contains("unauthorized") || l.contains("forbidden")
+                l.contains("access") || l.contains("denied") || l.contains("unauthorized")
+                    || l.contains("forbidden") || l.contains("401") || l.contains("403")
+                    || l.contains("this page isn’t working") || l.contains("http error")
             })
             .map(|s| s.trim().to_string())
-            .unwrap_or_else(|| "Access denied/Geo-blocked".to_string());
+            .unwrap_or_else(|| "Access denied/Unauthorized".to_string());
         Some(snippet)
     } else {
         None
@@ -383,7 +390,9 @@ fn write_cleaned_playlist(
     let file = File::create(output_file)?;
     let mut writer = BufWriter::new(file);
 
-    let now_vn = Local::now();
+    // Lấy giờ Việt Nam (UTC+7) từ UTC
+    let now_utc = Utc::now();
+    let now_vn = now_utc + ChronoDuration::hours(7);
     let date_str = now_vn.format("%Y-%m-%d %H:%M:%S").to_string();
 
     writeln!(writer, "#EXTM3U")?;
@@ -487,4 +496,4 @@ fn shorten_url(url: &str) -> String {
 struct ValidationResult {
     is_valid: bool,
     error: Option<String>,
-                    }
+                  }
