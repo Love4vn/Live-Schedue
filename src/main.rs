@@ -119,6 +119,22 @@ fn create_http_client() -> Client {
         .tcp_keepalive(Duration::from_secs(10))
         .pool_max_idle_per_host(50)
         .user_agent("ECNTV-Cleaner/2.0")
+        .default_headers({
+            let mut headers = reqwest::header::HeaderMap::new();
+            headers.insert(
+                reqwest::header::USER_AGENT,
+                reqwest::header::HeaderValue::from_static("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+            );
+            headers.insert(
+                reqwest::header::ACCEPT,
+                reqwest::header::HeaderValue::from_static("video/*, application/vnd.apple.mpegurl, */*")
+            );
+            headers.insert(
+                reqwest::header::ACCEPT_LANGUAGE,
+                reqwest::header::HeaderValue::from_static("en-US,en;q=0.9,vi;q=0.8")
+            );
+            headers
+        })
         .build()
         .expect("Failed to create HTTP client")
 }
@@ -271,70 +287,93 @@ fn update_entries_with_validation(
 }
 
 async fn perform_deep_validation(client: &Client, url: &str) -> ValidationResult {
-    // HEAD request
-    if let Ok(response) = timeout(
-        Duration::from_secs(REQUEST_TIMEOUT),
-        client.head(url).send(),
-    )
-    .await
-    {
-        if let Ok(resp) = response {
+    // Thử HEAD request trước
+    match timeout(Duration::from_secs(REQUEST_TIMEOUT), client.head(url).send()).await {
+        Ok(Ok(resp)) => {
             let status = resp.status();
             if status.is_success() {
-                return ValidationResult {
-                    is_valid: true,
-                    error: None,
-                };
+                return ValidationResult { is_valid: true, error: None };
             }
+            // Nếu không thành công, kiểm tra nội dung phản hồi (nếu có)
+            if let Ok(body) = timeout(Duration::from_secs(3), resp.text()).await {
+                if let Ok(text) = body {
+                    if let Some(error_msg) = extract_error_from_body(&text) {
+                        return ValidationResult { is_valid: false, error: Some(error_msg) };
+                    }
+                }
+            }
+        }
+        Ok(Err(e)) => {
+            // Lỗi mạng, timeout, v.v.
+            return ValidationResult { is_valid: false, error: Some(format!("Request error: {}", e)) };
+        }
+        Err(_) => {
+            // Timeout HEAD
+            // Không trả về ngay, sẽ thử GET Range
         }
     }
 
-    // GET with Range
-    if let Ok(response) = timeout(
-        Duration::from_secs(REQUEST_TIMEOUT),
-        client
-            .get(url)
-            .header("Range", "bytes=0-1024")
-            .send(),
-    )
-    .await
-    {
-        match response {
-            Ok(resp) if resp.status().is_success() || resp.status().as_u16() == 206 => {
+    // Thử GET với Range
+    let request_builder = client.get(url).header("Range", "bytes=0-1024");
+    match timeout(Duration::from_secs(REQUEST_TIMEOUT), request_builder.send()).await {
+        Ok(Ok(resp)) => {
+            let status = resp.status();
+            if status.is_success() || status.as_u16() == 206 {
+                // Thành công về mặt HTTP
                 if url.contains(".m3u8") {
+                    // Kiểm tra nội dung HLS
                     if let Ok(text) = resp.text().await {
                         if text.contains("#EXTM3U") || text.contains("#EXTINF") {
-                            return ValidationResult {
-                                is_valid: true,
-                                error: None,
-                            };
+                            return ValidationResult { is_valid: true, error: None };
                         } else {
-                            return ValidationResult {
-                                is_valid: false,
-                                error: Some("Invalid HLS playlist".to_string()),
-                            };
+                            return ValidationResult { is_valid: false, error: Some("Invalid HLS playlist".to_string()) };
                         }
+                    } else {
+                        return ValidationResult { is_valid: false, error: Some("Cannot read HLS content".to_string()) };
                     }
                 }
-                ValidationResult {
-                    is_valid: true,
-                    error: None,
-                }
+                // Không phải HLS, coi như hợp lệ
+                ValidationResult { is_valid: true, error: None }
+            } else {
+                // Status lỗi: 401, 403, 404, v.v.
+                let error_msg = if let Ok(body) = timeout(Duration::from_secs(3), resp.text()).await {
+                    if let Ok(text) = body {
+                        extract_error_from_body(&text).unwrap_or_else(|| format!("HTTP {}", status))
+                    } else {
+                        format!("HTTP {}", status)
+                    }
+                } else {
+                    format!("HTTP {}", status)
+                };
+                ValidationResult { is_valid: false, error: Some(error_msg) }
             }
-            Ok(resp) => ValidationResult {
-                is_valid: false,
-                error: Some(format!("HTTP {}", resp.status())),
-            },
-            Err(e) => ValidationResult {
-                is_valid: false,
-                error: Some(format!("Request failed: {}", e)),
-            },
         }
+        Ok(Err(e)) => ValidationResult { is_valid: false, error: Some(format!("Request error: {}", e)) },
+        Err(_) => ValidationResult { is_valid: false, error: Some("Timeout".to_string()) },
+    }
+}
+
+/// Trích xuất thông báo lỗi từ nội dung response (HTML/JSON)
+fn extract_error_from_body(body: &str) -> Option<String> {
+    let lower_body = body.to_lowercase();
+    if lower_body.contains("access denied")
+        || lower_body.contains("geo-blocked")
+        || lower_body.contains("geo blocked")
+        || lower_body.contains("unauthorized")
+        || lower_body.contains("forbidden")
+        || lower_body.contains("not authorized")
+        || lower_body.contains("401")
+        || lower_body.contains("403")
+    {
+        // Lấy câu ngắn gọn, không quá dài
+        let snippet = body
+            .lines()
+            .find(|line| line.to_lowercase().contains("access") || line.to_lowercase().contains("denied") || line.to_lowercase().contains("unauthorized") || line.to_lowercase().contains("forbidden"))
+            .map(|s| s.trim().to_string())
+            .unwrap_or_else(|| "Access denied/Geo-blocked".to_string());
+        Some(snippet)
     } else {
-        ValidationResult {
-            is_valid: false,
-            error: Some("Timeout".to_string()),
-        }
+        None
     }
 }
 
@@ -353,11 +392,15 @@ fn write_cleaned_playlist(
     writeln!(writer, "#VALIDATION-DATE: {}", get_simple_timestamp())?;
     writeln!(writer, "#TOTAL-STREAMS-CHECKED: {}", total_checked)?;
     writeln!(writer, "#TOTAL-VALID-STREAMS: {}", valid_count)?;
-    writeln!(
-        writer,
-        "#SUCCESS-RATE: {:.1}%",
-        (valid_count as f32 / total_checked as f32) * 100.0
-    )?;
+    if total_checked > 0 {
+        writeln!(
+            writer,
+            "#SUCCESS-RATE: {:.1}%",
+            (valid_count as f32 / total_checked as f32) * 100.0
+        )?;
+    } else {
+        writeln!(writer, "#SUCCESS-RATE: N/A")?;
+    }
     writeln!(writer, "#FILTERS-APPLIED: ADULT, .mp4, cinehub24.com")?;
     writeln!(writer, "#ORDER-PRESERVATION: Original channel order maintained")?;
     writeln!(writer, "########################################")?;
@@ -401,15 +444,18 @@ fn print_summary(playlist: &Playlist, valid_count: usize, total_checked: usize) 
     println!("🧹 ECNTV - CLEANING COMPLETE");
     println!("=============================================");
     println!("📊 SUMMARY:");
-    println!("   Playlist: {}", playlist.name);
     println!("   Input file: {}", playlist.url);
     println!("   Original streams: {}", playlist.total_count);
     println!("   Checked: {}", total_checked);
     println!("   Valid: {}", valid_count);
-    println!(
-        "   Success Rate: {:.1}%",
-        (valid_count as f32 / total_checked as f32) * 100.0
-    );
+    if total_checked > 0 {
+        println!(
+            "   Success Rate: {:.1}%",
+            (valid_count as f32 / total_checked as f32) * 100.0
+        );
+    } else {
+        println!("   Success Rate: N/A");
+    }
     println!("   Order Preservation: ✅ Original order maintained");
     println!("---------------------------------------------");
     println!("🚫 Active Filters:");
@@ -454,4 +500,4 @@ fn get_simple_timestamp() -> String {
 struct ValidationResult {
     is_valid: bool,
     error: Option<String>,
-}
+                  }
