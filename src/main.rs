@@ -75,7 +75,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         println!("🚫 Đã lọc bỏ {} stream (adult/MP4/cinehub)", filtered_count);
     }
 
-    // Tạo danh sách (index, url) để kiểm tra
     let streams_to_validate: Vec<(usize, String)> = filtered_entries
         .iter()
         .filter(|e| e.entry_type == EntryType::StreamUrl)
@@ -90,7 +89,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let validated_entries = update_entries_with_validation(filtered_entries, validation_results);
     let valid_count = validated_entries.iter().filter(|e| e.is_valid).count();
 
-    let mut playlist = Playlist::new("Cleaned".to_string(), input_file.to_string());
+    let mut playlist = Playlist::new("Live Schedule Cleaned".to_string(), input_file.to_string());
     playlist.entries = validated_entries;
     playlist.valid_count = valid_count;
     playlist.total_count = original_count;
@@ -349,7 +348,7 @@ fn write_cleaned_playlist(
     let mut writer = BufWriter::new(file);
 
     writeln!(writer, "#EXTM3U")?;
-    writeln!(writer, "#PLAYLIST:ECNTV - Cleaned Playlist")?;
+    writeln!(writer, "#PLAYLIST:{} - Cleaned", playlist.name)?;
     writeln!(writer, "#GENERATED-BY: ECNTV Cleaner v2.0")?;
     writeln!(writer, "#VALIDATION-DATE: {}", get_simple_timestamp())?;
     writeln!(writer, "#TOTAL-STREAMS-CHECKED: {}", total_checked)?;
@@ -402,6 +401,7 @@ fn print_summary(playlist: &Playlist, valid_count: usize, total_checked: usize) 
     println!("🧹 ECNTV - CLEANING COMPLETE");
     println!("=============================================");
     println!("📊 SUMMARY:");
+    println!("   Playlist: {}", playlist.name);
     println!("   Input file: {}", playlist.url);
     println!("   Original streams: {}", playlist.total_count);
     println!("   Checked: {}", total_checked);
