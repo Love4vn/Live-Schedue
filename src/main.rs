@@ -287,64 +287,54 @@ fn update_entries_with_validation(
 }
 
 async fn perform_deep_validation(client: &Client, url: &str) -> ValidationResult {
-    // Thử HEAD request trước
-    match timeout(Duration::from_secs(REQUEST_TIMEOUT), client.head(url).send()).await {
-        Ok(Ok(resp)) => {
-            let status = resp.status();
-            if status.is_success() {
-                return ValidationResult { is_valid: true, error: None };
-            }
-            // Nếu không thành công, kiểm tra nội dung phản hồi (nếu có)
-            if let Ok(body) = timeout(Duration::from_secs(3), resp.text()).await {
-                if let Ok(text) = body {
-                    if let Some(error_msg) = extract_error_from_body(&text) {
-                        return ValidationResult { is_valid: false, error: Some(error_msg) };
-                    }
-                }
-            }
-        }
-        Ok(Err(e)) => {
-            // Lỗi mạng, timeout, v.v.
-            return ValidationResult { is_valid: false, error: Some(format!("Request error: {}", e)) };
-        }
-        Err(_) => {
-            // Timeout HEAD
-            // Không trả về ngay, sẽ thử GET Range
-        }
+    // Tạo request với Referer động (lấy domain từ URL)
+    let referer = url.split('/').take(3).collect::<Vec<&str>>().join("/");
+    let mut request_builder = client.get(url);
+    if !referer.is_empty() {
+        request_builder = request_builder.header("Referer", referer);
     }
 
-    // Thử GET với Range
-    let request_builder = client.get(url).header("Range", "bytes=0-1024");
-    match timeout(Duration::from_secs(REQUEST_TIMEOUT), request_builder.send()).await {
+    // Thử GET với Range 0-1024 để lấy một phần nội dung
+    let response = timeout(
+        Duration::from_secs(REQUEST_TIMEOUT),
+        request_builder.header("Range", "bytes=0-1024").send(),
+    )
+    .await;
+
+    match response {
         Ok(Ok(resp)) => {
             let status = resp.status();
+            // Nếu status thành công (2xx hoặc 206)
             if status.is_success() || status.as_u16() == 206 {
-                // Thành công về mặt HTTP
-                if url.contains(".m3u8") {
-                    // Kiểm tra nội dung HLS
-                    if let Ok(text) = resp.text().await {
-                        if text.contains("#EXTM3U") || text.contains("#EXTINF") {
-                            return ValidationResult { is_valid: true, error: None };
-                        } else {
+                // Đọc nội dung để kiểm tra lỗi ẩn
+                if let Ok(body) = timeout(Duration::from_secs(3), resp.text()).await {
+                    if let Ok(text) = body {
+                        // Kiểm tra xem có phải HTML lỗi không
+                        if is_error_response(&text) {
+                            let error_msg = extract_error_from_body(&text).unwrap_or_else(|| "Content indicates error".to_string());
+                            return ValidationResult { is_valid: false, error: Some(error_msg) };
+                        }
+                        // Nếu là HLS playlist, kiểm tra nội dung
+                        if url.contains(".m3u8") && !(text.contains("#EXTM3U") || text.contains("#EXTINF")) {
                             return ValidationResult { is_valid: false, error: Some("Invalid HLS playlist".to_string()) };
                         }
-                    } else {
-                        return ValidationResult { is_valid: false, error: Some("Cannot read HLS content".to_string()) };
+                        // Nếu là video, có thể coi là hợp lệ
+                        return ValidationResult { is_valid: true, error: None };
                     }
                 }
-                // Không phải HLS, coi như hợp lệ
+                // Không đọc được nội dung, vẫn coi là hợp lệ (có thể do timeout đọc)
                 ValidationResult { is_valid: true, error: None }
             } else {
-                // Status lỗi: 401, 403, 404, v.v.
-                let error_msg = if let Ok(body) = timeout(Duration::from_secs(3), resp.text()).await {
+                // Status lỗi (401, 403, 404, ...)
+                let error_msg = format!("HTTP {}", status);
+                // Thử đọc nội dung để biết chi tiết
+                if let Ok(body) = timeout(Duration::from_secs(3), resp.text()).await {
                     if let Ok(text) = body {
-                        extract_error_from_body(&text).unwrap_or_else(|| format!("HTTP {}", status))
-                    } else {
-                        format!("HTTP {}", status)
+                        if let Some(detail) = extract_error_from_body(&text) {
+                            return ValidationResult { is_valid: false, error: Some(detail) };
+                        }
                     }
-                } else {
-                    format!("HTTP {}", status)
-                };
+                }
                 ValidationResult { is_valid: false, error: Some(error_msg) }
             }
         }
@@ -353,25 +343,41 @@ async fn perform_deep_validation(client: &Client, url: &str) -> ValidationResult
     }
 }
 
-/// Trích xuất thông báo lỗi từ nội dung response (HTML/JSON)
+/// Kiểm tra nội dung có phải là trang lỗi không (HTML hoặc chứa từ khóa lỗi)
+fn is_error_response(body: &str) -> bool {
+    let lower = body.to_lowercase();
+    // Nếu bắt đầu bằng <!DOCTYPE hoặc <html, rất có thể là trang HTML lỗi
+    if body.trim_start().starts_with("<!DOCTYPE") || body.trim_start().starts_with("<html") {
+        return true;
+    }
+    // Kiểm tra các từ khóa lỗi phổ biến
+    lower.contains("access denied")
+        || lower.contains("unauthorized")
+        || lower.contains("forbidden")
+        || lower.contains("geo-blocked")
+        || lower.contains("geo blocked")
+        || lower.contains("not authorized")
+        || lower.contains("401")
+        || lower.contains("403")
+}
+
 fn extract_error_from_body(body: &str) -> Option<String> {
-    let lower_body = body.to_lowercase();
-    if lower_body.contains("access denied")
-        || lower_body.contains("geo-blocked")
-        || lower_body.contains("geo blocked")
-        || lower_body.contains("unauthorized")
-        || lower_body.contains("forbidden")
-        || lower_body.contains("not authorized")
-        || lower_body.contains("401")
-        || lower_body.contains("403")
-    {
-        // Lấy câu ngắn gọn, không quá dài
-        let snippet = body
-            .lines()
-            .find(|line| line.to_lowercase().contains("access") || line.to_lowercase().contains("denied") || line.to_lowercase().contains("unauthorized") || line.to_lowercase().contains("forbidden"))
-            .map(|s| s.trim().to_string())
-            .unwrap_or_else(|| "Access denied/Geo-blocked".to_string());
-        Some(snippet)
+    let lower = body.to_lowercase();
+    if lower.contains("access denied") || lower.contains("unauthorized") || lower.contains("forbidden") {
+        // Lấy dòng đầu tiên có chứa từ khóa
+        for line in body.lines() {
+            let l = line.to_lowercase();
+            if l.contains("access denied") || l.contains("unauthorized") || l.contains("forbidden") {
+                let trimmed = line.trim();
+                if trimmed.len() > 80 {
+                    return Some(format!("{}...", &trimmed[..80]));
+                }
+                return Some(trimmed.to_string());
+            }
+        }
+        Some("Access denied/Unauthorized".to_string())
+    } else if lower.contains("geo-blocked") || lower.contains("geo blocked") {
+        Some("Geo-blocked".to_string())
     } else {
         None
     }
@@ -500,4 +506,4 @@ fn get_simple_timestamp() -> String {
 struct ValidationResult {
     is_valid: bool,
     error: Option<String>,
-                     }
+        }
