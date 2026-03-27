@@ -48,6 +48,5 @@ jobs:
           file_pattern: live_schedule_clean.m3u
           commit_user_name: "CXT Cleaner Bot"
           commit_user_email: "cxt-bot@users.noreply.github.com"
-          # Không cần commit_author nếu đã có commit_user_name và commit_user_email
           skip_fetch: true
           disable_globbing: true
