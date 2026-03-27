@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-27 08:04 VN",
+  "updated": "2026-03-27 13:53 VN",
   "days": {
     "20260327": {
       "date": "Friday, 27/03",
@@ -79,7 +79,14 @@
           "time": "28/03 01:00 AM",
           "match": "Gibraltar U21 vs Bulgaria U21",
           "kick_utc": 1774634400,
-          "tv_channels": [],
+          "tv_channels": [
+            {
+              "country": "Bulgaria",
+              "channels": [
+                "Diema Sport HD"
+              ]
+            }
+          ],
           "tournament": "U21 EURO, Qualification, Group B"
         },
         {
@@ -143,8 +150,8 @@
             {
               "country": "Poland",
               "channels": [
-                "TVP Sport HD",
                 "TVP Sport App",
+                "TVP Sport HD",
                 "sport.tvp.pl"
               ]
             }
@@ -215,9 +222,9 @@
             {
               "country": "Germany",
               "channels": [
+                "Joyn",
                 "FIFA+",
-                "ProSieben MAXX",
-                "Joyn"
+                "ProSieben MAXX"
               ]
             },
             {
@@ -368,7 +375,14 @@
           "time": "28/03 12:00 AM",
           "match": "Norway U21 vs Netherlands U21",
           "kick_utc": 1774630800,
-          "tv_channels": [],
+          "tv_channels": [
+            {
+              "country": "Norway",
+              "channels": [
+                "TV2 Play"
+              ]
+            }
+          ],
           "tournament": "U21 EURO, Qualification, Group G"
         },
         {
@@ -422,405 +436,48 @@
           "tournament": "U21 EURO, Qualification, Group I"
         },
         {
-          "league": "FIFA World Cup",
-          "time": "27/03 10:00 AM",
-          "match": "New Caledonia vs Jamaica",
-          "kick_utc": 1774580400,
+          "league": "Tennis",
+          "match": "Miami Open",
+          "kick_utc": 1774630800,
+          "time": "28/03 12:00 AM",
           "tv_channels": [
             {
-              "country": "Nicaragua",
+              "country": "LiveSportsOnTV",
               "channels": [
-                "FIFA+",
-                "ViX",
-                "Fox Sports App",
-                "TUDN"
-              ]
-            },
-            {
-              "country": "Argentina",
-              "channels": [
-                "FIFA+",
-                "ViX",
-                "DGO",
-                "DIRECTV Sports"
-              ]
-            },
-            {
-              "country": "Peru",
-              "channels": [
-                "FIFA+",
-                "ViX",
-                "DGO",
-                "DIRECTV Sports"
-              ]
-            },
-            {
-              "country": "Morocco",
-              "channels": [
-                "beIN SPORTS 2"
-              ]
-            },
-            {
-              "country": "Mauritania",
-              "channels": [
-                "beIN SPORTS 2"
-              ]
-            },
-            {
-              "country": "Syrian Arab Republic",
-              "channels": [
-                "beIN SPORTS 2"
-              ]
-            },
-            {
-              "country": "Bolivia, Plurinational State of",
-              "channels": [
-                "FIFA+",
-                "ViX"
-              ]
-            },
-            {
-              "country": "El Salvador",
-              "channels": [
-                "FIFA+",
-                "ViX",
-                "TUDN",
-                "Fox Sports App"
-              ]
-            },
-            {
-              "country": "Chile",
-              "channels": [
-                "FIFA+",
-                "ViX",
-                "DGO"
-              ]
-            },
-            {
-              "country": "United States",
-              "channels": [
-                "ViX",
-                "FOX One",
-                "fuboTV",
-                "Fox Sports 1",
-                "Fox Sports App",
-                "FIFA+",
-                "Peacock",
-                "Telemundo Deportes Ahora",
-                "TUDN"
-              ]
-            },
-            {
-              "country": "Tunisia",
-              "channels": [
-                "beIN SPORTS 2"
-              ]
-            },
-            {
-              "country": "Venezuela, Bolivarian Republic of",
-              "channels": [
-                "FIFA+",
-                "ViX",
-                "DGO",
-                "Fox Sports App"
-              ]
-            },
-            {
-              "country": "Sierra Leone",
-              "channels": [
-                "FIFA+",
-                "DAZN International"
-              ]
-            },
-            {
-              "country": "Panama",
-              "channels": [
-                "ViX",
-                "Tigo Sports",
-                "Fox Sports App",
-                "FIFA+",
-                "TUDN"
-              ]
-            },
-            {
-              "country": "United Kingdom",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "Guatemala",
-              "channels": [
-                "ViX",
-                "Tigo Sports",
-                "Fox Sports App",
-                "FIFA+",
-                "TUDN"
-              ]
-            },
-            {
-              "country": "Honduras",
-              "channels": [
-                "ViX",
-                "TUDN En Vivo",
-                "Fox Sports App",
-                "FIFA+",
-                "TUDN"
-              ]
-            },
-            {
-              "country": "Costa Rica",
-              "channels": [
-                "ViX",
-                "Tigo Sports",
-                "Fox Sports App",
-                "FIFA+",
-                "TUDN"
-              ]
-            },
-            {
-              "country": "Spain",
-              "channels": [
-                "DAZN",
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "Bahrain",
-              "channels": [
-                "beIN SPORTS 2"
-              ]
-            },
-            {
-              "country": "France",
-              "channels": [
-                "beIN SPORTS 2"
-              ]
-            },
-            {
-              "country": "Canada",
-              "channels": [
-                "DAZN"
-              ]
-            },
-            {
-              "country": "South Sudan",
-              "channels": [
-                "beIN SPORTS 2"
-              ]
-            },
-            {
-              "country": "Ecuador",
-              "channels": [
-                "FIFA+",
-                "ViX",
-                "DGO",
-                "DIRECTV Sports"
-              ]
-            },
-            {
-              "country": "Algeria",
-              "channels": [
-                "beIN SPORTS 2"
-              ]
-            },
-            {
-              "country": "Uruguay",
-              "channels": [
-                "FIFA+",
-                "ViX",
-                "DGO"
-              ]
-            },
-            {
-              "country": "Djibouti",
-              "channels": [
-                "beIN SPORTS 2"
-              ]
-            },
-            {
-              "country": "Paraguay",
-              "channels": [
-                "FIFA+",
-                "ViX"
-              ]
-            },
-            {
-              "country": "Germany",
-              "channels": [
-                "DAZN",
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "Brazil",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "Dominican Republic",
-              "channels": [
-                "FIFA+",
-                "ViX",
-                "TUDN",
-                "Fox Sports App"
-              ]
-            },
-            {
-              "country": "Mexico",
-              "channels": [
-                "ViX",
-                "TUDN En Vivo",
-                "Fox Sports App",
-                "FIFA+",
-                "TUDN"
-              ]
-            },
-            {
-              "country": "Iran, Islamic Republic of",
-              "channels": [
-                "beIN SPORTS 2"
-              ]
-            },
-            {
-              "country": "Saudi Arabia",
-              "channels": [
-                "beIN SPORTS 2"
-              ]
-            },
-            {
-              "country": "United Arab Emirates",
-              "channels": [
-                "beIN SPORTS 2"
-              ]
-            },
-            {
-              "country": "Iraq",
-              "channels": [
-                "beIN SPORTS 2"
-              ]
-            },
-            {
-              "country": "Monaco",
-              "channels": [
-                "beIN SPORTS 2"
-              ]
-            },
-            {
-              "country": "Colombia",
-              "channels": [
-                "Win Play",
-                "ViX",
-                "FIFA+",
-                "Win Sports",
-                "DGO"
-              ]
-            },
-            {
-              "country": "Qatar",
-              "channels": [
-                "beIN SPORTS 2"
-              ]
-            },
-            {
-              "country": "Oman",
-              "channels": [
-                "beIN SPORTS 2"
-              ]
-            },
-            {
-              "country": "Kuwait",
-              "channels": [
-                "beIN SPORTS 2"
-              ]
-            },
-            {
-              "country": "Lebanon",
-              "channels": [
-                "beIN SPORTS 2"
-              ]
-            },
-            {
-              "country": "San Marino",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "Somalia",
-              "channels": [
-                "beIN SPORTS 2"
-              ]
-            },
-            {
-              "country": "Puerto Rico",
-              "channels": [
-                "ViX"
-              ]
-            },
-            {
-              "country": "Chad",
-              "channels": [
-                "beIN SPORTS 2"
-              ]
-            },
-            {
-              "country": "Yemen",
-              "channels": [
-                "beIN SPORTS 2"
-              ]
-            },
-            {
-              "country": "Jordan",
-              "channels": [
-                "beIN SPORTS 2"
-              ]
-            },
-            {
-              "country": "Andorra",
-              "channels": [
-                "beIN SPORTS 2"
-              ]
-            },
-            {
-              "country": "Sudan",
-              "channels": [
-                "beIN SPORTS 2"
-              ]
-            },
-            {
-              "country": "Belize",
-              "channels": [
-                "Fox Sports App"
-              ]
-            },
-            {
-              "country": "Egypt",
-              "channels": [
-                "beIN SPORTS 2"
-              ]
-            },
-            {
-              "country": "Libya",
-              "channels": [
-                "beIN SPORTS 2"
-              ]
-            },
-            {
-              "country": "Italy",
-              "channels": [
-                "FIFA+"
-              ]
-            },
-            {
-              "country": "Palestine, State of",
-              "channels": [
-                "beIN SPORTS 2"
+                "Tennis Channel",
+                "T2",
+                "TSN2",
+                "RDS 2"
               ]
             }
           ],
-          "tournament": "FIFA World Cup Qual, Inter-Confed. Playoffs"
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Miami Open",
+          "kick_utc": 1774652400,
+          "time": "28/03 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel",
+                "RDS",
+                "TSN2"
+              ]
+            },
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Sky Sports Main Event",
+                "Sky Sports Tennis",
+                "Sky Sports Ultra HDR",
+                "Sky Sports+"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
@@ -837,56 +494,6 @@
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Miami Open",
-          "kick_utc": 1774652400,
-          "time": "28/03 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Main Event",
-                "Sky Sports Tennis",
-                "Sky Sports Ultra HDR",
-                "Sky Sports+"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1774630800,
-          "time": "28/03 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 2"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1774652400,
-          "time": "28/03 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
-              ]
-            }
-          ],
-          "source": "ausport"
         }
       ]
     }
