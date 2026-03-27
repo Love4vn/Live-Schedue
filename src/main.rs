@@ -296,17 +296,21 @@ async fn perform_deep_validation(client: &Client, url: &str) -> ValidationResult
     match timeout(Duration::from_secs(REQUEST_TIMEOUT), client.head(url).send()).await {
         Ok(Ok(resp)) => {
             let status = resp.status();
-            // Đọc nội dung để phát hiện lỗi ẩn
-            let body_text = match timeout(Duration::from_secs(3), resp.text()).await {
+            // Đọc nội dung dù status có thành công hay không, để kiểm tra lỗi ẩn
+            let body_text = match timeout(Duration::from_secs(5), resp.text()).await {
                 Ok(Ok(text)) => text,
                 _ => String::new(),
             };
             if let Some(error_msg) = extract_error_from_body(&body_text) {
+                // Log debug nếu muốn
+                // println!("   🔍 Error detected in HEAD response: {}", error_msg);
                 return ValidationResult { is_valid: false, error: Some(error_msg) };
             }
             if status.is_success() {
+                // Nếu status thành công và body không có lỗi, coi như hợp lệ
                 return ValidationResult { is_valid: true, error: None };
             } else {
+                // Status lỗi nhưng không phát hiện lỗi trong body -> vẫn lỗi
                 return ValidationResult { is_valid: false, error: Some(format!("HTTP {}", status)) };
             }
         }
@@ -321,11 +325,12 @@ async fn perform_deep_validation(client: &Client, url: &str) -> ValidationResult
     match timeout(Duration::from_secs(REQUEST_TIMEOUT), request_builder.send()).await {
         Ok(Ok(resp)) => {
             let status = resp.status();
-            let body_text = match timeout(Duration::from_secs(3), resp.text()).await {
+            let body_text = match timeout(Duration::from_secs(5), resp.text()).await {
                 Ok(Ok(text)) => text,
                 _ => String::new(),
             };
             if let Some(error_msg) = extract_error_from_body(&body_text) {
+                // println!("   🔍 Error detected in GET response: {}", error_msg);
                 return ValidationResult { is_valid: false, error: Some(error_msg) };
             }
             if status.is_success() || status.as_u16() == 206 {
@@ -339,6 +344,7 @@ async fn perform_deep_validation(client: &Client, url: &str) -> ValidationResult
                     ValidationResult { is_valid: true, error: None }
                 }
             } else {
+                // Status lỗi và không có lỗi trong body thì trả về status
                 let error_msg = if !body_text.is_empty() {
                     extract_error_from_body(&body_text).unwrap_or_else(|| format!("HTTP {}", status))
                 } else {
@@ -365,12 +371,14 @@ fn extract_error_from_body(body: &str) -> Option<String> {
         || lower_body.contains("this page isn’t working")
         || lower_body.contains("http error 401")
     {
+        // Lấy dòng đầu tiên có chứa từ khóa lỗi, hoặc trả về mặc định
         let snippet = body
             .lines()
             .find(|line| {
                 let l = line.to_lowercase();
-                l.contains("access") || l.contains("denied") || l.contains("unauthorized") || l.contains("forbidden")
-                    || l.contains("this page isn’t working") || l.contains("http error")
+                l.contains("access") || l.contains("denied") || l.contains("unauthorized") 
+                    || l.contains("forbidden") || l.contains("this page isn’t working") 
+                    || l.contains("http error") || l.contains("401")
             })
             .map(|s| s.trim().to_string())
             .unwrap_or_else(|| "Access denied/Geo-blocked".to_string());
@@ -494,4 +502,4 @@ fn shorten_url(url: &str) -> String {
 struct ValidationResult {
     is_valid: bool,
     error: Option<String>,
-}
+                }
