@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-28 07:59 VN",
+  "updated": "2026-03-28 13:41 VN",
   "days": {
     "20260328": {
       "date": "Saturday, 28/03",
@@ -93,8 +93,8 @@
             {
               "country": "Germany",
               "channels": [
-                "Sky Sport News HD",
-                "FIFA+"
+                "FIFA+",
+                "Sky Sport News HD"
               ]
             },
             {
@@ -306,6 +306,39 @@
         {
           "league": "Tennis",
           "match": "Miami Open",
+          "kick_utc": 1774715400,
+          "time": "28/03 11:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Miami Open",
+          "kick_utc": 1774724400,
+          "time": "29/03 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel",
+                "TVA Sports 2",
+                "TSN2",
+                "DAZN Canada"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Miami Open",
           "kick_utc": 1774719000,
           "time": "29/03 12:30 AM",
           "tv_channels": [
@@ -339,13 +372,13 @@
         {
           "league": "Tennis",
           "match": "",
-          "kick_utc": 1774717200,
-          "time": "29/03 12:00 AM",
+          "kick_utc": 1774715400,
+          "time": "28/03 11:30 PM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
-                "beIN SPORTS 2"
+                "beIN Sports Connect"
               ]
             }
           ],
@@ -353,7 +386,7 @@
         },
         {
           "league": "Tennis",
-          "match": "Jiri Lehecka vs Arthur Fils",
+          "match": "",
           "kick_utc": 1774724400,
           "time": "29/03 02:00 AM",
           "tv_channels": [
