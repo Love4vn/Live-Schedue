@@ -1,59 +1,9 @@
 {
-  "updated": "2026-03-28 01:38 VN",
+  "updated": "2026-03-28 07:59 VN",
   "days": {
-    "20260327": {
-      "date": "Friday, 27/03",
+    "20260328": {
+      "date": "Saturday, 28/03",
       "games": [
-        {
-          "league": "UEFA Euro",
-          "time": "28/03 02:00 AM",
-          "match": "Scotland U21 vs Czechia U21",
-          "kick_utc": 1774638000,
-          "tv_channels": [
-            {
-              "country": "Slovakia",
-              "channels": [
-                "ČT Sport"
-              ]
-            },
-            {
-              "country": "Czechia",
-              "channels": [
-                "ČT Sport"
-              ]
-            }
-          ],
-          "tournament": "U21 EURO, Qualification, Group B"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "28/03 02:00 AM",
-          "match": "Switzerland U21 vs Faroe Islands U21",
-          "kick_utc": 1774638000,
-          "tv_channels": [],
-          "tournament": "U21 EURO, Qualification, Group C"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "28/03 02:00 AM",
-          "match": "Belgium U21 vs Austria U21",
-          "kick_utc": 1774638000,
-          "tv_channels": [
-            {
-              "country": "Switzerland",
-              "channels": [
-                "ORF Sport +"
-              ]
-            },
-            {
-              "country": "Austria",
-              "channels": [
-                "ORF Sport +"
-              ]
-            }
-          ],
-          "tournament": "U21 EURO, Qualification, Group I"
-        },
         {
           "league": "UEFA Euro",
           "time": "28/03 06:00 PM",
@@ -61,46 +11,6 @@
           "kick_utc": 1774695600,
           "tv_channels": [],
           "tournament": "U19 UEFA European Championship, Elite round Gr. 1"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "28/03 06:00 PM",
-          "match": "England U19 vs Poland U19",
-          "kick_utc": 1774695600,
-          "tv_channels": [],
-          "tournament": "U19 UEFA European Championship, Elite round Gr. 2"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "28/03 06:00 PM",
-          "match": "Croatia U19 vs Norway U19",
-          "kick_utc": 1774695600,
-          "tv_channels": [],
-          "tournament": "U19 UEFA European Championship, Elite round Gr. 3"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "28/03 04:00 PM",
-          "match": "Ukraine U19 vs Kazakhstan U19",
-          "kick_utc": 1774688400,
-          "tv_channels": [],
-          "tournament": "U19 UEFA European Championship, Elite round Gr. 5"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "28/03 05:00 PM",
-          "match": "Romania U19 vs Ireland U19",
-          "kick_utc": 1774692000,
-          "tv_channels": [],
-          "tournament": "U19 UEFA European Championship, Elite round Gr. 5"
-        },
-        {
-          "league": "UEFA Euro",
-          "time": "28/03 06:00 PM",
-          "match": "Türkiye U19 vs Hungary U19",
-          "kick_utc": 1774695600,
-          "tv_channels": [],
-          "tournament": "U19 UEFA European Championship, Elite round Gr. 6"
         },
         {
           "league": "UEFA Euro",
@@ -264,6 +174,14 @@
         },
         {
           "league": "UEFA Euro",
+          "time": "28/03 06:00 PM",
+          "match": "England U19 vs Poland U19",
+          "kick_utc": 1774695600,
+          "tv_channels": [],
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 2"
+        },
+        {
+          "league": "UEFA Euro",
           "time": "28/03 11:00 PM",
           "match": "Portugal U19 vs Serbia U19",
           "kick_utc": 1774713600,
@@ -276,6 +194,21 @@
             }
           ],
           "tournament": "U19 UEFA European Championship, Elite round Gr. 2"
+        },
+        {
+          "league": "UEFA Euro",
+          "time": "28/03 06:00 PM",
+          "match": "Croatia U19 vs Norway U19",
+          "kick_utc": 1774695600,
+          "tv_channels": [
+            {
+              "country": "Croatia",
+              "channels": [
+                "MAXSport 1"
+              ]
+            }
+          ],
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 3"
         },
         {
           "league": "UEFA Euro",
@@ -303,11 +236,35 @@
         },
         {
           "league": "UEFA Euro",
+          "time": "28/03 04:00 PM",
+          "match": "Ukraine U19 vs Kazakhstan U19",
+          "kick_utc": 1774688400,
+          "tv_channels": [],
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 5"
+        },
+        {
+          "league": "UEFA Euro",
+          "time": "28/03 05:00 PM",
+          "match": "Romania U19 vs Ireland U19",
+          "kick_utc": 1774692000,
+          "tv_channels": [],
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 5"
+        },
+        {
+          "league": "UEFA Euro",
           "time": "28/03 09:30 PM",
           "match": "Romania U19 vs Northern Ireland U19",
           "kick_utc": 1774708200,
           "tv_channels": [],
           "tournament": "U19 UEFA European Championship, Elite round Gr. 5"
+        },
+        {
+          "league": "UEFA Euro",
+          "time": "28/03 06:00 PM",
+          "match": "Türkiye U19 vs Hungary U19",
+          "kick_utc": 1774695600,
+          "tv_channels": [],
+          "tournament": "U19 UEFA European Championship, Elite round Gr. 6"
         },
         {
           "league": "UEFA Euro",
@@ -349,32 +306,6 @@
         {
           "league": "Tennis",
           "match": "Miami Open",
-          "kick_utc": 1774652400,
-          "time": "28/03 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "RDS",
-                "TSN2"
-              ]
-            },
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Main Event",
-                "Sky Sports Tennis",
-                "Sky Sports Ultra HDR",
-                "Sky Sports+"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Miami Open",
           "kick_utc": 1774719000,
           "time": "29/03 12:30 AM",
           "tv_channels": [
@@ -390,35 +321,20 @@
         },
         {
           "league": "Tennis",
-          "match": "Francisco Cerundolo vs Alexander Zverev",
-          "kick_utc": 1774653000,
-          "time": "28/03 06:10 AM",
+          "match": "Miami Open",
+          "kick_utc": 1774727100,
+          "time": "29/03 02:45 AM",
           "tv_channels": [
             {
-              "country": "Ausport",
+              "country": "Wheresthematch",
               "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
+                "Sky Sports Tennis",
+                "Sky Sports Ultra HDR",
+                "Sky Sports+"
               ]
             }
           ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Aryna Sabalenka vs Elena Rybakina",
-          "kick_utc": 1774658400,
-          "time": "28/03 07:40 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
-              ]
-            }
-          ],
-          "source": "ausport"
+          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
@@ -430,6 +346,22 @@
               "country": "Ausport",
               "channels": [
                 "beIN SPORTS 2"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Jiri Lehecka vs Arthur Fils",
+          "kick_utc": 1774724400,
+          "time": "29/03 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
               ]
             }
           ],
