@@ -173,8 +173,7 @@ def is_channel_match(ch_name: str, m3u_name: str) -> bool:
         return False
     
     # Nếu không có số, so sánh độ dài và tỷ lệ
-    # Độ dài chênh lệch không quá 70%
-    if abs(len(ch_text) - len(m3u_text)) > max(len(ch_text), len(m3u_text)) * 0.7:
+    if abs(len(ch_text) - len(m3u_text)) > max(len(ch_text), len(m3u_text)) * 0.3:
         return False
     
     return True
@@ -214,6 +213,9 @@ async def get_tv_data(session, event_id):
 
 def is_uefa_euro(tournament_name: str) -> bool:
     name_lower = tournament_name.lower()
+    # Loại bỏ giải trẻ
+    if any(x in name_lower for x in ["u19", "u21", "u17", "youth"]):
+        return False
     euro_keywords = ["euro", "uefa european championship", "european championship"]
     return any(kw in name_lower for kw in euro_keywords)
 
@@ -278,6 +280,10 @@ async def fetch_sofascore_event(session, event_id, sport, now_ts, max_ts):
 
             # Lọc giải nữ
             if "women" in league_lower or "frauen" in league_lower:
+                return None
+
+            # Lọc giải trẻ
+            if "u19" in league_lower or "u21" in league_lower or "u17" in league_lower or "youth" in league_lower:
                 return None
 
             if is_uefa_euro(league_raw):
