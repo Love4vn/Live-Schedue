@@ -17,7 +17,7 @@ const CONFIG = {
   RETRY_COUNT: 2,
   RETRY_DELAY_MS: 2000,
   TIMEOUT_MS: 30000,
-  USER_AGENT: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0 Safari/537.36',
+  USER_AGENT: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
   OUTPUT_FILE: './ausport_schedule.json',
   TIME_RANGE_HOURS: 48,
 };
@@ -55,15 +55,18 @@ async function fetchWithRetry(url, options, retries = CONFIG.RETRY_COUNT) {
       const response = await axios.get(url, {
         ...options,
         timeout: CONFIG.TIMEOUT_MS,
-        validateStatus: status => status >= 200 && status < 400,
+        validateStatus: status => true, // nhận mọi status để log
       });
-      return response;
-    } catch (error) {
-      if (attempt === retries) {
-        const errMsg = error.response ? `Status ${error.response.status}: ${error.response.statusText}` : error.message;
-        throw new Error(`${url} failed after ${retries} attempts: ${errMsg}`);
+      console.log(`[${url}] Status: ${response.status}`);
+      if (response.status >= 200 && response.status < 400) {
+        return response;
+      } else {
+        console.error(`HTTP error ${response.status}, snippet:`, response.data.substring(0, 300));
+        throw new Error(`HTTP ${response.status}`);
       }
-      console.warn(`Retry ${attempt}/${retries} for ${url}: ${error.message}`);
+    } catch (error) {
+      console.error(`Attempt ${attempt} failed for ${url}:`, error.message);
+      if (attempt === retries) throw error;
       await sleep(CONFIG.RETRY_DELAY_MS);
     }
   }
@@ -98,7 +101,6 @@ function getVietnamDateTime(baseDate, timeStr) {
   };
 }
 
-// --- Hàm lọc bóng đá ---
 function isFootballRelevant(event) {
   const competition = (event.competition || '').toLowerCase();
   const home = (event.home || '').toLowerCase();
@@ -164,7 +166,6 @@ function isWithinTimeRange(event) {
   return diffHours >= 0 && diffHours <= CONFIG.TIME_RANGE_HOURS;
 }
 
-// --- SỬA LỖI resolveDateForPage ---
 function resolveDateForPage($, pathSuffix) {
   const headerText = $('h2.dayInfo').first().text().trim();
   if (headerText) {
@@ -177,7 +178,6 @@ function resolveDateForPage($, pathSuffix) {
     }
   }
 
-  // Fallback: tính ngày dựa trên pathSuffix, luôn lấy ngày từ hôm nay trở đi
   const now = dayjs();
   const targetDay = { mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6, sun: 0 }[pathSuffix];
   const currentDay = now.day();
@@ -300,20 +300,14 @@ async function scrapeDay(pathSuffix) {
   const url = `${CONFIG.BASE_URL}/live-sports-tv-guide/${pathSuffix}`;
   console.log(`Scraping: ${url}`);
 
-  let response;
-  try {
-    response = await fetchWithRetry(url, {
-      headers: {
-        'User-Agent': CONFIG.USER_AGENT,
-        'Accept-Language': 'en-US,en;q=0.9',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-        'Referer': CONFIG.BASE_URL,
-      },
-    });
-  } catch (error) {
-    console.error(`Error scraping ${pathSuffix}: ${error.message}`);
-    return []; // trả về mảng rỗng để không dừng toàn bộ
-  }
+  const response = await fetchWithRetry(url, {
+    headers: {
+      'User-Agent': CONFIG.USER_AGENT,
+      'Accept-Language': 'en-US,en;q=0.9',
+      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+      'Referer': CONFIG.BASE_URL,
+    },
+  });
 
   const $ = cheerio.load(response.data);
   const dateInfo = resolveDateForPage($, pathSuffix);
@@ -438,6 +432,7 @@ function writeJSON(rows, outputPath) {
   let filteredRows = allRows.filter(isEventRelevant);
   console.log('After sport/league filter:', filteredRows.length);
 
+  // In mẫu để kiểm tra
   console.log('Sample events after sport/league filter (before time filter):');
   filteredRows.slice(0, 5).forEach((r, i) => {
     const dt = r.vietnam_datetime ? dayjs(r.vietnam_datetime).format('HH:mm DD/MM/YYYY') : 'N/A';
