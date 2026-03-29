@@ -1,41 +1,9 @@
 {
-  "updated": "2026-03-29 19:24 VN",
+  "updated": "2026-03-30 01:22 VN",
   "days": {
     "20260329": {
       "date": "Sunday, 29/03",
       "games": [
-        {
-          "league": "Tennis",
-          "match": "Jannik Sinner@",
-          "kick_utc": 1774801800,
-          "time": "29/03 11:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "TSN5",
-                "RDS 2"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Miami Open",
-          "kick_utc": 1774794600,
-          "time": "29/03 09:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "Tennis",
           "match": "ATP Tennis",
@@ -54,19 +22,19 @@
         },
         {
           "league": "Tennis",
-          "match": "Jiri Lehecka vs Jannik Sinner",
-          "kick_utc": 1774810800,
-          "time": "30/03 02:00 AM",
+          "match": "ATP Tennis",
+          "kick_utc": 1774875600,
+          "time": "30/03 08:00 PM",
           "tv_channels": [
             {
-              "country": "Ausport",
+              "country": "Wheresthematch",
               "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
+                "Sky Sports Tennis",
+                "Sky Sports+"
               ]
             }
           ],
-          "source": "ausport"
+          "source": "wheresthematch"
         }
       ]
     }
