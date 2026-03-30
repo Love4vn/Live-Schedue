@@ -1,10 +1,10 @@
 #EXTM3U
 #PLAYLIST:Live Schedule Cleaned - Cleaned
 #GENERATED-BY: CXT Cleaner v2.0
-#VALIDATION-DATE: 2026-03-30 20:59:56
+#VALIDATION-DATE: 2026-03-31 02:17:00
 #TOTAL-STREAMS-CHECKED: 29
-#TOTAL-VALID-STREAMS: 20
-#SUCCESS-RATE: 69.0%
+#TOTAL-VALID-STREAMS: 22
+#SUCCESS-RATE: 75.9%
 #FILTERS-APPLIED: ADULT, .mp4, cinehub24.com
 #ORDER-PRESERVATION: Original channel order maintained
 ########################################
@@ -12,8 +12,12 @@
 https://v.antsports.tv/live/28/index.m3u8
 #EXTINF:-1 tvg-id="SkySp.Tennis.HD.uk" group-title="Live Tennis" tvg-logo="https://i.imgur.com/ZNUDU1r.png",30/03 08:00 PM | ATP Tennis (Sky Sports Tennis)
 https://7pal.short.gy/ssportstn
+#EXTINF:-1 tvg-id="SkySportsTennis.uk" group-title="Live Tennis" tvg-logo="https://logo.m3uassets.com/skysportstennis.png",30/03 08:00 PM | ATP Tennis (Sky Sports Tennis)
+http://assarao4k.com:80/play/live.php?mac=00:1A:79:83:02:56&stream=1527629&extension=ts
 #EXTINF:-1 tvg-id="Sky.Sports.Plus.ie" group-title="Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-plus.png",30/03 08:00 PM | ATP Tennis (Sky Sports+)
 https://restream-live.realiptv.to/MotherOfPins3/8746645/2193
+#EXTINF:-1 tvg-id="SkySportsPlus.uk" group-title="Live Tennis" tvg-logo="https://static.skyassets.com/contentstack/assets/blt143e20b03d72047e/blt3b8488da02f05f25/66b2010b0d26b22d93e45755/Sky_Sports_Logo.png",30/03 08:00 PM | ATP Tennis (Sky Sports+)
+http://assarao4k.com:80/play/live.php?mac=00:1A:79:83:02:56&stream=1527619&extension=ts
 #EXTINF:-1 tvg-id="463795" group-title="Live Tennis",30/03 09:00 PM | Charleston Open (Tennis Channel)
 http://89.105.221.127/tennis/index.m3u8?token=test
 #EXTINF:-1 tvg-id="The.Tennis.Channel.us" group-title="Live Tennis" tvg-logo="https://i.imgur.com/QCT1frc.png",30/03 09:00 PM | Charleston Open (Tennis Channel)
@@ -24,8 +28,6 @@ http://mytvstream.net:8080/live/30550113/30550113/20184.m3u8
 https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg01444-tennischannelth-tennischannelnl-samsungnl/playlist.m3u8
 #EXTINF:-1 tvg-id="ATBA2200008XN" group-title="Live Tennis" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/ATBA2200008XN_20251125T100519SQUARE.png",30/03 09:00 PM | Charleston Open (Tennis Channel)
 https://jmp2.uk/stvp-ATBA2200008XN
-#EXTINF:-1 tvg-id="CHBA22000080G" group-title="Live Tennis" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/CHBA22000080G_20251125T102207SQUARE.png",30/03 09:00 PM | Charleston Open (Tennis Channel)
-https://jmp2.uk/stvp-CHBA22000080G
 #EXTINF:-1 tvg-id="" group-title="Live Tennis",30/03 09:00 PM | Charleston Open (Tennis Channel)
 https://otte.live.fly.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/bfigtl960n/out/v1/5ba5484550e84681bff2e8ca994266c1/cenc.mpd
 #EXTINF:-1 tvg-id="Tennis.Channel.HD.us2" group-title="Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/tennis-channel.png",30/03 09:00 PM | Charleston Open (Tennis Channel)
@@ -44,6 +46,8 @@ https://restream-live.realiptv.to/MotherOfPins3/8746645/2386
 http://tvmate.icu:8080/sales@dellerstechshop.ca/sales@4889/20184
 #EXTINF:-1 tvg-id="" group-title="Live Tennis",30/03 09:00 PM | Charleston Open (Tennis Channel)
 https://amg01935-amg01935c1-amgplt0020.playout.now3.amagi.tv/playlist/amg01935-amg01935c1-amgplt0020/playlist.m3u8
+#EXTINF:-1 tvg-id="463795" group-title="Live Tennis" tvg-logo="https://provider-static.plex.tv/epg/cms/production/704e7af1-90a0-4ad4-94de-af2559c19fa6/1_Tennis_Plus_Logo__Dark_Mode__1500x1000px.png",30/03 09:00 PM | Charleston Open (Tennis Channel)
+https://epg.provider.plex.tv/library/parts/646546f35db8ada4c8edd7e5-6761f91555e174e95ccc4e4c.m3u8?X-Plex-Token=XsRscL48W6rx3swXm_mT
 #EXTINF:-1 tvg-id="463795" group-title="Live Tennis",30/03 09:00 PM | Charleston Open (Tennis Channel)
 https://amg01935-amg01935c1-amgplt0352.playout.now3.amagi.tv/ts-eu-w1-n2/playlist/amg01935-amg01935c1-amgplt0352/playlist.m3u8
 #EXTINF:-1 tvg-id="" group-title="Live Tennis" tvg-logo="https://i1.wp.com/rakuten.today/wp-content/uploads/2018/06/one_logo.jpg?fit=2000%2C1350&ssl=1",30/03 09:00 PM | Charleston Open (Tennis Channel)
