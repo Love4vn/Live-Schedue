@@ -1,24 +1,38 @@
 {
-  "updated": "2026-03-30 08:08 VN",
+  "updated": "2026-03-30 14:12 VN",
   "days": {
     "20260330": {
       "date": "Monday, 30/03",
       "games": [
         {
           "league": "Tennis",
-          "match": "ATP Tennis",
-          "kick_utc": 1774866600,
-          "time": "30/03 05:30 PM",
+          "match": "Charleston Open",
+          "kick_utc": 1774879200,
+          "time": "30/03 09:00 PM",
           "tv_channels": [
             {
-              "country": "Wheresthematch",
+              "country": "LiveSportsOnTV",
               "channels": [
-                "Sky Sports Tennis",
-                "Sky Sports+"
+                "Tennis Channel"
               ]
             }
           ],
-          "source": "wheresthematch"
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Charleston Open",
+          "kick_utc": 1774908000,
+          "time": "31/03 05:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
@@ -35,22 +49,6 @@
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Jiri Lehecka vs Jannik Sinner",
-          "kick_utc": 1774897200,
-          "time": "31/03 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
-              ]
-            }
-          ],
-          "source": "ausport"
         }
       ]
     }
