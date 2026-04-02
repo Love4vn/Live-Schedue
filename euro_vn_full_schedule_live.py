@@ -120,20 +120,29 @@ def similar(a: str, b: str) -> float:
     return SequenceMatcher(None, a, b).ratio()
 
 def normalize_channel_name(name: str) -> str:
-    """Chuẩn hóa tên kênh: loại bỏ từ thừa, cờ, tốc độ, nội dung ngoặc, nhưng giữ lại số"""
+    """Chuẩn hóa tên kênh: loại bỏ từ thừa, cờ, tốc độ, nội dung ngoặc, ký tự đặc biệt, PPV, HEVC, v.v."""
     name = name.lower()
-    # Loại bỏ các từ phổ biến
-    name = re.sub(r'\b(hd|uhd|4k|fhd|vip|plus|extra|usa|uk|us|tv|channel|network|sports?|premium|maximo?|4mbps|4g|mbps|kbps|bitrate|stream|live|online)\b', '', name)
+    # Loại bỏ các pattern như ┃UCL┃, ┃anything┃
+    name = re.sub(r'┃[^┃]*┃', '', name)
+    # Loại bỏ các tiền tố như NL|, UK|, v.v. (2-3 chữ cái + dấu |)
+    name = re.sub(r'^[a-z]{2,3}\|', '', name)
+    # Loại bỏ ký tự mũ (², ³, ...)
+    name = re.sub(r'[²³⁴⁵⁶⁷⁸⁹]', '', name)
+    # Loại bỏ PPV, HEVC (các từ viết tắt đặc biệt)
+    name = re.sub(r'\b(ppv|hevc)\b', '', name)
+    # Loại bỏ các từ phổ biến (giữ lại các từ viết tắt quốc gia như nl, uk, us vì có thể quan trọng)
+    name = re.sub(r'\b(hd|uhd|4k|fhd|vip|plus|extra|tv|channel|network|sports?|premium|maximo?|4mbps|4g|mbps|kbps|bitrate|stream|live|online)\b', '', name)
     # Loại bỏ biểu tượng cờ
     name = re.sub(r'[🇬🇧🇺🇸🇨🇦🇦🇺🇩🇪🇫🇷🇮🇹🇪🇸🇵🇹🇳🇱🇧🇪🇨🇭🇦🇹🇸🇪🇳🇴🇩🇰🇫🇮🇵🇱🇨🇿🇭🇺🇷🇴🇧🇬🇬🇷🇹🇷]', '', name)
-    # Loại bỏ nội dung trong ngoặc
+    # Loại bỏ nội dung trong ngoặc (các loại ngoặc)
     name = re.sub(r'\([^)]*\)', '', name)
     name = re.sub(r'\[[^\]]*\]', '', name)
-    # Loại bỏ ký tự đặc biệt (giữ lại chữ, số và khoảng trắng)
+    name = re.sub(r'\{[^}]*\}', '', name)
+    # Loại bỏ các ký tự đặc biệt còn lại, chỉ giữ chữ, số và khoảng trắng
     name = re.sub(r'[^\w\s]', ' ', name)
-    # Chuẩn hóa khoảng trắng
+    # Chuẩn hóa khoảng trắng (bỏ khoảng trắng thừa)
     name = ' '.join(name.split())
-    # Bỏ dấu
+    # Bỏ dấu (ví dụ: tiếng Việt)
     name = unicodedata.normalize('NFKD', name).encode('ASCII', 'ignore').decode('ascii')
     return name
 
