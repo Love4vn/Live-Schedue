@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-03 01:38 VN",
+  "updated": "2026-04-03 05:47 VN",
   "days": {
     "20260402": {
       "date": "Thursday, 02/04",
@@ -23,19 +23,20 @@
           "source": "livesportsontv"
         },
         {
-          "league": "Tennis",
-          "match": "Charleston Open",
-          "kick_utc": 1775167200,
-          "time": "03/04 05:00 AM",
+          "league": "Ligue 1",
+          "match": "Paris-Saint-Germain vs Toulouse",
+          "kick_utc": 1775245500,
+          "time": "04/04 02:45 AM",
           "tv_channels": [
             {
-              "country": "LiveSportsOnTV",
+              "country": "Wheresthematch",
               "channels": [
-                "Tennis Channel"
+                "Amazon Prime Video",
+                "Ligue 1+"
               ]
             }
           ],
-          "source": "livesportsontv"
+          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
@@ -100,6 +101,21 @@
         },
         {
           "league": "Tennis",
+          "match": "Charleston Open",
+          "kick_utc": 1775250000,
+          "time": "04/04 04:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
           "match": "ATP Tennis",
           "kick_utc": 1775212200,
           "time": "03/04 05:30 PM",
@@ -113,21 +129,6 @@
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Yulia Starodubtseva vs Ekaterina Alexandrova",
-          "kick_utc": 1775167200,
-          "time": "03/04 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -258,6 +259,37 @@
           "match": "Guiomar Maristany Zuleta De Reales vs Emiliana Arango",
           "kick_utc": 1775232000,
           "time": "03/04 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Roman Andres Burruchaga vs Brandon Nakashima",
+          "kick_utc": 1775242800,
+          "time": "04/04 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Iva Jovic vs Sofia Kenin",
+          "kick_utc": 1775253600,
+          "time": "04/04 05:00 AM",
           "tv_channels": [
             {
               "country": "Ausport",
