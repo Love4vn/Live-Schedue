@@ -1,9 +1,85 @@
 {
-  "updated": "2026-04-02 08:02 VN",
+  "updated": "2026-04-02 12:08 VN",
   "days": {
     "20260402": {
       "date": "Thursday, 02/04",
       "games": [
+        {
+          "league": "Tennis",
+          "match": "Charleston Open",
+          "kick_utc": 1775109600,
+          "time": "02/04 01:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Charleston Open",
+          "kick_utc": 1775138400,
+          "time": "02/04 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel",
+                "DAZN Canada"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Copa Colsanitas",
+          "kick_utc": 1775142000,
+          "time": "02/04 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DAZN Canada"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "U.S. Men's Clay Court Championship",
+          "kick_utc": 1775152800,
+          "time": "03/04 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "TSN+"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Charleston Open",
+          "kick_utc": 1775167200,
+          "time": "03/04 05:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
         {
           "league": "Tennis",
           "match": "ATP Tennis",
@@ -19,6 +95,101 @@
             }
           ],
           "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1775138400,
+          "time": "02/04 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 1",
+                "beIN SPORTS 2"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1775142000,
+          "time": "02/04 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1775145600,
+          "time": "02/04 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1775156400,
+          "time": "03/04 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN SPORTS 1",
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1775167200,
+          "time": "03/04 05:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1775170800,
+          "time": "03/04 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN SPORTS 1",
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
         }
       ]
     }
