@@ -1,24 +1,9 @@
 {
-  "updated": "2026-04-02 12:08 VN",
+  "updated": "2026-04-02 18:48 VN",
   "days": {
     "20260402": {
       "date": "Thursday, 02/04",
       "games": [
-        {
-          "league": "Tennis",
-          "match": "Charleston Open",
-          "kick_utc": 1775109600,
-          "time": "02/04 01:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "Tennis",
           "match": "Charleston Open",
@@ -82,9 +67,54 @@
         },
         {
           "league": "Tennis",
+          "match": "Charleston Open",
+          "kick_utc": 1775196000,
+          "time": "03/04 01:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tiriac Open",
+          "kick_utc": 1775199600,
+          "time": "03/04 02:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Grand Prix Hassan II",
+          "kick_utc": 1775206800,
+          "time": "03/04 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
           "match": "ATP Tennis",
-          "kick_utc": 1775125800,
-          "time": "02/04 05:30 PM",
+          "kick_utc": 1775212200,
+          "time": "03/04 05:30 PM",
           "tv_channels": [
             {
               "country": "Wheresthematch",
@@ -106,8 +136,8 @@
               "country": "Ausport",
               "channels": [
                 "beIN Sports Connect",
-                "beIN SPORTS 1",
-                "beIN SPORTS 2"
+                "beIN SPORTS 2",
+                "beIN SPORTS 1"
               ]
             }
           ],
@@ -185,6 +215,21 @@
               "country": "Ausport",
               "channels": [
                 "beIN SPORTS 1",
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1775210400,
+          "time": "03/04 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
                 "beIN Sports Connect"
               ]
             }
