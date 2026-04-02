@@ -1,5 +1,5 @@
 # File: livesportsontv.py
-# Hoàn chỉnh - Lấy lịch bóng đá & tennis, giờ Việt Nam, xử lý linh hoạt ngày tháng
+# Lấy tất cả trận từ hôm nay trở đi, chuyển sang giờ Việt Nam
 
 import asyncio
 import json
@@ -26,7 +26,6 @@ MONTH_MAP = {
 def parse_date_from_text(text):
     """Trích xuất ngày và tháng từ chuỗi như '03 Mar' hoặc '03 THÁNG 4'"""
     text = text.strip().lower()
-    # Tìm số ngày và phần tháng
     match = re.search(r'(\d{1,2})\s+([a-zà-ỹ0-9\s]+)', text)
     if match:
         day = match.group(1)
@@ -35,7 +34,7 @@ def parse_date_from_text(text):
     return None, None
 
 def parse_time_with_ampm(time_str: str):
-    """Chuyển '10:00 PM' sang 24h (22, 00)"""
+    """Chuyển '10:00 PM' sang 24h"""
     time_str = time_str.strip().upper()
     if ' ' not in time_str and ('AM' in time_str or 'PM' in time_str):
         if 'AM' in time_str:
@@ -85,7 +84,6 @@ def include_friendly_match(home: str, away: str) -> bool:
 
 # ==================== CẤU HÌNH GIẢI ĐẤU ====================
 LEAGUES_CONFIG = {
-    # Bóng đá câu lạc bộ
     "Premier League": {
         "url": "https://www.livesportsontv.com/league/premier-league",
         "teams": {"arsenal", "aston villa", "bournemouth", "brentford", "brighton",
@@ -121,7 +119,6 @@ LEAGUES_CONFIG = {
         "url": "https://www.livesportsontv.com/league/uefa-conference-league",
         "teams": None
     },
-    # Đội tuyển quốc gia
     "UEFA European Championship": {
         "url": "https://www.livesportsontv.com/league/uefa-european-championship",
         "teams": None
@@ -135,7 +132,6 @@ LEAGUES_CONFIG = {
         "teams": None,
         "custom_filter": include_friendly_match
     },
-    # Tennis
     "Tennis (ATP)": {
         "url": "https://www.livesportsontv.com/league/atp",
         "teams": None,
@@ -172,8 +168,6 @@ LEAGUES_CONFIG = {
 async def scrape_league_schedules():
     all_games = []
     now_uk = datetime.now(UK_TZ)
-    target_day = str(now_uk.day)
-    target_month_abbr = now_uk.strftime("%b").lower()
     current_year = now_uk.year
 
     async with async_playwright() as p:
@@ -214,11 +208,9 @@ async def scrape_league_schedules():
                     date_div = row.find('div', class_='event__info--date')
                     if not date_div:
                         continue
-                    # Thử lấy text tổng hợp
                     date_text = date_div.get_text(separator=' ').strip()
                     if date_text:
                         day_str, month_str = parse_date_from_text(date_text)
-                    # Nếu không parse được, dùng b và span
                     if not day_str or not month_str:
                         day_tag = date_div.find('b')
                         month_tag = date_div.find('span')
@@ -228,7 +220,7 @@ async def scrape_league_schedules():
                     if not day_str or not month_str:
                         continue
 
-                    # Chuyển tháng thành số và so sánh với ngày UK
+                    # Chuyển tháng thành số
                     month_num = None
                     for k, v in MONTH_MAP.items():
                         if k in month_str:
@@ -236,12 +228,8 @@ async def scrape_league_schedules():
                             break
                     if month_num is None:
                         continue
-                    # Lấy tên tháng viết tắt tiếng Anh từ số
-                    month_abbr = datetime(current_year, month_num, 1).strftime("%b").lower()
-                    if day_str != target_day or month_abbr != target_month_abbr:
-                        continue
 
-                    # ---- Lấy giờ ----
+                    # Lấy giờ
                     time_tag = row.find('time')
                     if not time_tag:
                         continue
@@ -251,14 +239,24 @@ async def scrape_league_schedules():
                     except:
                         continue
 
-                    # Tạo datetime UK và chuyển sang VN
-                    uk_dt = datetime(current_year, month_num, int(day_str), hour, minute)
-                    uk_dt = uk_dt.replace(tzinfo=UK_TZ)
+                    # Tạo datetime UK (giả sử năm hiện tại)
+                    try:
+                        day_int = int(day_str)
+                        uk_dt = datetime(current_year, month_num, day_int, hour, minute)
+                        uk_dt = uk_dt.replace(tzinfo=UK_TZ)
+                    except ValueError:
+                        # Xử lý trường hợp ngày không hợp lệ (ví dụ 31/02)
+                        continue
+
+                    # Chỉ lấy các trận từ hôm nay trở đi (theo UK)
+                    if uk_dt.date() < now_uk.date():
+                        continue
+
+                    # Chuyển sang giờ Việt Nam
                     vn_dt = uk_dt.astimezone(VIETNAM_TZ)
 
                     # ---- Tên trận đấu / giải đấu ----
                     if is_tennis:
-                        # Tennis: lấy từ div event_participant--home hoặc event__title
                         home_elem = row.find('div', class_=lambda c: c and 'event_participant--home' in c)
                         if not home_elem:
                             home_elem = row.find('div', class_='event__participant--home')
@@ -268,7 +266,6 @@ async def scrape_league_schedules():
                             title_elem = row.find('a', class_='event__title')
                             matchup = title_elem.get_text(strip=True) if title_elem else "Tennis Match"
                     else:
-                        # Bóng đá: home/away
                         home_elem = row.find('div', class_=lambda c: c and 'event__participant--home' in c)
                         away_elem = row.find('div', class_=lambda c: c and 'event__participant--away' in c)
                         home = home_elem.get_text(strip=True) if home_elem else "?"
@@ -322,15 +319,17 @@ async def scrape_league_schedules():
 
         await browser.close()
 
-    # Ghi kết quả ra file JSON
+    # Ghi kết quả
     filename = "schedule_livesportsontv.json"
     if all_games:
+        # Sắp xếp theo ngày giờ tăng dần
+        all_games.sort(key=lambda x: (x["Date"], x["Time"]))
         with open(filename, 'w', encoding='utf-8') as f:
             json.dump(all_games, f, indent=4, ensure_ascii=False)
         print(f"\n🎉 THÀNH CÔNG! Đã lấy {len(all_games)} trận.")
         print(f"📁 Lưu tại: {filename}")
     else:
-        print("\n⚠️ Không có trận đấu nào hôm nay (theo giờ UK).")
+        print("\n⚠️ Không có trận đấu nào từ hôm nay trở đi.")
 
 if __name__ == "__main__":
     asyncio.run(scrape_league_schedules())
