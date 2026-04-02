@@ -14,6 +14,7 @@ import urllib.request
 import time
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from difflib import SequenceMatcher
 from typing import List, Dict, Optional
 
@@ -659,27 +660,41 @@ async def main():
 
     # ================== XỬ LÝ M3U ==================
     print("📥 Đang tải và phân tích M3U...")
-    m3u_links = [line.strip() for line in open(M3U_LIST_FILE, encoding='utf-8') if line.strip().startswith('http')]
+    m3u_links = []
+    try:
+        with open(M3U_LIST_FILE, encoding='utf-8') as f:
+            for line in f:
+                line = line.strip()
+                if line and line.startswith('http'):
+                    m3u_links.append(line)
+        print(f"   📋 Tìm thấy {len(m3u_links)} URL trong M3U_list.txt")
+    except Exception as e:
+        print(f"   ❌ Lỗi đọc file M3U_list.txt: {e}")
+        m3u_links = []
 
-    async def fetch_m3u(session, url):
+    def fetch_text_sync(url):
         try:
-            res = await session.get(url, timeout=10)
-            if res.status_code == 200:
-                return await res.text()
-        except:
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=15) as r:
+                return r.read().decode('utf-8', errors='ignore')
+        except Exception as e:
+            print(f"   Lỗi tải {url[:50]}...: {e}")
             return None
 
     all_ch = []
-    async with AsyncSession() as session:
-        tasks = [fetch_m3u(session, url) for url in m3u_links]
-        contents = await asyncio.gather(*tasks)
-        for content in contents:
-            if content:
-                chs = parse_m3u(content)
-                for ch in chs:
-                    if is_low_resolution(ch.get('name', '')):
-                        continue
-                    all_ch.append(ch)
+    if m3u_links:
+        with ThreadPoolExecutor(max_workers=10) as ex:
+            futures = {ex.submit(fetch_text_sync, url): url for url in m3u_links}
+            for fut in as_completed(futures):
+                content = fut.result()
+                if content:
+                    chs = parse_m3u(content)
+                    for ch in chs:
+                        if is_low_resolution(ch.get('name', '')):
+                            continue
+                        all_ch.append(ch)
+    else:
+        print("   ⚠️ Không có link M3U nào để tải.")
 
     unique_ch = list({ch['url']: ch for ch in all_ch if ch.get('url')}.values())
     print(f"   ✅ Đã tải {len(unique_ch)} kênh")
