@@ -1,8 +1,8 @@
 {
-  "updated": "2026-04-03 05:47 VN",
+  "updated": "2026-04-03 08:06 VN",
   "days": {
-    "20260402": {
-      "date": "Thursday, 02/04",
+    "20260403": {
+      "date": "Friday, 03/04",
       "games": [
         {
           "league": "Ligue 1",
@@ -129,22 +129,6 @@
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ben Shelton vs Ze Zhang",
-          "kick_utc": 1775171100,
-          "time": "03/04 06:05 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
-              ]
-            }
-          ],
-          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -295,6 +279,22 @@
               "country": "Ausport",
               "channels": [
                 "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Rinky Hijikata vs Frances Tiafoe",
+          "kick_utc": 1775257200,
+          "time": "04/04 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
               ]
             }
           ],
