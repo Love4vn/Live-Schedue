@@ -1,13 +1,21 @@
 #EXTM3U
 #PLAYLIST:Live Schedule Cleaned - Cleaned
 #GENERATED-BY: CXT Cleaner v2.0
-#VALIDATION-DATE: 2026-04-03 02:12:44
-#TOTAL-STREAMS-CHECKED: 0
-#TOTAL-VALID-STREAMS: 0
-#SUCCESS-RATE: N/A
+#VALIDATION-DATE: 2026-04-03 10:25:05
+#TOTAL-STREAMS-CHECKED: 119
+#TOTAL-VALID-STREAMS: 4
+#SUCCESS-RATE: 3.4%
 #FILTERS-APPLIED: ADULT, .mp4, cinehub24.com
 #ORDER-PRESERVATION: Original channel order maintained
 ########################################
+#EXTINF:-1 tvg-id="1149433" group-title="Live Tennis" tvg-logo="http://picon.tivi-ott.net:25461/picon/GERMANY/SKY SPORT/SKY SPORT TENNIS.png",03/04 05:30 PM | ATP Tennis (Sky Sports Tennis)
+http://line.tivi-ott.net:80/play/live.php?mac=00:1A:79:B6:4E:F2&stream=1149433&extension=ts&play_token=YSlAt2CacX
+#EXTINF:-1 tvg-id="988850" group-title="Live Tennis" tvg-logo="http://picon.tivi-ott.net:25461/picon/TURKEY/BEIN SPORTS/BEIN SPORTS 1.png",03/04 06:30 PM | Daniel Merida Aguilar vs Adrian Mannarino (beIN SPORTS 1)
+http://line.tivi-ott.net:80/play/live.php?mac=00:1A:79:B6:4E:F2&stream=988850&extension=ts&play_token=f2Lkm6Rx7h
+#EXTINF:-1 tvg-id="988851" group-title="Live Tennis" tvg-logo="http://picon.tivi-ott.net:25461/picon/TURKEY/BEIN SPORTS/BEIN SPORTS 1.png",03/04 06:30 PM | Daniel Merida Aguilar vs Adrian Mannarino (beIN SPORTS 1)
+http://line.tivi-ott.net:80/play/live.php?mac=00:1A:79:B6:4E:F2&stream=988851&extension=ts&play_token=mo6QCo7WWC
+#EXTINF:-1 tvg-id="238261" group-title="Live Tennis" tvg-logo="http://51.158.145.100/picons/logos/UKNEW/BEINSPORTS1.png",03/04 06:30 PM | Daniel Merida Aguilar vs Adrian Mannarino (beIN SPORTS 1)
+http://bolachas.live:80/play/live.php?mac=00:1A:79:74:6e:33&stream=238261&extension=ts&play_token=02reK3orIs
 ########################################
 #END-OF-PLAYLIST
 #CXT - Quality Streams Only - Order Preserved
