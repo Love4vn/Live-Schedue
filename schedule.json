@@ -1,9 +1,75 @@
 {
-  "updated": "2026-04-03 13:53 VN",
+  "updated": "2026-04-03 19:33 VN",
   "days": {
     "20260403": {
       "date": "Friday, 03/04",
       "games": [
+        {
+          "league": "Serie A",
+          "time": "04/04 05:30 PM",
+          "match": "Fiorentina vs Juventus",
+          "kick_utc": 1775298600,
+          "tv_channels": [
+            {
+              "country": "Sierra Leone",
+              "channels": [
+                "DAZN International"
+              ]
+            },
+            {
+              "country": "Portugal",
+              "channels": [
+                "DAZN Portugal"
+              ]
+            },
+            {
+              "country": "United States",
+              "channels": [
+                "CBS Sports Network"
+              ]
+            },
+            {
+              "country": "Spain",
+              "channels": [
+                "DAZN"
+              ]
+            },
+            {
+              "country": "San Marino",
+              "channels": [
+                "DAZN"
+              ]
+            },
+            {
+              "country": "Italy",
+              "channels": [
+                "DAZN"
+              ]
+            }
+          ],
+          "tournament": "Serie A Femminile"
+        },
+        {
+          "league": "Serie A",
+          "time": "04/04 05:30 PM",
+          "match": "Napoli vs Genoa",
+          "kick_utc": 1775298600,
+          "tv_channels": [
+            {
+              "country": "San Marino",
+              "channels": [
+                "DAZN"
+              ]
+            },
+            {
+              "country": "Italy",
+              "channels": [
+                "DAZN"
+              ]
+            }
+          ],
+          "tournament": "Serie A Femminile"
+        },
         {
           "league": "Ligue 1",
           "match": "Toulouse vs PSG",
@@ -17,6 +83,42 @@
                 "beIN Sport USA Espanol",
                 "beIN Sport Canada",
                 "beIN Sport Canada Espanol"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Bundesliga",
+          "match": "Wolfsburg vs Bayer Leverkusen",
+          "kick_utc": 1775305800,
+          "time": "04/04 07:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "ESPN Select",
+                "ESPN Unlimited",
+                "DAZN Canada"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Bundesliga",
+          "match": "Bayern München vs Freiburg",
+          "kick_utc": 1775305800,
+          "time": "04/04 07:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "ESPN Select",
+                "ESPN Unlimited",
+                "ESPN Deportes",
+                "DAZN Canada",
+                "OneSoccer"
               ]
             }
           ],
@@ -37,36 +139,6 @@
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tiriac Open",
-          "kick_utc": 1775199600,
-          "time": "03/04 02:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Grand Prix Hassan II",
-          "kick_utc": 1775206800,
-          "time": "03/04 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
@@ -116,9 +188,24 @@
         },
         {
           "league": "Tennis",
+          "match": "Tiriac Open",
+          "kick_utc": 1775293200,
+          "time": "04/04 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
           "match": "ATP Tennis",
-          "kick_utc": 1775212200,
-          "time": "03/04 05:30 PM",
+          "kick_utc": 1775298600,
+          "time": "04/04 05:30 PM",
           "tv_channels": [
             {
               "country": "Wheresthematch",
@@ -139,8 +226,8 @@
             {
               "country": "Ausport",
               "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
+                "beIN SPORTS 1",
+                "beIN Sports Connect"
               ]
             }
           ],
@@ -220,6 +307,37 @@
               "channels": [
                 "beIN Sports Connect",
                 "beIN SPORTS 1"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1775296800,
+          "time": "04/04 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1775304000,
+          "time": "04/04 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
               ]
             }
           ],
