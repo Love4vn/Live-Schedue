@@ -145,10 +145,11 @@ function getCurrentVietnamTime() {
   return new Date(now.getTime() + 7 * 3600000);
 }
 
+// Lấy 4 ngày (hôm nay + 3 ngày tới) để đảm bảo đủ dữ liệu trong 48h
 function getDatesToScrape() {
   const nowVN = getCurrentVietnamTime();
   const dates = [];
-  for (let i = 0; i <= 2; i++) {
+  for (let i = 0; i <= 3; i++) {
     const d = new Date(nowVN);
     d.setDate(nowVN.getDate() + i);
     const yyyy = d.getFullYear();
@@ -174,7 +175,7 @@ function isoToVietnamParts(isoZ) {
     dt = new Date(raw);
     if (isNaN(dt.getTime())) return null;
   }
-  // Cộng 6 giờ (vì UK hiện tại BST = UTC+1, VN = UTC+7, chênh 6 giờ)
+  // Cộng 6 giờ (UK BST = UTC+1, VN = UTC+7, chênh 6 giờ)
   const vnTime = new Date(dt.getTime() + 6 * 3600000);
   const yyyy = vnTime.getUTCFullYear();
   const mm = String(vnTime.getUTCMonth() + 1).padStart(2, '0');
