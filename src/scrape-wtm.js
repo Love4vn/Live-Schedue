@@ -4,6 +4,7 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const fs = require("fs");
+const moment = require("moment-timezone");
 const { wrapper } = require("axios-cookiejar-support");
 const { CookieJar } = require("tough-cookie");
 
@@ -121,7 +122,7 @@ const allowedFriendlyCountries = new Set([
 
 const tennisKeywords = new Set([
   "atp", "wta", "grand slam", "us open", "wimbledon", "roland garros", "australian open",
-  "miami open", "monte carlo rolex masters", "monte carlo", "masters"
+  "miami open", "monte carlo rolex masters", "monte carlo", "masters", "linz open"
 ]);
 
 // ========== HÀM TIỆN ÍCH ==========
@@ -140,27 +141,9 @@ function isTeamInLeague(teamName, leagueTeams) {
   return false;
 }
 
-// Lấy thời điểm hiện tại theo giờ Việt Nam (trả về Date object)
+// Lấy thời điểm hiện tại theo giờ Việt Nam
 function getCurrentVietnamTime() {
-  const now = new Date();
-  const formatter = new Intl.DateTimeFormat('en', {
-    timeZone: 'Asia/Ho_Chi_Minh',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: false
-  });
-  const parts = formatter.formatToParts(now);
-  const year = parts.find(p => p.type === 'year').value;
-  const month = parts.find(p => p.type === 'month').value;
-  const day = parts.find(p => p.type === 'day').value;
-  const hour = parts.find(p => p.type === 'hour').value;
-  const minute = parts.find(p => p.type === 'minute').value;
-  const second = parts.find(p => p.type === 'second').value;
-  return new Date(`${year}-${month}-${day}T${hour}:${minute}:${second}+07:00`);
+  return moment.tz("Asia/Ho_Chi_Minh").toDate();
 }
 
 function getDatesToScrape() {
@@ -182,42 +165,25 @@ function buildDailyUrl(dateYYYYMMDD) {
   return `https://www.wheresthematch.com/live-sport-on-tv/?showdatestart=${dateYYYYMMDD}`;
 }
 
-// Chuyển đổi isoZ (có thể có múi giờ) sang giờ Việt Nam
+// Chuyển đổi isoZ (có thể không có múi giờ) sang giờ Việt Nam
 function isoToVietnamParts(isoZ) {
   if (!isoZ) return null;
-  let isoStr = isoZ.trim();
-  // Nếu chuỗi không có múi giờ, thêm Z (UTC)
-  if (!isoStr.endsWith('Z') && !/[+-]\d{2}:\d{2}$/.test(isoStr)) {
-    isoStr += 'Z';
+  let m;
+  // Nếu chuỗi có dạng "YYYY-MM-DD HH:MM:SS" (không có T và múi giờ) -> coi là giờ London
+  if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(isoZ)) {
+    m = moment.tz(isoZ, "YYYY-MM-DD HH:mm:ss", "Europe/London");
+  } else {
+    // Các định dạng khác (có T hoặc có múi giờ) để moment tự xử lý
+    m = moment(isoZ);
   }
-  const dt = new Date(isoStr);
-  if (isNaN(dt.getTime())) return null;
-
-  // Lấy giờ Việt Nam từ dt
-  const formatter = new Intl.DateTimeFormat('en', {
-    timeZone: 'Asia/Ho_Chi_Minh',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false
-  });
-  const parts = formatter.formatToParts(dt);
-  const yyyy = parts.find(p => p.type === 'year').value;
-  const mm = parts.find(p => p.type === 'month').value;
-  const dd = parts.find(p => p.type === 'day').value;
-  let HH = parts.find(p => p.type === 'hour').value;
-  const MM = parts.find(p => p.type === 'minute').value;
-
-  const hariFormatter = new Intl.DateTimeFormat('id-ID', { timeZone: 'Asia/Ho_Chi_Minh', weekday: 'long' });
-  const hari = hariFormatter.format(dt);
-
-  if (HH === '24') HH = '00';
-  return { hari, tanggal: `${dd}-${mm}-${yyyy}`, time: `${HH}:${MM}` };
+  if (!m.isValid()) return null;
+  const vn = m.tz("Asia/Ho_Chi_Minh");
+  const hari = vn.locale('id').format('dddd');
+  const tanggal = vn.format('DD-MM-YYYY');
+  const time = vn.format('HH:mm');
+  return { hari, tanggal, time };
 }
 
-// Parse ngày giờ đã ở dạng Việt Nam (tanggal, time) thành Date object (UTC+7)
 function parseEventDateTimeVN(tanggal, time) {
   const [dd, mm, yyyy] = tanggal.split('-');
   let [HH, MM] = time.split(':');
