@@ -4,6 +4,7 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const fs = require("fs");
+const moment = require("moment-timezone");
 const { wrapper } = require("axios-cookiejar-support");
 const { CookieJar } = require("tough-cookie");
 
@@ -141,8 +142,7 @@ function isTeamInLeague(teamName, leagueTeams) {
 }
 
 function getCurrentVietnamTime() {
-  const now = new Date();
-  return new Date(now.getTime() + 7 * 3600000);
+  return moment.tz("Asia/Ho_Chi_Minh").toDate();
 }
 
 function getDatesToScrape() {
@@ -163,30 +163,32 @@ function buildDailyUrl(dateYYYYMMDD) {
   return `https://www.wheresthematch.com/live-sport-on-tv/?showdatestart=${dateYYYYMMDD}`;
 }
 
-// Chuyển đổi thời gian từ chuỗi gốc (giờ UK BST = UTC+1) sang giờ Việt Nam (UTC+7)
+// Chuyển đổi thời gian từ chuỗi gốc (giờ UK, Europe/London) sang giờ Việt Nam
 function isoToVietnamParts(isoZ) {
   if (!isoZ) return null;
   let raw = isoZ.trim();
-  // Thay T bằng space, xóa mili giây
+  // Chuẩn hóa: thay T bằng space, bỏ mili giây
   raw = raw.replace('T', ' ');
   raw = raw.replace(/\.\d+/, '');
-  // Tạo Date object (coi như UTC)
-  let dt = new Date(raw + 'Z');
-  if (isNaN(dt.getTime())) {
-    // Thử parse trực tiếp nếu không thành công
-    dt = new Date(raw);
-    if (isNaN(dt.getTime())) return null;
+  
+  // Parse với múi giờ London (tự động xử lý BST)
+  let m = moment.tz(raw, "Europe/London");
+  if (!m.isValid()) {
+    // Thử parse dạng "YYYY-MM-DD HH:mm:ss"
+    m = moment.tz(raw, "YYYY-MM-DD HH:mm:ss", "Europe/London");
   }
-  // Cộng 6 giờ (vì UK hiện tại BST = UTC+1, VN = UTC+7)
-  const vnTime = new Date(dt.getTime() + 6 * 3600000);
-  const yyyy = vnTime.getUTCFullYear();
-  const mm = String(vnTime.getUTCMonth() + 1).padStart(2, '0');
-  const dd = String(vnTime.getUTCDate()).padStart(2, '0');
-  let HH = String(vnTime.getUTCHours()).padStart(2, '0');
-  const MM = String(vnTime.getUTCMinutes()).padStart(2, '0');
-  if (HH === '24') HH = '00';
-  const hari = new Intl.DateTimeFormat('id-ID', { timeZone: 'Asia/Ho_Chi_Minh', weekday: 'long' }).format(vnTime);
-  return { hari, tanggal: `${dd}-${mm}-${yyyy}`, time: `${HH}:${MM}` };
+  if (!m.isValid()) {
+    console.log(`[ERROR] Cannot parse time: ${raw}`);
+    return null;
+  }
+  
+  // Chuyển sang giờ Việt Nam
+  const vn = m.tz("Asia/Ho_Chi_Minh");
+  return {
+    hari: vn.locale('id').format('dddd'),
+    tanggal: vn.format('DD-MM-YYYY'),
+    time: vn.format('HH:mm')
+  };
 }
 
 function parseEventDateTimeVN(tanggal, time) {
@@ -204,16 +206,6 @@ function parseEventDateTimeVN(tanggal, time) {
     eventDate.setDate(eventDate.getDate() + addDay);
   }
   return eventDate;
-}
-
-function extractHiddenFields($) {
-  const fields = {};
-  $("input[type='hidden']").each((_, el) => {
-    const name = $(el).attr("name");
-    const value = $(el).attr("value") || "";
-    if (name) fields[name] = value;
-  });
-  return fields;
 }
 
 function uniqKeepOrder(arr) {
