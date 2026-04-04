@@ -4,6 +4,7 @@ euro_vn_full_schedule_live.py
 BẢN HOÀN CHỈNH – 24 GIỜ TỚI + LỌC THEO GIẢI + ĐỘI RIÊNG
 TÍCH HỢP: SofaScore (chính) + Các nguồn JSON phụ (Wheresthematch, LiveSportsOnTV, Ausport)
 Tối ưu ghép kênh M3U với matching thông minh (tên kênh + tên trận)
+Bổ sung: FA Cup, League Cup (Carabao Cup) – group "Live FA, League Cup"
 """
 
 import asyncio
@@ -45,7 +46,9 @@ ALLOWED_FOOTBALL_LEAGUES = {
     "UEFA Champions League",
     "UEFA Europa League",
     "UEFA Europa Conference League",
-    "UEFA Euro"
+    "UEFA Euro",
+    "FA Cup",
+    "League Cup"
 }
 
 # Danh sách đội riêng từng giải (tên chuẩn, viết thường)
@@ -58,6 +61,8 @@ ALLOWED_TEAMS_PER_LEAGUE = {
     "La Liga": {"barcelona", "real madrid", "atletico madrid"},
     "Bundesliga": {"bayern munich", "borussia dortmund", "bayer leverkusen"},
     "Ligue 1": {"psg", "paris saint-germain", "olympique marseille", "marseille"},
+    "FA Cup": ALLOWED_TEAMS_PER_LEAGUE["Premier League"],   # cùng danh sách đội
+    "League Cup": ALLOWED_TEAMS_PER_LEAGUE["Premier League"]
 }
 
 LEAGUE_GROUP_NAME = {
@@ -70,6 +75,8 @@ LEAGUE_GROUP_NAME = {
     "UEFA Europa League": "Live UEFA Europa League",
     "UEFA Europa Conference League": "Live UEFA Conference League",
     "UEFA Euro": "Live Euro",
+    "FA Cup": "Live FA, League Cup",
+    "League Cup": "Live FA, League Cup",
     "Tennis": "Live Tennis",
     "FIFA World Cup": "Live Fifa World Cup",
     "International Friendly": "Live International Friendly"
@@ -102,13 +109,21 @@ def similar(a: str, b: str) -> float:
     return SequenceMatcher(None, a, b).ratio()
 
 def normalize_channel_name(name: str) -> str:
-    """Chuẩn hóa tên kênh: loại bỏ pattern đặc biệt, ký tự thừa"""
+    """Chuẩn hóa tên kênh: loại bỏ pattern đặc biệt, ký tự thừa, tiền tố, ký tự mũ chữ"""
     name = name.lower()
+    # Loại bỏ tiền tố dạng "FI: " (hai chữ cái + dấu hai chấm)
+    name = re.sub(r'^[a-z]{2,3}: ', '', name)
+    # Loại bỏ tiền tố dạng "UK - " (hai chữ cái + dấu cách + gạch ngang + cách)
+    name = re.sub(r'^[a-z]{2,3} - ', '', name)
+    # Loại bỏ từ SUOMI và các từ tương tự (có thể là tên nước)
+    name = re.sub(r'\b(suomi|dansk|svenska|norsk|suomi|nederlands|deutsch|italia|españa|français|polska|magyar|românia|българия|türkiye|ελλάδα|ישראל)\b', '', name)
+    # Loại bỏ ký tự mũ chữ (ᴴᴰ, ⱽᴵᴾ, ᴹᴬˣ, ...)
+    name = re.sub(r'[ᴬᴭᴮᴰᴱᴲᴳᴴᴵᴶᴷᴸᴹᴺᴻᴼᴾᴿᵀᵁⱽᵂᵡᵞᵟᵠᵡᵢᵣᵤᵥᵦᵧᵨᵩᵪᵫᵬᵭᵮᵯᵰᵱᵲᵳᵴᵵᵶᵷᵸᵹᵺᵻᵼᵽᵾᵿ]', '', name)
     # Loại bỏ ┃anything┃
     name = re.sub(r'┃[^┃]*┃', '', name)
     # Loại bỏ tiền tố dạng NL|, UK|, USA|
     name = re.sub(r'^[a-z]{2,3}\|', '', name)
-    # Loại bỏ ký tự mũ
+    # Loại bỏ ký tự mũ số (đã có)
     name = re.sub(r'[²³⁴⁵⁶⁷⁸⁹]', '', name)
     # Loại bỏ PPV, HEVC
     name = re.sub(r'\b(ppv|hevc)\b', '', name)
@@ -259,6 +274,7 @@ async def fetch_sofascore_event(session, event_id, sport, now_ts, max_ts):
             if any(x in league_lower for x in ["women", "frauen", "u19", "u21", "u17", "youth"]):
                 return None
 
+            # Xác định giải
             if is_uefa_euro(league_raw):
                 league = "UEFA Euro"
             elif is_uefa_champions(league_raw):
@@ -267,49 +283,34 @@ async def fetch_sofascore_event(session, event_id, sport, now_ts, max_ts):
                 league = "UEFA Europa League"
             elif "uefa conference league" in league_lower:
                 league = "UEFA Europa Conference League"
+            elif "fa cup" in league_lower:
+                league = "FA Cup"
+            elif "carabao cup" in league_lower or "league cup" in league_lower:
+                league = "League Cup"
             elif "premier league" in league_lower:
-                home_norm = normalize_team_name(home_team)
-                away_norm = normalize_team_name(away_team)
-                allowed = ALLOWED_TEAMS_PER_LEAGUE["Premier League"]
-                if not (home_norm in allowed or away_norm in allowed):
-                    return None
                 league = "Premier League"
             elif "serie a" in league_lower:
-                home_norm = normalize_team_name(home_team)
-                away_norm = normalize_team_name(away_team)
-                allowed = ALLOWED_TEAMS_PER_LEAGUE["Serie A"]
-                if not (home_norm in allowed or away_norm in allowed):
-                    return None
                 league = "Serie A"
             elif "bundesliga" in league_lower:
-                home_norm = normalize_team_name(home_team)
-                away_norm = normalize_team_name(away_team)
-                allowed = ALLOWED_TEAMS_PER_LEAGUE["Bundesliga"]
-                if not (home_norm in allowed or away_norm in allowed):
-                    return None
                 league = "Bundesliga"
             elif "la liga" in league_lower or "laliga" in league_lower:
-                home_norm = normalize_team_name(home_team)
-                away_norm = normalize_team_name(away_team)
-                allowed = ALLOWED_TEAMS_PER_LEAGUE["La Liga"]
-                if not (home_norm in allowed or away_norm in allowed):
-                    return None
                 league = "La Liga"
             elif "ligue 1" in league_lower:
-                home_norm = normalize_team_name(home_team)
-                away_norm = normalize_team_name(away_team)
-                allowed = ALLOWED_TEAMS_PER_LEAGUE["Ligue 1"]
-                if not (home_norm in allowed or away_norm in allowed):
-                    return None
                 league = "Ligue 1"
             elif "world cup" in league_lower or "fifa world cup" in league_lower:
                 league = "FIFA World Cup"
             elif "friendly" in league_lower or "international friendly" in league_lower:
                 league = "International Friendly"
-                if not is_friendly_match(home_team, away_team):
-                    return None
             else:
                 return None
+
+            # Kiểm tra đội nếu giải yêu cầu
+            if league in ALLOWED_TEAMS_PER_LEAGUE:
+                allowed = ALLOWED_TEAMS_PER_LEAGUE[league]
+                home_norm = normalize_team_name(home_team)
+                away_norm = normalize_team_name(away_team)
+                if not (home_norm in allowed or away_norm in allowed):
+                    return None
 
             if league not in ALLOWED_FOOTBALL_LEAGUES and league not in ["FIFA World Cup", "International Friendly"]:
                 return None
@@ -380,6 +381,10 @@ def parse_livesportsontv(entry: dict) -> Optional[Dict]:
                 league = "UEFA Europa League"
             elif "UEFA Europa Conference League" in league:
                 league = "UEFA Europa Conference League"
+            elif "FA Cup" in league:
+                league = "FA Cup"
+            elif "League Cup" in league or "Carabao" in league:
+                league = "League Cup"
             elif "Euro" in league:
                 league = "UEFA Euro"
             else:
@@ -431,6 +436,10 @@ def parse_wheresthematch(entry: dict) -> Optional[Dict]:
                 league = "UEFA Europa League"
             elif "UEFA Europa Conference League" in league:
                 league = "UEFA Europa Conference League"
+            elif "FA Cup" in league:
+                league = "FA Cup"
+            elif "League Cup" in league or "Carabao" in league:
+                league = "League Cup"
             elif "Euro" in league:
                 league = "UEFA Euro"
             else:
@@ -481,6 +490,10 @@ def parse_ausport(entry: dict) -> Optional[Dict]:
             league = "UEFA Europa League"
         elif "UEFA Europa Conference League" in league:
             league = "UEFA Europa Conference League"
+        elif "FA Cup" in league:
+            league = "FA Cup"
+        elif "League Cup" in league or "Carabao" in league:
+            league = "League Cup"
         elif "ATP" in league or "WTA" in league:
             league = "Tennis"
         elif "Euro" in league:
