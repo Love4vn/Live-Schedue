@@ -1,4 +1,5 @@
-// src/scrape-wtm.js (phiên bản 48h)
+// src/scrape-wtm.js
+// WTM SCRAPER - Lọc 48h tới, giờ Việt Nam, chỉ bóng đá/tennis, xuất JSON
 
 const axios = require("axios");
 const cheerio = require("cheerio");
@@ -120,7 +121,7 @@ const allowedFriendlyCountries = new Set([
 
 const tennisKeywords = new Set([
   "atp", "wta", "grand slam", "us open", "wimbledon", "roland garros", "australian open",
-  "miami open", "miami", "open"
+  "miami open", "monte carlo rolex masters", "monte carlo", "masters"
 ]);
 
 // ========== HÀM TIỆN ÍCH ==========
@@ -141,13 +142,29 @@ function isTeamInLeague(teamName, leagueTeams) {
 
 function getCurrentVietnamTime() {
   const now = new Date();
-  return new Date(now.getTime() + 7 * 3600000);
+  const formatter = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Ho_Chi_Minh',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false
+  });
+  const parts = formatter.formatToParts(now);
+  const year = parts.find(p => p.type === 'year').value;
+  const month = parts.find(p => p.type === 'month').value;
+  const day = parts.find(p => p.type === 'day').value;
+  const hour = parts.find(p => p.type === 'hour').value;
+  const minute = parts.find(p => p.type === 'minute').value;
+  const second = parts.find(p => p.type === 'second').value;
+  return new Date(`${year}-${month}-${day}T${hour}:${minute}:${second}+07:00`);
 }
 
 function getDatesToScrape() {
   const nowVN = getCurrentVietnamTime();
   const dates = [];
-  // Lấy hôm nay, ngày mai và ngày kia (đủ để phủ 48h)
   for (let i = 0; i <= 2; i++) {
     const d = new Date(nowVN);
     d.setDate(nowVN.getDate() + i);
@@ -168,12 +185,21 @@ function isoToVietnamParts(isoZ) {
   if (!isoZ) return null;
   const dt = new Date(isoZ);
   if (isNaN(dt.getTime())) return null;
-  const vnTime = new Date(dt.getTime() + 7 * 3600000);
-  const yyyy = vnTime.getUTCFullYear();
-  const mm = String(vnTime.getUTCMonth() + 1).padStart(2, '0');
-  const dd = String(vnTime.getUTCDate()).padStart(2, '0');
-  let HH = String(vnTime.getUTCHours()).padStart(2, '0');
-  const MM = String(vnTime.getUTCMinutes()).padStart(2, '0');
+  const formatter = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Ho_Chi_Minh',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  });
+  const parts = formatter.formatToParts(dt);
+  const yyyy = parts.find(p => p.type === 'year').value;
+  const mm = parts.find(p => p.type === 'month').value;
+  const dd = parts.find(p => p.type === 'day').value;
+  let HH = parts.find(p => p.type === 'hour').value;
+  const MM = parts.find(p => p.type === 'minute').value;
   const hari = new Intl.DateTimeFormat('id-ID', { timeZone: 'Asia/Ho_Chi_Minh', weekday: 'long' }).format(dt);
   if (HH === '24') HH = '00';
   return { hari, tanggal: `${dd}-${mm}-${yyyy}`, time: `${HH}:${MM}` };
@@ -452,7 +478,7 @@ function filterEventsBySport(events) {
 // ========== MAIN ==========
 async function main() {
   const nowVN = getCurrentVietnamTime();
-  const endVN = new Date(nowVN.getTime() + 48 * 3600000); // 48 giờ
+  const endVN = new Date(nowVN.getTime() + 48 * 3600000);
 
   const dates = getDatesToScrape();
   console.log("Scraping dates:", dates);
@@ -468,7 +494,7 @@ async function main() {
 
   console.log(`Total unique events (before filter): ${allEvents.length}`);
 
-  // Debug: in ra các sự kiện có chứa Milan, Torino, PSG
+  // Debug
   console.log("\n--- Debug: events containing 'milan', 'torino', 'psg' ---");
   allEvents.forEach(e => {
     const homeLow = normalize(e.home);
