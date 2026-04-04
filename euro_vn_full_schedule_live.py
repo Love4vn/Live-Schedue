@@ -169,7 +169,7 @@ def is_channel_match(ch_name: str, m3u_name: str) -> bool:
     m3u_text, m3u_num = split_name_and_number(m3u_norm)
     
     text_similarity = similar(ch_text, m3u_text)
-    if text_similarity < 0.85:
+    if text_similarity < 0.95:
         return False
     
     if ch_num is not None and m3u_num is not None:
@@ -177,14 +177,14 @@ def is_channel_match(ch_name: str, m3u_name: str) -> bool:
     if ch_num is not None or m3u_num is not None:
         return False
     
-    if abs(len(ch_text) - len(m3u_text)) > max(len(ch_text), len(m3u_text)) * 0.3:
+    if abs(len(ch_text) - len(m3u_text)) > max(len(ch_text), len(m3u_text)) * 0.15:
         return False
     return True
 
 def is_team_match(team_name: str, m3u_name: str) -> bool:
     team_norm = normalize(team_name)
     m3u_norm = normalize_channel_name(m3u_name)
-    return similar(team_norm, m3u_norm) >= 0.7
+    return similar(team_norm, m3u_norm) >= 0.85
 
 # ================== SOFASCORE ==================
 async def get_channel_name(session, channel_id):
