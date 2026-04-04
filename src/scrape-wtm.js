@@ -141,7 +141,6 @@ function isTeamInLeague(teamName, leagueTeams) {
   return false;
 }
 
-// Lấy thời điểm hiện tại theo giờ Việt Nam
 function getCurrentVietnamTime() {
   return moment.tz("Asia/Ho_Chi_Minh").toDate();
 }
@@ -165,16 +164,19 @@ function buildDailyUrl(dateYYYYMMDD) {
   return `https://www.wheresthematch.com/live-sport-on-tv/?showdatestart=${dateYYYYMMDD}`;
 }
 
-// Chuyển đổi isoZ (có thể không có múi giờ) sang giờ Việt Nam
+// Chuyển đổi isoZ sang giờ Việt Nam (dùng moment-timezone)
 function isoToVietnamParts(isoZ) {
   if (!isoZ) return null;
+  let normalized = isoZ.trim();
+  // Xử lý các định dạng không có múi giờ
+  if (normalized.includes('T') && !normalized.includes('Z') && !normalized.includes('+') && !normalized.includes('-')) {
+    normalized = normalized.replace('T', ' ');
+  }
   let m;
-  // Nếu chuỗi có dạng "YYYY-MM-DD HH:MM:SS" (không có T và múi giờ) -> coi là giờ London
-  if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(isoZ)) {
-    m = moment.tz(isoZ, "YYYY-MM-DD HH:mm:ss", "Europe/London");
+  if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(normalized)) {
+    m = moment.tz(normalized, "YYYY-MM-DD HH:mm:ss", "Europe/London");
   } else {
-    // Các định dạng khác (có T hoặc có múi giờ) để moment tự xử lý
-    m = moment(isoZ);
+    m = moment(normalized);
   }
   if (!m.isValid()) return null;
   const vn = m.tz("Asia/Ho_Chi_Minh");
@@ -473,7 +475,6 @@ async function main() {
 
   console.log(`Total unique events (before filter): ${allEvents.length}`);
 
-  // Debug
   console.log("\n--- Debug: events containing 'milan', 'torino', 'psg' ---");
   allEvents.forEach(e => {
     const homeLow = normalize(e.home);
