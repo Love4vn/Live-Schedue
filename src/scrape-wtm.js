@@ -161,6 +161,7 @@ function getDatesToScrape() {
 }
 
 function buildDailyUrl(dateYYYYMMDD) {
+  // ĐÃ SỬA DOMAIN: wheresthematch.com (có chữ 's')
   return `https://www.wheresthematch.com/live-sport-on-tv/?showdatestart=${dateYYYYMMDD}`;
 }
 
@@ -170,7 +171,6 @@ function isoToVietnamParts(isoZ) {
   let raw = isoZ.trim();
   raw = raw.replace('T', ' ');
   raw = raw.replace(/\.\d+/, '');
-  // Coi chuỗi là giờ UTC (thực tế nó là giờ UK BST, nhưng ta sẽ cộng 6 tiếng)
   let dt = new Date(raw + 'Z');
   if (isNaN(dt.getTime())) return null;
   // UK hiện tại BST = UTC+1, VN = UTC+7 => chênh 6 giờ
