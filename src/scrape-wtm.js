@@ -1,5 +1,5 @@
 // src/scrape-wtm.js
-// WTM SCRAPER - Lọc 72h tới, giờ Việt Nam (UTC+7), chỉ bóng đá/tennis, xuất JSON
+// WTM SCRAPER - Lọc 48h tới, giờ Việt Nam (UTC+7), chỉ bóng đá/tennis, xuất JSON
 
 const axios = require("axios");
 const cheerio = require("cheerio");
@@ -145,11 +145,11 @@ function getCurrentVietnamTime() {
   return new Date(now.getTime() + 7 * 3600000);
 }
 
-// Lấy 4 ngày (hôm nay + 4 ngày tới) để đảm bảo đủ dữ liệu trong 72h
+// Lấy 4 ngày (hôm nay + 3 ngày tới) để đảm bảo đủ dữ liệu trong 48h
 function getDatesToScrape() {
   const nowVN = getCurrentVietnamTime();
   const dates = [];
-  for (let i = 0; i <= 4; i++) {
+  for (let i = 0; i <= 3; i++) {
     const d = new Date(nowVN);
     d.setDate(nowVN.getDate() + i);
     const yyyy = d.getFullYear();
@@ -368,7 +368,7 @@ function filterEventsBySport(events) {
 // ========== MAIN ==========
 async function main() {
   const nowVN = getCurrentVietnamTime();
-  const endVN = new Date(nowVN.getTime() 72 * 3600000);
+  const endVN = new Date(nowVN.getTime() + 48 * 3600000);
 
   const dates = getDatesToScrape();
   console.log("Scraping dates:", dates);
