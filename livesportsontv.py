@@ -1,14 +1,16 @@
 # File: livesportsontv.py
-# Hoàn thiện: lấy đúng lịch từ hôm nay trở đi (giờ Việt Nam)
+# Tự động phát hiện múi giờ từ trang và chuyển sang giờ Việt Nam (GMT+7)
 
 import asyncio
 import json
 import re
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from playwright.async_api import async_playwright
 from bs4 import BeautifulSoup
 
-# ==================== HÀM TIỆN ÍCH ====================
+# Múi giờ Việt Nam cố định (UTC+7)
+VN_TZ = timezone(timedelta(hours=7))
+
 def parse_time_with_ampm(time_str: str):
     """Chuyển '10:00 PM' sang 24h"""
     time_str = time_str.strip().upper()
@@ -43,7 +45,7 @@ def parse_date_from_text(text):
     return None, None
 
 def get_month_number(month_str: str) -> int:
-    """Chuyển tên tháng (tiếng Anh/Việt) sang số"""
+    """Chuyển tên tháng sang số"""
     month_str = month_str.lower()
     month_map = {
         "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
@@ -56,6 +58,16 @@ def get_month_number(month_str: str) -> int:
         if k in month_str:
             return v
     return 1
+
+def extract_timezone_from_html(soup):
+    """Tìm dòng 'ALL TIME GMT+X' trong HTML để lấy múi giờ trang"""
+    text = soup.get_text()
+    match = re.search(r'ALL TIME GMT([+-]\d+)', text, re.IGNORECASE)
+    if match:
+        offset = int(match.group(1))
+        return timezone(timedelta(hours=offset))
+    # Mặc định nếu không tìm thấy, thử dùng UTC (0)
+    return timezone.utc
 
 # ==================== LỌC GIAO HỮU ====================
 EUROPEAN_COUNTRIES = {
@@ -168,8 +180,9 @@ LEAGUES_CONFIG = {
 # ==================== HÀM CHÍNH ====================
 async def scrape_league_schedules():
     all_games = []
-    today = datetime.now()
-    current_year = today.year
+    # Lấy ngày hiện tại theo giờ VN để lọc
+    now_vn = datetime.now(VN_TZ)
+    current_year = now_vn.year
 
     async with async_playwright() as p:
         print("🚀 Khởi động trình duyệt...")
@@ -199,13 +212,18 @@ async def scrape_league_schedules():
 
             html = await page.content()
             soup = BeautifulSoup(html, 'html.parser')
+
+            # Xác định múi giờ của trang (dựa trên dòng "ALL TIME GMT+...")
+            page_tz = extract_timezone_from_html(soup)
+            print(f"    🕒 Múi giờ trang web: {page_tz}")
+
             rows = soup.find_all('div', class_='event--wrapp')
             print(f"    📊 Tìm thấy {len(rows)} sự kiện.")
 
             added = 0
             for row in rows:
                 try:
-                    # ---- Ngày tháng ----
+                    # ---- Ngày tháng (theo trang) ----
                     date_div = row.find('div', class_='event__info--date')
                     if not date_div:
                         continue
@@ -223,13 +241,7 @@ async def scrape_league_schedules():
                     month_num = get_month_number(month_str)
                     day_num = int(day_str)
 
-                    # Chỉ lấy các trận từ hôm nay trở đi
-                    if month_num < today.month:
-                        continue
-                    if month_num == today.month and day_num < today.day:
-                        continue
-
-                    # ---- Giờ ----
+                    # ---- Giờ (theo trang) ----
                     time_tag = row.find('time')
                     if not time_tag:
                         continue
@@ -239,8 +251,19 @@ async def scrape_league_schedules():
                     except:
                         continue
 
-                    output_date = f"{current_year}-{month_num:02d}-{day_num:02d}"
-                    output_time = f"{hour:02d}:{minute:02d}"
+                    # Tạo datetime với múi giờ của trang
+                    page_dt = datetime(current_year, month_num, day_num, hour, minute)
+                    page_dt = page_dt.replace(tzinfo=page_tz)
+
+                    # Chuyển sang giờ Việt Nam
+                    vn_dt = page_dt.astimezone(VN_TZ)
+
+                    # Chỉ lấy các trận từ hôm nay trở đi (theo giờ VN)
+                    if vn_dt.date() < now_vn.date():
+                        continue
+
+                    output_date = vn_dt.strftime("%Y-%m-%d")
+                    output_time = vn_dt.strftime("%H:%M")
 
                     # ---- Tên trận ----
                     if is_tennis:
