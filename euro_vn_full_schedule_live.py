@@ -51,18 +51,23 @@ ALLOWED_FOOTBALL_LEAGUES = {
     "League Cup"
 }
 
+# Danh sách đội Premier League dùng chung cho các giải Anh
+PREMIER_LEAGUE_TEAMS = {
+    "arsenal", "aston villa", "bournemouth", "brentford", "brighton", "chelsea",
+    "crystal palace", "everton", "fulham", "leeds united", "liverpool", "manchester city",
+    "manchester united", "newcastle", "nottingham forest", "sunderland", "tottenham hotspur",
+    "west ham united", "wolverhampton"
+}
+
 # Danh sách đội riêng từng giải (tên chuẩn, viết thường)
 ALLOWED_TEAMS_PER_LEAGUE = {
-    "Premier League": {"arsenal", "aston villa", "bournemouth", "brentford", "brighton", "chelsea",
-                       "crystal palace", "everton", "fulham", "leeds united", "liverpool", "manchester city",
-                       "manchester united", "newcastle", "nottingham forest", "sunderland", "tottenham hotspur",
-                       "west ham united", "wolverhampton"},
+    "Premier League": PREMIER_LEAGUE_TEAMS,
     "Serie A": {"inter milan", "ac milan", "napoli", "juventus", "roma", "atalanta", "lazio"},
     "La Liga": {"barcelona", "real madrid", "atletico madrid"},
     "Bundesliga": {"bayern munich", "borussia dortmund", "bayer leverkusen"},
     "Ligue 1": {"psg", "paris saint-germain", "olympique marseille", "marseille"},
-    "FA Cup": ALLOWED_TEAMS_PER_LEAGUE["Premier League"],   # cùng danh sách đội
-    "League Cup": ALLOWED_TEAMS_PER_LEAGUE["Premier League"]
+    "FA Cup": PREMIER_LEAGUE_TEAMS,
+    "League Cup": PREMIER_LEAGUE_TEAMS
 }
 
 LEAGUE_GROUP_NAME = {
