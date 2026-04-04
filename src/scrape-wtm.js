@@ -163,20 +163,30 @@ function buildDailyUrl(dateYYYYMMDD) {
   return `https://www.wheresthematch.com/live-sport-on-tv/?showdatestart=${dateYYYYMMDD}`;
 }
 
-// Chuyển đổi chuỗi thời gian từ WTM (giờ London) sang giờ Việt Nam
+// Chuyển đổi thời gian từ WTM (giờ London) sang giờ Việt Nam
 function isoToVietnamParts(isoZ) {
   if (!isoZ) return null;
-  let s = isoZ.trim();
-  // Nếu có dạng "2026-04-04 15:15:00" hoặc "2026-04-04T15:15:00" -> coi là giờ London (Europe/London)
-  if (s.includes('T')) s = s.replace('T', ' ');
+  let raw = isoZ.trim();
+  // Chuyển định dạng có 'T' thành cách nhau bằng space
+  raw = raw.replace('T', ' ');
+  // Loại bỏ phần millisecond nếu có (ví dụ .000)
+  raw = raw.replace(/\.\d+/, '');
+  // Nếu chuỗi có dạng "YYYY-MM-DD HH:MM:SS" thì parse với múi giờ Europe/London
   let m;
-  if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(s)) {
-    m = moment.tz(s, "YYYY-MM-DD HH:mm:ss", "Europe/London");
+  if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(raw)) {
+    m = moment.tz(raw, "YYYY-MM-DD HH:mm:ss", "Europe/London");
   } else {
-    // fallback: thử parse trực tiếp
-    m = moment(s);
+    // Thử parse trực tiếp
+    m = moment(raw);
+    if (m.isValid()) {
+      // Nếu parse thành công nhưng không có timezone, coi như là London
+      m = moment.tz(raw, "Europe/London");
+    }
   }
-  if (!m.isValid()) return null;
+  if (!m || !m.isValid()) {
+    console.log(`[DEBUG] Failed to parse time: ${isoZ}`);
+    return null;
+  }
   const vn = m.tz("Asia/Ho_Chi_Minh");
   return {
     hari: vn.locale('id').format('dddd'),
