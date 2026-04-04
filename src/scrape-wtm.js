@@ -4,7 +4,6 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const fs = require("fs");
-const moment = require("moment-timezone");
 const { wrapper } = require("axios-cookiejar-support");
 const { CookieJar } = require("tough-cookie");
 
@@ -142,7 +141,9 @@ function isTeamInLeague(teamName, leagueTeams) {
 }
 
 function getCurrentVietnamTime() {
-  return moment.tz("Asia/Ho_Chi_Minh").toDate();
+  const now = new Date();
+  const vnTime = new Date(now.getTime() + 7 * 3600000);
+  return vnTime;
 }
 
 function getDatesToScrape() {
@@ -163,32 +164,25 @@ function buildDailyUrl(dateYYYYMMDD) {
   return `https://www.wheresthematch.com/live-sport-on-tv/?showdatestart=${dateYYYYMMDD}`;
 }
 
-// Hàm chuyển đổi thời gian từ WTM (giờ UK) sang giờ Việt Nam (đã sửa lỗi +1h)
+// Chuyển đổi thời gian từ WTM (giờ UK BST) sang giờ Việt Nam (cộng 6 giờ)
 function isoToVietnamParts(isoZ) {
   if (!isoZ) return null;
   let raw = isoZ.trim();
-  // Chuẩn hóa định dạng: thay T bằng space, bỏ mili giây
   raw = raw.replace('T', ' ');
   raw = raw.replace(/\.\d+/, '');
-  
-  // Ép parse với múi giờ London (Europe/London) - tự động xử lý BST
-  let m = moment.tz(raw, "Europe/London");
-  if (!m.isValid()) {
-    // Thử parse dạng "YYYY-MM-DD HH:mm:ss"
-    m = moment.tz(raw, "YYYY-MM-DD HH:mm:ss", "Europe/London");
-  }
-  if (!m.isValid()) {
-    console.log(`[ERROR] Cannot parse time: ${raw}`);
-    return null;
-  }
-  
-  // Chuyển sang giờ Việt Nam
-  const vn = m.tz("Asia/Ho_Chi_Minh");
-  return {
-    hari: vn.locale('id').format('dddd'),
-    tanggal: vn.format('DD-MM-YYYY'),
-    time: vn.format('HH:mm')
-  };
+  // Coi chuỗi là giờ UTC (thực tế nó là giờ UK BST, nhưng ta sẽ cộng 6 tiếng)
+  let dt = new Date(raw + 'Z');
+  if (isNaN(dt.getTime())) return null;
+  // UK hiện tại BST = UTC+1, VN = UTC+7 => chênh 6 giờ
+  const vnTime = new Date(dt.getTime() + 6 * 3600000);
+  const yyyy = vnTime.getUTCFullYear();
+  const mm = String(vnTime.getUTCMonth() + 1).padStart(2, '0');
+  const dd = String(vnTime.getUTCDate()).padStart(2, '0');
+  const HH = String(vnTime.getUTCHours()).padStart(2, '0');
+  const MM = String(vnTime.getUTCMinutes()).padStart(2, '0');
+  const hariFormatter = new Intl.DateTimeFormat('id-ID', { timeZone: 'Asia/Ho_Chi_Minh', weekday: 'long' });
+  const hari = hariFormatter.format(vnTime);
+  return { hari, tanggal: `${dd}-${mm}-${yyyy}`, time: `${HH}:${MM}` };
 }
 
 function parseEventDateTimeVN(tanggal, time) {
@@ -388,7 +382,6 @@ async function main() {
 
   console.log(`Total unique events (before filter): ${allEvents.length}`);
 
-  // Debug
   console.log("\n--- Debug: events containing 'milan', 'torino', 'psg' ---");
   allEvents.forEach(e => {
     const homeLow = normalize(e.home);
