@@ -154,36 +154,35 @@ function getDatesToScrape() {
     const yyyy = d.getFullYear();
     const mm = String(d.getMonth() + 1).padStart(2, '0');
     const dd = String(d.getDate()).padStart(2, '0');
-    const ymd = `${yyyy}${mm}${dd}`;
-    if (!dates.includes(ymd)) dates.push(ymd);
+    dates.push(`${yyyy}${mm}${dd}`);
   }
-  return dates;
+  return [...new Set(dates)];
 }
 
 function buildDailyUrl(dateYYYYMMDD) {
   return `https://www.wheresthematch.com/live-sport-on-tv/?showdatestart=${dateYYYYMMDD}`;
 }
 
-// Chuyển đổi isoZ sang giờ Việt Nam (dùng moment-timezone)
+// Chuyển đổi chuỗi thời gian từ WTM (giờ London) sang giờ Việt Nam
 function isoToVietnamParts(isoZ) {
   if (!isoZ) return null;
-  let normalized = isoZ.trim();
-  // Xử lý các định dạng không có múi giờ
-  if (normalized.includes('T') && !normalized.includes('Z') && !normalized.includes('+') && !normalized.includes('-')) {
-    normalized = normalized.replace('T', ' ');
-  }
+  let s = isoZ.trim();
+  // Nếu có dạng "2026-04-04 15:15:00" hoặc "2026-04-04T15:15:00" -> coi là giờ London (Europe/London)
+  if (s.includes('T')) s = s.replace('T', ' ');
   let m;
-  if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(normalized)) {
-    m = moment.tz(normalized, "YYYY-MM-DD HH:mm:ss", "Europe/London");
+  if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(s)) {
+    m = moment.tz(s, "YYYY-MM-DD HH:mm:ss", "Europe/London");
   } else {
-    m = moment(normalized);
+    // fallback: thử parse trực tiếp
+    m = moment(s);
   }
   if (!m.isValid()) return null;
   const vn = m.tz("Asia/Ho_Chi_Minh");
-  const hari = vn.locale('id').format('dddd');
-  const tanggal = vn.format('DD-MM-YYYY');
-  const time = vn.format('HH:mm');
-  return { hari, tanggal, time };
+  return {
+    hari: vn.locale('id').format('dddd'),
+    tanggal: vn.format('DD-MM-YYYY'),
+    time: vn.format('HH:mm')
+  };
 }
 
 function parseEventDateTimeVN(tanggal, time) {
@@ -201,16 +200,6 @@ function parseEventDateTimeVN(tanggal, time) {
     eventDate.setDate(eventDate.getDate() + addDay);
   }
   return eventDate;
-}
-
-function extractHiddenFields($) {
-  const fields = {};
-  $("input[type='hidden']").each((_, el) => {
-    const name = $(el).attr("name");
-    const value = $(el).attr("value") || "";
-    if (name) fields[name] = value;
-  });
-  return fields;
 }
 
 function uniqKeepOrder(arr) {
@@ -299,107 +288,25 @@ function dedupRows(rows) {
   return Array.from(map.values());
 }
 
-// ========== SCRAPE MỘT NGÀY ==========
-async function scrapeOneDate(dateYYYYMMDD, opts = {}) {
-  const urlBase = buildDailyUrl(dateYYYYMMDD);
-  const maxPagingIndex = Number.isFinite(opts.maxPagingIndex) ? opts.maxPagingIndex : 60;
-  const delayMs = Number.isFinite(opts.delayMs) ? opts.delayMs : 1200;
-
+// ========== SCRAPE MỘT NGÀY (CHỈ LẤY PAGE 1) ==========
+async function scrapeOneDate(dateYYYYMMDD) {
+  const url = buildDailyUrl(dateYYYYMMDD);
   console.log(`\n== DATE ${dateYYYYMMDD} ==`);
-  console.log(`GET Page 1: ${urlBase}`);
+  console.log(`GET ${url}`);
 
-  let currentHtml = "";
+  let html;
   try {
-    const res1 = await getWithRetry(urlBase, 3, 1000);
-    currentHtml = res1.data;
+    const res = await getWithRetry(url, 3, 1000);
+    html = res.data;
   } catch (error) {
-    console.error(`Failed to fetch ${urlBase} after retries: ${error.message}`);
+    console.error(`Failed to fetch ${url} after retries: ${error.message}`);
     return [];
   }
 
-  const $1 = cheerio.load(currentHtml);
-  const p1 = parseWTMEvents($1, 1, dateYYYYMMDD);
-
-  let allData = [];
-  allData.push(...p1);
-  allData = dedupRows(allData);
-
-  console.log(`Page 1 rows: ${p1.length} | unique total: ${allData.length}`);
-
-  if (p1.length === 0) {
-    console.log(`No rows on Page 1. Stop date ${dateYYYYMMDD}.`);
-    return allData;
-  }
-
-  let pageNum = 2;
-  let consecutiveEmpty = 0;
-
-  for (let idx = 0; idx <= maxPagingIndex; idx++) {
-    const $prev = cheerio.load(currentHtml);
-    const hidden = extractHiddenFields($prev);
-
-    const payload = new URLSearchParams({
-      ...hidden,
-      __EVENTTARGET: `pagetotalhp${idx}`,
-      __EVENTARGUMENT: "",
-    });
-
-    console.log(`POST Page ${pageNum} (target=pagetotalhp${idx})`);
-
-    let resNext;
-    try {
-      resNext = await client.post(
-        "https://www.wheresthematch.com/live-sport-on-tv/?paging=true",
-        payload.toString(),
-        {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            Referer: urlBase,
-          },
-        }
-      );
-    } catch (e) {
-      console.log(`POST failed on idx ${idx}: ${e.message}`);
-      break;
-    }
-
-    currentHtml = resNext.data;
-    const $n = cheerio.load(currentHtml);
-    const pData = parseWTMEvents($n, pageNum, dateYYYYMMDD);
-
-    if (pData.length === 0) {
-      console.log(`Page ${pageNum}: 0 rows.`);
-      consecutiveEmpty++;
-      if (consecutiveEmpty >= 2) {
-        console.log(`Empty for 2 times => stop.`);
-        break;
-      }
-      continue;
-    }
-
-    const before = allData.length;
-    allData.push(...pData);
-    allData = dedupRows(allData);
-    const after = allData.length;
-    const added = after - before;
-    console.log(`Page ${pageNum}: rows ${pData.length} | added unique: ${added}`);
-
-    if (added === 0) {
-      consecutiveEmpty++;
-      if (consecutiveEmpty >= 2) {
-        console.log(`No unique for 2 times => stop.`);
-        break;
-      }
-    } else {
-      consecutiveEmpty = 0;
-    }
-
-    pageNum++;
-    await new Promise((r) => setTimeout(r, delayMs));
-  }
-
-  console.log(`DATE ${dateYYYYMMDD} DONE. unique rows: ${allData.length}`);
-  return allData;
+  const $ = cheerio.load(html);
+  const events = parseWTMEvents($, 1, dateYYYYMMDD);
+  console.log(`Page 1 rows: ${events.length}`);
+  return events;
 }
 
 // ========== BỘ LỌC ==========
@@ -468,13 +375,14 @@ async function main() {
 
   let allEvents = [];
   for (const d of dates) {
-    const rows = await scrapeOneDate(d, { maxPagingIndex: 60, delayMs: 1200 });
+    const rows = await scrapeOneDate(d);
     allEvents.push(...rows);
     allEvents = dedupRows(allEvents);
   }
 
   console.log(`Total unique events (before filter): ${allEvents.length}`);
 
+  // Debug
   console.log("\n--- Debug: events containing 'milan', 'torino', 'psg' ---");
   allEvents.forEach(e => {
     const homeLow = normalize(e.home);
