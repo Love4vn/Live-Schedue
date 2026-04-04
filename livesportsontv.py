@@ -1,7 +1,5 @@
 # File: livesportsontv.py
-# Final version: No timezone conversion (web time is already in viewer's local time)
-# This script scrapes the schedule from livesportsontv.com and outputs it as-is,
-# assuming the website has already adjusted the times to Vietnam Time (GMT+7).
+# Hoàn thiện: lấy đúng lịch từ hôm nay trở đi (giờ Việt Nam)
 
 import asyncio
 import json
@@ -12,9 +10,8 @@ from bs4 import BeautifulSoup
 
 # ==================== HÀM TIỆN ÍCH ====================
 def parse_time_with_ampm(time_str: str):
-    """Convert time string like '10:00 PM' to 24h format (22, 00)."""
+    """Chuyển '10:00 PM' sang 24h"""
     time_str = time_str.strip().upper()
-    # Add a space between time and AM/PM if missing (e.g., "10:00PM" -> "10:00 PM")
     if ' ' not in time_str and ('AM' in time_str or 'PM' in time_str):
         if 'AM' in time_str:
             time_str = time_str.replace('AM', ' AM')
@@ -36,9 +33,8 @@ def parse_time_with_ampm(time_str: str):
     return hour, minute
 
 def parse_date_from_text(text):
-    """Extract day and month from strings like '03 Mar' or '03 THÁNG 4'."""
+    """Trích xuất ngày và tháng từ '03 Mar' hoặc '03 THÁNG 4'"""
     text = text.strip().lower()
-    # Match day and month (including Vietnamese)
     match = re.search(r'(\d{1,2})\s+([a-zà-ỹ0-9\s]+)', text)
     if match:
         day = match.group(1)
@@ -47,7 +43,7 @@ def parse_date_from_text(text):
     return None, None
 
 def get_month_number(month_str: str) -> int:
-    """Convert month name (e.g., 'mar', 'tháng 4') to month number (1-12)."""
+    """Chuyển tên tháng (tiếng Anh/Việt) sang số"""
     month_str = month_str.lower()
     month_map = {
         "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
@@ -172,10 +168,7 @@ LEAGUES_CONFIG = {
 # ==================== HÀM CHÍNH ====================
 async def scrape_league_schedules():
     all_games = []
-    # Get current date for filtering (using local system date, which is already GMT+7)
     today = datetime.now()
-    target_day = str(today.day)
-    target_month_num = today.month
     current_year = today.year
 
     async with async_playwright() as p:
@@ -199,7 +192,7 @@ async def scrape_league_schedules():
                 print(f"    ❌ Lỗi tải trang: {e}")
                 continue
 
-            # Scroll to load all content
+            # Cuộn để tải hết nội dung
             for _ in range(4):
                 await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
                 await page.wait_for_timeout(1500)
@@ -212,7 +205,7 @@ async def scrape_league_schedules():
             added = 0
             for row in rows:
                 try:
-                    # ---- Lấy ngày tháng (local time) ----
+                    # ---- Ngày tháng ----
                     date_div = row.find('div', class_='event__info--date')
                     if not date_div:
                         continue
@@ -228,11 +221,15 @@ async def scrape_league_schedules():
                         continue
 
                     month_num = get_month_number(month_str)
-                    # Only include matches from today onward
-                    if int(day_str) < target_day and month_num <= target_month_num:
+                    day_num = int(day_str)
+
+                    # Chỉ lấy các trận từ hôm nay trở đi
+                    if month_num < today.month:
+                        continue
+                    if month_num == today.month and day_num < today.day:
                         continue
 
-                    # ---- Lấy giờ (local time) ----
+                    # ---- Giờ ----
                     time_tag = row.find('time')
                     if not time_tag:
                         continue
@@ -242,11 +239,10 @@ async def scrape_league_schedules():
                     except:
                         continue
 
-                    # Format date and time for output
-                    output_date = f"{current_year}-{month_num:02d}-{int(day_str):02d}"
+                    output_date = f"{current_year}-{month_num:02d}-{day_num:02d}"
                     output_time = f"{hour:02d}:{minute:02d}"
 
-                    # ---- Tên trận đấu / giải đấu ----
+                    # ---- Tên trận ----
                     if is_tennis:
                         home_elem = row.find('div', class_=lambda c: c and 'event_participant--home' in c)
                         if not home_elem:
@@ -267,7 +263,7 @@ async def scrape_league_schedules():
                             if title_elem:
                                 matchup = title_elem.get_text(strip=True)
 
-                    # Apply filters
+                    # Áp dụng bộ lọc
                     if team_filter is not None:
                         if not any(t.lower() in matchup.lower() for t in team_filter):
                             continue
@@ -278,7 +274,7 @@ async def scrape_league_schedules():
                         else:
                             continue
 
-                    # ---- Kênh phát sóng ----
+                    # ---- Kênh ----
                     channels = []
                     tags_container = row.find('ul', class_='event__tags')
                     if not tags_container:
@@ -302,18 +298,16 @@ async def scrape_league_schedules():
                     })
                     added += 1
 
-                except Exception as e:
-                    # Skip row on error
+                except Exception:
                     continue
 
             print(f"    ✅ Đã thêm {added} trận")
 
         await browser.close()
 
-    # Save results
+    # Lưu file
     filename = "schedule_livesportsontv.json"
     if all_games:
-        # Sort by date and time
         all_games.sort(key=lambda x: (x["Date"], x["Time"]))
         with open(filename, 'w', encoding='utf-8') as f:
             json.dump(all_games, f, indent=4, ensure_ascii=False)
