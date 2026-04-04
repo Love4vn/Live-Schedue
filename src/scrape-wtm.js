@@ -140,10 +140,27 @@ function isTeamInLeague(teamName, leagueTeams) {
   return false;
 }
 
+// Lấy thời điểm hiện tại theo giờ Việt Nam (trả về Date object)
 function getCurrentVietnamTime() {
   const now = new Date();
-  const vnTime = new Date(now.getTime() + 7 * 3600000);
-  return vnTime;
+  const formatter = new Intl.DateTimeFormat('en', {
+    timeZone: 'Asia/Ho_Chi_Minh',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false
+  });
+  const parts = formatter.formatToParts(now);
+  const year = parts.find(p => p.type === 'year').value;
+  const month = parts.find(p => p.type === 'month').value;
+  const day = parts.find(p => p.type === 'day').value;
+  const hour = parts.find(p => p.type === 'hour').value;
+  const minute = parts.find(p => p.type === 'minute').value;
+  const second = parts.find(p => p.type === 'second').value;
+  return new Date(`${year}-${month}-${day}T${hour}:${minute}:${second}+07:00`);
 }
 
 function getDatesToScrape() {
@@ -165,30 +182,42 @@ function buildDailyUrl(dateYYYYMMDD) {
   return `https://www.wheresthematch.com/live-sport-on-tv/?showdatestart=${dateYYYYMMDD}`;
 }
 
+// Chuyển đổi isoZ (có thể có múi giờ) sang giờ Việt Nam
 function isoToVietnamParts(isoZ) {
   if (!isoZ) return null;
-  // Đảm bảo chuỗi có múi giờ UTC
   let isoStr = isoZ.trim();
-  if (!isoStr.endsWith('Z') && !isoStr.includes('+') && !isoStr.includes('-')) {
+  // Nếu chuỗi không có múi giờ, thêm Z (UTC)
+  if (!isoStr.endsWith('Z') && !/[+-]\d{2}:\d{2}$/.test(isoStr)) {
     isoStr += 'Z';
   }
   const dt = new Date(isoStr);
   if (isNaN(dt.getTime())) return null;
-  // Chuyển sang giờ Việt Nam (UTC+7)
-  const vnTimestamp = dt.getTime() + 7 * 3600000;
-  const vnDate = new Date(vnTimestamp);
-  const yyyy = vnDate.getUTCFullYear();
-  const mm = String(vnDate.getUTCMonth() + 1).padStart(2, '0');
-  const dd = String(vnDate.getUTCDate()).padStart(2, '0');
-  let HH = String(vnDate.getUTCHours()).padStart(2, '0');
-  const MM = String(vnDate.getUTCMinutes()).padStart(2, '0');
-  // Lấy thứ trong tuần theo giờ Việt Nam
+
+  // Lấy giờ Việt Nam từ dt
+  const formatter = new Intl.DateTimeFormat('en', {
+    timeZone: 'Asia/Ho_Chi_Minh',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  });
+  const parts = formatter.formatToParts(dt);
+  const yyyy = parts.find(p => p.type === 'year').value;
+  const mm = parts.find(p => p.type === 'month').value;
+  const dd = parts.find(p => p.type === 'day').value;
+  let HH = parts.find(p => p.type === 'hour').value;
+  const MM = parts.find(p => p.type === 'minute').value;
+
   const hariFormatter = new Intl.DateTimeFormat('id-ID', { timeZone: 'Asia/Ho_Chi_Minh', weekday: 'long' });
   const hari = hariFormatter.format(dt);
+
   if (HH === '24') HH = '00';
   return { hari, tanggal: `${dd}-${mm}-${yyyy}`, time: `${HH}:${MM}` };
 }
 
+// Parse ngày giờ đã ở dạng Việt Nam (tanggal, time) thành Date object (UTC+7)
 function parseEventDateTimeVN(tanggal, time) {
   const [dd, mm, yyyy] = tanggal.split('-');
   let [HH, MM] = time.split(':');
@@ -198,7 +227,6 @@ function parseEventDateTimeVN(tanggal, time) {
     HH = '0';
     addDay = 1;
   }
-  // Tạo date với giả định giờ đã là UTC+7
   let eventDate = new Date(`${yyyy}-${mm}-${dd}T${HH}:${MM}:00+07:00`);
   if (isNaN(eventDate.getTime())) return null;
   if (addDay) {
