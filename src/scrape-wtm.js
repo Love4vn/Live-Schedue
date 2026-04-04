@@ -1,5 +1,5 @@
 // src/scrape-wtm.js
-// WTM SCRAPER - Lọc 48h tới, giờ Việt Nam, chỉ bóng đá/tennis, xuất JSON
+// WTM SCRAPER - Lọc 48h tới, giờ Việt Nam (UTC+7), chỉ bóng đá/tennis, xuất JSON
 
 const axios = require("axios");
 const cheerio = require("cheerio");
@@ -142,24 +142,8 @@ function isTeamInLeague(teamName, leagueTeams) {
 
 function getCurrentVietnamTime() {
   const now = new Date();
-  const formatter = new Intl.DateTimeFormat('en-CA', {
-    timeZone: 'Asia/Ho_Chi_Minh',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: false
-  });
-  const parts = formatter.formatToParts(now);
-  const year = parts.find(p => p.type === 'year').value;
-  const month = parts.find(p => p.type === 'month').value;
-  const day = parts.find(p => p.type === 'day').value;
-  const hour = parts.find(p => p.type === 'hour').value;
-  const minute = parts.find(p => p.type === 'minute').value;
-  const second = parts.find(p => p.type === 'second').value;
-  return new Date(`${year}-${month}-${day}T${hour}:${minute}:${second}+07:00`);
+  const vnTime = new Date(now.getTime() + 7 * 3600000);
+  return vnTime;
 }
 
 function getDatesToScrape() {
@@ -183,24 +167,24 @@ function buildDailyUrl(dateYYYYMMDD) {
 
 function isoToVietnamParts(isoZ) {
   if (!isoZ) return null;
-  const dt = new Date(isoZ);
+  // Đảm bảo chuỗi có múi giờ UTC
+  let isoStr = isoZ.trim();
+  if (!isoStr.endsWith('Z') && !isoStr.includes('+') && !isoStr.includes('-')) {
+    isoStr += 'Z';
+  }
+  const dt = new Date(isoStr);
   if (isNaN(dt.getTime())) return null;
-  const formatter = new Intl.DateTimeFormat('en-CA', {
-    timeZone: 'Asia/Ho_Chi_Minh',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false
-  });
-  const parts = formatter.formatToParts(dt);
-  const yyyy = parts.find(p => p.type === 'year').value;
-  const mm = parts.find(p => p.type === 'month').value;
-  const dd = parts.find(p => p.type === 'day').value;
-  let HH = parts.find(p => p.type === 'hour').value;
-  const MM = parts.find(p => p.type === 'minute').value;
-  const hari = new Intl.DateTimeFormat('id-ID', { timeZone: 'Asia/Ho_Chi_Minh', weekday: 'long' }).format(dt);
+  // Chuyển sang giờ Việt Nam (UTC+7)
+  const vnTimestamp = dt.getTime() + 7 * 3600000;
+  const vnDate = new Date(vnTimestamp);
+  const yyyy = vnDate.getUTCFullYear();
+  const mm = String(vnDate.getUTCMonth() + 1).padStart(2, '0');
+  const dd = String(vnDate.getUTCDate()).padStart(2, '0');
+  let HH = String(vnDate.getUTCHours()).padStart(2, '0');
+  const MM = String(vnDate.getUTCMinutes()).padStart(2, '0');
+  // Lấy thứ trong tuần theo giờ Việt Nam
+  const hariFormatter = new Intl.DateTimeFormat('id-ID', { timeZone: 'Asia/Ho_Chi_Minh', weekday: 'long' });
+  const hari = hariFormatter.format(dt);
   if (HH === '24') HH = '00';
   return { hari, tanggal: `${dd}-${mm}-${yyyy}`, time: `${HH}:${MM}` };
 }
@@ -214,6 +198,7 @@ function parseEventDateTimeVN(tanggal, time) {
     HH = '0';
     addDay = 1;
   }
+  // Tạo date với giả định giờ đã là UTC+7
   let eventDate = new Date(`${yyyy}-${mm}-${dd}T${HH}:${MM}:00+07:00`);
   if (isNaN(eventDate.getTime())) return null;
   if (addDay) {
