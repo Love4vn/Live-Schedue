@@ -1,41 +1,20 @@
 # File: livesportsontv.py
-# Lấy tất cả trận từ hôm nay trở đi, chuyển sang giờ Việt Nam
+# Final version: No timezone conversion (web time is already in viewer's local time)
+# This script scrapes the schedule from livesportsontv.com and outputs it as-is,
+# assuming the website has already adjusted the times to Vietnam Time (GMT+7).
 
 import asyncio
 import json
 import re
 from datetime import datetime
-import zoneinfo
 from playwright.async_api import async_playwright
 from bs4 import BeautifulSoup
 
-# ==================== CẤU HÌNH MÚI GIỜ ====================
-UK_TZ = zoneinfo.ZoneInfo("Europe/London")
-VIETNAM_TZ = zoneinfo.ZoneInfo("Asia/Ho_Chi_Minh")
-
-# Ánh xạ tháng (hỗ trợ tiếng Anh và tiếng Việt)
-MONTH_MAP = {
-    "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
-    "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12,
-    "tháng 1": 1, "tháng 2": 2, "tháng 3": 3, "tháng 4": 4, "tháng 5": 5,
-    "tháng 6": 6, "tháng 7": 7, "tháng 8": 8, "tháng 9": 9, "tháng 10": 10,
-    "tháng 11": 11, "tháng 12": 12
-}
-
 # ==================== HÀM TIỆN ÍCH ====================
-def parse_date_from_text(text):
-    """Trích xuất ngày và tháng từ chuỗi như '03 Mar' hoặc '03 THÁNG 4'"""
-    text = text.strip().lower()
-    match = re.search(r'(\d{1,2})\s+([a-zà-ỹ0-9\s]+)', text)
-    if match:
-        day = match.group(1)
-        month_str = match.group(2).strip()
-        return day, month_str
-    return None, None
-
 def parse_time_with_ampm(time_str: str):
-    """Chuyển '10:00 PM' sang 24h"""
+    """Convert time string like '10:00 PM' to 24h format (22, 00)."""
     time_str = time_str.strip().upper()
+    # Add a space between time and AM/PM if missing (e.g., "10:00PM" -> "10:00 PM")
     if ' ' not in time_str and ('AM' in time_str or 'PM' in time_str):
         if 'AM' in time_str:
             time_str = time_str.replace('AM', ' AM')
@@ -49,12 +28,38 @@ def parse_time_with_ampm(time_str: str):
         meridiem = None
     hour_min = time_part.split(':')
     hour = int(hour_min[0])
-    minute = int(hour_min[1])
+    minute = int(hour_min[1]) if len(hour_min) > 1 else 0
     if meridiem == 'PM' and hour != 12:
         hour += 12
     elif meridiem == 'AM' and hour == 12:
         hour = 0
     return hour, minute
+
+def parse_date_from_text(text):
+    """Extract day and month from strings like '03 Mar' or '03 THÁNG 4'."""
+    text = text.strip().lower()
+    # Match day and month (including Vietnamese)
+    match = re.search(r'(\d{1,2})\s+([a-zà-ỹ0-9\s]+)', text)
+    if match:
+        day = match.group(1)
+        month_str = match.group(2).strip()
+        return day, month_str
+    return None, None
+
+def get_month_number(month_str: str) -> int:
+    """Convert month name (e.g., 'mar', 'tháng 4') to month number (1-12)."""
+    month_str = month_str.lower()
+    month_map = {
+        "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
+        "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12,
+        "tháng 1": 1, "tháng 2": 2, "tháng 3": 3, "tháng 4": 4, "tháng 5": 5,
+        "tháng 6": 6, "tháng 7": 7, "tháng 8": 8, "tháng 9": 9, "tháng 10": 10,
+        "tháng 11": 11, "tháng 12": 12
+    }
+    for k, v in month_map.items():
+        if k in month_str:
+            return v
+    return 1
 
 # ==================== LỌC GIAO HỮU ====================
 EUROPEAN_COUNTRIES = {
@@ -167,8 +172,11 @@ LEAGUES_CONFIG = {
 # ==================== HÀM CHÍNH ====================
 async def scrape_league_schedules():
     all_games = []
-    now_uk = datetime.now(UK_TZ)
-    current_year = now_uk.year
+    # Get current date for filtering (using local system date, which is already GMT+7)
+    today = datetime.now()
+    target_day = str(today.day)
+    target_month_num = today.month
+    current_year = today.year
 
     async with async_playwright() as p:
         print("🚀 Khởi động trình duyệt...")
@@ -191,7 +199,7 @@ async def scrape_league_schedules():
                 print(f"    ❌ Lỗi tải trang: {e}")
                 continue
 
-            # Cuộn để tải hết nội dung
+            # Scroll to load all content
             for _ in range(4):
                 await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
                 await page.wait_for_timeout(1500)
@@ -204,13 +212,12 @@ async def scrape_league_schedules():
             added = 0
             for row in rows:
                 try:
-                    # ---- Lấy ngày tháng ----
+                    # ---- Lấy ngày tháng (local time) ----
                     date_div = row.find('div', class_='event__info--date')
                     if not date_div:
                         continue
                     date_text = date_div.get_text(separator=' ').strip()
-                    if date_text:
-                        day_str, month_str = parse_date_from_text(date_text)
+                    day_str, month_str = parse_date_from_text(date_text)
                     if not day_str or not month_str:
                         day_tag = date_div.find('b')
                         month_tag = date_div.find('span')
@@ -220,16 +227,12 @@ async def scrape_league_schedules():
                     if not day_str or not month_str:
                         continue
 
-                    # Chuyển tháng thành số
-                    month_num = None
-                    for k, v in MONTH_MAP.items():
-                        if k in month_str:
-                            month_num = v
-                            break
-                    if month_num is None:
+                    month_num = get_month_number(month_str)
+                    # Only include matches from today onward
+                    if int(day_str) < target_day and month_num <= target_month_num:
                         continue
 
-                    # Lấy giờ
+                    # ---- Lấy giờ (local time) ----
                     time_tag = row.find('time')
                     if not time_tag:
                         continue
@@ -239,21 +242,9 @@ async def scrape_league_schedules():
                     except:
                         continue
 
-                    # Tạo datetime UK (giả sử năm hiện tại)
-                    try:
-                        day_int = int(day_str)
-                        uk_dt = datetime(current_year, month_num, day_int, hour, minute)
-                        uk_dt = uk_dt.replace(tzinfo=UK_TZ)
-                    except ValueError:
-                        # Xử lý trường hợp ngày không hợp lệ (ví dụ 31/02)
-                        continue
-
-                    # Chỉ lấy các trận từ hôm nay trở đi (theo UK)
-                    if uk_dt.date() < now_uk.date():
-                        continue
-
-                    # Chuyển sang giờ Việt Nam
-                    vn_dt = uk_dt.astimezone(VIETNAM_TZ)
+                    # Format date and time for output
+                    output_date = f"{current_year}-{month_num:02d}-{int(day_str):02d}"
+                    output_time = f"{hour:02d}:{minute:02d}"
 
                     # ---- Tên trận đấu / giải đấu ----
                     if is_tennis:
@@ -276,7 +267,7 @@ async def scrape_league_schedules():
                             if title_elem:
                                 matchup = title_elem.get_text(strip=True)
 
-                    # Áp dụng bộ lọc đội bóng (nếu có)
+                    # Apply filters
                     if team_filter is not None:
                         if not any(t.lower() in matchup.lower() for t in team_filter):
                             continue
@@ -303,8 +294,8 @@ async def scrape_league_schedules():
                                     channels.append(text)
 
                     all_games.append({
-                        "Date": vn_dt.strftime("%Y-%m-%d"),
-                        "Time": vn_dt.strftime("%H:%M"),
+                        "Date": output_date,
+                        "Time": output_time,
                         "League": league_name,
                         "Matchup": matchup,
                         "Services": channels
@@ -312,24 +303,24 @@ async def scrape_league_schedules():
                     added += 1
 
                 except Exception as e:
-                    # Bỏ qua lỗi nhỏ ở từng dòng
+                    # Skip row on error
                     continue
 
             print(f"    ✅ Đã thêm {added} trận")
 
         await browser.close()
 
-    # Ghi kết quả
+    # Save results
     filename = "schedule_livesportsontv.json"
     if all_games:
-        # Sắp xếp theo ngày giờ tăng dần
+        # Sort by date and time
         all_games.sort(key=lambda x: (x["Date"], x["Time"]))
         with open(filename, 'w', encoding='utf-8') as f:
             json.dump(all_games, f, indent=4, ensure_ascii=False)
         print(f"\n🎉 THÀNH CÔNG! Đã lấy {len(all_games)} trận.")
         print(f"📁 Lưu tại: {filename}")
     else:
-        print("\n⚠️ Không có trận đấu nào từ hôm nay trở đi.")
+        print("\n⚠️ Không có trận đấu nào.")
 
 if __name__ == "__main__":
     asyncio.run(scrape_league_schedules())
