@@ -1,8 +1,50 @@
 [
   {
-    "hari": "Senin",
+    "hari": "Minggu",
     "tanggal": "05-04-2026",
-    "time": "18:00",
+    "time": "00:30",
+    "sport": "Football",
+    "competition": "Bundesliga",
+    "title": "VfB-Stuttgart vs Borussia-Dortmund",
+    "home": "VfB-Stuttgart",
+    "away": "Borussia-Dortmund",
+    "channels": [
+      "Sky Sports Football"
+    ],
+    "event_url": ""
+  },
+  {
+    "hari": "Minggu",
+    "tanggal": "05-04-2026",
+    "time": "02:45",
+    "sport": "Football",
+    "competition": "Serie A",
+    "title": "Lazio vs Parma",
+    "home": "Lazio",
+    "away": "Parma",
+    "channels": [
+      "DAZN"
+    ],
+    "event_url": ""
+  },
+  {
+    "hari": "Minggu",
+    "tanggal": "05-04-2026",
+    "time": "03:00",
+    "sport": "Football",
+    "competition": "La Liga",
+    "title": "Atletico-Madrid vs Barcelona",
+    "home": "Atletico-Madrid",
+    "away": "Barcelona",
+    "channels": [
+      "Disney+"
+    ],
+    "event_url": ""
+  },
+  {
+    "hari": "Minggu",
+    "tanggal": "05-04-2026",
+    "time": "19:00",
     "sport": "Tennis",
     "competition": "",
     "title": "ATP Tennis",
@@ -15,24 +57,9 @@
     "event_url": ""
   },
   {
-    "hari": "Senin",
+    "hari": "Minggu",
     "tanggal": "05-04-2026",
-    "time": "20:00",
-    "sport": "Tennis",
-    "competition": "",
-    "title": "Monte Carlo Rolex Masters",
-    "home": "Monte Carlo Rolex Masters",
-    "away": "",
-    "channels": [
-      "Sky Sports Tennis",
-      "Sky Sports+"
-    ],
-    "event_url": ""
-  },
-  {
-    "hari": "Senin",
-    "tanggal": "05-04-2026",
-    "time": "23:00",
+    "time": "21:00",
     "sport": "Tennis",
     "competition": "",
     "title": "Monte Carlo Rolex Masters",
@@ -50,6 +77,21 @@
     "time": "00:00",
     "sport": "Tennis",
     "competition": "",
+    "title": "Monte Carlo Rolex Masters",
+    "home": "Monte Carlo Rolex Masters",
+    "away": "",
+    "channels": [
+      "Sky Sports Tennis",
+      "Sky Sports+"
+    ],
+    "event_url": ""
+  },
+  {
+    "hari": "Senin",
+    "tanggal": "06-04-2026",
+    "time": "01:00",
+    "sport": "Tennis",
+    "competition": "",
     "title": "ATP Tennis",
     "home": "ATP Tennis",
     "away": "",
@@ -62,7 +104,7 @@
   {
     "hari": "Senin",
     "tanggal": "06-04-2026",
-    "time": "01:45",
+    "time": "02:45",
     "sport": "Football",
     "competition": "Ligue 1",
     "title": "Monaco vs Marseille",
@@ -77,7 +119,7 @@
   {
     "hari": "Senin",
     "tanggal": "06-04-2026",
-    "time": "01:45",
+    "time": "02:45",
     "sport": "Football",
     "competition": "Serie A",
     "title": "Inter-Milan vs Roma",
@@ -93,7 +135,7 @@
   {
     "hari": "Senin",
     "tanggal": "06-04-2026",
-    "time": "16:00",
+    "time": "17:00",
     "sport": "Tennis",
     "competition": "",
     "title": "Monte Carlo Rolex Masters",
@@ -108,9 +150,9 @@
     "event_url": ""
   },
   {
-    "hari": "Selasa",
+    "hari": "Senin",
     "tanggal": "06-04-2026",
-    "time": "20:00",
+    "time": "21:00",
     "sport": "Football",
     "competition": "Serie A",
     "title": "Lecce vs Atalanta",
@@ -122,9 +164,9 @@
     "event_url": ""
   },
   {
-    "hari": "Selasa",
+    "hari": "Senin",
     "tanggal": "06-04-2026",
-    "time": "20:00",
+    "time": "21:00",
     "sport": "Tennis",
     "competition": "",
     "title": "WTA Linz Open",
@@ -137,9 +179,9 @@
     "event_url": ""
   },
   {
-    "hari": "Selasa",
+    "hari": "Senin",
     "tanggal": "06-04-2026",
-    "time": "21:00",
+    "time": "22:00",
     "sport": "Tennis",
     "competition": "",
     "title": "Monte Carlo Rolex Masters",
@@ -153,8 +195,8 @@
   },
   {
     "hari": "Selasa",
-    "tanggal": "06-04-2026",
-    "time": "23:00",
+    "tanggal": "07-04-2026",
+    "time": "00:00",
     "sport": "Football",
     "competition": "Serie A",
     "title": "Juventus vs Genoa",
@@ -162,23 +204,6 @@
     "away": "Genoa",
     "channels": [
       "DAZN"
-    ],
-    "event_url": ""
-  },
-  {
-    "hari": "Selasa",
-    "tanggal": "07-04-2026",
-    "time": "01:45",
-    "sport": "Football",
-    "competition": "Serie A",
-    "title": "Napoli vs AC-Milan",
-    "home": "Napoli",
-    "away": "AC-Milan",
-    "channels": [
-      "TNT Sports 1",
-      "DAZN",
-      "TNT Sports 4",
-      "HBO Max"
     ],
     "event_url": ""
   }
