@@ -142,8 +142,7 @@ function isTeamInLeague(teamName, leagueTeams) {
 
 function getCurrentVietnamTime() {
   const now = new Date();
-  const vnTime = new Date(now.getTime() + 7 * 3600000);
-  return vnTime;
+  return new Date(now.getTime() + 7 * 3600000);
 }
 
 function getDatesToScrape() {
@@ -161,27 +160,32 @@ function getDatesToScrape() {
 }
 
 function buildDailyUrl(dateYYYYMMDD) {
-  // ĐÃ SỬA DOMAIN: wheresthematch.com (có chữ 's')
   return `https://www.wheresthematch.com/live-sport-on-tv/?showdatestart=${dateYYYYMMDD}`;
 }
 
-// Chuyển đổi thời gian từ WTM (giờ UK BST) sang giờ Việt Nam (cộng 6 giờ)
+// Chuyển đổi thời gian từ chuỗi gốc (giờ UK BST = UTC+1) sang giờ Việt Nam (UTC+7)
 function isoToVietnamParts(isoZ) {
   if (!isoZ) return null;
   let raw = isoZ.trim();
+  // Thay T bằng space, xóa mili giây
   raw = raw.replace('T', ' ');
   raw = raw.replace(/\.\d+/, '');
+  // Tạo Date object (coi như UTC)
   let dt = new Date(raw + 'Z');
-  if (isNaN(dt.getTime())) return null;
-  // UK hiện tại BST = UTC+1, VN = UTC+7 => chênh 6 giờ
+  if (isNaN(dt.getTime())) {
+    // Thử parse trực tiếp nếu không thành công
+    dt = new Date(raw);
+    if (isNaN(dt.getTime())) return null;
+  }
+  // Cộng 6 giờ (vì UK hiện tại BST = UTC+1, VN = UTC+7)
   const vnTime = new Date(dt.getTime() + 6 * 3600000);
   const yyyy = vnTime.getUTCFullYear();
   const mm = String(vnTime.getUTCMonth() + 1).padStart(2, '0');
   const dd = String(vnTime.getUTCDate()).padStart(2, '0');
-  const HH = String(vnTime.getUTCHours()).padStart(2, '0');
+  let HH = String(vnTime.getUTCHours()).padStart(2, '0');
   const MM = String(vnTime.getUTCMinutes()).padStart(2, '0');
-  const hariFormatter = new Intl.DateTimeFormat('id-ID', { timeZone: 'Asia/Ho_Chi_Minh', weekday: 'long' });
-  const hari = hariFormatter.format(vnTime);
+  if (HH === '24') HH = '00';
+  const hari = new Intl.DateTimeFormat('id-ID', { timeZone: 'Asia/Ho_Chi_Minh', weekday: 'long' }).format(vnTime);
   return { hari, tanggal: `${dd}-${mm}-${yyyy}`, time: `${HH}:${MM}` };
 }
 
@@ -200,6 +204,16 @@ function parseEventDateTimeVN(tanggal, time) {
     eventDate.setDate(eventDate.getDate() + addDay);
   }
   return eventDate;
+}
+
+function extractHiddenFields($) {
+  const fields = {};
+  $("input[type='hidden']").each((_, el) => {
+    const name = $(el).attr("name");
+    const value = $(el).attr("value") || "";
+    if (name) fields[name] = value;
+  });
+  return fields;
 }
 
 function uniqKeepOrder(arr) {
