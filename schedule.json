@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-05 08:08 VN",
+  "updated": "2026-04-05 13:50 VN",
   "days": {
     "20260405": {
       "date": "Sunday, 05/04",
@@ -33,14 +33,20 @@
             {
               "country": "San Marino",
               "channels": [
-                "DAZN1",
-                "DAZN"
+                "DAZN",
+                "DAZN1"
               ]
             },
             {
               "country": "Austria",
               "channels": [
                 "DAZN Austria"
+              ]
+            },
+            {
+              "country": "Ukraine",
+              "channels": [
+                "MEGOGO Football 1"
               ]
             },
             {
@@ -64,8 +70,8 @@
             {
               "country": "Italy",
               "channels": [
-                "DAZN1",
-                "DAZN"
+                "DAZN",
+                "DAZN1"
               ]
             },
             {
@@ -115,8 +121,14 @@
             {
               "country": "Faroe Islands",
               "channels": [
-                "TV2 Sport X",
-                "TV2 Play Denmark"
+                "TV2 Play Denmark",
+                "TV2 Sport X"
+              ]
+            },
+            {
+              "country": "Indonesia",
+              "channels": [
+                "Vidio"
               ]
             },
             {
@@ -128,8 +140,8 @@
             {
               "country": "Denmark",
               "channels": [
-                "TV2 Sport X",
-                "TV2 Play Denmark"
+                "TV2 Play Denmark",
+                "TV2 Sport X"
               ]
             },
             {
@@ -160,6 +172,12 @@
               "country": "Germany",
               "channels": [
                 "DAZN"
+              ]
+            },
+            {
+              "country": "Slovenia",
+              "channels": [
+                "Arena Sport Slovenia 1"
               ]
             },
             {
@@ -426,52 +444,6 @@
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Mariano Navone vs Botic Van De Zandschulp",
-          "kick_utc": 1775383200,
-          "time": "05/04 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 1",
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1775386800,
-          "time": "05/04 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Luciano Darderi vs Marco Trungelliti",
-          "kick_utc": 1775390400,
-          "time": "05/04 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
         },
         {
           "league": "Tennis",
