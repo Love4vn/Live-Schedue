@@ -1,28 +1,11 @@
 [
     {
         "Date": "2026-04-05",
-        "Time": "18:00",
-        "League": "Tennis (ATP)",
-        "Matchup": "Tiriac Open",
-        "Services": [
-            "Tennis Channel"
-        ]
-    },
-    {
-        "Date": "2026-04-05",
-        "Time": "18:30",
-        "League": "Tennis (ATP)",
-        "Matchup": "Monte-Carlo Masters",
-        "Services": [
-            "TSN2"
-        ]
-    },
-    {
-        "Date": "2026-04-05",
         "Time": "19:30",
         "League": "Tennis (ATP)",
         "Matchup": "Monte-Carlo Masters",
         "Services": [
+            "TSN+",
             "RDS 2"
         ]
     },
@@ -32,7 +15,8 @@
         "League": "Tennis (ATP)",
         "Matchup": "Grand Prix Hassan II",
         "Services": [
-            "Tennis Channel"
+            "Tennis Channel",
+            "TSN+"
         ]
     },
     {
@@ -49,6 +33,15 @@
         "Time": "00:00",
         "League": "Tennis (WTA)",
         "Matchup": "Copa Colsanitas",
+        "Services": [
+            "DAZN Canada"
+        ]
+    },
+    {
+        "Date": "2026-04-06",
+        "Time": "00:00",
+        "League": "Tennis (WTA)",
+        "Matchup": "Charleston Open",
         "Services": [
             "DAZN Canada"
         ]
@@ -84,8 +77,16 @@
         "Matchup": "Charleston Open",
         "Services": [
             "Tennis Channel",
-            "TVA Sports 2",
-            "DAZN Canada"
+            "TVA Sports 2"
+        ]
+    },
+    {
+        "Date": "2026-04-06",
+        "Time": "02:30",
+        "League": "Tennis (ATP)",
+        "Matchup": "U.S. Men's Clay Court Championship",
+        "Services": [
+            "TSN+"
         ]
     },
     {
@@ -114,6 +115,7 @@
         "Matchup": "Atalanta @ Lecce",
         "Services": [
             "Paramount+ (US)",
+            "DAZN US",
             "DAZN Canada"
         ]
     },
@@ -253,6 +255,15 @@
     },
     {
         "Date": "2026-04-09",
+        "Time": "00:00",
+        "League": "Tennis (WTA)",
+        "Matchup": "Upper Austria Linz",
+        "Services": [
+            "T2"
+        ]
+    },
+    {
+        "Date": "2026-04-09",
         "Time": "02:00",
         "League": "UEFA Champions League",
         "Matchup": "Liverpool FC @ PSG",
@@ -270,9 +281,9 @@
         "Services": [
             "Paramount+ (US)",
             "DAZN US",
+            "TUDN",
             "Univision",
-            "ViX",
-            "DAZN Canada"
+            "ViX"
         ]
     },
     {
@@ -326,6 +337,7 @@
             "Paramount+ (US)",
             "TUDN",
             "UniMás",
+            "ViX",
             "DAZN Canada"
         ]
     },
@@ -435,6 +447,15 @@
     },
     {
         "Date": "2026-04-11",
+        "Time": "18:30",
+        "League": "Tennis (ATP)",
+        "Matchup": "Monte-Carlo Masters",
+        "Services": [
+            "RDS 2"
+        ]
+    },
+    {
+        "Date": "2026-04-11",
         "Time": "20:30",
         "League": "Bundesliga",
         "Matchup": "Bayer Leverkusen @ Borussia Dortmund",
@@ -462,6 +483,7 @@
         "Matchup": "Everton @ Brentford",
         "Services": [
             "Peacock",
+            "NBC Universo",
             "DAZN Canada"
         ]
     },
@@ -484,6 +506,7 @@
             "Paramount+ (US)",
             "DAZN US",
             "FOX Deportes",
+            "TLN",
             "DAZN Canada"
         ]
     },
@@ -495,6 +518,7 @@
         "Services": [
             "Peacock",
             "NBC",
+            "NBC Universo",
             "DAZN Canada"
         ]
     },
@@ -506,7 +530,8 @@
         "Services": [
             "ESPN Select",
             "ESPN Unlimited",
-            "ESPN Deportes"
+            "ESPN Deportes",
+            "TSN2"
         ]
     },
     {
@@ -529,6 +554,7 @@
         "Services": [
             "Paramount+ (US)",
             "DAZN US",
+            "TLN",
             "DAZN Canada"
         ]
     },
@@ -619,12 +645,22 @@
         ]
     },
     {
+        "Date": "2026-04-14",
+        "Time": "22:00",
+        "League": "Tennis (WTA)",
+        "Matchup": "Stuttgart Open",
+        "Services": [
+            "DAZN Canada"
+        ]
+    },
+    {
         "Date": "2026-04-15",
         "Time": "02:00",
         "League": "UEFA Champions League",
         "Matchup": "PSG @ Liverpool FC",
         "Services": [
-            "Paramount+ (US)"
+            "Paramount+ (US)",
+            "DAZN Canada"
         ]
     },
     {
@@ -633,7 +669,10 @@
         "League": "UEFA Champions League",
         "Matchup": "FC Barcelona @ Atletico Madrid",
         "Services": [
-            "Paramount+ (US)"
+            "Paramount+ (US)",
+            "DAZN US",
+            "ViX",
+            "DAZN Canada"
         ]
     },
     {
@@ -651,7 +690,8 @@
         "League": "UEFA Champions League",
         "Matchup": "Real Madrid @ Bayern München",
         "Services": [
-            "Paramount+ (US)"
+            "Paramount+ (US)",
+            "ViX"
         ]
     },
     {
@@ -809,6 +849,26 @@
         "Matchup": "Cremonese @ Napoli",
         "Services": [
             "Paramount+ (US)"
+        ]
+    },
+    {
+        "Date": "2026-04-25",
+        "Time": "20:30",
+        "League": "Bundesliga",
+        "Matchup": "Bayer Leverkusen @ 1. FC Köln",
+        "Services": [
+            "ESPN Select",
+            "ESPN Unlimited"
+        ]
+    },
+    {
+        "Date": "2026-04-25",
+        "Time": "20:30",
+        "League": "Bundesliga",
+        "Matchup": "Bayern München @ FSV Mainz 05",
+        "Services": [
+            "ESPN Select",
+            "ESPN Unlimited"
         ]
     },
     {
