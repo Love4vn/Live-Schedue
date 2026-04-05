@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-05 13:50 VN",
+  "updated": "2026-04-05 19:26 VN",
   "days": {
     "20260405": {
       "date": "Sunday, 05/04",
@@ -11,6 +11,24 @@
           "kick_utc": 1775414700,
           "tv_channels": [
             {
+              "country": "Spain",
+              "channels": [
+                "DAZN"
+              ]
+            },
+            {
+              "country": "Portugal",
+              "channels": [
+                "Sport TV2"
+              ]
+            },
+            {
+              "country": "Norway",
+              "channels": [
+                "VG+"
+              ]
+            },
+            {
               "country": "Chile",
               "channels": [
                 "Disney+ Premium Chile"
@@ -19,22 +37,34 @@
             {
               "country": "Brazil",
               "channels": [
-                "Disney+",
-                "ESPN"
+                "ESPN",
+                "Disney+"
+              ]
+            },
+            {
+              "country": "South Africa",
+              "channels": [
+                "DStv App"
               ]
             },
             {
               "country": "Netherlands",
               "channels": [
-                "Ziggo Go",
-                "Ziggo Sport"
+                "Ziggo Sport",
+                "Ziggo Go"
               ]
             },
             {
               "country": "San Marino",
               "channels": [
-                "DAZN",
-                "DAZN1"
+                "DAZN1",
+                "DAZN"
+              ]
+            },
+            {
+              "country": "Bulgaria",
+              "channels": [
+                "MAX Sport 3"
               ]
             },
             {
@@ -70,8 +100,8 @@
             {
               "country": "Italy",
               "channels": [
-                "DAZN",
-                "DAZN1"
+                "DAZN1",
+                "DAZN"
               ]
             },
             {
@@ -96,8 +126,8 @@
             {
               "country": "Argentina",
               "channels": [
-                "ESPN Argentina",
-                "Disney+ Premium Argentina"
+                "Disney+ Premium Argentina",
+                "ESPN Argentina"
               ]
             },
             {
@@ -121,8 +151,8 @@
             {
               "country": "Faroe Islands",
               "channels": [
-                "TV2 Play Denmark",
-                "TV2 Sport X"
+                "TV2 Sport X",
+                "TV2 Play Denmark"
               ]
             },
             {
@@ -134,14 +164,15 @@
             {
               "country": "United States",
               "channels": [
-                "Fox Deportes"
+                "Fox Deportes",
+                "Paramount+"
               ]
             },
             {
               "country": "Denmark",
               "channels": [
-                "TV2 Play Denmark",
-                "TV2 Sport X"
+                "TV2 Sport X",
+                "TV2 Play Denmark"
               ]
             },
             {
@@ -175,9 +206,21 @@
               ]
             },
             {
+              "country": "Slovakia",
+              "channels": [
+                "Sport 1 SK"
+              ]
+            },
+            {
               "country": "Slovenia",
               "channels": [
                 "Arena Sport Slovenia 1"
+              ]
+            },
+            {
+              "country": "Australia",
+              "channels": [
+                "Paramount+"
               ]
             },
             {
@@ -190,18 +233,6 @@
               "country": "Poland",
               "channels": [
                 "Eleven Sports 1 HD"
-              ]
-            },
-            {
-              "country": "Spain",
-              "channels": [
-                "DAZN"
-              ]
-            },
-            {
-              "country": "Portugal",
-              "channels": [
-                "Sport TV2"
               ]
             },
             {
@@ -273,36 +304,6 @@
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tiriac Open",
-          "kick_utc": 1775386800,
-          "time": "05/04 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Monte-Carlo Masters",
-          "kick_utc": 1775388600,
-          "time": "05/04 06:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "TSN2"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
@@ -383,19 +384,19 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP Tennis",
-          "kick_utc": 1775386800,
-          "time": "05/04 06:00 PM",
+          "match": "Monte-Carlo Masters",
+          "kick_utc": 1775466000,
+          "time": "06/04 04:00 PM",
           "tv_channels": [
             {
-              "country": "Wheresthematch",
+              "country": "LiveSportsOnTV",
               "channels": [
-                "Sky Sports Tennis",
-                "Sky Sports+"
+                "Tennis Channel",
+                "TSN3"
               ]
             }
           ],
-          "source": "wheresthematch"
+          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
@@ -439,6 +440,24 @@
               "country": "Wheresthematch",
               "channels": [
                 "Sky Sports Tennis",
+                "Sky Sports+"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "Monte Carlo Rolex Masters",
+          "kick_utc": 1775466000,
+          "time": "06/04 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Sky Sports Main Event",
+                "Sky Sports Tennis",
+                "Sky Sports Ultra HDR",
                 "Sky Sports+"
               ]
             }
