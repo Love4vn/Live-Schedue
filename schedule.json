@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-06 08:08 VN",
+  "updated": "2026-04-06 14:13 VN",
   "days": {
     "20260406": {
       "date": "Monday, 06/04",
@@ -47,6 +47,13 @@
               ]
             },
             {
+              "country": "United States",
+              "channels": [
+                "Paramount+",
+                "DAZN"
+              ]
+            },
+            {
               "country": "Belize",
               "channels": [
                 "ESPN 3 Norte"
@@ -79,15 +86,15 @@
             {
               "country": "Italy",
               "channels": [
-                "DAZN",
-                "DAZN1"
+                "DAZN1",
+                "DAZN"
               ]
             },
             {
               "country": "San Marino",
               "channels": [
-                "DAZN",
-                "DAZN1"
+                "DAZN1",
+                "DAZN"
               ]
             },
             {
@@ -140,10 +147,16 @@
               ]
             },
             {
+              "country": "Australia",
+              "channels": [
+                "Paramount+"
+              ]
+            },
+            {
               "country": "Netherlands",
               "channels": [
-                "Ziggo Go",
-                "Ziggo Sport"
+                "Ziggo Sport",
+                "Ziggo Go"
               ]
             },
             {
@@ -205,13 +218,6 @@
               "channels": [
                 "DAZN"
               ]
-            },
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 3",
-                "beIN Sports Connect"
-              ]
             }
           ],
           "tournament": "Serie A"
@@ -231,18 +237,25 @@
             {
               "country": "San Marino",
               "channels": [
-                "DAZN",
-                "NOW",
-                "Sky Go",
-                "Sky Sport Calcio",
                 "Sky Sport Uno",
-                "Sky Sport 251"
+                "Sky Go",
+                "NOW",
+                "Sky Sport 251",
+                "Sky Sport Calcio",
+                "DAZN"
               ]
             },
             {
               "country": "Türkiye",
               "channels": [
                 "S Sport+"
+              ]
+            },
+            {
+              "country": "United States",
+              "channels": [
+                "Paramount+",
+                "DAZN"
               ]
             },
             {
@@ -260,12 +273,12 @@
             {
               "country": "Italy",
               "channels": [
-                "DAZN",
+                "Sky Sport Uno",
                 "Sky Go",
                 "NOW",
+                "Sky Sport 251",
                 "Sky Sport Calcio",
-                "Sky Sport Uno",
-                "Sky Sport 251"
+                "DAZN"
               ]
             },
             {
@@ -305,10 +318,16 @@
               ]
             },
             {
+              "country": "Australia",
+              "channels": [
+                "Paramount+"
+              ]
+            },
+            {
               "country": "Netherlands",
               "channels": [
-                "Ziggo Go",
-                "Ziggo Sport"
+                "Ziggo Sport",
+                "Ziggo Go"
               ]
             },
             {
@@ -363,8 +382,8 @@
             {
               "country": "Romania",
               "channels": [
-                "Prima Sport 2",
-                "Digi Sport 2"
+                "Digi Sport 2",
+                "Prima Sport 2"
               ]
             },
             {
@@ -378,13 +397,6 @@
               "channels": [
                 "DAZN"
               ]
-            },
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 3",
-                "beIN Sports Connect"
-              ]
             }
           ],
           "tournament": "Serie A"
@@ -396,9 +408,135 @@
           "kick_utc": 1775501100,
           "tv_channels": [
             {
-              "country": "Ecuador",
+              "country": "Peru",
+              "channels": [
+                "ESPN 2 Sur",
+                "Disney+ Premium Chile"
+              ]
+            },
+            {
+              "country": "Dominican Republic",
+              "channels": [
+                "ESPN 2 Norte"
+              ]
+            },
+            {
+              "country": "United States",
+              "channels": [
+                "Paramount+",
+                "Prime Video",
+                "DAZN"
+              ]
+            },
+            {
+              "country": "El Salvador",
+              "channels": [
+                "ESPN 2 Norte"
+              ]
+            },
+            {
+              "country": "Türkiye",
+              "channels": [
+                "S Sport+"
+              ]
+            },
+            {
+              "country": "Albania",
+              "channels": [
+                "Tring Sport 1"
+              ]
+            },
+            {
+              "country": "Uruguay",
               "channels": [
                 "ESPN 2 Sur"
+              ]
+            },
+            {
+              "country": "Ecuador",
+              "channels": [
+                "Disney+ Premium Sur",
+                "ESPN Colombia",
+                "ESPN 2 Sur"
+              ]
+            },
+            {
+              "country": "Guatemala",
+              "channels": [
+                "ESPN 2 Norte"
+              ]
+            },
+            {
+              "country": "Italy",
+              "channels": [
+                "DAZN1",
+                "DAZN"
+              ]
+            },
+            {
+              "country": "Spain",
+              "channels": [
+                "Prime Video"
+              ]
+            },
+            {
+              "country": "United Kingdom",
+              "channels": [
+                "TNT Sports 1",
+                "TNT Sports 4"
+              ]
+            },
+            {
+              "country": "Austria",
+              "channels": [
+                "Prime Video",
+                "DAZN Austria"
+              ]
+            },
+            {
+              "country": "Faroe Islands",
+              "channels": [
+                "TV2 Sport X",
+                "TV2 Play Denmark"
+              ]
+            },
+            {
+              "country": "Chile",
+              "channels": [
+                "ESPN 2 Sur",
+                "Disney+ Premium Chile"
+              ]
+            },
+            {
+              "country": "Belize",
+              "channels": [
+                "ESPN 2 Norte"
+              ]
+            },
+            {
+              "country": "Argentina",
+              "channels": [
+                "ESPN 2 Sur"
+              ]
+            },
+            {
+              "country": "Ireland",
+              "channels": [
+                "TNT Sports 1",
+                "TNT Sports 4"
+              ]
+            },
+            {
+              "country": "Bolivia, Plurinational State of",
+              "channels": [
+                "ESPN 2 Sur",
+                "Disney+ Premium Chile"
+              ]
+            },
+            {
+              "country": "Australia",
+              "channels": [
+                "Paramount+"
               ]
             },
             {
@@ -411,8 +549,8 @@
             {
               "country": "Netherlands",
               "channels": [
-                "Ziggo Go",
-                "Ziggo Sport"
+                "Ziggo Sport",
+                "Ziggo Go"
               ]
             },
             {
@@ -434,18 +572,6 @@
               ]
             },
             {
-              "country": "Honduras",
-              "channels": [
-                "ESPN 2 Norte"
-              ]
-            },
-            {
-              "country": "XK",
-              "channels": [
-                "Tring Sport 1"
-              ]
-            },
-            {
               "country": "Mexico",
               "channels": [
                 "ESPN 2 Norte"
@@ -455,15 +581,8 @@
               "country": "Brazil",
               "channels": [
                 "Prime Video",
-                "YouTube - CazéTV",
-                "Disney+"
-              ]
-            },
-            {
-              "country": "Chile",
-              "channels": [
-                "ESPN 2 Sur",
-                "Disney+ Premium Chile"
+                "Disney+",
+                "YouTube - CazéTV"
               ]
             },
             {
@@ -473,23 +592,10 @@
               ]
             },
             {
-              "country": "Austria",
-              "channels": [
-                "DAZN Austria",
-                "Prime Video"
-              ]
-            },
-            {
               "country": "San Marino",
               "channels": [
-                "DAZN",
-                "DAZN1"
-              ]
-            },
-            {
-              "country": "Belgium",
-              "channels": [
-                "Prime Video"
+                "DAZN1",
+                "DAZN"
               ]
             },
             {
@@ -505,19 +611,6 @@
               ]
             },
             {
-              "country": "Costa Rica",
-              "channels": [
-                "ESPN 2 Norte"
-              ]
-            },
-            {
-              "country": "Italy",
-              "channels": [
-                "DAZN",
-                "DAZN1"
-              ]
-            },
-            {
               "country": "Israel",
               "channels": [
                 "Sport 4"
@@ -526,8 +619,8 @@
             {
               "country": "Romania",
               "channels": [
-                "Prima Sport 2",
-                "Digi Sport 2"
+                "Digi Sport 2",
+                "Prima Sport 2"
               ]
             },
             {
@@ -537,110 +630,22 @@
               ]
             },
             {
-              "country": "Peru",
-              "channels": [
-                "ESPN 2 Sur",
-                "Disney+ Premium Chile"
-              ]
-            },
-            {
-              "country": "Dominican Republic",
-              "channels": [
-                "ESPN 2 Norte"
-              ]
-            },
-            {
-              "country": "United Kingdom",
-              "channels": [
-                "TNT Sports 4",
-                "TNT Sports 1"
-              ]
-            },
-            {
               "country": "Finland",
               "channels": [
                 "MTV Urheilu 3"
               ]
             },
             {
-              "country": "United States",
+              "country": "Colombia",
               "channels": [
-                "Prime Video"
-              ]
-            },
-            {
-              "country": "El Salvador",
-              "channels": [
-                "ESPN 2 Norte"
-              ]
-            },
-            {
-              "country": "Türkiye",
-              "channels": [
-                "S Sport+"
-              ]
-            },
-            {
-              "country": "Faroe Islands",
-              "channels": [
-                "TV2 Sport X",
-                "TV2 Play Denmark"
-              ]
-            },
-            {
-              "country": "Albania",
-              "channels": [
-                "Tring Sport 1"
-              ]
-            },
-            {
-              "country": "Uruguay",
-              "channels": [
-                "ESPN 2 Sur"
-              ]
-            },
-            {
-              "country": "Ireland",
-              "channels": [
-                "TNT Sports 4",
-                "TNT Sports 1"
-              ]
-            },
-            {
-              "country": "Guatemala",
-              "channels": [
-                "ESPN 2 Norte"
+                "Disney+ Premium Sur",
+                "ESPN Colombia"
               ]
             },
             {
               "country": "Nicaragua",
               "channels": [
                 "ESPN 2 Norte"
-              ]
-            },
-            {
-              "country": "Spain",
-              "channels": [
-                "Prime Video"
-              ]
-            },
-            {
-              "country": "Bolivia, Plurinational State of",
-              "channels": [
-                "ESPN 2 Sur",
-                "Disney+ Premium Chile"
-              ]
-            },
-            {
-              "country": "Belize",
-              "channels": [
-                "ESPN 2 Norte"
-              ]
-            },
-            {
-              "country": "Argentina",
-              "channels": [
-                "ESPN 2 Sur"
               ]
             },
             {
@@ -662,19 +667,43 @@
               ]
             },
             {
-              "country": "Wheresthematch",
+              "country": "Venezuela, Bolivarian Republic of",
               "channels": [
-                "TNT Sports 1",
-                "DAZN",
-                "TNT Sports 4",
-                "HBO Max"
+                "Disney+ Premium Sur",
+                "ESPN Colombia"
               ]
             },
             {
-              "country": "Ausport",
+              "country": "Honduras",
               "channels": [
-                "beIN SPORTS 3",
-                "beIN Sports Connect"
+                "ESPN 2 Norte"
+              ]
+            },
+            {
+              "country": "XK",
+              "channels": [
+                "Tring Sport 1"
+              ]
+            },
+            {
+              "country": "Belgium",
+              "channels": [
+                "Prime Video"
+              ]
+            },
+            {
+              "country": "Costa Rica",
+              "channels": [
+                "ESPN 2 Norte"
+              ]
+            },
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "DAZN",
+                "TNT Sports 1",
+                "TNT Sports 4",
+                "HBO Max"
               ]
             }
           ],
@@ -690,7 +719,6 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Paramount+ (US)",
-                "DAZN US",
                 "DAZN Canada"
               ]
             }
@@ -777,24 +805,6 @@
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Monte Carlo Rolex Masters",
-          "kick_utc": 1775466000,
-          "time": "06/04 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Main Event",
-                "Sky Sports Tennis",
-                "Sky Sports Ultra HDR",
-                "Sky Sports+"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
