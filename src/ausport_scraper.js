@@ -1,5 +1,4 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
+const puppeteer = require('puppeteer');
 const fs = require('fs');
 const dayjs = require('dayjs');
 const utc = require('dayjs/plugin/utc');
@@ -17,12 +16,11 @@ const CONFIG = {
   RETRY_COUNT: 2,
   RETRY_DELAY_MS: 2000,
   TIMEOUT_MS: 30000,
-  USER_AGENT: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
   OUTPUT_FILE: './ausport_schedule.json',
   TIME_RANGE_HOURS: 48,
 };
 
-// --- Danh sách giải/đội hợp lệ ---
+// --- Danh sách giải/đội hợp lệ (giữ nguyên) ---
 const FOOTBALL_CONFIG = {
   leagues: {
     'Premier League': ['arsenal', 'aston villa', 'bournemouth', 'brentford', 'brighton', 'chelsea',
@@ -49,26 +47,16 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function fetchWithRetry(url, options, retries = CONFIG.RETRY_COUNT) {
-  for (let attempt = 1; attempt <= retries; attempt++) {
-    try {
-      const response = await axios.get(url, {
-        ...options,
-        timeout: CONFIG.TIMEOUT_MS,
-        validateStatus: status => true, // nhận mọi status để log
-      });
-      console.log(`[${url}] Status: ${response.status}`);
-      if (response.status >= 200 && response.status < 400) {
-        return response;
-      } else {
-        console.error(`HTTP error ${response.status}, snippet:`, response.data.substring(0, 300));
-        throw new Error(`HTTP ${response.status}`);
-      }
-    } catch (error) {
-      console.error(`Attempt ${attempt} failed for ${url}:`, error.message);
-      if (attempt === retries) throw error;
-      await sleep(CONFIG.RETRY_DELAY_MS);
-    }
+async function fetchWithPuppeteer(url) {
+  const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+  try {
+    const page = await browser.newPage();
+    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36');
+    await page.goto(url, { waitUntil: 'networkidle2', timeout: CONFIG.TIMEOUT_MS });
+    const html = await page.content();
+    return html;
+  } finally {
+    await browser.close();
   }
 }
 
@@ -165,6 +153,9 @@ function isWithinTimeRange(event) {
   const diffHours = eventTime.diff(now, 'hour', true);
   return diffHours >= 0 && diffHours <= CONFIG.TIME_RANGE_HOURS;
 }
+
+// --- Parse HTML với cheerio (vẫn dùng cheerio nhưng nhận HTML từ puppeteer) ---
+const cheerio = require('cheerio');
 
 function resolveDateForPage($, pathSuffix) {
   const headerText = $('h2.dayInfo').first().text().trim();
@@ -300,16 +291,15 @@ async function scrapeDay(pathSuffix) {
   const url = `${CONFIG.BASE_URL}/live-sports-tv-guide/${pathSuffix}`;
   console.log(`Scraping: ${url}`);
 
-  const response = await fetchWithRetry(url, {
-    headers: {
-      'User-Agent': CONFIG.USER_AGENT,
-      'Accept-Language': 'en-US,en;q=0.9',
-      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-      'Referer': CONFIG.BASE_URL,
-    },
-  });
+  let html;
+  try {
+    html = await fetchWithPuppeteer(url);
+  } catch (err) {
+    console.error(`Puppeteer error for ${url}:`, err.message);
+    throw err;
+  }
 
-  const $ = cheerio.load(response.data);
+  const $ = cheerio.load(html);
   const dateInfo = resolveDateForPage($, pathSuffix);
 
   const rows = [];
@@ -432,7 +422,6 @@ function writeJSON(rows, outputPath) {
   let filteredRows = allRows.filter(isEventRelevant);
   console.log('After sport/league filter:', filteredRows.length);
 
-  // In mẫu để kiểm tra
   console.log('Sample events after sport/league filter (before time filter):');
   filteredRows.slice(0, 5).forEach((r, i) => {
     const dt = r.vietnam_datetime ? dayjs(r.vietnam_datetime).format('HH:mm DD/MM/YYYY') : 'N/A';
