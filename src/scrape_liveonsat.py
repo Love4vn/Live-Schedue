@@ -1,25 +1,14 @@
-# src/scrape_liveonsat.py
-import os
+import requests
 import json
 import re
-import random
-import time
+from datetime import datetime, timezone, timedelta
+from bs4 import BeautifulSoup
 from pathlib import Path
-from datetime import datetime
-from playwright.sync_api import sync_playwright
 
-DEFAULT_URL = "https://m.liveonsat.com/2day.php"
 REPO_ROOT = Path(__file__).resolve().parents[1]
-OUTPUT_FILE = REPO_ROOT / "liveonsat_schedule.json"
-DEBUG_HTML = REPO_ROOT / "liveonsat_debug.html"
-DEBUG_PNG = REPO_ROOT / "liveonsat_debug.png"
+OUTPUT_FILE = REPO_ROOT / "liveonsat_schedule.json"  # giữ tên cũ để tương thích
 
-UA_POOL = [
-    "Mozilla/5.0 (Linux; Android 13; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36",
-    "Mozilla/5.0 (iPhone14,3; U; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Mobile/19A346 Safari/602.1",
-]
-
-# -------------------- DANH SÁCH GIẢI ĐẤU (giữ nguyên) --------------------
+# -------------------- DANH SÁCH GIẢI ĐẤU ĐƯỢC PHÉP (giữ nguyên) --------------------
 ALLOWED_TENNIS_TOURNAMENTS = {
     "atp", "atp tour", "atp world tour", "grand slam", "australian open",
     "roland garros", "french open", "wimbledon", "us open", "nitto atp finals",
@@ -47,55 +36,9 @@ ALLOWED_TEAMS_PER_LEAGUE = {
 }
 ALLOWED_NON_EURO_TEAMS = {"argentina", "brazil", "japan", "south korea"}
 
-def clean_text(t: str) -> str:
-    if not t:
-        return ""
-    t = t.replace("\xa0", " ")
-    return re.sub(r"\s+", " ", t).strip()
-
-def get_html_with_playwright(url: str, timeout_ms: int = 90000) -> str:
-    ua = random.choice(UA_POOL)
-    debug = os.environ.get("DEBUG_LIVEONSAT") == "1"
-    print(f"[LiveOnSat] Đang tải {url} với UA={ua[:50]}...")
-    print(f"[LiveOnSat] DEBUG mode = {debug}")
-
-    with sync_playwright() as p:
-        browser = p.chromium.launch(
-            headless=True,
-            args=["--disable-blink-features=AutomationControlled", "--no-sandbox", "--disable-gpu"],
-        )
-        ctx = browser.new_context(
-            user_agent=ua,
-            locale="en-GB",
-            viewport={"width": 1366, "height": 900},
-            java_script_enabled=True,
-        )
-        page = ctx.new_page()
-        page.set_default_timeout(timeout_ms)
-        try:
-            page.goto(url, wait_until="networkidle", timeout=timeout_ms)
-            # Cuộn trang để kích hoạt lazy-load
-            for y in range(0, 5000, 500):
-                page.evaluate(f"window.scrollTo(0, {y});")
-                time.sleep(0.2)
-            page.wait_for_timeout(3000)
-            html = page.content()
-            print(f"[LiveOnSat] Chiều dài HTML: {len(html)} ký tự")
-            if debug or len(html) < 50000:  # Nếu HTML quá ngắn, tự động lưu debug
-                DEBUG_HTML.write_text(html, encoding="utf-8")
-                page.screenshot(path=str(DEBUG_PNG), full_page=True)
-                print(f"[LiveOnSat] Đã lưu debug html (size {len(html)}) và png.")
-            browser.close()
-            return html
-        except Exception as e:
-            print(f"[LiveOnSat] Lỗi: {e}")
-            if debug:
-                try:
-                    page.screenshot(path=str(REPO_ROOT / "liveonsat_error.png"), full_page=True)
-                except:
-                    pass
-            browser.close()
-            return "<html><body>FETCH_ERROR</body></html>"
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+}
 
 def normalize_league(comp_raw: str):
     comp_lower = comp_raw.lower()
@@ -145,67 +88,63 @@ def is_match_allowed(league: str, title: str) -> bool:
         return False
     return False
 
-def parse_liveonsat(html: str):
-    if "FETCH_ERROR" in html:
-        print("[Parse] HTML bị lỗi fetch")
+def convert_to_vietnam_time(time_str: str, date_str: str) -> str:
+    """Chuyển đổi thời gian từ trang (giờ địa phương của trang, thường là UTC) sang giờ Việt Nam"""
+    # Trên LiveSoccerTV, thời gian thường ở định dạng "HH:MM" và theo múi giờ địa phương của trình duyệt (có thể là UTC)
+    # Để đơn giản, ta coi thời gian hiển thị là giờ địa phương của người dùng (nếu không rõ) và giữ nguyên.
+    # Nhưng tốt nhất là lấy từ thuộc tính datetime của thẻ.
+    return f"{date_str} {time_str}"  # tạm thời giữ nguyên
+
+def scrape_livesoccertv():
+    url = "https://www.livesoccertv.com/today/"
+    print(f"[LiveSoccerTV] Đang tải {url}")
+    resp = requests.get(url, headers=HEADERS, timeout=30)
+    if resp.status_code != 200:
+        print(f"Lỗi HTTP {resp.status_code}")
         return []
-
-    from bs4 import BeautifulSoup
-    soup = BeautifulSoup(html, "html.parser")
-    for script in soup(["script", "style"]):
-        script.decompose()
-    raw_text = soup.get_text("\n")
-    lines = [clean_text(l) for l in raw_text.splitlines() if clean_text(l)]
-    noise = {"Image", "HOME", "Full Site", "Daily TV", "Website Last updated", "Please Note:", "LIVE", "Discover more"}
-    lines = [l for l in lines if l not in noise and not l.startswith("Website Last updated") and not l.startswith("Timezone")]
-    print(f"[Parse] Tổng số dòng sau lọc: {len(lines)}")
-    # In ra 20 dòng đầu để kiểm tra
-    print("[Parse] 20 dòng đầu tiên:")
-    for idx, line in enumerate(lines[:20]):
-        print(f"  {idx}: {line[:100]}")
-
-    matches_raw = []
-    i = 0
-    while i < len(lines):
-        line = lines[i]
-        st_match = re.search(r"ST:\s*([0-2]?\d:[0-5]\d)", line)
-        if st_match:
-            kickoff = st_match.group(1)
-            title = lines[i-1] if i-1 >= 0 else ""
-            competition = ""
-            if i-2 >= 0 and " - " in lines[i-2]:
-                competition = lines[i-2]
-            elif i-3 >= 0 and " - " in lines[i-3]:
-                competition = lines[i-3]
-            if re.search(r"\b(vs|v)\b", title, re.IGNORECASE):
-                matches_raw.append({
-                    "competition": competition,
-                    "title": title,
-                    "kickoff": kickoff,
-                })
-        i += 1
-
-    print(f"[Parse] Tìm thấy {len(matches_raw)} trận thô")
-    result = []
-    for m in matches_raw:
-        league = normalize_league(m["competition"])
-        if not is_match_allowed(league, m["title"]):
+    soup = BeautifulSoup(resp.text, "html.parser")
+    matches = []
+    # Mỗi trận nằm trong thẻ <div class="match-row"> hoặc <tr class="match">
+    for match_div in soup.select(".match-row, tr.match"):
+        try:
+            # Tên giải
+            league_tag = match_div.select_one(".competition a, .league a")
+            league_raw = league_tag.text.strip() if league_tag else ""
+            league = normalize_league(league_raw)
+            if not league:
+                continue
+            # Tên trận
+            home_tag = match_div.select_one(".home-team a, .team-home a")
+            away_tag = match_div.select_one(".away-team a, .team-away a")
+            if home_tag and away_tag:
+                home = home_tag.text.strip()
+                away = away_tag.text.strip()
+                title = f"{home} vs {away}"
+            else:
+                continue
+            # Lọc theo giải và đội
+            if not is_match_allowed(league, title):
+                continue
+            # Giờ thi đấu
+            time_tag = match_div.select_one(".time, .match-time")
+            time_str = time_tag.text.strip() if time_tag else ""
+            # Ngày (thường là ngày hiện tại)
+            date_str = datetime.now().strftime("%Y-%m-%d")
+            # Kênh
+            channels = [ch.text.strip() for ch in match_div.select(".channel a, .tv-station a")]
+            matches.append({
+                "league": league,
+                "match": title,
+                "datetime": f"{date_str} {time_str}",
+                "channels": channels
+            })
+        except Exception as e:
+            print(f"Lỗi parse một trận: {e}")
             continue
-        today_str = datetime.now().strftime("%Y-%m-%d")
-        dt_vn = f"{today_str} {m['kickoff']}"
-        result.append({
-            "league": league,
-            "match": m["title"],
-            "datetime": dt_vn,
-            "channels": []
-        })
-    print(f"[Parse] Sau lọc: {len(result)} trận hợp lệ")
-    return result
+    return matches
 
 def main():
-    url = os.environ.get("LOS_URL", DEFAULT_URL)
-    html = get_html_with_playwright(url)
-    items = parse_liveonsat(html)
+    items = scrape_livesoccertv()
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_FILE.write_text(json.dumps(items, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"[OK] Đã ghi {len(items)} trận vào {OUTPUT_FILE}")
