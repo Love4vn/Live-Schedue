@@ -1,34 +1,5 @@
 [
     {
-        "Date": "2026-04-07",
-        "Time": "16:00",
-        "League": "Tennis (ATP)",
-        "Matchup": "Monte-Carlo Masters",
-        "Services": [
-            "Tennis Channel",
-            "TSN3"
-        ]
-    },
-    {
-        "Date": "2026-04-07",
-        "Time": "17:00",
-        "League": "Tennis (WTA)",
-        "Matchup": "Upper Austria Linz",
-        "Services": [
-            "DAZN Canada"
-        ]
-    },
-    {
-        "Date": "2026-04-07",
-        "Time": "18:30",
-        "League": "Tennis (ATP)",
-        "Matchup": "Monte-Carlo Masters",
-        "Services": [
-            "T2",
-            "RDS"
-        ]
-    },
-    {
         "Date": "2026-04-08",
         "Time": "00:00",
         "League": "Tennis (WTA)",
@@ -87,6 +58,15 @@
         "Matchup": "Monte-Carlo Masters",
         "Services": [
             "RDS"
+        ]
+    },
+    {
+        "Date": "2026-04-08",
+        "Time": "19:00",
+        "League": "Tennis (ATP)",
+        "Matchup": "Monte-Carlo Masters",
+        "Services": [
+            "TSN3"
         ]
     },
     {
@@ -328,6 +308,8 @@
         "League": "Tennis (ATP)",
         "Matchup": "Monte-Carlo Masters",
         "Services": [
+            "Tennis Channel",
+            "TSN2",
             "RDS 2"
         ]
     },
@@ -350,6 +332,7 @@
         "League": "Tennis (WTA)",
         "Matchup": "Upper Austria Linz",
         "Services": [
+            "TVA Sports 2",
             "DAZN Canada"
         ]
     },
@@ -359,7 +342,6 @@
         "League": "Premier League",
         "Matchup": "Everton @ Brentford",
         "Services": [
-            "Peacock",
             "NBC Universo",
             "DAZN Canada"
         ]
@@ -396,6 +378,7 @@
             "Peacock",
             "NBC",
             "NBC Universo",
+            "NBC Sports 4K",
             "DAZN Canada"
         ]
     },
@@ -437,10 +420,20 @@
     },
     {
         "Date": "2026-04-12",
+        "Time": "17:00",
+        "League": "Tennis (ATP)",
+        "Matchup": "Monte-Carlo Masters",
+        "Services": [
+            "Tennis Channel"
+        ]
+    },
+    {
+        "Date": "2026-04-12",
         "Time": "19:00",
         "League": "Tennis (WTA)",
         "Matchup": "Upper Austria Linz",
         "Services": [
+            "TVA Sports",
             "DAZN Canada"
         ]
     },
@@ -463,7 +456,6 @@
             "Peacock",
             "NBC Sports Network",
             "NBC Universo",
-            "USA Network",
             "DAZN Canada"
         ]
     },
@@ -497,6 +489,8 @@
         "League": "Tennis (ATP)",
         "Matchup": "Monte-Carlo Masters",
         "Services": [
+            "Tennis Channel",
+            "TSN2",
             "RDS 2"
         ]
     },
@@ -529,6 +523,7 @@
         "Matchup": "Leeds United @ Manchester United",
         "Services": [
             "NBC Universo",
+            "TeleXitos",
             "USA Network",
             "DAZN Canada"
         ]
@@ -606,13 +601,33 @@
     },
     {
         "Date": "2026-04-16",
+        "Time": "17:30",
+        "League": "Tennis (WTA)",
+        "Matchup": "Stuttgart Open",
+        "Services": [
+            "DAZN Canada"
+        ]
+    },
+    {
+        "Date": "2026-04-16",
+        "Time": "22:00",
+        "League": "Tennis (WTA)",
+        "Matchup": "Stuttgart Open",
+        "Services": [
+            "DAZN Canada"
+        ]
+    },
+    {
+        "Date": "2026-04-16",
         "Time": "23:45",
         "League": "UEFA Europa League",
         "Matchup": "Freiburg @ Celta de Vigo",
         "Services": [
             "Fubo Sports",
             "Paramount+ (US)",
-            "CBS Sports Network"
+            "DAZN US",
+            "CBS Sports Network",
+            "DAZN Canada"
         ]
     },
     {
@@ -632,7 +647,9 @@
         "Services": [
             "Fubo Sports",
             "Paramount+ (US)",
-            "CBS Sports Network"
+            "DAZN US",
+            "CBS Sports Network",
+            "DAZN Canada"
         ]
     },
     {
@@ -641,7 +658,8 @@
         "League": "UEFA Europa League",
         "Matchup": "Porto @ Nottingham Forest",
         "Services": [
-            "Paramount+ (US)"
+            "Paramount+ (US)",
+            "DAZN Canada"
         ]
     },
     {
@@ -650,7 +668,8 @@
         "League": "UEFA Europa League",
         "Matchup": "Bologna @ Aston Villa",
         "Services": [
-            "Paramount+ (US)"
+            "Paramount+ (US)",
+            "DAZN Canada"
         ]
     },
     {
@@ -761,7 +780,8 @@
         "Matchup": "Deportivo Alavés @ Real Madrid",
         "Services": [
             "ESPN Select",
-            "ESPN Unlimited"
+            "ESPN Unlimited",
+            "ESPN Deportes"
         ]
     },
     {
@@ -790,7 +810,8 @@
         "Matchup": "Real Madrid @ Real Betis",
         "Services": [
             "ESPN Select",
-            "ESPN Unlimited"
+            "ESPN Unlimited",
+            "ESPN Deportes"
         ]
     },
     {
@@ -820,7 +841,8 @@
         "Matchup": "FC Barcelona @ Getafe",
         "Services": [
             "ESPN Select",
-            "ESPN Unlimited"
+            "ESPN Unlimited",
+            "ESPN Deportes"
         ]
     },
     {
