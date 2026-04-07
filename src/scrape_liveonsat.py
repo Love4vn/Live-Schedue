@@ -8,20 +8,18 @@ from pathlib import Path
 from datetime import datetime
 from playwright.sync_api import sync_playwright
 
-# -------------------- CẤU HÌNH --------------------
 DEFAULT_URL = "https://m.liveonsat.com/2day.php"
 REPO_ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_FILE = REPO_ROOT / "liveonsat_schedule.json"
 DEBUG_HTML = REPO_ROOT / "liveonsat_debug.html"
 DEBUG_PNG = REPO_ROOT / "liveonsat_debug.png"
 
-# User-Agent pool (mobile)
 UA_POOL = [
     "Mozilla/5.0 (Linux; Android 13; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36",
     "Mozilla/5.0 (iPhone14,3; U; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Mobile/19A346 Safari/602.1",
 ]
 
-# -------------------- DANH SÁCH GIẢI ĐẤU ĐƯỢC PHÉP (giữ nguyên) --------------------
+# -------------------- DANH SÁCH GIẢI ĐẤU (giữ nguyên) --------------------
 ALLOWED_TENNIS_TOURNAMENTS = {
     "atp", "atp tour", "atp world tour", "grand slam", "australian open",
     "roland garros", "french open", "wimbledon", "us open", "nitto atp finals",
@@ -49,7 +47,6 @@ ALLOWED_TEAMS_PER_LEAGUE = {
 }
 ALLOWED_NON_EURO_TEAMS = {"argentina", "brazil", "japan", "south korea"}
 
-# -------------------- HÀM --------------------
 def clean_text(t: str) -> str:
     if not t:
         return ""
@@ -57,10 +54,10 @@ def clean_text(t: str) -> str:
     return re.sub(r"\s+", " ", t).strip()
 
 def get_html_with_playwright(url: str, timeout_ms: int = 90000) -> str:
-    """Lấy HTML từ LiveOnSat với độ chờ tốt hơn"""
     ua = random.choice(UA_POOL)
     debug = os.environ.get("DEBUG_LIVEONSAT") == "1"
     print(f"[LiveOnSat] Đang tải {url} với UA={ua[:50]}...")
+    print(f"[LiveOnSat] DEBUG mode = {debug}")
 
     with sync_playwright() as p:
         browser = p.chromium.launch(
@@ -77,21 +74,21 @@ def get_html_with_playwright(url: str, timeout_ms: int = 90000) -> str:
         page.set_default_timeout(timeout_ms)
         try:
             page.goto(url, wait_until="networkidle", timeout=timeout_ms)
-            # Cuộn trang nhiều lần để tải nội dung lazy
+            # Cuộn trang để kích hoạt lazy-load
             for y in range(0, 5000, 500):
                 page.evaluate(f"window.scrollTo(0, {y});")
                 time.sleep(0.2)
-            # Đợi thêm 2 giây để ổn định
-            page.wait_for_timeout(2000)
+            page.wait_for_timeout(3000)
             html = page.content()
-            if debug:
+            print(f"[LiveOnSat] Chiều dài HTML: {len(html)} ký tự")
+            if debug or len(html) < 50000:  # Nếu HTML quá ngắn, tự động lưu debug
                 DEBUG_HTML.write_text(html, encoding="utf-8")
                 page.screenshot(path=str(DEBUG_PNG), full_page=True)
-                print("[LiveOnSat] Đã lưu debug html/png.")
+                print(f"[LiveOnSat] Đã lưu debug html (size {len(html)}) và png.")
             browser.close()
             return html
         except Exception as e:
-            print(f"[LiveOnSat] Lỗi nghiêm trọng: {e}")
+            print(f"[LiveOnSat] Lỗi: {e}")
             if debug:
                 try:
                     page.screenshot(path=str(REPO_ROOT / "liveonsat_error.png"), full_page=True)
@@ -149,73 +146,58 @@ def is_match_allowed(league: str, title: str) -> bool:
     return False
 
 def parse_liveonsat(html: str):
-    """Parser mới dựa trên regex và cấu trúc dòng thực tế"""
     if "FETCH_ERROR" in html:
         print("[Parse] HTML bị lỗi fetch")
         return []
 
-    # Lấy tất cả văn bản hiển thị, loại bỏ thẻ script/style
     from bs4 import BeautifulSoup
     soup = BeautifulSoup(html, "html.parser")
     for script in soup(["script", "style"]):
         script.decompose()
     raw_text = soup.get_text("\n")
     lines = [clean_text(l) for l in raw_text.splitlines() if clean_text(l)]
-    
-    # Lọc bỏ các dòng rác
     noise = {"Image", "HOME", "Full Site", "Daily TV", "Website Last updated", "Please Note:", "LIVE", "Discover more"}
     lines = [l for l in lines if l not in noise and not l.startswith("Website Last updated") and not l.startswith("Timezone")]
     print(f"[Parse] Tổng số dòng sau lọc: {len(lines)}")
+    # In ra 20 dòng đầu để kiểm tra
+    print("[Parse] 20 dòng đầu tiên:")
+    for idx, line in enumerate(lines[:20]):
+        print(f"  {idx}: {line[:100]}")
 
-    # Duyệt tìm các dòng có ST: (giờ)
-    # Mỗi trận thường có cấu trúc:
-    # [tên giải] (có dấu - hoặc không)
-    # [tên trận] chứa "v" hoặc "vs"
-    # [LIVE] ST: HH:MM
     matches_raw = []
     i = 0
     while i < len(lines):
         line = lines[i]
-        # Tìm dòng chứa "ST:"
         st_match = re.search(r"ST:\s*([0-2]?\d:[0-5]\d)", line)
         if st_match:
             kickoff = st_match.group(1)
-            # Lấy dòng trước đó làm tên trận (nếu có)
             title = lines[i-1] if i-1 >= 0 else ""
-            # Lấy dòng trước title làm giải (nếu có và chứa dấu -)
             competition = ""
             if i-2 >= 0 and " - " in lines[i-2]:
                 competition = lines[i-2]
             elif i-3 >= 0 and " - " in lines[i-3]:
                 competition = lines[i-3]
-            
-            # Kiểm tra title có chứa "v" hoặc "vs" không
             if re.search(r"\b(vs|v)\b", title, re.IGNORECASE):
                 matches_raw.append({
                     "competition": competition,
                     "title": title,
-                    "kickoff_baghdad": kickoff,   # thực tế là giờ Việt Nam (GMT+7)
-                    "channels_raw": []  # kênh không cần thiết nếu không có, nhưng giữ cấu trúc
+                    "kickoff": kickoff,
                 })
         i += 1
 
-    print(f"[Parse] Tìm thấy {len(matches_raw)} trận thô trước lọc")
-
-    # Lọc theo giải và đội
+    print(f"[Parse] Tìm thấy {len(matches_raw)} trận thô")
     result = []
     for m in matches_raw:
         league = normalize_league(m["competition"])
         if not is_match_allowed(league, m["title"]):
             continue
-        # Giờ đã là giờ Việt Nam (trang hiển thị GMT+7), không cần chuyển đổi
-        # Định dạng datetime: lấy ngày hiện tại + giờ
         today_str = datetime.now().strftime("%Y-%m-%d")
-        dt_vn = f"{today_str} {m['kickoff_baghdad']}"
+        dt_vn = f"{today_str} {m['kickoff']}"
         result.append({
             "league": league,
             "match": m["title"],
             "datetime": dt_vn,
-            "channels": []  # hiện tại không có thông tin kênh trong ảnh, có thể bỏ qua hoặc để trống
+            "channels": []
         })
     print(f"[Parse] Sau lọc: {len(result)} trận hợp lệ")
     return result
