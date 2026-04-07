@@ -2,8 +2,8 @@ name: Scrape LiveOnSat Schedule
 
 on:
   schedule:
-    - cron: '0 */6 * * *'   # Mỗi 6 giờ chạy một lần
-  workflow_dispatch:         # Cho phép chạy thủ công
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
 
 jobs:
   scrape:
@@ -18,8 +18,19 @@ jobs:
         run: |
           pip install -r requirements.txt
           playwright install chromium
-      - name: Run scraper
+      - name: Run scraper with debug
+        env:
+          DEBUG_LIVEONSAT: 1
         run: python src/scrape_liveonsat.py
+      - name: Upload debug artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: liveonsat-debug
+          path: |
+            liveonsat_debug.html
+            liveonsat_debug.png
+            liveonsat_schedule.json
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
