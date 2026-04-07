@@ -20,36 +20,28 @@ DEBUG_PNG = REPO_ROOT / "liveonsat_debug.png"
 BAGHDAD_TZ = timezone(timedelta(hours=3))
 VIETNAM_TZ = timezone(timedelta(hours=7))
 
-# User Agent pool
 UA_POOL = [
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Linux; Android 13; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36",
+    "Mozilla/5.0 (iPhone14,3; U; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Mobile/19A346 Safari/602.1",
 ]
 
-# -------------------- DANH SÁCH GIẢI ĐẤU ĐƯỢC PHÉP --------------------
-# Tennis
+# -------------------- DANH SÁCH GIẢI ĐẤU ĐƯỢC PHÉP (giữ nguyên như cũ) --------------------
 ALLOWED_TENNIS_TOURNAMENTS = {
     "atp", "atp tour", "atp world tour", "grand slam", "australian open",
     "roland garros", "french open", "wimbledon", "us open", "nitto atp finals",
     "atp masters", "atp 1000", "atp 500", "atp 250"
 }
-
-# Bóng đá
 ALLOWED_FOOTBALL_LEAGUES = {
     "Premier League", "Serie A", "La Liga", "Bundesliga", "Ligue 1",
     "UEFA Champions League", "UEFA Europa League", "UEFA Europa Conference League",
     "UEFA Euro", "FA Cup", "League Cup", "International Friendly"
 }
-
-# Đội Premier League (dùng chung cho FA Cup, League Cup)
 PREMIER_LEAGUE_TEAMS = {
     "arsenal", "aston villa", "bournemouth", "brentford", "brighton", "chelsea",
     "crystal palace", "everton", "fulham", "leeds united", "liverpool", "manchester city",
     "manchester united", "newcastle", "nottingham forest", "sunderland", "tottenham hotspur",
     "west ham united", "wolverhampton"
 }
-
-# Đội theo từng giải (viết thường)
 ALLOWED_TEAMS_PER_LEAGUE = {
     "Premier League": PREMIER_LEAGUE_TEAMS,
     "Serie A": {"inter milan", "ac milan", "napoli", "juventus", "roma", "atalanta", "lazio"},
@@ -59,22 +51,20 @@ ALLOWED_TEAMS_PER_LEAGUE = {
     "FA Cup": PREMIER_LEAGUE_TEAMS,
     "League Cup": PREMIER_LEAGUE_TEAMS
 }
-
-# Đội tuyển ngoài châu Âu được phép cho giao hữu
 ALLOWED_NON_EURO_TEAMS = {"argentina", "brazil", "japan", "south korea"}
 
-# -------------------- HÀM TIỆN ÍCH --------------------
+# -------------------- HÀM --------------------
 def clean_text(t: str) -> str:
     if not t:
         return ""
     t = t.replace("\xa0", " ")
     return re.sub(r"\s+", " ", t).strip()
 
-def get_html_with_playwright(url: str, timeout_ms: int = 90000) -> str:
-    """Lấy HTML từ LiveOnSat (phiên bản mobile)"""
+def get_html_with_playwright(url: str, timeout_ms: int = 60000) -> str:
+    """Lấy HTML, không chờ selector đặc biệt, chỉ đợi tải xong"""
     ua = random.choice(UA_POOL)
     debug = os.environ.get("DEBUG_LIVEONSAT") == "1"
-    print(f"[LiveOnSat] Đang tải {url} với UA={ua[:35]}...")
+    print(f"[LiveOnSat] Đang tải {url} với UA={ua[:50]}...")
 
     with sync_playwright() as p:
         browser = p.chromium.launch(
@@ -92,12 +82,12 @@ def get_html_with_playwright(url: str, timeout_ms: int = 90000) -> str:
         page.set_default_timeout(timeout_ms)
         try:
             page.goto(url, wait_until="domcontentloaded", timeout=timeout_ms)
-            # Đợi xuất hiện giờ dạng ST: HH:MM
-            page.wait_for_selector("text=/ST:\\s*[0-2]?\\d:[0-5]\\d/", timeout=25000)
-            # Cuộn nhẹ để load nội dung
-            for y in (600, 1400, 2400, 3400):
+            # Đợi thêm 3s để các script chạy
+            page.wait_for_timeout(3000)
+            # Cuộn nhẹ để kích hoạt lazy-load
+            for y in (600, 1200, 2000):
                 page.evaluate(f"window.scrollTo(0, {y});")
-                time.sleep(0.2)
+                time.sleep(0.3)
             html = page.content()
             if debug:
                 DEBUG_HTML.write_text(html, encoding="utf-8")
@@ -106,7 +96,7 @@ def get_html_with_playwright(url: str, timeout_ms: int = 90000) -> str:
             browser.close()
             return html
         except Exception as e:
-            print(f"[LiveOnSat] Lỗi: {e}")
+            print(f"[LiveOnSat] Lỗi nghiêm trọng: {e}")
             if debug:
                 try:
                     page.screenshot(path=str(REPO_ROOT / "liveonsat_error.png"), full_page=True)
@@ -116,9 +106,7 @@ def get_html_with_playwright(url: str, timeout_ms: int = 90000) -> str:
             return "<html><body>FETCH_ERROR</body></html>"
 
 def normalize_league(comp_raw: str):
-    """Nhận diện tên giải chuẩn từ chuỗi competition"""
     comp_lower = comp_raw.lower()
-    # Bóng đá
     if "premier league" in comp_lower:
         return "Premier League"
     if "serie a" in comp_lower:
@@ -143,38 +131,30 @@ def normalize_league(comp_raw: str):
         return "League Cup"
     if "international friendly" in comp_lower or "friendly" in comp_lower:
         return "International Friendly"
-    # Tennis
     for keyword in ALLOWED_TENNIS_TOURNAMENTS:
         if keyword in comp_lower:
             return "Tennis"
     return None
 
 def is_match_allowed(league: str, title: str) -> bool:
-    """Kiểm tra trận đấu có được phép hay không dựa trên giải và tên đội"""
     if not league:
         return False
     title_lower = title.lower()
-    # Tennis: tất cả đều cho phép
     if league == "Tennis":
         return True
-    # Bóng đá
     if league in ALLOWED_FOOTBALL_LEAGUES:
-        # Các giải cúp châu Âu, Euro: cho phép tất cả
         if league in ("UEFA Champions League", "UEFA Europa League", "UEFA Europa Conference League", "UEFA Euro"):
             return True
-        # Giao hữu quốc tế: chỉ lấy khi có đội ngoài châu Âu
         if league == "International Friendly":
             return any(team in title_lower for team in ALLOWED_NON_EURO_TEAMS)
-        # Các giải có danh sách đội cụ thể
         if league in ALLOWED_TEAMS_PER_LEAGUE:
             allowed_teams = ALLOWED_TEAMS_PER_LEAGUE[league]
             return any(team in title_lower for team in allowed_teams)
-        # Các giải khác (nếu có) mặc định không lấy
         return False
     return False
 
 def convert_to_vietnam_time(st_time_str: str, date_baghdad: datetime.date) -> str:
-    """Chuyển đổi giờ ST (Baghdad UTC+3) sang giờ Việt Nam (UTC+7)"""
+    """Chuyển giờ Baghdad (UTC+3) sang Việt Nam (UTC+7)"""
     try:
         hour, minute = map(int, st_time_str.split(":"))
         dt_baghdad = datetime.combine(date_baghdad, datetime.min.time().replace(hour=hour, minute=minute))
@@ -185,8 +165,9 @@ def convert_to_vietnam_time(st_time_str: str, date_baghdad: datetime.date) -> st
         return f"{date_baghdad.isoformat()} {st_time_str}"
 
 def parse_liveonsat(html: str):
-    """Parse HTML, lọc và trả về danh sách trận đấu hợp lệ"""
+    """Parse HTML, lọc trận đấu hợp lệ"""
     if "FETCH_ERROR" in html:
+        print("[Parse] HTML bị lỗi fetch")
         return []
     soup = BeautifulSoup(html, "html.parser")
     page_text = soup.get_text("\n")
@@ -194,6 +175,7 @@ def parse_liveonsat(html: str):
     # Lọc bỏ dòng rác
     noise = {"Image", "HOME", "Full Site", "Daily TV", "Website Last updated", "Please Note:"}
     lines = [l for l in lines if l not in noise and not l.startswith("Website Last updated")]
+    print(f"[Parse] Tổng số dòng sau lọc: {len(lines)}")
 
     matches_raw = []
     current_comp = None
@@ -220,32 +202,30 @@ def parse_liveonsat(html: str):
             if m:
                 current_time = m.group(1)
             continue
-        # Nhận diện tiêu đề trận đấu (chứa vs hoặc v)
+        # Tiêu đề trận đấu (chứa vs hoặc v)
         if re.search(r"\b(vs|v)\b", line, re.IGNORECASE):
             flush()
             current_title = line
             continue
-        # Nhận diện giải đấu (có dấu " - " và chưa có title)
+        # Giải đấu (có " - " và chưa có title)
         if " - " in line and not current_title and not line.startswith("ST:"):
             current_comp = line
             continue
-        # Gom kênh
+        # Kênh
         if current_title:
             if line.lower() in ("watch", "details", "more", "back"):
                 continue
             channels.append(line)
     flush()
+    print(f"[Parse] Tìm thấy {len(matches_raw)} trận thô trước lọc")
 
-    # Lọc và chuyển đổi giờ
     today_baghdad = datetime.now(BAGHDAD_TZ).date()
     result = []
     for m in matches_raw:
         league = normalize_league(m["competition"])
         if not is_match_allowed(league, m["title"]):
             continue
-        # Chuyển giờ
         dt_vn = convert_to_vietnam_time(m["kickoff_baghdad"], today_baghdad) if m["kickoff_baghdad"] else ""
-        # Làm sạch danh sách kênh
         unique_channels = list(dict.fromkeys([ch for ch in m["channels_raw"] if ch and len(ch) > 1]))
         result.append({
             "league": league,
@@ -253,13 +233,13 @@ def parse_liveonsat(html: str):
             "datetime": dt_vn,
             "channels": unique_channels
         })
+    print(f"[Parse] Sau lọc: {len(result)} trận hợp lệ")
     return result
 
 def main():
     url = os.environ.get("LOS_URL", DEFAULT_URL)
     html = get_html_with_playwright(url)
     items = parse_liveonsat(html)
-    # Ghi kết quả
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_FILE.write_text(json.dumps(items, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"[OK] Đã ghi {len(items)} trận vào {OUTPUT_FILE}")
