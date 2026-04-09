@@ -3,9 +3,10 @@ euro_vn_full_schedule_live.py
 ================================
 BẢN HOÀN CHỈNH – 24 GIỜ TỚI + LỌC THEO GIẢI + ĐỘI RIÊNG
 TÍCH HỢP: SofaScore (chính) + Các nguồn JSON phụ (Wheresthematch, LiveSportsOnTV, Ausport)
-Tối ưu ghép kênh M3U với matching thông minh (tên kênh + tên trận)
+Tối ưu ghép kênh M3U với matching thông minh (tên kênh + tên trận + quốc gia)
 Bổ sung: FA Cup, League Cup (Carabao Cup) – group "Live FA, League Cup"
 Sửa lỗi nhận diện UEFA Europa League (không nhầm thành UEFA Euro) cho tất cả nguồn
+Match kênh có xét quốc gia, loại bỏ kênh chứa ###
 """
 
 import asyncio
@@ -157,12 +158,81 @@ def split_name_and_number(name: str):
         return text, number
     return name, None
 
-def is_channel_match(ch_name: str, m3u_name: str) -> bool:
+def normalize_country_name(country: str) -> str:
+    """Chuẩn hóa tên quốc gia thành mã 2 chữ cái (us, uk, ca, ...)"""
+    if not country:
+        return ""
+    country_lower = country.lower().strip()
+    # Map thủ công một số tên thường gặp
+    mapping = {
+        "united states": "us",
+        "usa": "us",
+        "us": "us",
+        "united kingdom": "uk",
+        "uk": "uk",
+        "canada": "ca",
+        "ca": "ca",
+        "australia": "au",
+        "au": "au",
+        "germany": "de",
+        "de": "de",
+        "france": "fr",
+        "fr": "fr",
+        "italy": "it",
+        "it": "it",
+        "spain": "es",
+        "es": "es",
+        "portugal": "pt",
+        "pt": "pt",
+        "netherlands": "nl",
+        "nl": "nl",
+        "belgium": "be",
+        "be": "be",
+        "brazil": "br",
+        "br": "br",
+    }
+    if country_lower in mapping:
+        return mapping[country_lower]
+    # Thử lấy từ pycountry
+    try:
+        c = pycountry.countries.get(name=country)
+        if c:
+            return c.alpha_2.lower()
+    except:
+        pass
+    return country_lower
+
+def is_channel_match(ch_name: str, m3u_name: str, country: str = "") -> bool:
     if not ch_name or not m3u_name:
         return False
+    
+    # Loại bỏ kênh có chứa ### (3 dấu # trở lên) - đã được lọc từ trước, nhưng kiểm tra lại
+    if re.search(r'#{3,}', m3u_name):
+        return False
+    
+    # Chuẩn hóa tên kênh
     ch_norm = normalize_channel_name(ch_name)
     m3u_norm = normalize_channel_name(m3u_name)
     
+    # Nếu có country, kiểm tra xem m3u_name có chứa mã/tên quốc gia không
+    if country:
+        country_code = normalize_country_name(country)
+        if country_code:
+            # Tách tiền tố quốc gia từ m3u_name (trước dấu |, :, -)
+            m3u_lower = m3u_name.lower()
+            # Tìm pattern như |us|, us|, us:, us -, (us) 
+            match = re.search(r'(?:\||^|\(|\s)([a-z]{2,3})(?:\||:|\)|\s|-|$)', m3u_lower)
+            if match:
+                prefix = match.group(1)
+                if prefix != country_code:
+                    return False
+            # Nếu không có tiền tố, kiểm tra xem tên kênh có chứa tên quốc gia không (ví dụ "USA Network")
+            else:
+                # Chỉ bỏ qua nếu tên kênh rõ ràng thuộc quốc gia khác
+                # Tạm thời không xử lý phức tạp, vẫn cho match nếu không có tiền tố
+                pass
+    
+    # So sánh tên kênh đã chuẩn hóa
     if len(ch_norm) <= 3 or len(m3u_norm) <= 3:
         return ch_norm == m3u_norm
     
@@ -217,7 +287,6 @@ async def get_tv_data(session, event_id):
 
 def is_uefa_euro(tournament_name: str) -> bool:
     name_lower = tournament_name.lower()
-    # Nếu là Europa League thì không phải Euro
     if "europa league" in name_lower:
         return False
     if any(x in name_lower for x in ["u19", "u21", "u17", "youth"]):
@@ -713,6 +782,9 @@ async def main():
                 if content:
                     chs = parse_m3u(content)
                     for ch in chs:
+                        # Loại bỏ kênh có tên chứa ### (3 dấu # trở lên)
+                        if re.search(r'#{3,}', ch.get('name', '')):
+                            continue
                         if is_low_resolution(ch.get('name', '')):
                             continue
                         all_ch.append(ch)
@@ -730,8 +802,9 @@ async def main():
                 continue
             used_urls_in_match = set()
             for tv in g.get("tv_channels", []):
+                tv_country = tv.get("country", "")
                 for ch_name in tv.get("channels", []):
-                    matching = [ch for ch in unique_ch if is_channel_match(ch_name, ch['name'])]
+                    matching = [ch for ch in unique_ch if is_channel_match(ch_name, ch['name'], tv_country)]
                     for ch in matching:
                         url = ch['url']
                         if url in used_urls_in_match:
