@@ -5,7 +5,7 @@ BẢN HOÀN CHỈNH – 24 GIỜ TỚI + LỌC THEO GIẢI + ĐỘI RIÊNG
 TÍCH HỢP: SofaScore (chính) + Các nguồn JSON phụ (Wheresthematch, LiveSportsOnTV, Ausport)
 Tối ưu ghép kênh M3U với matching thông minh (tên kênh + tên trận)
 Bổ sung: FA Cup, League Cup (Carabao Cup) – group "Live FA, League Cup"
-Sửa lỗi nhận diện UEFA Europa League (không nhầm thành UEFA Euro)
+Sửa lỗi nhận diện UEFA Europa League (không nhầm thành UEFA Euro) cho tất cả nguồn
 """
 
 import asyncio
@@ -374,7 +374,11 @@ def parse_livesportsontv(entry: dict) -> Optional[Dict]:
         if "Tennis" in league:
             league = "Tennis"
         else:
-            if "Premier League" in league:
+            if "UEFA Europa League" in league:
+                league = "UEFA Europa League"
+            elif "UEFA Europa Conference League" in league:
+                league = "UEFA Europa Conference League"
+            elif "Premier League" in league:
                 league = "Premier League"
             elif "Serie A" in league:
                 league = "Serie A"
@@ -386,10 +390,6 @@ def parse_livesportsontv(entry: dict) -> Optional[Dict]:
                 league = "Ligue 1"
             elif "UEFA Champions League" in league:
                 league = "UEFA Champions League"
-            elif "UEFA Europa League" in league:
-                league = "UEFA Europa League"
-            elif "UEFA Europa Conference League" in league:
-                league = "UEFA Europa Conference League"
             elif "FA Cup" in league:
                 league = "FA Cup"
             elif "League Cup" in league or "Carabao" in league:
@@ -429,7 +429,11 @@ def parse_wheresthematch(entry: dict) -> Optional[Dict]:
         if sport == "Tennis" or "Tennis" in league:
             league = "Tennis"
         else:
-            if "Premier League" in league:
+            if "UEFA Europa League" in league:
+                league = "UEFA Europa League"
+            elif "UEFA Europa Conference League" in league:
+                league = "UEFA Europa Conference League"
+            elif "Premier League" in league:
                 league = "Premier League"
             elif "Serie A" in league:
                 league = "Serie A"
@@ -441,10 +445,6 @@ def parse_wheresthematch(entry: dict) -> Optional[Dict]:
                 league = "Ligue 1"
             elif "UEFA Champions League" in league:
                 league = "UEFA Champions League"
-            elif "UEFA Europa League" in league:
-                league = "UEFA Europa League"
-            elif "UEFA Europa Conference League" in league:
-                league = "UEFA Europa Conference League"
             elif "FA Cup" in league:
                 league = "FA Cup"
             elif "League Cup" in league or "Carabao" in league:
@@ -483,7 +483,12 @@ def parse_ausport(entry: dict) -> Optional[Dict]:
         dt = dt.replace(tzinfo=TIMEZONE)
         kick_utc = int(dt.timestamp())
         league = entry.get('competition', '')
-        if "Premier League" in league:
+        # Xử lý các giải có từ "Europa" trước
+        if "Europa League" in league:
+            league = "UEFA Europa League"
+        elif "Europa Conference League" in league:
+            league = "UEFA Europa Conference League"
+        elif "Premier League" in league:
             league = "Premier League"
         elif "Serie A" in league:
             league = "Serie A"
@@ -495,17 +500,13 @@ def parse_ausport(entry: dict) -> Optional[Dict]:
             league = "Ligue 1"
         elif "UEFA Champions League" in league:
             league = "UEFA Champions League"
-        elif "UEFA Europa League" in league:
-            league = "UEFA Europa League"
-        elif "UEFA Europa Conference League" in league:
-            league = "UEFA Europa Conference League"
         elif "FA Cup" in league:
             league = "FA Cup"
         elif "League Cup" in league or "Carabao" in league:
             league = "League Cup"
         elif "ATP" in league or "WTA" in league:
             league = "Tennis"
-        elif "Euro" in league:
+        elif "Euro" in league:  # chỉ còn các giải như UEFA Euro
             league = "UEFA Euro"
         else:
             return None
