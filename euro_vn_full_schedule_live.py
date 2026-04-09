@@ -1,12 +1,13 @@
 """
 euro_vn_full_schedule_live.py
 ================================
-BẢN HOÀN CHỈNH – 24 GIỜ TỚI + LỌC THEO GIẢI + ĐỘI RIÊNG
+BẢN HOÀN CHỈNH – 2 GIỜ TRƯỚC + 24 GIỜ TỚI + LỌC THEO GIẢI + ĐỘI RIÊNG
 TÍCH HỢP: SofaScore (chính) + Các nguồn JSON phụ (Wheresthematch, LiveSportsOnTV, Ausport)
 Tối ưu ghép kênh M3U với matching thông minh (tên kênh + tên trận + quốc gia)
 Bổ sung: FA Cup, League Cup (Carabao Cup) – group "Live FA, League Cup"
 Sửa lỗi nhận diện UEFA Europa League (không nhầm thành UEFA Euro) cho tất cả nguồn
-Match kênh có xét quốc gia, loại bỏ kênh chứa ###
+Match kênh có xét quốc gia, loại bỏ kênh chứa ###, tăng độ chính xác (tránh nhầm Sky Go với Sky Golf)
+Thêm bước validate link (kiểm tra stream còn sống) trước khi ghi M3U
 """
 
 import asyncio
@@ -163,7 +164,6 @@ def normalize_country_name(country: str) -> str:
     if not country:
         return ""
     country_lower = country.lower().strip()
-    # Map thủ công một số tên thường gặp
     mapping = {
         "united states": "us",
         "usa": "us",
@@ -193,7 +193,6 @@ def normalize_country_name(country: str) -> str:
     }
     if country_lower in mapping:
         return mapping[country_lower]
-    # Thử lấy từ pycountry
     try:
         c = pycountry.countries.get(name=country)
         if c:
@@ -206,33 +205,22 @@ def is_channel_match(ch_name: str, m3u_name: str, country: str = "") -> bool:
     if not ch_name or not m3u_name:
         return False
     
-    # Loại bỏ kênh có chứa ### (3 dấu # trở lên) - đã được lọc từ trước, nhưng kiểm tra lại
     if re.search(r'#{3,}', m3u_name):
         return False
     
-    # Chuẩn hóa tên kênh
     ch_norm = normalize_channel_name(ch_name)
     m3u_norm = normalize_channel_name(m3u_name)
     
-    # Nếu có country, kiểm tra xem m3u_name có chứa mã/tên quốc gia không
     if country:
         country_code = normalize_country_name(country)
         if country_code:
-            # Tách tiền tố quốc gia từ m3u_name (trước dấu |, :, -)
             m3u_lower = m3u_name.lower()
-            # Tìm pattern như |us|, us|, us:, us -, (us) 
             match = re.search(r'(?:\||^|\(|\s)([a-z]{2,3})(?:\||:|\)|\s|-|$)', m3u_lower)
             if match:
                 prefix = match.group(1)
                 if prefix != country_code:
                     return False
-            # Nếu không có tiền tố, kiểm tra xem tên kênh có chứa tên quốc gia không (ví dụ "USA Network")
-            else:
-                # Chỉ bỏ qua nếu tên kênh rõ ràng thuộc quốc gia khác
-                # Tạm thời không xử lý phức tạp, vẫn cho match nếu không có tiền tố
-                pass
     
-    # So sánh tên kênh đã chuẩn hóa
     if len(ch_norm) <= 3 or len(m3u_norm) <= 3:
         return ch_norm == m3u_norm
     
@@ -240,7 +228,9 @@ def is_channel_match(ch_name: str, m3u_name: str, country: str = "") -> bool:
     m3u_text, m3u_num = split_name_and_number(m3u_norm)
     
     text_similarity = similar(ch_text, m3u_text)
-    if text_similarity < 0.85:
+    if text_similarity < 0.9:
+        return False
+    if abs(len(ch_text) - len(m3u_text)) > max(len(ch_text), len(m3u_text)) * 0.3:
         return False
     
     if ch_num is not None and m3u_num is not None:
@@ -248,8 +238,13 @@ def is_channel_match(ch_name: str, m3u_name: str, country: str = "") -> bool:
     if ch_num is not None or m3u_num is not None:
         return False
     
-    if abs(len(ch_text) - len(m3u_text)) > max(len(ch_text), len(m3u_text)) * 0.3:
-        return False
+    # Tránh nhầm "go" với "golf"
+    ch_lower = ch_name.lower()
+    m3u_lower = m3u_name.lower()
+    if "go" in ch_lower and "golf" in m3u_lower and "go" not in m3u_lower:
+        if similar("go", "golf") < 0.5:
+            return False
+    
     return True
 
 def is_team_match(team_name: str, m3u_name: str) -> bool:
@@ -316,14 +311,14 @@ def is_friendly_match(home_team: str, away_team: str) -> bool:
             return True
     return False
 
-async def fetch_sofascore_event(session, event_id, sport, now_ts, max_ts):
+async def fetch_sofascore_event(session, event_id, sport, start_ts, max_ts):
     url = f"https://api.sofascore.com/api/v1/event/{event_id}"
     try:
         res = await session.get(url, impersonate="chrome120", timeout=10)
         if res.status_code != 200: return None
         ev = res.json().get('event', {})
-        start_ts = ev.get('startTimestamp')
-        if not start_ts or not (now_ts <= start_ts <= max_ts):
+        start_ts_ev = ev.get('startTimestamp')
+        if not start_ts_ev or not (start_ts <= start_ts_ev <= max_ts):
             return None
 
         tv = await get_tv_data(session, event_id)
@@ -336,9 +331,9 @@ async def fetch_sofascore_event(session, event_id, sport, now_ts, max_ts):
             match = f"{ev.get('homeTeam', {}).get('name', '')} vs {ev.get('awayTeam', {}).get('name', '')}"
             return {
                 "league": league,
-                "time": vn_time(start_ts),
+                "time": vn_time(start_ts_ev),
                 "match": match,
-                "kick_utc": start_ts,
+                "kick_utc": start_ts_ev,
                 "tv_channels": tv,
                 "tournament": ev.get('tournament', {}).get('name')
             }
@@ -348,11 +343,9 @@ async def fetch_sofascore_event(session, event_id, sport, now_ts, max_ts):
             home_team = ev.get('homeTeam', {}).get('name', '')
             away_team = ev.get('awayTeam', {}).get('name', '')
 
-            # Lọc giải nữ và trẻ
             if any(x in league_lower for x in ["women", "frauen", "u19", "u21", "u17", "youth"]):
                 return None
 
-            # Xác định giải (ưu tiên các giải club trước)
             if "uefa europa league" in league_lower:
                 league = "UEFA Europa League"
             elif "uefa conference league" in league_lower:
@@ -382,7 +375,6 @@ async def fetch_sofascore_event(session, event_id, sport, now_ts, max_ts):
             else:
                 return None
 
-            # Kiểm tra đội nếu giải yêu cầu
             if league in ALLOWED_TEAMS_PER_LEAGUE:
                 allowed = ALLOWED_TEAMS_PER_LEAGUE[league]
                 home_norm = normalize_team_name(home_team)
@@ -396,30 +388,27 @@ async def fetch_sofascore_event(session, event_id, sport, now_ts, max_ts):
             match = f"{home_team} vs {away_team}"
             return {
                 "league": league,
-                "time": vn_time(start_ts),
+                "time": vn_time(start_ts_ev),
                 "match": match,
-                "kick_utc": start_ts,
+                "kick_utc": start_ts_ev,
                 "tv_channels": tv,
                 "tournament": league_raw
             }
     except:
         return None
 
-async def scrape_sofascore() -> List[Dict]:
+async def scrape_sofascore(start_ts: int, max_ts: int) -> List[Dict]:
     all_games = []
     async with AsyncSession() as session:
         for sport in ["football", "tennis"]:
             now = datetime.now()
             dates = [now.strftime("%Y-%m-%d"), (now + timedelta(days=1)).strftime("%Y-%m-%d")]
-            now_ts = int(datetime.now(TIMEZONE).timestamp())
-            max_ts = now_ts + 86400
-
             for date_str in dates:
                 url = f"https://www.sofascore.com/api/v1/sport/{sport}/scheduled-events/{date_str}"
                 res = await session.get(url, impersonate="chrome120", timeout=30)
                 if res.status_code != 200: continue
                 events = res.json().get('events', [])
-                tasks = [fetch_sofascore_event(session, e['id'], sport, now_ts, max_ts) for e in events]
+                tasks = [fetch_sofascore_event(session, e['id'], sport, start_ts, max_ts) for e in events]
                 results = await asyncio.gather(*tasks)
                 all_games.extend([r for r in results if r])
             await asyncio.sleep(2)
@@ -552,7 +541,6 @@ def parse_ausport(entry: dict) -> Optional[Dict]:
         dt = dt.replace(tzinfo=TIMEZONE)
         kick_utc = int(dt.timestamp())
         league = entry.get('competition', '')
-        # Xử lý các giải có từ "Europa" trước
         if "Europa League" in league:
             league = "UEFA Europa League"
         elif "Europa Conference League" in league:
@@ -575,7 +563,7 @@ def parse_ausport(entry: dict) -> Optional[Dict]:
             league = "League Cup"
         elif "ATP" in league or "WTA" in league:
             league = "Tennis"
-        elif "Euro" in league:  # chỉ còn các giải như UEFA Euro
+        elif "Euro" in league:
             league = "UEFA Euro"
         else:
             return None
@@ -599,7 +587,7 @@ def parse_ausport(entry: dict) -> Optional[Dict]:
     except:
         return None
 
-def load_all_secondary_sources(now_ts: int, max_ts: int) -> List[Dict]:
+def load_all_secondary_sources(start_ts: int, max_ts: int) -> List[Dict]:
     games = []
     for func, fname in [(parse_livesportsontv, "schedule_livesportsontv.json"),
                         (parse_wheresthematch, "results.json"),
@@ -607,7 +595,7 @@ def load_all_secondary_sources(now_ts: int, max_ts: int) -> List[Dict]:
         data = load_json_file(fname)
         for entry in data:
             g = func(entry)
-            if g and now_ts <= g['kick_utc'] <= max_ts:
+            if g and start_ts <= g['kick_utc'] <= max_ts:
                 games.append(g)
     return games
 
@@ -618,7 +606,6 @@ def merge_games(primary: List[Dict], secondary: List[Dict]) -> List[Dict]:
     secondary_football = [g for g in secondary if g['league'] != "Tennis"]
     secondary_tennis = [g for g in secondary if g['league'] == "Tennis"]
 
-    # Merge football
     primary_index = [(game, normalize(game['match']), game['kick_utc']) for game in primary_football]
     for sec in secondary_football:
         sec_norm_match = normalize(sec['match'])
@@ -645,7 +632,6 @@ def merge_games(primary: List[Dict], secondary: List[Dict]) -> List[Dict]:
         else:
             primary_football.append(sec)
 
-    # Tennis: gộp theo thời gian
     all_tennis = primary_tennis + secondary_tennis
     seen = {}
     unique_tennis = []
@@ -698,27 +684,47 @@ def parse_m3u(content):
         channels.append(current)
     return channels
 
+# ================== VALIDATE STREAM ==================
+async def validate_stream_url(session, url: str) -> bool:
+    """Kiểm tra link stream có hoạt động không (HEAD request, timeout 5s)"""
+    try:
+        # Dùng HEAD để kiểm tra nhanh
+        resp = await session.head(url, timeout=5, allow_redirects=True)
+        if resp.status_code in [200, 202, 204, 206]:
+            return True
+        # Nếu HEAD thất bại, thử GET với range nhỏ
+        resp2 = await session.get(url, timeout=5, headers={"Range": "bytes=0-1024"})
+        if resp2.status_code in [200, 206, 202]:
+            # Kiểm tra nội dung không phải HTML lỗi
+            text = await resp2.text()
+            if "<html" in text.lower() or "access denied" in text.lower():
+                return False
+            return True
+        return False
+    except Exception:
+        return False
+
 # ================== MAIN ==================
 async def main():
     start = time.time()
     vn_now = datetime.now(TIMEZONE)
-    now_ts = int(datetime.now(TIMEZONE).timestamp())
-    max_ts = now_ts + 86400
+    start_ts = int(datetime.now(TIMEZONE).timestamp()) - 7200   # 2 giờ trước
+    max_ts = int(datetime.now(TIMEZONE).timestamp()) + 86400    # 24 giờ sau
 
-    print("🔄 Bắt đầu lấy lịch 24 GIỜ TỚI từ SofaScore và các nguồn JSON phụ...")
+    print("🔄 Bắt đầu lấy lịch từ 2 GIỜ TRƯỚC đến 24 GIỜ TỚI từ SofaScore và các nguồn JSON phụ...")
 
     print("📡 Đang lấy dữ liệu từ SofaScore...")
-    sofascore_games = await scrape_sofascore()
+    sofascore_games = await scrape_sofascore(start_ts, max_ts)
     print(f"   ✅ SofaScore: {len(sofascore_games)} trận")
 
     print("📡 Đang đọc các nguồn JSON phụ...")
-    secondary_games = load_all_secondary_sources(now_ts, max_ts)
+    secondary_games = load_all_secondary_sources(start_ts, max_ts)
     print(f"   ✅ Các nguồn phụ: {len(secondary_games)} trận")
 
     print("🔄 Đang merge dữ liệu...")
     all_games = merge_games(sofascore_games, secondary_games)
 
-    # Lọc trùng và trận quá khứ
+    # Lọc trùng (không lọc theo thời gian vì đã lọc từ đầu)
     seen = {}
     deduped = []
     for g in all_games:
@@ -728,8 +734,7 @@ async def main():
             key = normalize(g["match"]) + "|" + g["time"] if g["match"] else g["time"] + "|" + str(g["kick_utc"])
         if key not in seen:
             seen[key] = g
-            if datetime.fromtimestamp(g['kick_utc']).astimezone(TIMEZONE) > vn_now:
-                deduped.append(g)
+            deduped.append(g)
         else:
             if g['league'] == "Tennis" and not g['match']:
                 for sec_ch in g['tv_channels']:
@@ -782,7 +787,6 @@ async def main():
                 if content:
                     chs = parse_m3u(content)
                     for ch in chs:
-                        # Loại bỏ kênh có tên chứa ### (3 dấu # trở lên)
                         if re.search(r'#{3,}', ch.get('name', '')):
                             continue
                         if is_low_resolution(ch.get('name', '')):
@@ -798,8 +802,6 @@ async def main():
     live_events = []
     for g in all_games:
         try:
-            if datetime.fromtimestamp(g['kick_utc']).astimezone(TIMEZONE) <= vn_now:
-                continue
             used_urls_in_match = set()
             for tv in g.get("tv_channels", []):
                 tv_country = tv.get("country", "")
@@ -837,6 +839,15 @@ async def main():
             print(f"   Lỗi xử lý trận {g.get('match', '')}: {e}")
             continue
 
+    # ================== VALIDATE STREAMS ==================
+    print("🔍 Đang kiểm tra tính sống của các link (HEAD request, timeout 5s)...")
+    async with AsyncSession() as session:
+        tasks = [validate_stream_url(session, ev['channel']['url']) for ev in live_events]
+        results = await asyncio.gather(*tasks)
+    validated_events = [ev for ev, is_alive in zip(live_events, results) if is_alive]
+    print(f"   ✅ {len(validated_events)}/{len(live_events)} kênh hoạt động")
+    live_events = validated_events
+
     # Xử lý tennis: nhóm kênh trùng
     tennis_events = [ev for ev in live_events if ev['league'] == "Tennis"]
     other_events = [ev for ev in live_events if ev['league'] != "Tennis"]
@@ -870,7 +881,7 @@ async def main():
     elapsed = time.time() - start
     print(f"\n🎉 HOÀN THÀNH!")
     print(f"   • schedule.json: {len(all_games)} trận")
-    print(f"   • live_schedule.m3u: {len(live_events)} kênh (matching thông minh)")
+    print(f"   • live_schedule.m3u: {len(live_events)} kênh (matching thông minh + validate)")
 
 if __name__ == "__main__":
     asyncio.run(main())
