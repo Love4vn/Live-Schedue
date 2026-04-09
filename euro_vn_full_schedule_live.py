@@ -5,6 +5,7 @@ BẢN HOÀN CHỈNH – 24 GIỜ TỚI + LỌC THEO GIẢI + ĐỘI RIÊNG
 TÍCH HỢP: SofaScore (chính) + Các nguồn JSON phụ (Wheresthematch, LiveSportsOnTV, Ausport)
 Tối ưu ghép kênh M3U với matching thông minh (tên kênh + tên trận)
 Bổ sung: FA Cup, League Cup (Carabao Cup) – group "Live FA, League Cup"
+Sửa lỗi nhận diện UEFA Europa League (không nhầm thành UEFA Euro)
 """
 
 import asyncio
@@ -128,7 +129,7 @@ def normalize_channel_name(name: str) -> str:
     name = re.sub(r'┃[^┃]*┃', '', name)
     # Loại bỏ tiền tố dạng NL|, UK|, USA|
     name = re.sub(r'^[a-z]{2,3}\|', '', name)
-    # Loại bỏ ký tự mũ số (đã có)
+    # Loại bỏ ký tự mũ số
     name = re.sub(r'[²³⁴⁵⁶⁷⁸⁹]', '', name)
     # Loại bỏ PPV, HEVC
     name = re.sub(r'\b(ppv|hevc)\b', '', name)
@@ -169,7 +170,7 @@ def is_channel_match(ch_name: str, m3u_name: str) -> bool:
     m3u_text, m3u_num = split_name_and_number(m3u_norm)
     
     text_similarity = similar(ch_text, m3u_text)
-    if text_similarity < 0.95:
+    if text_similarity < 0.85:
         return False
     
     if ch_num is not None and m3u_num is not None:
@@ -177,14 +178,14 @@ def is_channel_match(ch_name: str, m3u_name: str) -> bool:
     if ch_num is not None or m3u_num is not None:
         return False
     
-    if abs(len(ch_text) - len(m3u_text)) > max(len(ch_text), len(m3u_text)) * 0.15:
+    if abs(len(ch_text) - len(m3u_text)) > max(len(ch_text), len(m3u_text)) * 0.3:
         return False
     return True
 
 def is_team_match(team_name: str, m3u_name: str) -> bool:
     team_norm = normalize(team_name)
     m3u_norm = normalize_channel_name(m3u_name)
-    return similar(team_norm, m3u_norm) >= 0.85
+    return similar(team_norm, m3u_norm) >= 0.7
 
 # ================== SOFASCORE ==================
 async def get_channel_name(session, channel_id):
@@ -216,6 +217,9 @@ async def get_tv_data(session, event_id):
 
 def is_uefa_euro(tournament_name: str) -> bool:
     name_lower = tournament_name.lower()
+    # Nếu là Europa League thì không phải Euro
+    if "europa league" in name_lower:
+        return False
     if any(x in name_lower for x in ["u19", "u21", "u17", "youth"]):
         return False
     euro_keywords = ["euro", "uefa european championship", "european championship"]
@@ -279,15 +283,15 @@ async def fetch_sofascore_event(session, event_id, sport, now_ts, max_ts):
             if any(x in league_lower for x in ["women", "frauen", "u19", "u21", "u17", "youth"]):
                 return None
 
-            # Xác định giải
-            if is_uefa_euro(league_raw):
-                league = "UEFA Euro"
-            elif is_uefa_champions(league_raw):
-                league = "UEFA Champions League"
-            elif "uefa europa league" in league_lower:
+            # Xác định giải (ưu tiên các giải club trước)
+            if "uefa europa league" in league_lower:
                 league = "UEFA Europa League"
             elif "uefa conference league" in league_lower:
                 league = "UEFA Europa Conference League"
+            elif is_uefa_champions(league_raw):
+                league = "UEFA Champions League"
+            elif is_uefa_euro(league_raw):
+                league = "UEFA Euro"
             elif "fa cup" in league_lower:
                 league = "FA Cup"
             elif "carabao cup" in league_lower or "league cup" in league_lower:
