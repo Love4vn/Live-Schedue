@@ -8,6 +8,7 @@ Bổ sung: FA Cup, League Cup (Carabao Cup) – group "Live FA, League Cup"
 Sửa lỗi nhận diện UEFA Europa League (không nhầm thành UEFA Euro) cho tất cả nguồn
 Match kênh có xét quốc gia, loại bỏ kênh chứa ###, tăng độ chính xác (tránh nhầm Sky Go với Sky Golf)
 Thêm bước validate link (kiểm tra stream còn sống) trước khi ghi M3U
+Bổ sung match theo tên trận (khi tên kênh M3U chứa trực tiếp tên trận)
 """
 
 import asyncio
@@ -201,6 +202,21 @@ def normalize_country_name(country: str) -> str:
         pass
     return country_lower
 
+def extract_match_from_m3u_name(m3u_name: str) -> str:
+    """Trích xuất tên trận đấu từ tên kênh M3U (nếu có)"""
+    # Loại bỏ các tiền tố như "NEXT |", "UK - ", "ES (VIX 09) |", ...
+    cleaned = re.sub(r'^(NEXT\s*\|\s*|UK\s*-\s*|[A-Z]{2,3}\s*\([^)]+\)\s*\|\s*|[A-Z]{2,3}:\s*)', '', m3u_name, flags=re.IGNORECASE)
+    # Loại bỏ thông tin ngày giờ (dạng "Thu 09 Apr 20:45 CEST", "2026-04-09", ...)
+    cleaned = re.sub(r'\b(Mon|Tue|Wed|Thu|Fri|Sat|Sun)\s+\d{1,2}\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{2,4}\s+\d{2}:\d{2}\s+[A-Z]{3,4}\b', '', cleaned, flags=re.IGNORECASE)
+    cleaned = re.sub(r'\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}:\d{2}', '', cleaned)
+    cleaned = re.sub(r'\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{4}', '', cleaned, flags=re.IGNORECASE)
+    # Loại bỏ các từ "8K EXCLUSIVE", "PPV", "HD", ...
+    cleaned = re.sub(r'\b(8K\s+EXCLUSIVE|PPV|HD|FHD|UHD|LIVE|EXCLUSIVE)\b', '', cleaned, flags=re.IGNORECASE)
+    # Loại bỏ ký tự đặc biệt, chỉ giữ chữ, số, khoảng trắng và dấu gạch ngang
+    cleaned = re.sub(r'[^\w\s-]', ' ', cleaned)
+    cleaned = ' '.join(cleaned.split())
+    return cleaned.strip()
+
 def is_channel_match(ch_name: str, m3u_name: str, country: str = "") -> bool:
     if not ch_name or not m3u_name:
         return False
@@ -249,7 +265,12 @@ def is_channel_match(ch_name: str, m3u_name: str, country: str = "") -> bool:
 
 def is_team_match(team_name: str, m3u_name: str) -> bool:
     team_norm = normalize(team_name)
-    m3u_norm = normalize_channel_name(m3u_name)
+    # Trích xuất tên trận từ m3u_name (nếu có)
+    extracted = extract_match_from_m3u_name(m3u_name)
+    if extracted:
+        m3u_norm = normalize(extracted)
+    else:
+        m3u_norm = normalize_channel_name(m3u_name)
     return similar(team_norm, m3u_norm) >= 0.7
 
 # ================== SOFASCORE ==================
@@ -688,14 +709,11 @@ def parse_m3u(content):
 async def validate_stream_url(session, url: str) -> bool:
     """Kiểm tra link stream có hoạt động không (HEAD request, timeout 5s)"""
     try:
-        # Dùng HEAD để kiểm tra nhanh
         resp = await session.head(url, timeout=5, allow_redirects=True)
         if resp.status_code in [200, 202, 204, 206]:
             return True
-        # Nếu HEAD thất bại, thử GET với range nhỏ
         resp2 = await session.get(url, timeout=5, headers={"Range": "bytes=0-1024"})
         if resp2.status_code in [200, 206, 202]:
-            # Kiểm tra nội dung không phải HTML lỗi
             text = await resp2.text()
             if "<html" in text.lower() or "access denied" in text.lower():
                 return False
