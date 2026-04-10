@@ -161,39 +161,135 @@ def split_name_and_number(name: str):
     return name, None
 
 def normalize_country_name(country: str) -> str:
-    """Chuẩn hóa tên quốc gia thành mã 2 chữ cái (us, uk, ca, ...)"""
     if not country:
         return ""
     country_lower = country.lower().strip()
     mapping = {
+        # Châu Mỹ
         "united states": "us",
+        "united states of america": "us",
         "usa": "us",
         "us": "us",
-        "united kingdom": "uk",
-        "uk": "uk",
         "canada": "ca",
         "ca": "ca",
-        "australia": "au",
-        "au": "au",
+        "brazil": "br",
+        "br": "br",
+        "argentina": "ar",
+        "ar": "ar",
+        "chile": "cl",
+        "cl": "cl",
+        "peru": "pe",
+        "colombia": "co",
+        "ecuador": "ec",
+        "uruguay": "uy",
+        "paraguay": "py",
+        "bolivia": "bo",
+        "venezuela": "ve",
+        "mexico": "mx",
+        "sur": "sa",  # South America (khu vực)
+        # Châu Âu
+        "united kingdom": "uk",
+        "uk": "uk",
+        "great britain": "uk",
+        "england": "uk",
+        "ireland": "ie",
+        "ie": "ie",
         "germany": "de",
         "de": "de",
+        "deutschland": "de",
         "france": "fr",
         "fr": "fr",
+        "french": "fr",
         "italy": "it",
         "it": "it",
+        "italia": "it",
         "spain": "es",
         "es": "es",
+        "espana": "es",
         "portugal": "pt",
         "pt": "pt",
         "netherlands": "nl",
         "nl": "nl",
+        "nederland": "nl",
         "belgium": "be",
         "be": "be",
-        "brazil": "br",
-        "br": "br",
+        "austria": "at",
+        "at": "at",
+        "switzerland": "ch",
+        "ch": "ch",
+        "croatia": "hr",
+        "hr": "hr",
+        "hrvatska": "hr",
+        "serbia": "rs",
+        "rs": "rs",
+        "srbija": "rs",
+        "turkey": "tr",
+        "tr": "tr",
+        "türkiye": "tr",
+        "poland": "pl",
+        "pl": "pl",
+        "polska": "pl",
+        "czech republic": "cz",
+        "cz": "cz",
+        "czech": "cz",
+        "slovakia": "sk",
+        "slovenia": "si",
+        "hungary": "hu",
+        "hu": "hu",
+        "romania": "ro",
+        "ro": "ro",
+        "bulgaria": "bg",
+        "greece": "gr",
+        "gr": "gr",
+        "hellas": "gr",
+        "denmark": "dk",
+        "dk": "dk",
+        "danmark": "dk",
+        "sweden": "se",
+        "se": "se",
+        "sverige": "se",
+        "norway": "no",
+        "no": "no",
+        "norge": "no",
+        "finland": "fi",
+        "fi": "fi",
+        "suomi": "fi",
+        "estonia": "ee",
+        "latvia": "lv",
+        "lithuania": "lt",
+        "iceland": "is",
+        "albania": "al",
+        "al": "al",
+        "north macedonia": "mk",
+        "montenegro": "me",
+        "bosnia and herzegovina": "ba",
+        "luxembourg": "lu",
+        "malta": "mt",
+        "cyprus": "cy",
+        "baltics": "balt",  # gộp, nhưng thực tế mỗi nước có mã riêng
+        # Châu Á - Thái Bình Dương
+        "australia": "au",
+        "au": "au",
+        "japan": "jp",
+        "south korea": "kr",
+        "india": "in",
+        "indonesia": "id",
+        "malaysia": "my",
+        "singapore": "sg",
+        "china": "cn",
+        "vietnam": "vn",
+        "thailand": "th",
+        # Trung Đông
+        "israel": "il",
+        "saudi arabia": "sa",
+        "uae": "ae",
+        "qatar": "qa",
+        # Mã 2 chữ cái (giữ nguyên)
     }
     if country_lower in mapping:
         return mapping[country_lower]
+    if len(country_lower) == 2:
+        return country_lower
     try:
         c = pycountry.countries.get(name=country)
         if c:
@@ -704,24 +800,55 @@ def parse_m3u(content):
         if extra: current['extra'] = extra[:]
         channels.append(current)
     return channels
-
+# ================== Trích xuất headers từ extra ==================
+def extract_headers_from_extra(extra_lines):
+    headers = {}
+    if not extra_lines:
+        return headers
+    for line in extra_lines:
+        line = line.strip()
+        if line.startswith('#EXTVLCOPT'):
+            # Định dạng: #EXTVLCOPT:http-user-agent=...
+            # hoặc #EXTVLCOPT:http-cookie=...
+            # hoặc #EXTVLCOPT:http-header=Authorization: Bearer ...
+            parts = line.split(':', 2)
+            if len(parts) >= 3:
+                opt_type = parts[1].strip()
+                value = parts[2].strip()
+                if opt_type == 'http-user-agent':
+                    headers['User-Agent'] = value
+                elif opt_type == 'http-cookie':
+                    headers['Cookie'] = value
+                elif opt_type == 'http-header':
+                    if ': ' in value:
+                        header_name, header_value = value.split(': ', 1)
+                        headers[header_name] = header_value
+    return headers
 # ================== VALIDATE STREAM ==================
-async def validate_stream_url(session, url: str) -> bool:
-    """Kiểm tra link stream có hoạt động không (HEAD request, timeout 5s)"""
+async def validate_stream_url(session, url: str, extra_headers: dict = None) -> bool:
     try:
-        resp = await session.head(url, timeout=5, allow_redirects=True)
+        default_headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        }
+        if extra_headers:
+            default_headers.update(extra_headers)
+        
+        # Thử HEAD trước
+        resp = await session.head(url, headers=default_headers, timeout=5, allow_redirects=True)
         if resp.status_code in [200, 202, 204, 206]:
             return True
-        resp2 = await session.get(url, timeout=5, headers={"Range": "bytes=0-1024"})
+        
+        # Nếu HEAD thất bại, thử GET với range nhỏ
+        range_headers = {"Range": "bytes=0-1024", **default_headers}
+        resp2 = await session.get(url, headers=range_headers, timeout=5)
         if resp2.status_code in [200, 206, 202]:
             text = await resp2.text()
-            if "<html" in text.lower() or "access denied" in text.lower():
+            if "<html" in text.lower() or "access denied" in text.lower() or "401" in text:
                 return False
             return True
         return False
     except Exception:
         return False
-
 # ================== MAIN ==================
 async def main():
     start = time.time()
@@ -858,9 +985,12 @@ async def main():
             continue
 
     # ================== VALIDATE STREAMS ==================
-    print("🔍 Đang kiểm tra tính sống của các link (HEAD request, timeout 5s)...")
+    print("🔍 Đang kiểm tra tính sống của các link (HEAD request với headers đầy đủ, timeout 5s)...")
     async with AsyncSession() as session:
-        tasks = [validate_stream_url(session, ev['channel']['url']) for ev in live_events]
+        tasks = []
+        for ev in live_events:
+            extra_headers = extract_headers_from_extra(ev['channel'].get('extra', []))
+            tasks.append(validate_stream_url(session, ev['channel']['url'], extra_headers))
         results = await asyncio.gather(*tasks)
     validated_events = [ev for ev, is_alive in zip(live_events, results) if is_alive]
     print(f"   ✅ {len(validated_events)}/{len(live_events)} kênh hoạt động")
