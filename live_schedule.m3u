@@ -1,9 +1,4 @@
 #EXTM3U
-#EXTINF:-1 tvg-id="405359" group-title="Live Serie A" tvg-logo="http://photo-tmdb.com/stalker_portal/misc/logos/320/3766.png?51794",11/04 01:45 AM | Roma vs Pisa (Arena 5 Premium)
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (QtEmbedded; U; Linux; C) AppleWebKit/533.3 (KHTML, like Gecko) MAG200 stbapp ver: 2 rev: 250 Safari/533.3
-#EXTVLCOPT:http-cookie=mac=00:1A:79:7D:93:30; stb_lang=en; timezone=GMT
-#EXTVLCOPT:http-header=Authorization: Bearer 16DA4ADF8A2A2FAEF3A11A8E0BA1D47C
-http://assarao4k.com:80/play/live.php?mac=00:1A:79:7D:93:30&stream=405359&extension=ts&play_token=3QF6Vcdyz1
 #EXTINF:-1 tvg-id="314732" group-title="Live Serie A" tvg-logo="http://photo-tmdb.com/stalker_portal/misc/logos/320/3762.png?52680",11/04 01:45 AM | Roma vs Pisa (Arena Sport Premium 2)
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (QtEmbedded; U; Linux; C) AppleWebKit/533.3 (KHTML, like Gecko) MAG200 stbapp ver: 2 rev: 250 Safari/533.3
 #EXTVLCOPT:http-cookie=mac=00:1A:79:7D:93:30; stb_lang=en; timezone=GMT
@@ -14,6 +9,11 @@ http://assarao4k.com:80/play/live.php?mac=00:1A:79:7D:93:30&stream=314732&extens
 #EXTVLCOPT:http-cookie=mac=00:1A:79:7D:93:30; stb_lang=en; timezone=GMT
 #EXTVLCOPT:http-header=Authorization: Bearer 16DA4ADF8A2A2FAEF3A11A8E0BA1D47C
 http://assarao4k.com:80/play/live.php?mac=00:1A:79:7D:93:30&stream=2617&extension=ts&play_token=6monLfmztf
+#EXTINF:-1 tvg-id="405359" group-title="Live Serie A" tvg-logo="http://photo-tmdb.com/stalker_portal/misc/logos/320/3766.png?51794",11/04 01:45 AM | Roma vs Pisa (Arena 5 Premium)
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (QtEmbedded; U; Linux; C) AppleWebKit/533.3 (KHTML, like Gecko) MAG200 stbapp ver: 2 rev: 250 Safari/533.3
+#EXTVLCOPT:http-cookie=mac=00:1A:79:7D:93:30; stb_lang=en; timezone=GMT
+#EXTVLCOPT:http-header=Authorization: Bearer 16DA4ADF8A2A2FAEF3A11A8E0BA1D47C
+http://assarao4k.com:80/play/live.php?mac=00:1A:79:7D:93:30&stream=405359&extension=ts&play_token=3QF6Vcdyz1
 #EXTINF:-1 tvg-id="1537609" group-title="Live Serie A" tvg-logo="http://photo-tmdb.com/stalker_portal/misc/logos/320/602.png?87307",11/04 01:45 AM | Roma vs Pisa (Ziggo Sport 3)
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (QtEmbedded; U; Linux; C) AppleWebKit/533.3 (KHTML, like Gecko) MAG200 stbapp ver: 2 rev: 250 Safari/533.3
 #EXTVLCOPT:http-cookie=mac=00:1A:79:7D:93:30; stb_lang=en; timezone=GMT
