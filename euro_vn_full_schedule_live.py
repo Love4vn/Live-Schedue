@@ -709,6 +709,75 @@ def parse_ausport(entry: dict) -> Optional[Dict]:
     except:
         return None
 
+# ================== LIVEONSAT ==================
+def load_liveonsat_data(start_ts: int, max_ts: int) -> List[Dict]:
+    """Tải dữ liệu từ liveonsat_raw.json, chỉ lấy kênh, không tạo trận mới"""
+    url = "https://raw.githubusercontent.com/a7shk1/liveonsat/refs/heads/main/matches/liveonsat_raw.json"
+    try:
+        with urllib.request.urlopen(url, timeout=15) as response:
+            data = json.loads(response.read().decode('utf-8'))
+    except Exception as e:
+        print(f"   Lỗi tải liveonsat: {e}")
+        return []
+
+    games = []
+    date_str = data.get("date")
+    if not date_str:
+        return games
+
+    for match in data.get("matches", []):
+        title = match.get("title", "").strip()
+        kickoff_str = match.get("kickoff_baghdad")
+        channels_raw = match.get("channels_raw", [])
+
+        if not title or not kickoff_str:
+            continue
+
+        # Chuyển đổi thời gian
+        try:
+            dt_str = f"{date_str} {kickoff_str}"
+            dt = datetime.strptime(dt_str, "%Y-%m-%d %H:%M")
+            dt = dt.replace(tzinfo=ZoneInfo("Asia/Baghdad"))  # UTC+3
+            kick_utc = int(dt.timestamp())
+        except:
+            continue
+
+        if not (start_ts <= kick_utc <= max_ts):
+            continue
+
+        # Chuẩn hóa tên trận: thay " v " bằng " vs "
+        title_norm = title.replace(" v ", " vs ").replace(" V ", " vs ")
+
+        # Lọc kênh rác
+        clean_channels = []
+        for ch in channels_raw:
+            ch_clean = ch.strip()
+            if not ch_clean:
+                continue
+            if any(x in ch_clean.lower() for x in [
+                "discover more", "tv schedule", "app", "gear", "merchandise",
+                "flag", "betting", "custom", "fitness", "tracker", "scarf",
+                "cookie", "privacy", "rights reserved", "liveonsat.com"
+            ]):
+                continue
+            if len(ch_clean) < 3:
+                continue
+            clean_channels.append(ch_clean)
+
+        if not clean_channels:
+            continue
+
+        # Không xác định league, sẽ dùng để merge với trận có sẵn (dựa trên tên và thời gian)
+        games.append({
+            "league": None,  # sẽ xác định khi merge
+            "match": title_norm,
+            "kick_utc": kick_utc,
+            "time": vn_time(kick_utc),
+            "tv_channels": [{"country": "LiveOnSat", "channels": clean_channels}],
+            "source": "liveonsat"
+        })
+    return games
+
 def load_all_secondary_sources(start_ts: int, max_ts: int) -> List[Dict]:
     games = []
     for func, fname in [(parse_livesportsontv, "schedule_livesportsontv.json"),
@@ -719,6 +788,10 @@ def load_all_secondary_sources(start_ts: int, max_ts: int) -> List[Dict]:
             g = func(entry)
             if g and start_ts <= g['kick_utc'] <= max_ts:
                 games.append(g)
+
+    # Thêm liveonsat
+    liveonsat_games = load_liveonsat_data(start_ts, max_ts)
+    games.extend(liveonsat_games)
     return games
 
 # ================== MERGE ==================
@@ -728,19 +801,27 @@ def merge_games(primary: List[Dict], secondary: List[Dict]) -> List[Dict]:
     secondary_football = [g for g in secondary if g['league'] != "Tennis"]
     secondary_tennis = [g for g in secondary if g['league'] == "Tennis"]
 
-    primary_index = [(game, normalize(game['match']), game['kick_utc']) for game in primary_football]
+    # Tạo index cho primary_football
+    primary_index = [(game, normalize(game['match']), game['kick_utc'], game['league']) for game in primary_football]
+
     for sec in secondary_football:
         sec_norm_match = normalize(sec['match'])
-        sec_league = sec['league']
         sec_ts = sec['kick_utc']
+        sec_league = sec['league']  # có thể là None
+
         best_match = None
         best_score = 0.0
-        for game, norm_match, ts in primary_index:
-            if game['league'] == sec_league and abs(ts - sec_ts) <= 3600:
-                score = similar(norm_match, sec_norm_match)
-                if score > best_score:
-                    best_score = score
-                    best_match = game
+        for game, norm_match, ts, league in primary_index:
+            # Nếu sec có league xác định, phải cùng league; nếu không thì chỉ cần thời gian và tên
+            if sec_league is not None and league != sec_league:
+                continue
+            if abs(ts - sec_ts) > 3600:
+                continue
+            score = similar(norm_match, sec_norm_match)
+            if score > best_score:
+                best_score = score
+                best_match = game
+
         if best_match and best_score > 0.7:
             for sec_ch in sec['tv_channels']:
                 found = False
@@ -752,8 +833,11 @@ def merge_games(primary: List[Dict], secondary: List[Dict]) -> List[Dict]:
                 if not found:
                     best_match['tv_channels'].append(sec_ch)
         else:
-            primary_football.append(sec)
+            # Nếu không tìm thấy, chỉ thêm nếu sec có league xác định (tránh thêm trận lạ)
+            if sec_league is not None:
+                primary_football.append(sec)
 
+    # Tennis giữ nguyên
     all_tennis = primary_tennis + secondary_tennis
     seen = {}
     unique_tennis = []
