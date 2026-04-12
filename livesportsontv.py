@@ -1,16 +1,20 @@
 # File: livesportsontv.py
-# Tự động phát hiện múi giờ từ trang và chuyển sang giờ Việt Nam (GMT+7)
+# Tích hợp nguồn footonsat (kênh vệ tinh/IPTV) và livesportsontv.com
+# Tự động chuyển đổi giờ từ nguồn footonsat (lệch -5h so với VN) sang VN
 
 import asyncio
 import json
 import re
+import aiohttp
 from datetime import datetime, timedelta, timezone
 from playwright.async_api import async_playwright
 from bs4 import BeautifulSoup
 
-# Múi giờ Việt Nam cố định (UTC+7)
+# ==================== CẤU HÌNH MÚI GIỜ ====================
 VN_TZ = timezone(timedelta(hours=7))
+FOOTONSAT_OFFSET = -5  # giờ trong footonsat kém VN 5h
 
+# ==================== HÀM TIỆN ÍCH ====================
 def parse_time_with_ampm(time_str: str):
     """Chuyển '10:00 PM' sang 24h"""
     time_str = time_str.strip().upper()
@@ -66,7 +70,6 @@ def extract_timezone_from_html(soup):
     if match:
         offset = int(match.group(1))
         return timezone(timedelta(hours=offset))
-    # Mặc định nếu không tìm thấy, thử dùng UTC (0)
     return timezone.utc
 
 # ==================== LỌC GIAO HỮU ====================
@@ -95,7 +98,7 @@ def include_friendly_match(home: str, away: str) -> bool:
         return True
     return False
 
-# ==================== CẤU HÌNH GIẢI ĐẤU ====================
+# ==================== CẤU HÌNH GIẢI ĐẤU (LIVESPORTSONTV) ====================
 LEAGUES_CONFIG = {
     "Premier League": {
         "url": "https://www.livesportsontv.com/league/premier-league",
@@ -177,10 +180,77 @@ LEAGUES_CONFIG = {
     }
 }
 
-# ==================== HÀM CHÍNH ====================
-async def scrape_league_schedules():
+# ==================== FETCH DỮ LIỆU TỪ FOOTONSAT ====================
+async def fetch_footonsat_data():
+    """Lấy dữ liệu từ footonsat-api, chuyển giờ về VN, trả về list các match dict"""
+    url = "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/premierleague.json"
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as resp:
+            if resp.status != 200:
+                print(f"⚠️ Không thể tải footonsat: HTTP {resp.status}")
+                return []
+            data = await resp.json()
+    
+    items = data.get("footonsat", [])
+    matches = []
+    current_match = None
+    current_channels = []
+    
+    for item in items:
+        if "match" in item and "compet" in item:
+            # Lưu trận cũ nếu có
+            if current_match:
+                # Chuyển đổi thời gian
+                try:
+                    dt_orig = datetime.strptime(f"{current_match['date']} {current_match['time']}", "%Y-%m-%d %H:%M")
+                    dt_vn = dt_orig + timedelta(hours=-FOOTONSAT_OFFSET)  # +5h vì offset -5
+                    if dt_vn.date() >= datetime.now(VN_TZ).date():
+                        # Chuẩn hóa tên giải: "English Premier League" -> "Premier League"
+                        league = current_match['compet'].replace("English ", "")
+                        matches.append({
+                            "Date": dt_vn.strftime("%Y-%m-%d"),
+                            "Time": dt_vn.strftime("%H:%M"),
+                            "League": league,
+                            "Matchup": current_match['match'].strip(),
+                            "Services": current_channels.copy()
+                        })
+                except Exception as e:
+                    print(f"Lỗi chuyển đổi thời gian footonsat: {e}")
+            # Bắt đầu trận mới
+            current_match = item
+            current_channels = []
+        elif "channel" in item and current_match and item.get("related_to", "").strip() == current_match['match'].strip():
+            # Thêm kênh vào trận hiện tại
+            ch_name = item['channel'].strip()
+            # Loại bỏ emoji nếu có (ví dụ 📺)
+            ch_name = re.sub(r'[📺]', '', ch_name).strip()
+            if ch_name:
+                current_channels.append(ch_name)
+    
+    # Thêm trận cuối cùng
+    if current_match:
+        try:
+            dt_orig = datetime.strptime(f"{current_match['date']} {current_match['time']}", "%Y-%m-%d %H:%M")
+            dt_vn = dt_orig + timedelta(hours=-FOOTONSAT_OFFSET)
+            if dt_vn.date() >= datetime.now(VN_TZ).date():
+                league = current_match['compet'].replace("English ", "")
+                matches.append({
+                    "Date": dt_vn.strftime("%Y-%m-%d"),
+                    "Time": dt_vn.strftime("%H:%M"),
+                    "League": league,
+                    "Matchup": current_match['match'].strip(),
+                    "Services": current_channels
+                })
+        except Exception as e:
+            print(f"Lỗi chuyển đổi thời gian footonsat (cuối): {e}")
+    
+    print(f"📡 Đã lấy {len(matches)} trận từ footonsat (sau khi chuyển giờ VN)")
+    return matches
+
+# ==================== SCRAPE TỪ LIVESPORTSONTV ====================
+async def scrape_livesportsontv():
+    """Scrape dữ liệu từ livesportsontv.com, trả về list các match dict"""
     all_games = []
-    # Lấy ngày hiện tại theo giờ VN để lọc
     now_vn = datetime.now(VN_TZ)
     current_year = now_vn.year
 
@@ -213,7 +283,7 @@ async def scrape_league_schedules():
             html = await page.content()
             soup = BeautifulSoup(html, 'html.parser')
 
-            # Xác định múi giờ của trang (dựa trên dòng "ALL TIME GMT+...")
+            # Xác định múi giờ của trang
             page_tz = extract_timezone_from_html(soup)
             print(f"    🕒 Múi giờ trang web: {page_tz}")
 
@@ -258,7 +328,7 @@ async def scrape_league_schedules():
                     # Chuyển sang giờ Việt Nam
                     vn_dt = page_dt.astimezone(VN_TZ)
 
-                    # Chỉ lấy các trận từ hôm nay trở đi (theo giờ VN)
+                    # Chỉ lấy các trận từ hôm nay trở đi
                     if vn_dt.date() < now_vn.date():
                         continue
 
@@ -327,17 +397,38 @@ async def scrape_league_schedules():
             print(f"    ✅ Đã thêm {added} trận")
 
         await browser.close()
+    return all_games
 
-    # Lưu file
+# ==================== HÀM CHÍNH ====================
+async def main():
+    # Scrape từ livesportsontv
+    games_live = await scrape_livesportsontv()
+    print(f"\n🏟️ Từ livesportsontv: {len(games_live)} trận")
+    
+    # Fetch từ footonsat
+    games_foot = await fetch_footonsat_data()
+    print(f"🛰️ Từ footonsat: {len(games_foot)} trận")
+    
+    # Hợp nhất
+    all_games = games_live + games_foot
+    
+    # Loại bỏ trùng lặp (cùng ngày, giờ, giải, matchup) - ưu tiên giữ lại bản có nhiều kênh hơn
+    unique = {}
+    for g in all_games:
+        key = (g["Date"], g["Time"], g["League"], g["Matchup"])
+        if key not in unique or len(g["Services"]) > len(unique[key]["Services"]):
+            unique[key] = g
+    
+    final_games = list(unique.values())
+    final_games.sort(key=lambda x: (x["Date"], x["Time"]))
+    
+    # Ghi file
     filename = "schedule_livesportsontv.json"
-    if all_games:
-        all_games.sort(key=lambda x: (x["Date"], x["Time"]))
-        with open(filename, 'w', encoding='utf-8') as f:
-            json.dump(all_games, f, indent=4, ensure_ascii=False)
-        print(f"\n🎉 THÀNH CÔNG! Đã lấy {len(all_games)} trận.")
-        print(f"📁 Lưu tại: {filename}")
-    else:
-        print("\n⚠️ Không có trận đấu nào.")
+    with open(filename, 'w', encoding='utf-8') as f:
+        json.dump(final_games, f, indent=4, ensure_ascii=False)
+    
+    print(f"\n🎉 TỔNG KẾT: Đã lấy {len(final_games)} trận (sau khi gộp và loại trùng)")
+    print(f"📁 Lưu tại: {filename}")
 
 if __name__ == "__main__":
-    asyncio.run(scrape_league_schedules())
+    asyncio.run(main())
