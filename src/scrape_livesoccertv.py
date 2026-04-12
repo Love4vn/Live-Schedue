@@ -1,14 +1,17 @@
-import requests
+import os
 import json
 import re
+import time
+from pathlib import Path
 from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
-from pathlib import Path
+from playwright.sync_api import sync_playwright
 
+# -------------------- CẤU HÌNH --------------------
 REPO_ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_FILE = REPO_ROOT / "liveonsat_schedule.json"
 
-# Cấu hình múi giờ: giờ trên livesoccertv thường là UTC, chuyển sang VN (UTC+7)
+# Giả sử giờ trên livesoccertv là UTC, chuyển sang VN (UTC+7)
 TIME_OFFSET_HOURS = 7
 
 # -------------------- DANH SÁCH GIẢI ĐẤU ĐƯỢC PHÉP --------------------
@@ -39,10 +42,7 @@ ALLOWED_TEAMS_PER_LEAGUE = {
 }
 ALLOWED_NON_EURO_TEAMS = {"argentina", "brazil", "japan", "south korea"}
 
-HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-}
-
+# -------------------- HÀM XỬ LÝ --------------------
 def normalize_league(comp_raw: str):
     comp_lower = comp_raw.lower()
     if "premier league" in comp_lower:
@@ -92,74 +92,80 @@ def is_match_allowed(league: str, title: str) -> bool:
     return False
 
 def convert_to_vietnam_time(time_str: str, date_str: str) -> str:
-    """
-    Chuyển đổi thời gian từ livesoccertv (giả định UTC) sang giờ Việt Nam (UTC+7).
-    Định dạng time_str: "HH:MM" hoặc "HH:MM AM/PM"
-    """
+    """Chuyển giờ từ UTC sang VN (UTC+7)"""
     try:
         # Xử lý AM/PM
         is_pm = False
         if "PM" in time_str and "12" not in time_str:
             is_pm = True
-        time_str_clean = re.sub(r"[AP]M", "", time_str).strip()
-        hour, minute = map(int, time_str_clean.split(":"))
+        time_clean = re.sub(r"[AP]M", "", time_str).strip()
+        hour, minute = map(int, time_clean.split(":"))
         if is_pm:
             hour += 12
-        # Tạo datetime UTC
         dt_utc = datetime.strptime(f"{date_str} {hour}:{minute}", "%Y-%m-%d %H:%M")
         dt_vn = dt_utc + timedelta(hours=TIME_OFFSET_HOURS)
         return dt_vn.strftime("%Y-%m-%d %H:%M")
     except Exception as e:
-        print(f"Lỗi chuyển giờ: {e}")
+        print(f"[Lỗi chuyển giờ] {e}")
         return f"{date_str} {time_str}"
 
+def get_html_with_playwright(url: str):
+    """Dùng Playwright lấy HTML, không cần giải captcha"""
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        context = browser.new_context(
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        )
+        page = context.new_page()
+        page.goto(url, wait_until="networkidle", timeout=60000)
+        # Cuộn để tải toàn bộ nội dung
+        page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+        time.sleep(3)
+        html = page.content()
+        browser.close()
+        return html
+
 def scrape_livesoccertv():
-    url = "https://www.livesoccertv.com/today/"
-    print(f"[LiveSoccerTV] Đang tải {url}")
-    resp = requests.get(url, headers=HEADERS, timeout=30)
-    if resp.status_code != 200:
-        print(f"Lỗi HTTP {resp.status_code}")
-        return []
-    soup = BeautifulSoup(resp.text, "html.parser")
+    url = "https://www.livesoccertv.com/schedules/"
+    print(f"[LiveSoccerTV] Đang tải {url} bằng Playwright...")
+    html = get_html_with_playwright(url)
+    soup = BeautifulSoup(html, "html.parser")
+    
     matches = []
-    # Mỗi trận thường nằm trong <tr class="match"> hoặc <div class="match-row">
-    # Tôi sẽ dùng selector linh hoạt
-    for match_row in soup.select("tr.match, .match-row"):
+    # Duyệt tất cả các hàng có class "match-row" hoặc "match"
+    rows = soup.select("tr.match, .match-row, .match")
+    print(f"[LiveSoccerTV] Tìm thấy {len(rows)} hàng trận đấu")
+    
+    for row in rows:
         try:
             # Giải đấu
-            league_tag = match_row.select_one(".competition a, .league a")
+            league_tag = row.select_one(".competition a, .league a")
             league_raw = league_tag.text.strip() if league_tag else ""
             league = normalize_league(league_raw)
             if not league:
                 continue
+            
             # Tên trận
-            home_tag = match_row.select_one(".home-team a, .team-home a")
-            away_tag = match_row.select_one(".away-team a, .team-away a")
-            if home_tag and away_tag:
-                home = home_tag.text.strip()
-                away = away_tag.text.strip()
-                title = f"{home} vs {away}"
-            else:
-                # Thử cách khác: đôi khi nằm trong thẻ <td class="team">
-                cells = match_row.select("td.team")
-                if len(cells) >= 2:
-                    home = cells[0].text.strip()
-                    away = cells[1].text.strip()
-                    title = f"{home} vs {away}"
-                else:
-                    continue
+            home_tag = row.select_one(".home-team a, .team-home a, .home a")
+            away_tag = row.select_one(".away-team a, .team-away a, .away a")
+            if not home_tag or not away_tag:
+                continue
+            title = f"{home_tag.text.strip()} vs {away_tag.text.strip()}"
+            
             # Lọc theo giải và đội
             if not is_match_allowed(league, title):
                 continue
-            # Giờ thi đấu
-            time_tag = match_row.select_one(".time, .match-time")
+            
+            # Giờ
+            time_tag = row.select_one(".time, .match-time")
             time_str = time_tag.text.strip() if time_tag else ""
-            # Ngày (thường là ngày hiện tại, nhưng trang có thể có ngày cụ thể)
-            # Lấy từ thuộc tính datetime nếu có, nếu không dùng ngày hôm nay
+            # Ngày (mặc định hôm nay)
             date_str = datetime.now().strftime("%Y-%m-%d")
             dt_vn = convert_to_vietnam_time(time_str, date_str) if time_str else ""
+            
             # Kênh
-            channels = [ch.text.strip() for ch in match_row.select(".channel a, .tv-station a")]
+            channels = [ch.text.strip() for ch in row.select(".channel a, .tv-station a")]
+            
             matches.append({
                 "league": league,
                 "match": title,
@@ -167,8 +173,9 @@ def scrape_livesoccertv():
                 "channels": channels
             })
         except Exception as e:
-            print(f"Lỗi parse một trận: {e}")
+            print(f"[Lỗi parse một trận] {e}")
             continue
+    
     return matches
 
 def main():
