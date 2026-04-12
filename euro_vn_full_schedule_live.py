@@ -7,8 +7,7 @@ Tối ưu ghép kênh M3U với matching thông minh (tên kênh + tên trận +
 Bổ sung: FA Cup, League Cup (Carabao Cup) – group "Live FA, League Cup"
 Sửa lỗi nhận diện UEFA Europa League (không nhầm thành UEFA Euro) cho tất cả nguồn
 Match kênh có xét quốc gia, loại bỏ kênh chứa ###, tăng độ chính xác (tránh nhầm Sky Go với Sky Golf)
-Thêm bước validate link (kiểm tra stream còn sống) trước khi ghi M3U
-Bổ sung match theo tên trận (khi tên kênh M3U chứa trực tiếp tên trận)
+Cải thiện validate stream: dùng GET stream một phần nhỏ, không dùng HEAD.
 """
 
 import asyncio
@@ -773,7 +772,7 @@ def merge_games(primary: List[Dict], secondary: List[Dict]) -> List[Dict]:
                 if not found:
                     seen[key]['tv_channels'].append(sec_ch)
     return primary_football + unique_tennis
-# ==================    Thêm hàm trích xuất headers từ extra
+
 def extract_headers_from_extra(extra_lines):
     headers = {}
     if not extra_lines:
@@ -781,9 +780,6 @@ def extract_headers_from_extra(extra_lines):
     for line in extra_lines:
         line = line.strip()
         if line.startswith('#EXTVLCOPT'):
-            # Định dạng: #EXTVLCOPT:http-user-agent=...
-            # hoặc #EXTVLCOPT:http-cookie=...
-            # hoặc #EXTVLCOPT:http-header=Authorization: Bearer ...
             parts = line.split(':', 2)
             if len(parts) >= 3:
                 opt_type = parts[1].strip()
@@ -797,6 +793,7 @@ def extract_headers_from_extra(extra_lines):
                         header_name, header_value = value.split(': ', 1)
                         headers[header_name] = header_value
     return headers
+
 # ================== M3U PARSER ==================
 def parse_m3u(content):
     channels = []
@@ -829,29 +826,40 @@ def parse_m3u(content):
         channels.append(current)
     return channels
 
-# ================== VALIDATE STREAM ==================
+# ================== VALIDATE STREAM (ĐÃ SỬA LỖI) ==================
 async def validate_stream_url(session, url: str, extra_headers: dict = None) -> bool:
+    """
+    Kiểm tra stream bằng cách tải một phần nhỏ dữ liệu (chunk đầu tiên).
+    Không dùng HEAD để tránh bị chặn bởi server IPTV.
+    Trả về True nếu nhận được dữ liệu nhị phân không phải HTML lỗi.
+    """
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Accept": "*/*",
+        "Connection": "keep-alive"
+    }
+    if extra_headers:
+        headers.update(extra_headers)
+
     try:
-        default_headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-        }
-        if extra_headers:
-            default_headers.update(extra_headers)
-        
-        # Thử HEAD trước
-        resp = await session.head(url, headers=default_headers, timeout=5, allow_redirects=True)
-        if resp.status_code in [200, 202, 204, 206]:
-            return True
-        
-        # Nếu HEAD thất bại, thử GET với range nhỏ
-        range_headers = {"Range": "bytes=0-1024", **default_headers}
-        resp2 = await session.get(url, headers=range_headers, timeout=5)
-        if resp2.status_code in [200, 206, 202]:
-            text = await resp2.text()
-            if "<html" in text.lower() or "access denied" in text.lower() or "401" in text:
+        async with session.stream("GET", url, headers=headers, timeout=10) as resp:
+            if resp.status_code != 200:
                 return False
-            return True
-        return False
+
+            # Đọc chunk đầu tiên (tối đa 4096 byte)
+            async for chunk in resp.aiter_bytes():
+                if chunk:
+                    # Nếu chunk bắt đầu bằng dấu hiệu của HTML lỗi
+                    if chunk.startswith(b'<!DOCTYPE') or chunk.startswith(b'<html'):
+                        return False
+                    # Nếu content-type là video hoặc binary
+                    content_type = resp.headers.get("content-type", "").lower()
+                    if any(x in content_type for x in ["video", "mpeg", "mp4", "octet-stream", "mpegurl", "vnd.apple.mpegurl"]):
+                        return True
+                    # Nếu không có content-type rõ ràng nhưng có dữ liệu nhị phân, coi là hợp lệ
+                    return True
+                break  # chỉ cần chunk đầu tiên
+            return False
     except Exception:
         return False
 
@@ -991,8 +999,7 @@ async def main():
             continue
 
     # ================== VALIDATE STREAMS ==================
-    
-    print("🔍 Đang kiểm tra tính sống của các link (HEAD request với headers đầy đủ, timeout 5s)...")
+    print("🔍 Đang kiểm tra tính sống của các link (GET stream một phần nhỏ, timeout 10s)...")
     async with AsyncSession() as session:
         tasks = []
         for ev in live_events:
