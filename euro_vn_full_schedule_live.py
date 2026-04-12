@@ -2,13 +2,14 @@
 euro_vn_full_schedule_live.py
 ================================
 BẢN HOÀN CHỈNH – 2 GIỜ TRƯỚC + 24 GIỜ TỚI + LỌC THEO GIẢI + ĐỘI RIÊNG
-TÍCH HỢP: SofaScore (chính) + Các nguồn JSON phụ (Wheresthematch, LiveSportsOnTV, Ausport)
+TÍCH HỢP: SofaScore (chính) + Các nguồn JSON phụ (Wheresthematch, LiveSportsOnTV, Ausport, LiveOnSat)
 Tối ưu ghép kênh M3U với matching thông minh (tên kênh + tên trận + quốc gia)
 Bổ sung: FA Cup, League Cup (Carabao Cup) – group "Live FA, League Cup"
 Sửa lỗi nhận diện UEFA Europa League (không nhầm thành UEFA Euro) cho tất cả nguồn
 Match kênh có xét quốc gia, loại bỏ kênh chứa ###, tăng độ chính xác (tránh nhầm Sky Go với Sky Golf)
 Thêm bước validate link (kiểm tra stream còn sống) trước khi ghi M3U
 Bổ sung match theo tên trận (khi tên kênh M3U chứa trực tiếp tên trận)
+Bổ sung nguồn LiveOnSat (chỉ thêm kênh, không tạo trận mới)
 """
 
 import asyncio
@@ -162,135 +163,39 @@ def split_name_and_number(name: str):
     return name, None
 
 def normalize_country_name(country: str) -> str:
+    """Chuẩn hóa tên quốc gia thành mã 2 chữ cái (us, uk, ca, ...)"""
     if not country:
         return ""
     country_lower = country.lower().strip()
     mapping = {
-        # Châu Mỹ
         "united states": "us",
-        "united states of america": "us",
         "usa": "us",
         "us": "us",
-        "canada": "ca",
-        "ca": "ca",
-        "brazil": "br",
-        "br": "br",
-        "argentina": "ar",
-        "ar": "ar",
-        "chile": "cl",
-        "cl": "cl",
-        "peru": "pe",
-        "colombia": "co",
-        "ecuador": "ec",
-        "uruguay": "uy",
-        "paraguay": "py",
-        "bolivia": "bo",
-        "venezuela": "ve",
-        "mexico": "mx",
-        "sur": "sa",  # South America (khu vực)
-        # Châu Âu
         "united kingdom": "uk",
         "uk": "uk",
-        "great britain": "uk",
-        "england": "uk",
-        "ireland": "ie",
-        "ie": "ie",
+        "canada": "ca",
+        "ca": "ca",
+        "australia": "au",
+        "au": "au",
         "germany": "de",
         "de": "de",
-        "deutschland": "de",
         "france": "fr",
         "fr": "fr",
-        "french": "fr",
         "italy": "it",
         "it": "it",
-        "italia": "it",
         "spain": "es",
         "es": "es",
-        "espana": "es",
         "portugal": "pt",
         "pt": "pt",
         "netherlands": "nl",
         "nl": "nl",
-        "nederland": "nl",
         "belgium": "be",
         "be": "be",
-        "austria": "at",
-        "at": "at",
-        "switzerland": "ch",
-        "ch": "ch",
-        "croatia": "hr",
-        "hr": "hr",
-        "hrvatska": "hr",
-        "serbia": "rs",
-        "rs": "rs",
-        "srbija": "rs",
-        "turkey": "tr",
-        "tr": "tr",
-        "türkiye": "tr",
-        "poland": "pl",
-        "pl": "pl",
-        "polska": "pl",
-        "czech republic": "cz",
-        "cz": "cz",
-        "czech": "cz",
-        "slovakia": "sk",
-        "slovenia": "si",
-        "hungary": "hu",
-        "hu": "hu",
-        "romania": "ro",
-        "ro": "ro",
-        "bulgaria": "bg",
-        "greece": "gr",
-        "gr": "gr",
-        "hellas": "gr",
-        "denmark": "dk",
-        "dk": "dk",
-        "danmark": "dk",
-        "sweden": "se",
-        "se": "se",
-        "sverige": "se",
-        "norway": "no",
-        "no": "no",
-        "norge": "no",
-        "finland": "fi",
-        "fi": "fi",
-        "suomi": "fi",
-        "estonia": "ee",
-        "latvia": "lv",
-        "lithuania": "lt",
-        "iceland": "is",
-        "albania": "al",
-        "al": "al",
-        "north macedonia": "mk",
-        "montenegro": "me",
-        "bosnia and herzegovina": "ba",
-        "luxembourg": "lu",
-        "malta": "mt",
-        "cyprus": "cy",
-        "baltics": "balt",  # gộp, nhưng thực tế mỗi nước có mã riêng
-        # Châu Á - Thái Bình Dương
-        "australia": "au",
-        "au": "au",
-        "japan": "jp",
-        "south korea": "kr",
-        "india": "in",
-        "indonesia": "id",
-        "malaysia": "my",
-        "singapore": "sg",
-        "china": "cn",
-        "vietnam": "vn",
-        "thailand": "th",
-        # Trung Đông
-        "israel": "il",
-        "saudi arabia": "sa",
-        "uae": "ae",
-        "qatar": "qa",
-        # Mã 2 chữ cái (giữ nguyên)
+        "brazil": "br",
+        "br": "br",
     }
     if country_lower in mapping:
         return mapping[country_lower]
-    if len(country_lower) == 2:
-        return country_lower
     try:
         c = pycountry.countries.get(name=country)
         if c:
@@ -300,24 +205,19 @@ def normalize_country_name(country: str) -> str:
     return country_lower
 
 def extract_match_from_m3u_name(m3u_name: str) -> str:
-    # Loại bỏ các tiền tố phổ biến
-    cleaned = re.sub(r'^(NEXT\s*\|\s*|EN ESPAÑOL-|AO VIVO:\s*|UK\s*-\s*|[A-Z]{2,3}\s*\([^)]+\)\s*\|\s*|[A-Z]{2,3}:\s*)', '', m3u_name, flags=re.IGNORECASE)
-    # Loại bỏ thông tin ngày giờ
+    """Trích xuất tên trận đấu từ tên kênh M3U (nếu có)"""
+    # Loại bỏ các tiền tố như "NEXT |", "UK - ", "ES (VIX 09) |", ...
+    cleaned = re.sub(r'^(NEXT\s*\|\s*|UK\s*-\s*|[A-Z]{2,3}\s*\([^)]+\)\s*\|\s*|[A-Z]{2,3}:\s*)', '', m3u_name, flags=re.IGNORECASE)
+    # Loại bỏ thông tin ngày giờ (dạng "Thu 09 Apr 20:45 CEST", "2026-04-09", ...)
     cleaned = re.sub(r'\b(Mon|Tue|Wed|Thu|Fri|Sat|Sun)\s+\d{1,2}\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{2,4}\s+\d{2}:\d{2}\s+[A-Z]{3,4}\b', '', cleaned, flags=re.IGNORECASE)
     cleaned = re.sub(r'\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}:\d{2}', '', cleaned)
     cleaned = re.sub(r'\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{4}', '', cleaned, flags=re.IGNORECASE)
-    # Loại bỏ tên giải đấu
-    cleaned = re.sub(r'\b(LA\s+LIGA|LALIGA|EA\s+SPORTS|PREMIER\s+LEAGUE|UEFA|CHAMPIONS\s+LEAGUE|EUROPA\s+LEAGUE|CONFERENCE\s+LEAGUE)\b', '', cleaned, flags=re.IGNORECASE)
-    # Loại bỏ các từ thừa
+    # Loại bỏ các từ "8K EXCLUSIVE", "PPV", "HD", ...
     cleaned = re.sub(r'\b(8K\s+EXCLUSIVE|PPV|HD|FHD|UHD|LIVE|EXCLUSIVE)\b', '', cleaned, flags=re.IGNORECASE)
-    # Chuẩn hóa dấu phân cách thành " vs "
-    cleaned = re.sub(r'[-–—]', ' vs ', cleaned)
-    cleaned = re.sub(r'\bVS\.?\b', ' vs ', cleaned, flags=re.IGNORECASE)
-    cleaned = re.sub(r'\bx\b', ' vs ', cleaned, flags=re.IGNORECASE)
-    # Loại bỏ ký tự đặc biệt
-    cleaned = re.sub(r'[^\w\s]', ' ', cleaned)
+    # Loại bỏ ký tự đặc biệt, chỉ giữ chữ, số, khoảng trắng và dấu gạch ngang
+    cleaned = re.sub(r'[^\w\s-]', ' ', cleaned)
     cleaned = ' '.join(cleaned.split())
-    return cleaned.lower().strip()
+    return cleaned.strip()
 
 def is_channel_match(ch_name: str, m3u_name: str, country: str = "") -> bool:
     if not ch_name or not m3u_name:
@@ -711,85 +611,6 @@ def parse_ausport(entry: dict) -> Optional[Dict]:
         return None
 
 # ================== LIVEONSAT ==================
-
-def load_liveonsat_data() -> List[Dict]:
-    """Tải dữ liệu từ liveonsat_raw.json, không lọc thời gian (chỉ để bổ sung kênh)"""
-    url = "https://raw.githubusercontent.com/a7shk1/liveonsat/refs/heads/main/matches/liveonsat_raw.json"
-    try:
-        with urllib.request.urlopen(url, timeout=15) as response:
-            data = json.loads(response.read().decode('utf-8'))
-    except Exception as e:
-        print(f"   Lỗi tải liveonsat: {e}")
-        return []
-
-    games = []
-    date_str = data.get("date")
-    if not date_str:
-        return games
-
-    for match in data.get("matches", []):
-        title = match.get("title", "").strip()
-        kickoff_str = match.get("kickoff_baghdad")
-        channels_raw = match.get("channels_raw", [])
-
-        if not title or not kickoff_str:
-            continue
-
-        # Chuyển đổi thời gian (giữ lại để dùng cho việc merge, nhưng không lọc)
-        try:
-            dt_str = f"{date_str} {kickoff_str}"
-            dt = datetime.strptime(dt_str, "%Y-%m-%d %H:%M")
-            dt = dt.replace(tzinfo=ZoneInfo("Asia/Baghdad"))
-            kick_utc = int(dt.timestamp())
-        except:
-            continue
-
-        # Chuẩn hóa tên trận
-        title_norm = title.replace(" v ", " vs ").replace(" V ", " vs ")
-
-        # Lọc kênh rác
-        clean_channels = []
-        for ch in channels_raw:
-            ch_clean = ch.strip()
-            if not ch_clean:
-                continue
-            if any(x in ch_clean.lower() for x in [
-                "discover more", "tv schedule", "app", "gear", "merchandise",
-                "flag", "betting", "custom", "fitness", "tracker", "scarf",
-                "cookie", "privacy", "rights reserved", "liveonsat.com"
-            ]):
-                continue
-            if len(ch_clean) < 3:
-                continue
-            clean_channels.append(ch_clean)
-
-        if not clean_channels:
-            continue
-
-        # Xác định league dựa trên tên đội trong title (chuẩn hóa)
-        league = None
-        # Tách tên đội từ title (loại bỏ "vs")
-        parts = title_norm.split(" vs ")
-        if len(parts) == 2:
-            home_norm = normalize_team_name(parts[0])
-            away_norm = normalize_team_name(parts[1])
-            # Kiểm tra Premier League
-            if home_norm in PREMIER_LEAGUE_TEAMS or away_norm in PREMIER_LEAGUE_TEAMS:
-                league = "Premier League"
-            # Serie A
-            elif home_norm in ALLOWED_TEAMS_PER_LEAGUE["Serie A"] or away_norm in ALLOWED_TEAMS_PER_LEAGUE["Serie A"]:
-                league = "Serie A"
-            # La Liga
-            elif home_norm in ALLOWED_TEAMS_PER_LEAGUE["La Liga"] or away_norm in ALLOWED_TEAMS_PER_LEAGUE["La Liga"]:
-                league = "La Liga"
-            # Bundesliga
-            elif home_norm in ALLOWED_TEAMS_PER_LEAGUE["Bundesliga"] or away_norm in ALLOWED_TEAMS_PER_LEAGUE["Bundesliga"]:
-                league = "Bundesliga"
-            # Ligue 1
-            elif home_norm in ALLOWED_TEAMS_PER_LEAGUE["Ligue 1"] or away_norm in ALLOWED_TEAMS_PER_LEAGUE["Ligue 1"]:
-                league = "Ligue 1"
-
-        # Nếu không xác định được, bỏ qua (không thêm vào danh sách)
 def load_liveonsat_data() -> List[Dict]:
     """Tải dữ liệu từ liveonsat_raw.json, không lọc thời gian (chỉ để bổ sung kênh)"""
     url = "https://raw.githubusercontent.com/a7shk1/liveonsat/refs/heads/main/matches/liveonsat_raw.json"
@@ -915,7 +736,6 @@ def merge_games(primary: List[Dict], secondary: List[Dict]) -> List[Dict]:
         for game, norm_match, ts, league in primary_index:
             if league != sec_league:
                 continue
-            # Cho phép chênh lệch thời gian lên đến 2 giờ (7200s)
             if abs(ts - sec_ts) > 7200:
                 continue
             score = similar(norm_match, sec_norm_match)
@@ -924,13 +744,13 @@ def merge_games(primary: List[Dict], secondary: List[Dict]) -> List[Dict]:
                 best_match = game
 
         if best_match and best_score > 0.6:
-            # Gộp kênh
+            # Thêm trực tiếp kênh từ secondary (liveonsat) vào primary
             for sec_ch in sec['tv_channels']:
                 best_match['tv_channels'].append(sec_ch)
             print(f"   Merge liveonsat: {best_match['match']} (score {best_score:.2f}) -> added {len(sec_ch['channels'])} channels")
         # else: không thêm trận mới
 
-    # Xử lý tennis giữ nguyên
+    # Xử lý tennis: gộp theo thời gian
     all_tennis = primary_tennis + secondary_tennis
     seen = {}
     unique_tennis = []
@@ -982,7 +802,8 @@ def parse_m3u(content):
         if extra: current['extra'] = extra[:]
         channels.append(current)
     return channels
-# ================== Trích xuất headers từ extra ==================
+
+# ================== VALIDATE STREAM ==================
 def extract_headers_from_extra(extra_lines):
     headers = {}
     if not extra_lines:
@@ -990,9 +811,6 @@ def extract_headers_from_extra(extra_lines):
     for line in extra_lines:
         line = line.strip()
         if line.startswith('#EXTVLCOPT'):
-            # Định dạng: #EXTVLCOPT:http-user-agent=...
-            # hoặc #EXTVLCOPT:http-cookie=...
-            # hoặc #EXTVLCOPT:http-header=Authorization: Bearer ...
             parts = line.split(':', 2)
             if len(parts) >= 3:
                 opt_type = parts[1].strip()
@@ -1006,7 +824,7 @@ def extract_headers_from_extra(extra_lines):
                         header_name, header_value = value.split(': ', 1)
                         headers[header_name] = header_value
     return headers
-# ================== VALIDATE STREAM ==================
+
 async def validate_stream_url(session, url: str, extra_headers: dict = None) -> bool:
     try:
         default_headers = {
@@ -1015,12 +833,10 @@ async def validate_stream_url(session, url: str, extra_headers: dict = None) -> 
         if extra_headers:
             default_headers.update(extra_headers)
         
-        # Thử HEAD trước
         resp = await session.head(url, headers=default_headers, timeout=5, allow_redirects=True)
         if resp.status_code in [200, 202, 204, 206]:
             return True
         
-        # Nếu HEAD thất bại, thử GET với range nhỏ
         range_headers = {"Range": "bytes=0-1024", **default_headers}
         resp2 = await session.get(url, headers=range_headers, timeout=5)
         if resp2.status_code in [200, 206, 202]:
@@ -1031,6 +847,7 @@ async def validate_stream_url(session, url: str, extra_headers: dict = None) -> 
         return False
     except Exception:
         return False
+
 # ================== MAIN ==================
 async def main():
     start = time.time()
@@ -1051,7 +868,7 @@ async def main():
     print("🔄 Đang merge dữ liệu...")
     all_games = merge_games(sofascore_games, secondary_games)
 
-    # Lọc trùng (không lọc theo thời gian vì đã lọc từ đầu)
+    # Lọc trùng và gộp kênh cho tất cả các trận (không chỉ tennis)
     seen = {}
     deduped = []
     for g in all_games:
@@ -1063,16 +880,16 @@ async def main():
             seen[key] = g
             deduped.append(g)
         else:
-            if g['league'] == "Tennis" and not g['match']:
-                for sec_ch in g['tv_channels']:
-                    found = False
-                    for pri_ch in seen[key]['tv_channels']:
-                        if pri_ch['country'] == sec_ch['country']:
-                            pri_ch['channels'] = list(set(pri_ch['channels'] + sec_ch['channels']))
-                            found = True
-                            break
-                    if not found:
-                        seen[key]['tv_channels'].append(sec_ch)
+            # Gộp kênh cho tất cả (không chỉ tennis)
+            for sec_ch in g['tv_channels']:
+                found = False
+                for pri_ch in seen[key]['tv_channels']:
+                    if pri_ch['country'] == sec_ch['country']:
+                        pri_ch['channels'] = list(set(pri_ch['channels'] + sec_ch['channels']))
+                        found = True
+                        break
+                if not found:
+                    seen[key]['tv_channels'].append(sec_ch)
     all_games = deduped
 
     today_str = datetime.now().strftime("%Y%m%d")
