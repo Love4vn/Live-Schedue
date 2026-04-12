@@ -101,6 +101,7 @@ def is_low_resolution(name: str) -> bool:
 
 def normalize(s: str) -> str:
     s = unicodedata.normalize("NFD", s.lower())
+    s = s.replace(" v ", " vs ").replace(" v ", " vs ")
     return " ".join(c for c in s if unicodedata.category(c) != "Mn")
 
 def normalize_team_name(name: str) -> str:
@@ -789,6 +790,76 @@ def load_liveonsat_data() -> List[Dict]:
                 league = "Ligue 1"
 
         # Nếu không xác định được, bỏ qua (không thêm vào danh sách)
+def load_liveonsat_data() -> List[Dict]:
+    """Tải dữ liệu từ liveonsat_raw.json, không lọc thời gian (chỉ để bổ sung kênh)"""
+    url = "https://raw.githubusercontent.com/a7shk1/liveonsat/refs/heads/main/matches/liveonsat_raw.json"
+    try:
+        with urllib.request.urlopen(url, timeout=15) as response:
+            data = json.loads(response.read().decode('utf-8'))
+    except Exception as e:
+        print(f"   Lỗi tải liveonsat: {e}")
+        return []
+
+    games = []
+    date_str = data.get("date")
+    if not date_str:
+        return games
+
+    for match in data.get("matches", []):
+        title = match.get("title", "").strip()
+        kickoff_str = match.get("kickoff_baghdad")
+        channels_raw = match.get("channels_raw", [])
+
+        if not title or not kickoff_str:
+            continue
+
+        try:
+            dt_str = f"{date_str} {kickoff_str}"
+            dt = datetime.strptime(dt_str, "%Y-%m-%d %H:%M")
+            dt = dt.replace(tzinfo=ZoneInfo("Asia/Baghdad"))
+            kick_utc = int(dt.timestamp())
+        except:
+            continue
+
+        # Chuẩn hóa tên trận
+        title_norm = title.replace(" v ", " vs ").replace(" V ", " vs ")
+
+        # Lọc kênh rác
+        clean_channels = []
+        for ch in channels_raw:
+            ch_clean = ch.strip()
+            if not ch_clean:
+                continue
+            if any(x in ch_clean.lower() for x in [
+                "discover more", "tv schedule", "app", "gear", "merchandise",
+                "flag", "betting", "custom", "fitness", "tracker", "scarf",
+                "cookie", "privacy", "rights reserved", "liveonsat.com"
+            ]):
+                continue
+            if len(ch_clean) < 3:
+                continue
+            clean_channels.append(ch_clean)
+
+        if not clean_channels:
+            continue
+
+        # Xác định league dựa trên tên đội trong title
+        league = None
+        parts = title_norm.split(" vs ")
+        if len(parts) == 2:
+            home_norm = normalize_team_name(parts[0])
+            away_norm = normalize_team_name(parts[1])
+            if home_norm in PREMIER_LEAGUE_TEAMS or away_norm in PREMIER_LEAGUE_TEAMS:
+                league = "Premier League"
+            elif home_norm in ALLOWED_TEAMS_PER_LEAGUE["Serie A"] or away_norm in ALLOWED_TEAMS_PER_LEAGUE["Serie A"]:
+                league = "Serie A"
+            elif home_norm in ALLOWED_TEAMS_PER_LEAGUE["La Liga"] or away_norm in ALLOWED_TEAMS_PER_LEAGUE["La Liga"]:
+                league = "La Liga"
+            elif home_norm in ALLOWED_TEAMS_PER_LEAGUE["Bundesliga"] or away_norm in ALLOWED_TEAMS_PER_LEAGUE["Bundesliga"]:
+                league = "Bundesliga"
+            elif home_norm in ALLOWED_TEAMS_PER_LEAGUE["Ligue 1"] or away_norm in ALLOWED_TEAMS_PER_LEAGUE["Ligue 1"]:
+                league = "Ligue 1"
+
         if league is None:
             continue
 
@@ -801,6 +872,8 @@ def load_liveonsat_data() -> List[Dict]:
             "source": "liveonsat"
         })
     print(f"   liveonsat: đã xử lý {len(games)} trận (không lọc thời gian)")
+    for g in games:
+        print(f"      - {g['league']}: {g['match']} - {g['time']} - {len(g['tv_channels'][0]['channels'])} kênh")
     return games
 
 def load_all_secondary_sources(start_ts: int, max_ts: int) -> List[Dict]:
@@ -827,7 +900,10 @@ def merge_games(primary: List[Dict], secondary: List[Dict]) -> List[Dict]:
     secondary_tennis = [g for g in secondary if g['league'] == "Tennis"]
 
     # Tạo index cho primary_football
-    primary_index = [(game, normalize(game['match']), game['kick_utc'], game['league']) for game in primary_football]
+    primary_index = []
+    for game in primary_football:
+        norm_match = normalize(game['match'])
+        primary_index.append((game, norm_match, game['kick_utc'], game['league']))
 
     for sec in secondary_football:
         sec_norm_match = normalize(sec['match'])
@@ -839,27 +915,22 @@ def merge_games(primary: List[Dict], secondary: List[Dict]) -> List[Dict]:
         for game, norm_match, ts, league in primary_index:
             if league != sec_league:
                 continue
-            if abs(ts - sec_ts) > 3600:  # chênh lệch tối đa 1 giờ
+            # Cho phép chênh lệch thời gian lên đến 2 giờ (7200s)
+            if abs(ts - sec_ts) > 7200:
                 continue
             score = similar(norm_match, sec_norm_match)
             if score > best_score:
                 best_score = score
                 best_match = game
 
-        if best_match and best_score > 0.7:
+        if best_match and best_score > 0.6:
             # Gộp kênh
             for sec_ch in sec['tv_channels']:
-                found = False
-                for pri_ch in best_match['tv_channels']:
-                    if pri_ch['country'] == sec_ch['country']:
-                        pri_ch['channels'] = list(set(pri_ch['channels'] + sec_ch['channels']))
-                        found = True
-                        break
-                if not found:
-                    best_match['tv_channels'].append(sec_ch)
-        # else: không thêm trận mới từ secondary (bỏ qua)
+                best_match['tv_channels'].append(sec_ch)
+            print(f"   Merge liveonsat: {best_match['match']} (score {best_score:.2f}) -> added {len(sec_ch['channels'])} channels")
+        # else: không thêm trận mới
 
-    # Xử lý tennis: gộp theo thời gian
+    # Xử lý tennis giữ nguyên
     all_tennis = primary_tennis + secondary_tennis
     seen = {}
     unique_tennis = []
