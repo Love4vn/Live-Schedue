@@ -19,7 +19,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install curl_cffi pycountry beautifulsoup4 lxml playwright
+          pip install curl_cffi pycountry beautifulsoup4 lxml playwright aiohttp
           playwright install chromium
 
       - name: Run script
