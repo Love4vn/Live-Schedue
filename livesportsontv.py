@@ -1,5 +1,5 @@
 # File: livesportsontv.py
-# Tích hợp footonsat, sửa lỗi timezone, lọc thời gian linh hoạt (2h trước, 26h sau)
+# Tích hợp nhiều nguồn footonsat, sửa lỗi timezone, lọc thời gian linh hoạt (2h trước, 26h sau)
 
 import asyncio
 import json
@@ -11,10 +11,22 @@ from bs4 import BeautifulSoup
 
 # ==================== CẤU HÌNH ====================
 VN_TZ = timezone(timedelta(hours=7))
-FOOTONSAT_OFFSET = -5  # footonsat kém VN 5h (tức là đang ở UTC)
 TIME_RANGE_HOURS_BEFORE = 2
 TIME_RANGE_HOURS_AFTER = 26
 
+# Danh sách các nguồn footonsat
+FOOTONSAT_URLS = [
+    "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/premierleague.json",
+    "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/seriea.json",
+    "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/laliga.json",
+    "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/bundesliga.json",
+    "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/ligue1.json",
+    "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/championsleague.json",
+    "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/europaleague.json",
+    "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/ConferenceLeague.json"
+]
+
+# ==================== HÀM TIỆN ÍCH ====================
 def parse_time_with_ampm(time_str: str):
     time_str = time_str.strip().upper()
     if ' ' not in time_str and ('AM' in time_str or 'PM' in time_str):
@@ -69,7 +81,6 @@ def extract_timezone_from_html(soup):
     return timezone.utc
 
 def is_within_time_range(dt: datetime, ref: datetime) -> bool:
-    """dt và ref đều có timezone"""
     start = ref - timedelta(hours=TIME_RANGE_HOURS_BEFORE)
     end = ref + timedelta(hours=TIME_RANGE_HOURS_AFTER)
     return start <= dt <= end
@@ -184,40 +195,37 @@ LEAGUES_CONFIG = {
 
 # ==================== FOOTONSAT ====================
 async def fetch_footonsat_data(ref_time: datetime):
-    url = [
-    "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/premierleague.json",
-    "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/seriea.json",
-    "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/laliga.json",
-    "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/bundesliga.json",
-    "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/ligue1.json",
-    "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/championsleague.json",
-    "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/europaleague.json",
-    "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/ConferenceLeague.json",
-]
+    all_matches = []
     async with aiohttp.ClientSession() as session:
-        try:
-            async with session.get(url, timeout=30) as resp:
-                text = await resp.text()
-                data = json.loads(text)
-        except Exception as e:
-            print(f"⚠️ Lỗi tải footonsat: {e}")
-            return []
-    
-    items = data.get("footonsat", [])
+        for url in FOOTONSAT_URLS:
+            try:
+                async with session.get(url, timeout=30) as resp:
+                    if resp.status != 200:
+                        print(f"⚠️ {url.split('/')[-1]} -> HTTP {resp.status}")
+                        continue
+                    text = await resp.text()
+                    data = json.loads(text)
+                    items = data.get("footonsat", [])
+                    matches = parse_footonsat_items(items, ref_time)
+                    all_matches.extend(matches)
+                    print(f"📡 {url.split('/')[-1]}: {len(matches)} trận")
+            except Exception as e:
+                print(f"⚠️ Lỗi fetch {url.split('/')[-1]}: {e}")
+    return all_matches
+
+def parse_footonsat_items(items, ref_time):
     matches = []
     current_match = None
     current_channels = []
-    
     for item in items:
         if "match" in item and "compet" in item:
             if current_match:
                 try:
-                    # Từ ngày giờ gốc (UTC+0) vì footonsat lệch -5h so với VN => gốc UTC
                     dt_utc = datetime.strptime(f"{current_match['date']} {current_match['time']}", "%Y-%m-%d %H:%M")
                     dt_utc = dt_utc.replace(tzinfo=timezone.utc)
                     dt_vn = dt_utc.astimezone(VN_TZ)
                     if is_within_time_range(dt_vn, ref_time):
-                        league = current_match['compet'].replace("English ", "")
+                        league = current_match['compet'].strip()
                         matches.append({
                             "Date": dt_vn.strftime("%Y-%m-%d"),
                             "Time": dt_vn.strftime("%H:%M"),
@@ -225,8 +233,8 @@ async def fetch_footonsat_data(ref_time: datetime):
                             "Matchup": current_match['match'].strip(),
                             "Services": current_channels.copy()
                         })
-                except Exception as e:
-                    print(f"Lỗi xử lý footonsat: {e}")
+                except Exception:
+                    pass
             current_match = item
             current_channels = []
         elif "channel" in item and current_match and item.get("related_to", "").strip() == current_match['match'].strip():
@@ -234,15 +242,14 @@ async def fetch_footonsat_data(ref_time: datetime):
             ch_name = re.sub(r'[📺]', '', ch_name).strip()
             if ch_name:
                 current_channels.append(ch_name)
-    
-    # Trận cuối
+    # Xử lý trận cuối
     if current_match:
         try:
             dt_utc = datetime.strptime(f"{current_match['date']} {current_match['time']}", "%Y-%m-%d %H:%M")
             dt_utc = dt_utc.replace(tzinfo=timezone.utc)
             dt_vn = dt_utc.astimezone(VN_TZ)
             if is_within_time_range(dt_vn, ref_time):
-                league = current_match['compet'].replace("English ", "")
+                league = current_match['compet'].strip()
                 matches.append({
                     "Date": dt_vn.strftime("%Y-%m-%d"),
                     "Time": dt_vn.strftime("%H:%M"),
@@ -250,10 +257,8 @@ async def fetch_footonsat_data(ref_time: datetime):
                     "Matchup": current_match['match'].strip(),
                     "Services": current_channels
                 })
-        except Exception as e:
-            print(f"Lỗi xử lý footonsat (cuối): {e}")
-    
-    print(f"📡 Đã lấy {len(matches)} trận từ footonsat")
+        except Exception:
+            pass
     return matches
 
 # ==================== LIVESPORTSONTV ====================
