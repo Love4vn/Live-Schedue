@@ -9,7 +9,7 @@ Sửa lỗi nhận diện UEFA Europa League (không nhầm thành UEFA Euro) ch
 Match kênh có xét quốc gia, loại bỏ kênh chứa ###, tăng độ chính xác (tránh nhầm Sky Go với Sky Golf)
 Thêm bước validate link (kiểm tra stream còn sống) trước khi ghi M3U
 Bổ sung match theo tên trận (khi tên kênh M3U chứa trực tiếp tên trận)
-Bổ sung nguồn LiveOnSat (chỉ thêm kênh, không tạo trận mới)
+Bổ sung nguồn LiveOnSat (chỉ thêm kênh, không tạo trận mới) - TẠO MỤC COUNTRY RIÊNG "LiveOnSat"
 """
 
 import asyncio
@@ -744,10 +744,15 @@ def merge_games(primary: List[Dict], secondary: List[Dict]) -> List[Dict]:
                 best_match = game
 
         if best_match and best_score > 0.6:
-            # Thêm trực tiếp kênh từ secondary (liveonsat) vào primary
+            # THÊM TRỰC TIẾP MỤC COUNTRY MỚI (KHÔNG MERGE)
             for sec_ch in sec['tv_channels']:
-                best_match['tv_channels'].append(sec_ch)
-            print(f"   Merge liveonsat: {best_match['match']} (score {best_score:.2f}) -> added {len(sec_ch['channels'])} channels")
+                # Tạo bản sao để tránh ảnh hưởng dữ liệu gốc
+                new_entry = {
+                    "country": sec_ch['country'],
+                    "channels": sec_ch['channels'][:]  # copy list
+                }
+                best_match['tv_channels'].append(new_entry)
+            print(f"   Merge liveonsat: {best_match['match']} (score {best_score:.2f}) -> added {len(sec_ch['channels'])} channels (as new country '{sec_ch['country']}')")
         # else: không thêm trận mới
 
     # Xử lý tennis: gộp theo thời gian
