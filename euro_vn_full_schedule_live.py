@@ -1,61 +1,50 @@
 """
 euro_vn_full_schedule_live.py
 ================================
-BẢN HOÀN CHỈNH – 2 GIỜ TRƯỚC + 24 GIỜ TỚI + LỌC THEO GIẢI + ĐỘI RIÊNG
-TÍCH HỢP: SofaScore (chính) + Các nguồn JSON phụ (Wheresthematch, LiveSportsOnTV, Ausport)
-Tối ưu ghép kênh M3U với matching thông minh (tên kênh + tên trận + quốc gia)
-Bổ sung: FA Cup, League Cup (Carabao Cup) – group "Live FA, League Cup"
-Sửa lỗi nhận diện UEFA Europa League (không nhầm thành UEFA Euro) cho tất cả nguồn
-Match kênh có xét quốc gia, loại bỏ kênh chứa ###, tăng độ chính xác (tránh nhầm Sky Go với Sky Golf)
-Thêm bước validate link (kiểm tra stream còn sống) trước khi ghi M3U
-Bổ sung match theo tên trận (khi tên kênh M3U chứa trực tiếp tên trận)
+PHIÊN BẢN SIÊU TỐC – TỐI ƯU CHO GITHUB ACTIONS
+- Tải M3U bất đồng bộ (aiohttp).
+- Validate HEAD nhanh (chỉ loại 404/không kết nối).
+- Cache SofaScore 24h.
+- Giới hạn 2 kênh/trận.
 """
 
 import asyncio
 import json
 import re
 import unicodedata
-import urllib.request
 import time
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from difflib import SequenceMatcher
 from typing import List, Dict, Optional
 
 import pycountry
-from curl_cffi.requests import AsyncSession
+import aiohttp
+from curl_cffi.requests import AsyncSession as CffiAsyncSession
 
 # ================== CẤU HÌNH ==================
 TIMEZONE = ZoneInfo("Asia/Ho_Chi_Minh")
-UK_TIMEZONE = ZoneInfo("Europe/London")
 M3U_LIST_FILE = "M3U_list.txt"
 SCHEDULE_FILE = "schedule.json"
 LIVE_M3U = "live_schedule.m3u"
+SOFASCORE_CACHE_FILE = "sofascore_cache.json"
+VALIDATE_TIMEOUT = 2           # Giây cho HEAD request
+MAX_CHANNELS_PER_MATCH = 2     # Số kênh tối đa mỗi trận
+HEAD_CONCURRENCY = 100         # Số lượng HEAD đồng thời
 
-# Danh sách giải tennis được phép (ATP và Grand Slam)
+# Danh sách giải tennis được phép
 ALLOWED_TENNIS_TOURNAMENTS = {
     "atp", "atp tour", "atp world tour", "grand slam", "australian open",
     "roland garros", "french open", "wimbledon", "us open", "nitto atp finals",
     "atp masters", "atp 1000", "atp 500", "atp 250"
 }
 
-# Danh sách các giải bóng đá được phép
 ALLOWED_FOOTBALL_LEAGUES = {
-    "Premier League",
-    "Serie A",
-    "La Liga",
-    "Bundesliga",
-    "Ligue 1",
-    "UEFA Champions League",
-    "UEFA Europa League",
-    "UEFA Europa Conference League",
-    "UEFA Euro",
-    "FA Cup",
-    "League Cup"
+    "Premier League", "Serie A", "La Liga", "Bundesliga", "Ligue 1",
+    "UEFA Champions League", "UEFA Europa League", "UEFA Europa Conference League",
+    "UEFA Euro", "FA Cup", "League Cup"
 }
 
-# Danh sách đội Premier League dùng chung cho các giải Anh
 PREMIER_LEAGUE_TEAMS = {
     "arsenal", "aston villa", "bournemouth", "brentford", "brighton", "chelsea",
     "crystal palace", "everton", "fulham", "leeds united", "liverpool", "manchester city",
@@ -63,7 +52,6 @@ PREMIER_LEAGUE_TEAMS = {
     "west ham united", "wolverhampton"
 }
 
-# Danh sách đội riêng từng giải (tên chuẩn, viết thường)
 ALLOWED_TEAMS_PER_LEAGUE = {
     "Premier League": PREMIER_LEAGUE_TEAMS,
     "Serie A": {"inter milan", "ac milan", "napoli", "juventus", "roma", "atalanta", "lazio"},
@@ -91,10 +79,9 @@ LEAGUE_GROUP_NAME = {
     "International Friendly": "Live International Friendly"
 }
 
-# Danh sách các đội tuyển được phép ngoài châu Âu (cho giao hữu)
 ALLOWED_NON_EURO_TEAMS = {"argentina", "brazil", "japan", "south korea"}
 
-# ================== HELPER ==================
+# ================== HELPER FUNCTIONS ==================
 def is_low_resolution(name: str) -> bool:
     n = name.lower()
     return any(x in n for x in ["sd", "360p", "480p", "576p", "low res", "low quality"])
@@ -118,37 +105,22 @@ def similar(a: str, b: str) -> float:
     return SequenceMatcher(None, a, b).ratio()
 
 def normalize_channel_name(name: str) -> str:
-    """Chuẩn hóa tên kênh: loại bỏ pattern đặc biệt, ký tự thừa, tiền tố, ký tự mũ chữ"""
     name = name.lower()
-    # Loại bỏ tiền tố dạng "FI: " (hai chữ cái + dấu hai chấm)
     name = re.sub(r'^[a-z]{2,3}: ', '', name)
-    # Loại bỏ tiền tố dạng "UK - " (hai chữ cái + dấu cách + gạch ngang + cách)
     name = re.sub(r'^[a-z]{2,3} - ', '', name)
-    # Loại bỏ từ SUOMI và các từ tương tự (có thể là tên nước)
     name = re.sub(r'\b(suomi|dansk|svenska|norsk|suomi|nederlands|deutsch|italia|españa|français|polska|magyar|românia|българия|türkiye|ελλάδα|ישראל)\b', '', name)
-    # Loại bỏ ký tự mũ chữ (ᴴᴰ, ⱽᴵᴾ, ᴹᴬˣ, ...)
     name = re.sub(r'[ᴬᴭᴮᴰᴱᴲᴳᴴᴵᴶᴷᴸᴹᴺᴻᴼᴾᴿᵀᵁⱽᵂᵡᵞᵟᵠᵡᵢᵣᵤᵥᵦᵧᵨᵩᵪᵫᵬᵭᵮᵯᵰᵱᵲᵳᵴᵵᵶᵷᵸᵹᵺᵻᵼᵽᵾᵿ]', '', name)
-    # Loại bỏ ┃anything┃
     name = re.sub(r'┃[^┃]*┃', '', name)
-    # Loại bỏ tiền tố dạng NL|, UK|, USA|
     name = re.sub(r'^[a-z]{2,3}\|', '', name)
-    # Loại bỏ ký tự mũ số
     name = re.sub(r'[²³⁴⁵⁶⁷⁸⁹]', '', name)
-    # Loại bỏ PPV, HEVC
     name = re.sub(r'\b(ppv|hevc)\b', '', name)
-    # Loại bỏ các từ phổ biến
     name = re.sub(r'\b(hd|uhd|4k|fhd|vip|plus|extra|tv|channel|network|sports?|premium|maximo?|4mbps|4g|mbps|kbps|bitrate|stream|live|online)\b', '', name)
-    # Loại bỏ cờ
     name = re.sub(r'[🇬🇧🇺🇸🇨🇦🇦🇺🇩🇪🇫🇷🇮🇹🇪🇸🇵🇹🇳🇱🇧🇪🇨🇭🇦🇹🇸🇪🇳🇴🇩🇰🇫🇮🇵🇱🇨🇿🇭🇺🇷🇴🇧🇬🇬🇷🇹🇷]', '', name)
-    # Loại bỏ nội dung trong ngoặc
     name = re.sub(r'\([^)]*\)', '', name)
     name = re.sub(r'\[[^\]]*\]', '', name)
     name = re.sub(r'\{[^}]*\}', '', name)
-    # Loại bỏ ký tự đặc biệt, giữ chữ và số
     name = re.sub(r'[^\w\s]', ' ', name)
-    # Chuẩn hóa khoảng trắng
     name = ' '.join(name.split())
-    # Bỏ dấu
     name = unicodedata.normalize('NFKD', name).encode('ASCII', 'ignore').decode('ascii')
     return name
 
@@ -165,126 +137,24 @@ def normalize_country_name(country: str) -> str:
         return ""
     country_lower = country.lower().strip()
     mapping = {
-        # Châu Mỹ
-        "united states": "us",
-        "united states of america": "us",
-        "usa": "us",
-        "us": "us",
-        "canada": "ca",
-        "ca": "ca",
-        "brazil": "br",
-        "br": "br",
-        "argentina": "ar",
-        "ar": "ar",
-        "chile": "cl",
-        "cl": "cl",
-        "peru": "pe",
-        "colombia": "co",
-        "ecuador": "ec",
-        "uruguay": "uy",
-        "paraguay": "py",
-        "bolivia": "bo",
-        "venezuela": "ve",
-        "mexico": "mx",
-        "sur": "sa",  # South America (khu vực)
-        # Châu Âu
-        "united kingdom": "uk",
-        "uk": "uk",
-        "great britain": "uk",
-        "england": "uk",
-        "ireland": "ie",
-        "ie": "ie",
-        "germany": "de",
-        "de": "de",
-        "deutschland": "de",
-        "france": "fr",
-        "fr": "fr",
-        "french": "fr",
-        "italy": "it",
-        "it": "it",
-        "italia": "it",
-        "spain": "es",
-        "es": "es",
-        "espana": "es",
-        "portugal": "pt",
-        "pt": "pt",
-        "netherlands": "nl",
-        "nl": "nl",
-        "nederland": "nl",
-        "belgium": "be",
-        "be": "be",
-        "austria": "at",
-        "at": "at",
-        "switzerland": "ch",
-        "ch": "ch",
-        "croatia": "hr",
-        "hr": "hr",
-        "hrvatska": "hr",
-        "serbia": "rs",
-        "rs": "rs",
-        "srbija": "rs",
-        "turkey": "tr",
-        "tr": "tr",
-        "türkiye": "tr",
-        "poland": "pl",
-        "pl": "pl",
-        "polska": "pl",
-        "czech republic": "cz",
-        "cz": "cz",
-        "czech": "cz",
-        "slovakia": "sk",
-        "slovenia": "si",
-        "hungary": "hu",
-        "hu": "hu",
-        "romania": "ro",
-        "ro": "ro",
-        "bulgaria": "bg",
-        "greece": "gr",
-        "gr": "gr",
-        "hellas": "gr",
-        "denmark": "dk",
-        "dk": "dk",
-        "danmark": "dk",
-        "sweden": "se",
-        "se": "se",
-        "sverige": "se",
-        "norway": "no",
-        "no": "no",
-        "norge": "no",
-        "finland": "fi",
-        "fi": "fi",
-        "suomi": "fi",
-        "estonia": "ee",
-        "latvia": "lv",
-        "lithuania": "lt",
-        "iceland": "is",
-        "albania": "al",
-        "al": "al",
-        "north macedonia": "mk",
-        "montenegro": "me",
-        "bosnia and herzegovina": "ba",
-        "luxembourg": "lu",
-        "malta": "mt",
-        "cyprus": "cy",
-        "baltics": "balt",  # gộp, nhưng thực tế mỗi nước có mã riêng
-        # Châu Á - Thái Bình Dương
-        "australia": "au",
-        "au": "au",
-        "japan": "jp",
-        "south korea": "kr",
-        "india": "in",
-        "indonesia": "id",
-        "malaysia": "my",
-        "singapore": "sg",
-        "china": "cn",
-        "vietnam": "vn",
-        "thailand": "th",
-        # Trung Đông
-        "israel": "il",
-        "saudi arabia": "sa",
-        "uae": "ae",
-        "qatar": "qa",
-        # Mã 2 chữ cái (giữ nguyên)
+        "united states": "us", "usa": "us", "us": "us", "canada": "ca", "ca": "ca",
+        "brazil": "br", "br": "br", "argentina": "ar", "ar": "ar", "chile": "cl",
+        "cl": "cl", "peru": "pe", "colombia": "co", "ecuador": "ec", "uruguay": "uy",
+        "paraguay": "py", "bolivia": "bo", "venezuela": "ve", "mexico": "mx",
+        "united kingdom": "uk", "uk": "uk", "england": "uk", "ireland": "ie", "ie": "ie",
+        "germany": "de", "de": "de", "france": "fr", "fr": "fr", "italy": "it", "it": "it",
+        "spain": "es", "es": "es", "portugal": "pt", "pt": "pt", "netherlands": "nl",
+        "nl": "nl", "belgium": "be", "be": "be", "austria": "at", "at": "at",
+        "switzerland": "ch", "ch": "ch", "croatia": "hr", "hr": "hr", "serbia": "rs",
+        "rs": "rs", "turkey": "tr", "tr": "tr", "poland": "pl", "pl": "pl",
+        "czech republic": "cz", "cz": "cz", "slovakia": "sk", "slovenia": "si",
+        "hungary": "hu", "hu": "hu", "romania": "ro", "ro": "ro", "bulgaria": "bg",
+        "greece": "gr", "gr": "gr", "denmark": "dk", "dk": "dk", "sweden": "se",
+        "se": "se", "norway": "no", "no": "no", "finland": "fi", "fi": "fi",
+        "australia": "au", "au": "au", "japan": "jp", "south korea": "kr", "india": "in",
+        "indonesia": "id", "malaysia": "my", "singapore": "sg", "china": "cn",
+        "vietnam": "vn", "thailand": "th", "israel": "il", "saudi arabia": "sa",
+        "uae": "ae", "qatar": "qa"
     }
     if country_lower in mapping:
         return mapping[country_lower]
@@ -299,21 +169,15 @@ def normalize_country_name(country: str) -> str:
     return country_lower
 
 def extract_match_from_m3u_name(m3u_name: str) -> str:
-    # Loại bỏ các tiền tố phổ biến
     cleaned = re.sub(r'^(NEXT\s*\|\s*|EN ESPAÑOL-|AO VIVO:\s*|UK\s*-\s*|[A-Z]{2,3}\s*\([^)]+\)\s*\|\s*|[A-Z]{2,3}:\s*)', '', m3u_name, flags=re.IGNORECASE)
-    # Loại bỏ thông tin ngày giờ
     cleaned = re.sub(r'\b(Mon|Tue|Wed|Thu|Fri|Sat|Sun)\s+\d{1,2}\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{2,4}\s+\d{2}:\d{2}\s+[A-Z]{3,4}\b', '', cleaned, flags=re.IGNORECASE)
     cleaned = re.sub(r'\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}:\d{2}', '', cleaned)
     cleaned = re.sub(r'\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{4}', '', cleaned, flags=re.IGNORECASE)
-    # Loại bỏ tên giải đấu
     cleaned = re.sub(r'\b(LA\s+LIGA|LALIGA|EA\s+SPORTS|PREMIER\s+LEAGUE|UEFA|CHAMPIONS\s+LEAGUE|EUROPA\s+LEAGUE|CONFERENCE\s+LEAGUE)\b', '', cleaned, flags=re.IGNORECASE)
-    # Loại bỏ các từ thừa
     cleaned = re.sub(r'\b(8K\s+EXCLUSIVE|PPV|HD|FHD|UHD|LIVE|EXCLUSIVE)\b', '', cleaned, flags=re.IGNORECASE)
-    # Chuẩn hóa dấu phân cách thành " vs "
     cleaned = re.sub(r'[-–—]', ' vs ', cleaned)
     cleaned = re.sub(r'\bVS\.?\b', ' vs ', cleaned, flags=re.IGNORECASE)
     cleaned = re.sub(r'\bx\b', ' vs ', cleaned, flags=re.IGNORECASE)
-    # Loại bỏ ký tự đặc biệt
     cleaned = re.sub(r'[^\w\s]', ' ', cleaned)
     cleaned = ' '.join(cleaned.split())
     return cleaned.lower().strip()
@@ -321,13 +185,10 @@ def extract_match_from_m3u_name(m3u_name: str) -> str:
 def is_channel_match(ch_name: str, m3u_name: str, country: str = "") -> bool:
     if not ch_name or not m3u_name:
         return False
-    
     if re.search(r'#{3,}', m3u_name):
         return False
-    
     ch_norm = normalize_channel_name(ch_name)
     m3u_norm = normalize_channel_name(m3u_name)
-    
     if country:
         country_code = normalize_country_name(country)
         if country_code:
@@ -337,36 +198,28 @@ def is_channel_match(ch_name: str, m3u_name: str, country: str = "") -> bool:
                 prefix = match.group(1)
                 if prefix != country_code:
                     return False
-    
     if len(ch_norm) <= 3 or len(m3u_norm) <= 3:
         return ch_norm == m3u_norm
-    
     ch_text, ch_num = split_name_and_number(ch_norm)
     m3u_text, m3u_num = split_name_and_number(m3u_norm)
-    
     text_similarity = similar(ch_text, m3u_text)
     if text_similarity < 0.9:
         return False
     if abs(len(ch_text) - len(m3u_text)) > max(len(ch_text), len(m3u_text)) * 0.3:
         return False
-    
     if ch_num is not None and m3u_num is not None:
         return ch_num == m3u_num
     if ch_num is not None or m3u_num is not None:
         return False
-    
-    # Tránh nhầm "go" với "golf"
     ch_lower = ch_name.lower()
     m3u_lower = m3u_name.lower()
     if "go" in ch_lower and "golf" in m3u_lower and "go" not in m3u_lower:
         if similar("go", "golf") < 0.5:
             return False
-    
     return True
 
 def is_team_match(team_name: str, m3u_name: str) -> bool:
     team_norm = normalize(team_name)
-    # Trích xuất tên trận từ m3u_name (nếu có)
     extracted = extract_match_from_m3u_name(m3u_name)
     if extracted:
         m3u_norm = normalize(extracted)
@@ -374,7 +227,7 @@ def is_team_match(team_name: str, m3u_name: str) -> bool:
         m3u_norm = normalize_channel_name(m3u_name)
     return similar(team_norm, m3u_norm) >= 0.7
 
-# ================== SOFASCORE ==================
+# ================== SOFASCORE API ==================
 async def get_channel_name(session, channel_id):
     url = f"https://api.sofascore.com/api/v1/tv/channel/{channel_id}/schedule"
     try:
@@ -413,25 +266,6 @@ def is_uefa_euro(tournament_name: str) -> bool:
 
 def is_uefa_champions(tournament_name: str) -> bool:
     return "uefa champions league" in tournament_name.lower()
-
-def is_friendly_match(home_team: str, away_team: str) -> bool:
-    home_norm = normalize(home_team)
-    away_norm = normalize(away_team)
-    home_country = away_country = None
-    for country in pycountry.countries:
-        if country.name.lower() == home_norm or (hasattr(country, 'common_name') and country.common_name.lower() == home_norm):
-            home_country = country
-        if country.name.lower() == away_norm or (hasattr(country, 'common_name') and country.common_name.lower() == away_norm):
-            away_country = country
-    if home_country and away_country:
-        european_names = {"albania","andorra","armenia","austria","azerbaijan","belarus","belgium","bosnia and herzegovina","bulgaria","croatia","cyprus","czech republic","denmark","estonia","finland","france","georgia","germany","greece","hungary","iceland","ireland","italy","kazakhstan","kosovo","latvia","liechtenstein","lithuania","luxembourg","malta","moldova","monaco","montenegro","netherlands","north macedonia","norway","poland","portugal","romania","russia","san marino","serbia","slovakia","slovenia","spain","sweden","switzerland","turkey","ukraine","united kingdom","england","scotland","wales","northern ireland"}
-        home_in_europe = home_country.name.lower() in european_names
-        away_in_europe = away_country.name.lower() in european_names
-        if home_in_europe or away_in_europe:
-            return True
-        if home_country.name.lower() in ALLOWED_NON_EURO_TEAMS or away_country.name.lower() in ALLOWED_NON_EURO_TEAMS:
-            return True
-    return False
 
 async def fetch_sofascore_event(session, event_id, sport, start_ts, max_ts):
     url = f"https://api.sofascore.com/api/v1/event/{event_id}"
@@ -521,7 +355,7 @@ async def fetch_sofascore_event(session, event_id, sport, start_ts, max_ts):
 
 async def scrape_sofascore(start_ts: int, max_ts: int) -> List[Dict]:
     all_games = []
-    async with AsyncSession() as session:
+    async with CffiAsyncSession() as session:
         for sport in ["football", "tennis"]:
             now = datetime.now()
             dates = [now.strftime("%Y-%m-%d"), (now + timedelta(days=1)).strftime("%Y-%m-%d")]
@@ -536,7 +370,22 @@ async def scrape_sofascore(start_ts: int, max_ts: int) -> List[Dict]:
             await asyncio.sleep(2)
     return all_games
 
-# ================== ĐỌC CÁC NGUỒN JSON PHỤ ==================
+# ================== CACHE SOFASCORE ==================
+def load_sofascore_cache():
+    try:
+        with open(SOFASCORE_CACHE_FILE, 'r') as f:
+            data = json.load(f)
+            if data.get('date') == datetime.now().strftime("%Y-%m-%d"):
+                return data.get('games', [])
+    except:
+        pass
+    return None
+
+def save_sofascore_cache(games):
+    with open(SOFASCORE_CACHE_FILE, 'w') as f:
+        json.dump({'date': datetime.now().strftime("%Y-%m-%d"), 'games': games}, f)
+
+# ================== SECONDARY SOURCES ==================
 def load_json_file(filename: str) -> list:
     try:
         with open(filename, 'r', encoding='utf-8') as f:
@@ -721,7 +570,6 @@ def load_all_secondary_sources(start_ts: int, max_ts: int) -> List[Dict]:
                 games.append(g)
     return games
 
-# ================== MERGE ==================
 def merge_games(primary: List[Dict], secondary: List[Dict]) -> List[Dict]:
     primary_football = [g for g in primary if g['league'] != "Tennis"]
     primary_tennis = [g for g in primary if g['league'] == "Tennis"]
@@ -773,7 +621,7 @@ def merge_games(primary: List[Dict], secondary: List[Dict]) -> List[Dict]:
                 if not found:
                     seen[key]['tv_channels'].append(sec_ch)
     return primary_football + unique_tennis
-# ==================    Thêm hàm trích xuất headers từ extra
+
 def extract_headers_from_extra(extra_lines):
     headers = {}
     if not extra_lines:
@@ -781,9 +629,6 @@ def extract_headers_from_extra(extra_lines):
     for line in extra_lines:
         line = line.strip()
         if line.startswith('#EXTVLCOPT'):
-            # Định dạng: #EXTVLCOPT:http-user-agent=...
-            # hoặc #EXTVLCOPT:http-cookie=...
-            # hoặc #EXTVLCOPT:http-header=Authorization: Bearer ...
             parts = line.split(':', 2)
             if len(parts) >= 3:
                 opt_type = parts[1].strip()
@@ -797,6 +642,7 @@ def extract_headers_from_extra(extra_lines):
                         header_name, header_value = value.split(': ', 1)
                         headers[header_name] = header_value
     return headers
+
 # ================== M3U PARSER ==================
 def parse_m3u(content):
     channels = []
@@ -829,53 +675,76 @@ def parse_m3u(content):
         channels.append(current)
     return channels
 
-# ================== VALIDATE STREAM ==================
-async def validate_stream_url(session, url: str, extra_headers: dict = None) -> bool:
+# ================== ASYNC M3U LOADER ==================
+async def fetch_m3u_content(session, url):
     try:
-        default_headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-        }
-        if extra_headers:
-            default_headers.update(extra_headers)
-        
-        # Thử HEAD trước
-        resp = await session.head(url, headers=default_headers, timeout=5, allow_redirects=True)
-        if resp.status_code in [200, 202, 204, 206]:
-            return True
-        
-        # Nếu HEAD thất bại, thử GET với range nhỏ
-        range_headers = {"Range": "bytes=0-1024", **default_headers}
-        resp2 = await session.get(url, headers=range_headers, timeout=5)
-        if resp2.status_code in [200, 206, 202]:
-            text = await resp2.text()
-            if "<html" in text.lower() or "access denied" in text.lower() or "401" in text:
+        async with session.get(url, timeout=aiohttp.ClientTimeout(total=15)) as resp:
+            return await resp.text()
+    except Exception as e:
+        print(f"   Lỗi tải {url[:60]}...: {e}")
+        return None
+
+async def load_all_m3u_async(m3u_urls):
+    all_channels = []
+    async with aiohttp.ClientSession() as session:
+        tasks = [fetch_m3u_content(session, url) for url in m3u_urls]
+        contents = await asyncio.gather(*tasks)
+        for content in contents:
+            if content:
+                chs = parse_m3u(content)
+                for ch in chs:
+                    if re.search(r'#{3,}', ch.get('name', '')):
+                        continue
+                    if is_low_resolution(ch.get('name', '')):
+                        continue
+                    all_channels.append(ch)
+    return all_channels
+
+# ================== VALIDATE HEAD (SIÊU NHANH) ==================
+async def head_check(session, url, extra_headers=None):
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+    }
+    if extra_headers:
+        headers.update(extra_headers)
+    try:
+        async with session.head(url, headers=headers, timeout=VALIDATE_TIMEOUT, allow_redirects=True) as resp:
+            if resp.status == 404:
                 return False
             return True
+    except (asyncio.TimeoutError, aiohttp.ClientConnectorError):
         return False
     except Exception:
-        return False
+        return True
 
 # ================== MAIN ==================
 async def main():
-    start = time.time()
+    start_time = time.time()
     vn_now = datetime.now(TIMEZONE)
-    start_ts = int(datetime.now(TIMEZONE).timestamp()) - 7200   # 2 giờ trước
-    max_ts = int(datetime.now(TIMEZONE).timestamp()) + 86400    # 24 giờ sau
+    start_ts = int(datetime.now(TIMEZONE).timestamp()) - 7200
+    max_ts = int(datetime.now(TIMEZONE).timestamp()) + 86400
 
-    print("🔄 Bắt đầu lấy lịch từ 2 GIỜ TRƯỚC đến 24 GIỜ TỚI từ SofaScore và các nguồn JSON phụ...")
+    print("🔄 Bắt đầu lấy lịch từ 2 GIỜ TRƯỚC đến 24 GIỜ TỚI...")
 
-    print("📡 Đang lấy dữ liệu từ SofaScore...")
-    sofascore_games = await scrape_sofascore(start_ts, max_ts)
+    # 1. SofaScore với cache
+    cached_games = load_sofascore_cache()
+    if cached_games:
+        print("📦 Dùng cache SofaScore từ lần chạy trước.")
+        sofascore_games = cached_games
+    else:
+        print("📡 Đang lấy dữ liệu từ SofaScore...")
+        sofascore_games = await scrape_sofascore(start_ts, max_ts)
+        save_sofascore_cache(sofascore_games)
     print(f"   ✅ SofaScore: {len(sofascore_games)} trận")
 
+    # 2. Nguồn phụ
     print("📡 Đang đọc các nguồn JSON phụ...")
     secondary_games = load_all_secondary_sources(start_ts, max_ts)
     print(f"   ✅ Các nguồn phụ: {len(secondary_games)} trận")
 
-    print("🔄 Đang merge dữ liệu...")
     all_games = merge_games(sofascore_games, secondary_games)
 
-    # Lọc trùng (không lọc theo thời gian vì đã lọc từ đầu)
+    # Lọc trùng
     seen = {}
     deduped = []
     for g in all_games:
@@ -906,63 +775,44 @@ async def main():
         json.dump(output, f, indent=2, ensure_ascii=False)
     print(f"✅ schedule.json: {len(all_games)} trận")
 
-    # ================== XỬ LÝ M3U ==================
-    print("📥 Đang tải và phân tích M3U...")
-    m3u_links = []
+    # 3. Tải M3U bất đồng bộ
+    print("📥 Đang tải playlist M3U bất đồng bộ...")
+    m3u_urls = []
     try:
         with open(M3U_LIST_FILE, encoding='utf-8') as f:
             for line in f:
                 line = line.strip()
                 if line and line.startswith('http'):
-                    m3u_links.append(line)
-        print(f"   📋 Tìm thấy {len(m3u_links)} URL trong M3U_list.txt")
+                    m3u_urls.append(line)
+        print(f"   📋 Tìm thấy {len(m3u_urls)} URL trong M3U_list.txt")
     except Exception as e:
         print(f"   ❌ Lỗi đọc file M3U_list.txt: {e}")
-        m3u_links = []
+        return
 
-    def fetch_text_sync(url):
-        try:
-            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-            with urllib.request.urlopen(req, timeout=15) as r:
-                return r.read().decode('utf-8', errors='ignore')
-        except Exception as e:
-            print(f"   Lỗi tải {url[:50]}...: {e}")
-            return None
-
-    all_ch = []
-    if m3u_links:
-        with ThreadPoolExecutor(max_workers=10) as ex:
-            futures = {ex.submit(fetch_text_sync, url): url for url in m3u_links}
-            for fut in as_completed(futures):
-                content = fut.result()
-                if content:
-                    chs = parse_m3u(content)
-                    for ch in chs:
-                        if re.search(r'#{3,}', ch.get('name', '')):
-                            continue
-                        if is_low_resolution(ch.get('name', '')):
-                            continue
-                        all_ch.append(ch)
-    else:
-        print("   ⚠️ Không có link M3U nào để tải.")
-
-    unique_ch = list({ch['url']: ch for ch in all_ch if ch.get('url')}.values())
+    all_channels = await load_all_m3u_async(m3u_urls)
+    unique_ch = list({ch['url']: ch for ch in all_channels if ch.get('url')}.values())
     print(f"   ✅ Đã tải {len(unique_ch)} kênh")
 
-    print("🔄 Đang match kênh với lịch...")
+    # 4. Match kênh
+    print("🔄 Đang match kênh với lịch (giới hạn tối đa 2 kênh/trận)...")
     live_events = []
     for g in all_games:
         try:
-            used_urls_in_match = set()
+            used_urls = set()
+            channel_count = 0
             for tv in g.get("tv_channels", []):
                 tv_country = tv.get("country", "")
                 for ch_name in tv.get("channels", []):
+                    if channel_count >= MAX_CHANNELS_PER_MATCH:
+                        break
                     matching = [ch for ch in unique_ch if is_channel_match(ch_name, ch['name'], tv_country)]
                     for ch in matching:
+                        if channel_count >= MAX_CHANNELS_PER_MATCH:
+                            break
                         url = ch['url']
-                        if url in used_urls_in_match:
+                        if url in used_urls:
                             continue
-                        used_urls_in_match.add(url)
+                        used_urls.add(url)
                         display_name = f"{g['time']} | {g['match']} ({ch_name})"
                         live_events.append({
                             "datetime": datetime.fromtimestamp(g['kick_utc']).astimezone(TIMEZONE),
@@ -970,14 +820,17 @@ async def main():
                             "channel": ch,
                             "league": g["league"]
                         })
-            if not used_urls_in_match and g['match']:
+                        channel_count += 1
+                if channel_count >= MAX_CHANNELS_PER_MATCH:
+                    break
+            if channel_count == 0 and g['match']:
                 match_norm = normalize(g['match'])
                 for ch in unique_ch:
                     if is_team_match(match_norm, ch['name']):
                         url = ch['url']
-                        if url in used_urls_in_match:
+                        if url in used_urls:
                             continue
-                        used_urls_in_match.add(url)
+                        used_urls.add(url)
                         display_name = f"{g['time']} | {g['match']} (M3U: {ch['name']})"
                         live_events.append({
                             "datetime": datetime.fromtimestamp(g['kick_utc']).astimezone(TIMEZONE),
@@ -990,34 +843,36 @@ async def main():
             print(f"   Lỗi xử lý trận {g.get('match', '')}: {e}")
             continue
 
-    # ================== VALIDATE STREAMS ==================
-    
-    print("🔍 Đang kiểm tra tính sống của các link (HEAD request với headers đầy đủ, timeout 5s)...")
-    async with AsyncSession() as session:
-        tasks = []
-        for ev in live_events:
-            extra_headers = extract_headers_from_extra(ev['channel'].get('extra', []))
-            tasks.append(validate_stream_url(session, ev['channel']['url'], extra_headers))
-        results = await asyncio.gather(*tasks)
-    validated_events = [ev for ev, is_alive in zip(live_events, results) if is_alive]
-    print(f"   ✅ {len(validated_events)}/{len(live_events)} kênh hoạt động")
-    live_events = validated_events
+    print(f"   📺 Tổng số link sau khi match: {len(live_events)}")
 
-    # Xử lý tennis: nhóm kênh trùng
-    tennis_events = [ev for ev in live_events if ev['league'] == "Tennis"]
-    other_events = [ev for ev in live_events if ev['league'] != "Tennis"]
+    # 5. Validate HEAD siêu nhanh
+    print("🔍 Kiểm tra nhanh HEAD (chỉ loại link 404/không kết nối)...")
+    async with aiohttp.ClientSession() as session:
+        sem = asyncio.Semaphore(HEAD_CONCURRENCY)
+        async def check_one(ev):
+            async with sem:
+                extra = extract_headers_from_extra(ev['channel'].get('extra', []))
+                return await head_check(session, ev['channel']['url'], extra)
+        results = await asyncio.gather(*[check_one(ev) for ev in live_events])
+
+    validated_events = [ev for ev, ok in zip(live_events, results) if ok]
+    print(f"   ✅ Còn lại {len(validated_events)} link sau HEAD check (loại {len(live_events)-len(validated_events)} link)")
+
+    # 6. Ghi M3U
+    # Xử lý tennis trùng lặp
+    tennis_events = [ev for ev in validated_events if ev['league'] == "Tennis"]
+    other_events = [ev for ev in validated_events if ev['league'] != "Tennis"]
     grouped_tennis = {}
     for ev in tennis_events:
         key = (ev['channel']['url'], ev['league'])
         if key not in grouped_tennis:
             grouped_tennis[key] = ev
-    tennis_events_dedup = list(grouped_tennis.values())
-    live_events = other_events + tennis_events_dedup
-    live_events.sort(key=lambda x: x["datetime"])
+    final_events = other_events + list(grouped_tennis.values())
+    final_events.sort(key=lambda x: x["datetime"])
 
     with open(LIVE_M3U, "w", encoding="utf-8") as f:
         f.write("#EXTM3U\n")
-        for ev in live_events:
+        for ev in final_events:
             ch = ev["channel"]
             group_title = LEAGUE_GROUP_NAME.get(ev["league"], None)
             if not group_title:
@@ -1033,10 +888,10 @@ async def main():
                         f.write(line + "\n")
             f.write(ch['url'] + "\n")
 
-    elapsed = time.time() - start
-    print(f"\n🎉 HOÀN THÀNH!")
+    elapsed = time.time() - start_time
+    print(f"\n🎉 HOÀN THÀNH trong {elapsed:.1f} giây!")
     print(f"   • schedule.json: {len(all_games)} trận")
-    print(f"   • live_schedule.m3u: {len(live_events)} kênh (matching thông minh + validate)")
+    print(f"   • live_schedule.m3u: {len(final_events)} kênh")
 
 if __name__ == "__main__":
     asyncio.run(main())
