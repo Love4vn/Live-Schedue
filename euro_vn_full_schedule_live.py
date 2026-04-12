@@ -744,15 +744,15 @@ def merge_games(primary: List[Dict], secondary: List[Dict]) -> List[Dict]:
                 best_match = game
 
         if best_match and best_score > 0.6:
-            # THÊM TRỰC TIẾP MỤC COUNTRY MỚI (KHÔNG MERGE)
+            # THÊM TRỰC TIẾP MỤC COUNTRY "LiveOnSat" (KHÔNG MERGE)
             for sec_ch in sec['tv_channels']:
-                # Tạo bản sao để tránh ảnh hưởng dữ liệu gốc
+                # Tạo mục mới với country là "LiveOnSat"
                 new_entry = {
-                    "country": sec_ch['country'],
+                    "country": "LiveOnSat",
                     "channels": sec_ch['channels'][:]  # copy list
                 }
                 best_match['tv_channels'].append(new_entry)
-            print(f"   Merge liveonsat: {best_match['match']} (score {best_score:.2f}) -> added {len(sec_ch['channels'])} channels (as new country '{sec_ch['country']}')")
+                print(f"   Merge liveonsat: {best_match['match']} (score {best_score:.2f}) -> added {len(sec_ch['channels'])} channels (as new country 'LiveOnSat')")
         # else: không thêm trận mới
 
     # Xử lý tennis: gộp theo thời gian
