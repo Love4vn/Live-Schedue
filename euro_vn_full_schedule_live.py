@@ -29,7 +29,7 @@ SCHEDULE_FILE = "schedule.json"
 LIVE_M3U = "live_schedule.m3u"
 SOFASCORE_CACHE_FILE = "sofascore_cache.json"
 VALIDATE_TIMEOUT = 2           # Giây cho HEAD request
-MAX_CHANNELS_PER_MATCH = 2     # Số kênh tối đa mỗi trận
+MAX_CHANNELS_PER_MATCH = 500     # Số kênh tối đa mỗi trận
 HEAD_CONCURRENCY = 100         # Số lượng HEAD đồng thời
 
 # Danh sách giải tennis được phép
