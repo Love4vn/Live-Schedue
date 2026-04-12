@@ -1,5 +1,5 @@
 # File: livesportsontv.py
-# Tích hợp footonsat, sửa lỗi JSON, lọc thời gian linh hoạt (2h trước, 26h sau)
+# Tích hợp footonsat, sửa lỗi timezone, lọc thời gian linh hoạt (2h trước, 26h sau)
 
 import asyncio
 import json
@@ -9,17 +9,13 @@ from datetime import datetime, timedelta, timezone
 from playwright.async_api import async_playwright
 from bs4 import BeautifulSoup
 
-# ==================== CẤU HÌNH THỜI GIAN ====================
+# ==================== CẤU HÌNH ====================
 VN_TZ = timezone(timedelta(hours=7))
-FOOTONSAT_OFFSET = -5  # giờ trong footonsat kém VN 5h
-
-# Khoảng thời gian lấy trận: từ 2 giờ trước đến 26 giờ sau thời điểm chạy
+FOOTONSAT_OFFSET = -5  # footonsat kém VN 5h (tức là đang ở UTC)
 TIME_RANGE_HOURS_BEFORE = 2
 TIME_RANGE_HOURS_AFTER = 26
 
-# ==================== HÀM TIỆN ÍCH ====================
 def parse_time_with_ampm(time_str: str):
-    """Chuyển '10:00 PM' sang 24h"""
     time_str = time_str.strip().upper()
     if ' ' not in time_str and ('AM' in time_str or 'PM' in time_str):
         if 'AM' in time_str:
@@ -42,7 +38,6 @@ def parse_time_with_ampm(time_str: str):
     return hour, minute
 
 def parse_date_from_text(text):
-    """Trích xuất ngày và tháng từ '03 Mar' hoặc '03 THÁNG 4'"""
     text = text.strip().lower()
     match = re.search(r'(\d{1,2})\s+([a-zà-ỹ0-9\s]+)', text)
     if match:
@@ -52,7 +47,6 @@ def parse_date_from_text(text):
     return None, None
 
 def get_month_number(month_str: str) -> int:
-    """Chuyển tên tháng sang số"""
     month_str = month_str.lower()
     month_map = {
         "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
@@ -67,7 +61,6 @@ def get_month_number(month_str: str) -> int:
     return 1
 
 def extract_timezone_from_html(soup):
-    """Tìm dòng 'ALL TIME GMT+X' trong HTML để lấy múi giờ trang"""
     text = soup.get_text()
     match = re.search(r'ALL TIME GMT([+-]\d+)', text, re.IGNORECASE)
     if match:
@@ -75,10 +68,10 @@ def extract_timezone_from_html(soup):
         return timezone(timedelta(hours=offset))
     return timezone.utc
 
-def is_within_time_range(dt: datetime, ref_time: datetime) -> bool:
-    """Kiểm tra dt có nằm trong khoảng [ref_time - before, ref_time + after] không"""
-    start = ref_time - timedelta(hours=TIME_RANGE_HOURS_BEFORE)
-    end = ref_time + timedelta(hours=TIME_RANGE_HOURS_AFTER)
+def is_within_time_range(dt: datetime, ref: datetime) -> bool:
+    """dt và ref đều có timezone"""
+    start = ref - timedelta(hours=TIME_RANGE_HOURS_BEFORE)
+    end = ref + timedelta(hours=TIME_RANGE_HOURS_AFTER)
     return start <= dt <= end
 
 # ==================== LỌC GIAO HỮU ====================
@@ -107,7 +100,7 @@ def include_friendly_match(home: str, away: str) -> bool:
         return True
     return False
 
-# ==================== CẤU HÌNH GIẢI ĐẤU (LIVESPORTSONTV) ====================
+# ==================== CẤU HÌNH GIẢI (livesportsontv) ====================
 LEAGUES_CONFIG = {
     "Premier League": {
         "url": "https://www.livesportsontv.com/league/premier-league",
@@ -189,14 +182,12 @@ LEAGUES_CONFIG = {
     }
 }
 
-# ==================== FETCH DỮ LIỆU TỪ FOOTONSAT ====================
+# ==================== FOOTONSAT ====================
 async def fetch_footonsat_data(ref_time: datetime):
-    """Lấy dữ liệu từ footonsat-api, chuyển giờ về VN, chỉ giữ trận trong khoảng thời gian"""
     url = "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/premierleague.json"
     async with aiohttp.ClientSession() as session:
         try:
             async with session.get(url, timeout=30) as resp:
-                # Đọc text và parse JSON thủ công để tránh lỗi mimetype
                 text = await resp.text()
                 data = json.loads(text)
         except Exception as e:
@@ -210,11 +201,12 @@ async def fetch_footonsat_data(ref_time: datetime):
     
     for item in items:
         if "match" in item and "compet" in item:
-            # Lưu trận cũ nếu có
             if current_match:
                 try:
-                    dt_orig = datetime.strptime(f"{current_match['date']} {current_match['time']}", "%Y-%m-%d %H:%M")
-                    dt_vn = dt_orig + timedelta(hours=-FOOTONSAT_OFFSET)  # +5h
+                    # Từ ngày giờ gốc (UTC+0) vì footonsat lệch -5h so với VN => gốc UTC
+                    dt_utc = datetime.strptime(f"{current_match['date']} {current_match['time']}", "%Y-%m-%d %H:%M")
+                    dt_utc = dt_utc.replace(tzinfo=timezone.utc)
+                    dt_vn = dt_utc.astimezone(VN_TZ)
                     if is_within_time_range(dt_vn, ref_time):
                         league = current_match['compet'].replace("English ", "")
                         matches.append({
@@ -226,7 +218,6 @@ async def fetch_footonsat_data(ref_time: datetime):
                         })
                 except Exception as e:
                     print(f"Lỗi xử lý footonsat: {e}")
-            # Bắt đầu trận mới
             current_match = item
             current_channels = []
         elif "channel" in item and current_match and item.get("related_to", "").strip() == current_match['match'].strip():
@@ -235,11 +226,12 @@ async def fetch_footonsat_data(ref_time: datetime):
             if ch_name:
                 current_channels.append(ch_name)
     
-    # Trận cuối cùng
+    # Trận cuối
     if current_match:
         try:
-            dt_orig = datetime.strptime(f"{current_match['date']} {current_match['time']}", "%Y-%m-%d %H:%M")
-            dt_vn = dt_orig + timedelta(hours=-FOOTONSAT_OFFSET)
+            dt_utc = datetime.strptime(f"{current_match['date']} {current_match['time']}", "%Y-%m-%d %H:%M")
+            dt_utc = dt_utc.replace(tzinfo=timezone.utc)
+            dt_vn = dt_utc.astimezone(VN_TZ)
             if is_within_time_range(dt_vn, ref_time):
                 league = current_match['compet'].replace("English ", "")
                 matches.append({
@@ -252,12 +244,11 @@ async def fetch_footonsat_data(ref_time: datetime):
         except Exception as e:
             print(f"Lỗi xử lý footonsat (cuối): {e}")
     
-    print(f"📡 Đã lấy {len(matches)} trận từ footonsat (sau lọc thời gian)")
+    print(f"📡 Đã lấy {len(matches)} trận từ footonsat")
     return matches
 
-# ==================== SCRAPE TỪ LIVESPORTSONTV ====================
+# ==================== LIVESPORTSONTV ====================
 async def scrape_livesportsontv(ref_time: datetime):
-    """Scrape dữ liệu từ livesportsontv.com, chỉ giữ trận trong khoảng thời gian"""
     all_games = []
     current_year = ref_time.year
 
@@ -273,37 +264,32 @@ async def scrape_livesportsontv(ref_time: datetime):
             team_filter = cfg.get("teams")
             custom_filter = cfg.get("custom_filter")
             is_tennis = cfg.get("is_tennis", False)
-            print(f"\n--- Đang xử lý: {league_name} ---")
+            print(f"\n--- {league_name} ---")
             print(f"    URL: {url}")
 
             try:
                 await page.goto(url, wait_until="domcontentloaded", timeout=120000)
             except Exception as e:
-                print(f"    ❌ Lỗi tải trang: {e}")
+                print(f"    ❌ Lỗi: {e}")
                 continue
 
-            # Cuộn để tải hết nội dung
             for _ in range(4):
                 await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
                 await page.wait_for_timeout(1500)
 
             html = await page.content()
             soup = BeautifulSoup(html, 'html.parser')
-
-            # Xác định múi giờ của trang
             page_tz = extract_timezone_from_html(soup)
-            print(f"    🕒 Múi giờ trang web: {page_tz}")
+            print(f"    🕒 Múi giờ: {page_tz}")
 
             rows = soup.find_all('div', class_='event--wrapp')
-            print(f"    📊 Tìm thấy {len(rows)} sự kiện.")
+            print(f"    📊 {len(rows)} sự kiện")
 
             added = 0
             for row in rows:
                 try:
-                    # ---- Ngày tháng (theo trang) ----
                     date_div = row.find('div', class_='event__info--date')
-                    if not date_div:
-                        continue
+                    if not date_div: continue
                     date_text = date_div.get_text(separator=' ').strip()
                     day_str, month_str = parse_date_from_text(date_text)
                     if not day_str or not month_str:
@@ -312,37 +298,26 @@ async def scrape_livesportsontv(ref_time: datetime):
                         if day_tag and month_tag:
                             day_str = day_tag.get_text(strip=True)
                             month_str = month_tag.get_text(strip=True).lower()
-                    if not day_str or not month_str:
-                        continue
+                    if not day_str or not month_str: continue
 
                     month_num = get_month_number(month_str)
                     day_num = int(day_str)
 
-                    # ---- Giờ (theo trang) ----
                     time_tag = row.find('time')
-                    if not time_tag:
-                        continue
+                    if not time_tag: continue
                     time_str = time_tag.get_text(strip=True)
                     try:
                         hour, minute = parse_time_with_ampm(time_str)
                     except:
                         continue
 
-                    # Tạo datetime với múi giờ của trang
                     page_dt = datetime(current_year, month_num, day_num, hour, minute)
                     page_dt = page_dt.replace(tzinfo=page_tz)
-
-                    # Chuyển sang giờ Việt Nam
                     vn_dt = page_dt.astimezone(VN_TZ)
 
-                    # Chỉ lấy các trận trong khoảng thời gian cấu hình
                     if not is_within_time_range(vn_dt, ref_time):
                         continue
 
-                    output_date = vn_dt.strftime("%Y-%m-%d")
-                    output_time = vn_dt.strftime("%H:%M")
-
-                    # ---- Tên trận ----
                     if is_tennis:
                         home_elem = row.find('div', class_=lambda c: c and 'event_participant--home' in c)
                         if not home_elem:
@@ -363,7 +338,6 @@ async def scrape_livesportsontv(ref_time: datetime):
                             if title_elem:
                                 matchup = title_elem.get_text(strip=True)
 
-                    # Áp dụng bộ lọc
                     if team_filter is not None:
                         if not any(t.lower() in matchup.lower() for t in team_filter):
                             continue
@@ -374,7 +348,6 @@ async def scrape_livesportsontv(ref_time: datetime):
                         else:
                             continue
 
-                    # ---- Kênh ----
                     channels = []
                     tags_container = row.find('ul', class_='event__tags')
                     if not tags_container:
@@ -390,56 +363,45 @@ async def scrape_livesportsontv(ref_time: datetime):
                                     channels.append(text)
 
                     all_games.append({
-                        "Date": output_date,
-                        "Time": output_time,
+                        "Date": vn_dt.strftime("%Y-%m-%d"),
+                        "Time": vn_dt.strftime("%H:%M"),
                         "League": league_name,
                         "Matchup": matchup,
                         "Services": channels
                     })
                     added += 1
-
-                except Exception:
+                except:
                     continue
-
-            print(f"    ✅ Đã thêm {added} trận")
-
+            print(f"    ✅ Thêm {added} trận")
         await browser.close()
     return all_games
 
-# ==================== HÀM CHÍNH ====================
+# ==================== MAIN ====================
 async def main():
-    ref_time = datetime.now(VN_TZ)  # thời điểm chạy script theo VN
+    ref_time = datetime.now(VN_TZ)
     print(f"🕒 Thời gian tham chiếu (VN): {ref_time.strftime('%Y-%m-%d %H:%M:%S')}")
-    print(f"⏳ Khoảng lấy trận: {TIME_RANGE_HOURS_BEFORE} giờ trước đến {TIME_RANGE_HOURS_AFTER} giờ sau")
-    
-    # Scrape từ livesportsontv
+    print(f"⏳ Khoảng: {TIME_RANGE_HOURS_BEFORE}h trước → {TIME_RANGE_HOURS_AFTER}h sau")
+
     games_live = await scrape_livesportsontv(ref_time)
     print(f"\n🏟️ Từ livesportsontv: {len(games_live)} trận")
-    
-    # Fetch từ footonsat
+
     games_foot = await fetch_footonsat_data(ref_time)
     print(f"🛰️ Từ footonsat: {len(games_foot)} trận")
-    
-    # Hợp nhất
+
     all_games = games_live + games_foot
-    
-    # Loại bỏ trùng lặp (cùng ngày, giờ, giải, matchup) - ưu tiên giữ bản có nhiều kênh hơn
     unique = {}
     for g in all_games:
         key = (g["Date"], g["Time"], g["League"], g["Matchup"])
         if key not in unique or len(g["Services"]) > len(unique[key]["Services"]):
             unique[key] = g
-    
-    final_games = list(unique.values())
-    final_games.sort(key=lambda x: (x["Date"], x["Time"]))
-    
-    # Ghi file
-    filename = "schedule_livesportsontv.json"
-    with open(filename, 'w', encoding='utf-8') as f:
-        json.dump(final_games, f, indent=4, ensure_ascii=False)
-    
-    print(f"\n🎉 TỔNG KẾT: Đã lấy {len(final_games)} trận (sau khi gộp và loại trùng)")
-    print(f"📁 Lưu tại: {filename}")
+
+    final = list(unique.values())
+    final.sort(key=lambda x: (x["Date"], x["Time"]))
+
+    with open("schedule_livesportsontv.json", "w", encoding="utf-8") as f:
+        json.dump(final, f, indent=4, ensure_ascii=False)
+
+    print(f"\n🎉 TỔNG KẾT: {len(final)} trận (đã gộp và loại trùng)")
 
 if __name__ == "__main__":
     asyncio.run(main())
