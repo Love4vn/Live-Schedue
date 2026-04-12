@@ -184,7 +184,16 @@ LEAGUES_CONFIG = {
 
 # ==================== FOOTONSAT ====================
 async def fetch_footonsat_data(ref_time: datetime):
-    url = "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/premierleague.json"
+    url = [
+    "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/premierleague.json",
+    "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/seriea.json",
+    "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/laliga.json",
+    "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/bundesliga.json",
+    "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/ligue1.json",
+    "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/championsleague.json",
+    "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/europaleague.json",
+    "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/ConferenceLeague.json",
+]
     async with aiohttp.ClientSession() as session:
         try:
             async with session.get(url, timeout=30) as resp:
