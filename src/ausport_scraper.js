@@ -17,13 +17,13 @@ const CONFIG = {
   RETRY_COUNT: 2,
   RETRY_DELAY_MS: 2000,
   TIMEOUT_MS: 30000,
-  USER_AGENT: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+  USER_AGENT: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
   OUTPUT_FILE: './ausport_schedule.json',
-  TIME_RANGE_HOURS: 72, // 3 ngày
+  TIME_RANGE_HOURS: 72,
   DEBUG_HTML: true,
 };
 
-// --- Danh sách giải/đội hợp lệ ---
+// --- Danh sách giải/đội hợp lệ (giữ nguyên) ---
 const FOOTBALL_CONFIG = {
   leagues: {
     'Premier League': ['arsenal', 'aston villa', 'bournemouth', 'brentford', 'brighton', 'chelsea',
@@ -56,17 +56,26 @@ async function fetchWithRetry(url, options, retries = CONFIG.RETRY_COUNT) {
       const response = await axios.get(url, {
         ...options,
         timeout: CONFIG.TIMEOUT_MS,
-        validateStatus: status => true,
+        validateStatus: status => true, // nhận mọi status để log
       });
       console.log(`[${url}] Status: ${response.status}`);
       if (response.status >= 200 && response.status < 400) {
         return response;
       } else {
         console.error(`HTTP error ${response.status}, snippet:`, response.data.substring(0, 500));
+        // Lưu nội dung lỗi vào file debug
+        if (CONFIG.DEBUG_HTML) {
+          const debugFile = `debug_error_${Date.now()}.html`;
+          fs.writeFileSync(debugFile, response.data);
+          console.log(`Saved error HTML to ${debugFile}`);
+        }
         throw new Error(`HTTP ${response.status}`);
       }
     } catch (error) {
       console.error(`Attempt ${attempt} failed for ${url}:`, error.message);
+      if (error.response) {
+        console.error(`Response data:`, error.response.data.substring(0, 200));
+      }
       if (attempt === retries) throw error;
       await sleep(CONFIG.RETRY_DELAY_MS);
     }
@@ -102,6 +111,7 @@ function getVietnamDateTime(baseDate, timeStr) {
   };
 }
 
+// --- Hàm lọc với kiểm tra an toàn ---
 function isFootballRelevant(event) {
   const competition = (event.competition || '').toLowerCase();
   const home = (event.home || '').toLowerCase();
@@ -167,36 +177,42 @@ function isWithinTimeRange(event) {
   return diffHours >= 0 && diffHours <= CONFIG.TIME_RANGE_HOURS;
 }
 
-// --- SỬA LỖI resolveDateForPage ---
+// --- Parse ngày từ header (ưu tiên h2.dayInfo) ---
 function resolveDateForPage($, pathSuffix) {
   const headerText = $('h2.dayInfo').first().text().trim();
   if (headerText) {
-    const parsed = dayjs(headerText, 'dddd, D. MMM', true);
-    if (parsed.isValid()) {
-      const baseDate = parsed.toDate();
-      const hariIndo = dayjs(baseDate).format('dddd');
-      const tanggalFormatted = dayjs(baseDate).format('DD/MM/YYYY');
-      console.log(`Using header date for ${pathSuffix}: ${baseDate.toISOString()}`);
-      return { baseDate, hariIndo, tanggalFormatted };
+    // Ví dụ: "Monday, 13. Apr | All sports live on tv"
+    const match = headerText.match(/([A-Za-z]+),\s+(\d{1,2})\.\s+([A-Za-z]+)/);
+    if (match) {
+      const dayName = match[1];
+      const dayNum = parseInt(match[2], 10);
+      const monthRaw = match[3];
+      const dateStr = `${dayNum} ${monthRaw}`;
+      const parsed = dayjs(dateStr, 'D MMM', true);
+      if (parsed.isValid()) {
+        const baseDate = parsed.toDate();
+        const hariIndo = dayjs(baseDate).format('dddd');
+        const tanggalFormatted = dayjs(baseDate).format('DD/MM/YYYY');
+        console.log(`Base date from header for ${pathSuffix}: ${baseDate.toISOString()}`);
+        return { baseDate, hariIndo, tanggalFormatted };
+      }
     }
   }
 
-  // Fallback: tính theo ngày hiện tại của Sydney
-  const nowSydney = dayjs().tz('Australia/Sydney');
-  const targetDayMap = {
-    mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6, sun: 0
-  };
-  const targetDay = targetDayMap[pathSuffix];
-  let currentDay = nowSydney.day();
+  // Fallback: tính dựa trên ngày hiện tại theo múi giờ Sydney
+  const now = dayjs().tz('Australia/Sydney');
+  const targetDay = { mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6, sun: 0 }[pathSuffix];
+  const currentDay = now.day();
   let diff = targetDay - currentDay;
   if (diff < 0) diff += 7;
-  const baseDate = nowSydney.add(diff, 'day').toDate();
+  const baseDate = now.add(diff, 'day').toDate();
   const hariIndo = dayjs(baseDate).format('dddd');
   const tanggalFormatted = dayjs(baseDate).format('DD/MM/YYYY');
-  console.log(`Fallback base date for ${pathSuffix}: ${baseDate.toISOString()}`);
+  console.log(`Base date fallback for ${pathSuffix}: ${baseDate.toISOString()}`);
   return { baseDate, hariIndo, tanggalFormatted };
 }
 
+// --- Tìm sport với nhiều fallback ---
 function findSportForEvent($, eventDiv) {
   const $event = $(eventDiv);
   const panelLeague = $event.closest('.panelLeague');
@@ -233,6 +249,7 @@ function findSportForEvent($, eventDiv) {
   return '';
 }
 
+// --- Hot Events parser (giữ nguyên) ---
 function extractTimeFromHotText(text) {
   const m = text.match(/\bfrom\s+(\d{1,2}:\d{2}(?:AM|PM))\b/i);
   return m ? m[1].toUpperCase() : '';
@@ -316,6 +333,7 @@ function parseHotEvents($) {
   return rows;
 }
 
+// --- Scrape một ngày ---
 async function scrapeDay(pathSuffix) {
   const url = `${CONFIG.BASE_URL}/live-sports-tv-guide/${pathSuffix}`;
   console.log(`Scraping: ${url}`);
@@ -341,25 +359,16 @@ async function scrapeDay(pathSuffix) {
   const rows = [];
   let currentCompetition = '';
 
-  const eventSelectors = [
-    'div.list-group-item.d-flex.gap-3.shadow-sm',
-    '.list-group-item',
-    'div.list-group-item'
-  ];
-  let eventDivs = [];
-  for (const sel of eventSelectors) {
-    eventDivs = $(sel);
-    if (eventDivs.length) break;
-  }
-  console.log(`Found ${eventDivs.length} events using selector: ${eventSelectors.find(s => $(s).length)}`);
+  // Tìm các sự kiện (dùng selector chính xác hơn)
+  const eventDivs = $('div.list-group-item.d-flex.gap-3.shadow-sm');
+  console.log(`Found ${eventDivs.length} events using selector: div.list-group-item.d-flex.gap-3.shadow-sm`);
 
-  $('h3, .leagueTitle').each((idx, el) => {
-    const $el = $(el);
-    if ($el.hasClass('leagueTitle') || ($el.attr('class') && $el.attr('class').includes('leagueTitle'))) {
-      currentCompetition = $el.find('span.align-middle').first().text().trim();
-    }
+  // Lấy competition từ các thẻ leagueTitle
+  $('.leagueTitle').each((idx, el) => {
+    currentCompetition = $(el).find('span.align-middle').first().text().trim();
   });
 
+  // Xử lý từng event
   eventDivs.each((idx, el) => {
     try {
       const eventDiv = $(el);
@@ -435,6 +444,7 @@ async function scrapeDay(pathSuffix) {
   return rows;
 }
 
+// --- Loại bỏ trùng lặp ---
 function dedupeRows(rows) {
   const seen = new Set();
   return rows.filter(row => {
@@ -453,6 +463,7 @@ function dedupeRows(rows) {
   });
 }
 
+// --- Xuất JSON đơn giản ---
 function writeJSON(rows, outputPath) {
   const simplified = rows.map(r => ({
     competition: r.competition,
@@ -483,7 +494,7 @@ function writeJSON(rows, outputPath) {
   console.log('After sport/league filter:', filteredRows.length);
 
   console.log('Sample events after sport/league filter (before time filter):');
-  filteredRows.slice(0, 10).forEach((r, i) => {
+  filteredRows.slice(0, 5).forEach((r, i) => {
     const dt = r.vietnam_datetime ? dayjs(r.vietnam_datetime).format('HH:mm DD/MM/YYYY') : 'N/A';
     console.log(`${i+1}: ${r.home} vs ${r.away} - ${dt}`);
   });
