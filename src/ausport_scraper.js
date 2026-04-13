@@ -20,7 +20,7 @@ const CONFIG = {
   USER_AGENT: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
   OUTPUT_FILE: './ausport_schedule.json',
   TIME_RANGE_HOURS: 48,
-  DEBUG_HTML: true, // lưu file debug cho ngày đầu tiên gặp lỗi hoặc luôn
+  DEBUG_HTML: true,
 };
 
 // --- Danh sách giải/đội hợp lệ ---
@@ -45,7 +45,6 @@ const FOOTBALL_CONFIG = {
   excludeKeywords: ['u18', 'u19', 'u20', 'u21', 'u23', 'women', 'girls', 'boys', 'youth', 'junior', 'reserves', 'woman'],
 };
 
-// --- Hàm tiện ích ---
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -191,7 +190,6 @@ function resolveDateForPage($, pathSuffix) {
   return { baseDate, hariIndo, tanggalFormatted };
 }
 
-// --- Tìm sport với nhiều fallback ---
 function findSportForEvent($, eventDiv) {
   const $event = $(eventDiv);
   // Cách 1: tìm từ panelLeague
@@ -256,11 +254,9 @@ function resolveBaseDateFromHotText(text) {
 
 function parseHotEvents($) {
   const rows = [];
-  // Thử nhiều selector cho hot events
   const hotSelectors = [
     '.panel-body-desktop .hotEvents .list-group-item',
     '.hotEvents .list-group-item',
-    '.hotEvents .list-group-item'
   ];
   let items = [];
   for (const sel of hotSelectors) {
@@ -325,7 +321,6 @@ async function scrapeDay(pathSuffix) {
   });
 
   const html = response.data;
-  // Ghi debug nếu cần
   if (CONFIG.DEBUG_HTML && pathSuffix === 'sat') {
     fs.writeFileSync('./debug_sat.html', html);
     console.log('Debug HTML saved to debug_sat.html');
@@ -337,7 +332,7 @@ async function scrapeDay(pathSuffix) {
   const rows = [];
   let currentCompetition = '';
 
-  // Tìm các sự kiện với nhiều selector khác nhau
+  // Tìm các sự kiện
   const eventSelectors = [
     'div.list-group-item.d-flex.gap-3.shadow-sm',
     '.list-group-item',
@@ -346,77 +341,83 @@ async function scrapeDay(pathSuffix) {
   let eventDivs = [];
   for (const sel of eventSelectors) {
     eventDivs = $(sel);
-    if (eventDivs.length) break;
+    if (eventDivs.length) {
+      console.log(`Found ${eventDivs.length} events using selector: ${sel}`);
+      break;
+    }
   }
 
-  // Tìm các thẻ leagueTitle
+  // Tìm competition title
   $('h3, .leagueTitle').each((idx, el) => {
     const $el = $(el);
-    if ($el.hasClass('leagueTitle') || $el.attr('class')?.includes('leagueTitle')) {
-      currentCompetition = $el.find('span.align-middle').first().text().trim();
+    if ($el.hasClass('leagueTitle') || ($el.attr('class') && $el.attr('class').includes('leagueTitle'))) {
+      const comp = $el.find('span.align-middle').first().text().trim();
+      if (comp) currentCompetition = comp;
     }
   });
 
   eventDivs.each((idx, el) => {
-    const eventDiv = $(el);
-    const timeAedt = eventDiv.find('.eventTime').first().text().trim();
-    if (!timeAedt) return;
+    try {
+      const eventDiv = $(el);
+      const timeAedt = eventDiv.find('.eventTime').first().text().trim();
+      if (!timeAedt) return;
 
-    const eventText = eventDiv.find('.eventText').first();
-    // Lấy các dòng đội bóng: thường là div đầu tiên và thứ hai trong eventText
-    const teamDivs = eventText.children('div').filter((i, e) => {
-      const cls = $(e).attr('class') || '';
-      return !cls.includes('gameSpacer') && !cls.includes('fs-10');
-    });
-    let home = '', away = '';
-    if (teamDivs.length >= 2) {
-      home = (teamDivs.eq(0).text() || '').replace(/\s+/g, ' ').trim();
-      away = (teamDivs.eq(1).text() || '').replace(/\s+/g, ' ').trim();
-    } else {
-      // fallback: lấy từ eventText text
-      const text = eventText.text().trim();
-      const parts = text.split(/\s+-\s+/);
-      if (parts.length >= 2) {
-        home = parts[0].trim();
-        away = parts[1].trim();
+      const eventText = eventDiv.find('.eventText').first();
+      const teamDivs = eventText.children('div').filter((i, e) => {
+        const cls = $(e).attr('class') || '';
+        return !cls.includes('gameSpacer') && !cls.includes('fs-10');
+      });
+      let home = '', away = '';
+      if (teamDivs.length >= 2) {
+        home = (teamDivs.eq(0).text() || '').replace(/\s+/g, ' ').trim();
+        away = (teamDivs.eq(1).text() || '').replace(/\s+/g, ' ').trim();
+      } else {
+        const text = eventText.text().trim();
+        const parts = text.split(/\s+-\s+/);
+        if (parts.length >= 2) {
+          home = parts[0].trim();
+          away = parts[1].trim();
+        }
       }
+
+      const title = eventText
+        .find('div.fs-10 i')
+        .first()
+        .text()
+        .replace(/\s+/g, ' ')
+        .trim();
+
+      const channels = [];
+      eventDiv.find('div.text-end img.stationImg, img.stationImg').each((i, img) => {
+        let t = $(img).attr('title') || $(img).attr('alt') || '';
+        t = t.replace(/Live on\s*/i, '').trim();
+        if (t) channels.push(t);
+      });
+
+      const sport = findSportForEvent($, eventDiv);
+      const vietnamInfo = getVietnamDateTime(dateInfo.baseDate, timeAedt);
+
+      rows.push({
+        day: pathSuffix,
+        hari: dateInfo.hariIndo,
+        tanggal: dateInfo.tanggalFormatted,
+        time_aedt: timeAedt,
+        sport: sport || '',
+        competition: currentCompetition || '',
+        home: home || '',
+        away: away || '',
+        title: title || '',
+        channels: channels.join(' | '),
+        event_url: '',
+        vietnam_datetime: vietnamInfo?.datetime || null,
+        vietnam_hari: vietnamInfo?.hari || '',
+        vietnam_tanggal: vietnamInfo?.tanggal || '',
+        vietnam_jam: vietnamInfo?.jam || '',
+        vietnam_jam12h: vietnamInfo?.jam12h || '',
+      });
+    } catch (err) {
+      console.error(`Error processing event: ${err.message}`);
     }
-
-    const title = eventText
-      .find('div.fs-10 i')
-      .first()
-      .text()
-      .replace(/\s+/g, ' ')
-      .trim();
-
-    const channels = [];
-    eventDiv.find('div.text-end img.stationImg, img.stationImg').each((i, img) => {
-      let t = $(img).attr('title') || $(img).attr('alt') || '';
-      t = t.replace(/Live on\s*/i, '').trim();
-      if (t) channels.push(t);
-    });
-
-    const sport = findSportForEvent($, eventDiv);
-    const vietnamInfo = getVietnamDateTime(dateInfo.baseDate, timeAedt);
-
-    rows.push({
-      day: pathSuffix,
-      hari: dateInfo.hariIndo,
-      tanggal: dateInfo.tanggalFormatted,
-      time_aedt: timeAedt,
-      sport,
-      competition: currentCompetition,
-      home,
-      away,
-      title,
-      channels: channels.join(' | '),
-      event_url: '',
-      vietnam_datetime: vietnamInfo?.datetime || null,
-      vietnam_hari: vietnamInfo?.hari || '',
-      vietnam_tanggal: vietnamInfo?.tanggal || '',
-      vietnam_jam: vietnamInfo?.jam || '',
-      vietnam_jam12h: vietnamInfo?.jam12h || '',
-    });
   });
 
   const hotRows = parseHotEvents($);
@@ -461,7 +462,6 @@ function writeJSON(rows, outputPath) {
   console.log(`JSON written: ${outputPath}`);
 }
 
-// --- Hàm chính ---
 (async () => {
   let allRows = [];
   for (const day of CONFIG.DAYS) {
