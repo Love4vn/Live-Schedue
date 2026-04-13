@@ -23,7 +23,7 @@ import aiohttp
 from curl_cffi.requests import AsyncSession as CffiAsyncSession
 
 # ================== CẤU HÌNH ==================
-ENABLE_VALIDATION = True        # Đặt False để tắt kiểm tra link (chạy nhanh nhất)
+ENABLE_VALIDATION = False        # Đặt False để tắt kiểm tra link (chạy nhanh nhất)
 TIMEZONE = ZoneInfo("Asia/Ho_Chi_Minh")
 M3U_LIST_FILE = "M3U_list.txt"
 SCHEDULE_FILE = "schedule.json"
