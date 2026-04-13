@@ -1,171 +1,226 @@
 {
-  "updated": "2026-04-13 01:28 VN",
+  "updated": "2026-04-13 08:13 VN",
   "days": {
-    "20260412": {
-      "date": "Sunday, 12/04",
+    "20260413": {
+      "date": "Monday, 13/04",
       "games": [
         {
-          "league": "La Liga",
-          "match": "Celta Vigo vs Real Oviedo",
-          "kick_utc": 1776011400,
-          "time": "12/04 11:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena Premium 5 Srbija HD",
-                "Arena Sport 2 Hrvatska HD",
-                "beIN Sports Australia 2 HD",
-                "beIN Sports France 4 HD max",
-                "beIN Sports MENA 4 HD",
-                "Canal+ Sport 2 Polska HD",
-                "DAZN 2 Portugal HD",
-                "DAZN LaLiga HD",
-                "Digi Sport 3 Romania",
-                "MAX Sport 4 Bulgaria HD",
-                "Nova Sports 1 Hellas HD",
-                "Premier Sports 1 Ireland HD",
-                "Premier Sports 1 UK HD",
-                "Premier Sports GB Player HD",
-                "SuperSport LaLiga HD",
-                "Ziggo Sport 2",
-                "Ziggo Sport HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Bundesliga",
-          "match": "Mainz 05 vs Freiburg",
-          "kick_utc": 1776015000,
-          "time": "13/04 12:30 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena Premium 3 Srbija HD",
-                "beIN Sports Australia 1 HD",
-                "DAZN 3 Portugal HD",
-                "DAZN Deutsch",
-                "Diema Sport 3 HD",
-                "Digi Sport 4 Romania",
-                "Eleven Sports 2 Polska HD",
-                "ESPN+ USA",
-                "Nova Sports 3 Hellas HD",
-                "OneFootball",
-                "Prime Video UK PPV",
-                "Setanta Sports+ Ukraine HD",
-                "ViaPlay Danmark HD",
-                "ViaPlay Nederland HD",
-                "ViaPlay Norge HD",
-                "ViaPlay Suomi HD",
-                "ViaPlay Sverige HD",
-                "ViaPlay Ísland HD",
-                "YouTube: Bundesliga"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
           "league": "Serie A",
-          "match": "Como vs Inter Milan",
-          "kick_utc": 1776019500,
-          "time": "13/04 01:45 AM",
+          "time": "14/04 01:45 AM",
+          "match": "Fiorentina vs Lazio",
+          "kick_utc": 1776105900,
           "tv_channels": [
             {
-              "country": "LiveSportsOnTV",
+              "country": "Peru",
               "channels": [
-                "Arena Premium 2 Srbija HD",
-                "Arena Sport 1 Hrvatska HD",
-                "Cosmote Sport 1 HD",
-                "DAZN Great Britain",
-                "DAZN Ireland",
-                "Digi Sport 2 Romania HD",
-                "Eleven Sports 1 Polska HD",
-                "HBO Max",
-                "MAX Sport 3 Bulgaria HD",
-                "Setanta Sports 1 Eurasia HD",
-                "SuperSport Football HD",
-                "TNT Sports 1 HD",
-                "Ziggo Sport HD"
+                "Disney+ Premium Chile"
+              ]
+            },
+            {
+              "country": "Argentina",
+              "channels": [
+                "Disney+ Premium Argentina"
+              ]
+            },
+            {
+              "country": "Malaysia",
+              "channels": [
+                "Astro Go",
+                "sooka",
+                "Astro Football"
+              ]
+            },
+            {
+              "country": "Croatia",
+              "channels": [
+                "Arena Sport 3 HR"
+              ]
+            },
+            {
+              "country": "Denmark",
+              "channels": [
+                "TV2 Sport",
+                "TV2 Play Denmark"
+              ]
+            },
+            {
+              "country": "Italy",
+              "channels": [
+                "DAZN1",
+                "DAZN"
+              ]
+            },
+            {
+              "country": "San Marino",
+              "channels": [
+                "DAZN1",
+                "DAZN"
+              ]
+            },
+            {
+              "country": "Serbia",
+              "channels": [
+                "Arena Sport Premium 3"
+              ]
+            },
+            {
+              "country": "Bosnia and Herzegovina",
+              "channels": [
+                "Arena Sport Premium 3"
+              ]
+            },
+            {
+              "country": "Greenland",
+              "channels": [
+                "TV2 Sport"
+              ]
+            },
+            {
+              "country": "Bolivia, Plurinational State of",
+              "channels": [
+                "Disney+ Premium Chile"
+              ]
+            },
+            {
+              "country": "Faroe Islands",
+              "channels": [
+                "TV2 Sport",
+                "TV2 Play Denmark"
+              ]
+            },
+            {
+              "country": "Paraguay",
+              "channels": [
+                "Disney+ Premium Argentina"
+              ]
+            },
+            {
+              "country": "Belgium",
+              "channels": [
+                "DAZN Belgium"
+              ]
+            },
+            {
+              "country": "Brazil",
+              "channels": [
+                "Xsports",
+                "Disney+"
+              ]
+            },
+            {
+              "country": "Romania",
+              "channels": [
+                "Digi Sport 3",
+                "Prima Sport 2"
+              ]
+            },
+            {
+              "country": "Greece",
+              "channels": [
+                "COSMOTE SPORT | 1HD"
+              ]
+            },
+            {
+              "country": "Poland",
+              "channels": [
+                "Eleven Sports 1 HD"
+              ]
+            },
+            {
+              "country": "Spain",
+              "channels": [
+                "DAZN"
+              ]
+            },
+            {
+              "country": "North Macedonia",
+              "channels": [
+                "Arena Sport Premium 3"
+              ]
+            },
+            {
+              "country": "Portugal",
+              "channels": [
+                "Sport TV2"
+              ]
+            },
+            {
+              "country": "Chile",
+              "channels": [
+                "Disney+ Premium Chile"
+              ]
+            },
+            {
+              "country": "Cyprus",
+              "channels": [
+                "Cytavision Sports 4HD"
+              ]
+            },
+            {
+              "country": "Brunei Darussalam",
+              "channels": [
+                "Astro Go"
+              ]
+            },
+            {
+              "country": "China",
+              "channels": [
+                "Migu"
+              ]
+            },
+            {
+              "country": "Uruguay",
+              "channels": [
+                "Disney+ Premium Argentina"
+              ]
+            },
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "DAZN"
+              ]
+            },
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 3"
               ]
             }
           ],
-          "source": "livesportsontv"
+          "tournament": "Serie A"
         },
         {
-          "league": "Ligue 1",
-          "match": "Lyon vs Lorient",
-          "kick_utc": 1776019500,
-          "time": "13/04 01:45 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena Premium 5 Srbija HD",
-                "Arena Sport 2 Hrvatska HD",
-                "Diema Sport 2 HD",
-                "Eleven Sports 4 Polska HD",
-                "Ligue 1+",
-                "Prime Video UK PPV",
-                "Setanta Sports Qazaqstan HD",
-                "SuperSport Variety 3 HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "La Liga",
-          "match": "Athletic Bilbao vs Villarreal",
-          "kick_utc": 1776020400,
-          "time": "13/04 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena Premium 4 Srbija HD",
-                "Arena Sport 3 Hrvatska HD",
-                "beIN Sports Australia 2 HD",
-                "beIN Sports France 1 HD",
-                "beIN Sports MENA 4 HD",
-                "beIN Sports MENA English 1 HD",
-                "DAZN 1 Portugal HD",
-                "DAZN España HD FTA",
-                "Digi Sport 3 Romania",
-                "M+ LaLiga HD",
-                "MAX Sport 4 Bulgaria HD",
-                "Nova Sports 1 Hellas HD",
-                "Premier Sports 1 Ireland HD",
-                "Premier Sports 1 UK HD",
-                "Premier Sports GB Player HD",
-                "Setanta Sports 2 Eurasia HD",
-                "SuperSport LaLiga HD",
-                "Teledeporte España",
-                "Ziggo Sport 2"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Serie A",
-          "match": "Como vs Inter-Milan",
-          "kick_utc": 1776019500,
-          "time": "13/04 01:45 AM",
+          "league": "Premier League",
+          "match": "Manchester-United vs Leeds-United",
+          "kick_utc": 1776106800,
+          "time": "14/04 02:00 AM",
           "tv_channels": [
             {
               "country": "Wheresthematch",
               "channels": [
-                "TNT Sports 1",
-                "DAZN",
-                "HBO Max"
+                "Sky Sports Premier League",
+                "Sky Sports Main Event",
+                "Sky Sports Ultra HDR"
               ]
             }
           ],
           "source": "wheresthematch"
+        },
+        {
+          "league": "Premier League",
+          "match": "Manchester United vs Leeds United",
+          "kick_utc": 1776106800,
+          "time": "14/04 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
         },
         {
           "league": "Tennis",
