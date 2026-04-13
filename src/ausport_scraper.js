@@ -1,4 +1,5 @@
-const puppeteer = require('puppeteer');
+const axios = require('axios');
+const cheerio = require('cheerio');
 const fs = require('fs');
 const dayjs = require('dayjs');
 const utc = require('dayjs/plugin/utc');
@@ -16,11 +17,13 @@ const CONFIG = {
   RETRY_COUNT: 2,
   RETRY_DELAY_MS: 2000,
   TIMEOUT_MS: 30000,
+  USER_AGENT: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
   OUTPUT_FILE: './ausport_schedule.json',
   TIME_RANGE_HOURS: 48,
+  DEBUG_HTML: true, // lưu file debug cho ngày đầu tiên gặp lỗi hoặc luôn
 };
 
-// --- Danh sách giải/đội hợp lệ (giữ nguyên) ---
+// --- Danh sách giải/đội hợp lệ ---
 const FOOTBALL_CONFIG = {
   leagues: {
     'Premier League': ['arsenal', 'aston villa', 'bournemouth', 'brentford', 'brighton', 'chelsea',
@@ -47,16 +50,26 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function fetchWithPuppeteer(url) {
-  const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
-  try {
-    const page = await browser.newPage();
-    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36');
-    await page.goto(url, { waitUntil: 'networkidle2', timeout: CONFIG.TIMEOUT_MS });
-    const html = await page.content();
-    return html;
-  } finally {
-    await browser.close();
+async function fetchWithRetry(url, options, retries = CONFIG.RETRY_COUNT) {
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      const response = await axios.get(url, {
+        ...options,
+        timeout: CONFIG.TIMEOUT_MS,
+        validateStatus: status => true,
+      });
+      console.log(`[${url}] Status: ${response.status}`);
+      if (response.status >= 200 && response.status < 400) {
+        return response;
+      } else {
+        console.error(`HTTP error ${response.status}, snippet:`, response.data.substring(0, 500));
+        throw new Error(`HTTP ${response.status}`);
+      }
+    } catch (error) {
+      console.error(`Attempt ${attempt} failed for ${url}:`, error.message);
+      if (attempt === retries) throw error;
+      await sleep(CONFIG.RETRY_DELAY_MS);
+    }
   }
 }
 
@@ -154,9 +167,6 @@ function isWithinTimeRange(event) {
   return diffHours >= 0 && diffHours <= CONFIG.TIME_RANGE_HOURS;
 }
 
-// --- Parse HTML với cheerio (vẫn dùng cheerio nhưng nhận HTML từ puppeteer) ---
-const cheerio = require('cheerio');
-
 function resolveDateForPage($, pathSuffix) {
   const headerText = $('h2.dayInfo').first().text().trim();
   if (headerText) {
@@ -181,8 +191,10 @@ function resolveDateForPage($, pathSuffix) {
   return { baseDate, hariIndo, tanggalFormatted };
 }
 
+// --- Tìm sport với nhiều fallback ---
 function findSportForEvent($, eventDiv) {
   const $event = $(eventDiv);
+  // Cách 1: tìm từ panelLeague
   const panelLeague = $event.closest('.panelLeague');
   if (panelLeague.length) {
     const panelType = panelLeague.prevAll('.panelType').first();
@@ -200,6 +212,7 @@ function findSportForEvent($, eventDiv) {
     }
   }
 
+  // Cách 2: tìm trong các thẻ h3 gần đó
   let cur = $event.parent();
   for (let i = 0; i < 10 && cur.length; i++) {
     const h3 = cur.prevAll().find('h3').first();
@@ -243,7 +256,18 @@ function resolveBaseDateFromHotText(text) {
 
 function parseHotEvents($) {
   const rows = [];
-  $('.panel-body-desktop .hotEvents .list-group-item').each((idx, el) => {
+  // Thử nhiều selector cho hot events
+  const hotSelectors = [
+    '.panel-body-desktop .hotEvents .list-group-item',
+    '.hotEvents .list-group-item',
+    '.hotEvents .list-group-item'
+  ];
+  let items = [];
+  for (const sel of hotSelectors) {
+    items = $(sel);
+    if (items.length) break;
+  }
+  items.each((idx, el) => {
     const item = $(el);
     const open = item.find('.openUrl').first();
     if (!open.length) return;
@@ -291,12 +315,20 @@ async function scrapeDay(pathSuffix) {
   const url = `${CONFIG.BASE_URL}/live-sports-tv-guide/${pathSuffix}`;
   console.log(`Scraping: ${url}`);
 
-  let html;
-  try {
-    html = await fetchWithPuppeteer(url);
-  } catch (err) {
-    console.error(`Puppeteer error for ${url}:`, err.message);
-    throw err;
+  const response = await fetchWithRetry(url, {
+    headers: {
+      'User-Agent': CONFIG.USER_AGENT,
+      'Accept-Language': 'en-US,en;q=0.9',
+      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+      'Referer': CONFIG.BASE_URL,
+    },
+  });
+
+  const html = response.data;
+  // Ghi debug nếu cần
+  if (CONFIG.DEBUG_HTML && pathSuffix === 'sat') {
+    fs.writeFileSync('./debug_sat.html', html);
+    console.log('Debug HTML saved to debug_sat.html');
   }
 
   const $ = cheerio.load(html);
@@ -305,64 +337,86 @@ async function scrapeDay(pathSuffix) {
   const rows = [];
   let currentCompetition = '';
 
-  $('h3, .leagueTitle, div.list-group-item.d-flex.gap-3.shadow-sm').each((idx, el) => {
+  // Tìm các sự kiện với nhiều selector khác nhau
+  const eventSelectors = [
+    'div.list-group-item.d-flex.gap-3.shadow-sm',
+    '.list-group-item',
+    'div.list-group-item'
+  ];
+  let eventDivs = [];
+  for (const sel of eventSelectors) {
+    eventDivs = $(sel);
+    if (eventDivs.length) break;
+  }
+
+  // Tìm các thẻ leagueTitle
+  $('h3, .leagueTitle').each((idx, el) => {
     const $el = $(el);
-
-    if ($el.hasClass('leagueTitle')) {
+    if ($el.hasClass('leagueTitle') || $el.attr('class')?.includes('leagueTitle')) {
       currentCompetition = $el.find('span.align-middle').first().text().trim();
-      return;
+    }
+  });
+
+  eventDivs.each((idx, el) => {
+    const eventDiv = $(el);
+    const timeAedt = eventDiv.find('.eventTime').first().text().trim();
+    if (!timeAedt) return;
+
+    const eventText = eventDiv.find('.eventText').first();
+    // Lấy các dòng đội bóng: thường là div đầu tiên và thứ hai trong eventText
+    const teamDivs = eventText.children('div').filter((i, e) => {
+      const cls = $(e).attr('class') || '';
+      return !cls.includes('gameSpacer') && !cls.includes('fs-10');
+    });
+    let home = '', away = '';
+    if (teamDivs.length >= 2) {
+      home = (teamDivs.eq(0).text() || '').replace(/\s+/g, ' ').trim();
+      away = (teamDivs.eq(1).text() || '').replace(/\s+/g, ' ').trim();
+    } else {
+      // fallback: lấy từ eventText text
+      const text = eventText.text().trim();
+      const parts = text.split(/\s+-\s+/);
+      if (parts.length >= 2) {
+        home = parts[0].trim();
+        away = parts[1].trim();
+      }
     }
 
-    if ($el.hasClass('list-group-item')) {
-      const eventDiv = $el;
-      const timeAedt = eventDiv.find('.eventTime').first().text().trim();
-      if (!timeAedt) return;
+    const title = eventText
+      .find('div.fs-10 i')
+      .first()
+      .text()
+      .replace(/\s+/g, ' ')
+      .trim();
 
-      const eventText = eventDiv.find('.eventText').first();
-      const teamDivs = eventText.children('div').filter((i, e) => {
-        const cls = $(e).attr('class') || '';
-        return !cls.includes('gameSpacer') && !cls.includes('fs-10');
-      });
+    const channels = [];
+    eventDiv.find('div.text-end img.stationImg, img.stationImg').each((i, img) => {
+      let t = $(img).attr('title') || $(img).attr('alt') || '';
+      t = t.replace(/Live on\s*/i, '').trim();
+      if (t) channels.push(t);
+    });
 
-      const home = (teamDivs.eq(0).text() || '').replace(/\s+/g, ' ').trim();
-      const away = (teamDivs.eq(1).text() || '').replace(/\s+/g, ' ').trim();
+    const sport = findSportForEvent($, eventDiv);
+    const vietnamInfo = getVietnamDateTime(dateInfo.baseDate, timeAedt);
 
-      const title = eventText
-        .find('div.fs-10 i')
-        .first()
-        .text()
-        .replace(/\s+/g, ' ')
-        .trim();
-
-      const channels = [];
-      eventDiv.find('div.text-end img.stationImg').each((i, img) => {
-        let t = $(img).attr('title') || $(img).attr('alt') || '';
-        t = t.replace(/Live on\s*/i, '').trim();
-        if (t) channels.push(t);
-      });
-
-      const sport = findSportForEvent($, eventDiv);
-      const vietnamInfo = getVietnamDateTime(dateInfo.baseDate, timeAedt);
-
-      rows.push({
-        day: pathSuffix,
-        hari: dateInfo.hariIndo,
-        tanggal: dateInfo.tanggalFormatted,
-        time_aedt: timeAedt,
-        sport,
-        competition: currentCompetition,
-        home,
-        away,
-        title,
-        channels: channels.join(' | '),
-        event_url: '',
-        vietnam_datetime: vietnamInfo?.datetime || null,
-        vietnam_hari: vietnamInfo?.hari || '',
-        vietnam_tanggal: vietnamInfo?.tanggal || '',
-        vietnam_jam: vietnamInfo?.jam || '',
-        vietnam_jam12h: vietnamInfo?.jam12h || '',
-      });
-    }
+    rows.push({
+      day: pathSuffix,
+      hari: dateInfo.hariIndo,
+      tanggal: dateInfo.tanggalFormatted,
+      time_aedt: timeAedt,
+      sport,
+      competition: currentCompetition,
+      home,
+      away,
+      title,
+      channels: channels.join(' | '),
+      event_url: '',
+      vietnam_datetime: vietnamInfo?.datetime || null,
+      vietnam_hari: vietnamInfo?.hari || '',
+      vietnam_tanggal: vietnamInfo?.tanggal || '',
+      vietnam_jam: vietnamInfo?.jam || '',
+      vietnam_jam12h: vietnamInfo?.jam12h || '',
+    });
   });
 
   const hotRows = parseHotEvents($);
