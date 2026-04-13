@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-13 14:30 VN",
+  "updated": "2026-04-13 19:53 VN",
   "days": {
     "20260413": {
       "date": "Monday, 13/04",
@@ -45,8 +45,8 @@
             {
               "country": "Denmark",
               "channels": [
-                "TV2 Sport",
-                "TV2 Play Denmark"
+                "TV2 Play Denmark",
+                "TV2 Sport"
               ]
             },
             {
@@ -90,8 +90,8 @@
             {
               "country": "Faroe Islands",
               "channels": [
-                "TV2 Sport",
-                "TV2 Play Denmark"
+                "TV2 Play Denmark",
+                "TV2 Sport"
               ]
             },
             {
@@ -107,17 +107,29 @@
               ]
             },
             {
+              "country": "Sweden",
+              "channels": [
+                "TV4 Sport Live 2"
+              ]
+            },
+            {
+              "country": "Germany",
+              "channels": [
+                "DAZN"
+              ]
+            },
+            {
               "country": "Brazil",
               "channels": [
-                "Disney+",
-                "Xsports"
+                "Xsports",
+                "Disney+"
               ]
             },
             {
               "country": "Romania",
               "channels": [
-                "Digi Sport 3",
-                "Prima Sport 2"
+                "Prima Sport 2",
+                "Digi Sport 3"
               ]
             },
             {
@@ -166,6 +178,12 @@
               "country": "Cyprus",
               "channels": [
                 "Cytavision Sports 4HD"
+              ]
+            },
+            {
+              "country": "Ukraine",
+              "channels": [
+                "MEGOGO Football 1"
               ]
             },
             {
@@ -347,21 +365,6 @@
         {
           "league": "Tennis",
           "match": "Barcelona Open Banc Sabadell",
-          "kick_utc": 1776070800,
-          "time": "13/04 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "TSN4"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Barcelona Open Banc Sabadell",
           "kick_utc": 1776088800,
           "time": "13/04 09:00 PM",
           "tv_channels": [
@@ -373,6 +376,24 @@
             }
           ],
           "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP Tennis",
+          "kick_utc": 1776157200,
+          "time": "14/04 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Sky Sports Tennis",
+                "Sky Sports Main Event",
+                "Sky Sports Ultra HDR",
+                "Sky Sports+"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
         }
       ]
     }
