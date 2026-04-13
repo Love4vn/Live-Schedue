@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-13 08:13 VN",
+  "updated": "2026-04-13 14:30 VN",
   "days": {
     "20260413": {
       "date": "Monday, 13/04",
@@ -25,9 +25,15 @@
             {
               "country": "Malaysia",
               "channels": [
-                "Astro Go",
                 "sooka",
+                "Astro Go",
                 "Astro Football"
+              ]
+            },
+            {
+              "country": "Indonesia",
+              "channels": [
+                "Vidio"
               ]
             },
             {
@@ -46,15 +52,15 @@
             {
               "country": "Italy",
               "channels": [
-                "DAZN1",
-                "DAZN"
+                "DAZN",
+                "DAZN1"
               ]
             },
             {
               "country": "San Marino",
               "channels": [
-                "DAZN1",
-                "DAZN"
+                "DAZN",
+                "DAZN1"
               ]
             },
             {
@@ -103,8 +109,8 @@
             {
               "country": "Brazil",
               "channels": [
-                "Xsports",
-                "Disney+"
+                "Disney+",
+                "Xsports"
               ]
             },
             {
@@ -145,6 +151,12 @@
               ]
             },
             {
+              "country": "Norway",
+              "channels": [
+                "VG+"
+              ]
+            },
+            {
               "country": "Chile",
               "channels": [
                 "Disney+ Premium Chile"
@@ -175,20 +187,145 @@
               ]
             },
             {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena Premium 3 Srbija HD",
+                "beIN Sports Australia 3 HD",
+                "Cosmote Sport 1 HD",
+                "Digi Sport 3 Romania",
+                "MAX Sport 3 Bulgaria HD",
+                "SuperSport Football HD"
+              ]
+            },
+            {
               "country": "Wheresthematch",
               "channels": [
                 "DAZN"
               ]
-            },
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 3"
-              ]
             }
           ],
           "tournament": "Serie A"
+        },
+        {
+          "league": "Serie A",
+          "match": "Lazio vs Fiorentina",
+          "kick_utc": 1776105900,
+          "time": "14/04 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Paramount+ (US)",
+                "DAZN US",
+                "DAZN Canada"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Premier League",
+          "match": "Leeds United vs Manchester United",
+          "kick_utc": 1776106800,
+          "time": "14/04 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "NBC Universo",
+                "TeleXitos",
+                "USA Network",
+                "DAZN Canada"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Premier League",
+          "match": "Manchester United vs Leeds United",
+          "kick_utc": 1776106800,
+          "time": "14/04 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena Premium 1 Srbija HD",
+                "beIN Connect MENA",
+                "beIN Connect Türkiye",
+                "beIN Sports MENA 1 HD",
+                "beIN Sports MENA English 1 HD",
+                "beIN Sports Türkiye 3 HD",
+                "Canal+ Extra 1 Polska HD",
+                "Canal+ Foot HD",
+                "Canal+ Premier League HD",
+                "Canal+ Sport 1 Czech HD",
+                "DAZN 1 Bar Espana",
+                "DAZN 1 Espana HD",
+                "DAZN 1 Portugal HD",
+                "DAZN España",
+                "DAZN Portugal",
+                "Diema Sport 2 HD",
+                "Fast Sports",
+                "FuboTV Canada",
+                "Go3 Extra Sport Baltics",
+                "Hub Premier 1 HD",
+                "Hub Premier 2 HD",
+                "Monomax Streaming",
+                "Nova Sports Premier League HD",
+                "Nova Sports Prime Hellas HD",
+                "NOW Premier League HK 1",
+                "Sky Go UK",
+                "Sky Sport Premier League DE HD",
+                "Sky Sports Main Event HD",
+                "Sky Sports Main Event UHD",
+                "Sky Sports Premier League HD",
+                "Sky UK Ultra HD 1",
+                "Stan Sport Australia",
+                "Star Sports Select HD1",
+                "SuperSport Premier League HD",
+                "Telemundo USA",
+                "USA Network HD",
+                "V Sport Premier League HD",
+                "ViaPlay Danmark HD",
+                "ViaPlay Nederland HD",
+                "ViaPlay Norge HD",
+                "ViaPlay Suomi HD",
+                "ViaPlay Sverige HD",
+                "VOYO Pro TV Romania"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "La Liga",
+          "match": "Levante vs Getafe",
+          "kick_utc": 1776106800,
+          "time": "14/04 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "beIN Sports Australia 2 HD",
+                "beIN Sports France 2 HD",
+                "beIN Sports MENA 2 HD",
+                "beIN Sports MENA 3 HD",
+                "beIN Sports MENA French 1 HD",
+                "DAZN LaLiga HD",
+                "Digi Sport 4 Romania",
+                "MAX Sport 4 Bulgaria HD",
+                "Nova Sports 1 Hellas HD",
+                "Premier Sports 1 Ireland HD",
+                "Premier Sports 1 UK HD",
+                "Premier Sports GB Player HD",
+                "SuperSport LaLiga HD",
+                "Ziggo Sport 2",
+                "Ziggo Sport HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
         },
         {
           "league": "Premier League",
@@ -206,21 +343,6 @@
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "Premier League",
-          "match": "Manchester United vs Leeds United",
-          "kick_utc": 1776106800,
-          "time": "14/04 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "Stan Sport"
-              ]
-            }
-          ],
-          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -251,24 +373,6 @@
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP Tennis",
-          "kick_utc": 1776070800,
-          "time": "13/04 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Main Event",
-                "Sky Sports Tennis",
-                "Sky Sports Ultra HDR",
-                "Sky Sports+"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
         }
       ]
     }
