@@ -23,7 +23,7 @@ const CONFIG = {
   DEBUG_HTML: true,
 };
 
-// --- Danh sách giải/đội hợp lệ ---
+// --- Danh sách giải/đội hợp lệ (giữ nguyên) ---
 const FOOTBALL_CONFIG = {
   leagues: {
     'Premier League': ['arsenal', 'aston villa', 'bournemouth', 'brentford', 'brighton', 'chelsea',
@@ -45,6 +45,7 @@ const FOOTBALL_CONFIG = {
   excludeKeywords: ['u18', 'u19', 'u20', 'u21', 'u23', 'women', 'girls', 'boys', 'youth', 'junior', 'reserves', 'woman'],
 };
 
+// --- Hàm tiện ích ---
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -101,6 +102,7 @@ function getVietnamDateTime(baseDate, timeStr) {
   };
 }
 
+// --- Hàm lọc với kiểm tra an toàn ---
 function isFootballRelevant(event) {
   const competition = (event.competition || '').toLowerCase();
   const home = (event.home || '').toLowerCase();
@@ -166,6 +168,7 @@ function isWithinTimeRange(event) {
   return diffHours >= 0 && diffHours <= CONFIG.TIME_RANGE_HOURS;
 }
 
+// --- Parse ngày từ header ---
 function resolveDateForPage($, pathSuffix) {
   const headerText = $('h2.dayInfo').first().text().trim();
   if (headerText) {
@@ -190,9 +193,9 @@ function resolveDateForPage($, pathSuffix) {
   return { baseDate, hariIndo, tanggalFormatted };
 }
 
+// --- Tìm sport với nhiều fallback ---
 function findSportForEvent($, eventDiv) {
   const $event = $(eventDiv);
-  // Cách 1: tìm từ panelLeague
   const panelLeague = $event.closest('.panelLeague');
   if (panelLeague.length) {
     const panelType = panelLeague.prevAll('.panelType').first();
@@ -202,15 +205,14 @@ function findSportForEvent($, eventDiv) {
         const img = h3.find('img').first();
         const span = h3.find('span.align-middle').first();
         const sport =
-          (img.attr('title') || img.attr('alt') || '').trim() ||
-          span.text().trim() ||
+          (img && (img.attr('title') || img.attr('alt')) || '').trim() ||
+          (span && span.text().trim()) ||
           h3.text().trim();
         if (sport) return sport;
       }
     }
   }
 
-  // Cách 2: tìm trong các thẻ h3 gần đó
   let cur = $event.parent();
   for (let i = 0; i < 10 && cur.length; i++) {
     const h3 = cur.prevAll().find('h3').first();
@@ -218,8 +220,8 @@ function findSportForEvent($, eventDiv) {
       const img = h3.find('img').first();
       const span = h3.find('span.align-middle').first();
       const sport =
-        (img.attr('title') || img.attr('alt') || '').trim() ||
-        span.text().trim() ||
+        (img && (img.attr('title') || img.attr('alt')) || '').trim() ||
+        (span && span.text().trim()) ||
         h3.text().trim();
       if (sport) return sport;
     }
@@ -228,6 +230,7 @@ function findSportForEvent($, eventDiv) {
   return '';
 }
 
+// --- Hot Events parser (giữ nguyên) ---
 function extractTimeFromHotText(text) {
   const m = text.match(/\bfrom\s+(\d{1,2}:\d{2}(?:AM|PM))\b/i);
   return m ? m[1].toUpperCase() : '';
@@ -256,7 +259,7 @@ function parseHotEvents($) {
   const rows = [];
   const hotSelectors = [
     '.panel-body-desktop .hotEvents .list-group-item',
-    '.hotEvents .list-group-item',
+    '.hotEvents .list-group-item'
   ];
   let items = [];
   for (const sel of hotSelectors) {
@@ -264,49 +267,54 @@ function parseHotEvents($) {
     if (items.length) break;
   }
   items.each((idx, el) => {
-    const item = $(el);
-    const open = item.find('.openUrl').first();
-    if (!open.length) return;
+    try {
+      const item = $(el);
+      const open = item.find('.openUrl').first();
+      if (!open.length) return;
 
-    const eventPath = (open.attr('data-link') || '').trim();
-    const line1 = open.find('.eventText > div').first().text().replace(/\s+/g, ' ').trim();
-    const line2 = open.find('.eventText > div').eq(1).text().replace(/\s+/g, ' ').trim();
+      const eventPath = (open.attr('data-link') || '').trim();
+      const line1 = open.find('.eventText > div').first().text().replace(/\s+/g, ' ').trim();
+      const line2 = open.find('.eventText > div').eq(1).text().replace(/\s+/g, ' ').trim();
 
-    const [datetimeText, match] = line1.split('|').map(v => v.trim());
-    const sport = (line2.split('|')[0] || '').trim();
-    const league = (line2.split('|')[1] || '').replace(/\s+/g, ' ').trim();
+      const [datetimeText, match] = line1.split('|').map(v => v.trim());
+      const sport = (line2.split('|')[0] || '').trim();
+      const league = (line2.split('|')[1] || '').replace(/\s+/g, ' ').trim();
 
-    let channel = item.find('.ml-10 img').attr('title') || item.find('.ml-10 img').attr('alt') || '';
-    channel = channel.replace(/Live on\s*/i, '').trim();
+      let channel = item.find('.ml-10 img').attr('title') || item.find('.ml-10 img').attr('alt') || '';
+      channel = channel.replace(/Live on\s*/i, '').trim();
 
-    const timeAedt = extractTimeFromHotText(datetimeText);
-    const baseDate = resolveBaseDateFromHotText(datetimeText);
-    const vietnamInfo = timeAedt ? getVietnamDateTime(baseDate, timeAedt) : null;
+      const timeAedt = extractTimeFromHotText(datetimeText);
+      const baseDate = resolveBaseDateFromHotText(datetimeText);
+      const vietnamInfo = timeAedt ? getVietnamDateTime(baseDate, timeAedt) : null;
 
-    const [home, away] = match.includes(' - ') ? match.split(' - ').map(s => s.trim()) : [match, ''];
+      const [home, away] = match.includes(' - ') ? match.split(' - ').map(s => s.trim()) : [match, ''];
 
-    rows.push({
-      day: 'hot',
-      hari: dayjs(baseDate).format('dddd'),
-      tanggal: dayjs(baseDate).format('DD/MM/YYYY'),
-      time_aedt: timeAedt,
-      sport,
-      competition: league || 'Hot Events',
-      home,
-      away,
-      title: league ? `${sport} | ${league}` : sport,
-      channels: channel,
-      event_url: eventPath ? `${CONFIG.BASE_URL}/${eventPath}` : '',
-      vietnam_datetime: vietnamInfo?.datetime || null,
-      vietnam_hari: vietnamInfo?.hari || '',
-      vietnam_tanggal: vietnamInfo?.tanggal || '',
-      vietnam_jam: vietnamInfo?.jam || '',
-      vietnam_jam12h: vietnamInfo?.jam12h || '',
-    });
+      rows.push({
+        day: 'hot',
+        hari: dayjs(baseDate).format('dddd'),
+        tanggal: dayjs(baseDate).format('DD/MM/YYYY'),
+        time_aedt: timeAedt,
+        sport: sport || '',
+        competition: league || 'Hot Events',
+        home: home || '',
+        away: away || '',
+        title: league ? `${sport} | ${league}` : sport,
+        channels: channel || '',
+        event_url: eventPath ? `${CONFIG.BASE_URL}/${eventPath}` : '',
+        vietnam_datetime: vietnamInfo?.datetime || null,
+        vietnam_hari: vietnamInfo?.hari || '',
+        vietnam_tanggal: vietnamInfo?.tanggal || '',
+        vietnam_jam: vietnamInfo?.jam || '',
+        vietnam_jam12h: vietnamInfo?.jam12h || '',
+      });
+    } catch (err) {
+      console.error(`Error parsing hot event:`, err.message);
+    }
   });
   return rows;
 }
 
+// --- Scrape một ngày (có try-catch cho từng event) ---
 async function scrapeDay(pathSuffix) {
   const url = `${CONFIG.BASE_URL}/live-sports-tv-guide/${pathSuffix}`;
   console.log(`Scraping: ${url}`);
@@ -341,21 +349,19 @@ async function scrapeDay(pathSuffix) {
   let eventDivs = [];
   for (const sel of eventSelectors) {
     eventDivs = $(sel);
-    if (eventDivs.length) {
-      console.log(`Found ${eventDivs.length} events using selector: ${sel}`);
-      break;
-    }
+    if (eventDivs.length) break;
   }
+  console.log(`Found ${eventDivs.length} events using selector: ${eventSelectors.find(s => $(s).length)}`);
 
-  // Tìm competition title
+  // Lấy competition từ các thẻ leagueTitle
   $('h3, .leagueTitle').each((idx, el) => {
     const $el = $(el);
     if ($el.hasClass('leagueTitle') || ($el.attr('class') && $el.attr('class').includes('leagueTitle'))) {
-      const comp = $el.find('span.align-middle').first().text().trim();
-      if (comp) currentCompetition = comp;
+      currentCompetition = $el.find('span.align-middle').first().text().trim();
     }
   });
 
+  // Xử lý từng event
   eventDivs.each((idx, el) => {
     try {
       const eventDiv = $(el);
@@ -367,11 +373,13 @@ async function scrapeDay(pathSuffix) {
         const cls = $(e).attr('class') || '';
         return !cls.includes('gameSpacer') && !cls.includes('fs-10');
       });
+
       let home = '', away = '';
       if (teamDivs.length >= 2) {
         home = (teamDivs.eq(0).text() || '').replace(/\s+/g, ' ').trim();
         away = (teamDivs.eq(1).text() || '').replace(/\s+/g, ' ').trim();
       } else {
+        // fallback: lấy từ eventText text
         const text = eventText.text().trim();
         const parts = text.split(/\s+-\s+/);
         if (parts.length >= 2) {
@@ -399,15 +407,15 @@ async function scrapeDay(pathSuffix) {
 
       rows.push({
         day: pathSuffix,
-        hari: dateInfo.hariIndo,
-        tanggal: dateInfo.tanggalFormatted,
+        hari: dateInfo.hariIndo || '',
+        tanggal: dateInfo.tanggalFormatted || '',
         time_aedt: timeAedt,
         sport: sport || '',
         competition: currentCompetition || '',
         home: home || '',
         away: away || '',
         title: title || '',
-        channels: channels.join(' | '),
+        channels: channels.join(' | ') || '',
         event_url: '',
         vietnam_datetime: vietnamInfo?.datetime || null,
         vietnam_hari: vietnamInfo?.hari || '',
@@ -416,7 +424,7 @@ async function scrapeDay(pathSuffix) {
         vietnam_jam12h: vietnamInfo?.jam12h || '',
       });
     } catch (err) {
-      console.error(`Error processing event: ${err.message}`);
+      console.error(`Error processing event ${idx}:`, err.message);
     }
   });
 
@@ -430,6 +438,7 @@ async function scrapeDay(pathSuffix) {
   return rows;
 }
 
+// --- Loại bỏ trùng lặp ---
 function dedupeRows(rows) {
   const seen = new Set();
   return rows.filter(row => {
@@ -448,6 +457,7 @@ function dedupeRows(rows) {
   });
 }
 
+// --- Xuất JSON đơn giản ---
 function writeJSON(rows, outputPath) {
   const simplified = rows.map(r => ({
     competition: r.competition,
@@ -462,6 +472,7 @@ function writeJSON(rows, outputPath) {
   console.log(`JSON written: ${outputPath}`);
 }
 
+// --- Hàm chính ---
 (async () => {
   let allRows = [];
   for (const day of CONFIG.DAYS) {
