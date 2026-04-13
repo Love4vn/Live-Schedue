@@ -3,7 +3,7 @@ euro_vn_full_schedule_live.py
 ================================
 PHIÊN BẢN SIÊU TỐC – TỐI ƯU CHO GITHUB ACTIONS
 - Tải M3U bất đồng bộ (aiohttp).
-- Validate HEAD nhanh (chỉ loại 404/không kết nối).
+- Validate HEAD nhanh (chỉ loại 404/không kết nối) - CÓ THỂ TẮT.
 - Cache SofaScore 24h.
 - Giới hạn 2 kênh/trận.
 """
@@ -23,6 +23,7 @@ import aiohttp
 from curl_cffi.requests import AsyncSession as CffiAsyncSession
 
 # ================== CẤU HÌNH ==================
+ENABLE_VALIDATION = True        # Đặt False để tắt kiểm tra link (chạy nhanh nhất)
 TIMEZONE = ZoneInfo("Asia/Ho_Chi_Minh")
 M3U_LIST_FILE = "M3U_list.txt"
 SCHEDULE_FILE = "schedule.json"
@@ -63,18 +64,18 @@ ALLOWED_TEAMS_PER_LEAGUE = {
 }
 
 LEAGUE_GROUP_NAME = {
-    "Premier League": "Live Premier League",
-    "Serie A": "Live Serie A",
-    "Bundesliga": "Live Bundesliga",
-    "La Liga": "Live La Liga",
-    "Ligue 1": "Live Ligue 1",
+    "Premier League": "⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League",
+    "Serie A": "⚽️🇮🇹|Live Serie A",
+    "Bundesliga": "⚽️🇩🇪|Live Bundesliga",
+    "La Liga": "⚽️🇪🇦|Live La Liga",
+    "Ligue 1": "⚽️🇨🇵|Live Ligue 1",
     "UEFA Champions League": "Live UEFA Champions League",
     "UEFA Europa League": "Live UEFA Europa League",
     "UEFA Europa Conference League": "Live UEFA Conference League",
     "UEFA Euro": "Live Euro",
     "FA Cup": "Live FA, League Cup",
     "League Cup": "Live FA, League Cup",
-    "Tennis": "Live Tennis",
+    "Tennis": "🎾|Live Tennis",
     "FIFA World Cup": "Live Fifa World Cup",
     "International Friendly": "Live International Friendly"
 }
@@ -845,21 +846,23 @@ async def main():
 
     print(f"   📺 Tổng số link sau khi match: {len(live_events)}")
 
-    # 5. Validate HEAD siêu nhanh
-    print("🔍 Kiểm tra nhanh HEAD (chỉ loại link 404/không kết nối)...")
-    async with aiohttp.ClientSession() as session:
-        sem = asyncio.Semaphore(HEAD_CONCURRENCY)
-        async def check_one(ev):
-            async with sem:
-                extra = extract_headers_from_extra(ev['channel'].get('extra', []))
-                return await head_check(session, ev['channel']['url'], extra)
-        results = await asyncio.gather(*[check_one(ev) for ev in live_events])
-
-    validated_events = [ev for ev, ok in zip(live_events, results) if ok]
-    print(f"   ✅ Còn lại {len(validated_events)} link sau HEAD check (loại {len(live_events)-len(validated_events)} link)")
+    # 5. Validate HEAD (nếu bật)
+    if ENABLE_VALIDATION:
+        print("🔍 Kiểm tra nhanh HEAD (chỉ loại link 404/không kết nối)...")
+        async with aiohttp.ClientSession() as session:
+            sem = asyncio.Semaphore(HEAD_CONCURRENCY)
+            async def check_one(ev):
+                async with sem:
+                    extra = extract_headers_from_extra(ev['channel'].get('extra', []))
+                    return await head_check(session, ev['channel']['url'], extra)
+            results = await asyncio.gather(*[check_one(ev) for ev in live_events])
+        validated_events = [ev for ev, ok in zip(live_events, results) if ok]
+        print(f"   ✅ Còn lại {len(validated_events)} link sau HEAD check (loại {len(live_events)-len(validated_events)} link)")
+    else:
+        print("⚡ Bỏ qua kiểm tra link (ENABLE_VALIDATION = False)")
+        validated_events = live_events
 
     # 6. Ghi M3U
-    # Xử lý tennis trùng lặp
     tennis_events = [ev for ev in validated_events if ev['league'] == "Tennis"]
     other_events = [ev for ev in validated_events if ev['league'] != "Tennis"]
     grouped_tennis = {}
