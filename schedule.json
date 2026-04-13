@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-13 19:53 VN",
+  "updated": "2026-04-14 01:56 VN",
   "days": {
     "20260413": {
       "date": "Monday, 13/04",
@@ -17,6 +17,13 @@
               ]
             },
             {
+              "country": "Serbia",
+              "channels": [
+                "Arena Sport Premium 2",
+                "Arena Sport Premium 3"
+              ]
+            },
+            {
               "country": "Argentina",
               "channels": [
                 "Disney+ Premium Argentina"
@@ -25,9 +32,9 @@
             {
               "country": "Malaysia",
               "channels": [
+                "Astro Football",
                 "sooka",
-                "Astro Go",
-                "Astro Football"
+                "Astro Go"
               ]
             },
             {
@@ -45,34 +52,29 @@
             {
               "country": "Denmark",
               "channels": [
-                "TV2 Play Denmark",
-                "TV2 Sport"
+                "TV2 Sport",
+                "TV2 Play Denmark"
               ]
             },
             {
               "country": "Italy",
               "channels": [
-                "DAZN",
-                "DAZN1"
+                "DAZN1",
+                "DAZN"
               ]
             },
             {
               "country": "San Marino",
               "channels": [
-                "DAZN",
-                "DAZN1"
-              ]
-            },
-            {
-              "country": "Serbia",
-              "channels": [
-                "Arena Sport Premium 3"
+                "DAZN1",
+                "DAZN"
               ]
             },
             {
               "country": "Bosnia and Herzegovina",
               "channels": [
-                "Arena Sport Premium 3"
+                "Arena Sport Premium 3",
+                "Arena Sport Premium 2"
               ]
             },
             {
@@ -90,8 +92,8 @@
             {
               "country": "Faroe Islands",
               "channels": [
-                "TV2 Play Denmark",
-                "TV2 Sport"
+                "TV2 Sport",
+                "TV2 Play Denmark"
               ]
             },
             {
@@ -126,6 +128,12 @@
               ]
             },
             {
+              "country": "Hungary",
+              "channels": [
+                "Arena4"
+              ]
+            },
+            {
               "country": "Romania",
               "channels": [
                 "Prima Sport 2",
@@ -145,6 +153,18 @@
               ]
             },
             {
+              "country": "United Kingdom",
+              "channels": [
+                "DAZN UK"
+              ]
+            },
+            {
+              "country": "Mexico",
+              "channels": [
+                "Disney+ Premium Mexico"
+              ]
+            },
+            {
               "country": "Spain",
               "channels": [
                 "DAZN"
@@ -153,13 +173,20 @@
             {
               "country": "North Macedonia",
               "channels": [
-                "Arena Sport Premium 3"
+                "Arena Sport Premium 3",
+                "Arena Sport Premium 2"
               ]
             },
             {
               "country": "Portugal",
               "channels": [
                 "Sport TV2"
+              ]
+            },
+            {
+              "country": "Russian Federation",
+              "channels": [
+                "Match! TV"
               ]
             },
             {
@@ -172,6 +199,18 @@
               "country": "Chile",
               "channels": [
                 "Disney+ Premium Chile"
+              ]
+            },
+            {
+              "country": "Bulgaria",
+              "channels": [
+                "MAX Sport 3"
+              ]
+            },
+            {
+              "country": "France",
+              "channels": [
+                "DAZN France"
               ]
             },
             {
@@ -219,6 +258,13 @@
               "country": "Wheresthematch",
               "channels": [
                 "DAZN"
+              ]
+            },
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 3"
               ]
             }
           ],
@@ -365,13 +411,43 @@
         {
           "league": "Tennis",
           "match": "Barcelona Open Banc Sabadell",
-          "kick_utc": 1776088800,
-          "time": "13/04 09:00 PM",
+          "kick_utc": 1776157200,
+          "time": "14/04 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "TSN4"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Barcelona Open Banc Sabadell",
+          "kick_utc": 1776175200,
+          "time": "14/04 09:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
                 "RDS"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Stuttgart Open",
+          "kick_utc": 1776178800,
+          "time": "14/04 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DAZN Canada"
               ]
             }
           ],
@@ -394,6 +470,89 @@
             }
           ],
           "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP Tennis",
+          "kick_utc": 1776189600,
+          "time": "15/04 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Sky Sports Tennis",
+                "Sky Sports Main Event",
+                "Sky Sports Ultra HDR",
+                "Sky Sports+"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1776157200,
+          "time": "14/04 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN SPORTS 2",
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1776171600,
+          "time": "14/04 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 2"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1776175200,
+          "time": "14/04 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1776178800,
+          "time": "14/04 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
         }
       ]
     }
