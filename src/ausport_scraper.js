@@ -19,11 +19,11 @@ const CONFIG = {
   TIMEOUT_MS: 30000,
   USER_AGENT: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
   OUTPUT_FILE: './ausport_schedule.json',
-  TIME_RANGE_HOURS: 72,
-  DEBUG_HTML: true,
+  TIME_RANGE_HOURS: 72, // 72 giờ = 3 ngày
+  DEBUG_HTML: false,    // tắt debug để tránh file rác
 };
 
-// --- Danh sách giải/đội hợp lệ (giữ nguyên) ---
+// --- Danh sách giải/đội hợp lệ (bóng đá) ---
 const FOOTBALL_CONFIG = {
   leagues: {
     'Premier League': ['arsenal', 'aston villa', 'bournemouth', 'brentford', 'brighton', 'chelsea',
@@ -56,26 +56,17 @@ async function fetchWithRetry(url, options, retries = CONFIG.RETRY_COUNT) {
       const response = await axios.get(url, {
         ...options,
         timeout: CONFIG.TIMEOUT_MS,
-        validateStatus: status => true, // nhận mọi status để log
+        validateStatus: status => true,
       });
       console.log(`[${url}] Status: ${response.status}`);
       if (response.status >= 200 && response.status < 400) {
         return response;
       } else {
         console.error(`HTTP error ${response.status}, snippet:`, response.data.substring(0, 500));
-        // Lưu nội dung lỗi vào file debug
-        if (CONFIG.DEBUG_HTML) {
-          const debugFile = `debug_error_${Date.now()}.html`;
-          fs.writeFileSync(debugFile, response.data);
-          console.log(`Saved error HTML to ${debugFile}`);
-        }
         throw new Error(`HTTP ${response.status}`);
       }
     } catch (error) {
       console.error(`Attempt ${attempt} failed for ${url}:`, error.message);
-      if (error.response) {
-        console.error(`Response data:`, error.response.data.substring(0, 200));
-      }
       if (attempt === retries) throw error;
       await sleep(CONFIG.RETRY_DELAY_MS);
     }
@@ -181,10 +172,8 @@ function isWithinTimeRange(event) {
 function resolveDateForPage($, pathSuffix) {
   const headerText = $('h2.dayInfo').first().text().trim();
   if (headerText) {
-    // Ví dụ: "Monday, 13. Apr | All sports live on tv"
     const match = headerText.match(/([A-Za-z]+),\s+(\d{1,2})\.\s+([A-Za-z]+)/);
     if (match) {
-      const dayName = match[1];
       const dayNum = parseInt(match[2], 10);
       const monthRaw = match[3];
       const dateStr = `${dayNum} ${monthRaw}`;
@@ -249,7 +238,7 @@ function findSportForEvent($, eventDiv) {
   return '';
 }
 
-// --- Hot Events parser (giữ nguyên) ---
+// --- Hot Events parser (đã sửa lỗi) ---
 function extractTimeFromHotText(text) {
   const m = text.match(/\bfrom\s+(\d{1,2}:\d{2}(?:AM|PM))\b/i);
   return m ? m[1].toUpperCase() : '';
@@ -333,6 +322,35 @@ function parseHotEvents($) {
   return rows;
 }
 
+// --- Hàm lấy tên đội chính xác từ eventText ---
+function extractTeams(eventText) {
+  // Cách 1: tìm các thẻ div chứa tên đội (có thể có ảnh)
+  const teamDivs = eventText.children('div').filter((i, e) => {
+    const cls = $(e).attr('class') || '';
+    return !cls.includes('gameSpacer') && !cls.includes('fs-10');
+  });
+  if (teamDivs.length >= 2) {
+    const home = (teamDivs.eq(0).text() || '').replace(/\s+/g, ' ').trim();
+    const away = (teamDivs.eq(1).text() || '').replace(/\s+/g, ' ').trim();
+    if (home && away) return { home, away };
+  }
+
+  // Cách 2: lấy toàn bộ text và tách bằng " - "
+  const fullText = eventText.text().trim();
+  const parts = fullText.split(/\s+-\s+/);
+  if (parts.length >= 2) {
+    let home = parts[0].trim();
+    let away = parts[1].trim();
+    // Loại bỏ các dòng thừa như "Afl: Round 6 ..."
+    if (home.includes(':')) home = home.split(':').pop().trim();
+    if (away.includes(':')) away = away.split(':').pop().trim();
+    return { home, away };
+  }
+
+  // Cách 3: fallback
+  return { home: '', away: '' };
+}
+
 // --- Scrape một ngày ---
 async function scrapeDay(pathSuffix) {
   const url = `${CONFIG.BASE_URL}/live-sports-tv-guide/${pathSuffix}`;
@@ -347,21 +365,15 @@ async function scrapeDay(pathSuffix) {
     },
   });
 
-  const html = response.data;
-  if (CONFIG.DEBUG_HTML && pathSuffix === 'sat') {
-    fs.writeFileSync('./debug_sat.html', html);
-    console.log('Debug HTML saved to debug_sat.html');
-  }
-
-  const $ = cheerio.load(html);
+  const $ = cheerio.load(response.data);
   const dateInfo = resolveDateForPage($, pathSuffix);
 
   const rows = [];
   let currentCompetition = '';
 
-  // Tìm các sự kiện (dùng selector chính xác hơn)
+  // Tìm các sự kiện
   const eventDivs = $('div.list-group-item.d-flex.gap-3.shadow-sm');
-  console.log(`Found ${eventDivs.length} events using selector: div.list-group-item.d-flex.gap-3.shadow-sm`);
+  console.log(`Found ${eventDivs.length} events`);
 
   // Lấy competition từ các thẻ leagueTitle
   $('.leagueTitle').each((idx, el) => {
@@ -376,23 +388,7 @@ async function scrapeDay(pathSuffix) {
       if (!timeAedt) return;
 
       const eventText = eventDiv.find('.eventText').first();
-      const teamDivs = eventText.children('div').filter((i, e) => {
-        const cls = $(e).attr('class') || '';
-        return !cls.includes('gameSpacer') && !cls.includes('fs-10');
-      });
-
-      let home = '', away = '';
-      if (teamDivs.length >= 2) {
-        home = (teamDivs.eq(0).text() || '').replace(/\s+/g, ' ').trim();
-        away = (teamDivs.eq(1).text() || '').replace(/\s+/g, ' ').trim();
-      } else {
-        const text = eventText.text().trim();
-        const parts = text.split(/\s+-\s+/);
-        if (parts.length >= 2) {
-          home = parts[0].trim();
-          away = parts[1].trim();
-        }
-      }
+      const { home, away } = extractTeams(eventText);
 
       const title = eventText
         .find('div.fs-10 i')
@@ -410,6 +406,9 @@ async function scrapeDay(pathSuffix) {
 
       const sport = findSportForEvent($, eventDiv);
       const vietnamInfo = getVietnamDateTime(dateInfo.baseDate, timeAedt);
+
+      // Chỉ thêm nếu có ít nhất một tên đội
+      if (!home && !away) return;
 
       rows.push({
         day: pathSuffix,
@@ -493,6 +492,7 @@ function writeJSON(rows, outputPath) {
   let filteredRows = allRows.filter(isEventRelevant);
   console.log('After sport/league filter:', filteredRows.length);
 
+  // In mẫu 5 trận để kiểm tra
   console.log('Sample events after sport/league filter (before time filter):');
   filteredRows.slice(0, 5).forEach((r, i) => {
     const dt = r.vietnam_datetime ? dayjs(r.vietnam_datetime).format('HH:mm DD/MM/YYYY') : 'N/A';
