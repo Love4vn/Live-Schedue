@@ -5,7 +5,8 @@ PHIÊN BẢN SIÊU TỐC – TỐI ƯU CHO GITHUB ACTIONS
 - Tải M3U bất đồng bộ (aiohttp).
 - Validate HEAD nhanh (chỉ loại 404/không kết nối) - CÓ THỂ TẮT.
 - Cache SofaScore 24h.
-- Giới hạn 2 kênh/trận.
+- Giới hạn kênh/trận (mặc định 500).
+- SẮP XẾP KÊNH TRONG CÙNG TRẬN THEO ƯU TIÊN TIẾNG ANH.
 """
 
 import asyncio
@@ -17,6 +18,7 @@ from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 from difflib import SequenceMatcher
 from typing import List, Dict, Optional
+from itertools import groupby
 
 import pycountry
 import aiohttp
@@ -30,7 +32,7 @@ SCHEDULE_FILE = "schedule.json"
 LIVE_M3U = "live_schedule.m3u"
 SOFASCORE_CACHE_FILE = "sofascore_cache.json"
 VALIDATE_TIMEOUT = 2           # Giây cho HEAD request
-MAX_CHANNELS_PER_MATCH = 500     # Số kênh tối đa mỗi trận
+MAX_CHANNELS_PER_MATCH = 500   # Số kênh tối đa mỗi trận
 HEAD_CONCURRENCY = 100         # Số lượng HEAD đồng thời
 
 # Danh sách giải tennis được phép
@@ -227,6 +229,28 @@ def is_team_match(team_name: str, m3u_name: str) -> bool:
     else:
         m3u_norm = normalize_channel_name(m3u_name)
     return similar(team_norm, m3u_norm) >= 0.7
+
+def get_country_priority(country_name: str) -> int:
+    """Trả về độ ưu tiên của quốc gia (càng nhỏ càng ưu tiên hiển thị trước)."""
+    if not country_name:
+        return 100  # Không rõ nguồn gốc → xếp cuối
+    priority_map = {
+        "united kingdom": 1,
+        "uk": 1,
+        "england": 1,
+        "united states": 2,
+        "usa": 2,
+        "australia": 3,
+        "canada": 4,
+        "ireland": 5,
+        "new zealand": 6,
+        "south africa": 7,
+    }
+    country_lower = country_name.lower()
+    for key, prio in priority_map.items():
+        if key in country_lower:
+            return prio
+    return 50  # Các quốc gia khác
 
 # ================== SOFASCORE API ==================
 async def get_channel_name(session, channel_id):
@@ -795,7 +819,7 @@ async def main():
     print(f"   ✅ Đã tải {len(unique_ch)} kênh")
 
     # 4. Match kênh
-    print("🔄 Đang match kênh với lịch (giới hạn tối đa 2 kênh/trận)...")
+    print("🔄 Đang match kênh với lịch...")
     live_events = []
     for g in all_games:
         try:
@@ -819,7 +843,10 @@ async def main():
                             "datetime": datetime.fromtimestamp(g['kick_utc']).astimezone(TIMEZONE),
                             "name": display_name,
                             "channel": ch,
-                            "league": g["league"]
+                            "league": g["league"],
+                            "country": tv_country,
+                            "match": g["match"],
+                            "kick_utc": g["kick_utc"]
                         })
                         channel_count += 1
                 if channel_count >= MAX_CHANNELS_PER_MATCH:
@@ -837,7 +864,10 @@ async def main():
                             "datetime": datetime.fromtimestamp(g['kick_utc']).astimezone(TIMEZONE),
                             "name": display_name,
                             "channel": ch,
-                            "league": g["league"]
+                            "league": g["league"],
+                            "country": "",
+                            "match": g["match"],
+                            "kick_utc": g["kick_utc"]
                         })
                         break
         except Exception as e:
@@ -862,7 +892,7 @@ async def main():
         print("⚡ Bỏ qua kiểm tra link (ENABLE_VALIDATION = False)")
         validated_events = live_events
 
-    # 6. Ghi M3U
+    # 6. Ghi M3U với sắp xếp ưu tiên tiếng Anh
     tennis_events = [ev for ev in validated_events if ev['league'] == "Tennis"]
     other_events = [ev for ev in validated_events if ev['league'] != "Tennis"]
     grouped_tennis = {}
@@ -871,7 +901,18 @@ async def main():
         if key not in grouped_tennis:
             grouped_tennis[key] = ev
     final_events = other_events + list(grouped_tennis.values())
+
+    # Sắp xếp theo thời gian trước
     final_events.sort(key=lambda x: x["datetime"])
+
+    # Sau đó nhóm theo trận đấu và sắp xếp nội bộ theo ưu tiên quốc gia
+    sorted_events = []
+    for (kick_utc, match), group in groupby(final_events, key=lambda ev: (ev["kick_utc"], ev["match"])):
+        group_list = list(group)
+        # Sắp xếp các kênh trong cùng trận đấu theo độ ưu tiên quốc gia (nhỏ trước)
+        group_list.sort(key=lambda ev: get_country_priority(ev.get("country", "")))
+        sorted_events.extend(group_list)
+    final_events = sorted_events
 
     with open(LIVE_M3U, "w", encoding="utf-8") as f:
         f.write("#EXTM3U\n")
