@@ -28,7 +28,12 @@ jobs:
 
       - name: Run scraper
         run: node src/ausport_scraper.js
-
+      - name: Upload debug HTML
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-html
+          path: debug_sat.html
       - name: Commit output
         run: |
           git config user.name "github-actions"
