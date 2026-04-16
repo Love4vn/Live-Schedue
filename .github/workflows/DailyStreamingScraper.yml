@@ -6,28 +6,34 @@ on:
   workflow_dispatch:
 
 jobs:
-  update:
+  scrape:
     runs-on: ubuntu-latest
-
     steps:
-
       - uses: actions/checkout@v4
+        with:
+          ref: '1'
+          fetch-depth: 0  # Lấy toàn bộ lịch sử để rebase
 
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
       - name: Install dependencies
         run: |
-          pip install curl_cffi pycountry beautifulsoup4 lxml playwright aiohttp
-          python -m playwright install --with-deps chromium
-          
+          pip install playwright beautifulsoup4 aiohttp
+          playwright install chromium
+
       - name: Run script
         run: python livesportsontv.py
-        
-      #- name: Run wheresthematch
-      #  run: python wheresthematch_scraper.py  
 
-      - uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Pull latest changes (rebase)
+        run: git pull --rebase origin 1 || true
+
+      - name: Commit and push
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "update livesportsontv.json"
+          commit_message: update livesportsontv.json
+          branch: 1
+          pull: '--rebase'
+          push_options: '--force-with-lease'
