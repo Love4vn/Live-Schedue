@@ -35,5 +35,4 @@ jobs:
         with:
           commit_message: update livesportsontv.json
           branch: 1
-          pull: '--rebase'
           push_options: '--force-with-lease'
