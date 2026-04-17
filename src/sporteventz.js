@@ -1,16 +1,17 @@
 // src/sporteventz.js
-// SportEventz scraper sử dụng các trang tĩnh (text) để lấy dữ liệu.
-// Giải quyết triệt để vấn đề JavaScript và AJAX.
+// Giải pháp kết hợp Puppeteer (cho bóng đá động) và Axios (cho tennis tĩnh)
 
+const puppeteer = require('puppeteer-extra');
+const StealthPlugin = require('puppeteer-extra-plugin-stealth');
+puppeteer.use(StealthPlugin());
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
 
 // ---------- Cấu hình ----------
 const BASE_URL = 'https://www.sporteventz.com';
-// Các trang tĩnh đã được xác định là hoạt động tốt
-const SOCCER_STATIC_URL = `${BASE_URL}/en/soccer`;
-const TENNIS_STATIC_URL = `${BASE_URL}/en/other-sport/tennis.html`;
+const SOCCER_URL = `${BASE_URL}/en/soccer`;
+const TENNIS_URL = `${BASE_URL}/en/other-sport/tennis.html`;
 
 // Bộ lọc bóng đá (giữ nguyên)
 const ALLOWED_FOOTBALL_LEAGUES = new Set([
@@ -58,94 +59,150 @@ function shouldIncludeFootballFixture(homeTeam, awayTeam, competition) {
 function log(msg) {
     console.log(`[${new Date().toISOString()}] [SPORTEVENTZ] ${msg}`);
 }
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-// ---------- Hàm lấy và phân tích dữ liệu từ trang tĩnh ----------
-async function fetchAndParse(url, type) {
-    log(`Đang tải dữ liệu từ ${url}`);
+// ---------- Hàm lấy dữ liệu bóng đá (Puppeteer) ----------
+async function fetchFootballFixtures() {
+    log('Đang lấy lịch bóng đá (sử dụng Puppeteer)...');
+    let browser = null;
+    let page = null;
     try {
-        const response = await axios.get(url, {
+        browser = await puppeteer.launch({
+            headless: 'new',
+            args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu']
+        });
+        page = await browser.newPage();
+        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+        await page.setViewport({ width: 1920, height: 1080 });
+
+        log(`Truy cập ${SOCCER_URL}`);
+        await page.goto(SOCCER_URL, { waitUntil: 'networkidle2', timeout: 60000 });
+
+        // Đợi selector của jTable (quan trọng)
+        try {
+            await page.waitForSelector('.MagicTableRow, .jtable-data-row', { timeout: 30000 });
+            log('Dữ liệu bóng đá đã được tải.');
+        } catch (e) {
+            log('Không tìm thấy dữ liệu bóng đá sau 30 giây, kiểm tra lại cấu trúc trang.');
+            // Chụp ảnh debug
+            await page.screenshot({ path: path.join(__dirname, '..', 'debug_football_error.png'), fullPage: true });
+            return [];
+        }
+
+        // Đợi thêm một chút cho các kênh hiển thị
+        await delay(2000);
+
+        // Lấy toàn bộ nội dung trang sau khi render
+        const html = await page.content();
+
+        // Phân tích cú pháp HTML
+        const fixtures = [];
+        // Sử dụng regex để tìm các khối dữ liệu. Dựa trên cấu trúc đã quan sát:
+        // Mỗi trận đấu thường được bọc trong một thẻ <div> với class "MagicTableRow".
+        const rowRegex = /<div class="MagicTableRow.*?">(.*?)<\/div>\s*<div class="MagicTableChannels"/gs;
+        const rows = html.match(rowRegex) || [];
+
+        for (const rowHtml of rows) {
+            // Trích xuất tiêu đề (giải đấu)
+            const headlineMatch = rowHtml.match(/<div class="MagicTableRowHeadline">(.*?)<\/div>/i);
+            const competition = headlineMatch ? headlineMatch[1].trim() : '';
+
+            // Trích xuất tên đội
+            const homeMatch = rowHtml.match(/<span class="MagicTableRowMainHomeTeamName">(.*?)<\/span>/i);
+            const awayMatch = rowHtml.match(/<span class="MagicTableRowMainAwayTeamName">(.*?)<\/span>/i);
+            if (!homeMatch || !awayMatch) continue;
+            const homeTeam = homeMatch[1].trim();
+            const awayTeam = awayMatch[1].trim();
+
+            // Lọc bóng đá
+            if (!shouldIncludeFootballFixture(homeTeam, awayTeam, competition)) continue;
+
+            // Trích xuất thời gian
+            const timeMatch = rowHtml.match(/<div class="MagicTableRowFootline"><h3>(.*?)<\/h3><\/div>/i);
+            const kickoffUtc = timeMatch ? timeMatch[1].trim() : null;
+
+            // Trích xuất kênh (nếu có)
+            const channelMatches = rowHtml.match(/<div class="MagicTableRowMoreButton.*?">(.*?)<\/div>/gi) || [];
+            const channels = channelMatches.map(btn => {
+                const text = btn.replace(/<[^>]*>/g, '').trim();
+                return text.split('\n')[0]; // Lấy dòng đầu tiên
+            });
+
+            fixtures.push({
+                homeTeam,
+                awayTeam,
+                kickoffUtc,
+                competition,
+                channels: [...new Set(channels)],
+                sport: 'football'
+            });
+        }
+
+        log(`Đã tìm thấy ${fixtures.length} trận bóng đá sau khi lọc.`);
+        return fixtures;
+    } catch (error) {
+        log(`Lỗi khi lấy dữ liệu bóng đá: ${error.message}`);
+        return [];
+    } finally {
+        if (page) await page.close();
+        if (browser) await browser.close();
+    }
+}
+
+// ---------- Hàm lấy dữ liệu tennis (Static) ----------
+async function fetchTennisFixtures() {
+    log('Đang lấy lịch tennis (trang tĩnh)...');
+    try {
+        const response = await axios.get(TENNIS_URL, {
             headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' }
         });
         const text = response.data;
-
-        // Dựa trên cấu trúc quan sát được: mỗi trận đấu được phân tách bằng "##"
-        // Định dạng: "Giải đấu ## Đội 1 vs. Đội 2 ## Ngày giờ"
-        const matches = [];
-        const lines = text.split('\n');
-        let currentCompetition = '';
-
-        for (const line of lines) {
-            const trimmedLine = line.trim();
-            if (!trimmedLine) continue;
-
-            // Dòng chứa "##" thường là dòng có thông tin trận đấu
-            if (trimmedLine.includes('##')) {
-                const parts = trimmedLine.split('##').map(s => s.trim());
-                if (parts.length >= 3) {
-                    const competition = parts[0];
-                    const teams = parts[1];
-                    const datetime = parts[2];
-
-                    const vsMatch = teams.match(/(.+?)\s+vs\.?\s+(.+)/i);
-                    if (!vsMatch) continue;
-                    const homeTeam = vsMatch[1].trim();
-                    const awayTeam = vsMatch[2].trim();
-
-                    // Lọc bóng đá
-                    if (type === 'football' && !shouldIncludeFootballFixture(homeTeam, awayTeam, competition)) {
-                        continue;
-                    }
-
-                    matches.push({
-                        competition,
-                        homeTeam,
-                        awayTeam,
-                        kickoffUtc: datetime,
-                        sport: type
-                    });
-                }
-            } else if (type === 'tennis' && (trimmedLine.startsWith('ATP,') || trimmedLine.startsWith('WTA,'))) {
-                currentCompetition = trimmedLine.replace(/,/g, '').trim();
+        const fixtures = [];
+        
+        // Dựa trên cấu trúc đã thấy: các trận được phân tách bằng "##"
+        const matches = text.match(/[^#]+##[^#]+##[^#]+/g) || [];
+        
+        for (const match of matches) {
+            const parts = match.split('##').map(s => s.trim());
+            if (parts.length >= 3) {
+                const tournament = parts[0];
+                const players = parts[1];
+                const datetime = parts[2];
+                
+                const vsMatch = players.match(/(.+?)\s+vs\.?\s+(.+)/i);
+                if (!vsMatch) continue;
+                const player1 = vsMatch[1].trim();
+                const player2 = vsMatch[2].trim();
+                
+                fixtures.push({
+                    player1,
+                    player2,
+                    kickoffUtc: datetime,
+                    tournament,
+                    channels: [], // Có thể bổ sung sau
+                    sport: 'tennis'
+                });
             }
         }
-
-        log(`Đã tìm thấy ${matches.length} trận ${type}.`);
-        return matches;
+        log(`Đã tìm thấy ${fixtures.length} trận tennis.`);
+        return fixtures;
     } catch (error) {
-        log(`Lỗi khi lấy dữ liệu ${type}: ${error.message}`);
+        log(`Lỗi khi lấy dữ liệu tennis: ${error.message}`);
         return [];
     }
 }
 
 // ---------- Hàm chính ----------
 async function scrapeAll() {
-    const [footballMatches, tennisMatches] = await Promise.all([
-        fetchAndParse(SOCCER_STATIC_URL, 'football'),
-        fetchAndParse(TENNIS_STATIC_URL, 'tennis')
+    const [football, tennis] = await Promise.all([
+        fetchFootballFixtures(),
+        fetchTennisFixtures()
     ]);
 
-    const footballOut = footballMatches.map(m => ({
-        homeTeam: m.homeTeam,
-        awayTeam: m.awayTeam,
-        kickoffUtc: m.kickoffUtc,
-        competition: m.competition,
-        channels: [], // Có thể bổ sung sau
-        sport: 'football'
-    }));
-
-    const tennisOut = tennisMatches.map(m => ({
-        player1: m.homeTeam,
-        player2: m.awayTeam,
-        kickoffUtc: m.kickoffUtc,
-        tournament: m.competition,
-        channels: [],
-        sport: 'tennis'
-    }));
-
     return {
-        football: footballOut,
-        tennis: tennisOut,
-        total: footballOut.length + tennisOut.length,
+        football,
+        tennis,
+        total: football.length + tennis.length,
         scrapedAt: new Date().toISOString(),
         source: 'sporteventz'
     };
@@ -154,7 +211,7 @@ async function scrapeAll() {
 // ---------- Chạy độc lập ----------
 if (require.main === module) {
     (async () => {
-        console.log('=== SportEventz Scraper (Trang tĩnh) ===');
+        console.log('=== SportEventz Scraper (Hybrid) ===');
         const data = await scrapeAll();
         const outputPath = path.join(__dirname, '..', 'sportevent_schedule.json');
         fs.writeFileSync(outputPath, JSON.stringify(data, null, 2));
