@@ -1,5 +1,5 @@
 // src/scrape-wtm.js
-// WTM SCRAPER - Lọc 48h tới, giờ Việt Nam (UTC+7), chỉ bóng đá/tennis, xuất JSON
+// WTM SCRAPER - Lọc từ 8h trước đến 48h sau (tổng 56h), giờ Việt Nam (UTC+7)
 
 const axios = require("axios");
 const cheerio = require("cheerio");
@@ -145,11 +145,11 @@ function getCurrentVietnamTime() {
   return new Date(now.getTime() + 7 * 3600000);
 }
 
-// Lấy 4 ngày (hôm nay + 3 ngày tới) để đảm bảo đủ dữ liệu trong 48h
+// Lấy 5 ngày (hôm nay + 4 ngày tới) để đảm bảo đủ dữ liệu cho 56h
 function getDatesToScrape() {
   const nowVN = getCurrentVietnamTime();
   const dates = [];
-  for (let i = 0; i <= 3; i++) {
+  for (let i = 0; i <= 4; i++) {
     const d = new Date(nowVN);
     d.setDate(nowVN.getDate() + i);
     const yyyy = d.getFullYear();
@@ -312,11 +312,11 @@ async function scrapeOneDate(dateYYYYMMDD) {
 }
 
 // ========== BỘ LỌC ==========
-function filterEventsByTime(events, nowVN, endVN) {
+function filterEventsByTime(events, startVN, endVN) {
   return events.filter(event => {
     const eventDate = parseEventDateTimeVN(event.tanggal, event.time);
     if (!eventDate) return false;
-    return eventDate >= nowVN && eventDate <= endVN;
+    return eventDate >= startVN && eventDate <= endVN;
   });
 }
 
@@ -368,11 +368,13 @@ function filterEventsBySport(events) {
 // ========== MAIN ==========
 async function main() {
   const nowVN = getCurrentVietnamTime();
-  const endVN = new Date(nowVN.getTime() + 48 * 3600000);
+  const startVN = new Date(nowVN.getTime() - 8 * 3600000); // 8 giờ trước
+  const endVN = new Date(nowVN.getTime() + 48 * 3600000); // 48 giờ sau
 
   const dates = getDatesToScrape();
   console.log("Scraping dates:", dates);
   console.log("Now (VN):", nowVN.toISOString());
+  console.log("Start (VN):", startVN.toISOString());
   console.log("End (VN):", endVN.toISOString());
 
   let allEvents = [];
@@ -403,8 +405,8 @@ async function main() {
     }
   });
 
-  let filteredByTime = filterEventsByTime(allEvents, nowVN, endVN);
-  console.log(`After time filter (48h): ${filteredByTime.length}`);
+  let filteredByTime = filterEventsByTime(allEvents, startVN, endVN);
+  console.log(`After time filter (from -8h to +48h): ${filteredByTime.length}`);
 
   let finalEvents = filterEventsBySport(filteredByTime);
   console.log(`After sport filter: ${finalEvents.length}`);
