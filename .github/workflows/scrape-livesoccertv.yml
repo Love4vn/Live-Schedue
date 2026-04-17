@@ -1,9 +1,10 @@
+# .github/workflows/scrape-livesoccertv.yml
 name: Scrape LiveSoccerTV
 
 on:
   schedule:
     - cron: "30 1 * * *"   # Chạy lúc 1:30 UTC = 8:30 VN mỗi ngày
-  workflow_dispatch:       # Cho phép chạy thủ công
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -24,10 +25,10 @@ jobs:
           node-version: "20"
 
       - name: Install dependencies
-        run: npm install axios cheerio
+        run: npm install axios cheerio livesoccertv-parser
 
       - name: Run scraper
-        run: node scrape-livesoccertv.js
+        run: node scrape-with-parser.js   # Chạy script mới
 
       - name: Commit output
         run: |
