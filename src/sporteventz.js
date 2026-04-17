@@ -1,8 +1,10 @@
 // src/sporteventz.js
-// SportEventz scraper cải tiến - lọc bóng đá nam + toàn bộ tennis
-// Lưu kết quả ra sportevent_schedule.json tại thư mục gốc repo.
+// SportEventz scraper nâng cao - sử dụng stealth và mô phỏng hành vi người dùng
 
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-extra');
+const StealthPlugin = require('puppeteer-extra-plugin-stealth');
+puppeteer.use(StealthPlugin());
+
 const fs = require('fs');
 const path = require('path');
 
@@ -10,11 +12,11 @@ const path = require('path');
 const BASE_URL = 'https://www.sporteventz.com';
 const SOCCER_URL = `${BASE_URL}/soccer`;
 const TENNIS_URL = `${BASE_URL}/tennis`;
-const DEFAULT_TIMEOUT = 45000;          // Tăng timeout
-const SCROLL_PAUSE_TIME = 2000;          // Tăng thời gian chờ sau scroll
-const MAX_SCROLL_ATTEMPTS = 15;          // Tăng số lần scroll
+const DEFAULT_TIMEOUT = 60000;
+const SCROLL_PAUSE_TIME = 2000;
+const MAX_SCROLL_ATTEMPTS = 15;
 
-// Danh sách kênh truyền hình
+// Danh sách kênh (giữ nguyên)
 const TV_CHANNELS = [
   'Sky Sports Main Event', 'Sky Sports Premier League', 'Sky Sports Football',
   'Sky Sports', 'TNT Sports 1', 'TNT Sports 2', 'TNT Sports 3', 'TNT Sports 4',
@@ -25,7 +27,7 @@ const TV_CHANNELS = [
   'Paramount+', 'Peacock', 'fuboTV', 'CBS Sports', 'Eurosport', 'Viaplay', 'SuperSport'
 ];
 
-// ---------- Bộ lọc bóng đá ----------
+// Bộ lọc bóng đá (giữ nguyên)
 const ALLOWED_FOOTBALL_LEAGUES = new Set([
   "Premier League", "Serie A", "La Liga", "Bundesliga", "Ligue 1",
   "UEFA Champions League", "UEFA Europa League", "UEFA Europa Conference League",
@@ -62,16 +64,14 @@ function shouldIncludeFootballFixture(homeTeam, awayTeam, competition) {
   const homeLower = homeTeam.toLowerCase();
   const awayLower = awayTeam.toLowerCase();
   for (const league in ALLOWED_TEAMS_PER_LEAGUE) {
-    const teamsSet = ALLOWED_TEAMS_PER_LEAGUE[league];
-    if (teamsSet.has(homeLower) || teamsSet.has(awayLower)) return true;
+    if (ALLOWED_TEAMS_PER_LEAGUE[league].has(homeLower) || ALLOWED_TEAMS_PER_LEAGUE[league].has(awayLower)) return true;
   }
   return false;
 }
 
 // ---------- Logging ----------
 function log(msg) {
-  const timestamp = new Date().toISOString();
-  console.log(`[${timestamp}] [SPORTEVENTZ] ${msg}`);
+  console.log(`[${new Date().toISOString()}] [SPORTEVENTZ] ${msg}`);
 }
 
 // ---------- Browser ----------
@@ -85,41 +85,60 @@ async function getBrowser() {
       '--disable-setuid-sandbox',
       '--disable-dev-shm-usage',
       '--disable-gpu',
-      '--disable-features=site-per-process'
+      '--disable-features=site-per-process',
+      '--window-size=1920,1080'
     ]
   });
   return browser;
 }
 
-// ---------- Hàm scrape chung ----------
-async function scrapeSportPage(url, sportType, debugScreenshot = false) {
+// ---------- Mô phỏng hành vi người dùng ----------
+async function simulateHumanBehavior(page) {
+  // Di chuyển chuột ngẫu nhiên
+  await page.mouse.move(Math.random() * 500 + 100, Math.random() * 300 + 100);
+  await page.waitForTimeout(500 + Math.random() * 1000);
+  
+  // Cuộn nhẹ
+  await page.evaluate(() => window.scrollBy(0, 200));
+  await page.waitForTimeout(300);
+}
+
+// ---------- Hàm scrape chính ----------
+async function scrapeSportPage(url, sportType) {
   let page = null;
   try {
     const browserInstance = await getBrowser();
     page = await browserInstance.newPage();
     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+    await page.setViewport({ width: 1920, height: 1080 });
 
-    log(`Đang tải ${url}`);
+    log(`Truy cập ${url}`);
     await page.goto(url, { waitUntil: 'networkidle2', timeout: DEFAULT_TIMEOUT });
 
-    // Chờ một phần tử đặc trưng xuất hiện (có thể là bảng hoặc event)
-    try {
-      await page.waitForSelector('table, .event, .match, .fixture, [class*="event"]', { timeout: 15000 });
-    } catch (e) {
-      log(`Không tìm thấy selector đặc trưng, tiếp tục...`);
-    }
+    // Mô phỏng hành vi người
+    await simulateHumanBehavior(page);
 
     // Chấp nhận cookie nếu có
     try {
       const cookieBtn = await page.$('button[id*="accept"], button[class*="accept"], [class*="cookie"] button');
       if (cookieBtn) {
         await cookieBtn.click();
-        await new Promise(r => setTimeout(r, 1000));
+        await page.waitForTimeout(1500);
         log('Đã chấp nhận cookie');
       }
     } catch (e) {}
 
-    // Scroll để tải thêm nội dung
+    // Thử click vào tab "Today" hoặc "All" để đảm bảo hiển thị đầy đủ
+    try {
+      const todayTab = await page.$('a:contains("Today"), button:contains("Today"), [class*="today"]');
+      if (todayTab) {
+        await todayTab.click();
+        await page.waitForTimeout(2000);
+        log('Đã chọn tab Today');
+      }
+    } catch (e) {}
+
+    // Scroll nhiều lần để tải lazy load
     let lastHeight = 0;
     let scrollCount = 0;
     while (scrollCount < MAX_SCROLL_ATTEMPTS) {
@@ -127,102 +146,120 @@ async function scrapeSportPage(url, sportType, debugScreenshot = false) {
       if (newHeight === lastHeight) break;
       lastHeight = newHeight;
       await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-      await new Promise(r => setTimeout(r, SCROLL_PAUSE_TIME));
+      await page.waitForTimeout(SCROLL_PAUSE_TIME);
       scrollCount++;
     }
-    log(`Đã scroll ${scrollCount} lần cho ${sportType}`);
+    log(`Đã scroll ${scrollCount} lần`);
 
-    // Chụp ảnh debug nếu cần (khi chạy thủ công)
-    if (debugScreenshot) {
-      const screenshotPath = path.join(__dirname, `debug_${sportType}.png`);
-      await page.screenshot({ path: screenshotPath, fullPage: false });
-      log(`Đã lưu ảnh debug: ${screenshotPath}`);
-    }
+    // Lưu HTML và ảnh chụp để debug
+    const debugDir = path.join(__dirname, '..');
+    const htmlPath = path.join(debugDir, `debug_${sportType}.html`);
+    const screenshotPath = path.join(debugDir, `debug_${sportType}_full.png`);
+    await page.screenshot({ path: screenshotPath, fullPage: true });
+    fs.writeFileSync(htmlPath, await page.content());
+    log(`Đã lưu HTML: ${htmlPath} và ảnh: ${screenshotPath}`);
 
     // Trích xuất dữ liệu
     const fixtures = await page.evaluate((TV_CHANNELS, sportType) => {
       const results = [];
-      // Selector ưu tiên: các hàng trong bảng (phổ biến trên SportEventz)
-      const rows = document.querySelectorAll('table tbody tr, .event, .match, .fixture, .game, [class*="event"], [class*="match"]');
-      
-      rows.forEach(el => {
-        try {
-          const text = el.innerText || el.textContent || '';
-          const textLower = text.toLowerCase();
 
-          // Bỏ qua nếu không phải môn thể thao mong muốn
-          if (sportType === 'football' && (textLower.includes('tennis') || textLower.includes('basketball') || textLower.includes('cricket') || textLower.includes('rugby'))) return;
-          if (sportType === 'tennis' && !textLower.includes('tennis') && !textLower.includes('atp') && !textLower.includes('wta')) return;
+      function extractFromElement(el) {
+        const text = el.innerText || '';
+        const textLower = text.toLowerCase();
 
-          // Lấy tên đội / tay vợt
-          let home = '', away = '';
-          const homeEl = el.querySelector('.home-team, .home, [class*="home"]');
-          const awayEl = el.querySelector('.away-team, .away, [class*="away"]');
-          if (homeEl) home = homeEl.innerText.trim();
-          if (awayEl) away = awayEl.innerText.trim();
+        // Bỏ qua nếu không đúng môn
+        if (sportType === 'football' && (textLower.includes('tennis') || textLower.includes('basketball'))) return null;
+        if (sportType === 'tennis' && !textLower.includes('tennis') && !textLower.includes('atp') && !textLower.includes('wta')) return null;
 
-          if (!home || !away) {
-            const teams = el.querySelectorAll('.team, .team-name, [class*="team"]');
-            if (teams.length >= 2) {
-              home = teams[0].innerText.trim();
-              away = teams[1].innerText.trim();
-            }
+        // Tên đội/tay vợt
+        let home = '', away = '';
+        const homeEl = el.querySelector('.home, .home-team, [class*="home"]');
+        const awayEl = el.querySelector('.away, .away-team, [class*="away"]');
+        if (homeEl) home = homeEl.innerText.trim();
+        if (awayEl) away = awayEl.innerText.trim();
+
+        if (!home || !away) {
+          const teams = el.querySelectorAll('.team, .team-name, [class*="team"]');
+          if (teams.length >= 2) {
+            home = teams[0].innerText.trim();
+            away = teams[1].innerText.trim();
           }
+        }
 
-          // Fallback: tìm mẫu "vs"
-          if (!home || !away) {
-            const vsMatch = text.match(/([A-Za-z\s\-'\.0-9]+)\s+(?:v|vs|versus|–|-)\s+([A-Za-z\s\-'\.0-9]+)/i);
-            if (vsMatch) {
-              home = vsMatch[1].trim();
-              away = vsMatch[2].trim();
-            }
+        // Fallback vs
+        if (!home || !away) {
+          const vsMatch = text.match(/([A-Za-z0-9\s\-\.']+)\s+(?:v|vs|versus|–|-)\s+([A-Za-z0-9\s\-\.']+)/i);
+          if (vsMatch) {
+            home = vsMatch[1].trim();
+            away = vsMatch[2].trim();
           }
+        }
 
-          // Làm sạch tên
-          home = home.replace(/\b(fc|afc|cf|sc|ac)\b/gi, '').replace(/\s+/g, ' ').trim();
-          away = away.replace(/\b(fc|afc|cf|sc|ac)\b/gi, '').replace(/\s+/g, ' ').trim();
-          if (!home || !away) return;
+        home = home.replace(/\b(fc|afc|cf|sc|ac)\b/gi, '').replace(/\s+/g, ' ').trim();
+        away = away.replace(/\b(fc|afc|cf|sc|ac)\b/gi, '').replace(/\s+/g, ' ').trim();
+        if (!home || !away) return null;
 
-          // Thời gian
-          let kickoffUtc = null;
-          const timeEl = el.querySelector('time, [datetime], .time, .date, .kickoff');
-          if (timeEl) kickoffUtc = timeEl.getAttribute('datetime') || timeEl.innerText.trim();
-          if (!kickoffUtc) {
-            const dateMatch = text.match(/(\d{1,2}[\/\-\.]\d{1,2}(?:[\/\-\.]\d{2,4})?)/);
-            const timeMatch = text.match(/(\d{1,2}[:\.]?\d{2}\s*(am|pm|GMT|BST|CET|UTC)?)/i);
-            kickoffUtc = [dateMatch?.[1], timeMatch?.[1]].filter(Boolean).join(' ');
-          }
+        // Thời gian
+        let kickoff = null;
+        const timeEl = el.querySelector('time, [datetime], .time, .date, .kickoff');
+        if (timeEl) kickoff = timeEl.getAttribute('datetime') || timeEl.innerText.trim();
+        if (!kickoff) {
+          const dateMatch = text.match(/(\d{1,2}[\/\-\.]\d{1,2}(?:[\/\-\.]\d{2,4})?)/);
+          const timeMatch = text.match(/(\d{1,2}[:\.]\d{2}\s*(am|pm)?)/i);
+          kickoff = [dateMatch?.[1], timeMatch?.[1]].filter(Boolean).join(' ');
+        }
 
-          // Giải đấu
-          let competition = null;
-          const compEl = el.querySelector('.competition, .league, .tournament, [class*="competition"], [class*="league"]');
-          if (compEl) competition = compEl.innerText.trim();
+        // Giải đấu
+        let comp = null;
+        const compEl = el.querySelector('.competition, .league, .tournament, [class*="competition"], [class*="league"]');
+        if (compEl) comp = compEl.innerText.trim();
 
-          // Kênh phát sóng
-          const channels = [];
-          for (const ch of TV_CHANNELS) {
-            if (textLower.includes(ch.toLowerCase())) channels.push(ch);
-          }
-          const channelEls = el.querySelectorAll('.channel, .broadcaster, .tv, .stream, [class*="channel"], [class*="broadcaster"]');
-          channelEls.forEach(cEl => {
-            const chText = cEl.innerText.trim();
-            if (chText) {
-              chText.split(/[,;\/\n]/).forEach(part => {
-                const clean = part.trim();
-                if (clean && !channels.includes(clean)) channels.push(clean);
-              });
-            }
+        // Kênh
+        const channels = [];
+        for (const ch of TV_CHANNELS) {
+          if (textLower.includes(ch.toLowerCase())) channels.push(ch);
+        }
+        const channelEls = el.querySelectorAll('.channel, .broadcaster, .tv, .stream');
+        channelEls.forEach(c => {
+          c.innerText.split(/[,;\/\n]/).forEach(p => {
+            const clean = p.trim();
+            if (clean) channels.push(clean);
           });
+        });
 
-          results.push({ home, away, kickoffUtc, competition, channels: [...new Set(channels)] });
-        } catch (e) {}
+        return { home, away, kickoffUtc: kickoff, competition: comp, channels: [...new Set(channels)] };
+      }
+
+      // Các selector ưu tiên
+      const selectors = [
+        'tr.event', 'tr.match', 'tr.fixture',
+        '.event-item', '.match-item', '.fixture-item',
+        '[class*="event-row"]', '[class*="match-row"]',
+        'table tbody tr', '.fixtures-table tr', '.schedule-table tr',
+        'div.event', 'div.match', 'div.fixture'
+      ];
+
+      let processed = new Set();
+      selectors.forEach(sel => {
+        document.querySelectorAll(sel).forEach(el => {
+          if (processed.has(el)) return;
+          processed.add(el);
+          const data = extractFromElement(el);
+          if (data) results.push(data);
+        });
       });
 
-      // Nếu không tìm thấy gì, thử quét toàn bộ văn bản để tìm pattern
+      // Nếu không có, duyệt tất cả thẻ div, li, tr
       if (results.length === 0) {
-        const allText = document.body.innerText;
-        const lines = allText.split('\n');
-        // Logic dự phòng có thể thêm sau
+        document.querySelectorAll('div, li, tr').forEach(el => {
+          if (processed.has(el)) return;
+          const text = el.innerText || '';
+          if (text.includes(' vs ') || text.includes(' v ') || /\d{1,2}:\d{2}/.test(text)) {
+            processed.add(el);
+            const data = extractFromElement(el);
+            if (data) results.push(data);
+          }
+        });
       }
 
       return results;
@@ -237,20 +274,18 @@ async function scrapeSportPage(url, sportType, debugScreenshot = false) {
   }
 }
 
-// ---------- Hàm công khai ----------
+// ---------- Hàm chính ----------
 async function fetchFootballFixtures() {
   log('Đang lấy lịch bóng đá...');
-  const raw = await scrapeSportPage(SOCCER_URL, 'football', true); // bật screenshot khi chạy thủ công
+  const raw = await scrapeSportPage(SOCCER_URL, 'football');
   const filtered = raw.filter(f => shouldIncludeFootballFixture(f.home, f.away, f.competition));
-  log(`Bóng đá: ${raw.length} trận thô, ${filtered.length} trận sau lọc`);
+  log(`Bóng đá: ${raw.length} thô, ${filtered.length} sau lọc`);
   return filtered;
 }
 
 async function fetchTennisFixtures() {
   log('Đang lấy lịch tennis...');
-  const raw = await scrapeSportPage(TENNIS_URL, 'tennis', true);
-  log(`Tennis: ${raw.length} trận`);
-  return raw;
+  return await scrapeSportPage(TENNIS_URL, 'tennis');
 }
 
 async function scrapeAll() {
@@ -259,7 +294,7 @@ async function scrapeAll() {
     fetchTennisFixtures()
   ]);
 
-  const footballFormatted = football.map(f => ({
+  const footballOut = football.map(f => ({
     homeTeam: f.home,
     awayTeam: f.away,
     kickoffUtc: f.kickoffUtc || null,
@@ -268,7 +303,7 @@ async function scrapeAll() {
     sport: 'football'
   }));
 
-  const tennisFormatted = tennis.map(f => ({
+  const tennisOut = tennis.map(f => ({
     player1: f.home,
     player2: f.away,
     kickoffUtc: f.kickoffUtc || null,
@@ -278,9 +313,9 @@ async function scrapeAll() {
   }));
 
   return {
-    football: footballFormatted,
-    tennis: tennisFormatted,
-    total: footballFormatted.length + tennisFormatted.length,
+    football: footballOut,
+    tennis: tennisOut,
+    total: footballOut.length + tennisOut.length,
     scrapedAt: new Date().toISOString(),
     source: 'sporteventz'
   };
@@ -289,35 +324,22 @@ async function scrapeAll() {
 // ---------- Chạy độc lập ----------
 if (require.main === module) {
   (async () => {
-    console.log('=== SportEventz Scraper (Filtered Football + Tennis) ===');
-    
-    // Kiểm tra sức khỏe nhanh
+    console.log('=== SportEventz Scraper với Stealth ===');
     try {
-      const browser = await getBrowser();
-      const page = await browser.newPage();
-      await page.goto(SOCCER_URL, { waitUntil: 'domcontentloaded', timeout: 20000 });
-      await page.close();
-      log('Kết nối đến SportEventz thành công');
+      const data = await scrapeAll();
+      console.log(`\n✅ Bóng đá: ${data.football.length} | Tennis: ${data.tennis.length}`);
+
+      // Lưu ra thư mục gốc repo
+      const outputPath = path.join(__dirname, '..', 'sportevent_schedule.json');
+      fs.writeFileSync(outputPath, JSON.stringify(data, null, 2));
+      console.log(`📁 Đã lưu: ${outputPath}`);
     } catch (e) {
-      log(`Không thể truy cập SportEventz: ${e.message}`);
-      process.exit(1);
+      console.error('❌ Lỗi:', e);
+    } finally {
+      if (browser) await browser.close();
+      process.exit(0);
     }
-
-    const data = await scrapeAll();
-    
-    // In kết quả
-    console.log(`\nKết quả:`);
-    console.log(`- Bóng đá: ${data.football.length} trận`);
-    console.log(`- Tennis: ${data.tennis.length} trận`);
-
-    // Lưu file ra thư mục gốc repo (đường dẫn tương đối từ thư mục src)
-    const outputPath = path.join(__dirname, '..', 'sportevent_schedule.json');
-    fs.writeFileSync(outputPath, JSON.stringify(data, null, 2));
-    console.log(`\nĐã lưu kết quả vào: ${outputPath}`);
-
-    if (browser) await browser.close();
-    process.exit(0);
   })();
 }
 
-module.exports = { scrapeAll, fetchFootballFixtures, fetchTennisFixtures };
+module.exports = { scrapeAll };
