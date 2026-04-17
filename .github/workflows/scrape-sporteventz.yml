@@ -1,10 +1,9 @@
-name: Scrape SportEventz Fixtures
+name: Scrape SportEventz Schedule
 
 on:
   schedule:
-    # Chạy hàng ngày lúc 02:00 UTC (điều chỉnh theo múi giờ mong muốn)
-    - cron: '0 2 * * *'
-  workflow_dispatch:  # Cho phép chạy thủ công
+    - cron: '0 2 * * *'   # 2h UTC mỗi ngày
+  workflow_dispatch:
 
 jobs:
   scrape:
@@ -20,23 +19,21 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: |
-          npm install puppeteer
+        run: npm install puppeteer
 
       - name: Run scraper
         run: node src/sporteventz.js
 
-      - name: Upload artifact (JSON result)
+      - name: Upload JSON artifact
         uses: actions/upload-artifact@v4
         with:
           name: sportevent-schedule
-          path: src/sportevent_schedule.json
+          path: sportevent_schedule.json
           retention-days: 7
 
-      # Tuỳ chọn: Commit file JSON vào repository
       - name: Commit and push if changed
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add scrapers/sportevent_schedule.json
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add sportevent_schedule.json
           git diff --quiet && git diff --staged --quiet || (git commit -m "Update SportEventz schedule [skip ci]" && git push)
