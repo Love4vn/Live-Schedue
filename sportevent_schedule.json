@@ -1,14 +1,7 @@
 {
   "football": [],
-  "tennis": [
-    {
-      "player1": "res += '<div class=\"MagicTableRowMainData\"><h1><div class=\"MagicTableRowMainDataHolder\"><div class=\"MagicTableRowMainHomeTeam\"><div style=\"background: url(/components/com_magictable/flags/'+(typeof data.record.Team1CountryCode == \"undefined\" || typeof data.record.Team1CountryCode.toLowerCase == \"undefined\" ? 'redcross' : data.record.Team1CountryCode.toLowerCase())+'.png) no-repeat center center; width: 18px; height: 18px; white-space: nowrap; display: inline-block; margin-right: 10px; background-size: 100% 100%;\" class=\"MagicTableLeftFlag\"></div><span class=\"MagicTableRowMainHomeTeamName\">'+ data.record.Team1['#text'] + '</span></div><span class=\"MagicTableRowMainVs\">",
-      "player2": "</span><div class=\"MagicTableRowMainAwayTeam\"><span class=\"MagicTableRowMainAwayTeamName\">' + data.record.Team2['#text']+'</span> <div style=\"background: url(/components/com_magictable/flags/'+(typeof data.record.Team2CountryCode == \"undefined\" || typeof data.record.Team2CountryCode.toLowerCase == \"undefined\" ? 'redcross' : data.record.Team2CountryCode.toLowerCase())+'.png) no-repeat center center; width: 18px; height: 18px; white-space: nowrap; display: inline-block; margin-left: 5px; background-size: 100% 100%;\" class=\"MagicTableRightFlag\"></div></div></div></h1></div>';",
-      "tournament": "",
-      "sport": "tennis"
-    }
-  ],
-  "total": 1,
-  "scrapedAt": "2026-04-17T10:35:12.557Z",
+  "tennis": [],
+  "total": 0,
+  "scrapedAt": "2026-04-17T12:36:31.639Z",
   "source": "sporteventz"
 }
