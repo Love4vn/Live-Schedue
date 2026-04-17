@@ -19,7 +19,7 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install axios cheerio
+        run: npm install axios
 
       - name: Run scraper
         run: node src/sporteventz.js
