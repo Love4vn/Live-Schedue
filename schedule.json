@@ -1,9 +1,102 @@
 {
-  "updated": "2026-04-17 10:31 VN",
+  "updated": "2026-04-17 15:00 VN",
   "days": {
     "20260417": {
       "date": "Friday, 17/04",
       "games": [
+        {
+          "league": "International Friendly",
+          "time": "17/04 06:00 PM",
+          "match": "BSC Young Boys vs Neuchâtel Xamax",
+          "kick_utc": 1776423600,
+          "tv_channels": [],
+          "tournament": "Club Friendly Games"
+        },
+        {
+          "league": "Serie A",
+          "match": "Sassuolo vs Como",
+          "kick_utc": 1776443400,
+          "time": "17/04 11:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DAZN Great Britain",
+                "DAZN Ireland",
+                "SuperSport Football HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Bundesliga",
+          "match": "St Pauli vs FC Cologne",
+          "kick_utc": 1776450600,
+          "time": "18/04 01:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "BBC iPlayer",
+                "BBC iPlayer 4K",
+                "BBC Sport Website",
+                "ESPN+ USA",
+                "MBC Action HD",
+                "OneFootball",
+                "Sky Sport Bundesliga 1 HD",
+                "Sky Sport Bundesliga HD",
+                "Sky Sport Bundesliga UHD",
+                "Sky Sport Top Event HD",
+                "ViaPlay Danmark HD",
+                "ViaPlay Nederland HD",
+                "ViaPlay Norge HD",
+                "ViaPlay Suomi HD",
+                "ViaPlay Sverige HD",
+                "ViaPlay Ísland HD",
+                "YouTube: Bundesliga"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Serie A",
+          "match": "Inter Milan vs Cagliari",
+          "kick_utc": 1776451500,
+          "time": "18/04 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "beIN Sports Australia 3 HD",
+                "DAZN Great Britain",
+                "DAZN Ireland",
+                "Sky Sport 251 Italia HD",
+                "Sky Sport Calcio HD",
+                "SuperSport Football HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Ligue 1",
+          "match": "Lens vs Toulouse",
+          "kick_utc": 1776451500,
+          "time": "18/04 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "beIN Sports MENA 4 HD",
+                "Ligue 1+",
+                "Prime Video UK PPV"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
         {
           "league": "Serie A",
           "match": "Inter-Milan vs Cagliari",
@@ -13,9 +106,7 @@
             {
               "country": "Wheresthematch",
               "channels": [
-                "DAZN",
-                "beIN Sports MENA 1 HD",
-                "beIN Sports MENA English 1 HD"
+                "DAZN"
               ]
             }
           ],
@@ -80,22 +171,6 @@
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP Tennis",
-          "kick_utc": 1776416400,
-          "time": "17/04 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Tennis",
-                "Sky Sports+"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
