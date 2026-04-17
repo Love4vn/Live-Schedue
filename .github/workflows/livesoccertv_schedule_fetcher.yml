@@ -1,0 +1,35 @@
+name: Livesoccertv schedule fetcher
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install curl_cffi pycountry beautifulsoup4 lxml playwright aiohttp
+          playwright install chromium
+
+      - name: Run script
+        run: python livesoccertv_schedule_fetcher.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add livesoccertv_schedule.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto update livesoccertv_schedule.json"
+          git pull --rebase origin ${{ github.ref_name }}
+          git push origin ${{ github.ref_name }}
