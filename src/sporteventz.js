@@ -15,7 +15,7 @@ const TENNIS_URL = `${BASE_URL}/en/tennis`;
 const DEFAULT_TIMEOUT = 60000;
 const WAIT_SELECTOR = '.MagicTableRow, .jtable-data-row'; // jTable row selector
 
-// Kênh truyền hình (giữ nguyên)
+// Kênh truyền hình
 const TV_CHANNELS = [
   'Sky Sports Main Event', 'Sky Sports Premier League', 'Sky Sports Football',
   'Sky Sports', 'TNT Sports 1', 'TNT Sports 2', 'TNT Sports 3', 'TNT Sports 4',
@@ -26,7 +26,7 @@ const TV_CHANNELS = [
   'Paramount+', 'Peacock', 'fuboTV', 'CBS Sports', 'Eurosport', 'Viaplay', 'SuperSport'
 ];
 
-// Bộ lọc bóng đá nam (như cũ)
+// Bộ lọc bóng đá nam
 const ALLOWED_FOOTBALL_LEAGUES = new Set([
   "Premier League", "Serie A", "La Liga", "Bundesliga", "Ligue 1",
   "UEFA Champions League", "UEFA Europa League", "UEFA Europa Conference League",
@@ -73,6 +73,9 @@ function log(msg) {
   console.log(`[${new Date().toISOString()}] [SPORTEVENTZ] ${msg}`);
 }
 
+// Hàm delay thay thế waitForTimeout
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
 // ---------- Browser ----------
 let browser = null;
 async function getBrowser() {
@@ -105,47 +108,48 @@ async function scrapeSportPage(url, sportType) {
 
     // Chấp nhận cookie nếu có
     try {
-      await page.click('button[id*="accept"], button[class*="accept"]', { timeout: 3000 });
-      await page.waitForTimeout(1000);
+      const cookieBtn = await page.$('button[id*="accept"], button[class*="accept"], [class*="cookie"] button');
+      if (cookieBtn) {
+        await cookieBtn.click();
+        await delay(1000);
+        log('Đã chấp nhận cookie');
+      }
     } catch (e) {}
 
-    // Đợi jTable load dữ liệu - quan trọng nhất
+    // Đợi jTable load dữ liệu
     log(`Đợi dữ liệu xuất hiện (${WAIT_SELECTOR})...`);
     try {
       await page.waitForSelector(WAIT_SELECTOR, { timeout: 30000 });
       log(`Dữ liệu đã load.`);
     } catch (e) {
       log(`Không tìm thấy dữ liệu sau 30s, kiểm tra lại selector.`);
-      // Chụp ảnh debug
       const debugPath = path.join(__dirname, '..', `debug_${sportType}_nodata.png`);
       await page.screenshot({ path: debugPath, fullPage: true });
       log(`Ảnh debug lưu tại ${debugPath}`);
       return [];
     }
 
-    // Đợi thêm một chút để các kênh phát sóng load
-    await page.waitForTimeout(2000);
+    // Đợi thêm một chút để các kênh phát sóng hiển thị đầy đủ
+    await delay(2000);
 
-    // Lưu HTML và ảnh chụp để debug (tuỳ chọn)
+    // Lưu HTML để debug
     const htmlPath = path.join(__dirname, '..', `debug_${sportType}.html`);
     fs.writeFileSync(htmlPath, await page.content());
     log(`Đã lưu HTML: ${htmlPath}`);
 
-    // Trích xuất dữ liệu từ DOM
+    // Trích xuất dữ liệu
     const fixtures = await page.evaluate((TV_CHANNELS, sportType) => {
       const results = [];
-      // Các dòng sự kiện có class MagicTableRow (theo source)
       const rows = document.querySelectorAll('.MagicTableRow');
       
       rows.forEach(row => {
         try {
-          // Lấy tên đội
+          // Tên đội
           const homeEl = row.querySelector('.MagicTableRowMainHomeTeamName');
           const awayEl = row.querySelector('.MagicTableRowMainAwayTeamName');
           let home = homeEl ? homeEl.innerText.trim() : '';
           let away = awayEl ? awayEl.innerText.trim() : '';
 
-          // Fallback nếu không tìm thấy
           if (!home || !away) {
             const mainData = row.querySelector('.MagicTableRowMainData');
             if (mainData) {
@@ -167,13 +171,13 @@ async function scrapeSportPage(url, sportType) {
           const footline = row.querySelector('.MagicTableRowFootline h3');
           let kickoffUtc = footline ? footline.innerText.trim() : null;
 
-          // Kênh phát sóng (nằm trong các button .MagicTableRowMoreButton)
+          // Kênh phát sóng (trong các button .MagicTableRowMoreButton)
           const channelButtons = row.querySelectorAll('.MagicTableRowMoreButton');
           const channels = [];
           channelButtons.forEach(btn => {
             const btnText = btn.innerText.trim();
             if (btnText) {
-              // Tách tên kênh (thường là dòng đầu tiên)
+              // Lấy dòng đầu tiên làm tên kênh
               const channelName = btnText.split('\n')[0].trim();
               if (channelName && !channels.includes(channelName)) {
                 channels.push(channelName);
@@ -181,7 +185,7 @@ async function scrapeSportPage(url, sportType) {
             }
           });
 
-          // Thêm kênh từ danh sách TV_CHANNELS nếu có trong toàn bộ row text
+          // Bổ sung kênh từ danh sách TV_CHANNELS nếu có trong text
           const rowText = row.innerText.toLowerCase();
           TV_CHANNELS.forEach(ch => {
             if (rowText.includes(ch.toLowerCase()) && !channels.includes(ch)) {
@@ -200,13 +204,6 @@ async function scrapeSportPage(url, sportType) {
           // bỏ qua lỗi parse
         }
       });
-
-      // Nếu không có dòng nào, thử selector khác
-      if (results.length === 0) {
-        document.querySelectorAll('.jtable-data-row').forEach(row => {
-          // fallback logic (có thể thêm sau)
-        });
-      }
 
       return results;
     }, TV_CHANNELS, sportType);
