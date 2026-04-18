@@ -1,0 +1,36 @@
+name: Update Live Matches from EPG
+
+on:
+  schedule:
+    # Chạy hàng ngày lúc 7:00 UTC (14:00 VN)
+    - cron: '0 7 * * *'
+  workflow_dispatch:  # Cho phép chạy thủ công
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Cần quyền ghi để push commit
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install requests
+
+      - name: Run EPG parser
+        run: python parse_epg.py
+
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add live_matches.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update live matches $(date +'%Y-%m-%d')" && git push)
