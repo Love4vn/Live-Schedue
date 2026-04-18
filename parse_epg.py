@@ -1,101 +1,160 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
+import requests
 import xml.etree.ElementTree as ET
-import re
-import sys
+from datetime import datetime, timedelta, timezone
 import json
-from datetime import datetime, timedelta
+import re
+from collections import defaultdict
 
-PATTERNS = [
-    r'\bLive\b', r'\bTrực tiếp\b', r'\b直播\b', r'\b现场直播\b',
-    r'\bLIVE\b', r'\b生放送\b', r'\b실시간\b', r'\bAo vivo\b', r'\bEn vivo\b',
-    r'\bDirect\b', r'\bVivo\b', r'\bLive broadcast\b', r'\bLIVE NOW\b',
-    r'\b🔴\b', r'\b⚽\b', r'\b🏀\b', r'\b🎾\b', r'\b🏐\b', r'\b🏈\b'
-]
+# ================================================
+# SCRIPT TỰ ĐỘNG LẤY LỊCH TRẬN BÓNG ĐÁ TRỰC TIẾP
+# Chạy được trên GitHub Workflow (không cần server)
+# Nguồn EPG: StarHub TV (cập nhật realtime)
+# Output: live_matches.json (commit trực tiếp vào repo)
+# ================================================
 
-def parse_channels(xml_content):
+EPG_URL = "https://raw.githubusercontent.com/dbghelp/StarHub-TV-EPG/refs/heads/main/starhub.xml"
+OUTPUT_FILE = "live_matches.json"
+
+def download_xml(url: str) -> str:
+    """Tải file XML EPG"""
+    print("📥 Đang tải EPG từ StarHub...")
+    response = requests.get(url, timeout=15)
+    response.raise_for_status()
+    print(f"✅ Tải thành công ({len(response.content):,} bytes)")
+    return response.text
+
+def parse_channels(xml_content: str) -> dict:
+    """Lấy danh sách kênh (id → display-name)"""
     root = ET.fromstring(xml_content)
     channels = {}
-    for channel in root.findall('channel'):
-        chan_id = channel.get('id')
-        display_name = channel.findtext('display-name', default='')
-        if chan_id:
+    for channel in root.findall("channel"):
+        chan_id = channel.get("id")
+        display_name = channel.findtext("display-name", "").strip()
+        if chan_id and display_name:
             channels[chan_id] = display_name
+    print(f"📺 Tìm thấy {len(channels)} kênh")
     return channels
 
-def parse_programmes(xml_content, channels):
+def clean_matchup(title: str) -> str:
+    """Làm sạch tên trận đấu"""
+    # Xóa (Live), (MWxx), (Highlight), ...
+    title = re.sub(r"\s*\(Live\)", "", title, flags=re.IGNORECASE)
+    title = re.sub(r"\s*\(MW\d+\)", "", title, flags=re.IGNORECASE)
+    title = re.sub(r"\s*\(.*?\)", "", title)          # xóa tất cả ngoặc
+    title = re.sub(r"\s*Live[: ]*", "", title, flags=re.IGNORECASE)
+    title = re.sub(r"\s+", " ", title).strip()
+    return title
+
+def detect_league(title: str, desc: str) -> str:
+    """Nhận diện giải đấu (ưu tiên desc → title)"""
+    text = (desc or "") + " " + (title or "")
+    patterns = [
+        (r"Premier League|EPL", "Premier League"),
+        (r"Champions League|UEFA CL", "UEFA Champions League"),
+        (r"Europa League|UEFA EL", "UEFA Europa League"),
+        (r"FA Cup", "FA Cup"),
+        (r"Carabao Cup", "Carabao Cup"),
+        (r"La Liga", "La Liga"),
+        (r"Serie A", "Serie A"),
+        (r"Bundesliga", "Bundesliga"),
+        (r"Ligue 1", "Ligue 1"),
+        (r"MLS|Major League Soccer", "Major League Soccer"),
+        (r"World Cup|WC", "FIFA World Cup"),
+        (r"Asian Cup|AFC", "AFC Asian Cup"),
+        (r"SEA Games", "SEA Games"),
+        (r"V.League", "V.League"),
+    ]
+    text_lower = text.lower()
+    for pattern, league_name in patterns:
+        if re.search(pattern, text_lower):
+            return league_name
+    return "Other League"   # fallback rõ ràng
+
+def parse_programmes(xml_content: str, channels: dict) -> list:
+    """Phân tích các trận Live"""
     root = ET.fromstring(xml_content)
-    matches = []
-    now = datetime.utcnow()
-    today_str = now.strftime('%Y-%m-%d')
+    groups = defaultdict(list)
 
-    for programme in root.findall('programme'):
-        channel_id = programme.get('channel')
-        start_str = programme.get('start', '')
-        stop_str = programme.get('stop', '')
-        title = programme.findtext('title', default='')
-        desc = programme.findtext('desc', default='')
-        icon_elem = programme.find('icon')
-        icon = icon_elem.get('src', '') if icon_elem is not None else ''
+    for prog in root.findall("programme"):
+        channel_id = prog.get("channel")
+        start_str = prog.get("start")
+        title_elem = prog.find("title")
+        desc_elem = prog.find("desc")
 
-        channel_name = channels.get(channel_id, channel_id)
-
-        matched = False
-        for pattern in PATTERNS:
-            if re.search(pattern, title, re.IGNORECASE) or re.search(pattern, desc, re.IGNORECASE):
-                matched = True
-                break
-        if not matched:
+        if title_elem is None or not start_str:
             continue
 
+        title = (title_elem.text or "").strip()
+        desc = (desc_elem.text or "").strip() if desc_elem is not None else ""
+
+        # Chỉ lấy trận có chữ "Live"
+        if "Live" not in title:
+            continue
+
+        # Parse thời gian (định dạng StarHub: 20260418112000 +0000)
         try:
-            start_time = datetime.strptime(start_str[:14], '%Y%m%d%H%M%S')
-            stop_time = datetime.strptime(stop_str[:14], '%Y%m%d%H%M%S')
-        except Exception:
-            continue
+            dt_utc = datetime.strptime(start_str, "%Y%m%d%H%M%S %z")
+        except ValueError:
+            # fallback nếu không có timezone
+            dt_naive = datetime.strptime(start_str[:14], "%Y%m%d%H%M%S")
+            dt_utc = dt_naive.replace(tzinfo=timezone.utc)
 
-        if start_time.strftime('%Y-%m-%d') != today_str:
-            continue
+        # Chuyển sang giờ Việt Nam (UTC+7)
+        dt_vn = dt_utc + timedelta(hours=7)
+        date_str = dt_vn.strftime("%Y-%m-%d")
+        time_str = dt_vn.strftime("%H:%M")
 
-        start_local = start_time + timedelta(hours=7)
-        stop_local = stop_time + timedelta(hours=7)
+        channel_name = channels.get(channel_id, f"Channel {channel_id}")
 
-        short_desc = (desc[:200] + '...') if len(desc) > 200 else desc
+        matchup = clean_matchup(title)
+        league = detect_league(title, desc)
 
-        match = {
-            'channel_id': channel_id,
-            'channel_name': channel_name,
-            'title': title,
-            'desc': short_desc,
-            'start_utc': start_time.strftime('%Y-%m-%d %H:%M UTC'),
-            'start_local': start_local.strftime('%H:%M'),
-            'stop_local': stop_local.strftime('%H:%M'),
-            'duration_min': int((stop_time - start_time).total_seconds() // 60),
-            'icon': icon
-        }
-        matches.append(match)
+        # Key để nhóm trận giống nhau (cùng ngày + giờ + tên trận)
+        key = (date_str, time_str, matchup.lower())
 
-    matches.sort(key=lambda x: x['start_utc'])
-    return matches
+        groups[key].append({
+            "channel": channel_name,
+            "league": league,
+            "matchup": matchup,
+            "date": date_str,
+            "time": time_str,
+        })
+
+    # Xây dựng output JSON
+    output = []
+    for (date, time, _), items in groups.items():
+        first = items[0]
+        services = sorted({item["channel"] for item in items})   # loại trùng kênh
+
+        output.append({
+            "Date": date,
+            "Time": time,
+            "League": first["league"],
+            "Matchup": first["matchup"],
+            "Services": services
+        })
+
+    # Sắp xếp theo thời gian
+    output.sort(key=lambda x: (x["Date"], x["Time"]))
+    print(f"⚽ Tìm thấy {len(output)} trận Live")
+    return output
 
 def main():
-    if len(sys.argv) < 2:
-        print("Usage: python parse_epg.py <xml_file>")
-        sys.exit(1)
+    try:
+        xml_content = download_xml(EPG_URL)
+        channels = parse_channels(xml_content)
+        matches = parse_programmes(xml_content, channels)
 
-    xml_file = sys.argv[1]
-    with open(xml_file, 'r', encoding='utf-8') as f:
-        xml_content = f.read()
+        # Lưu file JSON (đẹp, dễ đọc)
+        with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+            json.dump(matches, f, ensure_ascii=False, indent=2)
 
-    print("Đang tải EPG...")
-    channels = parse_channels(xml_content)
-    print("Đang phân tích channels...")
-    print(f"Tìm thấy {len(channels)} kênh.")
-    print("Đang phân tích programmes...")
-    matches = parse_programmes(xml_content, channels)
-    print(f"Tìm thấy {len(matches)} chương trình live hôm nay.")
-    print(json.dumps(matches, ensure_ascii=False, indent=2))
+        print(f"✅ Hoàn thành! Đã lưu {len(matches)} trận vào {OUTPUT_FILE}")
+        print(f"📂 File sẵn sàng commit vào GitHub repo")
 
-if __name__ == '__main__':
+    except Exception as e:
+        print(f"❌ Lỗi: {e}")
+        raise
+
+if __name__ == "__main__":
     main()
