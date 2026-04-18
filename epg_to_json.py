@@ -6,21 +6,34 @@ import re
 from collections import defaultdict
 
 # ================================================
-# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ + TENNIS CHÍNH XÁC
-# Chỉ lấy:
-#   • Premier League (chỉ khi có tên đội thật)
-#   • Tennis ATP / WTA (loại bỏ Padel, Padbol...)
+# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ + TENNIS CHÍNH XÁC (PHIÊN BẢN SỬA CUỐI)
+# ✅ Chỉ lấy khi có đúng (Live) trong ngoặc
+# ✅ Premier League: chỉ khi có đúng 2 đội trong danh sách
+# ✅ Matchup sạch sẽ: chỉ còn "Team1 vs Team2"
+# ✅ Sửa lỗi "vrpool", "rpool", "- EP xxx", LFCTV...
 # ================================================
 
 EPG_URL = "https://raw.githubusercontent.com/dbghelp/StarHub-TV-EPG/refs/heads/main/starhub.xml"
 OUTPUT_FILE = "live_matches.json"
 
-# ==================== DANH SÁCH ĐỘI PREMIER LEAGUE ====================
+# ==================== DANH SÁCH ĐỘI PREMIER LEAGUE (chính xác) ====================
 PREMIER_LEAGUE_TEAMS = {
     "arsenal", "aston villa", "bournemouth", "brentford", "brighton", "chelsea",
     "crystal palace", "everton", "fulham", "leeds united", "liverpool", "manchester city",
     "manchester united", "newcastle", "nottingham forest", "sunderland", "tottenham hotspur",
     "west ham united", "wolverhampton", "wolverhampton wanderers"
+}
+
+# Map viết tắt phổ biến trong title
+TEAM_ABBR = {
+    "rpool": "liverpool",
+    "man city": "manchester city",
+    "man utd": "manchester united",
+    "newcastle": "newcastle",
+    "wolves": "wolverhampton",
+    "fulham": "fulham",
+    "everton": "everton",
+    # thêm nếu cần
 }
 
 def download_xml(url: str) -> str:
@@ -41,59 +54,81 @@ def parse_channels(xml_content: str) -> dict:
     print(f"📺 Tìm thấy {len(channels)} kênh")
     return channels
 
+def has_exact_live(title: str) -> bool:
+    """Chỉ chấp nhận (Live) trong ngoặc, không chấp nhận live lẻ"""
+    return bool(re.search(r'\(Live\)', title, re.IGNORECASE))
+
 def is_premier_league(title: str, desc: str) -> bool:
-    """Chỉ lấy khi có tên đội Premier League + chữ Live"""
-    if "Live" not in title:
+    """Chỉ lấy khi có (Live) + đúng 2 đội Premier League"""
+    if not has_exact_live(title):
         return False
+    
     text = (title + " " + desc).lower()
-    return any(team in text for team in PREMIER_LEAGUE_TEAMS)
+    # Thay viết tắt trước khi kiểm tra
+    for abbr, full in TEAM_ABBR.items():
+        text = text.replace(abbr, full)
+    
+    found_teams = [team for team in PREMIER_LEAGUE_TEAMS if team in text]
+    return len(found_teams) >= 2   # phải có ít nhất 2 đội
 
 def is_tennis(title: str) -> bool:
-    """Lọc Tennis thật (ATP/WTA) – loại bỏ Padel, Padbol..."""
-    if "Live" not in title:
+    """Tennis thật + phải có (Live)"""
+    if not has_exact_live(title):
         return False
-    text = title.lower()
     
+    text = title.lower()
     tennis_keywords = {
         "atp", "wta", "atp tour", "wta tour", "atp world tour",
         "grand slam", "australian open", "roland garros", "french open",
         "wimbledon", "us open", "nitto atp finals",
         "atp masters", "atp 1000", "atp 500", "atp 250",
         "wta 1000", "wta 500", "wta 250",
-        "davis cup", "billie jean king cup", "fed cup", "laver cup", "hopman cup"
+        "davis cup", "billie jean king cup", "laver cup"
     }
-    
-    # Phải chứa ít nhất 1 từ khóa tennis
     has_tennis = any(kw in text for kw in tennis_keywords)
-    # Loại bỏ hoàn toàn Padel, Padbol, Premier Padel
     has_padel = "padel" in text or "padbol" in text
-    
     return has_tennis and not has_padel
 
 def clean_football_matchup(title: str) -> str:
-    """Chỉ giữ tên 2 đội"""
-    title = re.sub(r"\s*\(Live\)", "", title, flags=re.IGNORECASE)
-    title = re.sub(r"\s*\(MW\d+\)", "", title, flags=re.IGNORECASE)
-    title = re.sub(r"\s*\(.*?\)", "", title)
-    title = re.sub(r"\s*Live[: ]*", "", title, flags=re.IGNORECASE)
-    title = re.sub(r"\s+", " ", title).strip()
+    """Chỉ giữ đúng 2 đội, format: Team1 vs Team2"""
+    # 1. Xóa (Live), (MW..), - EP xxx, LFCTV...
+    title = re.sub(r'\(Live\)', '', title, flags=re.IGNORECASE)
+    title = re.sub(r'\(MW\d+\)', '', title, flags=re.IGNORECASE)
+    title = re.sub(r'-\s*EP\s*\d+', '', title, flags=re.IGNORECASE)
+    title = re.sub(r'LFCTV[^:]*:', '', title, flags=re.IGNORECASE)
+    title = re.sub(r'\s*:\s*', ' vs ', title)          # thay : thành vs
+    title = re.sub(r'\s+', ' ', title).strip()
+    
+    # 2. Thay viết tắt
+    text_lower = title.lower()
+    for abbr, full in TEAM_ABBR.items():
+        text_lower = text_lower.replace(abbr, full)
+    
+    # 3. Tìm đúng 2 đội trong danh sách
+    found = []
+    for team in PREMIER_LEAGUE_TEAMS:
+        if team in text_lower:
+            found.append(team.title())   # Viết hoa lại đẹp
+    
+    if len(found) >= 2:
+        # Lấy 2 đội đầu tiên xuất hiện
+        team1, team2 = found[0], found[1]
+        return f"{team1} vs {team2}"
+    
+    # Fallback nếu không tìm thấy (không nên xảy ra)
     return title
 
 def parse_tennis(title: str) -> tuple[str, str]:
-    """League = ATP Tour 2026 / WTA Tour 2026
-       Matchup = phần sau sạch sẽ"""
-    # Bắt pattern ATP/WTA Tour + năm
+    """Xử lý Tennis giống trước"""
     match = re.search(r'^(ATP|WTA) Tour (\d{4})\s+(.*)$', title.strip(), re.IGNORECASE)
     if match:
         tour = match.group(1).upper()
         year = match.group(2)
         event = match.group(3).strip()
-        # Làm sạch event
-        event = re.sub(r"\s*\(Live\)", "", event, flags=re.IGNORECASE).strip()
+        event = re.sub(r'\(Live\)', '', event, flags=re.IGNORECASE).strip()
         return f"{tour} Tour {year}", event
     
-    # Fallback
-    clean = re.sub(r"\s*\(Live\)", "", title, flags=re.IGNORECASE).strip()
+    clean = re.sub(r'\(Live\)', '', title, flags=re.IGNORECASE).strip()
     return "Tennis", clean
 
 def parse_programmes(xml_content: str, channels: dict) -> list:
@@ -112,7 +147,7 @@ def parse_programmes(xml_content: str, channels: dict) -> list:
         title = (title_elem.text or "").strip()
         desc = (desc_elem.text or "").strip() if desc_elem is not None else ""
 
-        # ==================== LỌC CHỈ PREMIER LEAGUE + TENNIS ====================
+        # ==================== LỌC CHÍNH XÁC ====================
         if is_premier_league(title, desc):
             league = "Premier League"
             matchup = clean_football_matchup(title)
@@ -143,7 +178,6 @@ def parse_programmes(xml_content: str, channels: dict) -> list:
             "time": time_str,
         })
 
-    # Xây dựng JSON
     output = []
     for (date, time, _), items in groups.items():
         first = items[0]
