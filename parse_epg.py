@@ -25,13 +25,10 @@ def parse_channels(xml_content):
 
 def parse_programmes(xml_content, channels):
     root = ET.fromstring(xml_content)
-    groups = defaultdict(list)
-
-    for prog in root.findall("programme"):
-        channel_id = prog.get("channel")
-        start_str = prog.get("start")
-        title_elem = prog.find("title")
-        desc_elem = prog.find("desc")
+    matches = []
+    for programme in root.findall('programme'):   # <-- Vòng lặp bắt đầu ở đây
+        title = programme.findtext('title', default='')
+        desc = programme.findtext('desc', default='')
 
         if title_elem is None:
             continue
