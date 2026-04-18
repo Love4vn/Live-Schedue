@@ -1,15 +1,19 @@
-name: Update Live Football Matches
+name: Update Live Football + Tennis Matches
 
 on:
   schedule:
-    - cron: '0 3,9,15,21 * * *'    # chạy mỗi 6 tiếng
-  workflow_dispatch:               # chạy thủ công khi cần
+    - cron: '0 */6 * * *'          # chạy mỗi 6 tiếng (0h, 6h, 12h, 18h)
+  workflow_dispatch:               # cho phép chạy thủ công
 
 jobs:
   update:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository (lấy full history)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0               # quan trọng: lấy hết lịch sử để rebase
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -19,13 +23,24 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Chạy script lấy lịch bóng đá
+      - name: Chạy script lấy lịch bóng đá + tennis
         run: python epg_to_json.py
 
-      - name: Commit & Push nếu có thay đổi
+      - name: Commit & Push (đã sửa lỗi rejected)
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          # Thêm file
           git add live_matches.json
-          git commit -m "📅 Update live matches - $(date +'%Y-%m-%d %H:%M')" || echo "No changes"
+          
+          # Commit nếu có thay đổi
+          git commit -m "📅 Update live matches - $(date +'%Y-%m-%d %H:%M UTC+7')" || echo "✅ Không có thay đổi nào"
+          
+          # Pull rebase trước khi push (giải quyết lỗi rejected)
+          git pull --rebase origin ${{ github.ref_name }} || echo "Pull rebase không cần thiết"
+          
+          # Push
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
