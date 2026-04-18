@@ -1,20 +1,15 @@
-name: Update Live Matches from EPG
+name: Update Live Football Matches
 
 on:
   schedule:
-    # Chạy hàng ngày lúc 7:00 UTC (14:00 VN)
-    - cron: '0 7 * * *'
-  workflow_dispatch:  # Cho phép chạy thủ công
+    - cron: '0 3,9,15,21 * * *'    # chạy mỗi 6 tiếng
+  workflow_dispatch:               # chạy thủ công khi cần
 
 jobs:
   update:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write  # Cần quyền ghi để push commit
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -22,15 +17,15 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: |
-          pip install requests
+        run: pip install requests
 
-      - name: Run EPG parser
-        run: python parse_epg.py
+      - name: Chạy script lấy lịch bóng đá
+        run: python epg_to_json.py
 
-      - name: Commit and push if changed
+      - name: Commit & Push nếu có thay đổi
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add live_matches.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update live matches $(date +'%Y-%m-%d')" && git push)
+          git commit -m "📅 Update live matches - $(date +'%Y-%m-%d %H:%M')" || echo "No changes"
+          git push
