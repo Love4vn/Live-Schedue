@@ -36,9 +36,8 @@ def parse_programmes(xml_content, channels):
         if title_elem is None:
             continue
 
-        title = title_elem.text or ""
-        # Đảm bảo desc luôn là chuỗi, kể cả khi desc_elem là None hoặc desc_elem.text là None
-        desc = (desc_elem.text or "") if desc_elem is not None else ""
+        title = programme.findtext('title', default='')
+        desc = programme.findtext('desc', default='')
 
         if "Live" not in title:
             continue
