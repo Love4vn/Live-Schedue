@@ -36,6 +36,7 @@ def parse_programmes(xml_content, channels):
         if title_elem is None:
             continue
 
+        # Bằng dòng mới:
         title = programme.findtext('title', default='')
         desc = programme.findtext('desc', default='')
 
