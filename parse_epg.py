@@ -30,9 +30,7 @@ def parse_programmes(xml_content, channels):
     now = datetime.utcnow()
     today_str = now.strftime('%Y-%m-%d')
 
-    # ========== VÒNG LẶP BẮT ĐẦU ==========
     for programme in root.findall('programme'):
-        # Lấy dữ liệu an toàn (sử dụng findtext với default='')
         channel_id = programme.get('channel')
         start_str = programme.get('start', '')
         stop_str = programme.get('stop', '')
@@ -77,7 +75,6 @@ def parse_programmes(xml_content, channels):
             'icon': icon
         }
         matches.append(match)
-    # ========== VÒNG LẶP KẾT THÚC ==========
 
     matches.sort(key=lambda x: x['start_utc'])
     return matches
@@ -98,7 +95,6 @@ def main():
     print("Đang phân tích programmes...")
     matches = parse_programmes(xml_content, channels)
     print(f"Tìm thấy {len(matches)} chương trình live hôm nay.")
-
     print(json.dumps(matches, ensure_ascii=False, indent=2))
 
 if __name__ == '__main__':
