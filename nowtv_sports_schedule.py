@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-Now TV Sports Live Schedule Extractor
-Extracts football and tennis live events from Now TV EPG and outputs JSON.
+Now TV Sports Live Schedule Extractor (English - Vietnam Time)
+Fetches EPG from Now TV, filters only "now Sports" channels,
+extracts football/tennis events, and outputs JSON in English.
 """
 
 import asyncio
@@ -18,25 +19,33 @@ from bs4 import BeautifulSoup
 # ========== CONFIGURATION ==========
 BASE_URL = "https://nowplayer.now.com"
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
-SPORTS_KEYWORDS = [
-    "英超", "西甲", "意甲", "德甲", "法甲", "歐聯", "歐霸", "世界盃", "歐洲國家盃",
-    "Premier League", "La Liga", "Serie A", "Bundesliga", "Ligue 1",
-    "Champions League", "Europa League", "FA Cup", "Carabao Cup",
-    "WTA", "ATP", "Tennis", "網球", "足球", "LIVE", "直播"
-]
-# Channels likely to show sports (optional filtering)
-SPORTS_CHANNEL_PREFIXES = ("now Sports", "Hub Sports", "Premier", "beIN", "Sports")
-# ===================================
 
-TZ_SHANGHAI = pytz.timezone("Asia/Shanghai")
+# Keywords to identify sports live events (case-insensitive)
+SPORTS_KEYWORDS = [
+    "premier league", "la liga", "serie a", "bundesliga", "ligue 1",
+    "champions league", "europa league", "fa cup", "carabao cup",
+    "wta", "atp", "tennis", "football", "soccer", "live", "vs", " v ", " - "
+]
+
+# Only channels whose name starts with "now Sports" (case-insensitive)
+CHANNEL_NAME_FILTER = "now Sports"
+
+# Vietnam timezone (UTC+7)
+VIETNAM_TZ = pytz.timezone("Asia/Ho_Chi_Minh")
+# ===================================
 
 # ---------- Helper Functions ----------
 def fetch_channels() -> Dict[str, str]:
-    """Fetch channel list from NowTV and return mapping {channelNo: channelName}."""
-    print("📡 Fetching channel list...")
+    """
+    Fetch channel list from NowTV and return mapping {channelNo: channelName}.
+    Only includes channels matching CHANNEL_NAME_FILTER.
+    """
+    print("📡 Fetching channel list (English mode)...")
     url = f"{BASE_URL}/channels"
-    headers = {"User-Agent": USER_AGENT, "Accept-Language": "zh,en;q=0.9"}
-    resp = requests.get(url, headers=headers, cookies={"LANG": "zh"})
+    headers = {"User-Agent": USER_AGENT, "Accept-Language": "en,zh;q=0.9"}
+
+    # Request English language version
+    resp = requests.get(url, headers=headers, cookies={"LANG": "en"})
     resp.raise_for_status()
 
     soup = BeautifulSoup(resp.text, "html.parser")
@@ -48,9 +57,11 @@ def fetch_channels() -> Dict[str, str]:
         if name_tag and channel_tag:
             name = name_tag.text.strip()
             ch_no = channel_tag.text.replace("CH", "").strip()
-            channel_map[ch_no] = name
+            # Filter: keep only channels starting with "now Sports"
+            if name.lower().startswith(CHANNEL_NAME_FILTER.lower()):
+                channel_map[ch_no] = name
 
-    print(f"✅ Found {len(channel_map)} channels.")
+    print(f"✅ Found {len(channel_map)} 'now Sports' channels.")
     return channel_map
 
 
@@ -67,7 +78,8 @@ def fetch_7day_epg(channel_numbers: List[str]) -> Dict[int, List[List[Dict]]]:
         "Referer": f"{BASE_URL}/tvguide",
         "X-Requested-With": "XMLHttpRequest",
     }
-    cookies = {"LANG": "zh"}
+    # English language for EPG titles
+    cookies = {"LANG": "en"}
 
     epg_data = {}
     for day in range(1, 8):
@@ -89,6 +101,35 @@ def fetch_7day_epg(channel_numbers: List[str]) -> Dict[int, List[List[Dict]]]:
     return epg_data
 
 
+def extract_league_matchup(title: str) -> (str, str):
+    """
+    Parse English title into League and Matchup.
+    Common patterns:
+      "Premier League: Arsenal vs Liverpool"
+      "WTA Tour 2026 - Open Capfinances Rouen Metropole SF"
+      "Champions League Live: Real Madrid v Barcelona"
+    """
+    # Remove trailing "LIVE" or "直播" indicators for cleaner parsing
+    clean_title = re.sub(r"\s*[-–:]?\s*(LIVE|直播)\s*$", "", title, flags=re.IGNORECASE).strip()
+
+    # Try to split by colon, dash, or " - "
+    pattern_split = re.compile(r"\s*[:：\-–]\s*")
+    parts = pattern_split.split(clean_title, maxsplit=1)
+
+    if len(parts) == 2:
+        league_candidate = parts[0].strip()
+        matchup_candidate = parts[1].strip()
+        # If league part looks reasonable (contains known league keywords or is short)
+        if any(kw in league_candidate.lower() for kw in ["league", "cup", "tour", "open", "wta", "atp", "series"]):
+            return league_candidate, matchup_candidate
+        else:
+            # Fallback: first part might be sport name, second is matchup
+            return "Sports", clean_title
+    else:
+        # No split: return whole as matchup, league unknown
+        return "Unknown League", clean_title
+
+
 def parse_sports_programs(epg_data: Dict[int, List[List[Dict]]],
                           channel_numbers: List[str],
                           channel_map: Dict[str, str]) -> List[Dict[str, Any]]:
@@ -97,15 +138,6 @@ def parse_sports_programs(epg_data: Dict[int, List[List[Dict]]],
     Returns list of JSON-ready events.
     """
     events = []
-    # Regex to split title into League and Matchup
-    # Common patterns: "League: Team A vs Team B", "League - Team A vs Team B"
-    pattern_split = re.compile(r"[:：\-–]\s*")
-    # Also try to identify league keywords
-    league_keywords = [
-        "Premier League", "La Liga", "Serie A", "Bundesliga", "Ligue 1",
-        "Champions League", "Europa League", "FA Cup", "Carabao Cup",
-        "WTA", "ATP", "英超", "西甲", "意甲", "德甲", "法甲", "歐聯", "歐霸"
-    ]
 
     for day in range(1, 8):
         day_progs = epg_data.get(day, [])
@@ -115,33 +147,30 @@ def parse_sports_programs(epg_data: Dict[int, List[List[Dict]]],
             ch_no = channel_numbers[idx]
             ch_name = channel_map.get(ch_no, f"Channel {ch_no}")
 
-            # Optional: skip non-sports channels for performance
-            # if not any(ch_name.startswith(p) for p in SPORTS_CHANNEL_PREFIXES):
-            #     continue
-
             for epg_item in channel_progs:
                 title = epg_item.get("name", "").strip()
                 if not title:
                     continue
 
-                # Filter sports content
-                if not any(kw.lower() in title.lower() for kw in SPORTS_KEYWORDS):
+                # Check if it's a sports event using keywords
+                title_lower = title.lower()
+                if not any(kw in title_lower for kw in SPORTS_KEYWORDS):
                     continue
 
-                # Prefer live events (optional, but helps)
-                if "直播" not in title and "LIVE" not in title.upper():
-                    # Still keep it if it's clearly a sports match
-                    if not any(kw in title for kw in ["vs", "對", "VS"]):
+                # Strong indicator of a match: contains "vs" or " v "
+                if " vs " not in title_lower and " v " not in title_lower:
+                    # Still allow tennis/WTA/ATP without explicit vs
+                    if not any(kw in title_lower for kw in ["wta", "atp", "tennis", "open"]):
                         continue
 
-                # Timestamp conversion
+                # Timestamp conversion to Vietnam time
                 start_ts = epg_item.get("start", 0) / 1000
                 end_ts = epg_item.get("end", 0) / 1000
-                dt_start = datetime.fromtimestamp(start_ts, tz=TZ_SHANGHAI)
-                dt_end = datetime.fromtimestamp(end_ts, tz=TZ_SHANGHAI)
+                dt_start = datetime.fromtimestamp(start_ts, tz=VIETNAM_TZ)
+                dt_end = datetime.fromtimestamp(end_ts, tz=VIETNAM_TZ)
 
                 # Extract League and Matchup
-                league, matchup = extract_league_matchup(title, pattern_split, league_keywords)
+                league, matchup = extract_league_matchup(title)
 
                 # Build event record
                 events.append({
@@ -150,38 +179,18 @@ def parse_sports_programs(epg_data: Dict[int, List[List[Dict]]],
                     "League": league,
                     "Matchup": matchup,
                     "Services": [ch_name],
-                    # Additional fields (optional)
-                    "StartTimestamp": dt_start.isoformat(),
-                    "EndTimestamp": dt_end.isoformat(),
-                    "RawTitle": title,
-                    "ChannelNumber": ch_no
+                    # Optional metadata (can be removed before final output)
+                    "_start_iso": dt_start.isoformat(),
+                    "_end_iso": dt_end.isoformat(),
+                    "_raw_title": title,
+                    "_channel_no": ch_no
                 })
     return events
 
 
-def extract_league_matchup(title: str, pattern_split, league_keywords) -> (str, str):
-    """
-    Parse title into League and Matchup.
-    """
-    # Try to split by colon/dash
-    parts = pattern_split.split(title, maxsplit=1)
-    if len(parts) == 2:
-        league_candidate = parts[0].strip()
-        matchup_candidate = parts[1].strip()
-        # If first part looks like a league keyword, use it
-        if any(lk.lower() in league_candidate.lower() for lk in league_keywords):
-            return league_candidate, matchup_candidate
-        else:
-            # Maybe the first part is sport type, second is matchup
-            return "Sports", title
-    else:
-        # No split found: use whole title as matchup, league unknown
-        return "Unknown League", title
-
-
 def deduplicate_events(events: List[Dict]) -> List[Dict]:
     """
-    Merge events that are identical but on different channels (multi-channel broadcast).
+    Merge events that are identical but air on multiple channels.
     """
     merged = {}
     for ev in events:
@@ -197,21 +206,14 @@ def deduplicate_events(events: List[Dict]) -> List[Dict]:
 
 # ---------- Main ----------
 async def main():
-    print("🚀 Now TV Sports Schedule Extractor")
-    # 1. Get channels
+    print("🚀 Now TV Sports Schedule Extractor (English - Vietnam Time)")
+    # 1. Get channels (filtered to "now Sports")
     channel_map = fetch_channels()
     if not channel_map:
-        print("❌ No channels found.")
+        print("❌ No 'now Sports' channels found.")
         sys.exit(1)
 
-    # Use all channel numbers (or optionally filter sports channels)
     channel_numbers = list(channel_map.keys())
-    # Optionally filter to likely sports channels to reduce API load
-    # sports_channel_numbers = [no for no, name in channel_map.items()
-    #                          if any(name.startswith(p) for p in SPORTS_CHANNEL_PREFIXES)]
-    # if sports_channel_numbers:
-    #     channel_numbers = sports_channel_numbers
-    #     print(f"⚽ Filtered to {len(channel_numbers)} sports-related channels.")
 
     # 2. Fetch EPG
     epg_data = fetch_7day_epg(channel_numbers)
@@ -227,8 +229,7 @@ async def main():
     # 5. Sort by date/time
     events.sort(key=lambda x: (x["Date"], x["Time"]))
 
-    # 6. Output JSON
-    # Remove extra fields to match exact required format
+    # 6. Prepare clean output (only required fields)
     output_events = []
     for ev in events:
         output_events.append({
@@ -239,14 +240,16 @@ async def main():
             "Services": ev["Services"]
         })
 
-    # Write to file or stdout
-    output_file = "nowtv_sports_schedule.json"
+    # 7. Write to file
+    output_file = "nowtv_sports_schedule_en.json"
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(output_events, f, ensure_ascii=False, indent=2)
     print(f"💾 Schedule saved to {output_file}")
 
-    # Also print to stdout for GitHub Actions logging
-    print(json.dumps(output_events, ensure_ascii=False, indent=2))
+    # Print sample to console
+    print("\n📋 Sample output (first 5 events):")
+    for ev in output_events[:5]:
+        print(f"{ev['Date']} {ev['Time']} | {ev['League']} - {ev['Matchup']} | {', '.join(ev['Services'])}")
 
 
 if __name__ == "__main__":
