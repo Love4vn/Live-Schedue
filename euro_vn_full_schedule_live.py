@@ -589,7 +589,8 @@ async def fetch_json(session, url):
     try:
         async with session.get(url, timeout=aiohttp.ClientTimeout(total=10)) as resp:
             if resp.status == 200:
-                return await resp.json()
+                text = await resp.text()
+                return json.loads(text)          # <-- Tự parse thủ công
             else:
                 print(f"   ⚠️ Lỗi tải {url[:60]}... (HTTP {resp.status})")
                 return None
