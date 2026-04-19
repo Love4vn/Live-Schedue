@@ -10,7 +10,7 @@ import json
 import re
 import sys
 from datetime import datetime
-from typing import List, Dict, Any, Tuple, Set
+from typing import List, Dict, Any, Tuple, Set, Optional
 
 import pytz
 import requests
@@ -26,7 +26,7 @@ CHANNEL_NAME_FILTER = "now Sports"
 # Vietnam timezone (UTC+7)
 VIETNAM_TZ = pytz.timezone("Asia/Ho_Chi_Minh")
 
-# Premier League teams (lowercase for matching)
+# Premier League teams (lowercase)
 PREMIER_LEAGUE_TEAMS: Set[str] = {
     "arsenal", "aston villa", "bournemouth", "brentford", "brighton",
     "chelsea", "crystal palace", "everton", "fulham", "leeds united",
@@ -35,14 +35,14 @@ PREMIER_LEAGUE_TEAMS: Set[str] = {
     "west ham united", "wolverhampton", "wolverhampton wanderers"
 }
 
-# Allowed football leagues (exact or partial match)
+# Allowed football leagues
 ALLOWED_FOOTBALL_LEAGUES: Set[str] = {
     "Premier League", "Serie A", "La Liga", "Bundesliga", "Ligue 1",
     "UEFA Champions League", "UEFA Europa League", "UEFA Europa Conference League",
     "UEFA Euro", "FA Cup", "League Cup", "FIFA World Cup", "International Friendly"
 }
 
-# Tennis keywords (case-insensitive)
+# Tennis keywords for detection
 TENNIS_KEYWORDS: Set[str] = {
     "atp", "wta", "atp tour", "wta tour", "atp world tour",
     "grand slam", "australian open", "roland garros", "french open",
@@ -55,7 +55,7 @@ TENNIS_KEYWORDS: Set[str] = {
 
 # ---------- Helper Functions ----------
 def fetch_channels() -> Dict[str, str]:
-    """Fetch channel list and return mapping {channelNo: channelName} for 'now Sports' only."""
+    """Fetch channel list, return {channelNo: channelName} for 'now Sports' only."""
     print("📡 Fetching channel list (English mode)...")
     url = f"{BASE_URL}/channels"
     headers = {"User-Agent": USER_AGENT, "Accept-Language": "en,zh;q=0.9"}
@@ -79,7 +79,7 @@ def fetch_channels() -> Dict[str, str]:
 
 
 def fetch_7day_epg(channel_numbers: List[str]) -> Dict[int, List[List[Dict]]]:
-    """Fetch 7-day EPG data for given channel numbers."""
+    """Fetch 7-day EPG data."""
     print("📡 Fetching 7-day EPG data...")
     headers = {
         "User-Agent": USER_AGENT,
@@ -110,68 +110,80 @@ def fetch_7day_epg(channel_numbers: List[str]) -> Dict[int, List[List[Dict]]]:
     return epg_data
 
 
-def clean_text(text: str) -> str:
-    """Remove tags like [4K], [Live], etc. and trim."""
-    # Remove brackets with content e.g. [4K], [Live]
-    cleaned = re.sub(r"\[.*?\]", "", text)
-    # Remove trailing "Live" word
-    cleaned = re.sub(r"\s*[-–]?\s*LIVE\s*$", "", cleaned, flags=re.IGNORECASE)
-    return cleaned.strip()
+def clean_brackets(text: str) -> str:
+    """Remove anything inside square brackets including brackets themselves."""
+    return re.sub(r"\[.*?\]", "", text).strip()
 
 
 def is_live(title: str) -> bool:
-    """Check if title indicates live broadcast."""
-    return bool(re.search(r"\[Live\]|LIVE", title, re.IGNORECASE))
-
-
-def extract_league_matchup(title: str) -> Tuple[str, str]:
-    """
-    Parse English title into (raw_league, raw_matchup) before cleaning.
-    Expects patterns like "Premier League: Arsenal vs Liverpool" or
-    "WTA Tour - Match name".
-    """
-    # Split on common separators
-    parts = re.split(r"\s*[:：\-–]\s*", title, maxsplit=1)
-    if len(parts) == 2:
-        return parts[0].strip(), parts[1].strip()
-    else:
-        return "", title.strip()
+    """Strictly check for [Live] tag (case-insensitive)."""
+    return bool(re.search(r"\[Live\]", title, re.IGNORECASE))
 
 
 def find_premier_league_teams(text: str) -> Tuple[Set[str], bool]:
-    """
-    Find Premier League team names in text.
-    Returns (set of found teams, True if at least two different teams found).
-    """
+    """Find PL team names in text. Returns (found_teams, has_two_or_more)."""
     text_lower = text.lower()
-    found_teams = set()
+    found = set()
     for team in PREMIER_LEAGUE_TEAMS:
         if team in text_lower:
-            found_teams.add(team)
-    return found_teams, len(found_teams) >= 2
+            found.add(team)
+    return found, len(found) >= 2
 
 
-def is_football_league_allowed(league_name: str) -> bool:
-    """Check if league_name contains any allowed football league."""
-    league_lower = league_name.lower()
-    for allowed in ALLOWED_FOOTBALL_LEAGUES:
-        if allowed.lower() in league_lower:
-            return True
-    return False
+def is_football_league_allowed(text: str) -> bool:
+    """Check if text contains any allowed football league."""
+    text_lower = text.lower()
+    return any(allowed.lower() in text_lower for allowed in ALLOWED_FOOTBALL_LEAGUES)
 
 
-def is_tennis_event(title: str) -> bool:
-    """Check if title contains any tennis keyword."""
-    title_lower = title.lower()
-    return any(kw in title_lower for kw in TENNIS_KEYWORDS)
+def is_tennis_event(text: str) -> bool:
+    """Check if text contains tennis keywords."""
+    text_lower = text.lower()
+    return any(kw in text_lower for kw in TENNIS_KEYWORDS)
+
+
+def extract_league_matchup(raw_title: str) -> Tuple[str, str]:
+    """
+    Extract League and Matchup from raw title, with special handling for tennis.
+    """
+    # First remove [Live] and other brackets for cleaner parsing
+    cleaned = clean_brackets(raw_title)
+    # Also remove trailing "Live" word that may appear without brackets
+    cleaned = re.sub(r"\s*Live\s*$", "", cleaned, flags=re.IGNORECASE).strip()
+
+    # Check for tennis pattern: e.g., "WTA 26 Porsche Tennis Grand Prix Final"
+    # We want to extract "WTA 26" as league and rest as matchup
+    tennis_pattern = re.compile(
+        r"^(ATP|WTA)\s+\d{1,4}\b",
+        re.IGNORECASE
+    )
+    tennis_match = tennis_pattern.search(cleaned)
+    if tennis_match:
+        league_part = tennis_match.group(0)  # e.g., "WTA 26"
+        matchup_part = cleaned[tennis_match.end():].strip()
+        # If matchup part contains a dash, we can keep structure
+        if not matchup_part:
+            matchup_part = cleaned  # fallback
+        return league_part, matchup_part
+
+    # General split by colon or dash
+    parts = re.split(r"\s*[:：\-–]\s*", cleaned, maxsplit=1)
+    if len(parts) == 2:
+        league = parts[0].strip()
+        matchup = parts[1].strip()
+        # Further clean: if league contains "Live" word, remove
+        league = re.sub(r"\s*Live\b", "", league, flags=re.IGNORECASE).strip()
+        matchup = re.sub(r"\s*Live\b", "", matchup, flags=re.IGNORECASE).strip()
+        return league, matchup
+    else:
+        # No clear separator, treat whole as matchup, league unknown
+        return "", cleaned
 
 
 def parse_sports_programs(epg_data: Dict[int, List[List[Dict]]],
                           channel_numbers: List[str],
                           channel_map: Dict[str, str]) -> List[Dict[str, Any]]:
-    """
-    Parse raw EPG data, apply strict filters, and return cleaned events.
-    """
+    """Parse raw EPG, apply strict live + league filters."""
     events = []
 
     for day in range(1, 8):
@@ -187,56 +199,58 @@ def parse_sports_programs(epg_data: Dict[int, List[List[Dict]]],
                 if not title:
                     continue
 
-                # Must be live
+                # Must contain [Live] tag
                 if not is_live(title):
                     continue
 
-                # Parse league and matchup parts
-                raw_league, raw_matchup = extract_league_matchup(title)
-
-                # Clean them (remove [4K], [Live], etc.)
-                league_clean = clean_text(raw_league)
-                matchup_clean = clean_text(raw_matchup)
-
-                # Determine sport and apply filters
-                # Football check
-                if is_football_league_allowed(league_clean) or is_football_league_allowed(title):
-                    # Special case: Premier League must contain two known teams
-                    if "premier league" in league_clean.lower() or "premier league" in title.lower():
-                        _, has_two_teams = find_premier_league_teams(title)
-                        if not has_two_teams:
-                            continue  # Skip if not enough team names
-
-                    # For other football leagues, we accept (maybe also check for "vs")
-                    pass
-
-                elif is_tennis_event(title):
-                    # Tennis event - accepted
-                    pass
-                else:
-                    # Not a target sport
+                # Pre-check if it's a target sport (football or tennis)
+                if not (is_football_league_allowed(title) or is_tennis_event(title)):
                     continue
 
-                # Timestamp conversion to Vietnam time
+                # Special Premier League team count check
+                if "premier league" in title.lower():
+                    _, has_two = find_premier_league_teams(title)
+                    if not has_two:
+                        continue
+
+                # Extract league and matchup
+                league, matchup = extract_league_matchup(title)
+
+                # If league empty but it's tennis, try to derive from title
+                if not league and is_tennis_event(title):
+                    # Fallback for tennis: use first word (ATP/WTA) as league
+                    first_word = title.split()[0]
+                    if first_word.upper() in ("ATP", "WTA"):
+                        league = first_word.upper()
+                        matchup = title[len(first_word):].strip()
+                    else:
+                        league = "Tennis"
+                        matchup = title
+
+                # If still empty, use "Sports"
+                if not league:
+                    league = "Sports"
+                if not matchup:
+                    matchup = title
+
+                # Timestamp to Vietnam time
                 start_ts = epg_item.get("start", 0) / 1000
                 dt_start = datetime.fromtimestamp(start_ts, tz=VIETNAM_TZ)
 
                 events.append({
                     "Date": dt_start.strftime("%Y-%m-%d"),
                     "Time": dt_start.strftime("%H:%M"),
-                    "League": league_clean if league_clean else "Sports",
-                    "Matchup": matchup_clean if matchup_clean else title,
+                    "League": league,
+                    "Matchup": matchup,
                     "Services": [ch_name],
-                    # Metadata for debugging (will be removed later)
-                    "_raw_title": title,
-                    "_channel_no": ch_no
+                    "_raw": title  # for debugging only
                 })
 
     return events
 
 
 def deduplicate_events(events: List[Dict]) -> List[Dict]:
-    """Merge identical events across multiple channels."""
+    """Merge same events on multiple channels."""
     merged = {}
     for ev in events:
         key = (ev["Date"], ev["Time"], ev["League"], ev["Matchup"])
@@ -251,30 +265,23 @@ def deduplicate_events(events: List[Dict]) -> List[Dict]:
 
 # ---------- Main ----------
 async def main():
-    print("🚀 Now TV Sports Schedule Extractor (Strict Filters)")
-    # 1. Get channels
+    print("🚀 Now TV Sports Live Schedule Extractor (Strict Filters)")
     channel_map = fetch_channels()
     if not channel_map:
         print("❌ No 'now Sports' channels found.")
         sys.exit(1)
 
     channel_numbers = list(channel_map.keys())
-
-    # 2. Fetch EPG
     epg_data = fetch_7day_epg(channel_numbers)
 
-    # 3. Parse with strict rules
     print("🔍 Parsing and filtering live sports events...")
     events = parse_sports_programs(epg_data, channel_numbers, channel_map)
 
-    # 4. Deduplicate
     events = deduplicate_events(events)
     print(f"🎯 Found {len(events)} unique live events matching criteria.")
 
-    # 5. Sort
     events.sort(key=lambda x: (x["Date"], x["Time"]))
 
-    # 6. Final output (only required fields)
     output_events = []
     for ev in events:
         output_events.append({
@@ -290,7 +297,6 @@ async def main():
         json.dump(output_events, f, ensure_ascii=False, indent=2)
     print(f"💾 Schedule saved to {output_file}")
 
-    # Print sample
     print("\n📋 Sample (first 5):")
     for ev in output_events[:5]:
         print(f"{ev['Date']} {ev['Time']} | {ev['League']} | {ev['Matchup']} | {', '.join(ev['Services'])}")
