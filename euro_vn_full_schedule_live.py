@@ -7,6 +7,7 @@ PHIÊN BẢN SIÊU TỐC – TỐI ƯU CHO GITHUB ACTIONS
 - Cache SofaScore 24h.
 - Giới hạn kênh/trận (mặc định 500).
 - SẮP XẾP KÊNH TRONG CÙNG TRẬN THEO ƯU TIÊN TIẾNG ANH.
+- TÍCH HỢP THÊM NGUỒN HUBSPORT & NOWTV TỪ GITHUB.
 """
 
 import asyncio
@@ -583,8 +584,83 @@ def parse_ausport(entry: dict) -> Optional[Dict]:
     except:
         return None
 
-def load_all_secondary_sources(start_ts: int, max_ts: int) -> List[Dict]:
+# ================== CÁC NGUỒN MỚI TỪ GITHUB ==================
+async def fetch_json(session, url):
+    try:
+        async with session.get(url, timeout=aiohttp.ClientTimeout(total=10)) as resp:
+            if resp.status == 200:
+                return await resp.json()
+            else:
+                print(f"   ⚠️ Lỗi tải {url[:60]}... (HTTP {resp.status})")
+                return None
+    except Exception as e:
+        print(f"   ❌ Lỗi tải {url[:60]}...: {e}")
+        return None
+
+def parse_hubsport(entry: dict) -> Optional[Dict]:
+    try:
+        dt_str = f"{entry['Date']} {entry['Time']}"
+        dt = datetime.strptime(dt_str, "%Y-%m-%d %H:%M")
+        dt = dt.replace(tzinfo=TIMEZONE)
+        kick_utc = int(dt.timestamp())
+        league = entry.get('League', '')
+        if "ATP" in league or "WTA" in league:
+            league = "Tennis"
+        elif "Premier League" in league:
+            league = "Premier League"
+        else:
+            if league not in ALLOWED_FOOTBALL_LEAGUES and league != "Tennis":
+                return None
+        match_raw = entry.get('Matchup', '')
+        match = match_raw.replace(' @ ', ' vs ')
+        channels = entry.get('Services', [])
+        if not channels:
+            return None
+        return {
+            "league": league,
+            "match": match,
+            "kick_utc": kick_utc,
+            "time": vn_time(kick_utc),
+            "tv_channels": [{"country": "Hubsport", "channels": channels}],
+            "source": "hubsport"
+        }
+    except:
+        return None
+
+def parse_nowtv(entry: dict) -> Optional[Dict]:
+    try:
+        dt_str = f"{entry['Date']} {entry['Time']}"
+        dt = datetime.strptime(dt_str, "%Y-%m-%d %H:%M")
+        dt = dt.replace(tzinfo=TIMEZONE)
+        kick_utc = int(dt.timestamp())
+        league = entry.get('League', '')
+        if "ATP" in league or "WTA" in league:
+            league = "Tennis"
+        elif "Premier League" in league or "PREMIER LEAGUE" in league:
+            league = "Premier League"
+        else:
+            if league not in ALLOWED_FOOTBALL_LEAGUES and league != "Tennis":
+                return None
+        match_raw = entry.get('Matchup', '')
+        match = match_raw.replace(' @ ', ' vs ')
+        channels = entry.get('Services', [])
+        if not channels:
+            return None
+        return {
+            "league": league,
+            "match": match,
+            "kick_utc": kick_utc,
+            "time": vn_time(kick_utc),
+            "tv_channels": [{"country": "NowTV", "channels": channels}],
+            "source": "nowtv"
+        }
+    except:
+        return None
+
+async def load_all_secondary_sources(start_ts: int, max_ts: int) -> List[Dict]:
     games = []
+    
+    # 1. Xử lý các tệp JSON cục bộ
     for func, fname in [(parse_livesportsontv, "schedule_livesportsontv.json"),
                         (parse_wheresthematch, "results.json"),
                         (parse_ausport, "ausport_schedule.json")]:
@@ -593,6 +669,24 @@ def load_all_secondary_sources(start_ts: int, max_ts: int) -> List[Dict]:
             g = func(entry)
             if g and start_ts <= g['kick_utc'] <= max_ts:
                 games.append(g)
+
+    # 2. Tải và xử lý các nguồn từ xa
+    remote_sources = [
+        ("https://raw.githubusercontent.com/Love4vn/Live-Schedue/refs/heads/1/live_matches.json", parse_hubsport),
+        ("https://raw.githubusercontent.com/Love4vn/Live-Schedue/refs/heads/1/nowtv_sports_schedule_en.json", parse_nowtv)
+    ]
+
+    async with aiohttp.ClientSession() as session:
+        tasks = [fetch_json(session, url) for url, _ in remote_sources]
+        results = await asyncio.gather(*tasks)
+
+        for (url, parser), data in zip(remote_sources, results):
+            if data:
+                for entry in data:
+                    g = parser(entry)
+                    if g and start_ts <= g['kick_utc'] <= max_ts:
+                        games.append(g)
+
     return games
 
 def merge_games(primary: List[Dict], secondary: List[Dict]) -> List[Dict]:
@@ -762,9 +856,9 @@ async def main():
         save_sofascore_cache(sofascore_games)
     print(f"   ✅ SofaScore: {len(sofascore_games)} trận")
 
-    # 2. Nguồn phụ
-    print("📡 Đang đọc các nguồn JSON phụ...")
-    secondary_games = load_all_secondary_sources(start_ts, max_ts)
+    # 2. Nguồn phụ (bao gồm cả remote)
+    print("📡 Đang đọc các nguồn JSON phụ (cục bộ + từ xa)...")
+    secondary_games = await load_all_secondary_sources(start_ts, max_ts)
     print(f"   ✅ Các nguồn phụ: {len(secondary_games)} trận")
 
     all_games = merge_games(sofascore_games, secondary_games)
