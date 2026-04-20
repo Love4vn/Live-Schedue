@@ -1,13 +1,13 @@
 """
 euro_vn_full_schedule_live.py
 ================================
-PHIÊN BẢN SIÊU TỐC – TỐI ƯU CHO GITHUB ACTIONS
+PHIÊN BẢN HOÀN CHỈNH – TỐI ƯU CHO GITHUB ACTIONS
 - Tải M3U bất đồng bộ (aiohttp).
-- Validate HEAD nhanh (chỉ loại 404/không kết nối) - CÓ THỂ TẮT.
+- Validate HEAD nhanh (có thể tắt).
 - Cache SofaScore 24h.
-- Giới hạn kênh/trận (mặc định 500).
-- SẮP XẾP KÊNH TRONG CÙNG TRẬN THEO ƯU TIÊN TIẾNG ANH.
-- TÍCH HỢP THÊM NGUỒN HUBSPORT & NOWTV TỪ GITHUB.
+- Gộp trận trùng lặp do chương trình dạo đầu (≤30 phút).
+- Sắp xếp kênh ưu tiên tiếng Anh.
+- Tích hợp Hubsport & NowTV từ GitHub.
 """
 
 import asyncio
@@ -864,64 +864,75 @@ async def main():
 
     all_games = merge_games(sofascore_games, secondary_games)
 
-    # Lọc trùng và gộp các trận có thời gian gần nhau (≤30 phút) mà cùng cặp đấu
-    print("🔄 Đang lọc trùng và gộp các trận có thời gian gần kề...")
-    # Sắp xếp theo thời gian để dễ so sánh
-    all_games.sort(key=lambda x: x['kick_utc'])
+    # ================== GỘP CÁC TRẬN TRÙNG THỜI GIAN GẦN (≤30 PHÚT) ==================
+    print("🔄 Đang gộp các trận trùng lặp (chương trình dạo đầu)...")
     
-    merged_games = []
-    i = 0
-    while i < len(all_games):
-        current = all_games[i]
-        # Tìm tất cả các trận phía sau có thời gian cách current không quá 30 phút và tên giống nhau
-        j = i + 1
-        while j < len(all_games):
-            next_game = all_games[j]
-            time_diff = next_game['kick_utc'] - current['kick_utc']
-            if time_diff > 1800:  # quá 30 phút thì dừng
-                break
-                
-            # Kiểm tra cùng giải và tên trận tương đồng
-            same_league = (current['league'] == next_game['league'])
-            if not same_league:
-                j += 1
-                continue
-                
-            # Chuẩn hóa tên trận để so sánh
-            match1_norm = normalize(current['match'])
-            match2_norm = normalize(next_game['match'])
-            # Loại bỏ chữ "vs" để so sánh chính xác hơn (vì một bên có thể viết hoa/thường khác)
-            match1_norm = re.sub(r'\bvs\b', '', match1_norm).strip()
-            match2_norm = re.sub(r'\bvs\b', '', match2_norm).strip()
-            
-            similarity = similar(match1_norm, match2_norm)
-            
-            if similarity >= 0.85:
-                # Gộp channels từ next_game vào current
-                for next_tv in next_game['tv_channels']:
-                    found = False
-                    for cur_tv in current['tv_channels']:
-                        if cur_tv['country'] == next_tv['country']:
-                            cur_tv['channels'] = list(set(cur_tv['channels'] + next_tv['channels']))
-                            found = True
-                            break
-                    if not found:
-                        current['tv_channels'].append(next_tv)
-                
-                # Cập nhật thời gian thành thời gian muộn hơn (nếu next_game muộn hơn)
-                if next_game['kick_utc'] > current['kick_utc']:
-                    current['kick_utc'] = next_game['kick_utc']
-                    current['time'] = next_game['time']
-                
-                # Đánh dấu next_game để bỏ qua bằng cách tăng j và không thêm vào merged_games sau
-                j += 1
-            else:
-                j += 1
+    # Chuẩn hóa tên trận đấu để so sánh (loại bỏ dấu câu, khoảng trắng thừa)
+    def get_match_key(match_str: str) -> str:
+        # Bỏ dấu gạch ngang, dấu chấm, &
+        clean = re.sub(r'[^\w\s]', ' ', match_str.lower())
+        # Chuẩn hóa "vs" thành " vs "
+        clean = re.sub(r'\bvs\b', ' vs ', clean)
+        # Loại bỏ các từ không cần thiết
+        clean = re.sub(r'\b(fc|afc|sc|united|city|wanderers|rovers|athletic|albion|town|county)\b', '', clean)
+        clean = ' '.join(clean.split())
+        # Sắp xếp tên hai đội theo thứ tự alphabet để tránh đảo ngược
+        parts = clean.split(' vs ')
+        if len(parts) == 2:
+            parts.sort()
+            clean = f"{parts[0]} vs {parts[1]}"
+        return clean
+
+    # Nhóm theo (league, match_key)
+    groups = {}
+    for game in all_games:
+        league = game['league']
+        match_key = get_match_key(game['match'])
+        key = (league, match_key)
+        groups.setdefault(key, []).append(game)
+    
+    deduped_games = []
+    for (league, match_key), game_list in groups.items():
+        if len(game_list) == 1:
+            deduped_games.append(game_list[0])
+            continue
         
-        merged_games.append(current)
-        i = j  # Nhảy đến vị trí sau các mục đã được gộp
+        # Sắp xếp theo thời gian tăng dần
+        game_list.sort(key=lambda g: g['kick_utc'])
+        
+        # Gom cụm các trận có thời gian cách nhau ≤ 30 phút
+        clusters = []
+        current_cluster = [game_list[0]]
+        for g in game_list[1:]:
+            if g['kick_utc'] - current_cluster[-1]['kick_utc'] <= 1800:
+                current_cluster.append(g)
+            else:
+                clusters.append(current_cluster)
+                current_cluster = [g]
+        clusters.append(current_cluster)
+        
+        # Với mỗi cụm, gộp tất cả kênh và lấy thời gian muộn nhất
+        for cluster in clusters:
+            merged_game = cluster[0].copy()
+            merged_game['kick_utc'] = max(g['kick_utc'] for g in cluster)
+            merged_game['time'] = vn_time(merged_game['kick_utc'])
+            
+            # Gộp tv_channels
+            merged_channels = {}
+            for g in cluster:
+                for tv in g['tv_channels']:
+                    country = tv['country']
+                    if country not in merged_channels:
+                        merged_channels[country] = set()
+                    merged_channels[country].update(tv['channels'])
+            
+            merged_game['tv_channels'] = [
+                {"country": c, "channels": list(chs)}
+                for c, chs in merged_channels.items()
+            ]
+            deduped_games.append(merged_game)
     
-    all_games = merged_games
+    all_games = deduped_games
     print(f"   ✅ Sau khi gộp còn {len(all_games)} trận")
 
     today_str = datetime.now().strftime("%Y%m%d")
