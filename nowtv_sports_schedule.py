@@ -2,7 +2,7 @@
 """
 Now TV Sports Live Schedule Extractor (English - Vietnam Time)
 Fetches EPG from Now TV, filters only "now Sports" channels,
-extracts football/tennis live events, and outputs cleaned JSON.
+extracts football/tennis live events, merges pre-match shows, outputs JSON.
 """
 
 import asyncio
@@ -107,7 +107,7 @@ def extract_league_matchup(raw_title: str) -> Tuple[str, str]:
         matchup_part = cleaned[tennis_match.end():].strip()
         return league_part, matchup_part if matchup_part else cleaned
 
-    # General split
+    # General split by colon or dash
     parts = re.split(r"\s*[:：\-–]\s*", cleaned, maxsplit=1)
     if len(parts) == 2:
         league = re.sub(r"\s*Live\b", "", parts[0], flags=re.IGNORECASE).strip()
@@ -162,20 +162,65 @@ def parse_sports_programs(epg_data, channel_numbers, channel_map):
                 })
     return events
 
-def deduplicate_events(events):
-    merged = {}
+def normalize_matchup(matchup: str) -> str:
+    """Lowercase and remove punctuation/spaces for comparison."""
+    norm = matchup.lower()
+    norm = re.sub(r'[^\w\s]', '', norm)  # remove punctuation
+    norm = re.sub(r'\s+', ' ', norm).strip()
+    return norm
+
+def deduplicate_events(events: List[Dict]) -> List[Dict]:
+    """
+    Merge events that are the same match but with different start times
+    (pre-match shows). Keep the latest time if within 30 minutes.
+    """
+    # Group by date and normalized matchup
+    groups = {}
     for ev in events:
-        key = (ev["Date"], ev["Time"], ev["League"], ev["Matchup"])
-        if key not in merged:
-            merged[key] = ev.copy()
-            merged[key]["Services"] = list(set(ev["Services"]))
-        else:
-            merged[key]["Services"].extend(ev["Services"])
-            merged[key]["Services"] = list(set(merged[key]["Services"]))
-    return list(merged.values())
+        date = ev["Date"]
+        matchup_norm = normalize_matchup(ev["Matchup"])
+        key = (date, matchup_norm)
+        if key not in groups:
+            groups[key] = []
+        groups[key].append(ev)
+
+    merged = []
+    for (date, norm_matchup), ev_list in groups.items():
+        if len(ev_list) == 1:
+            merged.append(ev_list[0])
+            continue
+
+        # Sort by time ascending
+        ev_list.sort(key=lambda x: x["Time"])
+
+        # Cluster by time difference <= 30 minutes
+        clusters = []
+        current_cluster = [ev_list[0]]
+        for i in range(1, len(ev_list)):
+            prev_time = datetime.strptime(current_cluster[-1]["Time"], "%H:%M")
+            curr_time = datetime.strptime(ev_list[i]["Time"], "%H:%M")
+            diff = (curr_time - prev_time).total_seconds() / 60
+            if diff <= 30:
+                current_cluster.append(ev_list[i])
+            else:
+                clusters.append(current_cluster)
+                current_cluster = [ev_list[i]]
+        clusters.append(current_cluster)
+
+        # For each cluster, keep the latest time and merge services
+        for cluster in clusters:
+            latest_ev = max(cluster, key=lambda x: x["Time"])
+            all_services = set()
+            for ev in cluster:
+                all_services.update(ev["Services"])
+            merged_ev = latest_ev.copy()
+            merged_ev["Services"] = sorted(list(all_services))
+            merged.append(merged_ev)
+
+    return merged
 
 async def main():
-    print("🚀 Now TV Sports Live Schedule Extractor (Fixed Burnley issue)")
+    print("🚀 Now TV Sports Live Schedule Extractor (Merging pre-match shows)")
     channel_map = fetch_channels()
     if not channel_map:
         print("❌ No 'now Sports' channels found.")
@@ -184,13 +229,15 @@ async def main():
     epg_data = fetch_7day_epg(channel_numbers)
     print("🔍 Parsing and filtering live sports events...")
     events = parse_sports_programs(epg_data, channel_numbers, channel_map)
+    print(f"📊 Raw events before dedup: {len(events)}")
     events = deduplicate_events(events)
-    print(f"🎯 Found {len(events)} unique live events.")
+    print(f"🎯 Unique events after merging pre-match: {len(events)}")
     events.sort(key=lambda x: (x["Date"], x["Time"]))
     output_events = [{k: v for k, v in ev.items() if k != "_raw"} for ev in events]
     with open("nowtv_sports_schedule_en.json", "w", encoding="utf-8") as f:
         json.dump(output_events, f, ensure_ascii=False, indent=2)
-    print("💾 Schedule saved.")
+    print("💾 Schedule saved to nowtv_sports_schedule_en.json")
+    print("\n📋 Sample (first 5):")
     for ev in output_events[:5]:
         print(f"{ev['Date']} {ev['Time']} | {ev['League']} | {ev['Matchup']} | {', '.join(ev['Services'])}")
 
