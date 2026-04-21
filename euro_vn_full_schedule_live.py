@@ -590,7 +590,7 @@ async def fetch_json(session, url):
         async with session.get(url, timeout=aiohttp.ClientTimeout(total=10)) as resp:
             if resp.status == 200:
                 text = await resp.text()
-                return json.loads(text)          # <-- Tự parse thủ công
+                return json.loads(text)
             else:
                 print(f"   ⚠️ Lỗi tải {url[:60]}... (HTTP {resp.status})")
                 return None
@@ -869,18 +869,30 @@ async def main():
     
     # Chuẩn hóa tên trận đấu để so sánh (loại bỏ dấu câu, khoảng trắng thừa)
     def get_match_key(match_str: str) -> str:
-        # Bỏ dấu gạch ngang, dấu chấm, &
-        clean = re.sub(r'[^\w\s]', ' ', match_str.lower())
-        # Chuẩn hóa "vs" thành " vs "
-        clean = re.sub(r'\bvs\b', ' vs ', clean)
-        # Loại bỏ các từ không cần thiết
-        clean = re.sub(r'\b(fc|afc|sc|united|city|wanderers|rovers|athletic|albion|town|county)\b', '', clean)
-        clean = ' '.join(clean.split())
-        # Sắp xếp tên hai đội theo thứ tự alphabet để tránh đảo ngược
+        # Hàm phụ để rút gọn tên đội (chỉ lấy từ đầu tiên sau khi loại bỏ từ khóa)
+        def simplify_team_name(name: str) -> str:
+            name = name.strip().lower()
+            # Loại bỏ các từ khóa phổ biến
+            name = re.sub(r'\b(fc|afc|sc|united|city|wanderers|rovers|athletic|albion|town|county|&|hove|and)\b', '', name)
+            name = re.sub(r'[^\w\s]', ' ', name)
+            name = ' '.join(name.split())
+            parts = name.split()
+            if len(parts) > 1:
+                return parts[0]
+            return name
+        
+        clean = match_str.lower()
+        # Thay thế các dấu phân cách bằng ' vs '
+        clean = re.sub(r'[-–—]', ' vs ', clean)
+        clean = re.sub(r'\bvs\.?\b', ' vs ', clean)
+        clean = re.sub(r'\bx\b', ' vs ', clean)
         parts = clean.split(' vs ')
         if len(parts) == 2:
-            parts.sort()
-            clean = f"{parts[0]} vs {parts[1]}"
+            team1 = simplify_team_name(parts[0])
+            team2 = simplify_team_name(parts[1])
+            # Sắp xếp theo alphabet để tránh đảo ngược
+            teams = sorted([team1, team2])
+            return f"{teams[0]} vs {teams[1]}"
         return clean
 
     # Nhóm theo (league, match_key)
