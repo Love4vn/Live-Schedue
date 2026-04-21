@@ -13,7 +13,8 @@ from collections import defaultdict
 # ✅ Sửa lỗi "vrpool", "rpool", "- EP xxx", LFCTV...
 # ================================================
 
-EPG_URL = "https://raw.githubusercontent.com/dbghelp/StarHub-TV-EPG/refs/heads/main/starhub.xml"
+#EPG_URL = "https://raw.githubusercontent.com/dbghelp/StarHub-TV-EPG/refs/heads/main/starhub.xml"
+EPG_URL = "https://github.com/jeffrybp/epgtv/raw/refs/heads/main/public/all.xml.gz"
 OUTPUT_FILE = "live_matches.json"
 
 # ==================== DANH SÁCH ĐỘI PREMIER LEAGUE (chính xác) ====================
