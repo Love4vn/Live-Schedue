@@ -1,7 +1,7 @@
 """
 euro_vn_full_schedule_live.py
 ================================
-PHIÊN BẢN HOÀN CHỈNH – TỐI ƯU CHO GITHUB ACTIONS
+PHIÊN BẢN HOÀN CHỈNH – ĐÃ SỬA LỖI GỘP TRẬN TENNIS
 - Tải M3U bất đồng bộ (aiohttp).
 - Validate HEAD nhanh (có thể tắt).
 - Cache SofaScore 24h.
@@ -234,24 +234,18 @@ def is_team_match(team_name: str, m3u_name: str) -> bool:
 def get_country_priority(country_name: str) -> int:
     """Trả về độ ưu tiên của quốc gia (càng nhỏ càng ưu tiên hiển thị trước)."""
     if not country_name:
-        return 100  # Không rõ nguồn gốc → xếp cuối
+        return 100
     priority_map = {
-        "united kingdom": 1,
-        "uk": 1,
-        "england": 1,
-        "united states": 2,
-        "usa": 2,
-        "australia": 3,
-        "canada": 4,
-        "ireland": 5,
-        "new zealand": 6,
-        "south africa": 7,
+        "united kingdom": 1, "uk": 1, "england": 1,
+        "united states": 2, "usa": 2,
+        "australia": 3, "canada": 4, "ireland": 5,
+        "new zealand": 6, "south africa": 7,
     }
     country_lower = country_name.lower()
     for key, prio in priority_map.items():
         if key in country_lower:
             return prio
-    return 50  # Các quốc gia khác
+    return 50
 
 # ================== SOFASCORE API ==================
 async def get_channel_name(session, channel_id):
@@ -426,7 +420,7 @@ def parse_livesportsontv(entry: dict) -> Optional[Dict]:
         dt = dt.replace(tzinfo=TIMEZONE)
         kick_utc = int(dt.timestamp())
         league = entry.get('League', '')
-        if "Tennis" in league:
+        if "Tennis" in league or "Tenis" in league:
             league = "Tennis"
         else:
             if "UEFA Europa League" in league:
@@ -481,7 +475,7 @@ def parse_wheresthematch(entry: dict) -> Optional[Dict]:
         kick_utc = int(dt.timestamp())
         league = entry.get('competition', '')
         sport = entry.get('sport', '')
-        if sport == "Tennis" or "Tennis" in league:
+        if sport == "Tennis" or "Tennis" in league or "Tenis" in league:
             league = "Tennis"
         else:
             if "UEFA Europa League" in league:
@@ -661,7 +655,6 @@ def parse_nowtv(entry: dict) -> Optional[Dict]:
 async def load_all_secondary_sources(start_ts: int, max_ts: int) -> List[Dict]:
     games = []
     
-    # 1. Xử lý các tệp JSON cục bộ
     for func, fname in [(parse_livesportsontv, "schedule_livesportsontv.json"),
                         (parse_wheresthematch, "results.json"),
                         (parse_ausport, "ausport_schedule.json")]:
@@ -671,7 +664,6 @@ async def load_all_secondary_sources(start_ts: int, max_ts: int) -> List[Dict]:
             if g and start_ts <= g['kick_utc'] <= max_ts:
                 games.append(g)
 
-    # 2. Tải và xử lý các nguồn từ xa
     remote_sources = [
         ("https://raw.githubusercontent.com/Love4vn/Live-Schedue/refs/heads/1/live_matches.json", parse_hubsport),
         ("https://raw.githubusercontent.com/Love4vn/Live-Schedue/refs/heads/1/nowtv_sports_schedule_en.json", parse_nowtv)
@@ -820,11 +812,9 @@ async def load_all_m3u_async(m3u_urls):
                     all_channels.append(ch)
     return all_channels
 
-# ================== VALIDATE HEAD (SIÊU NHANH) ==================
+# ================== VALIDATE HEAD ==================
 async def head_check(session, url, extra_headers=None):
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
-    }
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
     if extra_headers:
         headers.update(extra_headers)
     try:
@@ -846,7 +836,7 @@ async def main():
 
     print("🔄 Bắt đầu lấy lịch từ 2 GIỜ TRƯỚC đến 24 GIỜ TỚI...")
 
-    # 1. SofaScore với cache
+    # 1. SofaScore
     cached_games = load_sofascore_cache()
     if cached_games:
         print("📦 Dùng cache SofaScore từ lần chạy trước.")
@@ -857,22 +847,24 @@ async def main():
         save_sofascore_cache(sofascore_games)
     print(f"   ✅ SofaScore: {len(sofascore_games)} trận")
 
-    # 2. Nguồn phụ (bao gồm cả remote)
-    print("📡 Đang đọc các nguồn JSON phụ (cục bộ + từ xa)...")
+    # 2. Nguồn phụ
+    print("📡 Đang đọc các nguồn JSON phụ...")
     secondary_games = await load_all_secondary_sources(start_ts, max_ts)
     print(f"   ✅ Các nguồn phụ: {len(secondary_games)} trận")
 
     all_games = merge_games(sofascore_games, secondary_games)
 
-    # ================== GỘP CÁC TRẬN TRÙNG THỜI GIAN GẦN (≤30 PHÚT) ==================
+    # ================== GỘP TRẬN TRÙNG (≤30 PHÚT) ==================
     print("🔄 Đang gộp các trận trùng lặp (chương trình dạo đầu)...")
-    
-    # Chuẩn hóa tên trận đấu để so sánh (loại bỏ dấu câu, khoảng trắng thừa)
-    def get_match_key(match_str: str) -> str:
-        # Hàm phụ để rút gọn tên đội (chỉ lấy từ đầu tiên sau khi loại bỏ từ khóa)
+
+    def get_match_key(match_str: str, league: str) -> str:
+        if league == "Tennis":
+            # Với tennis, chỉ chuẩn hóa cơ bản, không cố tách đội
+            clean = re.sub(r'[^\w\s]', ' ', match_str.lower())
+            return ' '.join(clean.split())
+        # Hàm rút gọn tên đội bóng
         def simplify_team_name(name: str) -> str:
             name = name.strip().lower()
-            # Loại bỏ các từ khóa phổ biến
             name = re.sub(r'\b(fc|afc|sc|united|city|wanderers|rovers|athletic|albion|town|county|&|hove|and)\b', '', name)
             name = re.sub(r'[^\w\s]', ' ', name)
             name = ' '.join(name.split())
@@ -880,9 +872,7 @@ async def main():
             if len(parts) > 1:
                 return parts[0]
             return name
-        
         clean = match_str.lower()
-        # Thay thế các dấu phân cách bằng ' vs '
         clean = re.sub(r'[-–—]', ' vs ', clean)
         clean = re.sub(r'\bvs\.?\b', ' vs ', clean)
         clean = re.sub(r'\bx\b', ' vs ', clean)
@@ -890,29 +880,25 @@ async def main():
         if len(parts) == 2:
             team1 = simplify_team_name(parts[0])
             team2 = simplify_team_name(parts[1])
-            # Sắp xếp theo alphabet để tránh đảo ngược
             teams = sorted([team1, team2])
             return f"{teams[0]} vs {teams[1]}"
         return clean
 
-    # Nhóm theo (league, match_key)
     groups = {}
     for game in all_games:
         league = game['league']
-        match_key = get_match_key(game['match'])
+        match_key = get_match_key(game['match'], league)
         key = (league, match_key)
-        groups.setdefault(key, []).append(game)
-    
+        if key not in groups:
+            groups[key] = []
+        groups[key].append(game)
+
     deduped_games = []
     for (league, match_key), game_list in groups.items():
         if len(game_list) == 1:
             deduped_games.append(game_list[0])
             continue
-        
-        # Sắp xếp theo thời gian tăng dần
         game_list.sort(key=lambda g: g['kick_utc'])
-        
-        # Gom cụm các trận có thời gian cách nhau ≤ 30 phút
         clusters = []
         current_cluster = [game_list[0]]
         for g in game_list[1:]:
@@ -922,14 +908,10 @@ async def main():
                 clusters.append(current_cluster)
                 current_cluster = [g]
         clusters.append(current_cluster)
-        
-        # Với mỗi cụm, gộp tất cả kênh và lấy thời gian muộn nhất
         for cluster in clusters:
             merged_game = cluster[0].copy()
             merged_game['kick_utc'] = max(g['kick_utc'] for g in cluster)
             merged_game['time'] = vn_time(merged_game['kick_utc'])
-            
-            # Gộp tv_channels
             merged_channels = {}
             for g in cluster:
                 for tv in g['tv_channels']:
@@ -937,16 +919,16 @@ async def main():
                     if country not in merged_channels:
                         merged_channels[country] = set()
                     merged_channels[country].update(tv['channels'])
-            
             merged_game['tv_channels'] = [
                 {"country": c, "channels": list(chs)}
                 for c, chs in merged_channels.items()
             ]
             deduped_games.append(merged_game)
-    
+
     all_games = deduped_games
     print(f"   ✅ Sau khi gộp còn {len(all_games)} trận")
 
+    # Lưu schedule.json
     today_str = datetime.now().strftime("%Y%m%d")
     schedule = {today_str: {"date": datetime.now().strftime("%A, %d/%m"), "games": all_games}}
     output = {"updated": vn_now.strftime("%Y-%m-%d %H:%M VN"), "days": schedule}
@@ -954,8 +936,8 @@ async def main():
         json.dump(output, f, indent=2, ensure_ascii=False)
     print(f"✅ schedule.json: {len(all_games)} trận")
 
-    # 3. Tải M3U bất đồng bộ
-    print("📥 Đang tải playlist M3U bất đồng bộ...")
+    # 3. Tải M3U
+    print("📥 Đang tải playlist M3U...")
     m3u_urls = []
     try:
         with open(M3U_LIST_FILE, encoding='utf-8') as f:
@@ -1032,7 +1014,7 @@ async def main():
 
     # 5. Validate HEAD (nếu bật)
     if ENABLE_VALIDATION:
-        print("🔍 Kiểm tra nhanh HEAD (chỉ loại link 404/không kết nối)...")
+        print("🔍 Kiểm tra nhanh HEAD...")
         async with aiohttp.ClientSession() as session:
             sem = asyncio.Semaphore(HEAD_CONCURRENCY)
             async def check_one(ev):
@@ -1041,12 +1023,12 @@ async def main():
                     return await head_check(session, ev['channel']['url'], extra)
             results = await asyncio.gather(*[check_one(ev) for ev in live_events])
         validated_events = [ev for ev, ok in zip(live_events, results) if ok]
-        print(f"   ✅ Còn lại {len(validated_events)} link sau HEAD check (loại {len(live_events)-len(validated_events)} link)")
+        print(f"   ✅ Còn lại {len(validated_events)} link (loại {len(live_events)-len(validated_events)})")
     else:
         print("⚡ Bỏ qua kiểm tra link (ENABLE_VALIDATION = False)")
         validated_events = live_events
 
-    # 6. Ghi M3U với sắp xếp ưu tiên tiếng Anh
+    # 6. Ghi M3U
     tennis_events = [ev for ev in validated_events if ev['league'] == "Tennis"]
     other_events = [ev for ev in validated_events if ev['league'] != "Tennis"]
     grouped_tennis = {}
@@ -1056,14 +1038,11 @@ async def main():
             grouped_tennis[key] = ev
     final_events = other_events + list(grouped_tennis.values())
 
-    # Sắp xếp theo thời gian trước
     final_events.sort(key=lambda x: x["datetime"])
 
-    # Sau đó nhóm theo trận đấu và sắp xếp nội bộ theo ưu tiên quốc gia
     sorted_events = []
     for (kick_utc, match), group in groupby(final_events, key=lambda ev: (ev["kick_utc"], ev["match"])):
         group_list = list(group)
-        # Sắp xếp các kênh trong cùng trận đấu theo độ ưu tiên quốc gia (nhỏ trước)
         group_list.sort(key=lambda ev: get_country_priority(ev.get("country", "")))
         sorted_events.extend(group_list)
     final_events = sorted_events
