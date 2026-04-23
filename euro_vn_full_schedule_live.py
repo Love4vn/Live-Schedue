@@ -1,10 +1,7 @@
 """
 euro_vn_full_schedule_live.py
 ================================
-PHIÊN BẢN HOÀN CHỈNH – SỬA LỖI GỘP TRẬN TENNIS
-- Tennis chỉ gộp nếu match giống hệt (chuẩn hóa nhẹ).
-- Giữ nguyên tất cả các trận tennis khác nhau.
-- Các cải tiến match kênh: nới lỏng similarity, tắt country filter, thêm debug.
+PHIÊN BẢN SỬA LỖI MẤT TRẬN TENNIS - LOG CHI TIẾT
 """
 
 import asyncio
@@ -32,7 +29,8 @@ SOFASCORE_CACHE_FILE = "sofascore_cache.json"
 VALIDATE_TIMEOUT = 2
 MAX_CHANNELS_PER_MATCH = 500
 HEAD_CONCURRENCY = 100
-DEBUG_MATCH = True               # Bật để in log kênh không match
+DEBUG_MATCH = True
+DEBUG_MERGE = True
 
 ALLOWED_TENNIS_TOURNAMENTS = {
     "atp", "atp tour", "atp world tour", "grand slam", "australian open",
@@ -140,7 +138,7 @@ def normalize_country_name(country: str) -> str:
     mapping = {
         "united states": "us", "usa": "us", "us": "us", "canada": "ca", "ca": "ca",
         "brazil": "br", "br": "br", "argentina": "ar", "ar": "ar", "chile": "cl",
-        "cl": "cl", "peru": "pe", "colombia": "co", "ecuador": "ec", "uruguay": "uy",
+        "cl": "cl", "peru": "pe", "colombia": "co", "ecuador": "ec", "uruguay": "65",
         "paraguay": "py", "bolivia": "bo", "venezuela": "ve", "mexico": "mx",
         "united kingdom": "uk", "uk": "uk", "england": "uk", "ireland": "ie", "ie": "ie",
         "germany": "de", "de": "de", "france": "fr", "fr": "fr", "italy": "it", "it": "it",
@@ -190,22 +188,14 @@ def is_channel_match(ch_name: str, m3u_name: str, country: str = "") -> bool:
         return False
     ch_norm = normalize_channel_name(ch_name)
     m3u_norm = normalize_channel_name(m3u_name)
-    # Tạm thời tắt country filter để tăng match
-    # if country:
-    #     country_code = normalize_country_name(country)
-    #     if country_code:
-    #         m3u_lower = m3u_name.lower()
-    #         match = re.search(r'(?:\||^|\(|\s)([a-z]{2,3})(?:\||:|\)|\s|-|$)', m3u_lower)
-    #         if match:
-    #             prefix = match.group(1)
-    #             if prefix != country_code:
-    #                 return False
+    # Tạm thời tắt country filter
+    # if country: ...
     if len(ch_norm) <= 3 or len(m3u_norm) <= 3:
         return ch_norm == m3u_norm
     ch_text, ch_num = split_name_and_number(ch_norm)
     m3u_text, m3u_num = split_name_and_number(m3u_norm)
     text_similarity = similar(ch_text, m3u_text)
-    if text_similarity < 0.8:   # Giảm ngưỡng từ 0.9 xuống 0.8
+    if text_similarity < 0.8:
         return False
     if abs(len(ch_text) - len(m3u_text)) > max(len(ch_text), len(m3u_text)) * 0.3:
         return False
@@ -245,9 +235,6 @@ def get_country_priority(country_name: str) -> int:
     return 50
 
 # ================== SOFASCORE API ==================
-# ... (giữ nguyên toàn bộ phần SofaScore API như code trước) ...
-# Tôi sẽ viết gọn lại để tránh quá dài, nhưng bạn cần copy đầy đủ từ code trước đó.
-
 async def get_channel_name(session, channel_id):
     url = f"https://api.sofascore.com/api/v1/tv/channel/{channel_id}/schedule"
     try:
@@ -680,6 +667,13 @@ async def load_all_secondary_sources(start_ts: int, max_ts: int) -> List[Dict]:
                     if g and start_ts <= g['kick_utc'] <= max_ts:
                         games.append(g)
 
+    if DEBUG_MERGE:
+        sources = {}
+        for g in games:
+            src = g.get('source', 'unknown')
+            sources[src] = sources.get(src, 0) + 1
+        print(f"   📊 Số trận từ các nguồn: {sources}")
+
     return games
 
 def merge_games(primary: List[Dict], secondary: List[Dict]) -> List[Dict]:
@@ -859,10 +853,9 @@ async def main():
 
     def get_match_key(match_str: str, league: str) -> str:
         if league == "Tennis":
-            # Tennis: chỉ chuẩn hóa nhẹ, giữ nguyên nội dung chính
+            # Tennis: không gộp dựa trên tên rút gọn, chỉ chuẩn hóa nhẹ
             clean = re.sub(r'[^\w\s]', ' ', match_str.lower())
-            clean = re.sub(r'\s+', ' ', clean).strip()
-            return clean
+            return ' '.join(clean.split())
         # Bóng đá: rút gọn tên đội
         def simplify_team_name(name: str) -> str:
             name = name.strip().lower()
@@ -896,38 +889,79 @@ async def main():
 
     deduped_games = []
     for (league, match_key), game_list in groups.items():
-        if len(game_list) == 1:
-            deduped_games.append(game_list[0])
-            continue
-        game_list.sort(key=lambda g: g['kick_utc'])
-        clusters = []
-        current_cluster = [game_list[0]]
-        for g in game_list[1:]:
-            if g['kick_utc'] - current_cluster[-1]['kick_utc'] <= 1800:
-                current_cluster.append(g)
-            else:
-                clusters.append(current_cluster)
-                current_cluster = [g]
-        clusters.append(current_cluster)
-        for cluster in clusters:
-            merged_game = cluster[0].copy()
-            merged_game['kick_utc'] = max(g['kick_utc'] for g in cluster)
-            merged_game['time'] = vn_time(merged_game['kick_utc'])
-            merged_channels = {}
-            for g in cluster:
-                for tv in g['tv_channels']:
-                    country = tv['country']
-                    if country not in merged_channels:
-                        merged_channels[country] = set()
-                    merged_channels[country].update(tv['channels'])
-            merged_game['tv_channels'] = [
-                {"country": c, "channels": list(chs)}
-                for c, chs in merged_channels.items()
-            ]
-            deduped_games.append(merged_game)
+        if league == "Tennis":
+            # Đối với tennis, không gộp tự động, chỉ gộp nếu match giống hệt và thời gian gần nhau
+            # Phân cụm theo thời gian ≤30 phút và match giống hệt (so sánh nguyên văn sau chuẩn hóa nhẹ)
+            game_list.sort(key=lambda g: g['kick_utc'])
+            clusters = []
+            current_cluster = [game_list[0]]
+            for g in game_list[1:]:
+                # So sánh match đã chuẩn hóa (bỏ dấu câu)
+                if (g['kick_utc'] - current_cluster[-1]['kick_utc'] <= 1800 and
+                    get_match_key(g['match'], league) == get_match_key(current_cluster[-1]['match'], league)):
+                    current_cluster.append(g)
+                else:
+                    clusters.append(current_cluster)
+                    current_cluster = [g]
+            clusters.append(current_cluster)
+            for cluster in clusters:
+                if len(cluster) == 1:
+                    deduped_games.append(cluster[0])
+                else:
+                    merged_game = cluster[0].copy()
+                    merged_game['kick_utc'] = max(g['kick_utc'] for g in cluster)
+                    merged_game['time'] = vn_time(merged_game['kick_utc'])
+                    merged_channels = {}
+                    for g in cluster:
+                        for tv in g['tv_channels']:
+                            country = tv['country']
+                            if country not in merged_channels:
+                                merged_channels[country] = set()
+                            merged_channels[country].update(tv['channels'])
+                    merged_game['tv_channels'] = [
+                        {"country": c, "channels": list(chs)}
+                        for c, chs in merged_channels.items()
+                    ]
+                    deduped_games.append(merged_game)
+        else:
+            # Bóng đá: gộp như cũ
+            if len(game_list) == 1:
+                deduped_games.append(game_list[0])
+                continue
+            game_list.sort(key=lambda g: g['kick_utc'])
+            clusters = []
+            current_cluster = [game_list[0]]
+            for g in game_list[1:]:
+                if g['kick_utc'] - current_cluster[-1]['kick_utc'] <= 1800:
+                    current_cluster.append(g)
+                else:
+                    clusters.append(current_cluster)
+                    current_cluster = [g]
+            clusters.append(current_cluster)
+            for cluster in clusters:
+                merged_game = cluster[0].copy()
+                merged_game['kick_utc'] = max(g['kick_utc'] for g in cluster)
+                merged_game['time'] = vn_time(merged_game['kick_utc'])
+                merged_channels = {}
+                for g in cluster:
+                    for tv in g['tv_channels']:
+                        country = tv['country']
+                        if country not in merged_channels:
+                            merged_channels[country] = set()
+                        merged_channels[country].update(tv['channels'])
+                merged_game['tv_channels'] = [
+                    {"country": c, "channels": list(chs)}
+                    for c, chs in merged_channels.items()
+                ]
+                deduped_games.append(merged_game)
 
     all_games = deduped_games
     print(f"   ✅ Sau khi gộp còn {len(all_games)} trận")
+
+    if DEBUG_MERGE:
+        tennis_count = sum(1 for g in all_games if g['league'] == 'Tennis')
+        football_count = len(all_games) - tennis_count
+        print(f"   🎾 Tennis: {tennis_count} trận, ⚽ Bóng đá: {football_count} trận")
 
     # Lưu schedule.json
     today_str = datetime.now().strftime("%Y%m%d")
