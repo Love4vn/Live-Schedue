@@ -2,7 +2,7 @@ name: Update Live Football + Tennis Matches
 
 on:
   schedule:
-    - cron: '20 23 * * *'          # chạy mỗi 6 tiếng (0h, 6h, 12h, 18h)
+    - cron: '20 0,4,8,12,16,20 * * *'          # chạy mỗi 6 tiếng (0h, 6h, 12h, 18h)
   workflow_dispatch:               # cho phép chạy thủ công
 
 jobs:
