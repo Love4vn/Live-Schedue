@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-23 14:00 VN",
+  "updated": "2026-04-23 14:26 VN",
   "days": {
     "20260423": {
       "date": "Thursday, 23/04",
@@ -186,9 +186,9 @@
             {
               "country": "Ausport",
               "channels": [
-                "beIN Sports Connect",
                 "beIN SPORTS 1",
-                "beIN SPORTS 2"
+                "beIN SPORTS 2",
+                "beIN Sports Connect"
               ]
             }
           ],
@@ -219,6 +219,37 @@
               "country": "Hubsport",
               "channels": [
                 "Hub Sports 6 HD"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP Masters & WTA 1000 Madrid",
+          "kick_utc": 1776934800,
+          "time": "23/04 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Klub 2 Hrvatska"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "WTA 1000 & ATP Masters Madrid",
+          "kick_utc": 1776934800,
+          "time": "23/04 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Klub 4 Hrvatska",
+                "Sport Klub 5 Hrvatska"
               ]
             }
           ],
