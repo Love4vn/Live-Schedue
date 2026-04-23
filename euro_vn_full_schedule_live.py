@@ -1,13 +1,10 @@
 """
 euro_vn_full_schedule_live.py
 ================================
-PHIÊN BẢN HOÀN CHỈNH – ĐÃ SỬA LỖI GỘP TRẬN TENNIS
-- Tải M3U bất đồng bộ (aiohttp).
-- Validate HEAD nhanh (có thể tắt).
-- Cache SofaScore 24h.
-- Gộp trận trùng lặp do chương trình dạo đầu (≤30 phút).
-- Sắp xếp kênh ưu tiên tiếng Anh.
-- Tích hợp Hubsport & NowTV từ GitHub.
+PHIÊN BẢN HOÀN CHỈNH – SỬA LỖI GỘP TRẬN TENNIS
+- Tennis chỉ gộp nếu match giống hệt (chuẩn hóa nhẹ).
+- Giữ nguyên tất cả các trận tennis khác nhau.
+- Các cải tiến match kênh: nới lỏng similarity, tắt country filter, thêm debug.
 """
 
 import asyncio
@@ -26,17 +23,17 @@ import aiohttp
 from curl_cffi.requests import AsyncSession as CffiAsyncSession
 
 # ================== CẤU HÌNH ==================
-ENABLE_VALIDATION = False        # Đặt False để tắt kiểm tra link (chạy nhanh nhất)
+ENABLE_VALIDATION = False
 TIMEZONE = ZoneInfo("Asia/Ho_Chi_Minh")
 M3U_LIST_FILE = "M3U_list.txt"
 SCHEDULE_FILE = "schedule.json"
 LIVE_M3U = "live_schedule.m3u"
 SOFASCORE_CACHE_FILE = "sofascore_cache.json"
-VALIDATE_TIMEOUT = 2           # Giây cho HEAD request
-MAX_CHANNELS_PER_MATCH = 500   # Số kênh tối đa mỗi trận
-HEAD_CONCURRENCY = 100         # Số lượng HEAD đồng thời
+VALIDATE_TIMEOUT = 2
+MAX_CHANNELS_PER_MATCH = 500
+HEAD_CONCURRENCY = 100
+DEBUG_MATCH = True               # Bật để in log kênh không match
 
-# Danh sách giải tennis được phép
 ALLOWED_TENNIS_TOURNAMENTS = {
     "atp", "atp tour", "atp world tour", "grand slam", "australian open",
     "roland garros", "french open", "wimbledon", "us open", "nitto atp finals",
@@ -112,7 +109,7 @@ def normalize_channel_name(name: str) -> str:
     name = name.lower()
     name = re.sub(r'^[a-z]{2,3}: ', '', name)
     name = re.sub(r'^[a-z]{2,3} - ', '', name)
-    name = re.sub(r'\b(suomi|dansk|svenska|norsk|suomi|nederlands|deutsch|italia|españa|français|polska|magyar|românia|българия|türkiye|ελλάδα|ישראל)\b', '', name)
+    name = re.sub(r'\b(suomi|dansk|svenska|norsk|nederlands|deutsch|italia|españa|français|polska|magyar|românia|българия|türkiye|ελλάδα|ישראל|hrvatska|croatia)\b', '', name)
     name = re.sub(r'[ᴬᴭᴮᴰᴱᴲᴳᴴᴵᴶᴷᴸᴹᴺᴻᴼᴾᴿᵀᵁⱽᵂᵡᵞᵟᵠᵡᵢᵣᵤᵥᵦᵧᵨᵩᵪᵫᵬᵭᵮᵯᵰᵱᵲᵳᵴᵵᵶᵷᵸᵹᵺᵻᵼᵽᵾᵿ]', '', name)
     name = re.sub(r'┃[^┃]*┃', '', name)
     name = re.sub(r'^[a-z]{2,3}\|', '', name)
@@ -193,21 +190,22 @@ def is_channel_match(ch_name: str, m3u_name: str, country: str = "") -> bool:
         return False
     ch_norm = normalize_channel_name(ch_name)
     m3u_norm = normalize_channel_name(m3u_name)
-    if country:
-        country_code = normalize_country_name(country)
-        if country_code:
-            m3u_lower = m3u_name.lower()
-            match = re.search(r'(?:\||^|\(|\s)([a-z]{2,3})(?:\||:|\)|\s|-|$)', m3u_lower)
-            if match:
-                prefix = match.group(1)
-                if prefix != country_code:
-                    return False
+    # Tạm thời tắt country filter để tăng match
+    # if country:
+    #     country_code = normalize_country_name(country)
+    #     if country_code:
+    #         m3u_lower = m3u_name.lower()
+    #         match = re.search(r'(?:\||^|\(|\s)([a-z]{2,3})(?:\||:|\)|\s|-|$)', m3u_lower)
+    #         if match:
+    #             prefix = match.group(1)
+    #             if prefix != country_code:
+    #                 return False
     if len(ch_norm) <= 3 or len(m3u_norm) <= 3:
         return ch_norm == m3u_norm
     ch_text, ch_num = split_name_and_number(ch_norm)
     m3u_text, m3u_num = split_name_and_number(m3u_norm)
     text_similarity = similar(ch_text, m3u_text)
-    if text_similarity < 0.9:
+    if text_similarity < 0.8:   # Giảm ngưỡng từ 0.9 xuống 0.8
         return False
     if abs(len(ch_text) - len(m3u_text)) > max(len(ch_text), len(m3u_text)) * 0.3:
         return False
@@ -232,7 +230,6 @@ def is_team_match(team_name: str, m3u_name: str) -> bool:
     return similar(team_norm, m3u_norm) >= 0.7
 
 def get_country_priority(country_name: str) -> int:
-    """Trả về độ ưu tiên của quốc gia (càng nhỏ càng ưu tiên hiển thị trước)."""
     if not country_name:
         return 100
     priority_map = {
@@ -248,6 +245,9 @@ def get_country_priority(country_name: str) -> int:
     return 50
 
 # ================== SOFASCORE API ==================
+# ... (giữ nguyên toàn bộ phần SofaScore API như code trước) ...
+# Tôi sẽ viết gọn lại để tránh quá dài, nhưng bạn cần copy đầy đủ từ code trước đó.
+
 async def get_channel_name(session, channel_id):
     url = f"https://api.sofascore.com/api/v1/tv/channel/{channel_id}/schedule"
     try:
@@ -420,7 +420,7 @@ def parse_livesportsontv(entry: dict) -> Optional[Dict]:
         dt = dt.replace(tzinfo=TIMEZONE)
         kick_utc = int(dt.timestamp())
         league = entry.get('League', '')
-        if "Tennis" in league or "Tenis" in league:
+        if "Tennis" in league or "Tenis" in league or "ATP" in league or "WTA" in league:
             league = "Tennis"
         else:
             if "UEFA Europa League" in league:
@@ -859,10 +859,11 @@ async def main():
 
     def get_match_key(match_str: str, league: str) -> str:
         if league == "Tennis":
-            # Với tennis, chỉ chuẩn hóa cơ bản, không cố tách đội
+            # Tennis: chỉ chuẩn hóa nhẹ, giữ nguyên nội dung chính
             clean = re.sub(r'[^\w\s]', ' ', match_str.lower())
-            return ' '.join(clean.split())
-        # Hàm rút gọn tên đội bóng
+            clean = re.sub(r'\s+', ' ', clean).strip()
+            return clean
+        # Bóng đá: rút gọn tên đội
         def simplify_team_name(name: str) -> str:
             name = name.strip().lower()
             name = re.sub(r'\b(fc|afc|sc|united|city|wanderers|rovers|athletic|albion|town|county|&|hove|and)\b', '', name)
@@ -967,6 +968,8 @@ async def main():
                     if channel_count >= MAX_CHANNELS_PER_MATCH:
                         break
                     matching = [ch for ch in unique_ch if is_channel_match(ch_name, ch['name'], tv_country)]
+                    if DEBUG_MATCH and not matching:
+                        print(f"   [DEBUG] Không match kênh: '{ch_name}' (country: {tv_country})")
                     for ch in matching:
                         if channel_count >= MAX_CHANNELS_PER_MATCH:
                             break
