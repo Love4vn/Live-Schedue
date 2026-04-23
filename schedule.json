@@ -1,9 +1,88 @@
 {
-  "updated": "2026-04-23 10:34 VN",
+  "updated": "2026-04-23 12:15 VN",
   "days": {
     "20260423": {
       "date": "Thursday, 23/04",
       "games": [
+        {
+          "league": "La Liga",
+          "match": "Levante vs Sevilla",
+          "kick_utc": 1776963600,
+          "time": "24/04 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Azam Sports 4 HD",
+                "beIN Sports Australia 3 HD",
+                "beIN Sports MENA 1 HD",
+                "beIN Sports MENA English 2 HD",
+                "beIN Sports MENA French 1 HD",
+                "DAZN 1 Bar Deutsch HD",
+                "DAZN LaLiga HD",
+                "Megogo Futbol 2",
+                "Megogo Sport Ukraine HD",
+                "Premier Sports 1 Ireland HD",
+                "Premier Sports 1 UK HD",
+                "Premier Sports GB Player HD",
+                "Setanta Sports 1 Eurasia HD",
+                "Spíler 2 TV Hungary HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "La Liga",
+          "match": "Rayo Vallecano vs Espanyol",
+          "kick_utc": 1776967200,
+          "time": "24/04 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Azam Sports 2 HD",
+                "beIN Sports France 9 HD max",
+                "beIN Sports MENA 2 HD",
+                "Belarus 5 HD",
+                "M+ LaLiga HDR",
+                "Megogo Futbol 3",
+                "New World Sport 4 Togo",
+                "Premier Sports GB Player HD",
+                "Spíler 1 TV Hungary HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "La Liga",
+          "match": "Real Oviedo vs Villarreal",
+          "kick_utc": 1776972600,
+          "time": "24/04 02:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Azam Sports 4 HD",
+                "beIN Sports Australia 3 HD",
+                "beIN Sports France 2 HD",
+                "beIN Sports MENA 1 HD",
+                "beIN Sports MENA English 2 HD",
+                "beIN Sports MENA French 1 HD",
+                "Belarus 5 HD",
+                "DAZN 1 Bar Deutsch HD",
+                "Megogo Futbol 2",
+                "Premier Sports 1 Ireland HD",
+                "Premier Sports 1 UK HD",
+                "Premier Sports GB Player HD",
+                "Setanta Sports 1 Eurasia HD",
+                "Spíler 2 TV Hungary HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
         {
           "league": "Tennis",
           "match": "Madrid Open",
@@ -51,6 +130,21 @@
         },
         {
           "league": "Tennis",
+          "match": "Madrid Open",
+          "kick_utc": 1776963600,
+          "time": "24/04 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
           "match": "Mutua Madrid Open",
           "kick_utc": 1776934800,
           "time": "23/04 04:00 PM",
@@ -58,10 +152,10 @@
             {
               "country": "Wheresthematch",
               "channels": [
-                "Sky Sports+",
+                "Sky Sports Tennis",
                 "Sky Sports Ultra HDR",
                 "Sky Sports Main Event",
-                "Sky Sports Tennis"
+                "Sky Sports+"
               ]
             }
           ],
@@ -76,8 +170,8 @@
             {
               "country": "Wheresthematch",
               "channels": [
-                "Sky Sports+",
-                "Sky Sports Tennis"
+                "Sky Sports Tennis",
+                "Sky Sports+"
               ]
             }
           ],
@@ -92,9 +186,9 @@
             {
               "country": "Ausport",
               "channels": [
-                "beIN SPORTS 2",
                 "beIN Sports Connect",
-                "beIN SPORTS 1"
+                "beIN SPORTS 1",
+                "beIN SPORTS 2"
               ]
             }
           ],
