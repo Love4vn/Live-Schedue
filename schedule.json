@@ -1,8 +1,8 @@
 {
-  "updated": "2026-04-23 04:57 VN",
+  "updated": "2026-04-23 10:34 VN",
   "days": {
-    "20260422": {
-      "date": "Wednesday, 22/04",
+    "20260423": {
+      "date": "Thursday, 23/04",
       "games": [
         {
           "league": "Tennis",
@@ -59,8 +59,8 @@
               "country": "Wheresthematch",
               "channels": [
                 "Sky Sports+",
-                "Sky Sports Main Event",
                 "Sky Sports Ultra HDR",
+                "Sky Sports Main Event",
                 "Sky Sports Tennis"
               ]
             }
@@ -86,32 +86,15 @@
         {
           "league": "Tennis",
           "match": "",
-          "kick_utc": 1776934800,
-          "time": "23/04 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 1",
-                "beIN Sports Connect",
-                "beIN SPORTS 2"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
           "kick_utc": 1776956400,
           "time": "23/04 10:00 PM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
-                "beIN SPORTS 1",
+                "beIN SPORTS 2",
                 "beIN Sports Connect",
-                "beIN SPORTS 2"
+                "beIN SPORTS 1"
               ]
             }
           ],
@@ -197,6 +180,21 @@
           "match": "ATP Tour 2026 Mutua Madrid Open (1000) Day 2 R1 Session 4",
           "kick_utc": 1776956400,
           "time": "23/04 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Hub Sports 2 HD"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP Tour 2026 Mutua Madrid Open (1000) Day 2 R1 Session 5",
+          "kick_utc": 1776963600,
+          "time": "24/04 12:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
