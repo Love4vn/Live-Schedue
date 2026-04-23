@@ -1,7 +1,7 @@
 """
 euro_vn_full_schedule_live.py
 ================================
-PHIÊN BẢN SỬA LỖI MẤT TRẬN TENNIS - LOG CHI TIẾT
+PHIÊN BẢN SỬA LỖI MẤT KÊNH SPORT KLUB - NHẬN DIỆN TENNIS LINH HOẠT
 """
 
 import asyncio
@@ -138,7 +138,7 @@ def normalize_country_name(country: str) -> str:
     mapping = {
         "united states": "us", "usa": "us", "us": "us", "canada": "ca", "ca": "ca",
         "brazil": "br", "br": "br", "argentina": "ar", "ar": "ar", "chile": "cl",
-        "cl": "cl", "peru": "pe", "colombia": "co", "ecuador": "ec", "uruguay": "65",
+        "cl": "cl", "peru": "pe", "colombia": "co", "ecuador": "ec", "uruguay": "uy",
         "paraguay": "py", "bolivia": "bo", "venezuela": "ve", "mexico": "mx",
         "united kingdom": "uk", "uk": "uk", "england": "uk", "ireland": "ie", "ie": "ie",
         "germany": "de", "de": "de", "france": "fr", "fr": "fr", "italy": "it", "it": "it",
@@ -189,7 +189,6 @@ def is_channel_match(ch_name: str, m3u_name: str, country: str = "") -> bool:
     ch_norm = normalize_channel_name(ch_name)
     m3u_norm = normalize_channel_name(m3u_name)
     # Tạm thời tắt country filter
-    # if country: ...
     if len(ch_norm) <= 3 or len(m3u_norm) <= 3:
         return ch_norm == m3u_norm
     ch_text, ch_num = split_name_and_number(ch_norm)
@@ -579,21 +578,44 @@ async def fetch_json(session, url):
         print(f"   ❌ Lỗi tải {url[:60]}...: {e}")
         return None
 
+def is_tennis_league(league: str) -> bool:
+    """Kiểm tra xem league có phải là tennis không (linh hoạt)."""
+    if not league:
+        return False
+    league_lower = league.lower()
+    tennis_keywords = ["atp", "wta", "tennis", "tenis", "masters", "open", "grand slam"]
+    return any(keyword in league_lower for keyword in tennis_keywords)
+
 def parse_hubsport(entry: dict) -> Optional[Dict]:
     try:
+        # Kiểm tra các trường bắt buộc
+        if 'Date' not in entry or 'Time' not in entry:
+            if DEBUG_MERGE:
+                print(f"   [DEBUG] Bỏ qua mục thiếu Date/Time: {entry}")
+            return None
         dt_str = f"{entry['Date']} {entry['Time']}"
         dt = datetime.strptime(dt_str, "%Y-%m-%d %H:%M")
         dt = dt.replace(tzinfo=TIMEZONE)
         kick_utc = int(dt.timestamp())
         league = entry.get('League', '')
-        if "ATP" in league or "WTA" in league:
+        
+        if is_tennis_league(league):
             league = "Tennis"
         elif "Premier League" in league:
             league = "Premier League"
         else:
-            if league not in ALLOWED_FOOTBALL_LEAGUES and league != "Tennis":
-                return None
+            if DEBUG_MERGE:
+                print(f"   [DEBUG] Bỏ qua league không hỗ trợ: '{league}'")
+            return None
+            
+        if league not in ALLOWED_FOOTBALL_LEAGUES and league != "Tennis":
+            return None
+            
         match_raw = entry.get('Matchup', '')
+        if not match_raw:
+            if DEBUG_MERGE:
+                print(f"   [DEBUG] Bỏ qua mục không có Matchup: {entry}")
+            return None
         match = match_raw.replace(' @ ', ' vs ')
         channels = entry.get('Services', [])
         if not channels:
@@ -606,24 +628,36 @@ def parse_hubsport(entry: dict) -> Optional[Dict]:
             "tv_channels": [{"country": "Hubsport", "channels": channels}],
             "source": "hubsport"
         }
-    except:
+    except Exception as e:
+        if DEBUG_MERGE:
+            print(f"   [DEBUG] Lỗi parse hubsport: {e} - {entry}")
         return None
 
 def parse_nowtv(entry: dict) -> Optional[Dict]:
     try:
+        if 'Date' not in entry or 'Time' not in entry:
+            return None
         dt_str = f"{entry['Date']} {entry['Time']}"
         dt = datetime.strptime(dt_str, "%Y-%m-%d %H:%M")
         dt = dt.replace(tzinfo=TIMEZONE)
         kick_utc = int(dt.timestamp())
         league = entry.get('League', '')
-        if "ATP" in league or "WTA" in league:
+        
+        if is_tennis_league(league):
             league = "Tennis"
         elif "Premier League" in league or "PREMIER LEAGUE" in league:
             league = "Premier League"
         else:
-            if league not in ALLOWED_FOOTBALL_LEAGUES and league != "Tennis":
-                return None
+            if DEBUG_MERGE:
+                print(f"   [DEBUG] Bỏ qua league NowTV không hỗ trợ: '{league}'")
+            return None
+            
+        if league not in ALLOWED_FOOTBALL_LEAGUES and league != "Tennis":
+            return None
+            
         match_raw = entry.get('Matchup', '')
+        if not match_raw:
+            return None
         match = match_raw.replace(' @ ', ' vs ')
         channels = entry.get('Services', [])
         if not channels:
@@ -636,7 +670,9 @@ def parse_nowtv(entry: dict) -> Optional[Dict]:
             "tv_channels": [{"country": "NowTV", "channels": channels}],
             "source": "nowtv"
         }
-    except:
+    except Exception as e:
+        if DEBUG_MERGE:
+            print(f"   [DEBUG] Lỗi parse nowtv: {e} - {entry}")
         return None
 
 async def load_all_secondary_sources(start_ts: int, max_ts: int) -> List[Dict]:
@@ -853,10 +889,8 @@ async def main():
 
     def get_match_key(match_str: str, league: str) -> str:
         if league == "Tennis":
-            # Tennis: không gộp dựa trên tên rút gọn, chỉ chuẩn hóa nhẹ
             clean = re.sub(r'[^\w\s]', ' ', match_str.lower())
             return ' '.join(clean.split())
-        # Bóng đá: rút gọn tên đội
         def simplify_team_name(name: str) -> str:
             name = name.strip().lower()
             name = re.sub(r'\b(fc|afc|sc|united|city|wanderers|rovers|athletic|albion|town|county|&|hove|and)\b', '', name)
@@ -890,13 +924,10 @@ async def main():
     deduped_games = []
     for (league, match_key), game_list in groups.items():
         if league == "Tennis":
-            # Đối với tennis, không gộp tự động, chỉ gộp nếu match giống hệt và thời gian gần nhau
-            # Phân cụm theo thời gian ≤30 phút và match giống hệt (so sánh nguyên văn sau chuẩn hóa nhẹ)
             game_list.sort(key=lambda g: g['kick_utc'])
             clusters = []
             current_cluster = [game_list[0]]
             for g in game_list[1:]:
-                # So sánh match đã chuẩn hóa (bỏ dấu câu)
                 if (g['kick_utc'] - current_cluster[-1]['kick_utc'] <= 1800 and
                     get_match_key(g['match'], league) == get_match_key(current_cluster[-1]['match'], league)):
                     current_cluster.append(g)
@@ -924,7 +955,6 @@ async def main():
                     ]
                     deduped_games.append(merged_game)
         else:
-            # Bóng đá: gộp như cũ
             if len(game_list) == 1:
                 deduped_games.append(game_list[0])
                 continue
