@@ -1,25 +1,176 @@
 {
-  "updated": "2026-04-24 15:16 VN",
+  "updated": "2026-04-24 17:27 VN",
   "days": {
     "20260424": {
       "date": "Friday, 24/04",
       "games": [
         {
+          "league": "Bundesliga",
+          "match": "RB Leipzig vs Union Berlin",
+          "kick_utc": 1777055400,
+          "time": "25/04 01:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena 4 Hungary HD",
+                "BBC iPlayer",
+                "BBC iPlayer 4K",
+                "BBC Sport Website",
+                "ESPN+ USA",
+                "OneFootball",
+                "Setanta Sports+ Ukraine HD",
+                "Sky Sport Bundesliga 1 HD",
+                "Sky Sport Bundesliga HD",
+                "Sky Sport Bundesliga UHD",
+                "Sky Sport Top Event HD",
+                "ViaPlay Danmark HD",
+                "ViaPlay Nederland HD",
+                "ViaPlay Norge HD",
+                "ViaPlay Suomi HD",
+                "ViaPlay Sverige HD",
+                "ViaPlay Ísland HD",
+                "YouTube: Bundesliga"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
           "league": "Serie A",
-          "match": "Napoli vs Cremonese",
+          "match": "Cremonese vs Napoli",
           "kick_utc": 1777056300,
           "time": "25/04 01:45 AM",
           "tv_channels": [
             {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Paramount+ (US)",
+                "Megogo Futbol 2",
+                "HBO Max",
+                "DAZN Great Britain",
+                "DAZN 1 Bar Deutsch HD",
+                "DAZN US",
+                "DAZN Canada",
+                "TNT Sports 2 HD",
+                "Setanta Sports 1 Eurasia HD",
+                "FOX Deportes",
+                "DAZN Ireland"
+              ]
+            },
+            {
               "country": "Wheresthematch",
               "channels": [
                 "DAZN",
-                "TNT Sports 2",
-                "HBO Max"
+                "HBO Max",
+                "TNT Sports 2"
               ]
             }
           ],
-          "source": "wheresthematch"
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Ligue 1",
+          "match": "Brest vs Lens",
+          "kick_utc": 1777056300,
+          "time": "25/04 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "beIN Sports MENA 3 HD",
+                "Ligue 1+",
+                "Prime Video UK PPV"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Premier League",
+          "match": "Sunderland vs Nottingham Forest",
+          "kick_utc": 1777057200,
+          "time": "25/04 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Hub Premier 1"
+              ]
+            },
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Sky Sports Premier League HD",
+                "ViaPlay Nederland HD",
+                "Stan Sport Australia",
+                "USA Network",
+                "Canal+ Sport 1 Czech HD",
+                "Setanta Sports Ukraine HD",
+                "beIN Sports MENA English 1 HD",
+                "beIN Sports MENA 2 HD",
+                "Sky Sports Main Event HD",
+                "DAZN España",
+                "DAZN Portugal",
+                "Setanta Sports Qazaqstan HD",
+                "beIN Connect MENA",
+                "Fast Sports",
+                "Go3 Extra Sport Baltics",
+                "FuboTV Canada",
+                "Sky Go UK",
+                "DAZN Canada",
+                "ViaPlay Danmark HD",
+                "Sport 24 Extra HD",
+                "ViaPlay Suomi HD",
+                "Monomax Streaming",
+                "USA Network HD",
+                "ViaPlay Norge HD",
+                "Sky UK Ultra HD 1",
+                "Sky Sports Main Event UHD",
+                "VOYO Pro TV Romania",
+                "ViaPlay Sverige HD",
+                "beIN Connect Türkiye"
+              ]
+            },
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports Premier League TV",
+                "Now Sports Premier League 1"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "La Liga",
+          "match": "Real Madrid vs Real Betis",
+          "kick_utc": 1777057200,
+          "time": "25/04 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DAZN 2 Bar Deutsch HD",
+                "Premier Sports GB Player HD",
+                "LaLiga TV Bar HD",
+                "beIN Sports MENA French 1 HD",
+                "Megogo Futbol 1",
+                "TV2 Sport X Dansk HD",
+                "beIN Sports MENA 1 HD",
+                "Belarus 5 HD",
+                "beIN Sports Australia 3 HD",
+                "ESPN Unlimited",
+                "DAZN LaLiga HD",
+                "Setanta Sports 2 Eurasia HD",
+                "beIN Sports France 1 HD",
+                "Spíler 2 TV Hungary HD",
+                "ESPN Select",
+                "ESPN Deportes"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
         },
         {
           "league": "Premier League",
@@ -54,28 +205,6 @@
           "source": "wheresthematch"
         },
         {
-          "league": "Premier League",
-          "match": "Sunderland vs Nottingham Forest",
-          "kick_utc": 1777057200,
-          "time": "25/04 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Hub Premier 1"
-              ]
-            },
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports Premier League TV",
-                "Now Sports Premier League 1"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
           "league": "Tennis",
           "match": "Madrid Open",
           "kick_utc": 1777021200,
@@ -84,7 +213,68 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN2",
+                "TSN5",
+                "DAZN Canada",
+                "TSN2"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Madrid Open",
+          "kick_utc": 1777050000,
+          "time": "25/04 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "TSN2"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Madrid Open",
+          "kick_utc": 1777053600,
+          "time": "25/04 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DAZN Canada"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Madrid Open",
+          "kick_utc": 1777057200,
+          "time": "25/04 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "RDS 2"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Madrid Open",
+          "kick_utc": 1777107600,
+          "time": "25/04 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
                 "DAZN Canada"
               ]
             }
@@ -113,6 +303,22 @@
           "match": "Mutua Madrid Open",
           "kick_utc": 1777053600,
           "time": "25/04 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Sky Sports Tennis",
+                "Sky Sports+"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "Mutua Madrid Open",
+          "kick_utc": 1777107600,
+          "time": "25/04 04:00 PM",
           "tv_channels": [
             {
               "country": "Wheresthematch",
@@ -351,6 +557,21 @@
         },
         {
           "league": "Tennis",
+          "match": "WTA Tour 2026 Mutua Madrid Open (1000) Day 4 Session 1",
+          "kick_utc": 1777107600,
+          "time": "25/04 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Hub Sports 6 HD"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Mutua Madrid Open E8",
           "kick_utc": 1777021200,
           "time": "24/04 04:00 PM",
@@ -434,6 +655,36 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Mutua Madrid Open E12",
+          "kick_utc": 1777107600,
+          "time": "25/04 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Mutua Madrid Open -Round 2 (B)",
+          "kick_utc": 1777107600,
+          "time": "25/04 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
               ]
             }
           ],
