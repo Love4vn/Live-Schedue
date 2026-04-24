@@ -6,10 +6,10 @@ import re
 from collections import defaultdict
 
 # ================================================
-# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ + TENNIS – TÍCH HỢP 3 NGUỒN
-# ✅ StarHub: Premier League + Tennis
-# ✅ nt74/epglist: Tennis (có (LIVE))
-# ✅ xvb-lab/xvb-epg: Tennis (có En Direct) + tên kênh ... France
+# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ + TENNIS – 3 NGUỒN
+# ✅ StarHub: Premier League + Tennis, beIN SPORTS → Malaysia
+# ✅ nt74/epglist: Tennis (có (LIVE)), kênh Sport Klub X Hrvatska
+# ✅ xvb-lab/xvb-epg: Tennis (có En Direct), kênh ... France
 # ================================================
 
 EPG_URL_STARHUB = "https://raw.githubusercontent.com/dbghelp/StarHub-TV-EPG/refs/heads/main/starhub.xml"
@@ -80,7 +80,6 @@ def clean_football_matchup(title: str) -> str:
 
 # ========== TENNIS CHUNG ==========
 def is_tennis_title(title: str) -> bool:
-    """Tiêu đề có chứa từ khóa tennis (dùng cho mọi nguồn)"""
     text = title.lower()
     tennis_keywords = {
         "atp", "wta", "tenis", "tennis", "atp tour", "wta tour", "grand slam",
@@ -92,18 +91,15 @@ def is_tennis_title(title: str) -> bool:
     return has_tennis and not has_padel
 
 def parse_tennis_matchup(title: str) -> tuple[str, str]:
-    """Tách League và Matchup từ title tennis"""
     clean_title = re.sub(r'\(Live\)', '', title, flags=re.IGNORECASE).strip()
-    # Loại bỏ tiền tố "Tennis : " hoặc "Tenis: " nếu có
+    # Loại bỏ tiền tố "Tennis : " hoặc "Tenis: "
     clean_title = re.sub(r'^(Tennis|Tenis)\s*:\s*', '', clean_title, flags=re.IGNORECASE).strip()
-
     if ":" in clean_title:
         parts = clean_title.split(":", 1)
         league_candidate = parts[0].strip()
         matchup_candidate = parts[1].strip()
         if any(kw in league_candidate.lower() for kw in ["atp", "wta", "tournoi", "tennis", "tenis"]):
             return league_candidate, matchup_candidate
-
     text = clean_title.lower()
     if "atp masters" in text:
         league = "ATP Masters"
@@ -117,7 +113,13 @@ def parse_tennis_matchup(title: str) -> tuple[str, str]:
         league = "Tennis"
     return league, clean_title
 
-# ========== ĐỊNH DẠNG TÊN KÊNH ==========
+# ========== ĐỊNH DẠNG TÊN KÊNH THEO NGUỒN ==========
+def format_starhub_channel_name(name: str) -> str:
+    """Thêm Malaysia nếu là beIN SPORTS"""
+    if re.search(r'bein\s*sports', name, re.IGNORECASE):
+        return f"{name} Malaysia"
+    return name
+
 def format_channel_name_nt74(channel_id: str) -> str:
     """sportklub5.rs -> Sport Klub 5 Hrvatska"""
     match = re.match(r'sportklub(\d+)\.rs', channel_id, re.IGNORECASE)
@@ -126,14 +128,9 @@ def format_channel_name_nt74(channel_id: str) -> str:
     return channel_id.replace('.rs', '').upper()
 
 def format_channel_name_xvb(channel_id: str) -> str:
-    """beIN.SPORTS.MAX.4.fr -> BeIN SPORTS MAX 4 France"""
-    # Bỏ đuôi .fr
+    """beIN.SPORTS.MAX.4.fr -> beIN SPORTS MAX 4 France"""
     name = re.sub(r'\.fr$', '', channel_id, flags=re.IGNORECASE)
-    # Thay dấu chấm còn lại bằng khoảng trắng
     name = name.replace('.', ' ')
-    # Viết hoa chữ cái đầu mỗi từ (ngoại trừ các từ viết tắt như beIN)
-    # Để giữ nguyên beIN, ta chỉ viết hoa từ thứ 2 trở đi nếu muốn, nhưng đơn giản dùng title()
-    # title() sẽ cho "Bein Sports Max 4". Ta sửa lại bein thành beIN thủ công.
     name = name.title()
     name = re.sub(r'\bBein\b', 'beIN', name)
     return f"{name} France"
@@ -177,7 +174,8 @@ def parse_programmes_starhub(xml_content: str, channels: dict) -> list:
         dt_vn = dt_utc + timedelta(hours=7)
         date_str = dt_vn.strftime("%Y-%m-%d")
         time_str = dt_vn.strftime("%H:%M")
-        channel_name = channels.get(channel_id, f"Channel {channel_id}")
+        raw_name = channels.get(channel_id, f"Channel {channel_id}")
+        channel_name = format_starhub_channel_name(raw_name)
         key = (date_str, time_str, matchup.lower())
         groups[key].append({
             "channel": channel_name,
@@ -223,7 +221,6 @@ def parse_programmes_nt74(xml_content: str) -> list:
     return _groups_to_output(groups)
 
 def parse_programmes_xvb(xml_content: str) -> list:
-    """Nguồn xvb-lab (Pháp) – chỉ lấy Tennis có En Direct trong desc"""
     root = ET.fromstring(xml_content)
     groups = defaultdict(list)
     for prog in root.findall("programme"):
@@ -235,7 +232,6 @@ def parse_programmes_xvb(xml_content: str) -> list:
             continue
         title = (title_elem.text or "").strip()
         desc = (desc_elem.text or "").strip() if desc_elem is not None else ""
-        # Kiểm tra tennis + có En Direct
         if not is_tennis_title(title) or not has_live_indicator_fr(desc):
             continue
         league, matchup = parse_tennis_matchup(title)
@@ -298,23 +294,19 @@ def merge_match_lists(*lists) -> list:
 # ========== MAIN ==========
 def main():
     try:
-        # Nguồn 1: StarHub
         xml_starhub = download_xml(EPG_URL_STARHUB)
         channels_starhub = parse_channels_starhub(xml_starhub)
         matches_starhub = parse_programmes_starhub(xml_starhub, channels_starhub)
         print(f"⚽🎾 StarHub: {len(matches_starhub)} trận")
 
-        # Nguồn 2: nt74
         xml_nt74 = download_xml(EPG_URL_NT74)
         matches_nt74 = parse_programmes_nt74(xml_nt74)
         print(f"🎾 nt74: {len(matches_nt74)} trận")
 
-        # Nguồn 3: xvb (Pháp)
         xml_xvb = download_xml(EPG_URL_XVB)
         matches_xvb = parse_programmes_xvb(xml_xvb)
         print(f"🎾 xvb (France): {len(matches_xvb)} trận")
 
-        # Hợp nhất
         all_matches = merge_match_lists(matches_starhub, matches_nt74, matches_xvb)
         print(f"📋 Tổng sau gộp: {len(all_matches)} trận")
 
