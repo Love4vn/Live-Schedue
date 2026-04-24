@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-24 10:36 VN",
+  "updated": "2026-04-24 15:16 VN",
   "days": {
     "20260424": {
       "date": "Friday, 24/04",
@@ -55,7 +55,7 @@
         },
         {
           "league": "Premier League",
-          "match": "Nottingham Forest vs Sunderland",
+          "match": "Sunderland vs Nottingham Forest",
           "kick_utc": 1777057200,
           "time": "25/04 02:00 AM",
           "tv_channels": [
@@ -201,6 +201,36 @@
         },
         {
           "league": "Tennis",
+          "match": "Tournoi WTA de Madrid",
+          "kick_utc": 1777028400,
+          "time": "24/04 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "beIN Sports Max 4 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi WTA de Madrid",
+          "kick_utc": 1777042800,
+          "time": "24/04 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "beIN Sports Max 4 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "WTA Tour 2026 Mutua Madrid Open (1000) Day 3 Session 2",
           "kick_utc": 1777035600,
           "time": "24/04 08:00 PM",
@@ -209,6 +239,51 @@
               "country": "Hubsport",
               "channels": [
                 "Hub Sports 6 HD"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Masters 1000 de Madrid",
+          "kick_utc": 1777035600,
+          "time": "24/04 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Masters 1000 de Madrid",
+          "kick_utc": 1777042800,
+          "time": "24/04 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Masters 1000 de Madrid",
+          "kick_utc": 1777050000,
+          "time": "25/04 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 France"
               ]
             }
           ],
