@@ -6,17 +6,15 @@ import re
 from collections import defaultdict
 
 # ================================================
-# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ + TENNIS CHÍNH XÁC
-# ✅ Tích hợp 2 nguồn EPG:
-#   1. StarHub (Premier League + Tennis)
-#   2. nt74/epglist (chỉ Tennis)
-# ✅ Chỉ lấy khi có (Live) hoặc (LIVE)
-# ✅ Matchup sạch sẽ, League rõ ràng
-# ✅ Tên kênh nt74 hiển thị: Sport Klub X Hrvatska
+# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ + TENNIS – TÍCH HỢP 3 NGUỒN
+# ✅ StarHub: Premier League + Tennis
+# ✅ nt74/epglist: Tennis (có (LIVE))
+# ✅ xvb-lab/xvb-epg: Tennis (có En Direct) + tên kênh ... France
 # ================================================
 
 EPG_URL_STARHUB = "https://raw.githubusercontent.com/dbghelp/StarHub-TV-EPG/refs/heads/main/starhub.xml"
 EPG_URL_NT74 = "https://raw.githubusercontent.com/nt74/epglist/refs/heads/main/guide.xml"
+EPG_URL_XVB = "https://raw.githubusercontent.com/xvb-lab/xvb-epg/refs/heads/main/epg/epg-fr.xml"
 OUTPUT_FILE = "live_matches.json"
 
 # ==================== DANH SÁCH ĐỘI PREMIER LEAGUE ====================
@@ -38,6 +36,7 @@ TEAM_ABBR = {
     "everton": "everton",
 }
 
+# ========== TIỆN ÍCH CHUNG ==========
 def download_xml(url: str) -> str:
     print(f"📥 Đang tải EPG từ {url.split('/')[-1]}...")
     response = requests.get(url, timeout=15)
@@ -46,30 +45,45 @@ def download_xml(url: str) -> str:
     return response.text
 
 def has_live_indicator(title: str, desc: str) -> bool:
-    """Kiểm tra có (Live) hoặc (LIVE) trong title hoặc desc"""
+    """Dùng cho StarHub & nt74: (Live) hoặc (LIVE)"""
     text = f"{title} {desc}".lower()
     return bool(re.search(r'\(live\)', text, re.IGNORECASE))
 
+def has_live_indicator_fr(desc: str) -> bool:
+    """Dùng cho xvb: En Direct (không phân biệt hoa thường)"""
+    return bool(re.search(r'en\s+direct', desc, re.IGNORECASE))
+
+# ========== PREMIER LEAGUE (chỉ StarHub) ==========
 def is_premier_league(title: str, desc: str) -> bool:
-    """Chỉ lấy khi có Live + đúng 2 đội Premier League (dùng cho StarHub)"""
     if not has_live_indicator(title, desc):
         return False
-
     text = (title + " " + desc).lower()
     for abbr, full in TEAM_ABBR.items():
         text = text.replace(abbr, full)
-
     found_teams = [team for team in PREMIER_LEAGUE_TEAMS if team in text]
     return len(found_teams) >= 2
 
-def is_tennis(title: str, desc: str) -> bool:
-    """Tennis có Live (dùng cho cả hai nguồn)"""
-    if not has_live_indicator(title, desc):
-        return False
+def clean_football_matchup(title: str) -> str:
+    title = re.sub(r'\(Live\)', '', title, flags=re.IGNORECASE)
+    title = re.sub(r'\(MW\d+\)', '', title, flags=re.IGNORECASE)
+    title = re.sub(r'-\s*EP\s*\d+', '', title, flags=re.IGNORECASE)
+    title = re.sub(r'LFCTV[^:]*:', '', title, flags=re.IGNORECASE)
+    title = re.sub(r'\s*:\s*', ' vs ', title)
+    title = re.sub(r'\s+', ' ', title).strip()
+    text_lower = title.lower()
+    for abbr, full in TEAM_ABBR.items():
+        text_lower = text_lower.replace(abbr, full)
+    found = [team.title() for team in PREMIER_LEAGUE_TEAMS if team in text_lower]
+    if len(found) >= 2:
+        return f"{found[0]} vs {found[1]}"
+    return title
 
+# ========== TENNIS CHUNG ==========
+def is_tennis_title(title: str) -> bool:
+    """Tiêu đề có chứa từ khóa tennis (dùng cho mọi nguồn)"""
     text = title.lower()
     tennis_keywords = {
-        "atp", "wta", "tenis", "atp tour", "wta tour", "grand slam",
+        "atp", "wta", "tenis", "tennis", "atp tour", "wta tour", "grand slam",
         "australian open", "roland garros", "french open", "wimbledon", "us open",
         "madrid open", "mutua madrid", "davis cup", "laver cup"
     }
@@ -77,65 +91,55 @@ def is_tennis(title: str, desc: str) -> bool:
     has_padel = "padel" in text or "padbol" in text
     return has_tennis and not has_padel
 
-def clean_football_matchup(title: str) -> str:
-    """Xử lý riêng cho Premier League"""
-    title = re.sub(r'\(Live\)', '', title, flags=re.IGNORECASE)
-    title = re.sub(r'\(MW\d+\)', '', title, flags=re.IGNORECASE)
-    title = re.sub(r'-\s*EP\s*\d+', '', title, flags=re.IGNORECASE)
-    title = re.sub(r'LFCTV[^:]*:', '', title, flags=re.IGNORECASE)
-    title = re.sub(r'\s*:\s*', ' vs ', title)
-    title = re.sub(r'\s+', ' ', title).strip()
-
-    text_lower = title.lower()
-    for abbr, full in TEAM_ABBR.items():
-        text_lower = text_lower.replace(abbr, full)
-
-    found = []
-    for team in PREMIER_LEAGUE_TEAMS:
-        if team in text_lower:
-            found.append(team.title())
-
-    if len(found) >= 2:
-        team1, team2 = found[0], found[1]
-        return f"{team1} vs {team2}"
-    return title
-
 def parse_tennis_matchup(title: str) -> tuple[str, str]:
-    """
-    Tách League và Matchup từ title Tennis.
-    Hỗ trợ:
-      - "ATP Masters Madrid: Basilashvili - Ofner"
-      - "WTA 1000 Madrid: Selekhmeteva - Jeanjean"
-      - "Tenis: WTA 1000 & ATP Masters Madrid"
-    """
-    # Xóa (Live) nếu có
+    """Tách League và Matchup từ title tennis"""
     clean_title = re.sub(r'\(Live\)', '', title, flags=re.IGNORECASE).strip()
+    # Loại bỏ tiền tố "Tennis : " hoặc "Tenis: " nếu có
+    clean_title = re.sub(r'^(Tennis|Tenis)\s*:\s*', '', clean_title, flags=re.IGNORECASE).strip()
 
-    # Nếu có dấu ":" và phần trước ":" chứa từ khóa tennis
     if ":" in clean_title:
         parts = clean_title.split(":", 1)
         league_candidate = parts[0].strip()
         matchup_candidate = parts[1].strip()
-        if any(kw in league_candidate.lower() for kw in ["atp", "wta", "tenis"]):
+        if any(kw in league_candidate.lower() for kw in ["atp", "wta", "tournoi", "tennis", "tenis"]):
             return league_candidate, matchup_candidate
 
-    # Fallback: tìm giải đấu dựa trên từ khóa
     text = clean_title.lower()
     if "atp masters" in text:
         league = "ATP Masters"
     elif "wta 1000" in text:
         league = "WTA 1000"
+    elif "tournoi wta" in text or "wta" in text:
+        league = "WTA"
     elif "atp" in text:
         league = "ATP"
-    elif "wta" in text:
-        league = "WTA"
     else:
         league = "Tennis"
-
     return league, clean_title
 
-def parse_channels(xml_content: str) -> dict:
-    """Lấy ánh xạ channel id -> display-name (cho StarHub)"""
+# ========== ĐỊNH DẠNG TÊN KÊNH ==========
+def format_channel_name_nt74(channel_id: str) -> str:
+    """sportklub5.rs -> Sport Klub 5 Hrvatska"""
+    match = re.match(r'sportklub(\d+)\.rs', channel_id, re.IGNORECASE)
+    if match:
+        return f"Sport Klub {match.group(1)} Hrvatska"
+    return channel_id.replace('.rs', '').upper()
+
+def format_channel_name_xvb(channel_id: str) -> str:
+    """beIN.SPORTS.MAX.4.fr -> BeIN SPORTS MAX 4 France"""
+    # Bỏ đuôi .fr
+    name = re.sub(r'\.fr$', '', channel_id, flags=re.IGNORECASE)
+    # Thay dấu chấm còn lại bằng khoảng trắng
+    name = name.replace('.', ' ')
+    # Viết hoa chữ cái đầu mỗi từ (ngoại trừ các từ viết tắt như beIN)
+    # Để giữ nguyên beIN, ta chỉ viết hoa từ thứ 2 trở đi nếu muốn, nhưng đơn giản dùng title()
+    # title() sẽ cho "Bein Sports Max 4". Ta sửa lại bein thành beIN thủ công.
+    name = name.title()
+    name = re.sub(r'\bBein\b', 'beIN', name)
+    return f"{name} France"
+
+# ========== PARSE TỪNG NGUỒN ==========
+def parse_channels_starhub(xml_content: str) -> dict:
     root = ET.fromstring(xml_content)
     channels = {}
     for channel in root.findall("channel"):
@@ -143,47 +147,37 @@ def parse_channels(xml_content: str) -> dict:
         display_name = channel.findtext("display-name", "").strip()
         if chan_id and display_name:
             channels[chan_id] = display_name
-    print(f"📺 Tìm thấy {len(channels)} kênh")
+    print(f"📺 Tìm thấy {len(channels)} kênh (StarHub)")
     return channels
 
 def parse_programmes_starhub(xml_content: str, channels: dict) -> list:
-    """Parse EPG StarHub, lấy Premier League + Tennis"""
     root = ET.fromstring(xml_content)
     groups = defaultdict(list)
-
     for prog in root.findall("programme"):
         channel_id = prog.get("channel")
         start_str = prog.get("start")
         title_elem = prog.find("title")
         desc_elem = prog.find("desc")
-
         if title_elem is None or not start_str:
             continue
-
         title = (title_elem.text or "").strip()
         desc = (desc_elem.text or "").strip() if desc_elem is not None else ""
-
         if is_premier_league(title, desc):
             league = "Premier League"
             matchup = clean_football_matchup(title)
-        elif is_tennis(title, desc):
+        elif is_tennis_title(title) and has_live_indicator(title, desc):
             league, matchup = parse_tennis_matchup(title)
         else:
             continue
-
-        # Parse thời gian
         try:
             dt_utc = datetime.strptime(start_str, "%Y%m%d%H%M%S %z")
         except ValueError:
             dt_naive = datetime.strptime(start_str[:14], "%Y%m%d%H%M%S")
             dt_utc = dt_naive.replace(tzinfo=timezone.utc)
-
         dt_vn = dt_utc + timedelta(hours=7)
         date_str = dt_vn.strftime("%Y-%m-%d")
         time_str = dt_vn.strftime("%H:%M")
-
         channel_name = channels.get(channel_id, f"Channel {channel_id}")
-
         key = (date_str, time_str, matchup.lower())
         groups[key].append({
             "channel": channel_name,
@@ -192,56 +186,32 @@ def parse_programmes_starhub(xml_content: str, channels: dict) -> list:
             "date": date_str,
             "time": time_str,
         })
-
     return _groups_to_output(groups)
 
-def format_channel_name_nt74(channel_id: str) -> str:
-    """Chuyển đổi channel_id từ nt74 thành tên hiển thị đẹp.
-       Ví dụ: sportklub5.rs -> Sport Klub 5 Hrvatska
-    """
-    match = re.match(r'sportklub(\d+)\.rs', channel_id, re.IGNORECASE)
-    if match:
-        num = match.group(1)
-        return f"Sport Klub {num} Hrvatska"
-    # Fallback: bỏ đuôi .rs và viết hoa
-    return channel_id.replace('.rs', '').upper()
-
 def parse_programmes_nt74(xml_content: str) -> list:
-    """Parse EPG nt74, chỉ lấy Tennis (có (LIVE) trong desc)"""
     root = ET.fromstring(xml_content)
     groups = defaultdict(list)
-
     for prog in root.findall("programme"):
         channel_id = prog.get("channel")
         start_str = prog.get("start")
         title_elem = prog.find("title")
         desc_elem = prog.find("desc")
-
         if title_elem is None or not start_str:
             continue
-
         title = (title_elem.text or "").strip()
         desc = (desc_elem.text or "").strip() if desc_elem is not None else ""
-
-        if not is_tennis(title, desc):
+        if not (is_tennis_title(title) and has_live_indicator(title, desc)):
             continue
-
         league, matchup = parse_tennis_matchup(title)
-
-        # Parse thời gian (có offset +0000)
         try:
             dt_utc = datetime.strptime(start_str, "%Y%m%d%H%M%S %z")
         except ValueError:
-            # fallback nếu thiếu offset
             dt_naive = datetime.strptime(start_str[:14], "%Y%m%d%H%M%S")
             dt_utc = dt_naive.replace(tzinfo=timezone.utc)
-
         dt_vn = dt_utc + timedelta(hours=7)
         date_str = dt_vn.strftime("%Y-%m-%d")
         time_str = dt_vn.strftime("%H:%M")
-
         channel_name = format_channel_name_nt74(channel_id) if channel_id else "Unknown"
-
         key = (date_str, time_str, matchup.lower())
         groups[key].append({
             "channel": channel_name,
@@ -250,11 +220,45 @@ def parse_programmes_nt74(xml_content: str) -> list:
             "date": date_str,
             "time": time_str,
         })
+    return _groups_to_output(groups)
 
+def parse_programmes_xvb(xml_content: str) -> list:
+    """Nguồn xvb-lab (Pháp) – chỉ lấy Tennis có En Direct trong desc"""
+    root = ET.fromstring(xml_content)
+    groups = defaultdict(list)
+    for prog in root.findall("programme"):
+        channel_id = prog.get("channel")
+        start_str = prog.get("start")
+        title_elem = prog.find("title")
+        desc_elem = prog.find("desc")
+        if title_elem is None or not start_str:
+            continue
+        title = (title_elem.text or "").strip()
+        desc = (desc_elem.text or "").strip() if desc_elem is not None else ""
+        # Kiểm tra tennis + có En Direct
+        if not is_tennis_title(title) or not has_live_indicator_fr(desc):
+            continue
+        league, matchup = parse_tennis_matchup(title)
+        try:
+            dt_utc = datetime.strptime(start_str, "%Y%m%d%H%M%S %z")
+        except ValueError:
+            dt_naive = datetime.strptime(start_str[:14], "%Y%m%d%H%M%S")
+            dt_utc = dt_naive.replace(tzinfo=timezone.utc)
+        dt_vn = dt_utc + timedelta(hours=7)
+        date_str = dt_vn.strftime("%Y-%m-%d")
+        time_str = dt_vn.strftime("%H:%M")
+        channel_name = format_channel_name_xvb(channel_id) if channel_id else "Unknown"
+        key = (date_str, time_str, matchup.lower())
+        groups[key].append({
+            "channel": channel_name,
+            "league": league,
+            "matchup": matchup,
+            "date": date_str,
+            "time": time_str,
+        })
     return _groups_to_output(groups)
 
 def _groups_to_output(groups: dict) -> list:
-    """Chuyển dict nhóm thành list JSON chuẩn"""
     output = []
     for (date, time, _), items in groups.items():
         first = items[0]
@@ -269,17 +273,14 @@ def _groups_to_output(groups: dict) -> list:
     output.sort(key=lambda x: (x["Date"], x["Time"]))
     return output
 
-def merge_match_lists(list1: list, list2: list) -> list:
-    """Hợp nhất hai danh sách trận, gom nhóm lại nếu trùng (Date, Time, Matchup)"""
+def merge_match_lists(*lists) -> list:
     merged = defaultdict(list)
-
-    for item in list1 + list2:
-        key = (item["Date"], item["Time"], item["Matchup"].lower())
-        merged[key].append(item)
-
+    for lst in lists:
+        for item in lst:
+            key = (item["Date"], item["Time"], item["Matchup"].lower())
+            merged[key].append(item)
     final_output = []
     for (date, time, _), items in merged.items():
-        # Lấy League từ item đầu tiên (ưu tiên item có League không rỗng)
         league = next((it["League"] for it in items if it["League"]), "Unknown")
         all_services = set()
         for it in items:
@@ -291,31 +292,36 @@ def merge_match_lists(list1: list, list2: list) -> list:
             "Matchup": items[0]["Matchup"],
             "Services": sorted(all_services)
         })
-
     final_output.sort(key=lambda x: (x["Date"], x["Time"]))
     return final_output
 
+# ========== MAIN ==========
 def main():
     try:
-        # --- Nguồn 1: StarHub ---
+        # Nguồn 1: StarHub
         xml_starhub = download_xml(EPG_URL_STARHUB)
-        channels_starhub = parse_channels(xml_starhub)
+        channels_starhub = parse_channels_starhub(xml_starhub)
         matches_starhub = parse_programmes_starhub(xml_starhub, channels_starhub)
-        print(f"⚽🎾 StarHub: {len(matches_starhub)} trận hợp lệ")
+        print(f"⚽🎾 StarHub: {len(matches_starhub)} trận")
 
-        # --- Nguồn 2: nt74 (chỉ Tennis) ---
+        # Nguồn 2: nt74
         xml_nt74 = download_xml(EPG_URL_NT74)
         matches_nt74 = parse_programmes_nt74(xml_nt74)
-        print(f"🎾 nt74: {len(matches_nt74)} trận Tennis")
+        print(f"🎾 nt74: {len(matches_nt74)} trận")
 
-        # --- Hợp nhất ---
-        all_matches = merge_match_lists(matches_starhub, matches_nt74)
-        print(f"📋 Tổng cộng sau khi gộp: {len(all_matches)} trận")
+        # Nguồn 3: xvb (Pháp)
+        xml_xvb = download_xml(EPG_URL_XVB)
+        matches_xvb = parse_programmes_xvb(xml_xvb)
+        print(f"🎾 xvb (France): {len(matches_xvb)} trận")
+
+        # Hợp nhất
+        all_matches = merge_match_lists(matches_starhub, matches_nt74, matches_xvb)
+        print(f"📋 Tổng sau gộp: {len(all_matches)} trận")
 
         with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
             json.dump(all_matches, f, ensure_ascii=False, indent=2)
 
-        print(f"✅ Hoàn thành! Đã lưu vào {OUTPUT_FILE}")
+        print(f"✅ Hoàn thành! Đã lưu {OUTPUT_FILE}")
 
     except Exception as e:
         print(f"❌ Lỗi: {e}")
