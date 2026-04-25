@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-26 04:45 VN",
+  "updated": "2026-04-26 05:53 VN",
   "days": {
     "20260425": {
       "date": "Saturday, 25/04",
@@ -355,21 +355,21 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Cablenet Sports 2 HD",
-                "Ligue 1+",
-                "Prime Video UK PPV",
                 "beIN Sports MENA English 2 HD",
+                "Cablenet Sports 2 HD",
+                "ART Motion Sport 4 HD",
+                "SuperSport 3 Albania HD",
+                "Prime Video UK PPV",
                 "beIN Sports MENA 1 HD",
                 "Sport TV3 Portugal HD",
-                "SuperSport 3 Albania HD",
-                "ART Motion Sport 4 HD"
+                "Ligue 1+"
               ]
             },
             {
               "country": "Wheresthematch",
               "channels": [
-                "Ligue 1+",
-                "Amazon Prime Video"
+                "Amazon Prime Video",
+                "Ligue 1+"
               ]
             }
           ],
@@ -748,21 +748,6 @@
             }
           ],
           "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Mutua Madrid Open -Round 2 (B)",
-          "kick_utc": 1777147200,
-          "time": "26/04 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports 6"
-              ]
-            }
-          ],
-          "source": "nowtv"
         },
         {
           "league": "Tennis",
