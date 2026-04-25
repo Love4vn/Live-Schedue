@@ -1,5 +1,5 @@
 # File: livesportsontv.py
-# Hoàn chỉnh: Tích hợp livesportsontv + footonsat, chuẩn hóa dữ liệu, gộp trùng, ưu tiên footonsat
+# Tích hợp livesportsontv + footonsat, chuẩn hóa tên đội, gộp trùng chính xác
 
 import asyncio
 import json
@@ -14,7 +14,6 @@ VN_TZ = timezone(timedelta(hours=7))
 TIME_RANGE_HOURS_BEFORE = 2
 TIME_RANGE_HOURS_AFTER = 26
 
-# Danh sách các nguồn footonsat
 FOOTONSAT_URLS = [
     "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/premierleague.json",
     "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/seriea.json",
@@ -28,7 +27,6 @@ FOOTONSAT_URLS = [
 
 # ==================== HÀM TIỆN ÍCH ====================
 def parse_time_with_ampm(time_str: str):
-    """Chuyển '10:00 PM' sang 24h"""
     time_str = time_str.strip().upper()
     if ' ' not in time_str and ('AM' in time_str or 'PM' in time_str):
         if 'AM' in time_str:
@@ -88,7 +86,6 @@ def is_within_time_range(dt: datetime, ref: datetime) -> bool:
 
 # ==================== CHUẨN HÓA DỮ LIỆU ====================
 def normalize_league(league: str) -> str:
-    """Chuẩn hóa tên giải từ footonsat về dạng giống livesportsontv."""
     league_lower = league.lower()
     if "premier league" in league_lower:
         return "Premier League"
@@ -108,25 +105,81 @@ def normalize_league(league: str) -> str:
         return "UEFA Europa Conference League"
     return league.strip()
 
-def normalize_matchup(matchup: str) -> str:
+def normalize_team_name(name: str) -> str:
+    """Chuẩn hóa tên đội bóng (viết tắt, biến thể) về dạng chuẩn."""
+    name = name.strip()
+    mapping = {
+        "bayern munich": "bayern munich",
+        "bayern münchen": "bayern munich",
+        "fc bayern": "bayern munich",
+        "mainz 05": "mainz 05",
+        "1. fc köln": "1. fc köln",
+        "fc cologne": "1. fc köln",
+        "köln": "1. fc köln",
+        "bayer leverkusen": "bayer leverkusen",
+        "leverkusen": "bayer leverkusen",
+        "wolves": "wolverhampton wanderers",
+        "wolverhampton": "wolverhampton wanderers",
+        "tottenham hotspur": "tottenham hotspur",
+        "tottenham": "tottenham hotspur",
+        "psg": "paris saint-germain",
+        "paris st germain": "paris saint-germain",
+        "angers sco": "angers",
+        "fc barcelona": "barcelona",
+        "barcelona": "barcelona",
+        "real madrid": "real madrid",
+        "atletico madrid": "atletico madrid",
+        "arsenal": "arsenal",
+        "newcastle united": "newcastle united",
+        "liverpool": "liverpool",
+        "crystal palace": "crystal palace",
+        "aston villa": "aston villa",
+        "fulham": "fulham",
+        "west ham united": "west ham united",
+        "everton": "everton",
+        "getafe": "getafe",
+        "bologna": "bologna",
+        "roma": "roma",
+        "ac milan": "ac milan",
+        "inter milan": "inter milan",
+        "juventus": "juventus",
+        "napoli": "napoli",
+        "atalanta": "atalanta",
+        "lazio": "lazio",
+        "fiorentina": "fiorentina",
+        "udinese": "udinese",
+        "genoa": "genoa",
+        "lecce": "lecce",
+        "parma": "parma",
+    }
+    lower = name.lower()
+    for key, val in mapping.items():
+        if key in lower:
+            return val
+    return lower
+
+def normalize_matchup(matchup: str):
     """
-    Chuẩn hóa tên trận về dạng 'Đội khách @ Đội nhà' (giống livesportsontv).
-    Xử lý cả định dạng 'A vs B' và 'A @ B'.
+    Chuẩn hóa matchup thành tuple (đội khách chuẩn, đội nhà chuẩn).
+    Nếu không parse được (tennis, ...) thì trả về chuỗi gốc.
     """
     matchup = matchup.strip()
+    home = away = None
     if '@' in matchup:
         parts = [p.strip() for p in matchup.split('@')]
         if len(parts) == 2:
             away, home = parts
-            return f"{away} @ {home}"
-        return matchup
-    if 'vs' in matchup.lower():
+    elif 'vs' in matchup.lower():
         parts = [p.strip() for p in re.split(r'\s+vs\s+', matchup, flags=re.IGNORECASE)]
         if len(parts) == 2:
-            home, away = parts  # footonsat thường là "Home vs Away"
-            return f"{away} @ {home}"
+            home, away = parts
+    else:
+        return matchup  # không xác định được, trả về chuỗi gốc
+    if not away or not home:
         return matchup
-    return matchup
+    away_norm = normalize_team_name(away)
+    home_norm = normalize_team_name(home)
+    return (away_norm, home_norm)
 
 # ==================== LỌC GIAO HỮU ====================
 EUROPEAN_COUNTRIES = {
@@ -285,7 +338,6 @@ def parse_footonsat_items(items, ref_time):
             ch_name = re.sub(r'[📺]', '', ch_name).strip()
             if ch_name:
                 current_channels.append(ch_name)
-    # Xử lý trận cuối
     if current_match:
         try:
             dt_utc = datetime.strptime(f"{current_match['date']} {current_match['time']}", "%Y-%m-%d %H:%M")
@@ -395,11 +447,9 @@ async def scrape_livesportsontv(ref_time: datetime):
                             if title_elem:
                                 matchup = title_elem.get_text(strip=True)
 
-                    # Áp dụng filter đội bóng (chỉ cho giải có teams)
                     if team_filter is not None:
                         if not any(t.lower() in matchup.lower() for t in team_filter):
                             continue
-                    # Filter giao hữu
                     if custom_filter is not None and not is_tennis:
                         if home_elem and away_elem:
                             if not custom_filter(home, away):
@@ -441,21 +491,20 @@ async def main():
     print(f"🕒 Thời gian tham chiếu (VN): {ref_time.strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"⏳ Khoảng: {TIME_RANGE_HOURS_BEFORE}h trước → {TIME_RANGE_HOURS_AFTER}h sau")
 
-    # Lấy dữ liệu từ cả hai nguồn
     games_live = await scrape_livesportsontv(ref_time)
     print(f"\n🏟️ Từ livesportsontv: {len(games_live)} trận")
 
     games_foot = await fetch_footonsat_data(ref_time)
     print(f"🛰️ Từ footonsat: {len(games_foot)} trận")
 
-    # Gộp và loại trùng, ưu tiên giữ bản footonsat (tên trận chuẩn, kênh phong phú hơn)
+    # Gộp và loại trùng, ưu tiên footonsat
     unique = {}
 
     # Thêm footonsat trước
     for g in games_foot:
-        norm_league = g["League"]  # đã chuẩn hóa
-        norm_matchup = normalize_matchup(g["Matchup"])
-        key = (g["Date"], g["Time"], norm_league, norm_matchup)
+        norm_league = g["League"]
+        norm_matchup_key = normalize_matchup(g["Matchup"])
+        key = (g["Date"], g["Time"], norm_league, norm_matchup_key)
         unique[key] = {
             "Date": g["Date"],
             "Time": g["Time"],
@@ -464,11 +513,11 @@ async def main():
             "Services": g["Services"]
         }
 
-    # Thêm livesportsontv, nếu chưa có thì thêm, nếu có thì gộp kênh (nếu kênh mới)
+    # Thêm livesportsontv, nếu chưa có thì thêm, có thì gộp kênh
     for g in games_live:
         norm_league = g["League"]
-        norm_matchup = normalize_matchup(g["Matchup"])
-        key = (g["Date"], g["Time"], norm_league, norm_matchup)
+        norm_matchup_key = normalize_matchup(g["Matchup"])
+        key = (g["Date"], g["Time"], norm_league, norm_matchup_key)
         if key not in unique:
             unique[key] = {
                 "Date": g["Date"],
@@ -478,17 +527,14 @@ async def main():
                 "Services": g["Services"]
             }
         else:
-            # Gộp kênh không trùng
-            existing = set(unique[key]["Services"])
-            new_services = [s for s in g["Services"] if s not in existing]
+            existing_services = set(unique[key]["Services"])
+            new_services = [s for s in g["Services"] if s not in existing_services]
             if new_services:
                 unique[key]["Services"].extend(new_services)
 
-    # Chuyển thành list và sắp xếp
     final = list(unique.values())
     final.sort(key=lambda x: (x["Date"], x["Time"]))
 
-    # Ghi file
     with open("schedule_livesportsontv.json", "w", encoding="utf-8") as f:
         json.dump(final, f, indent=4, ensure_ascii=False)
 
