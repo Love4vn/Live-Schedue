@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-25 16:58 VN",
+  "updated": "2026-04-25 20:21 VN",
   "days": {
     "20260425": {
       "date": "Saturday, 25/04",
@@ -11,64 +11,58 @@
           "time": "25/04 06:30 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
-              "channels": [
-                "Hub Premier 1"
-              ]
-            },
-            {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Play Sports 1 Belgium",
-                "TNT Sports 1 HD",
-                "Astro Grandstand HD",
-                "Fast Sports",
-                "beIN Sports MENA 3 HD",
-                "NBC Universo",
-                "beIN Sports MENA English 1 HD",
-                "beIN Sports MENA 2 HD",
-                "beIN Sports Türkiye 3 HD",
-                "Sky Sport Italia 4K UHD",
-                "SuperSport 2 Albania HD",
-                "Persiana Sport HD",
-                "Cytavision Sports 3 HD",
-                "beIN Connect MENA",
                 "DAZN 1 Espana HD",
-                "DAZN Canada",
-                "Canal+ Sport 1 Czech HD",
-                "DAZN España",
-                "Astro Premier League HD",
-                "Diema Sport 2 HD",
-                "ViaPlay Norge HD",
-                "HBO Max",
-                "TNT Sports Ultimate UHD",
-                "DAZN Portugal",
-                "Setanta Sports 1 Eurasia HD",
-                "FuboTV Canada",
-                "VOYO Pro TV Romania",
-                "Stan Sport Australia",
-                "TNT Sports Digital Exclusive",
-                "ViaPlay Nederland HD",
-                "ViaPlay Suomi HD",
-                "Go3 Extra Sport Baltics",
-                "DAZN 1 Portugal HD",
-                "Sky Sport Calcio HD",
                 "USA Network",
+                "ViaPlay Nederland HD",
+                "VOYO Pro TV Romania",
+                "beIN Sports MENA 2 HD",
+                "beIN Connect Türkiye",
+                "Sky Sport Calcio HD",
+                "NBC Universo",
+                "Fast Sports",
+                "TNT Sports Digital Exclusive",
+                "Canal+ Sport 1 Czech HD",
+                "Cytavision Sports 3 HD",
+                "Diema Sport 2 HD",
+                "TNT Sports 1 HD",
+                "Persiana Sport HD",
+                "beIN Sports Türkiye 3 HD",
+                "Go3 Extra Sport Baltics",
+                "HBO Max",
+                "DAZN 1 Portugal HD",
                 "DAZN 1 Bar Espana",
-                "ESPN 1 Brazil HD",
+                "Astro Premier League HD",
+                "Stan Sport Australia",
+                "Setanta Sports 1 Eurasia HD",
+                "ViaPlay Suomi HD",
+                "ViaPlay Norge HD",
+                "beIN Sports MENA 3 HD",
+                "Play Sports 1 Belgium",
+                "SuperSport 2 Albania HD",
+                "beIN Sports MENA English 1 HD",
+                "DAZN Portugal",
                 "Monomax Streaming",
-                "beIN Connect Türkiye"
+                "Astro Grandstand HD",
+                "DAZN España",
+                "Sky Sport Italia 4K UHD",
+                "TNT Sports Ultimate UHD",
+                "beIN Connect MENA",
+                "ESPN 1 Brazil HD",
+                "FuboTV Canada",
+                "DAZN Canada"
               ]
             },
             {
               "country": "NowTV",
               "channels": [
-                "Now Sports Premier League 1",
-                "Now Sports Premier League TV"
+                "Now Sports Premier League TV",
+                "Now Sports Premier League 1"
               ]
             }
           ],
-          "source": "hubsport"
+          "source": "livesportsontv"
         },
         {
           "league": "La Liga",
@@ -169,7 +163,11 @@
                 "ViaPlay Norge HD",
                 "ViaPlay Suomi HD",
                 "ViaPlay Sverige HD",
-                "ViaPlay Ísland HD"
+                "ViaPlay Ísland HD",
+                "ESPN Select",
+                "ESPN Unlimited",
+                "DAZN Canada",
+                "OneSoccer"
               ]
             }
           ],
@@ -195,7 +193,10 @@
                 "ViaPlay Norge HD",
                 "ViaPlay Suomi HD",
                 "ViaPlay Sverige HD",
-                "ViaPlay Ísland HD"
+                "ViaPlay Ísland HD",
+                "ESPN Select",
+                "ESPN Unlimited",
+                "DAZN Canada"
               ]
             }
           ],
@@ -275,41 +276,6 @@
           "source": "livesportsontv"
         },
         {
-          "league": "Bundesliga",
-          "match": "Bayer Leverkusen vs 1. FC Köln",
-          "kick_utc": 1777123800,
-          "time": "25/04 08:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "ESPN Select",
-                "ESPN Unlimited",
-                "DAZN Canada"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Bundesliga",
-          "match": "Bayern München vs FSV Mainz 05",
-          "kick_utc": 1777123800,
-          "time": "25/04 08:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "ESPN Select",
-                "ESPN Unlimited",
-                "DAZN Canada",
-                "OneSoccer"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
           "league": "Premier League",
           "match": "West Ham United vs Everton",
           "kick_utc": 1777125600,
@@ -330,32 +296,32 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Fast Sports",
-                "Peacock",
-                "Canal+ Sport 7 Czech HD",
-                "Cytavision Sports 4 HD",
-                "ESPN 4 Brazil HD",
-                "beIN Connect MENA",
-                "SuperSport 5 Albania HD",
-                "Astro Premier League 3 HD",
-                "DAZN Canada",
-                "Sky Sport 252 Italia HD",
-                "ViaPlay Sverige HD",
-                "DAZN España",
-                "beIN Sports Türkiye Max 1 HD",
                 "beIN Sports MENA 5 HD",
-                "ViaPlay Norge HD",
-                "DAZN Portugal",
-                "VOYO Pro TV Romania",
-                "FuboTV Canada",
-                "Stan Sport Australia",
-                "ViaPlay Nederland HD",
-                "ViaPlay Suomi HD",
-                "Go3 Extra Sport Baltics",
-                "ViaPlay Danmark HD",
                 "beIN Sports MENA 6 HD",
+                "ESPN 4 Brazil HD",
+                "ViaPlay Nederland HD",
+                "VOYO Pro TV Romania",
+                "beIN Connect Türkiye",
+                "Fast Sports",
+                "beIN Sports Türkiye Max 1 HD",
+                "SuperSport 5 Albania HD",
+                "Sky Sport 252 Italia HD",
+                "Go3 Extra Sport Baltics",
+                "ViaPlay Sverige HD",
+                "Stan Sport Australia",
+                "ViaPlay Suomi HD",
+                "ViaPlay Norge HD",
+                "ViaPlay Danmark HD",
+                "Cytavision Sports 4 HD",
+                "Astro Premier League 3 HD",
+                "DAZN Portugal",
                 "Monomax Streaming",
-                "beIN Connect Türkiye"
+                "DAZN España",
+                "Peacock",
+                "beIN Connect MENA",
+                "FuboTV Canada",
+                "DAZN Canada",
+                "Canal+ Sport 7 Czech HD"
               ]
             }
           ],
@@ -407,7 +373,9 @@
                 "ViaPlay Suomi HD",
                 "ViaPlay Sverige HD",
                 "VOYO Pro TV Romania",
-                "YTV Botswana"
+                "YTV Botswana",
+                "NBC Universo",
+                "USA Network"
               ]
             }
           ],
@@ -435,77 +403,46 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Play Sports 4 Belgium",
-                "NBC Sports Network",
-                "Fast Sports",
-                "Peacock",
-                "beIN Sports MENA 3 HD",
-                "beIN Sports MENA English 1 HD",
                 "Futbol TV Tajikistan",
-                "beIN Sports MENA 2 HD",
-                "beIN Sports Türkiye 3 HD",
-                "Canal+ Sport 8 Czech HD",
-                "SuperSport 2 Albania HD",
-                "Cytavision Sports 3 HD",
-                "beIN Connect MENA",
                 "DAZN 1 Espana HD",
-                "DAZN Canada",
-                "ViaPlay Sverige HD",
-                "DAZN España",
                 "Persiana Sports 2 HD",
-                "Diema Sport 2 HD",
-                "ViaPlay Norge HD",
-                "DAZN Portugal",
-                "Setanta Sports 1 Eurasia HD",
-                "FuboTV Canada",
-                "VOYO Pro TV Romania",
-                "Stan Sport Australia",
-                "Astro Premier League 2 HD",
                 "ViaPlay Nederland HD",
-                "Premier Sports 1 Ireland HD",
-                "ViaPlay Suomi HD",
-                "Go3 Extra Sport Baltics",
-                "DAZN 1 Portugal HD",
-                "ViaPlay Danmark HD",
+                "VOYO Pro TV Romania",
+                "beIN Sports MENA 2 HD",
+                "beIN Connect Türkiye",
                 "Sky Sport Calcio HD",
+                "Fast Sports",
+                "Canal+ Sport 8 Czech HD",
+                "Cytavision Sports 3 HD",
+                "Diema Sport 2 HD",
+                "beIN Sports Türkiye 3 HD",
+                "Go3 Extra Sport Baltics",
+                "Astro Premier League 2 HD",
+                "Play Sports 4 Belgium",
+                "Premier Sports 1 Ireland HD",
+                "DAZN 1 Portugal HD",
                 "DAZN 1 Bar Espana",
+                "ViaPlay Sverige HD",
+                "Stan Sport Australia",
+                "Setanta Sports 1 Eurasia HD",
+                "ViaPlay Suomi HD",
+                "NBC Sports Network",
+                "ViaPlay Norge HD",
+                "beIN Sports MENA 3 HD",
+                "ViaPlay Danmark HD",
+                "SuperSport 2 Albania HD",
+                "beIN Sports MENA English 1 HD",
+                "DAZN Portugal",
                 "Monomax Streaming",
-                "beIN Connect Türkiye"
+                "DAZN España",
+                "Peacock",
+                "beIN Connect MENA",
+                "FuboTV Canada",
+                "DAZN Canada"
               ]
             }
           ],
           "source": "nowtv"
-        },
-        {
-          "league": "Premier League",
-          "match": "Wolverhampton Wanderers vs Tottenham Hotspur",
-          "kick_utc": 1777125600,
-          "time": "25/04 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Hub Premier 1",
-                "Hub Premier 4"
-              ]
-            },
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "NBC Universo",
-                "DAZN Canada",
-                "USA Network"
-              ]
-            },
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports Premier League 2",
-                "Now Sports Premier League TV"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "La Liga",
@@ -516,31 +453,31 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "beIN Sports Australia 2 HD",
                 "Setanta Sports 2 Eurasia HD",
-                "TSN4",
-                "Orange Fútbol 1 HD",
-                "beIN Sports MENA 3 HD",
-                "beIN Sports 1 HD",
-                "Varzish TV Sport HD",
-                "SuperSport 3 Albania HD",
+                "M+ LaLiga HD",
                 "ESPN Unlimited",
-                "ART Motion Sport 3 HD",
-                "beIN Sports MENA French 1 HD",
-                "Cytavision Sports 6 HD",
+                "beIN Sports 1 HD",
+                "Azam Sports 4 HD",
+                "Cytavision Sports 4K 1 UHD",
+                "beIN Sports France 2 HD",
+                "beIN Sports MENA 1 HD",
+                "Persiana Sport HD",
                 "LaLiga TV Bar HD",
                 "S Sport 1 Türkiye HD",
-                "ESPN Deportes",
-                "ESPN Select",
-                "Persiana Sport HD",
-                "DAZN 2 Portugal HD",
-                "Cytavision Sports 4K 1 UHD",
-                "Azam Sports 4 HD",
-                "M+ LaLiga HD",
-                "DAZN 2 Bar Deutsch HD",
-                "beIN Sports MENA 1 HD",
+                "Varzish TV Sport HD",
                 "Movistar Plus+ HD",
-                "beIN Sports France 2 HD"
+                "ESPN Deportes",
+                "Cytavision Sports 6 HD",
+                "beIN Sports MENA 3 HD",
+                "DAZN 2 Portugal HD",
+                "SuperSport 3 Albania HD",
+                "DAZN 2 Bar Deutsch HD",
+                "beIN Sports MENA French 1 HD",
+                "ART Motion Sport 3 HD",
+                "TSN4",
+                "beIN Sports Australia 2 HD",
+                "ESPN Select",
+                "Orange Fútbol 1 HD"
               ]
             },
             {
@@ -561,20 +498,20 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TLN",
-                "S Sport 2 Türkiye HD",
-                "DAZN US",
                 "DAZN Canada",
-                "DAZN Great Britain",
-                "Paramount+ (US)",
-                "Sport TV2 Portugal HD",
-                "DAZN 1 Italia HD",
-                "Astro Arena Bola 2 HD",
                 "Tring Sport 1 HD",
+                "DAZN Great Britain",
+                "DAZN 1 Italia HD",
+                "DAZN Ireland",
+                "DAZN US",
+                "ART Motion Sport 1 HD",
+                "TLN",
+                "Astro Arena Bola 2 HD",
+                "Sport TV2 Portugal HD",
+                "S Sport 2 Türkiye HD",
                 "Cytavision Sports 4 HD",
                 "Tivibu Spor 1 HD",
-                "ART Motion Sport 1 HD",
-                "DAZN Ireland"
+                "Paramount+ (US)"
               ]
             },
             {
@@ -604,62 +541,62 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TeleXitos",
-                "M+ #Vamos Bar 2",
-                "NBC Sports Network Extra",
-                "Play Sports 1 Belgium",
-                "Sky Sports Main Event HD",
-                "Persiana Sports 3 HD",
-                "Astro Grandstand HD",
-                "Fast Sports",
-                "beIN Sports MENA 3 HD",
-                "Sky Go UK",
-                "NBC Universo",
-                "M+ Liga de Campeones 2 HD",
-                "beIN Sports MENA English 1 HD",
                 "Futbol TV Tajikistan",
-                "beIN Sports MENA 2 HD",
-                "beIN Sports Türkiye 3 HD",
-                "Sky Sport Italia 4K UHD",
-                "SuperSport 2 Albania HD",
-                "Cytavision Sports 3 HD",
-                "beIN Connect MENA",
-                "DAZN 1 Espana HD",
-                "beIN Sports MENA 4K UHD",
-                "DAZN Canada",
                 "Astro Sports UHD",
-                "Sky UK Ultra HD 1",
+                "Sky Go UK",
+                "Sky Sports Main Event HD",
+                "DAZN 1 Espana HD",
+                "ViaPlay Nederland HD",
+                "VOYO Pro TV Romania",
+                "Sky Sports Main Event UHD",
+                "beIN Sports MENA 2 HD",
+                "beIN Connect Türkiye",
+                "Sky Sport Calcio HD",
+                "NBC Universo",
+                "Fast Sports",
                 "Canal+ Sport 1 Czech HD",
+                "Sky Sports Premier League HD",
+                "Cytavision Sports 3 HD",
                 "Cytavision Sports 4K 1 UHD",
-                "DAZN España",
+                "Diema Sport 2 HD",
+                "beIN Sports Türkiye 3 HD",
+                "NBC Sports Network Extra",
+                "Go3 Extra Sport Baltics",
+                "M+ #Vamos Bar 2",
+                "M+ Liga de Campeones 2 HD",
+                "Movistar Plus+ HD",
+                "DAZN 1 Portugal HD",
+                "DAZN 1 Bar Espana",
                 "ViaPlay Sverige HD",
                 "Astro Premier League HD",
-                "Diema Sport 2 HD",
-                "ViaPlay Norge HD",
-                "Sky Sports Premier League HD",
-                "DAZN Portugal",
-                "VOYO Pro TV Romania",
-                "FuboTV Canada",
                 "Stan Sport Australia",
-                "ViaPlay Nederland HD",
+                "Sky UK Ultra HD 1",
                 "ViaPlay Suomi HD",
-                "Go3 Extra Sport Baltics",
-                "DAZN 1 Portugal HD",
-                "Sky Sports Main Event UHD",
+                "ViaPlay Norge HD",
+                "beIN Sports MENA 3 HD",
+                "Persiana Sports 3 HD",
                 "ViaPlay Danmark HD",
-                "Sky Sport Calcio HD",
-                "Movistar Plus+ HD",
-                "DAZN 1 Bar Espana",
+                "Play Sports 1 Belgium",
+                "SuperSport 2 Albania HD",
+                "beIN Sports MENA English 1 HD",
+                "beIN Sports MENA 4K UHD",
+                "DAZN Portugal",
+                "Astro Grandstand HD",
+                "DAZN España",
                 "Monomax Streaming",
-                "beIN Connect Türkiye"
+                "Sky Sport Italia 4K UHD",
+                "TeleXitos",
+                "beIN Connect MENA",
+                "FuboTV Canada",
+                "DAZN Canada"
               ]
             },
             {
               "country": "NowTV",
               "channels": [
                 "Now Sports Premier League TV",
-                "Now Sports Premier League 1",
-                "Now Sports 4K 1"
+                "Now Sports 4K 1",
+                "Now Sports Premier League 1"
               ]
             }
           ],
@@ -747,21 +684,7 @@
                 "Prime Video UK PPV",
                 "Setanta Sports 1 Eurasia HD",
                 "Sport TV3 Portugal HD",
-                "SuperSport 3 Albania HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Ligue 1",
-          "match": "PSG vs Angers SCO",
-          "kick_utc": 1777136400,
-          "time": "26/04 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
+                "SuperSport 3 Albania HD",
                 "beIN Sport USA Espanol",
                 "beIN Sport Canada",
                 "beIN Sport Canada Espanol"
@@ -854,6 +777,57 @@
           "source": "livesportsontv"
         },
         {
+          "league": "Serie A",
+          "match": "Fiorentina vs Sassuolo",
+          "kick_utc": 1777199400,
+          "time": "26/04 05:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "ART Motion Sport 1 HD",
+                "beIN Sports Australia 3 HD",
+                "Cytavision Sports 4 HD",
+                "DAZN 1 Italia HD",
+                "DAZN 2 Bar Deutsch HD",
+                "DAZN Great Britain",
+                "DAZN Ireland",
+                "Setanta Sports 1 Eurasia HD",
+                "Sport TV3 Portugal HD",
+                "Tring Sport 1 HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "La Liga",
+          "match": "Rayo Vallecano vs Real Sociedad",
+          "kick_utc": 1777204800,
+          "time": "26/04 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Azam Sports 4 HD",
+                "beIN Sports France 2 HD",
+                "beIN Sports MENA 2 HD",
+                "beIN Sports MENA French 1 HD",
+                "CRTV Sports Cameroon",
+                "DAZN 1 Portugal HD",
+                "DAZN LaLiga HD",
+                "Premier Sports 2 Ireland HD",
+                "Premier Sports 2 UK HD",
+                "Premier Sports GB Player HD",
+                "S Sport 1 Türkiye HD",
+                "Setanta Sports 2 Eurasia HD",
+                "SuperSport 3 Albania HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
           "league": "Premier League",
           "match": "Fulham vs Aston-Villa",
           "kick_utc": 1777116600,
@@ -920,34 +894,26 @@
         },
         {
           "league": "Premier League",
-          "match": "Manchester City vs Brighton",
-          "kick_utc": 1777114200,
-          "time": "25/04 05:50 PM",
+          "match": "Wolverhampton Wanderers vs Tottenham Hotspur",
+          "kick_utc": 1777125600,
+          "time": "25/04 09:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "beIN SPORTS 2 HD Malaysia"
+                "Hub Premier 1",
+                "Hub Premier 4"
+              ]
+            },
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports Premier League TV",
+                "Now Sports Premier League 2"
               ]
             }
           ],
           "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Madrid Open",
-          "kick_utc": 1777107600,
-          "time": "25/04 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "TSN2",
-                "DAZN Canada"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
@@ -996,19 +962,18 @@
         },
         {
           "league": "Tennis",
-          "match": "Mutua Madrid Open",
-          "kick_utc": 1777107600,
-          "time": "25/04 04:00 PM",
+          "match": "Madrid Open",
+          "kick_utc": 1777201200,
+          "time": "26/04 06:00 PM",
           "tv_channels": [
             {
-              "country": "Wheresthematch",
+              "country": "LiveSportsOnTV",
               "channels": [
-                "Sky Sports Tennis",
-                "Sky Sports+"
+                "RDS 2"
               ]
             }
           ],
-          "source": "wheresthematch"
+          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
@@ -1043,112 +1008,6 @@
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "WTA Tour 2026 Mutua Madrid Open (1000) Day 4 Session 1",
-          "kick_utc": 1777107600,
-          "time": "25/04 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Hub Sports 6 HD"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP Masters & WTA 1000 Madrid",
-          "kick_utc": 1777107600,
-          "time": "25/04 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Klub 2 Hrvatska"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP Masters & WTA 1000 Madrid",
-          "kick_utc": 1777194000,
-          "time": "26/04 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Klub 2 Hrvatska"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "WTA 1000 & ATP Masters Madrid",
-          "kick_utc": 1777107600,
-          "time": "25/04 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Klub 5 Hrvatska"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "WTA 1000 & ATP Masters Madrid",
-          "kick_utc": 1777194000,
-          "time": "26/04 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Klub 4 Hrvatska",
-                "Sport Klub 5 Hrvatska"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "WTA Tour 2026 Mutua Madrid Open (1000) Day 4 Session 2",
-          "kick_utc": 1777114800,
-          "time": "25/04 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Hub Sports 6 HD"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA de Madrid",
-          "kick_utc": 1777114800,
-          "time": "25/04 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 9 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -1197,6 +1056,36 @@
         },
         {
           "league": "Tennis",
+          "match": "Masters 1000 de Madrid",
+          "kick_utc": 1777201200,
+          "time": "26/04 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Voosport World1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Masters 1000 de Madrid",
+          "kick_utc": 1777208400,
+          "time": "26/04 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "WTA Tour 2026 Mutua Madrid Open (1000) Day 5 Session 1",
           "kick_utc": 1777194000,
           "time": "26/04 04:00 PM",
@@ -1212,63 +1101,64 @@
         },
         {
           "league": "Tennis",
-          "match": "Mutua Madrid Open E12",
-          "kick_utc": 1777107600,
-          "time": "25/04 04:00 PM",
+          "match": "ATP Masters & WTA 1000 Madrid",
+          "kick_utc": 1777194000,
+          "time": "26/04 04:00 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 4"
+                "Sport Klub 2 Hrvatska"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
-          "match": "Mutua Madrid Open -Round 2 (B)",
-          "kick_utc": 1777107600,
-          "time": "25/04 04:00 PM",
+          "match": "WTA 1000 & ATP Masters Madrid",
+          "kick_utc": 1777194000,
+          "time": "26/04 04:00 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 6"
+                "Sport Klub 4 Hrvatska",
+                "Sport Klub 5 Hrvatska"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
-          "match": "Mutua Madrid Open -Round 2 (B)",
-          "kick_utc": 1777147200,
-          "time": "26/04 03:00 AM",
+          "match": "WTA Tour 2026 Mutua Madrid Open (1000) Day 5 Session 2",
+          "kick_utc": 1777201200,
+          "time": "26/04 06:00 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 6"
+                "Hub Sports 6 HD"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
-          "match": "Mutua Madrid Open E13",
-          "kick_utc": 1777114800,
-          "time": "25/04 06:00 PM",
+          "match": "Tournoi WTA de Madrid",
+          "kick_utc": 1777201200,
+          "time": "26/04 06:00 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 4"
+                "beIN Sports Max 9 France"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -1302,6 +1192,21 @@
         },
         {
           "league": "Tennis",
+          "match": "Mutua Madrid Open -Round 2 (B)",
+          "kick_utc": 1777147200,
+          "time": "26/04 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
           "match": "Mutua Madrid Open E16",
           "kick_utc": 1777194000,
           "time": "26/04 04:00 PM",
@@ -1325,6 +1230,21 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports 6"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Mutua Madrid Open E17",
+          "kick_utc": 1777201200,
+          "time": "26/04 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
               ]
             }
           ],
