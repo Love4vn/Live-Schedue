@@ -30,11 +30,11 @@ http://cdn.tv-rds.workers.dev/SkySportsTennisUK.m3u8
 http://assarao4k.com:80/play/live.php?mac=00:1A:79:83:02:56&stream=1527629&extension=ts
 #EXTINF:-1 tvg-id="Sky.Sports.Plus.ie" group-title="🎾|Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-plus.png",26/04 04:00 PM | Mutua Madrid Open (Sky Sports+)
 https://restream-live.realiptv.to/MotherOfPins3/8746645/2193
-#EXTINF:-1 tvg-id="" group-title="🎾|Live Tennis" tvg-logo="http://s3.i3ns.net:2052/portal/picon/2021-09/f03f8c517a5e79b9e8e927180496370d.png",26/04 04:00 PM | ATP Masters & WTA 1000 Madrid (Sport Klub 2 Hrvatska)
-http://013tv.com:8080/F13836/35b68aca/279841
 #EXTINF:-1 tvg-id="" group-title="🎾|Live Tennis" tvg-logo="http://s3.i3ns.net:2052/portal/picon/2021-10/6dced90dd3378bb441466083f850e29b.jpg",26/04 04:00 PM | WTA 1000 & ATP Masters Madrid (Sport Klub 4 Hrvatska)
 http://013tv.com:8080/F13836/35b68aca/279839
-#EXTINF:-1 tvg-id="" group-title="🎾|Live Tennis" tvg-logo="http://s3.i3ns.net:2052/portal/picon/2021-11/753a33149eb926e7492903efb13367f5.jpg",26/04 04:00 PM | WTA 1000 & ATP Masters Madrid (Sport Klub 5 Hrvatska)
+#EXTINF:-1 tvg-id="" group-title="🎾|Live Tennis" tvg-logo="http://s3.i3ns.net:2052/portal/picon/2021-09/f03f8c517a5e79b9e8e927180496370d.png",26/04 07:30 PM | Melo/Zverev - Darderi/Tsitsipas (parovi) (Sport Klub 2 Hrvatska)
+http://013tv.com:8080/F13836/35b68aca/279841
+#EXTINF:-1 tvg-id="" group-title="🎾|Live Tennis" tvg-logo="http://s3.i3ns.net:2052/portal/picon/2021-11/753a33149eb926e7492903efb13367f5.jpg",26/04 07:30 PM | Eikeri/Gleason - Gauff/Montgomery (parovi) (Sport Klub 5 Hrvatska)
 http://013tv.com:8080/F13836/35b68aca/26662
 #EXTINF:-1 tvg-id="" group-title="🎾|Live Tennis" tvg-logo="https://freeshot.live/upload/source/Eurosport_1_logo.png",26/04 08:00 PM | Masters 1000 de Madrid (Eurosport 1 France)
 http://cdn.tv-rds.workers.dev/EURO1AL.m3u8
@@ -84,6 +84,8 @@ https://raw.githubusercontent.com/B-inal-123/s-eropa/inal-22/Tnt1.m3u8
 http://assarao4k.com:80/play/live.php?mac=00:1A:79:83:02:56&stream=1527617&extension=ts
 #EXTINF:-1 tvg-id="" group-title="Live FA, League Cup" tvg-logo="https://i.ibb.co.com/2tBx8pR/TNT1.png",26/04 09:00 PM | Chelsea vs Leeds United (TNT Sports 1 HD)
 http://live-pv-ta.amazon.fastly-edge.com/sin-nitro/live/clients/dash/enc/cllekigzzn/out/v1/bd3b0c314fff4bb1ab4693358f3cd2d3/cenc.mpd
+#EXTINF:-1 tvg-id="" group-title="Live FA, League Cup",26/04 09:00 PM | Chelsea vs Leeds United (TNT Sports 1 HD)
+https://s@broadcasthub.click/hls/y1M7fzurUAHk/index.m3u8
 #EXTINF:-1 tvg-id="" group-title="Live FA, League Cup" tvg-logo="https://sonic.shliv.fun/crchd/assets/tvlogos/TNTSports1.jpg",26/04 09:00 PM | Chelsea vs Leeds United (TNT Sports 1 HD)
 https://v.antsports.tv/live/3/index.m3u8
 #EXTINF:-1 tvg-id="" group-title="Live FA, League Cup" tvg-logo="https://i.ibb.co.com/2tBx8pR/TNT1.png",26/04 09:00 PM | Chelsea vs Leeds United (TNT Sports 1 HD)
@@ -153,8 +155,6 @@ http://158.69.118.175:25461/live/salamlink58465/ttb3j5wXnz/32778.ts
 http://aflaxtv.xyz:8080/mitrovic/19106b7cb4/41918
 #EXTINF:-1 tvg-id="447031" group-title="Live FA, League Cup",26/04 09:00 PM | Chelsea vs Leeds United (ESPN2)
 https://tvpass.org/live/ESPN2/sd
-#EXTINF:-1 tvg-id="463679" group-title="Live FA, League Cup" tvg-logo="https://github.com/tv-logo/tv-logos/blob/main/countries/united-states/espn-2-us.png?raw=true",26/04 09:00 PM | Chelsea vs Leeds United (ESPN2)
-https://v16.thetvapp.to/hls/ESPN2/tracks-v1a1/mono.m3u8?token=IXHFxY6KIeHxf3neBitXUw&expires=1777193401&user_id=NUl2djVueGQ4alVwM0JTYlNNR0hyTE41WWdiell0TThLVXhUek5QMg==
 #EXTINF:-1 tvg-id="Sportsnet.360.HD.ca2" group-title="Live FA, League Cup" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s49952_dark_360w_270h.png",26/04 09:00 PM | Chelsea vs Leeds United (Sportsnet 360)
 http://aflaxtv.xyz:8080/mitrovic/19106b7cb4/3377
 #EXTINF:-1 tvg-id="" group-title="Live FA, League Cup" tvg-logo="https://freeshot.live/upload/source/Sportsnet360.png",26/04 09:00 PM | Chelsea vs Leeds United (Sportsnet 360)
@@ -257,6 +257,15 @@ https://epg.provider.plex.tv/library/parts/646546f35db8ada4c8edd7e5-6761f91555e1
 https://jmp2.uk/rok-c938a72f44eca56206b4b585ab01cad5.m3u8
 #EXTINF:-1 tvg-id="463795" group-title="🎾|Live Tennis",27/04 12:00 AM | Madrid Open (Tennis Channel)
 https://amg01935-amg01935c1-amgplt0352.playout.now3.amagi.tv/ts-eu-w1-n2/playlist/amg01935-amg01935c1-amgplt0352/playlist.m3u8
+#EXTINF:-1 tvg-id="s-sport-2" group-title="⚽️🇮🇹|Live Serie A",27/04 01:45 AM | AC Milan vs Juventus (S Sport 2 Türkiye HD)
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36
+https://hlsssssss.verrandumani.workers.dev/https://corestream.ronaldovurdu.help//hls/s-sport-2.m3u8
+#EXTINF:-1 tvg-id="sport.tr" group-title="⚽️🇮🇹|Live Serie A",27/04 01:45 AM | AC Milan vs Juventus (S Sport 2 Türkiye HD)
+https://andro.226503.xyz/checklist/androstreamlivess2.m3u8
+#EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A",27/04 01:45 AM | AC Milan vs Juventus (S Sport 2 Türkiye HD)
+http://lb.wisp.cat/lb0/TR_S_Sport_2_HD/video.m3u8?token=AUSnMTD
+#EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Ssport-plus-.png/640px-Ssport-plus-.png",27/04 01:45 AM | AC Milan vs Juventus (S Sport 2 Türkiye HD)
+https://raw.githubusercontent.com/B-inal-123/s-eropa/inal-22/S-sport2.m3u8
 #EXTINF:-1 tvg-id="456576" group-title="⚽️🇮🇹|Live Serie A",27/04 01:45 AM | AC Milan vs Juventus (DAZN 1 Italia HD)
 https://ac-003.live.p7s1video.net/63f8995e/t_003/dazn-fast-hd/cenc-default.mpd
 #EXTINF:-1 tvg-id="456576" group-title="⚽️🇮🇹|Live Serie A",27/04 01:45 AM | AC Milan vs Juventus (DAZN 1 Italia HD)
@@ -269,15 +278,16 @@ http://tvmate.icu:8080/kenvdh@comcast.net/bsxUzgG6uT/35264
 http://lb.wisp.cat/lb0/DAZN_1_ES/video.m3u8?token=AUSnMTD
 #EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A" tvg-logo="https://freeshot.live/upload/source/Sport1CzSK-logo.png",27/04 01:45 AM | AC Milan vs Juventus (Sport 1 Czechia HD)
 http://cdn.tv-rds.workers.dev/Sport1CZ.m3u8
-#EXTINF:-1 tvg-id="s-sport-2" group-title="⚽️🇮🇹|Live Serie A",27/04 01:45 AM | AC Milan vs Juventus (S Sport 2 Türkiye HD)
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36
-https://hlsssssss.verrandumani.workers.dev/https://corestream.ronaldovurdu.help//hls/s-sport-2.m3u8
-#EXTINF:-1 tvg-id="sport.tr" group-title="⚽️🇮🇹|Live Serie A",27/04 01:45 AM | AC Milan vs Juventus (S Sport 2 Türkiye HD)
-https://andro.226503.xyz/checklist/androstreamlivess2.m3u8
-#EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A",27/04 01:45 AM | AC Milan vs Juventus (S Sport 2 Türkiye HD)
-http://lb.wisp.cat/lb0/TR_S_Sport_2_HD/video.m3u8?token=AUSnMTD
-#EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Ssport-plus-.png/640px-Ssport-plus-.png",27/04 01:45 AM | AC Milan vs Juventus (S Sport 2 Türkiye HD)
-https://raw.githubusercontent.com/B-inal-123/s-eropa/inal-22/S-sport2.m3u8
+#EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A" tvg-logo="https://freeshot.live/upload/source/ESPN-Brasil-2-logo.png",27/04 01:45 AM | AC Milan vs Juventus (ESPN 1 Brazil HD)
+http://cdn.tv-rds.workers.dev/ESPN2BR.m3u8
+#EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A" tvg-logo="https://freeshot.live/upload/source/ESPN-Brasil-3-logo.png",27/04 01:45 AM | AC Milan vs Juventus (ESPN 1 Brazil HD)
+http://cdn.tv-rds.workers.dev/ESPN3BR.m3u8
+#EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A" tvg-logo="https://freeshot.live/upload/source/Espn_4_logo.png",27/04 01:45 AM | AC Milan vs Juventus (ESPN 1 Brazil HD)
+http://cdn.tv-rds.workers.dev/ESPN4BR.m3u8
+#EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A" tvg-logo="https://freeshot.live/upload/source/ESPN-Brasil-5-logo.png",27/04 01:45 AM | AC Milan vs Juventus (ESPN 1 Brazil HD)
+http://cdn.tv-rds.workers.dev/ESPN5BR.m3u8
+#EXTINF:-1 tvg-id="ESPN.br" group-title="⚽️🇮🇹|Live Serie A" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/espn-brazil.png",27/04 01:45 AM | AC Milan vs Juventus (ESPN 1 Brazil HD)
+https://restream-live.realiptv.to/MotherOfPins3/8746645/803
 #EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxPTaIzOT5TNq7LGoE1rT1NhrLOfnwnWYSXJygex5OIQ&s=10",27/04 01:45 AM | AC Milan vs Juventus (TNT Sports 1 HD)
 http://lunar.pm:8080/Cynthiab/Travel66/100775
 #EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7_nzGStv6nX6FuEt6h62fcVuKQnsMXNDidA&usqp=CAU",27/04 01:45 AM | AC Milan vs Juventus (TNT Sports 1 HD)
@@ -286,6 +296,8 @@ https://raw.githubusercontent.com/B-inal-123/s-eropa/inal-22/Tnt1.m3u8
 http://assarao4k.com:80/play/live.php?mac=00:1A:79:83:02:56&stream=1527617&extension=ts
 #EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A" tvg-logo="https://i.ibb.co.com/2tBx8pR/TNT1.png",27/04 01:45 AM | AC Milan vs Juventus (TNT Sports 1 HD)
 http://live-pv-ta.amazon.fastly-edge.com/sin-nitro/live/clients/dash/enc/cllekigzzn/out/v1/bd3b0c314fff4bb1ab4693358f3cd2d3/cenc.mpd
+#EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A",27/04 01:45 AM | AC Milan vs Juventus (TNT Sports 1 HD)
+https://s@broadcasthub.click/hls/y1M7fzurUAHk/index.m3u8
 #EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A" tvg-logo="https://sonic.shliv.fun/crchd/assets/tvlogos/TNTSports1.jpg",27/04 01:45 AM | AC Milan vs Juventus (TNT Sports 1 HD)
 https://v.antsports.tv/live/3/index.m3u8
 #EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A" tvg-logo="https://i.ibb.co.com/2tBx8pR/TNT1.png",27/04 01:45 AM | AC Milan vs Juventus (TNT Sports 1 HD)
@@ -303,16 +315,6 @@ http://greenslime.cx/live/Bklyn347/QY06ksq41x/16552.ts
 https://restream-live.realiptv.to/MotherOfPins3/8746645/2337
 #EXTINF:-1 tvg-id="400477" group-title="⚽️🇮🇹|Live Serie A",27/04 01:45 AM | AC Milan vs Juventus (TNT Sports 1 HD)
 http://s.only4.tv/5597/index.m3u8?token=jZqqvnnqCs
-#EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A" tvg-logo="https://freeshot.live/upload/source/ESPN-Brasil-2-logo.png",27/04 01:45 AM | AC Milan vs Juventus (ESPN 1 Brazil HD)
-http://cdn.tv-rds.workers.dev/ESPN2BR.m3u8
-#EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A" tvg-logo="https://freeshot.live/upload/source/ESPN-Brasil-3-logo.png",27/04 01:45 AM | AC Milan vs Juventus (ESPN 1 Brazil HD)
-http://cdn.tv-rds.workers.dev/ESPN3BR.m3u8
-#EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A" tvg-logo="https://freeshot.live/upload/source/Espn_4_logo.png",27/04 01:45 AM | AC Milan vs Juventus (ESPN 1 Brazil HD)
-http://cdn.tv-rds.workers.dev/ESPN4BR.m3u8
-#EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A" tvg-logo="https://freeshot.live/upload/source/ESPN-Brasil-5-logo.png",27/04 01:45 AM | AC Milan vs Juventus (ESPN 1 Brazil HD)
-http://cdn.tv-rds.workers.dev/ESPN5BR.m3u8
-#EXTINF:-1 tvg-id="ESPN.br" group-title="⚽️🇮🇹|Live Serie A" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/espn-brazil.png",27/04 01:45 AM | AC Milan vs Juventus (ESPN 1 Brazil HD)
-https://restream-live.realiptv.to/MotherOfPins3/8746645/803
 #EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A",27/04 01:45 AM | AC Milan vs Juventus (beIN SPORTS 3)
 http://145.239.5.177:80/559/index.m3u8
 #EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A",27/04 01:45 AM | AC Milan vs Juventus (beIN SPORTS 3)
@@ -334,8 +336,6 @@ http://5678999.life:2082/adamusa1242025/attalah77448866/420135
 #EXTINF:-1 tvg-id="410408" group-title="⚽️🇮🇹|Live Serie A" tvg-logo="https://r2.thesportsdb.com/images/media/channel/logo/fwzxmq1631279374.png",27/04 01:45 AM | AC Milan vs Juventus (beIN SPORTS 3)
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (iPhone14,6; U; CPU iPhone OS 15_4 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Mobile/19E241 Safari/602.1
 https://a122aivottlinear-a.akamaihd.net/OTTB/syd-nitro/live/clients/dash/enc/q4u5nwaogz/out/v1/18de6d3e65934f3a8de4358e69eab86c/cenc.mpd
-#EXTINF:-1 tvg-id="sport.tr" group-title="⚽️🇨🇵|Live Ligue 1",27/04 01:45 AM | Marseille vs Nice (beIN Sports MENA 1 HD)
-https://andro.226503.xyz/checklist/androstreamlivebsm1.m3u8
 #EXTINF:-1 tvg-id="" group-title="⚽️🇨🇵|Live Ligue 1",27/04 01:45 AM | Marseille vs Nice (beIN SPORTS 4)
 http://77.137.40.221:8000/play/a01i
 #EXTINF:-1 tvg-id="532977" group-title="⚽️🇨🇵|Live Ligue 1" tvg-logo="https://image-resizer-cloud-cdn.api.tmcms.quickplay.com/image/C0FFC072-D51A-4676-B232-F1C06BFA87D1/0-16x9.png?width=530",27/04 01:45 AM | Marseille vs Nice (beIN SPORTS 4)
@@ -353,6 +353,8 @@ http://5678999.life:2082/adamusa1242025/attalah77448866/333805
 http://5678999.life:2082/adamusa1242025/attalah77448866/333806
 #EXTINF:-1 tvg-id="492708" group-title="⚽️🇨🇵|Live Ligue 1" tvg-logo="http://x12tv.co/mbc/bein-sport-1-logo.png",27/04 01:45 AM | Marseille vs Nice (beIN SPORTS 4)
 http://5678999.life:2082/adamusa1242025/attalah77448866/420136
+#EXTINF:-1 tvg-id="sport.tr" group-title="⚽️🇨🇵|Live Ligue 1",27/04 01:45 AM | Marseille vs Nice (beIN Sports MENA 1 HD)
+https://andro.226503.xyz/checklist/androstreamlivebsm1.m3u8
 #EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxPTaIzOT5TNq7LGoE1rT1NhrLOfnwnWYSXJygex5OIQ&s=10",27/04 01:45 AM | AC-Milan vs Juventus (TNT Sports 1)
 http://lunar.pm:8080/Cynthiab/Travel66/100775
 #EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7_nzGStv6nX6FuEt6h62fcVuKQnsMXNDidA&usqp=CAU",27/04 01:45 AM | AC-Milan vs Juventus (TNT Sports 1)
@@ -361,6 +363,8 @@ https://raw.githubusercontent.com/B-inal-123/s-eropa/inal-22/Tnt1.m3u8
 http://assarao4k.com:80/play/live.php?mac=00:1A:79:83:02:56&stream=1527617&extension=ts
 #EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A" tvg-logo="https://i.ibb.co.com/2tBx8pR/TNT1.png",27/04 01:45 AM | AC-Milan vs Juventus (TNT Sports 1)
 http://live-pv-ta.amazon.fastly-edge.com/sin-nitro/live/clients/dash/enc/cllekigzzn/out/v1/bd3b0c314fff4bb1ab4693358f3cd2d3/cenc.mpd
+#EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A",27/04 01:45 AM | AC-Milan vs Juventus (TNT Sports 1)
+https://s@broadcasthub.click/hls/y1M7fzurUAHk/index.m3u8
 #EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A" tvg-logo="https://sonic.shliv.fun/crchd/assets/tvlogos/TNTSports1.jpg",27/04 01:45 AM | AC-Milan vs Juventus (TNT Sports 1)
 https://v.antsports.tv/live/3/index.m3u8
 #EXTINF:-1 tvg-id="" group-title="⚽️🇮🇹|Live Serie A" tvg-logo="https://i.ibb.co.com/2tBx8pR/TNT1.png",27/04 01:45 AM | AC-Milan vs Juventus (TNT Sports 1)
@@ -378,3 +382,63 @@ http://greenslime.cx/live/Bklyn347/QY06ksq41x/16552.ts
 https://restream-live.realiptv.to/MotherOfPins3/8746645/2337
 #EXTINF:-1 tvg-id="400477" group-title="⚽️🇮🇹|Live Serie A",27/04 01:45 AM | AC-Milan vs Juventus (TNT Sports 1)
 http://s.only4.tv/5597/index.m3u8?token=jZqqvnnqCs
+#EXTINF:-1 tvg-id="470888" group-title="🎾|Live Tennis",27/04 04:00 PM | Madrid Open (TSN3)
+https://netskrt.live.pv-cdn.net/OTTB/lhr-nitro/live/clients/dash/enc/lzhmuzmjsl/out/v1/c171eeb214c749f2b351c79df317b21e/cenc.mpd
+#EXTINF:-1 tvg-id="470888" group-title="🎾|Live Tennis" tvg-logo="http://103.127.132.205/wiki/wikipedia/commons/thumb/9/90/TSN_Logo.svg/2560px-TSN_Logo.svg.png",27/04 04:00 PM | Madrid Open (TSN3)
+http://xxip9.top:8080/live/RKu2Hy/559290/10389.ts
+#EXTINF:-1 tvg-id="TSN.3.ca2" group-title="🎾|Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/tsn-3.png",27/04 04:00 PM | Madrid Open (TSN3)
+http://greenslime.cx/live/Bklyn347/QY06ksq41x/57430.ts
+#EXTINF:-1 tvg-id="TSN.3.ca2" group-title="🎾|Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/tsn-3.png",27/04 04:00 PM | Madrid Open (TSN3)
+https://restream-live.realiptv.to/MotherOfPins3/8746645/3144
+#EXTINF:-1 tvg-id="TSN.3.ca2" group-title="🎾|Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/tsn-3.png",27/04 04:00 PM | Madrid Open (TSN3)
+http://tvmate.icu:8080/kenvdh@comcast.net/bsxUzgG6uT/47444
+#EXTINF:-1 tvg-id="TSN.3.ca2" group-title="🎾|Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/tsn-3.png",27/04 04:00 PM | Madrid Open (TSN3)
+http://tvmate.icu:8080/kenvdh@comcast.net/bsxUzgG6uT/10389
+#EXTINF:-1 tvg-id="470888" group-title="🎾|Live Tennis" tvg-logo="https://mimipipi22.github.io/logo/png/tsn3.png",27/04 04:00 PM | Madrid Open (TSN3)
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:90.0) Gecko/20100101 Firefox/140.0
+https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/lzhmuzmjsl/out/v1/c171eeb214c749f2b351c79df317b21e/cenc.mpd
+#EXTINF:-1 tvg-id="470888" group-title="🎾|Live Tennis" tvg-logo="https://freeshot.live/upload/source/TSN3_Logo.png",27/04 04:00 PM | Madrid Open (TSN3)
+http://cdn.tv-rds.workers.dev/TSN3.m3u8
+#EXTINF:-1 tvg-id="" group-title="🎾|Live Tennis" tvg-logo="https://sonic.shliv.fun/crchd/assets/tvlogos/SkySportsMainEvent.jpg",27/04 04:00 PM | Mutua Madrid Open (Sky Sports Main Event)
+https://v.antsports.tv/live/20/index.m3u8
+#EXTINF:-1 tvg-id="Sky.Sports.Main.Event.ie" group-title="🎾|Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-main-event.png",27/04 04:00 PM | Mutua Madrid Open (Sky Sports Main Event)
+http://greenslime.cx/live/Bklyn347/QY06ksq41x/59265.ts
+#EXTINF:-1 tvg-id="Sky.Sports.Main.Event.ie" group-title="🎾|Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-main-event.png",27/04 04:00 PM | Mutua Madrid Open (Sky Sports Main Event)
+http://greenslime.cx/live/Bklyn347/QY06ksq41x/58925.ts
+#EXTINF:-1 tvg-id="Sky.Sports.Main.Event.ie" group-title="🎾|Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-main-event.png",27/04 04:00 PM | Mutua Madrid Open (Sky Sports Main Event)
+http://greenslime.cx/live/Bklyn347/QY06ksq41x/16563.ts
+#EXTINF:-1 tvg-id="Sky.Sports.Main.Event.ie" group-title="🎾|Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-main-event.png",27/04 04:00 PM | Mutua Madrid Open (Sky Sports Main Event)
+https://restream-live.realiptv.to/MotherOfPins3/8746645/2185
+#EXTINF:-1 tvg-id="Sky.Sports.Main.Event.ie" group-title="🎾|Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-main-event.png",27/04 04:00 PM | Mutua Madrid Open (Sky Sports Main Event)
+https://restream-live.realiptv.to/MotherOfPins3/8746645/2184
+#EXTINF:-1 tvg-id="Sky.Sports.Main.Event.ie" group-title="🎾|Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-main-event.png",27/04 04:00 PM | Mutua Madrid Open (Sky Sports Main Event)
+http://tvmate.icu:8080/kenvdh@comcast.net/bsxUzgG6uT/137720
+#EXTINF:-1 tvg-id="Sky.Sports.Main.Event.ie" group-title="🎾|Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-main-event.png",27/04 04:00 PM | Mutua Madrid Open (Sky Sports Main Event)
+http://tvmate.icu:8080/kenvdh@comcast.net/bsxUzgG6uT/35243
+#EXTINF:-1 tvg-id="" group-title="🎾|Live Tennis" tvg-logo="https://freeshot.live/upload/source/sky-sports-main-event-logo.png",27/04 04:00 PM | Mutua Madrid Open (Sky Sports Main Event)
+http://cdn.tv-rds.workers.dev/SkySportsMainEvent.m3u8
+#EXTINF:-1 tvg-id="SkySportsMainEvent.uk" group-title="🎾|Live Tennis" tvg-logo="https://github.com/K-yzu/Logos/blob/main/TV:UK/Sky%20Sports%20Main%20Event.png?raw=true",27/04 04:00 PM | Mutua Madrid Open (Sky Sports Main Event)
+http://assarao4k.com:80/play/live.php?mac=00:1A:79:83:02:56&stream=1527639&extension=ts
+#EXTINF:-1 tvg-id="" group-title="🎾|Live Tennis",27/04 04:00 PM |  (beIN SPORTS 2)
+http://99.27.51.147:8080/BeinSport2/index.m3u8
+#EXTINF:-1 tvg-id="" group-title="🎾|Live Tennis",27/04 04:00 PM |  (beIN SPORTS 2)
+http://77.137.40.221:8000/play/a01g
+#EXTINF:-1 tvg-id="410404" group-title="🎾|Live Tennis",27/04 04:00 PM |  (beIN SPORTS 2)
+http://Rochdi@starshare.net:80/live/Suryaaa/SURYAAAA/652311.ts
+#EXTINF:-1 tvg-id="410404" group-title="🎾|Live Tennis" tvg-logo="https://image-resizer-cloud-cdn.api.tmcms.quickplay.com/image/B6AE264E-3B1A-4E37-B9A2-43D912FC89D7/0-16x9.png?width=530",27/04 04:00 PM |  (beIN SPORTS 2)
+https://get.perfecttv.net/myunifi.mpd?username=vip_3klp0es8&password=wg3piwEs&channel=Bein2
+#EXTINF:-1 tvg-id="410404" group-title="🎾|Live Tennis",27/04 04:00 PM |  (beIN SPORTS 2)
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Mobile Safari/537.36
+https://hlsssssss.verrandumani.workers.dev/https://corestream.ronaldovurdu.help//hls/bein-sports-2.m3u8
+#EXTINF:-1 tvg-id="410404" group-title="🎾|Live Tennis",27/04 04:00 PM |  (beIN SPORTS 2)
+https://andro.226503.xyz/checklist/androstreamlivebs2.m3u8
+#EXTINF:-1 tvg-id="beIN_SPORTS2_DIGITAL_Mono_AR.bein" group-title="🎾|Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/bein-sports-2.png",27/04 04:00 PM |  (beIN SPORTS 2)
+https://restream-live.realiptv.to/MotherOfPins3/8746645/659437
+#EXTINF:-1 tvg-id="beIN_SPORTS2_DIGITAL_Mono_AR.bein" group-title="🎾|Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/bein-sports-2.png",27/04 04:00 PM |  (beIN SPORTS 2)
+https://restream-live.realiptv.to/MotherOfPins3/8746645/659428
+#EXTINF:-1 tvg-id="" group-title="🎾|Live Tennis" tvg-logo="http://x12tv.co/mbc/bein-sport-1-logo.png",27/04 04:00 PM |  (beIN SPORTS 2)
+http://5678999.life:2082/adamusa1242025/attalah77448866/333801
+#EXTINF:-1 tvg-id="" group-title="🎾|Live Tennis" tvg-logo="http://x12tv.co/mbc/bein-sport-1-logo.png",27/04 04:00 PM |  (beIN SPORTS 2)
+http://5678999.life:2082/adamusa1242025/attalah77448866/333802
+#EXTINF:-1 tvg-id="540142" group-title="🎾|Live Tennis" tvg-logo="http://x12tv.co/mbc/bein-sport-1-logo.png",27/04 04:00 PM |  (beIN SPORTS 2)
+http://5678999.life:2082/adamusa1242025/attalah77448866/420134
