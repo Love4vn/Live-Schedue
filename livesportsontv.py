@@ -1,5 +1,6 @@
 # File: livesportsontv.py
-# FINAL VERSION - Chỉ lấy các giải đấu được phép và các đội bóng trong danh sách
+# FINAL VERSION - Tích hợp livesportsontv + footonsat + nowstreams
+# Bao gồm lọc giải đấu, đội bóng, chuyển giờ Việt Nam, gộp trùng, ưu tiên footonsat.
 
 import asyncio
 import json
@@ -25,6 +26,8 @@ FOOTONSAT_URLS = [
     "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/ConferenceLeague.json",
     "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/today.json"
 ]
+
+NOWSTREAMS_URL = "https://nowstreams.top/api_proxy.php"
 
 # ==================== DANH SÁCH GIẢI ĐẤU ĐƯỢC PHÉP ====================
 ALLOWED_LEAGUES = {
@@ -60,6 +63,52 @@ ALLOWED_TEAMS_PER_LEAGUE = {
     "FA Cup": PREMIER_LEAGUE_TEAMS,
     "Carabao Cup": PREMIER_LEAGUE_TEAMS,
     "International Friendlies": None,  # Xử lý riêng
+}
+
+# Ánh xạ mã quốc gia → tên đầy đủ
+LANGUAGE_MAP = {
+    "GB": "Great Britain",
+    "US": "United States",
+    "DE": "Germany",
+    "AU": "Australia",
+    "ES": "Spain",
+    "FR": "France",
+    "IT": "Italy",
+    "PT": "Portugal",
+    "GR": "Greece",
+    "BG": "Bulgaria",
+    "BE": "Belgium",
+    "CZ": "Czech Republic",
+    "CH": "Switzerland",
+    "SE": "Sweden",
+    "CA": "Canada",
+    "NZ": "New Zealand",
+    "MX": "Mexico",
+    "BR": "Brazil",
+    "NL": "Netherlands",
+    "PL": "Poland",
+    "TR": "Turkey",
+    "RU": "Russia",
+    "UA": "Ukraine",
+    "RO": "Romania",
+    "HU": "Hungary",
+    "AT": "Austria",
+    "HR": "Croatia",
+    "RS": "Serbia",
+    "SI": "Slovenia",
+    "SK": "Slovakia",
+    "NO": "Norway",
+    "DK": "Denmark",
+    "FI": "Finland",
+    "IE": "Ireland",
+    "ZA": "South Africa",
+    "JP": "Japan",
+    "KR": "South Korea",
+    "CN": "China",
+    "IN": "India",
+    "AE": "UAE",
+    "SA": "Saudi Arabia",
+    "QA": "Qatar",
 }
 
 # ==================== HÀM TIỆN ÍCH ====================
@@ -470,7 +519,7 @@ TEAM_NAME_MAPPING = {
     "tartan army": "Scotland",
     "wales": "Wales",
     "dragons": "Wales",
-}
+    }
 
 def normalize_team_name(name: str) -> str:
     if not name:
@@ -640,6 +689,91 @@ def parse_footonsat_items(items, ref_time):
             pass
     return matches
 
+# ==================== NOWSTREAMS ====================
+async def fetch_nowstreams_data(ref_time: datetime):
+    matches = []
+    async with aiohttp.ClientSession() as session:
+        try:
+            async with session.get(NOWSTREAMS_URL, timeout=30) as resp:
+                if resp.status != 200:
+                    print(f"⚠️ nowstreams -> HTTP {resp.status}")
+                    return []
+                text = await resp.text()
+                data = json.loads(text)
+                items = data.get("matches", [])
+        except Exception as e:
+            print(f"⚠️ Lỗi fetch nowstreams: {e}")
+            return []
+
+    for item in items:
+        try:
+            # Chỉ lấy môn bóng đá
+            if item.get("sport") != "Football":
+                continue
+            # Lấy ngày, giờ gốc
+            match_date = item.get("matchDate")
+            time_str = item.get("time")
+            if not match_date or not time_str:
+                continue
+            # Tạo datetime gốc (naive, theo múi giờ của nguồn, kém VN 4h)
+            dt_orig = datetime.strptime(f"{match_date} {time_str}", "%Y-%m-%d %H:%M")
+            # Cộng 4 giờ để ra giờ Việt Nam
+            dt_vn = dt_orig + timedelta(hours=4)
+            dt_vn = dt_vn.replace(tzinfo=VN_TZ)
+            if not is_within_time_range(dt_vn, ref_time):
+                continue
+
+            # Chuẩn hóa giải đấu
+            league_raw = item.get("league", "")
+            league = normalize_league(league_raw)
+            # Lấy tên trận
+            matchup_raw = item.get("matchstr", "")
+            if not matchup_raw:
+                continue
+            # Lọc giải trẻ/nữ
+            if is_youth_or_women(matchup_raw, league):
+                continue
+            # Lọc theo giải và đội cho phép
+            if not is_match_allowed(league, matchup_raw):
+                continue
+
+            # Xử lý danh sách kênh
+            services = []
+            for ch in item.get("channels", []):
+                ch_name = ch.get("name", "").strip()
+                lang_code = ch.get("language", "").upper()
+                if ch_name and lang_code:
+                    full_country = LANGUAGE_MAP.get(lang_code, lang_code)
+                    services.append(f"{ch_name} {full_country}")
+                elif ch_name:
+                    services.append(ch_name)
+
+            # Nếu có kênh chính "channel" cũng thêm vào (nếu chưa có trong channels)
+            main_channel = item.get("channel")
+            if main_channel and main_channel not in services:
+                # Tách tên kênh và mã quốc gia (ví dụ "TNT Sports 1 GB")
+                parts = main_channel.rsplit(" ", 1)
+                if len(parts) == 2 and parts[1].upper() in LANGUAGE_MAP:
+                    ch_name = parts[0]
+                    lang_code = parts[1].upper()
+                    full_country = LANGUAGE_MAP.get(lang_code, lang_code)
+                    services.append(f"{ch_name} {full_country}")
+                else:
+                    services.append(main_channel)
+
+            matches.append({
+                "Date": dt_vn.strftime("%Y-%m-%d"),
+                "Time": dt_vn.strftime("%H:%M"),
+                "League": league,
+                "Matchup": matchup_raw,
+                "Services": services
+            })
+        except Exception as e:
+            print(f"⚠️ Lỗi xử lý match nowstreams: {e}")
+            continue
+    print(f"📡 nowstreams: {len(matches)} trận")
+    return matches
+
 # ==================== LIVESPORTSONTV SCRAPING ====================
 async def scrape_livesportsontv(ref_time: datetime):
     all_games = []
@@ -735,7 +869,7 @@ async def scrape_livesportsontv(ref_time: datetime):
                     if is_youth_or_women(matchup, league_name):
                         continue
 
-                    # Áp dụng bộ lọc đội bóng
+                    # Áp dụng bộ lọc
                     if team_filter is not None:
                         if not any(t.lower() in matchup.lower() for t in team_filter):
                             continue
@@ -743,7 +877,12 @@ async def scrape_livesportsontv(ref_time: datetime):
                         if not has_premier_league_team(matchup):
                             continue
                     elif custom_filter == "friendly":
-                        # Tách home/away từ matchup để kiểm tra
+                        # Tách home/away từ matchup
+                        parts = matchup.split(' @ ')
+                        if len(parts) == 2:
+                            away, home = parts
+                        else:
+                            home, away = "?", "?"
                         if not include_friendly_match(home, away):
                             continue
 
@@ -788,8 +927,13 @@ async def main():
     games_foot = await fetch_footonsat_data(ref_time)
     print(f"🛰️ Từ footonsat: {len(games_foot)} trận")
 
+    games_now = await fetch_nowstreams_data(ref_time)
+    print(f"📺 Từ nowstreams: {len(games_now)} trận")
+
     # Gộp và loại trùng, ưu tiên footonsat
     unique = {}
+
+    # Thêm footonsat trước
     for g in games_foot:
         norm_league = normalize_league(g["League"])
         norm_key = normalize_matchup(g["Matchup"])
@@ -801,6 +945,27 @@ async def main():
             "Matchup": g["Matchup"],
             "Services": g["Services"]
         }
+
+    # Thêm nowstreams
+    for g in games_now:
+        norm_league = normalize_league(g["League"])
+        norm_key = normalize_matchup(g["Matchup"])
+        key = (g["Date"], g["Time"], norm_league, norm_key)
+        if key not in unique:
+            unique[key] = {
+                "Date": g["Date"],
+                "Time": g["Time"],
+                "League": norm_league,
+                "Matchup": g["Matchup"],
+                "Services": g["Services"]
+            }
+        else:
+            existing = set(unique[key]["Services"])
+            new_services = [s for s in g["Services"] if s not in existing]
+            if new_services:
+                unique[key]["Services"].extend(new_services)
+
+    # Thêm livesportsontv
     for g in games_live:
         norm_league = normalize_league(g["League"])
         norm_key = normalize_matchup(g["Matchup"])
