@@ -1,6 +1,5 @@
 # File: livesportsontv.py
-# FINAL VERSION - Hoàn chỉnh: scrape livesportsontv + footonsat (today.json)
-# Chức năng: Lấy lịch bóng đá (các giải theo yêu cầu), tennis, chuyển giờ Việt Nam, lọc trùng, lọc trẻ/nữ, ưu tiên footonsat.
+# FINAL VERSION - Chỉ lấy các giải đấu được phép và các đội bóng trong danh sách
 
 import asyncio
 import json
@@ -26,6 +25,42 @@ FOOTONSAT_URLS = [
     "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/ConferenceLeague.json",
     "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/today.json"
 ]
+
+# ==================== DANH SÁCH GIẢI ĐẤU ĐƯỢC PHÉP ====================
+ALLOWED_LEAGUES = {
+    "Premier League",
+    "Serie A",
+    "La Liga",
+    "Bundesliga",
+    "Ligue 1",
+    "UEFA Champions League",
+    "UEFA Europa League",
+    "UEFA Europa Conference League",
+    "UEFA European Championship",
+    "FIFA World Cup",
+    "International Friendlies",
+    "FA Cup",
+    "Carabao Cup"
+}
+
+# Danh sách đội bóng được phép cho từng giải
+PREMIER_LEAGUE_TEAMS = {
+    "arsenal", "aston villa", "bournemouth", "brentford", "brighton", "chelsea",
+    "crystal palace", "everton", "fulham", "leeds united", "liverpool", "manchester city",
+    "manchester united", "newcastle", "nottingham forest", "sunderland", "tottenham",
+    "west ham united", "wolverhampton"
+}
+
+ALLOWED_TEAMS_PER_LEAGUE = {
+    "Premier League": PREMIER_LEAGUE_TEAMS,
+    "Serie A": {"inter milan", "ac milan", "napoli", "juventus", "roma", "atalanta", "lazio"},
+    "La Liga": {"barcelona", "real madrid", "atletico madrid"},
+    "Bundesliga": {"bayern munich", "borussia dortmund", "bayer leverkusen"},
+    "Ligue 1": {"psg", "paris saint-germain", "marseille", "olympique marseille"},
+    "FA Cup": PREMIER_LEAGUE_TEAMS,
+    "Carabao Cup": PREMIER_LEAGUE_TEAMS,
+    "International Friendlies": None,  # Xử lý riêng
+}
 
 # ==================== HÀM TIỆN ÍCH ====================
 def parse_time_with_ampm(time_str: str):
@@ -468,7 +503,19 @@ def normalize_matchup(matchup: str):
     home_norm = normalize_team_name(home)
     return (away_norm, home_norm)
 
-# ==================== BỘ LỌC ====================
+def is_match_allowed(league: str, matchup: str) -> bool:
+    """Kiểm tra xem trận đấu có được phép thu thập không."""
+    if league not in ALLOWED_LEAGUES:
+        return False
+    if league == "International Friendlies":
+        return True  # Sẽ lọc bằng hàm include_friendly_match sau
+    allowed_teams = ALLOWED_TEAMS_PER_LEAGUE.get(league)
+    if allowed_teams is None:
+        return True
+    matchup_lower = matchup.lower()
+    return any(team in matchup_lower for team in allowed_teams)
+
+# ==================== BỘ LỌC GIAO HỮU ====================
 EUROPEAN_COUNTRIES = {
     "albania", "andorra", "armenia", "austria", "azerbaijan", "belarus", "belgium", "bosnia",
     "bulgaria", "croatia", "cyprus", "czech", "denmark", "england", "estonia", "faroe",
@@ -493,25 +540,15 @@ def include_friendly_match(home: str, away: str) -> bool:
         return True
     return False
 
-def has_premier_league_team(matchup: str, premier_league_teams: set) -> bool:
-    if not premier_league_teams:
-        return True
+def has_premier_league_team(matchup: str) -> bool:
     matchup_lower = matchup.lower()
-    for team in premier_league_teams:
-        if team.lower() in matchup_lower:
-            return True
-    return False
+    return any(team in matchup_lower for team in PREMIER_LEAGUE_TEAMS)
 
 # ==================== CẤU HÌNH GIẢI (livesportsontv) ====================
-PREMIER_LEAGUE_TEAMS = {"arsenal", "aston villa", "bournemouth", "brentford", "brighton",
-                        "chelsea", "crystal palace", "everton", "fulham", "leeds united",
-                        "liverpool", "manchester city", "manchester united", "newcastle",
-                        "nottingham forest", "sunderland", "tottenham", "west ham", "wolverhampton"}
-
 LEAGUES_CONFIG = {
     "Premier League": {"url": "https://www.livesportsontv.com/league/premier-league", "teams": PREMIER_LEAGUE_TEAMS},
     "Serie A": {"url": "https://www.livesportsontv.com/league/serie-a", "teams": {"inter milan", "ac milan", "napoli", "juventus", "roma", "atalanta", "lazio"}},
-    "La Liga": {"url": "https://www.livesportsontv.com/league/la-liga", "teams": {"barcelona", "real madrid", "atlético"}},
+    "La Liga": {"url": "https://www.livesportsontv.com/league/la-liga", "teams": {"barcelona", "real madrid", "atletico madrid"}},
     "Bundesliga": {"url": "https://www.livesportsontv.com/league/bundesliga-5", "teams": {"bayern", "borussia dortmund", "bayer leverkusen"}},
     "Ligue 1": {"url": "https://www.livesportsontv.com/league/ligue-1-3", "teams": {"psg", "marseille"}},
     "UEFA Champions League": {"url": "https://www.livesportsontv.com/league/uefa-champions-league", "teams": None},
@@ -519,7 +556,7 @@ LEAGUES_CONFIG = {
     "UEFA Europa Conference League": {"url": "https://www.livesportsontv.com/league/uefa-conference-league", "teams": None},
     "UEFA European Championship": {"url": "https://www.livesportsontv.com/league/uefa-european-championship", "teams": None},
     "FIFA World Cup": {"url": "https://www.livesportsontv.com/league/fifa-world-cup", "teams": None},
-    "International Friendlies": {"url": "https://www.livesportsontv.com/league/friendly", "teams": None, "custom_filter": include_friendly_match},
+    "International Friendlies": {"url": "https://www.livesportsontv.com/league/friendly", "teams": None, "custom_filter": "friendly"},
     "FA Cup": {"url": "https://www.livesportsontv.com/league/fa-cup", "teams": None, "custom_filter": "premier_league_only"},
     "Carabao Cup": {"url": "https://www.livesportsontv.com/league/carabao-cup", "teams": None, "custom_filter": "premier_league_only"},
     "Tennis (ATP)": {"url": "https://www.livesportsontv.com/league/atp", "is_tennis": True},
@@ -565,13 +602,14 @@ def parse_footonsat_items(items, ref_time):
                         league_raw = current_match['compet'].strip()
                         if not is_youth_or_women(current_match['match'], league_raw):
                             league = normalize_league(league_raw)
-                            matches.append({
-                                "Date": dt_vn.strftime("%Y-%m-%d"),
-                                "Time": dt_vn.strftime("%H:%M"),
-                                "League": league,
-                                "Matchup": current_match['match'].strip(),
-                                "Services": current_channels.copy()
-                            })
+                            if is_match_allowed(league, current_match['match']):
+                                matches.append({
+                                    "Date": dt_vn.strftime("%Y-%m-%d"),
+                                    "Time": dt_vn.strftime("%H:%M"),
+                                    "League": league,
+                                    "Matchup": current_match['match'].strip(),
+                                    "Services": current_channels.copy()
+                                })
                 except Exception:
                     pass
             current_match = item
@@ -590,13 +628,14 @@ def parse_footonsat_items(items, ref_time):
                 league_raw = current_match['compet'].strip()
                 if not is_youth_or_women(current_match['match'], league_raw):
                     league = normalize_league(league_raw)
-                    matches.append({
-                        "Date": dt_vn.strftime("%Y-%m-%d"),
-                        "Time": dt_vn.strftime("%H:%M"),
-                        "League": league,
-                        "Matchup": current_match['match'].strip(),
-                        "Services": current_channels
-                    })
+                    if is_match_allowed(league, current_match['match']):
+                        matches.append({
+                            "Date": dt_vn.strftime("%Y-%m-%d"),
+                            "Time": dt_vn.strftime("%H:%M"),
+                            "League": league,
+                            "Matchup": current_match['match'].strip(),
+                            "Services": current_channels
+                        })
         except Exception:
             pass
     return matches
@@ -634,7 +673,6 @@ async def scrape_livesportsontv(ref_time: datetime):
             html = await page.content()
             soup = BeautifulSoup(html, 'html.parser')
             page_tz = extract_timezone_from_html(soup)
-            # print(f"    🕒 Múi giờ: {page_tz}")
 
             rows = soup.find_all('div', class_='event--wrapp')
             print(f"    📊 {len(rows)} sự kiện")
@@ -672,7 +710,7 @@ async def scrape_livesportsontv(ref_time: datetime):
                     if not is_within_time_range(vn_dt, ref_time):
                         continue
 
-                    # Get matchup
+                    # Lấy tên trận
                     if is_tennis:
                         home_elem = row.find('div', class_=lambda c: c and 'event_participant--home' in c)
                         if not home_elem:
@@ -693,23 +731,23 @@ async def scrape_livesportsontv(ref_time: datetime):
                             if title_elem:
                                 matchup = title_elem.get_text(strip=True)
 
-                    # Filter youth/women
+                    # Lọc giải trẻ/nữ
                     if is_youth_or_women(matchup, league_name):
                         continue
 
-                    # Apply team filters
+                    # Áp dụng bộ lọc đội bóng
                     if team_filter is not None:
                         if not any(t.lower() in matchup.lower() for t in team_filter):
                             continue
                     if custom_filter == "premier_league_only":
-                        if not has_premier_league_team(matchup, PREMIER_LEAGUE_TEAMS):
+                        if not has_premier_league_team(matchup):
                             continue
-                    elif callable(custom_filter):
-                        # For friendly matches, we have home and away strings
-                        if not custom_filter(home, away):
+                    elif custom_filter == "friendly":
+                        # Tách home/away từ matchup để kiểm tra
+                        if not include_friendly_match(home, away):
                             continue
 
-                    # Get channels
+                    # Lấy kênh
                     channels = []
                     tags_container = row.find('ul', class_='event__tags')
                     if not tags_container:
@@ -750,10 +788,8 @@ async def main():
     games_foot = await fetch_footonsat_data(ref_time)
     print(f"🛰️ Từ footonsat: {len(games_foot)} trận")
 
-    # Merge and deduplicate, prioritize footonsat (keep its matchup and channels)
+    # Gộp và loại trùng, ưu tiên footonsat
     unique = {}
-
-    # Add footonsat first
     for g in games_foot:
         norm_league = normalize_league(g["League"])
         norm_key = normalize_matchup(g["Matchup"])
@@ -765,8 +801,6 @@ async def main():
             "Matchup": g["Matchup"],
             "Services": g["Services"]
         }
-
-    # Add livesportsontv, merge channels if duplicate
     for g in games_live:
         norm_league = normalize_league(g["League"])
         norm_key = normalize_matchup(g["Matchup"])
