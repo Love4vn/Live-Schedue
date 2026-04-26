@@ -20,7 +20,8 @@ jobs:
       - name: Install dependencies
         run: |
           pip install curl_cffi pycountry beautifulsoup4 lxml playwright aiohttp
-          install chromium --with-deps
+          pip install playwright
+          playwright install chromium --with-deps
 
       - name: Run script
         run: python euro_vn_full_schedule_live.py
