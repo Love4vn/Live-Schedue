@@ -7,9 +7,9 @@ from collections import defaultdict
 
 # ================================================
 # SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ + TENNIS – 3 NGUỒN
-# ✅ StarHub: Premier League + Tennis, beIN SPORTS → Malaysia
-# ✅ nt74/epglist: Tennis (có (LIVE)), kênh Sport Klub X Hrvatska
-# ✅ xvb-lab/xvb-epg: Tennis (có En Direct), kênh ... France
+# ✅ StarHub: Premier League + FA Cup (≥1 đội PL) + Tennis, beIN SPORTS → Malaysia
+# ✅ nt74/epglist: Tennis, kênh Sport Klub X Hrvatska
+# ✅ xvb-lab/xvb-epg: Tennis, kênh ... France
 # ================================================
 
 EPG_URL_STARHUB = "https://raw.githubusercontent.com/dbghelp/StarHub-TV-EPG/refs/heads/main/starhub.xml"
@@ -50,12 +50,26 @@ def has_live_indicator(title: str, desc: str) -> bool:
     return bool(re.search(r'\(live\)', text, re.IGNORECASE))
 
 def has_live_indicator_fr(desc: str) -> bool:
-    """Dùng cho xvb: En Direct (không phân biệt hoa thường)"""
+    """Dùng cho xvb: En Direct"""
     return bool(re.search(r'en\s+direct', desc, re.IGNORECASE))
 
-# ========== PREMIER LEAGUE (chỉ StarHub) ==========
+# ========== BÓNG ĐÁ (StarHub) ==========
+def is_fa_cup(title: str) -> bool:
+    """Kiểm tra title có chứa FA Cup"""
+    return bool(re.search(r'\bFA\s+Cup\b', title, re.IGNORECASE))
+
+def has_any_premier_league_team(text: str) -> bool:
+    """Kiểm tra có ít nhất 1 đội trong danh sách PL"""
+    lower_text = text.lower()
+    for abbr, full in TEAM_ABBR.items():
+        lower_text = lower_text.replace(abbr, full)
+    return any(team in lower_text for team in PREMIER_LEAGUE_TEAMS)
+
 def is_premier_league(title: str, desc: str) -> bool:
+    """Lấy Premier League: có (Live) + đủ 2 đội PL + không phải FA Cup"""
     if not has_live_indicator(title, desc):
+        return False
+    if is_fa_cup(title):  # FA Cup sẽ được xử lý riêng
         return False
     text = (title + " " + desc).lower()
     for abbr, full in TEAM_ABBR.items():
@@ -64,19 +78,43 @@ def is_premier_league(title: str, desc: str) -> bool:
     return len(found_teams) >= 2
 
 def clean_football_matchup(title: str) -> str:
+    """Làm sạch title (Premier League hoặc FA Cup) chỉ giữ lại Tên đội 1 vs Tên đội 2"""
+    # Loại bỏ (Live)
     title = re.sub(r'\(Live\)', '', title, flags=re.IGNORECASE)
+    # Loại bỏ các tiền tố FA Cup phổ biến
+    title = re.sub(r'(?:The\s+)?Emirates\s+FA\s+Cup\s+\d{4}/\d{2}\s+SF:\s*', '', title, flags=re.IGNORECASE)
+    title = re.sub(r'FA\s+Cup\s+\d{4}/\d{2}\s+SF:\s*', '', title, flags=re.IGNORECASE)
+    title = re.sub(r'FA\s+Cup:\s*', '', title, flags=re.IGNORECASE)
+    # Loại bỏ các tag khác (MW, EP, LFCTV...)
     title = re.sub(r'\(MW\d+\)', '', title, flags=re.IGNORECASE)
     title = re.sub(r'-\s*EP\s*\d+', '', title, flags=re.IGNORECASE)
     title = re.sub(r'LFCTV[^:]*:', '', title, flags=re.IGNORECASE)
+    # Thay dấu ':' còn sót thành ' vs '
     title = re.sub(r'\s*:\s*', ' vs ', title)
     title = re.sub(r'\s+', ' ', title).strip()
+
+    # Thay viết tắt
     text_lower = title.lower()
     for abbr, full in TEAM_ABBR.items():
         text_lower = text_lower.replace(abbr, full)
+
+    # Tìm 2 đội trong danh sách PL (ưu tiên)
     found = [team.title() for team in PREMIER_LEAGUE_TEAMS if team in text_lower]
     if len(found) >= 2:
         return f"{found[0]} vs {found[1]}"
-    return title
+    elif len(found) == 1:
+        # FA Cup có thể chỉ có 1 đội PL, giữ nguyên phần còn lại làm tên đối thủ
+        # Tạm thời trả về dạng "Đội PL vs Đối thủ" bằng cách dùng phần còn lại sau khi loại bỏ đội đã biết
+        # Nhưng để an toàn, giữ nguyên title sạch (có thể là "Chelsea vs Leeds United AFC")
+        # Tuy nhiên nếu đã tìm thấy 1 đội PL, ta có thể cố gắng tách bằng "vs"
+        parts = [p.strip() for p in title.split(' vs ', 1)]
+        if len(parts) == 2:
+            return f"{parts[0]} vs {parts[1]}"
+        # Fallback
+        return title
+    else:
+        # Không tìm thấy đội PL nào (hiếm), trả về title sạch
+        return title
 
 # ========== TENNIS CHUNG ==========
 def is_tennis_title(title: str) -> bool:
@@ -92,7 +130,6 @@ def is_tennis_title(title: str) -> bool:
 
 def parse_tennis_matchup(title: str) -> tuple[str, str]:
     clean_title = re.sub(r'\(Live\)', '', title, flags=re.IGNORECASE).strip()
-    # Loại bỏ tiền tố "Tennis : " hoặc "Tenis: "
     clean_title = re.sub(r'^(Tennis|Tenis)\s*:\s*', '', clean_title, flags=re.IGNORECASE).strip()
     if ":" in clean_title:
         parts = clean_title.split(":", 1)
@@ -115,20 +152,17 @@ def parse_tennis_matchup(title: str) -> tuple[str, str]:
 
 # ========== ĐỊNH DẠNG TÊN KÊNH THEO NGUỒN ==========
 def format_starhub_channel_name(name: str) -> str:
-    """Thêm Malaysia nếu là beIN SPORTS"""
     if re.search(r'bein\s*sports', name, re.IGNORECASE):
         return f"{name} Malaysia"
     return name
 
 def format_channel_name_nt74(channel_id: str) -> str:
-    """sportklub5.rs -> Sport Klub 5 Hrvatska"""
     match = re.match(r'sportklub(\d+)\.rs', channel_id, re.IGNORECASE)
     if match:
         return f"Sport Klub {match.group(1)} Hrvatska"
     return channel_id.replace('.rs', '').upper()
 
 def format_channel_name_xvb(channel_id: str) -> str:
-    """beIN.SPORTS.MAX.4.fr -> beIN SPORTS MAX 4 France"""
     name = re.sub(r'\.fr$', '', channel_id, flags=re.IGNORECASE)
     name = name.replace('.', ' ')
     name = name.title()
@@ -159,13 +193,26 @@ def parse_programmes_starhub(xml_content: str, channels: dict) -> list:
             continue
         title = (title_elem.text or "").strip()
         desc = (desc_elem.text or "").strip() if desc_elem is not None else ""
-        if is_premier_league(title, desc):
+
+        league = None
+        matchup = None
+
+        # 1. FA Cup (ưu tiên cao nhất)
+        if is_fa_cup(title) and has_live_indicator(title, desc):
+            if has_any_premier_league_team(title + " " + desc):
+                league = "FA Cup"
+                matchup = clean_football_matchup(title)
+        # 2. Premier League
+        elif is_premier_league(title, desc):
             league = "Premier League"
             matchup = clean_football_matchup(title)
+        # 3. Tennis
         elif is_tennis_title(title) and has_live_indicator(title, desc):
             league, matchup = parse_tennis_matchup(title)
         else:
             continue
+
+        # Parse thời gian
         try:
             dt_utc = datetime.strptime(start_str, "%Y%m%d%H%M%S %z")
         except ValueError:
@@ -174,8 +221,10 @@ def parse_programmes_starhub(xml_content: str, channels: dict) -> list:
         dt_vn = dt_utc + timedelta(hours=7)
         date_str = dt_vn.strftime("%Y-%m-%d")
         time_str = dt_vn.strftime("%H:%M")
+
         raw_name = channels.get(channel_id, f"Channel {channel_id}")
         channel_name = format_starhub_channel_name(raw_name)
+
         key = (date_str, time_str, matchup.lower())
         groups[key].append({
             "channel": channel_name,
@@ -297,7 +346,7 @@ def main():
         xml_starhub = download_xml(EPG_URL_STARHUB)
         channels_starhub = parse_channels_starhub(xml_starhub)
         matches_starhub = parse_programmes_starhub(xml_starhub, channels_starhub)
-        print(f"⚽🎾 StarHub: {len(matches_starhub)} trận")
+        print(f"⚽🎾 StarHub: {len(matches_starhub)} trận (PL + FA Cup + Tennis)")
 
         xml_nt74 = download_xml(EPG_URL_NT74)
         matches_nt74 = parse_programmes_nt74(xml_nt74)
