@@ -3,13 +3,14 @@ euro_vn_full_schedule_live.py
 ================================
 PHIÊN BẢN DÙNG PLAYWRIGHT ĐỂ LẤY SOFASCORE (KHẮC PHỤC 403)
 """
-
+import base64
 import asyncio
 import json
-import re
-import unicodedata
 import time
 from datetime import datetime, timedelta
+from playwright.async_api import async_playwright
+import re
+import unicodedata
 from zoneinfo import ZoneInfo
 from difflib import SequenceMatcher
 from typing import List, Dict, Optional
@@ -262,16 +263,11 @@ def is_uefa_champions(tournament_name: str) -> bool:
 
 # ================== SOFASCORE SCRAPER (PLAYWRIGHT) ==================
 async def scrape_sofascore(start_ts: int, max_ts: int) -> List[Dict]:
-    """
-    Dùng Playwright để mở schedule page và bắt scheduled-events API response.
-    Return list game dictionaries như cũ.
-    """
     all_games = []
     try:
         from playwright.async_api import async_playwright
     except ImportError:
         print("❌ Playwright chưa cài đặt. Dùng phương thức curl_cffi (có thể thất bại 403).")
-        # fallback to old curl_cffi
         return await _scrape_sofascore_curl(start_ts, max_ts)
 
     STEALTH_SCRIPT = """
@@ -280,7 +276,7 @@ async def scrape_sofascore(start_ts: int, max_ts: int) -> List[Dict]:
     Object.defineProperty(navigator, "plugins", {get: () => [1, 2, 3, 4, 5]});
     Object.defineProperty(navigator, "languages", {get: () => ["en-US", "en"]});
     """
-    
+
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
         context = await browser.new_context(
@@ -290,60 +286,52 @@ async def scrape_sofascore(start_ts: int, max_ts: int) -> List[Dict]:
         await context.add_init_script(STEALTH_SCRIPT)
         page = await context.new_page()
 
+        # 1. Truy cập trang chủ để lấy cookie và vượt qua Cloudflare
+        print("   [SofaScore] Đang tải trang chủ...")
+        try:
+            await page.goto("https://www.sofascore.com/", wait_until="domcontentloaded", timeout=30000)
+            await page.wait_for_timeout(3000)  # chờ các request chạy xong
+        except Exception as e:
+            print(f"   [SofaScore] Lỗi tải trang chủ: {e}")
+
+        # 2. Lấy dữ liệu cho từng ngày
         for sport in ["football", "tennis"]:
             now = datetime.now()
             dates = [now.strftime("%Y-%m-%d"), (now + timedelta(days=1)).strftime("%Y-%m-%d")]
             for date_str in dates:
-                print(f"   [SofaScore] Mở page {sport} {date_str} bằng Playwright...")
-                # Bắt request
-                captured_events = []
-                pending = {}
-                lock = asyncio.Lock()
-
-                cdp = await page.context.new_cdp_session(page)
-                async def on_request(params):
-                    url = params.get("request", {}).get("url", "")
-                    rid = params.get("requestId", "")
-                    if f"scheduled-events/{date_str}" in url:
-                        async with lock:
-                            pending[rid] = url
-
-                async def on_loading_finished(params):
-                    rid = params.get("requestId", "")
-                    async with lock:
-                        url = pending.pop(rid, None)
-                    if url is None:
-                        return
-                    try:
-                        resp = await cdp.send("Network.getResponseBody", {"requestId": rid})
-                        raw = resp.get("body", "")
-                        if resp.get("base64Encoded"):
-                            raw = base64.b64decode(raw).decode("utf-8", errors="replace")
-                        data = json.loads(raw)
-                        events = data.get("events", [])
-                        async with lock:
-                            captured_events.extend(events)
-                        print(f"   [SofaScore] Đã bắt {len(events)} sự kiện từ {url}")
-                    except Exception as e:
-                        print(f"   [SofaScore] Lỗi đọc body: {e}")
-
-                cdp.on("Network.requestWillBeSent", on_request)
-                cdp.on("Network.loadingFinished", on_loading_finished)
-                await cdp.send("Network.enable", {})
+                print(f"   [SofaScore] Đang lấy {sport} {date_str}...")
+                url = f"https://www.sofascore.com/api/v1/sport/{sport}/scheduled-events/{date_str}"
 
                 try:
-                    await page.goto(f"https://www.sofascore.com/{sport}/{date_str}", wait_until="domcontentloaded", timeout=30000)
-                    await page.wait_for_timeout(5000)
-                except Exception as e:
-                    print(f"   [SofaScore] Lỗi tải trang: {e}")
-                finally:
-                    await cdp.detach()
+                    # Gọi API trực tiếp qua fetch trong trình duyệt
+                    json_data = await page.evaluate(f"""
+                        async () => {{
+                            const response = await fetch('{url}', {{
+                                headers: {{
+                                    'Accept': 'application/json, text/plain, */*',
+                                    'Accept-Language': 'en-US,en;q=0.9',
+                                    'Referer': 'https://www.sofascore.com/',
+                                    'Origin': 'https://www.sofascore.com',
+                                }}
+                            }});
+                            if (!response.ok) throw new Error(`HTTP ${{response.status}}`);
+                            return response.json();
+                        }}
+                    """)
+                    events = json_data.get('events', [])
+                    print(f"   [SofaScore] Đã lấy {len(events)} sự kiện")
 
-                # Xử lý captured_events thành game dict
-                for event in captured_events:
-                    game = await _parse_sofascore_event_from_raw(event, sport, start_ts, max_ts)
-                    if game:
-                        all_games.append(game)
+                    # Parse events
+                    for event in events:
+                        game = await _parse_sofascore_event_from_raw(event, sport, start_ts, max_ts)
+                        if game:
+                            # Thử lấy thêm kênh TV nếu cần (có thể bỏ qua để nhanh)
+                            # Tạm thời để trống tv_channels
+                            all_games.append(game)
+
+                except Exception as e:
+                    print(f"   [SofaScore] Lỗi lấy dữ liệu {sport} {date_str}: {e}")
+
                 await asyncio.sleep(2)
 
         await browser.close()
