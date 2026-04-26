@@ -172,10 +172,52 @@ def is_within_time_range(dt: datetime, ref: datetime) -> bool:
 
 def is_youth_or_women(matchup: str, league: str) -> bool:
     combined = f"{matchup} {league}".lower()
-    if re.search(r'\b(u-?\d{1,2}|under-?\d{1,2}|youth|junior|academy|reserves)\b', combined):
-        return True
-    if re.search(r'\b(women|womens|lady|ladies|female|wnba|netball)\b', combined):
-        return True
+    
+    # Từ khóa chỉ nữ giới (đa ngôn ngữ)
+    women_keywords = [
+        "women", "womens", "women's", "woman", "female",
+        "frauen", "damen", "weiblich",               # Đức
+        "donne", "femminile",                        # Ý
+        "mujeres", "femenino", "femenina",           # Tây Ban Nha
+        "femmes", "féminin", "féminine",             # Pháp
+        "mulheres", "feminino",                      # Bồ Đào Nha
+        "vrouwen", "vrouwelijk",                     # Hà Lan
+        "kobiety", "żeński",                         # Ba Lan
+        "ženy", "ženský",                            # Séc
+        "női",                                       # Hungary
+        "kadın", "bayan",                            # Thổ Nhĩ Kỳ
+    ]
+    
+    # Từ khóa chỉ đội trẻ / dự bị (đa ngôn ngữ)
+    youth_keywords = [
+        "youth", "junior", "academy", "reserves", "reserve", "ii", "b",
+        "zweite", "second team", "sub", "sub-",
+        "jugend", "juniorer",                         # Đức
+        "giovanili", "primavera",                     # Ý
+        "cantera", "filial",                          # Tây Ban Nha
+        "jeunes", "espoirs",                          # Pháp
+        "jong", "beloften",                           # Hà Lan
+        "młodzieżowe",                                # Ba Lan
+        "mládež",                                     # Séc
+        "ifjúsági",                                   # Hungary
+        "genç",                                       # Thổ Nhĩ Kỳ
+        "u-", "under"
+    ]
+    
+    # Kiểm tra từ khóa nữ
+    for kw in women_keywords:
+        if re.search(rf'\b{kw}\b', combined):
+            return True
+    
+    # Kiểm tra từ khóa trẻ (xử lý đặc biệt cho "u-")
+    for kw in youth_keywords:
+        if kw == "u-":
+            if re.search(r'\bu-\d{1,2}\b', combined):
+                return True
+        else:
+            if re.search(rf'\b{kw}\b', combined):
+                return True
+    
     return False
 
 # ==================== CHUẨN HÓA DỮ LIỆU ====================
