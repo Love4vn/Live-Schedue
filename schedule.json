@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-26 09:50 VN",
+  "updated": "2026-04-26 10:43 VN",
   "days": {
     "20260426": {
       "date": "Sunday, 26/04",
@@ -320,27 +320,34 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "ART Motion Sport 1 HD",
-                "beIN Sports Australia 3 HD",
-                "Cytavision Sports 4 HD",
-                "DAZN 1 Italia HD",
                 "DAZN 2 Bar Deutsch HD",
-                "DAZN Great Britain",
-                "DAZN Ireland",
-                "ESPN 1 Brazil HD",
                 "HBO Max",
-                "Match 4 Hungary HD",
-                "S Sport 2 Türkiye HD",
-                "Setanta Sports 2 Eurasia HD",
                 "Sport 1 Czechia HD",
+                "DAZN US",
+                "DAZN Great Britain",
+                "DAZN Canada",
                 "Sport TV2 Portugal HD",
-                "TNT Sports 1 HD",
+                "beIN Sports Australia 3 HD",
+                "TLN",
+                "S Sport 2 Türkiye HD",
                 "Tring Sport 1 HD",
                 "Paramount+ (US)",
-                "DAZN US",
-                "FOX Deportes",
-                "TLN",
-                "DAZN Canada"
+                "Setanta Sports 2 Eurasia HD",
+                "DAZN Ireland",
+                "Cytavision Sports 4 HD",
+                "TNT Sports 1 HD",
+                "ART Motion Sport 1 HD",
+                "DAZN 1 Italia HD",
+                "ESPN 1 Brazil HD",
+                "Match 4 Hungary HD",
+                "FOX Deportes"
+              ]
+            },
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 3"
               ]
             }
           ],
@@ -355,14 +362,14 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Prime Video UK PPV",
-                "beIN Sports MENA 1 HD",
                 "ART Motion Sport 4 HD",
+                "Cablenet Sports 2 HD",
                 "SuperSport 3 Albania HD",
                 "Ligue 1+",
                 "beIN Sports MENA English 2 HD",
-                "Sport TV3 Portugal HD",
-                "Cablenet Sports 2 HD"
+                "beIN Sports MENA 1 HD",
+                "Prime Video UK PPV",
+                "Sport TV3 Portugal HD"
               ]
             },
             {
@@ -475,21 +482,6 @@
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "Premier League",
-          "match": "Leeds United vs Chelsea",
-          "kick_utc": 1777211400,
-          "time": "26/04 08:50 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Hub Sports 2 HD"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -612,6 +604,38 @@
             }
           ],
           "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1777219200,
+          "time": "26/04 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1777226400,
+          "time": "27/04 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
         },
         {
           "league": "Tennis",
