@@ -181,45 +181,33 @@ def is_youth_or_women(matchup: str, league: str) -> bool:
         "mujeres", "femenino", "femenina",           # Tây Ban Nha
         "femmes", "féminin", "féminine",             # Pháp
         "mulheres", "feminino",                      # Bồ Đào Nha
-        "vrouwen", "vrouwelijk",                     # Hà Lan
-        "kobiety", "żeński",                         # Ba Lan
-        "ženy", "ženský",                            # Séc
+        "vrouwen",                                    # Hà Lan
         "női",                                       # Hungary
-        "kadın", "bayan",                            # Thổ Nhĩ Kỳ
+        "kadın",                                     # Thổ Nhĩ Kỳ
     ]
     
-    # Từ khóa chỉ đội trẻ / dự bị (đa ngôn ngữ)
+    # Từ khóa chỉ đội trẻ / dự bị
     youth_keywords = [
         "youth", "junior", "academy", "reserves", "reserve", "ii", "b",
-        "zweite", "second team", "sub", "sub-",
+        "zweite", "second team", "sub", "u-", "under",
         "jugend", "juniorer",                         # Đức
         "giovanili", "primavera",                     # Ý
         "cantera", "filial",                          # Tây Ban Nha
         "jeunes", "espoirs",                          # Pháp
         "jong", "beloften",                           # Hà Lan
-        "młodzieżowe",                                # Ba Lan
-        "mládež",                                     # Séc
-        "ifjúsági",                                   # Hungary
-        "genç",                                       # Thổ Nhĩ Kỳ
-        "u-", "under"
     ]
     
     # Kiểm tra từ khóa nữ
     for kw in women_keywords:
-        if re.search(rf'\b{kw}\b', combined):
+        if kw in combined:
             return True
     
-    # Kiểm tra từ khóa trẻ (xử lý đặc biệt cho "u-")
+    # Kiểm tra từ khóa trẻ
     for kw in youth_keywords:
-        if kw == "u-":
-            if re.search(r'\bu-\d{1,2}\b', combined):
-                return True
-        else:
-            if re.search(rf'\b{kw}\b', combined):
-                return True
+        if kw in combined:
+            return True
     
     return False
-
 # ==================== CHUẨN HÓA DỮ LIỆU ====================
 def normalize_league(league: str) -> str:
     league_lower = league.lower()
