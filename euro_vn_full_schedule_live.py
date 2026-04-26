@@ -1,16 +1,20 @@
 """
 euro_vn_full_schedule_live.py
 ================================
-PHIÊN BẢN DÙNG PLAYWRIGHT ĐỂ LẤY SOFASCORE (KHẮC PHỤC 403)
+PHIÊN BẢN ỔN ĐỊNH – TẠM DỪNG SOFASCORE (403)
+Sử dụng các nguồn JSON: LiveSportsOnTV, Wheresthematch, Ausport, Hubsport, NowTV
+- Tải M3U bất đồng bộ.
+- Validate HEAD nhanh (có thể tắt).
+- Gộp trận trùng lặp (≤30 phút).
+- Sắp xếp kênh ưu tiên tiếng Anh.
 """
-import base64
+
 import asyncio
 import json
-import time
-from datetime import datetime, timedelta
-from playwright.async_api import async_playwright
 import re
 import unicodedata
+import time
+from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 from difflib import SequenceMatcher
 from typing import List, Dict, Optional
@@ -18,21 +22,19 @@ from itertools import groupby
 
 import pycountry
 import aiohttp
-from curl_cffi.requests import AsyncSession as CffiAsyncSession
 
 # ================== CẤU HÌNH ==================
 ENABLE_VALIDATION = False
+ENABLE_SOFASCORE = False          # Đặt thành True để bật lại SofaScore nếu cần
 TIMEZONE = ZoneInfo("Asia/Ho_Chi_Minh")
 M3U_LIST_FILE = "M3U_list.txt"
 SCHEDULE_FILE = "schedule.json"
 LIVE_M3U = "live_schedule.m3u"
-SOFASCORE_CACHE_FILE = "sofascore_cache.json"
 VALIDATE_TIMEOUT = 2
 MAX_CHANNELS_PER_MATCH = 500
 HEAD_CONCURRENCY = 100
 DEBUG_MATCH = True
 DEBUG_MERGE = True
-DEBUG_SOFASCORE = True
 
 ALLOWED_TENNIS_TOURNAMENTS = {
     "atp", "atp tour", "atp world tour", "grand slam", "australian open",
@@ -233,243 +235,6 @@ def get_country_priority(country_name: str) -> int:
         if key in country_lower:
             return prio
     return 50
-
-def normalize_sofascore_league(league_raw: str) -> Optional[str]:
-    name = league_raw.lower().strip()
-    if "uefa europa league" in name: return "UEFA Europa League"
-    if "uefa conference league" in name: return "UEFA Europa Conference League"
-    if "uefa champions league" in name: return "UEFA Champions League"
-    if is_uefa_euro(league_raw): return "UEFA Euro"
-    if "fa cup" in name: return "FA Cup"
-    if "carabao cup" in name or "league cup" in name: return "League Cup"
-    if "premier league" in name: return "Premier League"
-    if "serie a" in name: return "Serie A"
-    if "la liga" in name or "laliga" in name: return "La Liga"
-    if "bundesliga" in name: return "Bundesliga"
-    if "ligue 1" in name: return "Ligue 1"
-    if "world cup" in name or "fifa world cup" in name: return "FIFA World Cup"
-    if "friendly" in name or "international friendly" in name: return "International Friendly"
-    return None
-
-def is_uefa_euro(tournament_name: str) -> bool:
-    name_lower = tournament_name.lower()
-    if "europa league" in name_lower: return False
-    if any(x in name_lower for x in ["u19", "u21", "u17", "youth"]): return False
-    euro_keywords = ["euro", "uefa european championship", "european championship"]
-    return any(kw in name_lower for kw in euro_keywords)
-
-def is_uefa_champions(tournament_name: str) -> bool:
-    return "uefa champions league" in tournament_name.lower()
-
-# ================== SOFASCORE SCRAPER (PLAYWRIGHT) ==================
-async def scrape_sofascore(start_ts: int, max_ts: int) -> List[Dict]:
-    all_games = []
-    try:
-        from playwright.async_api import async_playwright
-    except ImportError:
-        print("❌ Playwright chưa cài đặt. Dùng phương thức curl_cffi (có thể thất bại 403).")
-        return await _scrape_sofascore_curl(start_ts, max_ts)
-
-    STEALTH_SCRIPT = """
-    Object.defineProperty(navigator, "webdriver", {get: () => undefined});
-    window.chrome = {runtime: {}};
-    Object.defineProperty(navigator, "plugins", {get: () => [1, 2, 3, 4, 5]});
-    Object.defineProperty(navigator, "languages", {get: () => ["en-US", "en"]});
-    """
-
-    async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True)
-        context = await browser.new_context(
-            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            viewport={"width": 1920, "height": 1080}
-        )
-        await context.add_init_script(STEALTH_SCRIPT)
-        page = await context.new_page()
-
-        # 1. Truy cập trang chủ để lấy cookie và vượt qua Cloudflare
-        print("   [SofaScore] Đang tải trang chủ...")
-        try:
-            await page.goto("https://www.sofascore.com/", wait_until="domcontentloaded", timeout=30000)
-            await page.wait_for_timeout(3000)  # chờ các request chạy xong
-        except Exception as e:
-            print(f"   [SofaScore] Lỗi tải trang chủ: {e}")
-
-        # 2. Lấy dữ liệu cho từng ngày
-        for sport in ["football", "tennis"]:
-            now = datetime.now()
-            dates = [now.strftime("%Y-%m-%d"), (now + timedelta(days=1)).strftime("%Y-%m-%d")]
-            for date_str in dates:
-                print(f"   [SofaScore] Đang lấy {sport} {date_str}...")
-                url = f"https://www.sofascore.com/api/v1/sport/{sport}/scheduled-events/{date_str}"
-
-                try:
-                    # Gọi API trực tiếp qua fetch trong trình duyệt
-                    json_data = await page.evaluate(f"""
-                        async () => {{
-                            const response = await fetch('{url}', {{
-                                headers: {{
-                                    'Accept': 'application/json, text/plain, */*',
-                                    'Accept-Language': 'en-US,en;q=0.9',
-                                    'Referer': 'https://www.sofascore.com/',
-                                    'Origin': 'https://www.sofascore.com',
-                                }}
-                            }});
-                            if (!response.ok) throw new Error(`HTTP ${{response.status}}`);
-                            return response.json();
-                        }}
-                    """)
-                    events = json_data.get('events', [])
-                    print(f"   [SofaScore] Đã lấy {len(events)} sự kiện")
-
-                    # Parse events
-                    for event in events:
-                        game = await _parse_sofascore_event_from_raw(event, sport, start_ts, max_ts)
-                        if game:
-                            # Thử lấy thêm kênh TV nếu cần (có thể bỏ qua để nhanh)
-                            # Tạm thời để trống tv_channels
-                            all_games.append(game)
-
-                except Exception as e:
-                    print(f"   [SofaScore] Lỗi lấy dữ liệu {sport} {date_str}: {e}")
-
-                await asyncio.sleep(2)
-
-        await browser.close()
-    return all_games
-
-async def _parse_sofascore_event_from_raw(event: dict, sport: str, start_ts: int, max_ts: int) -> Optional[Dict]:
-    """Parse event từ raw dict giống như fetch_sofascore_event cũ."""
-    try:
-        start_ts_ev = event.get('startTimestamp')
-        if not start_ts_ev or not (start_ts <= start_ts_ev <= max_ts):
-            return None
-        # TV data không có trong scheduled-events, cần gọi thêm API (có thể bỏ qua hoặc dùng async lấy)
-        # Ở đây ta sẽ không lấy TV data vì Playwright đã dùng để lấy events, giữ nguyên cấu trúc game không có tv_channels.
-        # Để lấy kênh, cần gọi API khác (có thể dùng curl_cffi riêng). Tạm thời trả về game với tv_channels rỗng.
-        if sport == "tennis":
-            tournament = event.get('tournament', {}).get('name', '').lower()
-            if not any(keyword in tournament for keyword in ALLOWED_TENNIS_TOURNAMENTS):
-                return None
-            league = "Tennis"
-            match = f"{event.get('homeTeam', {}).get('name', '')} vs {event.get('awayTeam', {}).get('name', '')}"
-            return {
-                "league": league,
-                "time": vn_time(start_ts_ev),
-                "match": match,
-                "kick_utc": start_ts_ev,
-                "tv_channels": [],  # sẽ bổ sung sau nếu cần
-                "tournament": event.get('tournament', {}).get('name')
-            }
-        else:
-            league_raw = event.get('tournament', {}).get('name', 'Unknown')
-            home_team = event.get('homeTeam', {}).get('name', '')
-            away_team = event.get('awayTeam', {}).get('name', '')
-            # Filter league
-            league = normalize_sofascore_league(league_raw)
-            if not league:
-                return None
-            if league in ALLOWED_TEAMS_PER_LEAGUE:
-                allowed = ALLOWED_TEAMS_PER_LEAGUE[league]
-                home_norm = normalize_team_name(home_team)
-                away_norm = normalize_team_name(away_team)
-                if not (home_norm in allowed or away_norm in allowed):
-                    return None
-            if league not in ALLOWED_FOOTBALL_LEAGUES and league not in ["FIFA World Cup", "International Friendly"]:
-                return None
-            match = f"{home_team} vs {away_team}"
-            return {
-                "league": league,
-                "time": vn_time(start_ts_ev),
-                "match": match,
-                "kick_utc": start_ts_ev,
-                "tv_channels": [],  # sẽ bổ sung sau
-                "tournament": league_raw
-            }
-    except:
-        return None
-
-# Fallback curl_cffi (giữ nguyên code cũ)
-async def _scrape_sofascore_curl(start_ts: int, max_ts: int) -> List[Dict]:
-    all_games = []
-    headers = {
-        "Accept": "application/json, text/plain, */*",
-        "Accept-Language": "en-US,en;q=0.9",
-        "Referer": "https://www.sofascore.com/",
-        "Origin": "https://www.sofascore.com",
-    }
-    async with CffiAsyncSession(headers=headers) as session:
-        for sport in ["football", "tennis"]:
-            now = datetime.now()
-            dates = [now.strftime("%Y-%m-%d"), (now + timedelta(days=1)).strftime("%Y-%m-%d")]
-            for date_str in dates:
-                url = f"https://www.sofascore.com/api/v1/sport/{sport}/scheduled-events/{date_str}"
-                for attempt in range(2):
-                    try:
-                        res = await session.get(url, impersonate="chrome124", timeout=30)
-                        if res.status_code == 200:
-                            data = res.json()
-                            events = data.get('events', [])
-                            for event in events:
-                                # use old parsing logic
-                                game = await _parse_sofascore_event_from_raw(event, sport, start_ts, max_ts)
-                                if game:
-                                    # try to get tv data
-                                    try:
-                                        tv = await get_tv_data(session, event['id'])
-                                        game['tv_channels'] = tv
-                                    except:
-                                        pass
-                                    all_games.append(game)
-                            break
-                        elif res.status_code == 403:
-                            await asyncio.sleep(3)
-                    except:
-                        break
-                await asyncio.sleep(2)
-    return all_games
-
-# We need the old get_tv_data for fallback
-async def get_channel_name(session, channel_id):
-    url = f"https://api.sofascore.com/api/v1/tv/channel/{channel_id}/schedule"
-    try:
-        res = await session.get(url, impersonate="chrome120", timeout=5)
-        if res.status_code == 200:
-            return res.json().get('channel', {}).get('name', 'Unknown')
-    except:
-        pass
-    return "Unknown"
-
-async def get_tv_data(session, event_id):
-    url = f"https://api.sofascore.com/api/v1/tv/event/{event_id}/country-channels"
-    try:
-        res = await session.get(url, impersonate="chrome120", timeout=10)
-        if res.status_code != 200: return []
-        data = res.json().get('countryChannels', {})
-        broadcasters = []
-        for code, cids in data.items():
-            country = pycountry.countries.get(alpha_2=code).name if pycountry.countries.get(alpha_2=code) else code
-            names = await asyncio.gather(*[get_channel_name(session, cid) for cid in cids])
-            clean = list(set([n for n in names if n != "Unknown"]))
-            if clean:
-                broadcasters.append({"country": country, "channels": clean})
-        return broadcasters
-    except:
-        return []
-
-# ================== CACHE SOFASCORE ==================
-def load_sofascore_cache():
-    try:
-        with open(SOFASCORE_CACHE_FILE, 'r') as f:
-            data = json.load(f)
-            if data.get('date') == datetime.now().strftime("%Y-%m-%d"):
-                return data.get('games', [])
-    except:
-        pass
-    return None
-
-def save_sofascore_cache(games):
-    with open(SOFASCORE_CACHE_FILE, 'w') as f:
-        json.dump({'date': datetime.now().strftime("%Y-%m-%d"), 'games': games}, f)
 
 # ================== SECONDARY SOURCES ==================
 def load_json_file(filename: str) -> list:
@@ -679,8 +444,6 @@ def parse_hubsport(entry: dict) -> Optional[Dict]:
         elif "Premier League" in league:
             league = "Premier League"
         else:
-            if DEBUG_MERGE:
-                print(f"   [DEBUG] Bỏ qua league không hỗ trợ: '{league}'")
             return None
         if league not in ALLOWED_FOOTBALL_LEAGUES and league != "Tennis":
             return None
@@ -699,9 +462,7 @@ def parse_hubsport(entry: dict) -> Optional[Dict]:
             "tv_channels": [{"country": "Hubsport", "channels": channels}],
             "source": "hubsport"
         }
-    except Exception as e:
-        if DEBUG_MERGE:
-            print(f"   [DEBUG] Lỗi parse hubsport: {e}")
+    except:
         return None
 
 def parse_nowtv(entry: dict) -> Optional[Dict]:
@@ -718,8 +479,6 @@ def parse_nowtv(entry: dict) -> Optional[Dict]:
         elif "Premier League" in league or "PREMIER LEAGUE" in league:
             league = "Premier League"
         else:
-            if DEBUG_MERGE:
-                print(f"   [DEBUG] Bỏ qua league NowTV không hỗ trợ: '{league}'")
             return None
         if league not in ALLOWED_FOOTBALL_LEAGUES and league != "Tennis":
             return None
@@ -738,9 +497,7 @@ def parse_nowtv(entry: dict) -> Optional[Dict]:
             "tv_channels": [{"country": "NowTV", "channels": channels}],
             "source": "nowtv"
         }
-    except Exception as e:
-        if DEBUG_MERGE:
-            print(f"   [DEBUG] Lỗi parse nowtv: {e}")
+    except:
         return None
 
 async def load_all_secondary_sources(start_ts: int, max_ts: int) -> List[Dict]:
@@ -762,7 +519,6 @@ async def load_all_secondary_sources(start_ts: int, max_ts: int) -> List[Dict]:
     async with aiohttp.ClientSession() as session:
         tasks = [fetch_json(session, url) for url, _ in remote_sources]
         results = await asyncio.gather(*tasks)
-
         for (url, parser), data in zip(remote_sources, results):
             if data:
                 for entry in data:
@@ -776,15 +532,17 @@ async def load_all_secondary_sources(start_ts: int, max_ts: int) -> List[Dict]:
             src = g.get('source', 'unknown')
             sources[src] = sources.get(src, 0) + 1
         print(f"   📊 Số trận từ các nguồn: {sources}")
-
     return games
 
 def merge_games(primary: List[Dict], secondary: List[Dict]) -> List[Dict]:
+    # Vì không có SofaScore, primary thường là []. Chỉ cần trả về secondary.
+    # Nhưng vẫn giữ logic merge cũ để tương thích nếu có dữ liệu từ cache.
     primary_football = [g for g in primary if g['league'] != "Tennis"]
     primary_tennis = [g for g in primary if g['league'] == "Tennis"]
     secondary_football = [g for g in secondary if g['league'] != "Tennis"]
     secondary_tennis = [g for g in secondary if g['league'] == "Tennis"]
 
+    # Merge bóng đá
     primary_index = [(game, normalize(game['match']), game['kick_utc']) for game in primary_football]
     for sec in secondary_football:
         sec_norm_match = normalize(sec['match'])
@@ -811,6 +569,7 @@ def merge_games(primary: List[Dict], secondary: List[Dict]) -> List[Dict]:
         else:
             primary_football.append(sec)
 
+    # Merge tennis
     all_tennis = primary_tennis + secondary_tennis
     seen = {}
     unique_tennis = []
@@ -931,15 +690,13 @@ async def main():
 
     print("🔄 Bắt đầu lấy lịch từ 2 GIỜ TRƯỚC đến 24 GIỜ TỚI...")
 
-    # 1. SofaScore với cache
-    cached_games = load_sofascore_cache()
-    if cached_games:
-        print("📦 Dùng cache SofaScore từ lần chạy trước.")
-        sofascore_games = cached_games
-    else:
+    # 1. SofaScore (tùy chọn)
+    sofascore_games = []
+    if ENABLE_SOFASCORE:
         print("📡 Đang lấy dữ liệu từ SofaScore...")
-        sofascore_games = await scrape_sofascore(start_ts, max_ts)
-        save_sofascore_cache(sofascore_games)
+        # Nếu có bật, gọi hàm scrape_sofascore đã triển khai trước đó (copy từ code trước)
+        # Nhưng hiện tại chưa có giải pháp nào hoạt động, nên để trống.
+        print("   ⚠️ SofaScore tạm thời không khả dụng, bỏ qua.")
     print(f"   ✅ SofaScore: {len(sofascore_games)} trận")
 
     # 2. Nguồn phụ
@@ -1142,7 +899,6 @@ async def main():
 
     print(f"   📺 Tổng số link sau khi match: {len(live_events)}")
 
-    # 5. Validate HEAD (nếu bật)
     if ENABLE_VALIDATION:
         print("🔍 Kiểm tra nhanh HEAD...")
         async with aiohttp.ClientSession() as session:
@@ -1158,7 +914,6 @@ async def main():
         print("⚡ Bỏ qua kiểm tra link (ENABLE_VALIDATION = False)")
         validated_events = live_events
 
-    # 6. Ghi M3U
     tennis_events = [ev for ev in validated_events if ev['league'] == "Tennis"]
     other_events = [ev for ev in validated_events if ev['league'] != "Tennis"]
     grouped_tennis = {}
