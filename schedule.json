@@ -1,93 +1,9 @@
 {
-  "updated": "2026-04-27 02:07 VN",
+  "updated": "2026-04-27 04:49 VN",
   "days": {
     "20260426": {
       "date": "Sunday, 26/04",
       "games": [
-        {
-          "league": "Serie A",
-          "match": "AC Milan vs Juventus",
-          "kick_utc": 1777229100,
-          "time": "27/04 01:45 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "DAZN Great Britain",
-                "DAZN Canada",
-                "DAZN2 Germany",
-                "TV2 Sport X Dansk HD",
-                "Sport TV2 Portugal HD",
-                "ESPN 1 Brazil HD",
-                "DAZN Ireland",
-                "TNT Sports 1 Great Britain",
-                "DAZN Zona Italy",
-                "Z Sports 2 Angola",
-                "TLN",
-                "DAZN 1 Italia HD",
-                "Paramount+ (US)",
-                "beIN SPORTS 3 Australia",
-                "TNT Sports 1 HD",
-                "Match 4 Hungary HD",
-                "Tring Sport 1 HD",
-                "S Sport 2 Türkiye HD",
-                "DAZN US",
-                "HBO Max",
-                "Fox Deportes Spain",
-                "Cytavision Sports 4 HD",
-                "FOX Deportes",
-                "beIN Sports Australia 3 HD",
-                "ART Motion Sport 1 HD",
-                "DAZN 2 Bar Deutsch HD",
-                "Setanta Sports 2 Eurasia HD",
-                "Sport 1 Czechia HD"
-              ]
-            },
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 3",
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Ligue 1",
-          "match": "Marseille vs Nice",
-          "kick_utc": 1777229100,
-          "time": "27/04 01:45 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "ART Motion Sport 4 HD",
-                "beIN SPORTS United States",
-                "beIN Sports MENA English 2 HD",
-                "Ligue 1+",
-                "beIN Sports MENA 1 HD",
-                "Prime Video UK PPV",
-                "Sport TV3 Portugal HD",
-                "beIN Sport Canada",
-                "beIN SPORTS 4",
-                "beIN Sport USA Espanol",
-                "SuperSport 3 Albania HD",
-                "Cablenet Sports 2 HD",
-                "Ligue1+ France",
-                "beIN SPORTS en Espanol Spain"
-              ]
-            },
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Amazon Prime Video",
-                "Ligue 1+"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "Serie A",
           "match": "Cagliari vs Atalanta",
@@ -97,19 +13,19 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "ART Motion Sport 2 HD",
-                "DAZN Great Britain",
-                "beIN Sports Australia 3 HD",
-                "DAZN Zona Italy",
-                "TV4 Sport Live 4 Sweden",
-                "DAZN Canada",
-                "DAZN 1 Italia HD",
-                "Paramount+ (US)",
+                "DAZN Ireland",
                 "DAZN2 Germany",
-                "DAZN US",
+                "ART Motion Sport 2 HD",
+                "DAZN Canada",
+                "Paramount+ (US)",
+                "DAZN Zona Italy",
+                "beIN Sports Australia 3 HD",
+                "TV4 Sport Live 4 Sweden",
                 "Fox Deportes Spain",
                 "FOX Deportes",
-                "DAZN Ireland"
+                "DAZN 1 Italia HD",
+                "DAZN Great Britain",
+                "DAZN US"
               ]
             },
             {
@@ -129,27 +45,29 @@
         },
         {
           "league": "Serie A",
-          "match": "AC-Milan vs Juventus",
-          "kick_utc": 1777229100,
-          "time": "27/04 01:45 AM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "TNT Sports 1",
-                "DAZN",
-                "HBO Max"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
-        },
-        {
-          "league": "Serie A",
           "match": "Lazio vs Udinese",
           "kick_utc": 1777315500,
           "time": "28/04 01:45 AM",
           "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DAZN Ireland",
+                "Sky Sport Calcio Italy",
+                "Sky Sport Italia 4K UHD",
+                "DAZN2 Germany",
+                "ART Motion Sport 2 HD",
+                "DAZN Canada",
+                "Paramount+ (US)",
+                "beIN Sports Australia 3 HD",
+                "TV4 Sport Live 4 Sweden",
+                "Sky Sport Calcio HD",
+                "DAZN US",
+                "Sky Sport 251 Italia HD",
+                "DAZN Great Britain",
+                "beIN SPORTS 3 Australia"
+              ]
+            },
             {
               "country": "Wheresthematch",
               "channels": [
@@ -163,7 +81,7 @@
               ]
             }
           ],
-          "source": "wheresthematch"
+          "source": "livesportsontv"
         },
         {
           "league": "Premier League",
@@ -191,8 +109,8 @@
             {
               "country": "Hubsport",
               "channels": [
-                "Hub Premier 2 (4K)",
                 "Hub Premier 1",
+                "Hub Premier 2 (4K)",
                 "Hub Premier 2 (HD)"
               ]
             },
@@ -205,28 +123,13 @@
             {
               "country": "NowTV",
               "channels": [
-                "Now Sports Premier League TV",
                 "Now Sports Premier League 1",
+                "Now Sports Premier League TV",
                 "Now Sports 4K 1"
               ]
             }
           ],
           "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Madrid Open",
-          "kick_utc": 1777226400,
-          "time": "27/04 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "DAZN Canada"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
@@ -238,9 +141,9 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "TSN2",
-                "Tennis Channel",
                 "DAZN Canada",
-                "TSN3"
+                "TSN3",
+                "Tennis Channel"
               ]
             }
           ],
@@ -285,29 +188,13 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Tennis Channel",
+                "TSN2",
                 "DAZN Canada",
-                "TSN2"
+                "Tennis Channel"
               ]
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Mutua Madrid Open",
-          "kick_utc": 1777226400,
-          "time": "27/04 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Tennis",
-                "Sky Sports+"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
@@ -353,8 +240,8 @@
               "country": "Ausport",
               "channels": [
                 "beIN SPORTS 1",
-                "beIN SPORTS 2",
-                "beIN Sports Connect"
+                "beIN Sports Connect",
+                "beIN SPORTS 2"
               ]
             }
           ],
@@ -389,36 +276,6 @@
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP Tour 2026 Mutua Madrid Open (1000) Day 5 R3 Session 5",
-          "kick_utc": 1777226400,
-          "time": "27/04 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Hub Sports 7 HD"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Fonseca - Jodar",
-          "kick_utc": 1777232700,
-          "time": "27/04 02:45 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Klub 2 Hrvatska"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -677,33 +534,18 @@
         },
         {
           "league": "Tennis",
-          "match": "Mutua Madrid Open E18",
-          "kick_utc": 1777226400,
-          "time": "27/04 01:00 AM",
+          "match": "ATP Tour 2026 Mutua Madrid Open (1000) Day 6 R3 Session 6",
+          "kick_utc": 1777320000,
+          "time": "28/04 03:00 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 4"
+                "Hub Sports 2 HD"
               ]
             }
           ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Mutua Madrid Open E19",
-          "kick_utc": 1777231800,
-          "time": "27/04 02:30 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -740,6 +582,21 @@
           "match": "Mutua Madrid Open -Round 3 (B)",
           "kick_utc": 1777280400,
           "time": "27/04 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Mutua Madrid Open -Round 3 (B)",
+          "kick_utc": 1777320000,
+          "time": "28/04 03:00 AM",
           "tv_channels": [
             {
               "country": "NowTV",
