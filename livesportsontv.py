@@ -1,6 +1,6 @@
 # File: livesportsontv.py
-# Hoàn chỉnh: Tích hợp livesportsontv + footonsat, chuẩn hóa tên đội toàn diện, gộp trùng chính xác
-# Bổ sung FA Cup và Carabao Cup
+# FINAL VERSION - Hoàn chỉnh: scrape livesportsontv + footonsat (today.json)
+# Chức năng: Lấy lịch bóng đá (các giải theo yêu cầu), tennis, chuyển giờ Việt Nam, lọc trùng, lọc trẻ/nữ, ưu tiên footonsat.
 
 import asyncio
 import json
@@ -15,7 +15,6 @@ VN_TZ = timezone(timedelta(hours=7))
 TIME_RANGE_HOURS_BEFORE = 2
 TIME_RANGE_HOURS_AFTER = 26
 
-# Danh sách các nguồn footonsat (bao gồm today.json)
 FOOTONSAT_URLS = [
     "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/premierleague.json",
     "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/seriea.json",
@@ -87,9 +86,21 @@ def is_within_time_range(dt: datetime, ref: datetime) -> bool:
     end = ref + timedelta(hours=TIME_RANGE_HOURS_AFTER)
     return start <= dt <= end
 
+def is_youth_or_women(matchup: str, league: str) -> bool:
+    combined = f"{matchup} {league}".lower()
+    if re.search(r'\b(u-?\d{1,2}|under-?\d{1,2}|youth|junior|academy|reserves)\b', combined):
+        return True
+    if re.search(r'\b(women|womens|lady|ladies|female|wnba|netball)\b', combined):
+        return True
+    return False
+
 # ==================== CHUẨN HÓA DỮ LIỆU ====================
 def normalize_league(league: str) -> str:
     league_lower = league.lower()
+    if "fa cup" in league_lower:
+        return "FA Cup"
+    if "carabao cup" in league_lower or "league cup" in league_lower:
+        return "Carabao Cup"
     if "premier league" in league_lower:
         return "Premier League"
     if "serie a" in league_lower:
@@ -106,64 +117,338 @@ def normalize_league(league: str) -> str:
         return "UEFA Europa League"
     if "conference league" in league_lower:
         return "UEFA Europa Conference League"
+    if "european championship" in league_lower or "euro" in league_lower:
+        return "UEFA European Championship"
+    if "world cup" in league_lower:
+        return "FIFA World Cup"
+    if "friendly" in league_lower:
+        return "International Friendlies"
     return league.strip()
 
 # Bảng ánh xạ tên đội chuẩn (canonical) và các biến thể
 TEAM_NAME_MAPPING = {
     # Premier League
-    "manchester united": "Manchester United", "man utd": "Manchester United",
-    "man united": "Manchester United", "manchester city": "Manchester City",
-    "man city": "Manchester City", "arsenal": "Arsenal", "arsenal london": "Arsenal",
-    "chelsea": "Chelsea", "chelsea london": "Chelsea", "liverpool": "Liverpool",
-    "lfc": "Liverpool", "tottenham hotspur": "Tottenham Hotspur", "tottenham": "Tottenham Hotspur",
-    "spurs": "Tottenham Hotspur", "aston villa": "Aston Villa", "villa": "Aston Villa",
-    "newcastle united": "Newcastle United", "newcastle": "Newcastle United",
-    "west ham united": "West Ham United", "west ham": "West Ham United", "everton": "Everton",
-    "fulham": "Fulham", "crystal palace": "Crystal Palace", "palace": "Crystal Palace",
-    "brighton & hove albion": "Brighton", "brighton": "Brighton", "brentford": "Brentford",
-    "leeds united": "Leeds United", "leeds": "Leeds United", "wolverhampton wanderers": "Wolverhampton Wanderers",
-    "wolves": "Wolverhampton Wanderers", "wolverhampton": "Wolverhampton Wanderers",
-    "nottingham forest": "Nottingham Forest", "forest": "Nottingham Forest", "sunderland": "Sunderland",
-    "leicester city": "Leicester City", "leicester": "Leicester City", "southampton": "Southampton",
+    "manchester united": "Manchester United",
+    "man utd": "Manchester United",
+    "man united": "Manchester United",
+    "manchester city": "Manchester City",
+    "man city": "Manchester City",
+    "arsenal": "Arsenal",
+    "arsenal london": "Arsenal",
+    "chelsea": "Chelsea",
+    "chelsea london": "Chelsea",
+    "liverpool": "Liverpool",
+    "lfc": "Liverpool",
+    "tottenham hotspur": "Tottenham Hotspur",
+    "tottenham": "Tottenham Hotspur",
+    "spurs": "Tottenham Hotspur",
+    "aston villa": "Aston Villa",
+    "villa": "Aston Villa",
+    "newcastle united": "Newcastle United",
+    "newcastle": "Newcastle United",
+    "west ham united": "West Ham United",
+    "west ham": "West Ham United",
+    "the hammers": "West Ham United",
+    "everton": "Everton",
+    "the toffees": "Everton",
+    "fulham": "Fulham",
+    "the cottagers": "Fulham",
+    "crystal palace": "Crystal Palace",
+    "palace": "Crystal Palace",
+    "eagles": "Crystal Palace",
+    "brighton & hove albion": "Brighton",
+    "brighton": "Brighton",
+    "brentford": "Brentford",
+    "the bees": "Brentford",
+    "leeds united": "Leeds United",
+    "leeds": "Leeds United",
+    "wolverhampton wanderers": "Wolverhampton Wanderers",
+    "wolves": "Wolverhampton Wanderers",
+    "wolverhampton": "Wolverhampton Wanderers",
+    "nottingham forest": "Nottingham Forest",
+    "forest": "Nottingham Forest",
+    "sunderland": "Sunderland",
+    "black cats": "Sunderland",
+    "leicester city": "Leicester City",
+    "leicester": "Leicester City",
+    "southampton": "Southampton",
+    "saints": "Southampton",
+    "burnley": "Burnley",
+    "the clarets": "Burnley",
+    "west bromwich albion": "West Brom",
+    "west brom": "West Brom",
+    
     # Bundesliga
-    "bayern munich": "Bayern Munich", "bayern münchen": "Bayern Munich", "bayern": "Bayern Munich",
-    "borussia dortmund": "Borussia Dortmund", "dortmund": "Borussia Dortmund", "bayer leverkusen": "Bayer Leverkusen",
-    "leverkusen": "Bayer Leverkusen", "rb leipzig": "RB Leipzig", "leipzig": "RB Leipzig",
-    "borussia mönchengladbach": "Borussia Mönchengladbach", "mönchengladbach": "Borussia Mönchengladbach",
-    "1. fc köln": "1. FC Köln", "fc köln": "1. FC Köln", "fc cologne": "1. FC Köln", "köln": "1. FC Köln",
+    "bayern munich": "Bayern Munich",
+    "bayern münchen": "Bayern Munich",
+    "bayern": "Bayern Munich",
+    "borussia dortmund": "Borussia Dortmund",
+    "dortmund": "Borussia Dortmund",
+    "bvb": "Borussia Dortmund",
+    "bayer leverkusen": "Bayer Leverkusen",
+    "leverkusen": "Bayer Leverkusen",
+    "rb leipzig": "RB Leipzig",
+    "leipzig": "RB Leipzig",
+    "borussia mönchengladbach": "Borussia Mönchengladbach",
+    "mönchengladbach": "Borussia Mönchengladbach",
+    "gladbach": "Borussia Mönchengladbach",
+    "1. fc köln": "1. FC Köln",
+    "fc köln": "1. FC Köln",
+    "fc cologne": "1. FC Köln",
+    "köln": "1. FC Köln",
+    "cologne": "1. FC Köln",
+    "eintracht frankfurt": "Eintracht Frankfurt",
+    "frankfurt": "Eintracht Frankfurt",
+    "vfb stuttgart": "VfB Stuttgart",
+    "stuttgart": "VfB Stuttgart",
+    "werder bremen": "Werder Bremen",
+    "bremen": "Werder Bremen",
+    "fc augsburg": "FC Augsburg",
+    "augsburg": "FC Augsburg",
+    "1899 hoffenheim": "1899 Hoffenheim",
+    "hoffenheim": "1899 Hoffenheim",
+    "fsv mainz 05": "Mainz 05",
+    "mainz 05": "Mainz 05",
+    "mainz": "Mainz 05",
+    "hertha berlin": "Hertha Berlin",
+    "hertha bsc": "Hertha Berlin",
+    "union berlin": "Union Berlin",
+    "vfl wolfsburg": "Wolfsburg",
+    "wolfsburg": "Wolfsburg",
+    "vfl bochum": "Bochum",
+    "bochum": "Bochum",
+    "darmstadt 98": "Darmstadt 98",
+    "darmstadt": "Darmstadt 98",
+    "fc heidenheim": "Heidenheim",
+    "heidenheim": "Heidenheim",
+    
     # La Liga
-    "real madrid": "Real Madrid", "madrid": "Real Madrid", "fc barcelona": "Barcelona", "barcelona": "Barcelona",
-    "atletico madrid": "Atletico Madrid", "atlético madrid": "Atletico Madrid", "real sociedad": "Real Sociedad",
-    "real betis": "Real Betis", "betis": "Real Betis", "athletic bilbao": "Athletic Bilbao", "bilbao": "Athletic Bilbao",
-    "valencia": "Valencia", "villarreal": "Villarreal", "sevilla": "Sevilla", "getafe": "Getafe",
+    "real madrid": "Real Madrid",
+    "madrid": "Real Madrid",
+    "los blancos": "Real Madrid",
+    "fc barcelona": "Barcelona",
+    "barcelona": "Barcelona",
+    "barça": "Barcelona",
+    "atletico madrid": "Atletico Madrid",
+    "atlético madrid": "Atletico Madrid",
+    "atletico": "Atletico Madrid",
+    "atleti": "Atletico Madrid",
+    "colchoneros": "Atletico Madrid",
+    "real sociedad": "Real Sociedad",
+    "real betis": "Real Betis",
+    "betis": "Real Betis",
+    "athletic bilbao": "Athletic Bilbao",
+    "bilbao": "Athletic Bilbao",
+    "valencia": "Valencia",
+    "valencia cf": "Valencia",
+    "villarreal": "Villarreal",
+    "yellow submarine": "Villarreal",
+    "sevilla": "Sevilla",
+    "sevilla fc": "Sevilla",
+    "getafe": "Getafe",
+    "getafe cf": "Getafe",
+    "espanyol": "Espanyol",
+    "rcd espanyol": "Espanyol",
+    "osasuna": "Osasuna",
+    "ca osasuna": "Osasuna",
+    "granada": "Granada",
+    "granada cf": "Granada",
+    "cadiz": "Cadiz",
+    "cadiz cf": "Cadiz",
+    "rayo vallecano": "Rayo Vallecano",
+    "rayo": "Rayo Vallecano",
+    "elche": "Elche",
+    "elche cf": "Elche",
+    "alaves": "Alaves",
+    "deportivo alaves": "Alaves",
+    "mallorca": "Mallorca",
+    "rcd mallorca": "Mallorca",
+    "girona": "Girona",
+    "girona fc": "Girona",
+    "celta vigo": "Celta Vigo",
+    "celta": "Celta Vigo",
+    
     # Serie A
-    "ac milan": "AC Milan", "milan": "AC Milan", "inter milan": "Inter Milan", "inter": "Inter Milan",
-    "juventus": "Juventus", "juve": "Juventus", "napoli": "Napoli", "roma": "Roma", "lazio": "Lazio",
-    "atalanta": "Atalanta", "fiorentina": "Fiorentina", "torino": "Torino", "bologna": "Bologna",
+    "ac milan": "AC Milan",
+    "milan": "AC Milan",
+    "rossoneri": "AC Milan",
+    "inter milan": "Inter Milan",
+    "inter": "Inter Milan",
+    "nerazzurri": "Inter Milan",
+    "juventus": "Juventus",
+    "juve": "Juventus",
+    "bianconeri": "Juventus",
+    "vecchia signora": "Juventus",
+    "napoli": "Napoli",
+    "partenopei": "Napoli",
+    "ssc napoli": "Napoli",
+    "roma": "Roma",
+    "giallorossi": "Roma",
+    "as roma": "Roma",
+    "lazio": "Lazio",
+    "biancocelesti": "Lazio",
+    "ss lazio": "Lazio",
+    "atalanta": "Atalanta",
+    "la dea": "Atalanta",
+    "bergamo": "Atalanta",
+    "fiorentina": "Fiorentina",
+    "viola": "Fiorentina",
+    "acf fiorentina": "Fiorentina",
+    "torino": "Torino",
+    "il toro": "Torino",
+    "granata": "Torino",
+    "bologna": "Bologna",
+    "rossoblu": "Bologna",
+    "udinese": "Udinese",
+    "bianconeri friulani": "Udinese",
+    "genoa": "Genoa",
+    "grifone": "Genoa",
+    "sampdoria": "Sampdoria",
+    "blucerchiati": "Sampdoria",
+    "verona": "Hellas Verona",
+    "hellas verona": "Hellas Verona",
+    "gialloblu": "Hellas Verona",
+    "lecce": "Lecce",
+    "giallorossi salentini": "Lecce",
+    "salernitana": "Salernitana",
+    "granata campani": "Salernitana",
+    "monza": "Monza",
+    "brianzoli": "Monza",
+    "cremonese": "Cremonese",
+    "grigiorossi": "Cremonese",
+    "empoli": "Empoli",
+    "azzurri": "Empoli",
+    "spezia": "Spezia",
+    "aquilotti": "Spezia",
+    
     # Ligue 1
-    "psg": "Paris Saint-Germain", "paris saint-germain": "Paris Saint-Germain", "marseille": "Marseille",
-    "olympique marseille": "Marseille", "lyon": "Lyon", "monaco": "Monaco", "nice": "Nice", "lille": "Lille",
-    "rennes": "Rennes", "lens": "Lens", "strasbourg": "Strasbourg", "angers": "Angers", "brest": "Brest",
-    # Các đội tuyển quốc gia
-    "germany": "Germany", "france": "France", "england": "England", "spain": "Spain", "italy": "Italy",
-    "portugal": "Portugal", "netherlands": "Netherlands", "belgium": "Belgium", "argentina": "Argentina",
-    "brazil": "Brazil", "japan": "Japan", "south korea": "South Korea", "usa": "United States",
+    "psg": "Paris Saint-Germain",
+    "paris saint-germain": "Paris Saint-Germain",
+    "paris st germain": "Paris Saint-Germain",
+    "paris sg": "Paris Saint-Germain",
+    "olympique marseille": "Marseille",
+    "marseille": "Marseille",
+    "om": "Marseille",
+    "olympique lyon": "Lyon",
+    "lyon": "Lyon",
+    "ol": "Lyon",
+    "as monaco": "Monaco",
+    "monaco": "Monaco",
+    "loscilly": "Monaco",
+    "losc lille": "Lille",
+    "lille": "Lille",
+    "loscilly": "Lille",
+    "ogc nice": "Nice",
+    "nice": "Nice",
+    "fc nantes": "Nantes",
+    "nantes": "Nantes",
+    "rc lens": "Lens",
+    "lens": "Lens",
+    "stade rennais": "Rennes",
+    "rennes": "Rennes",
+    "srfc": "Rennes",
+    "montpellier": "Montpellier",
+    "mhsc": "Montpellier",
+    "clermont foot": "Clermont",
+    "clermont": "Clermont",
+    "strasbourg": "Strasbourg",
+    "rc strasbourg": "Strasbourg",
+    "angers": "Angers",
+    "angers sco": "Angers",
+    "sco": "Angers",
+    "brest": "Brest",
+    "stade brestois": "Brest",
+    "toulouse": "Toulouse",
+    "tfc": "Toulouse",
+    "stade de reims": "Reims",
+    "reims": "Reims",
+    "fc metz": "Metz",
+    "metz": "Metz",
+    "ajaccio": "Ajaccio",
+    "ac ajaccio": "Ajaccio",
+    "auxerre": "Auxerre",
+    "aja": "Auxerre",
+    
+    # Giải vô địch thế giới và các đội tuyển quốc gia
+    "germany": "Germany",
+    "deutschland": "Germany",
+    "nationalelf": "Germany",
+    "dfb elf": "Germany",
+    "die mannschaft": "Germany",
+    "france": "France",
+    "les bleus": "France",
+    "england": "England",
+    "three lions": "England",
+    "spain": "Spain",
+    "la roja": "Spain",
+    "furias rojas": "Spain",
+    "italy": "Italy",
+    "azzurri": "Italy",
+    "squadra azzurra": "Italy",
+    "portugal": "Portugal",
+    "selecao das quinas": "Portugal",
+    "netherlands": "Netherlands",
+    "holland": "Netherlands",
+    "oranje": "Netherlands",
+    "belgium": "Belgium",
+    "red devils": "Belgium",
+    "croats": "Croatia",
+    "vatreni": "Croatia",
+    "argentina": "Argentina",
+    "albiceleste": "Argentina",
+    "brazil": "Brazil",
+    "selecao": "Brazil",
+    "canarinho": "Brazil",
+    "japan": "Japan",
+    "blue samurai": "Japan",
+    "south korea": "South Korea",
+    "republic of korea": "South Korea",
+    "tigers of asia": "South Korea",
+    "usa": "United States",
+    "usmnt": "United States",
+    "the stars and stripes": "United States",
+    
+    # European National Teams
+    "austria": "Austria",
+    "wunderteam": "Austria",
+    "czech republic": "Czech Republic",
+    "czechia": "Czech Republic",
+    "denmark": "Denmark",
+    "danish dynamite": "Denmark",
+    "poland": "Poland",
+    "bialo-czerwoni": "Poland",
+    "sweden": "Sweden",
+    "blagult": "Sweden",
+    "switzerland": "Switzerland",
+    "nati": "Switzerland",
+    "turkey": "Turkey",
+    "ayyildizlilar": "Turkey",
+    "russia": "Russia",
+    "sbornaya": "Russia",
+    "ukraine": "Ukraine",
+    "z birna": "Ukraine",
+    "serbia": "Serbia",
+    "orlovi": "Serbia",
+    "greece": "Greece",
+    "pirasma": "Greece",
+    "scotland": "Scotland",
+    "tartan army": "Scotland",
+    "wales": "Wales",
+    "dragons": "Wales",
 }
 
 def normalize_team_name(name: str) -> str:
     if not name:
         return name
     name_lower = name.lower().strip()
-    name_lower = re.sub(r'\b(fc|sc|as|us|ac|ssc|sv|tsv|vfl)\b', '', name_lower)
-    name_lower = re.sub(r'[^\w\s]', '', name_lower)
-    name_lower = name_lower.strip()
+    name_lower = re.sub(r'\b(fc|sc|as|us|ac|ssc|sv|tsv|vfl|cf|cd)\b', '', name_lower)
+    name_lower = re.sub(r'[^\w\s]', '', name_lower).strip()
     best_match = name
-    best_match_key = None
+    best_len = 0
     for key, canonical in TEAM_NAME_MAPPING.items():
-        if key in name_lower:
-            if best_match_key is None or len(key) > len(best_match_key):
-                best_match_key = key
-                best_match = canonical
+        if key in name_lower and len(key) > best_len:
+            best_len = len(key)
+            best_match = canonical
     return best_match
 
 def normalize_matchup(matchup: str):
@@ -177,15 +462,13 @@ def normalize_matchup(matchup: str):
         parts = [p.strip() for p in re.split(r'\s+vs\s+', matchup, flags=re.IGNORECASE)]
         if len(parts) == 2:
             home, away = parts
-    else:
-        return matchup
     if not away or not home:
         return matchup
     away_norm = normalize_team_name(away)
     home_norm = normalize_team_name(home)
     return (away_norm, home_norm)
 
-# ==================== LỌC GIAO HỮU ====================
+# ==================== BỘ LỌC ====================
 EUROPEAN_COUNTRIES = {
     "albania", "andorra", "armenia", "austria", "azerbaijan", "belarus", "belgium", "bosnia",
     "bulgaria", "croatia", "cyprus", "czech", "denmark", "england", "estonia", "faroe",
@@ -210,9 +493,7 @@ def include_friendly_match(home: str, away: str) -> bool:
         return True
     return False
 
-# ==================== LỌC GIẢI CÚP ====================
 def has_premier_league_team(matchup: str, premier_league_teams: set) -> bool:
-    """Kiểm tra matchup có chứa ít nhất một đội Premier League hay không"""
     if not premier_league_teams:
         return True
     matchup_lower = matchup.lower()
@@ -222,95 +503,31 @@ def has_premier_league_team(matchup: str, premier_league_teams: set) -> bool:
     return False
 
 # ==================== CẤU HÌNH GIẢI (livesportsontv) ====================
+PREMIER_LEAGUE_TEAMS = {"arsenal", "aston villa", "bournemouth", "brentford", "brighton",
+                        "chelsea", "crystal palace", "everton", "fulham", "leeds united",
+                        "liverpool", "manchester city", "manchester united", "newcastle",
+                        "nottingham forest", "sunderland", "tottenham", "west ham", "wolverhampton"}
+
 LEAGUES_CONFIG = {
-    "Premier League": {
-        "url": "https://www.livesportsontv.com/league/premier-league",
-        "teams": {"arsenal", "aston villa", "bournemouth", "brentford", "brighton",
-                  "chelsea", "crystal palace", "everton", "fulham", "leeds united",
-                  "liverpool", "manchester city", "manchester united", "newcastle",
-                  "nottingham forest", "sunderland", "tottenham", "west ham", "wolverhampton"}
-    },
-    "Serie A": {
-        "url": "https://www.livesportsontv.com/league/serie-a",
-        "teams": {"inter milan", "ac milan", "napoli", "juventus", "roma", "atalanta", "lazio"}
-    },
-    "La Liga": {
-        "url": "https://www.livesportsontv.com/league/la-liga",
-        "teams": {"barcelona", "real madrid", "atlético"}
-    },
-    "Bundesliga": {
-        "url": "https://www.livesportsontv.com/league/bundesliga-5",
-        "teams": {"bayern", "borussia dortmund", "bayer leverkusen"}
-    },
-    "Ligue 1": {
-        "url": "https://www.livesportsontv.com/league/ligue-1-3",
-        "teams": {"psg", "marseille"}
-    },
-    "UEFA Champions League": {
-        "url": "https://www.livesportsontv.com/league/uefa-champions-league",
-        "teams": None
-    },
-    "UEFA Europa League": {
-        "url": "https://www.livesportsontv.com/league/uefa-europa-league",
-        "teams": None
-    },
-    "UEFA Europa Conference League": {
-        "url": "https://www.livesportsontv.com/league/uefa-conference-league",
-        "teams": None
-    },
-    "UEFA European Championship": {
-        "url": "https://www.livesportsontv.com/league/uefa-european-championship",
-        "teams": None
-    },
-    "FIFA World Cup": {
-        "url": "https://www.livesportsontv.com/league/fifa-world-cup",
-        "teams": None
-    },
-    "International Friendlies": {
-        "url": "https://www.livesportsontv.com/league/friendly",
-        "teams": None,
-        "custom_filter": include_friendly_match
-    },
-    "FA Cup": {
-        "url": "https://www.livesportsontv.com/league/fa-cup",
-        "teams": None,
-        "custom_filter": "premier_league_only"
-    },
-    "Carabao Cup": {
-        "url": "https://www.livesportsontv.com/league/carabao-cup",
-        "teams": None,
-        "custom_filter": "premier_league_only"
-    },
-    "Tennis (ATP)": {
-        "url": "https://www.livesportsontv.com/league/atp",
-        "teams": None,
-        "is_tennis": True
-    },
-    "Tennis (WTA)": {
-        "url": "https://www.livesportsontv.com/league/wta",
-        "teams": None,
-        "is_tennis": True
-    },
-    "Australian Open": {
-        "url": "https://www.livesportsontv.com/league/australian-open",
-        "teams": None,
-        "is_tennis": True
-    },
-    "French Open": {
-        "url": "https://www.livesportsontv.com/league/french-open",
-        "teams": None,
-        "is_tennis": True
-    },
-    "Wimbledon": {
-        "url": "https://www.livesportsontv.com/league/wimbledon",
-        "teams": None,
-        "is_tennis": True
-    },
-    "US Open": {
-        "url": "https://www.livesportsontv.com/league/us-open",
-        "teams": None,
-        "is_tennis": True
-    }
+    "Premier League": {"url": "https://www.livesportsontv.com/league/premier-league", "teams": PREMIER_LEAGUE_TEAMS},
+    "Serie A": {"url": "https://www.livesportsontv.com/league/serie-a", "teams": {"inter milan", "ac milan", "napoli", "juventus", "roma", "atalanta", "lazio"}},
+    "La Liga": {"url": "https://www.livesportsontv.com/league/la-liga", "teams": {"barcelona", "real madrid", "atlético"}},
+    "Bundesliga": {"url": "https://www.livesportsontv.com/league/bundesliga-5", "teams": {"bayern", "borussia dortmund", "bayer leverkusen"}},
+    "Ligue 1": {"url": "https://www.livesportsontv.com/league/ligue-1-3", "teams": {"psg", "marseille"}},
+    "UEFA Champions League": {"url": "https://www.livesportsontv.com/league/uefa-champions-league", "teams": None},
+    "UEFA Europa League": {"url": "https://www.livesportsontv.com/league/uefa-europa-league", "teams": None},
+    "UEFA Europa Conference League": {"url": "https://www.livesportsontv.com/league/uefa-conference-league", "teams": None},
+    "UEFA European Championship": {"url": "https://www.livesportsontv.com/league/uefa-european-championship", "teams": None},
+    "FIFA World Cup": {"url": "https://www.livesportsontv.com/league/fifa-world-cup", "teams": None},
+    "International Friendlies": {"url": "https://www.livesportsontv.com/league/friendly", "teams": None, "custom_filter": include_friendly_match},
+    "FA Cup": {"url": "https://www.livesportsontv.com/league/fa-cup", "teams": None, "custom_filter": "premier_league_only"},
+    "Carabao Cup": {"url": "https://www.livesportsontv.com/league/carabao-cup", "teams": None, "custom_filter": "premier_league_only"},
+    "Tennis (ATP)": {"url": "https://www.livesportsontv.com/league/atp", "is_tennis": True},
+    "Tennis (WTA)": {"url": "https://www.livesportsontv.com/league/wta", "is_tennis": True},
+    "Australian Open": {"url": "https://www.livesportsontv.com/league/australian-open", "is_tennis": True},
+    "French Open": {"url": "https://www.livesportsontv.com/league/french-open", "is_tennis": True},
+    "Wimbledon": {"url": "https://www.livesportsontv.com/league/wimbledon", "is_tennis": True},
+    "US Open": {"url": "https://www.livesportsontv.com/league/us-open", "is_tennis": True}
 }
 
 # ==================== FOOTONSAT ====================
@@ -345,14 +562,16 @@ def parse_footonsat_items(items, ref_time):
                     dt_utc = dt_utc.replace(tzinfo=timezone.utc)
                     dt_vn = dt_utc.astimezone(VN_TZ)
                     if is_within_time_range(dt_vn, ref_time):
-                        league = normalize_league(current_match['compet'].strip())
-                        matches.append({
-                            "Date": dt_vn.strftime("%Y-%m-%d"),
-                            "Time": dt_vn.strftime("%H:%M"),
-                            "League": league,
-                            "Matchup": current_match['match'].strip(),
-                            "Services": current_channels.copy()
-                        })
+                        league_raw = current_match['compet'].strip()
+                        if not is_youth_or_women(current_match['match'], league_raw):
+                            league = normalize_league(league_raw)
+                            matches.append({
+                                "Date": dt_vn.strftime("%Y-%m-%d"),
+                                "Time": dt_vn.strftime("%H:%M"),
+                                "League": league,
+                                "Matchup": current_match['match'].strip(),
+                                "Services": current_channels.copy()
+                            })
                 except Exception:
                     pass
             current_match = item
@@ -368,19 +587,21 @@ def parse_footonsat_items(items, ref_time):
             dt_utc = dt_utc.replace(tzinfo=timezone.utc)
             dt_vn = dt_utc.astimezone(VN_TZ)
             if is_within_time_range(dt_vn, ref_time):
-                league = normalize_league(current_match['compet'].strip())
-                matches.append({
-                    "Date": dt_vn.strftime("%Y-%m-%d"),
-                    "Time": dt_vn.strftime("%H:%M"),
-                    "League": league,
-                    "Matchup": current_match['match'].strip(),
-                    "Services": current_channels
-                })
+                league_raw = current_match['compet'].strip()
+                if not is_youth_or_women(current_match['match'], league_raw):
+                    league = normalize_league(league_raw)
+                    matches.append({
+                        "Date": dt_vn.strftime("%Y-%m-%d"),
+                        "Time": dt_vn.strftime("%H:%M"),
+                        "League": league,
+                        "Matchup": current_match['match'].strip(),
+                        "Services": current_channels
+                    })
         except Exception:
             pass
     return matches
 
-# ==================== LIVESPORTSONTV ====================
+# ==================== LIVESPORTSONTV SCRAPING ====================
 async def scrape_livesportsontv(ref_time: datetime):
     all_games = []
     current_year = ref_time.year
@@ -391,11 +612,6 @@ async def scrape_livesportsontv(ref_time: datetime):
         page = await browser.new_page()
         page.set_default_navigation_timeout(120000)
         page.set_default_timeout(60000)
-
-        # Lấy danh sách đội Premier League để lọc
-        premier_league_teams = set()
-        if "Premier League" in LEAGUES_CONFIG and LEAGUES_CONFIG["Premier League"].get("teams"):
-            premier_league_teams = LEAGUES_CONFIG["Premier League"]["teams"]
 
         for league_name, cfg in LEAGUES_CONFIG.items():
             url = cfg["url"]
@@ -418,7 +634,7 @@ async def scrape_livesportsontv(ref_time: datetime):
             html = await page.content()
             soup = BeautifulSoup(html, 'html.parser')
             page_tz = extract_timezone_from_html(soup)
-            print(f"    🕒 Múi giờ: {page_tz}")
+            # print(f"    🕒 Múi giờ: {page_tz}")
 
             rows = soup.find_all('div', class_='event--wrapp')
             print(f"    📊 {len(rows)} sự kiện")
@@ -456,6 +672,7 @@ async def scrape_livesportsontv(ref_time: datetime):
                     if not is_within_time_range(vn_dt, ref_time):
                         continue
 
+                    # Get matchup
                     if is_tennis:
                         home_elem = row.find('div', class_=lambda c: c and 'event_participant--home' in c)
                         if not home_elem:
@@ -476,20 +693,23 @@ async def scrape_livesportsontv(ref_time: datetime):
                             if title_elem:
                                 matchup = title_elem.get_text(strip=True)
 
-                    # Áp dụng bộ lọc
+                    # Filter youth/women
+                    if is_youth_or_women(matchup, league_name):
+                        continue
+
+                    # Apply team filters
                     if team_filter is not None:
                         if not any(t.lower() in matchup.lower() for t in team_filter):
                             continue
                     if custom_filter == "premier_league_only":
-                        if not has_premier_league_team(matchup, premier_league_teams):
+                        if not has_premier_league_team(matchup, PREMIER_LEAGUE_TEAMS):
                             continue
-                    elif custom_filter is not None and not is_tennis:
-                        if home_elem and away_elem:
-                            if not custom_filter(home, away):
-                                continue
-                        else:
+                    elif callable(custom_filter):
+                        # For friendly matches, we have home and away strings
+                        if not custom_filter(home, away):
                             continue
 
+                    # Get channels
                     channels = []
                     tags_container = row.find('ul', class_='event__tags')
                     if not tags_container:
@@ -512,7 +732,7 @@ async def scrape_livesportsontv(ref_time: datetime):
                         "Services": channels
                     })
                     added += 1
-                except:
+                except Exception:
                     continue
             print(f"    ✅ Thêm {added} trận")
         await browser.close()
@@ -530,38 +750,38 @@ async def main():
     games_foot = await fetch_footonsat_data(ref_time)
     print(f"🛰️ Từ footonsat: {len(games_foot)} trận")
 
-    # Gộp và loại trùng, ưu tiên footonsat
+    # Merge and deduplicate, prioritize footonsat (keep its matchup and channels)
     unique = {}
 
-    # Thêm footonsat trước
+    # Add footonsat first
     for g in games_foot:
-        norm_league = g["League"]
-        norm_matchup_key = normalize_matchup(g["Matchup"])
-        key = (g["Date"], g["Time"], norm_league, norm_matchup_key)
+        norm_league = normalize_league(g["League"])
+        norm_key = normalize_matchup(g["Matchup"])
+        key = (g["Date"], g["Time"], norm_league, norm_key)
         unique[key] = {
             "Date": g["Date"],
             "Time": g["Time"],
-            "League": g["League"],
+            "League": norm_league,
             "Matchup": g["Matchup"],
             "Services": g["Services"]
         }
 
-    # Thêm livesportsontv, nếu chưa có thì thêm, có thì gộp kênh
+    # Add livesportsontv, merge channels if duplicate
     for g in games_live:
-        norm_league = g["League"]
-        norm_matchup_key = normalize_matchup(g["Matchup"])
-        key = (g["Date"], g["Time"], norm_league, norm_matchup_key)
+        norm_league = normalize_league(g["League"])
+        norm_key = normalize_matchup(g["Matchup"])
+        key = (g["Date"], g["Time"], norm_league, norm_key)
         if key not in unique:
             unique[key] = {
                 "Date": g["Date"],
                 "Time": g["Time"],
-                "League": g["League"],
+                "League": norm_league,
                 "Matchup": g["Matchup"],
                 "Services": g["Services"]
             }
         else:
-            existing_services = set(unique[key]["Services"])
-            new_services = [s for s in g["Services"] if s not in existing_services]
+            existing = set(unique[key]["Services"])
+            new_services = [s for s in g["Services"] if s not in existing]
             if new_services:
                 unique[key]["Services"].extend(new_services)
 
