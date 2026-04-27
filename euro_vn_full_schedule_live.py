@@ -1,12 +1,9 @@
 """
 euro_vn_full_schedule_live.py
 ================================
-PHIÊN BẢN ỔN ĐỊNH – TẠM DỪNG SOFASCORE (403)
-Sử dụng các nguồn JSON: LiveSportsOnTV, Wheresthematch, Ausport, Hubsport, NowTV
-- Tải M3U bất đồng bộ.
-- Validate HEAD nhanh (có thể tắt).
-- Gộp trận trùng lặp (≤30 phút).
-- Sắp xếp kênh ưu tiên tiếng Anh.
+PHIÊN BẢN CẢI THIỆN GỘP TRẬN – DÙNG TỪ ĐIỂN TÊN ĐỘI
+- Chuẩn hóa tên đội để gộp chính xác các trận từ nhiều nguồn.
+- Tạm dừng SofaScore (403), tập trung vào các nguồn JSON.
 """
 
 import asyncio
@@ -25,11 +22,12 @@ import aiohttp
 
 # ================== CẤU HÌNH ==================
 ENABLE_VALIDATION = False
-ENABLE_SOFASCORE = False          # Đặt thành True để bật lại SofaScore nếu cần
+ENABLE_SOFASCORE = False          # Tạm tắt SofaScore do bị chặn
 TIMEZONE = ZoneInfo("Asia/Ho_Chi_Minh")
 M3U_LIST_FILE = "M3U_list.txt"
 SCHEDULE_FILE = "schedule.json"
 LIVE_M3U = "live_schedule.m3u"
+SOFASCORE_CACHE_FILE = "sofascore_cache.json"
 VALIDATE_TIMEOUT = 2
 MAX_CHANNELS_PER_MATCH = 500
 HEAD_CONCURRENCY = 100
@@ -235,6 +233,166 @@ def get_country_priority(country_name: str) -> int:
         if key in country_lower:
             return prio
     return 50
+
+# ================== TỪ ĐIỂN CHUẨN HÓA TÊN ĐỘI ==================
+TEAM_NAME_MAPPING = {
+    # Các biến thể tên đội -> canonical name (chữ thường)
+    "paris st germain": "paris saint-germain",
+    "paris sg": "paris saint-germain",
+    "olympique marseille": "marseille",
+    "marseille": "marseille",
+    "om": "marseille",
+    "olympique lyon": "lyon",
+    "lyon": "lyon",
+    "ol": "lyon",
+    "as monaco": "monaco",
+    "monaco": "monaco",
+    "losc lille": "lille",
+    "lille": "lille",
+    "ogc nice": "nice",
+    "nice": "nice",
+    "fc nantes": "nantes",
+    "nantes": "nantes",
+    "rc lens": "lens",
+    "lens": "lens",
+    "stade rennais": "rennes",
+    "rennes": "rennes",
+    "srfc": "rennes",
+    "montpellier": "montpellier",
+    "mhsc": "montpellier",
+    "clermont foot": "clermont",
+    "clermont": "clermont",
+    "rc strasbourg": "strasbourg",
+    "strasbourg": "strasbourg",
+    "angers sco": "angers",
+    "angers": "angers",
+    "stade brestois": "brest",
+    "brest": "brest",
+    "toulouse": "toulouse",
+    "tfc": "toulouse",
+    "stade de reims": "reims",
+    "reims": "reims",
+    "fc metz": "metz",
+    "metz": "metz",
+    "ac ajaccio": "ajaccio",
+    "ajaccio": "ajaccio",
+    "auxerre": "auxerre",
+    "aja": "auxerre",
+    # Các đội tuyển quốc gia
+    "germany": "germany",
+    "deutschland": "germany",
+    "nationalelf": "germany",
+    "die mannschaft": "germany",
+    "france": "france",
+    "les bleus": "france",
+    "england": "england",
+    "three lions": "england",
+    "spain": "spain",
+    "la roja": "spain",
+    "italy": "italy",
+    "azzurri": "italy",
+    "portugal": "portugal",
+    "selecao das quinas": "portugal",
+    "netherlands": "netherlands",
+    "holland": "netherlands",
+    "oranje": "netherlands",
+    "belgium": "belgium",
+    "red devils": "belgium",
+    "croatia": "croatia",
+    "vatreni": "croatia",
+    "argentina": "argentina",
+    "albiceleste": "argentina",
+    "brazil": "brazil",
+    "selecao": "brazil",
+    "canarinho": "brazil",
+    "japan": "japan",
+    "blue samurai": "japan",
+    "south korea": "south korea",
+    "republic of korea": "south korea",
+    "tigers of asia": "south korea",
+    "usa": "united states",
+    "usmnt": "united states",
+    "the stars and stripes": "united states",
+    "austria": "austria",
+    "wunderteam": "austria",
+    "czech republic": "czech republic",
+    "czechia": "czech republic",
+    "denmark": "denmark",
+    "danish dynamite": "denmark",
+    "poland": "poland",
+    "bialo-czerwoni": "poland",
+    "sweden": "sweden",
+    "blagult": "sweden",
+    "switzerland": "switzerland",
+    "nati": "switzerland",
+    "turkey": "turkey",
+    "ayyildizlilar": "turkey",
+    "russia": "russia",
+    "sbornaya": "russia",
+    "ukraine": "ukraine",
+    "z birna": "ukraine",
+    "serbia": "serbia",
+    "orlovi": "serbia",
+    "greece": "greece",
+    "pirasma": "greece",
+    "scotland": "scotland",
+    "tartan army": "scotland",
+    "wales": "wales",
+    "dragons": "wales",
+    # Các đội bóng Anh phổ biến
+    "manchester city": "manchester city",
+    "man city": "manchester city",
+    "mci": "manchester city",
+    "liverpool": "liverpool",
+    "chelsea": "chelsea",
+    "arsenal": "arsenal",
+    "tottenham hotspur": "tottenham hotspur",
+    "tottenham": "tottenham hotspur",
+    "spurs": "tottenham hotspur",
+    "leicester city": "leicester city",
+    "leicester": "leicester city",
+    "west ham united": "west ham united",
+    "west ham": "west ham united",
+    "everton": "everton",
+    "newcastle united": "newcastle united",
+    "newcastle": "newcastle united",
+    "fulham": "fulham",
+    "brighton & hove albion": "brighton & hove albion",
+    "brighton": "brighton & hove albion",
+    "wolverhampton wanderers": "wolverhampton wanderers",
+    "wolverhampton": "wolverhampton wanderers",
+    "wolves": "wolverhampton wanderers",
+    "crystal palace": "crystal palace",
+    "nottingham forest": "nottingham forest",
+    "nottingham": "nottingham forest",
+    "southampton": "southampton",
+    "burnley": "burnley",
+    "sheffield united": "sheffield united",
+    "sheffield utd": "sheffield united",
+    "bournemouth": "bournemouth",
+    "luton town": "luton town",
+    "luton": "luton town",
+    "brentford": "brentford",
+    "aston villa": "aston villa",
+    "villa": "aston villa",
+    "sunderland": "sunderland",
+    "leeds united": "leeds united",
+    "leeds": "leeds united",
+}
+
+def canonical_team_name(name: str) -> str:
+    """Chuẩn hóa tên đội về dạng canonical để so khớp."""
+    name = name.strip().lower()
+    # Thay dấu gạch ngang bằng khoảng trắng
+    name = re.sub(r'[-–—]', ' ', name)
+    # Loại bỏ ký tự đặc biệt
+    name = re.sub(r'[^\w\s]', '', name)
+    name = ' '.join(name.split())
+    # Kiểm tra trong mapping
+    if name in TEAM_NAME_MAPPING:
+        return TEAM_NAME_MAPPING[name]
+    # Nếu không có, trả về tên đã làm sạch (giữ nguyên)
+    return name
 
 # ================== SECONDARY SOURCES ==================
 def load_json_file(filename: str) -> list:
@@ -535,14 +693,11 @@ async def load_all_secondary_sources(start_ts: int, max_ts: int) -> List[Dict]:
     return games
 
 def merge_games(primary: List[Dict], secondary: List[Dict]) -> List[Dict]:
-    # Vì không có SofaScore, primary thường là []. Chỉ cần trả về secondary.
-    # Nhưng vẫn giữ logic merge cũ để tương thích nếu có dữ liệu từ cache.
     primary_football = [g for g in primary if g['league'] != "Tennis"]
     primary_tennis = [g for g in primary if g['league'] == "Tennis"]
     secondary_football = [g for g in secondary if g['league'] != "Tennis"]
     secondary_tennis = [g for g in secondary if g['league'] == "Tennis"]
 
-    # Merge bóng đá
     primary_index = [(game, normalize(game['match']), game['kick_utc']) for game in primary_football]
     for sec in secondary_football:
         sec_norm_match = normalize(sec['match'])
@@ -569,7 +724,6 @@ def merge_games(primary: List[Dict], secondary: List[Dict]) -> List[Dict]:
         else:
             primary_football.append(sec)
 
-    # Merge tennis
     all_tennis = primary_tennis + secondary_tennis
     seen = {}
     unique_tennis = []
@@ -690,13 +844,11 @@ async def main():
 
     print("🔄 Bắt đầu lấy lịch từ 2 GIỜ TRƯỚC đến 24 GIỜ TỚI...")
 
-    # 1. SofaScore (tùy chọn)
+    # 1. SofaScore (tạm tắt)
     sofascore_games = []
     if ENABLE_SOFASCORE:
-        print("📡 Đang lấy dữ liệu từ SofaScore...")
-        # Nếu có bật, gọi hàm scrape_sofascore đã triển khai trước đó (copy từ code trước)
-        # Nhưng hiện tại chưa có giải pháp nào hoạt động, nên để trống.
-        print("   ⚠️ SofaScore tạm thời không khả dụng, bỏ qua.")
+        # Nếu sau này có giải pháp, thêm code tại đây
+        pass
     print(f"   ✅ SofaScore: {len(sofascore_games)} trận")
 
     # 2. Nguồn phụ
@@ -713,23 +865,15 @@ async def main():
         if league == "Tennis":
             clean = re.sub(r'[^\w\s]', ' ', match_str.lower())
             return ' '.join(clean.split())
-        def simplify_team_name(name: str) -> str:
-            name = name.strip().lower()
-            name = re.sub(r'\b(fc|afc|sc|united|city|wanderers|rovers|athletic|albion|town|county|&|hove|and)\b', '', name)
-            name = re.sub(r'[^\w\s]', ' ', name)
-            name = ' '.join(name.split())
-            parts = name.split()
-            if len(parts) > 1:
-                return parts[0]
-            return name
+        # Bóng đá: chuẩn hóa tên đội trước khi tạo key
         clean = match_str.lower()
         clean = re.sub(r'[-–—]', ' vs ', clean)
         clean = re.sub(r'\bvs\.?\b', ' vs ', clean)
         clean = re.sub(r'\bx\b', ' vs ', clean)
         parts = clean.split(' vs ')
         if len(parts) == 2:
-            team1 = simplify_team_name(parts[0])
-            team2 = simplify_team_name(parts[1])
+            team1 = canonical_team_name(parts[0])
+            team2 = canonical_team_name(parts[1])
             teams = sorted([team1, team2])
             return f"{teams[0]} vs {teams[1]}"
         return clean
