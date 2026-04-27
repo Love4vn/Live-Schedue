@@ -8,7 +8,7 @@ import io
 from collections import defaultdict
 
 # ================================================
-# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ & TENNIS (5 NGUỒN) – FINAL FIX 5
+# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ & TENNIS (5 NGUỒN) – FINAL FIX 6
 # ================================================
 
 EPG_URL_STARHUB = "https://raw.githubusercontent.com/dbghelp/StarHub-TV-EPG/refs/heads/main/starhub.xml"
@@ -70,7 +70,7 @@ YOUTH_KEYWORDS = [
     "jong", "beloften"
 ]
 
-# ==================== MAP CHUẨN HOÁ TÊN ĐỘI (MỞ RỘNG) ====================
+# ==================== MAP CHUẨN HOÁ TÊN ĐỘI ====================
 TEAM_NORMALIZE_MAP = {
     "man. united": "manchester united", "man united": "manchester united",
     "man utd": "manchester united", "man. city": "manchester city",
@@ -90,14 +90,7 @@ TEAM_NORMALIZE_MAP = {
     "b. leverkusen": "bayer leverkusen",
     "psg": "paris saint-germain", "paris sg": "paris saint-germain",
     "marseille": "olympique marseille", "om": "olympique marseille",
-    "torino": "torino", "sassuolo": "sassuolo",  # giữ nguyên nếu có trong danh sách? Serie A hiện không có torino, ta sẽ thêm nếu cần, nhưng torino không trong allowed list nên không cần map
 }
-
-# Tập tất cả các tên đội đã biết (chỉ dùng cho các giải không có danh sách riêng)
-ALL_KNOWN_TEAMS = set()
-for t in ALLOWED_TEAMS_PER_LEAGUE.values():
-    if t is not None:
-        ALL_KNOWN_TEAMS.update(t)
 
 # ==================== HÀM TIỆN ÍCH ====================
 def download(url):
@@ -172,17 +165,15 @@ def get_league(title):
 # ==================== CHUẨN HOÁ TÊN ====================
 def normalize_team_name(name: str) -> str:
     n = name.lower().strip()
-    # Sắp xếp map theo độ dài key giảm dần để ưu tiên khớp dài
     sorted_map = sorted(TEAM_NORMALIZE_MAP.items(), key=lambda x: len(x[0]), reverse=True)
     for abbr, full in sorted_map:
         if abbr == n:
             return full
     return n
 
-# ==================== TRÍCH XUẤT CẶP ĐẤU MỚI ====================
+# ==================== TRÍCH XUẤT CẶP ĐẤU (HỖ TRỢ '-') ====================
 def clean_matchup(title, league=None):
-    """Trả về (team1, team2) đã chuẩn hoá hoặc None nếu không tìm thấy."""
-    # Làm sạch
+    # Loại bỏ các tag
     c = re.sub(r'\((?:Direto|Live)\)', '', title, flags=re.I)
     c = re.sub(r'\bLive\b', '', c, flags=re.I)
     c = re.sub(r'\b(Md|Jornada|Etapa)\s*\d+\b', '', c, flags=re.I)
@@ -191,7 +182,7 @@ def clean_matchup(title, league=None):
     c = re.sub(r'[-–:]\s*$', '', c)
     c = re.sub(r'\s+', ' ', c).strip()
 
-    # Tìm phần chứa cặp đấu
+    # Tìm phần có khả năng chứa cặp đấu (nếu có dấu ' - ')
     parts = [p.strip() for p in c.split(' - ')]
     candidate = None
     for p in parts:
@@ -201,31 +192,30 @@ def clean_matchup(title, league=None):
     if not candidate:
         candidate = parts[-1] if parts else c
 
-    # Thử tách bằng ' vs ', ' x ', rồi đến ' - ' (dấu gạch ngang)
-    sep = None
-    for s in [' vs ', ' x ', ' - ']:
-        if s in candidate:
-            sep = s
-            break
-    if not sep:
-        return None
+    # Thử tách bằng ' vs ', ' x ', ' - '
+    for sep in [' vs ', ' x ', ' - ']:
+        if sep in candidate:
+            left, right = candidate.split(sep, 1)
+            left = re.sub(r'\s*[-–]\s*.*$', '', left).strip()
+            right = re.sub(r'\s*[-–]\s*.*$', '', right).strip()
+            if left and right:
+                return normalize_team_name(left), normalize_team_name(right)
+    # Nếu không có, thử tách bằng '-' đơn khi hai bên không có khoảng trắng
+    # (chỉ áp dụng nếu không tìm thấy các dấu hiệu trên)
+    match = re.search(r'^(\S+)-(\S+)$', candidate)
+    if match:
+        left = match.group(1)
+        right = match.group(2)
+        # kiểm tra nếu bên trái/phải không chứa dấu '-' khác (tránh tên như "b. munich")
+        if '-' not in left and '-' not in right:
+            return normalize_team_name(left), normalize_team_name(right)
+    return None
 
-    left, right = candidate.split(sep, 1)
-    left = re.sub(r'\s*[-–]\s*.*$', '', left).strip()
-    right = re.sub(r'\s*[-–]\s*.*$', '', right).strip()
-    if not left or not right:
-        return None
-
-    left_norm = normalize_team_name(left)
-    right_norm = normalize_team_name(right)
-    return left_norm, right_norm
-
+# ==================== KIỂM TRA ĐỘI ĐƯỢC PHÉP ====================
 def is_team_allowed(team_norm, league):
-    """Kiểm tra đội đã chuẩn hoá có nằm trong danh sách cho phép của giải không."""
     if league not in ALLOWED_TEAMS_PER_LEAGUE or ALLOWED_TEAMS_PER_LEAGUE[league] is None:
-        return True  # giải không giới hạn
-    allowed = ALLOWED_TEAMS_PER_LEAGUE[league]
-    return team_norm in allowed
+        return True
+    return team_norm in ALLOWED_TEAMS_PER_LEAGUE[league]
 
 # ==================== ĐỊNH DẠNG KÊNH ====================
 def fmt_starhub(name):
@@ -408,25 +398,22 @@ def parse_epgshare(xml, src):
 
         lg, _ = get_league(title)
         if lg and lg in ALLOWED_LEAGUES:
-            # Bỏ qua nếu là giải nữ/trẻ
             if is_women_youth(title):
                 continue
 
-            # Với các giải đặc biệt
+            # Với giải đặc biệt
             if lg in {"UEFA Euro", "International Friendlies"}:
                 if not is_valid_special(title, lg):
                     continue
-                # Tạm thời dùng tiêu đề sạch làm matchup
                 mt = re.sub(r'\((?:Direto|Live)\)', '', title, flags=re.I).strip()
             else:
-                # Tách cặp đấu
                 pair = clean_matchup(title, lg)
                 if pair is None:
                     print(f"⚠ Bỏ qua (không tách được cặp đấu): {title}")
                     continue
                 left_norm, right_norm = pair
 
-                # Kiểm tra đội được phép (với các giải có danh sách)
+                # Kiểm tra đội được phép (nếu giải có danh sách)
                 if ALLOWED_TEAMS_PER_LEAGUE.get(lg) is not None:
                     if not (is_team_allowed(left_norm, lg) or is_team_allowed(right_norm, lg)):
                         print(f"⚠ Bỏ qua (không có đội được phép): {title} → {left_norm} vs {right_norm}")
