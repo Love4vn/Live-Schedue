@@ -8,7 +8,7 @@ import io
 from collections import defaultdict
 
 # ================================================
-# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ & TENNIS (5 NGUỒN) – FINAL FIX 4
+# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ & TENNIS (5 NGUỒN) – FINAL FIX 5
 # ================================================
 
 EPG_URL_STARHUB = "https://raw.githubusercontent.com/dbghelp/StarHub-TV-EPG/refs/heads/main/starhub.xml"
@@ -90,9 +90,10 @@ TEAM_NORMALIZE_MAP = {
     "b. leverkusen": "bayer leverkusen",
     "psg": "paris saint-germain", "paris sg": "paris saint-germain",
     "marseille": "olympique marseille", "om": "olympique marseille",
+    "torino": "torino", "sassuolo": "sassuolo",  # giữ nguyên nếu có trong danh sách? Serie A hiện không có torino, ta sẽ thêm nếu cần, nhưng torino không trong allowed list nên không cần map
 }
 
-# Tập tất cả các tên đội đã biết
+# Tập tất cả các tên đội đã biết (chỉ dùng cho các giải không có danh sách riêng)
 ALL_KNOWN_TEAMS = set()
 for t in ALLOWED_TEAMS_PER_LEAGUE.values():
     if t is not None:
@@ -168,71 +169,63 @@ def get_league(title):
             return name, title
     return None, title
 
-# ==================== CHUẨN HOÁ TÊN ĐỘI (AN TOÀN) ====================
+# ==================== CHUẨN HOÁ TÊN ====================
 def normalize_team_name(name: str) -> str:
-    """Chuẩn hoá tên một đội dựa trên map, giữ nguyên nếu không có."""
-    lower = name.lower().strip()
-    # Sắp xếp map theo độ dài key giảm dần
+    n = name.lower().strip()
+    # Sắp xếp map theo độ dài key giảm dần để ưu tiên khớp dài
     sorted_map = sorted(TEAM_NORMALIZE_MAP.items(), key=lambda x: len(x[0]), reverse=True)
     for abbr, full in sorted_map:
-        # Thay thế toàn bộ cụm từ nếu khớp chính xác (dùng replace cho đơn giản)
-        if abbr == lower:
+        if abbr == n:
             return full
-    return lower
+    return n
 
-# ==================== TRÍCH XUẤT CẶP ĐẤU THÔNG MINH ====================
+# ==================== TRÍCH XUẤT CẶP ĐẤU MỚI ====================
 def clean_matchup(title, league=None):
-    """Trả về 'Đội1 vs Đội2' hoặc None nếu không tìm thấy 2 đội."""
-    # Loại bỏ các tag không cần thiết
+    """Trả về (team1, team2) đã chuẩn hoá hoặc None nếu không tìm thấy."""
+    # Làm sạch
     c = re.sub(r'\((?:Direto|Live)\)', '', title, flags=re.I)
     c = re.sub(r'\bLive\b', '', c, flags=re.I)
     c = re.sub(r'\b(Md|Jornada|Etapa)\s*\d+\b', '', c, flags=re.I)
     c = re.sub(r'\d{4}-\d{2}', '', c)
     c = re.sub(r'\b\d+ª\s*Mão\s*(da\s*)?(Meia-?Final)?\b', '', c, flags=re.I)
-    c = re.sub(r'[-–:]\s*$', '', c)  # dấu gạch cuối
+    c = re.sub(r'[-–:]\s*$', '', c)
     c = re.sub(r'\s+', ' ', c).strip()
 
-    # Tìm phần có khả năng chứa cặp đấu nhất: ưu tiên đoạn chứa 'x' hoặc 'vs'
-    # Nếu không, lấy nguyên cả chuỗi đã làm sạch
+    # Tìm phần chứa cặp đấu
     parts = [p.strip() for p in c.split(' - ')]
     candidate = None
     for p in parts:
-        if re.search(r'\s+x\s+|\s+vs\s+', p):
+        if re.search(r'\s+x\s+|\s+vs\s+|\s+-\s+', p):
             candidate = p
             break
     if not candidate:
         candidate = parts[-1] if parts else c
 
-    # Tách lấy hai đội qua ' x ' hoặc ' vs '
-    match = re.search(r'\s+x\s+', candidate)
-    if not match:
-        match = re.search(r'\s+vs\s+', candidate)
-    if not match:
-        return None  # Không có dấu hiệu cặp đấu
+    # Thử tách bằng ' vs ', ' x ', rồi đến ' - ' (dấu gạch ngang)
+    sep = None
+    for s in [' vs ', ' x ', ' - ']:
+        if s in candidate:
+            sep = s
+            break
+    if not sep:
+        return None
 
-    left = candidate[:match.start()].strip()
-    right = candidate[match.end():].strip()
-
-    # Loại bỏ các hậu tố như - Md34 còn sót
+    left, right = candidate.split(sep, 1)
     left = re.sub(r'\s*[-–]\s*.*$', '', left).strip()
     right = re.sub(r'\s*[-–]\s*.*$', '', right).strip()
-
     if not left or not right:
         return None
 
-    # Chuẩn hoá từng tên đội
     left_norm = normalize_team_name(left)
     right_norm = normalize_team_name(right)
+    return left_norm, right_norm
 
-    # Kiểm tra xem có ít nhất một trong hai đội thuộc tập đã biết không (để loại tạp chí)
-    if left_norm in ALL_KNOWN_TEAMS or right_norm in ALL_KNOWN_TEAMS:
-        return f"{left_norm.title()} vs {right_norm.title()}"
-    else:
-        # Trường hợp đội không có trong danh sách nhưng vẫn có thể là trận đấu (ví dụ đội hạng dưới ở Cup)
-        # Chấp nhận nếu có dấu hiệu 'x' và không chứa từ khóa tạp chí
-        if not any(kw in candidate.lower() for kw in ["estúdios", "antevisão"]):
-            return f"{left_norm.title()} vs {right_norm.title()}"
-    return None
+def is_team_allowed(team_norm, league):
+    """Kiểm tra đội đã chuẩn hoá có nằm trong danh sách cho phép của giải không."""
+    if league not in ALLOWED_TEAMS_PER_LEAGUE or ALLOWED_TEAMS_PER_LEAGUE[league] is None:
+        return True  # giải không giới hạn
+    allowed = ALLOWED_TEAMS_PER_LEAGUE[league]
+    return team_norm in allowed
 
 # ==================== ĐỊNH DẠNG KÊNH ====================
 def fmt_starhub(name):
@@ -415,18 +408,32 @@ def parse_epgshare(xml, src):
 
         lg, _ = get_league(title)
         if lg and lg in ALLOWED_LEAGUES:
-            # Với các giải đặc biệt cần kiểm tra quốc gia
+            # Bỏ qua nếu là giải nữ/trẻ
+            if is_women_youth(title):
+                continue
+
+            # Với các giải đặc biệt
             if lg in {"UEFA Euro", "International Friendlies"}:
                 if not is_valid_special(title, lg):
                     continue
-                # Với Euro/Friendlies, ta dùng cách tách đặc biệt
-                mt = clean_matchup_special(title)
+                # Tạm thời dùng tiêu đề sạch làm matchup
+                mt = re.sub(r'\((?:Direto|Live)\)', '', title, flags=re.I).strip()
             else:
-                mt = clean_matchup(title)
-                if mt is None:
+                # Tách cặp đấu
+                pair = clean_matchup(title, lg)
+                if pair is None:
                     print(f"⚠ Bỏ qua (không tách được cặp đấu): {title}")
                     continue
-            print(f"✅ Nhận bóng đá: {mt} ({lg}) từ {fmt_pt(cid) if is_pt else fmt_ro(cid)}")
+                left_norm, right_norm = pair
+
+                # Kiểm tra đội được phép (với các giải có danh sách)
+                if ALLOWED_TEAMS_PER_LEAGUE.get(lg) is not None:
+                    if not (is_team_allowed(left_norm, lg) or is_team_allowed(right_norm, lg)):
+                        print(f"⚠ Bỏ qua (không có đội được phép): {title} → {left_norm} vs {right_norm}")
+                        continue
+
+                mt = f"{left_norm.title()} vs {right_norm.title()}"
+                print(f"✅ Nhận bóng đá: {mt} ({lg}) từ {fmt_pt(cid) if is_pt else fmt_ro(cid)}")
         elif is_tennis(title):
             lg, mt = parse_tennis(title)
             if not lg: continue
@@ -441,24 +448,12 @@ def parse_epgshare(xml, src):
     return output(groups)
 
 def is_valid_special(title, league):
-    """Kiểm tra riêng cho UEFA Euro và International Friendlies."""
-    if is_women_youth(title):
-        return False
     if league == "UEFA Euro":
         return any(c in title.lower() for c in EUROPEAN_COUNTRIES)
     elif league == "International Friendlies":
         allowed = EUROPEAN_COUNTRIES | AMERICAS_TEAMS | ASIA_TEAMS
         return len([c for c in allowed if c in title.lower()]) >= 2
     return True
-
-def clean_matchup_special(title):
-    """Tạo matchup cho các trận quốc tế (đơn giản lấy tiêu đề sau khi làm sạch)."""
-    c = re.sub(r'\((?:Direto|Live)\)', '', title, flags=re.I)
-    c = re.sub(r'\bLive\b', '', c, flags=re.I)
-    c = re.sub(r'\b(Md|Jornada|Etapa)\s*\d+\b', '', c, flags=re.I)
-    c = re.sub(r'\d{4}-\d{2}', '', c)
-    c = re.sub(r'\s+', ' ', c).strip()
-    return c
 
 # Gộp kênh
 def merge_all(*match_lists):
