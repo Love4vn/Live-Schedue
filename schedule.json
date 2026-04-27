@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-27 10:49 VN",
+  "updated": "2026-04-27 15:38 VN",
   "days": {
     "20260427": {
       "date": "Monday, 27/04",
@@ -14,18 +14,18 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "DAZN Canada",
+                "DAZN Zona Italy",
+                "beIN Sports Australia 3 HD",
+                "FOX Deportes",
+                "TV4 Sport Live 4 Sweden",
                 "ART Motion Sport 2 HD",
+                "DAZN Great Britain",
+                "Fox Deportes Spain",
+                "DAZN2 Germany",
+                "Paramount+ (US)",
                 "DAZN US",
                 "DAZN Ireland",
-                "DAZN2 Germany",
-                "DAZN Zona Italy",
-                "FOX Deportes",
-                "beIN Sports Australia 3 HD",
-                "Fox Deportes Spain",
-                "DAZN Great Britain",
-                "DAZN 1 Italia HD",
-                "Paramount+ (US)",
-                "TV4 Sport Live 4 Sweden"
+                "DAZN 1 Italia HD"
               ]
             },
             {
@@ -52,20 +52,20 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "DAZN Canada",
-                "ART Motion Sport 2 HD",
-                "DAZN US",
-                "TV4 Sport Live 4 Sweden",
-                "DAZN Ireland",
-                "Sky Sport Calcio HD",
-                "DAZN2 Germany",
                 "Sky Sport Italia 4K UHD",
-                "Paramount+ (US)",
-                "beIN Sports Australia 3 HD",
-                "DAZN Great Britain",
+                "DAZN Canada",
                 "Sky Sport 251 Italia HD",
                 "Sky Sport Calcio Italy",
-                "beIN SPORTS 3 Australia"
+                "beIN Sports Australia 3 HD",
+                "beIN SPORTS 3 Australia",
+                "TV4 Sport Live 4 Sweden",
+                "Sky Sport Calcio HD",
+                "ART Motion Sport 2 HD",
+                "DAZN Great Britain",
+                "DAZN2 Germany",
+                "Paramount+ (US)",
+                "DAZN US",
+                "DAZN Ireland"
               ]
             },
             {
@@ -109,9 +109,9 @@
             {
               "country": "Hubsport",
               "channels": [
-                "Hub Premier 1",
+                "Hub Premier 2 (4K)",
                 "Hub Premier 2 (HD)",
-                "Hub Premier 2 (4K)"
+                "Hub Premier 1"
               ]
             },
             {
@@ -124,8 +124,8 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports Premier League 1",
-                "Now Sports 4K 1",
-                "Now Sports Premier League TV"
+                "Now Sports Premier League TV",
+                "Now Sports 4K 1"
               ]
             }
           ],
@@ -141,9 +141,9 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "DAZN Canada",
-                "TSN2",
+                "Tennis Channel",
                 "TSN3",
-                "Tennis Channel"
+                "TSN2"
               ]
             }
           ],
@@ -189,8 +189,8 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "DAZN Canada",
-                "TSN2",
-                "Tennis Channel"
+                "Tennis Channel",
+                "TSN2"
               ]
             }
           ],
@@ -292,9 +292,24 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP Masters & WTA 1000 Madrid",
+          "match": "Kozyreva/Skoch - Perez/Schuurs (parovi)",
           "kick_utc": 1777280400,
           "time": "27/04 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Klub 2 Hrvatska"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ruiz/Lopez - Krajicek/Mektić (parovi)",
+          "kick_utc": 1777285800,
+          "time": "27/04 05:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -442,6 +457,21 @@
         },
         {
           "league": "Tennis",
+          "match": "F. Cerundolo - Darderi",
+          "kick_utc": 1777294800,
+          "time": "27/04 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Klub 2 Hrvatska"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "ATP Tour 2026 Mutua Madrid Open (1000) Day 6 R3 Session 3",
           "kick_utc": 1777298400,
           "time": "27/04 09:00 PM",
@@ -472,6 +502,21 @@
         },
         {
           "league": "Tennis",
+          "match": "Hsieh/Kenin - V. Williams/Boulter (parovi)",
+          "kick_utc": 1777302000,
+          "time": "27/04 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Klub 2 Hrvatska"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "ATP Tour 2026 Mutua Madrid Open (1000) Day 6 R3 Session 4",
           "kick_utc": 1777305600,
           "time": "27/04 11:00 PM",
@@ -487,6 +532,21 @@
         },
         {
           "league": "Tennis",
+          "match": "ATP Masters & WTA 1000 Madrid (UKLJUČENJE)",
+          "kick_utc": 1777308300,
+          "time": "27/04 11:45 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Klub 2 Hrvatska"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "ATP Tour 2026 Mutua Madrid Open (1000) Day 6 R3 Session 5",
           "kick_utc": 1777312800,
           "time": "28/04 01:00 AM",
@@ -495,6 +555,36 @@
               "country": "Hubsport",
               "channels": [
                 "Hub Sports 2 HD"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Atmane - Zverev",
+          "kick_utc": 1777312800,
+          "time": "28/04 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Klub 2 Hrvatska"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Potapova/Ostapenko - Zheng/Rybakina",
+          "kick_utc": 1777319100,
+          "time": "28/04 02:45 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Klub 2 Hrvatska"
               ]
             }
           ],
