@@ -1,8 +1,8 @@
 {
-  "updated": "2026-04-27 04:49 VN",
+  "updated": "2026-04-27 10:49 VN",
   "days": {
-    "20260426": {
-      "date": "Sunday, 26/04",
+    "20260427": {
+      "date": "Monday, 27/04",
       "games": [
         {
           "league": "Serie A",
@@ -13,19 +13,19 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "DAZN Canada",
+                "ART Motion Sport 2 HD",
+                "DAZN US",
                 "DAZN Ireland",
                 "DAZN2 Germany",
-                "ART Motion Sport 2 HD",
-                "DAZN Canada",
-                "Paramount+ (US)",
                 "DAZN Zona Italy",
-                "beIN Sports Australia 3 HD",
-                "TV4 Sport Live 4 Sweden",
-                "Fox Deportes Spain",
                 "FOX Deportes",
-                "DAZN 1 Italia HD",
+                "beIN Sports Australia 3 HD",
+                "Fox Deportes Spain",
                 "DAZN Great Britain",
-                "DAZN US"
+                "DAZN 1 Italia HD",
+                "Paramount+ (US)",
+                "TV4 Sport Live 4 Sweden"
               ]
             },
             {
@@ -52,19 +52,19 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "DAZN Ireland",
-                "Sky Sport Calcio Italy",
-                "Sky Sport Italia 4K UHD",
-                "DAZN2 Germany",
-                "ART Motion Sport 2 HD",
                 "DAZN Canada",
+                "ART Motion Sport 2 HD",
+                "DAZN US",
+                "TV4 Sport Live 4 Sweden",
+                "DAZN Ireland",
+                "Sky Sport Calcio HD",
+                "DAZN2 Germany",
+                "Sky Sport Italia 4K UHD",
                 "Paramount+ (US)",
                 "beIN Sports Australia 3 HD",
-                "TV4 Sport Live 4 Sweden",
-                "Sky Sport Calcio HD",
-                "DAZN US",
-                "Sky Sport 251 Italia HD",
                 "DAZN Great Britain",
+                "Sky Sport 251 Italia HD",
+                "Sky Sport Calcio Italy",
                 "beIN SPORTS 3 Australia"
               ]
             },
@@ -110,8 +110,8 @@
               "country": "Hubsport",
               "channels": [
                 "Hub Premier 1",
-                "Hub Premier 2 (4K)",
-                "Hub Premier 2 (HD)"
+                "Hub Premier 2 (HD)",
+                "Hub Premier 2 (4K)"
               ]
             },
             {
@@ -124,8 +124,8 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports Premier League 1",
-                "Now Sports Premier League TV",
-                "Now Sports 4K 1"
+                "Now Sports 4K 1",
+                "Now Sports Premier League TV"
               ]
             }
           ],
@@ -140,8 +140,8 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN2",
                 "DAZN Canada",
+                "TSN2",
                 "TSN3",
                 "Tennis Channel"
               ]
@@ -188,8 +188,8 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN2",
                 "DAZN Canada",
+                "TSN2",
                 "Tennis Channel"
               ]
             }
@@ -233,23 +233,6 @@
         {
           "league": "Tennis",
           "match": "",
-          "kick_utc": 1777280400,
-          "time": "27/04 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 1",
-                "beIN Sports Connect",
-                "beIN SPORTS 2"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
           "kick_utc": 1777305600,
           "time": "27/04 11:00 PM",
           "tv_channels": [
@@ -276,21 +259,6 @@
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP Tour 2026 Mutua Madrid Open (1000) Day 5 R3 Session 6",
-          "kick_utc": 1777233600,
-          "time": "27/04 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Hub Sports 7 HD"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -546,21 +514,6 @@
             }
           ],
           "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Mutua Madrid Open -Round 3 (A)",
-          "kick_utc": 1777233600,
-          "time": "27/04 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports 6"
-              ]
-            }
-          ],
-          "source": "nowtv"
         },
         {
           "league": "Tennis",
