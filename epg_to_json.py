@@ -8,7 +8,7 @@ import io
 from collections import defaultdict
 
 # ================================================
-# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ & TENNIS (5 NGUỒN) – FINAL FIX
+# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ & TENNIS (5 NGUỒN) – FINAL FIX 2
 # ================================================
 
 EPG_URL_STARHUB = "https://raw.githubusercontent.com/dbghelp/StarHub-TV-EPG/refs/heads/main/starhub.xml"
@@ -90,9 +90,10 @@ TEAM_NORMALIZE_MAP = {
     "b. leverkusen": "bayer leverkusen",
     "psg": "paris saint-germain", "paris sg": "paris saint-germain",
     "marseille": "olympique marseille", "om": "olympique marseille",
-    "arsenal": "arsenal",         # để tránh lỗi
+    "arsenal": "arsenal",
 }
 
+# Tập tất cả các tên đội đã biết (dùng cho Champions League, v.v.)
 ALL_KNOWN_TEAMS = set()
 for t in ALLOWED_TEAMS_PER_LEAGUE.values():
     if t is not None:
@@ -191,54 +192,41 @@ def find_allowed_teams(text, league):
     return [t for t in allowed if t in norm]
 
 def clean_matchup(title, league):
-    # Loại bỏ các tag không cần thiết
+    """Trả về 'Đội1 vs Đội2' hoặc None nếu không tìm thấy 2 đội."""
+    # 1. Làm sạch tiêu đề
     c = re.sub(r'\((?:Direto|Live)\)', '', title, flags=re.I)
     c = re.sub(r'\bLive\b', '', c, flags=re.I)
     c = re.sub(r'\b(Md|Jornada)\s*\d+\b', '', c, flags=re.I)
-    c = re.sub(r'\d{4}-\d{2}', '', c)
-    # Xoá mô tả vòng đấu kiểu Bồ Đào Nha
+    c = re.sub(r'\d{4}-\d{2}', '', c)                # mùa giải
     c = re.sub(r'\b\d+ª\s*Mão\s*(da\s*)?(Meia-?Final)?\b', '', c, flags=re.I)
     c = re.sub(r'\s+', ' ', c).strip()
 
-    # Tách theo dấu ' - ' để lấy phần có khả năng chứa cặp đấu
-    parts = [p.strip() for p in c.split(' - ')]
-    candidate = None
-    # Tìm phần có chứa 'x' hoặc 'vs'
-    for p in parts:
-        if ' x ' in p.lower() or ' vs ' in p.lower():
-            candidate = p
-            break
-    if not candidate:
-        # fallback: dùng phần cuối cùng
-        candidate = parts[-1] if parts else c
-
-    # Chuẩn hoá candidate
-    norm = candidate.lower()
+    # 2. Chuẩn hoá toàn bộ chuỗi đã sạch
+    norm = c.lower()
     for abbr, full in TEAM_NORMALIZE_MAP.items():
         norm = re.sub(r'\b' + re.escape(abbr) + r'\b', full, norm)
 
-    # Tìm đội trong tập đã biết
+    # 3. Tìm tất cả các đội đã biết trong chuỗi đã chuẩn hoá
     found = []
     for team in sorted(ALL_KNOWN_TEAMS, key=len, reverse=True):
         if team in norm:
-            # loại trùng lặp
+            # tránh trùng lặp kiểu 'wolverhampton' và 'wolverhampton wanderers'
             if not any(team in ex for ex in found):
                 found.append(team)
     if len(found) >= 2:
-        # Sắp xếp theo thứ tự xuất hiện
+        # Sắp xếp theo vị trí xuất hiện trong norm
         found.sort(key=lambda x: norm.index(x))
-        t1 = found[0]
-        t2 = found[1]
+        t1, t2 = found[0], found[1]
         return f"{t1.title()} vs {t2.title()}"
 
-    # Fallback tách bằng ' x ' hoặc ' vs '
+    # 4. Fallback: thử tách bằng ' x ' hoặc ' vs '
     for sep in [' x ', ' vs ']:
-        if sep in candidate.lower():
-            left, right = candidate.lower().split(sep, 1)
-            left_norm = apply_team_normalize(left.strip())
-            right_norm = apply_team_normalize(right.strip())
-            if left_norm in ALL_KNOWN_TEAMS or right_norm in ALL_KNOWN_TEAMS:
-                return f"{left_norm.title()} vs {right_norm.title()}"
+        if sep in c.lower():
+            left, right = c.lower().split(sep, 1)
+            ln = apply_team_normalize(left.strip())
+            rn = apply_team_normalize(right.strip())
+            if ln in ALL_KNOWN_TEAMS or rn in ALL_KNOWN_TEAMS:
+                return f"{ln.title()} vs {rn.title()}"
     return None
 
 def apply_team_normalize(name):
@@ -293,7 +281,7 @@ def output(groups):
     out.sort(key=lambda x: (x["Date"], x["Time"]))
     return out
 
-# StarHub parser
+# StarHub parser (giữ nguyên)
 def parse_starhub(xml, ch):
     root = ET.fromstring(xml)
     groups = defaultdict(list)
@@ -429,7 +417,10 @@ def parse_epgshare(xml, src):
         if lg and lg in ALLOWED_LEAGUES:
             if not is_valid_match(title, lg): continue
             mt = clean_matchup(title, lg)
-            if mt is None: continue
+            if mt is None:
+                # Debug: in ra trận bị loại (có thể comment lại)
+                print(f"⚠ Bỏ qua: {title}")
+                continue
         elif is_tennis(title):
             lg, mt = parse_tennis(title)
             if not lg: continue
@@ -442,7 +433,7 @@ def parse_epgshare(xml, src):
         groups[(dt_vn, mt.lower())].append({"channel": cn, "league": lg, "matchup": mt})
     return output(groups)
 
-# Gộp kênh cùng ngày, lệch giờ ≤ MERGE_MINUTES
+# Gộp kênh
 def merge_all(*match_lists):
     merged = defaultdict(list)
     for lst in match_lists:
