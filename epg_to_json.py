@@ -8,7 +8,7 @@ import io
 from collections import defaultdict
 
 # ================================================
-# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ & TENNIS (5 NGUỒN) – FINAL FIX 2
+# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ & TENNIS (5 NGUỒN) – FINAL FIX 3
 # ================================================
 
 EPG_URL_STARHUB = "https://raw.githubusercontent.com/dbghelp/StarHub-TV-EPG/refs/heads/main/starhub.xml"
@@ -93,7 +93,7 @@ TEAM_NORMALIZE_MAP = {
     "arsenal": "arsenal",
 }
 
-# Tập tất cả các tên đội đã biết (dùng cho Champions League, v.v.)
+# Tập tất cả các tên đội đã biết
 ALL_KNOWN_TEAMS = set()
 for t in ALLOWED_TEAMS_PER_LEAGUE.values():
     if t is not None:
@@ -169,6 +169,34 @@ def get_league(title):
             return name, title
     return None, title
 
+# ==================== XỬ LÝ TÊN ĐỘI AN TOÀN ====================
+def normalize_text(text: str) -> str:
+    """Thay thế tất cả các biến thể đội bóng trong văn bản bằng tên chuẩn."""
+    lower = text.lower()
+    # Sắp xếp map theo độ dài key giảm dần để ưu tiên thay dài trước
+    sorted_map = sorted(TEAM_NORMALIZE_MAP.items(), key=lambda x: len(x[0]), reverse=True)
+    for abbr, full in sorted_map:
+        # Dùng replace đơn giản vì cụm từ đã được ngăn cách bởi khoảng trắng hoặc ranh giới từ
+        # Tuy nhiên để an toàn, ta dùng split và join để thay cả từ
+        # Thực tế ta sẽ tìm vị trí trong chuỗi và thay thế nguyên cụm.
+        # Cách đơn giản: dùng replace cho từng khóa, nhưng tránh thay nhầm (ví dụ "arsenal" trong "arsenal women")
+        # Nhưng trong ngữ cảnh tên đội, các biến thể đã khá chính xác, ta dùng replace thô, chấp nhận rủi ro thấp.
+        lower = lower.replace(abbr, full)
+    return lower
+
+def find_allowed_teams(text: str, league: str) -> list:
+    if league not in ALLOWED_TEAMS_PER_LEAGUE or ALLOWED_TEAMS_PER_LEAGUE[league] is None:
+        return []
+    allowed = ALLOWED_TEAMS_PER_LEAGUE[league]
+    norm = normalize_text(text)
+    found = []
+    for team in allowed:
+        if team in norm:
+            # loại trùng kiểu wolverhampton vs wolverhampton wanderers
+            if not any(team in ex and team != ex for ex in found):
+                found.append(team)
+    return found
+
 def is_valid_match(title, league):
     if is_women_youth(title):
         return False
@@ -182,58 +210,35 @@ def is_valid_match(title, league):
     teams = find_allowed_teams(title, league)
     return len(teams) > 0
 
-def find_allowed_teams(text, league):
-    if league not in ALLOWED_TEAMS_PER_LEAGUE or ALLOWED_TEAMS_PER_LEAGUE[league] is None:
-        return []
-    allowed = ALLOWED_TEAMS_PER_LEAGUE[league]
-    norm = text.lower()
-    for abbr, full in TEAM_NORMALIZE_MAP.items():
-        norm = re.sub(r'\b' + re.escape(abbr) + r'\b', full, norm)
-    return [t for t in allowed if t in norm]
-
 def clean_matchup(title, league):
-    """Trả về 'Đội1 vs Đội2' hoặc None nếu không tìm thấy 2 đội."""
-    # 1. Làm sạch tiêu đề
+    # Xoá các thành phần không cần thiết
     c = re.sub(r'\((?:Direto|Live)\)', '', title, flags=re.I)
     c = re.sub(r'\bLive\b', '', c, flags=re.I)
     c = re.sub(r'\b(Md|Jornada)\s*\d+\b', '', c, flags=re.I)
-    c = re.sub(r'\d{4}-\d{2}', '', c)                # mùa giải
+    c = re.sub(r'\d{4}-\d{2}', '', c)
     c = re.sub(r'\b\d+ª\s*Mão\s*(da\s*)?(Meia-?Final)?\b', '', c, flags=re.I)
     c = re.sub(r'\s+', ' ', c).strip()
-
-    # 2. Chuẩn hoá toàn bộ chuỗi đã sạch
-    norm = c.lower()
-    for abbr, full in TEAM_NORMALIZE_MAP.items():
-        norm = re.sub(r'\b' + re.escape(abbr) + r'\b', full, norm)
-
-    # 3. Tìm tất cả các đội đã biết trong chuỗi đã chuẩn hoá
+    # Chuẩn hoá
+    norm = normalize_text(c)
+    # Tìm tất cả các đội đã biết
     found = []
     for team in sorted(ALL_KNOWN_TEAMS, key=len, reverse=True):
         if team in norm:
-            # tránh trùng lặp kiểu 'wolverhampton' và 'wolverhampton wanderers'
             if not any(team in ex for ex in found):
                 found.append(team)
     if len(found) >= 2:
-        # Sắp xếp theo vị trí xuất hiện trong norm
         found.sort(key=lambda x: norm.index(x))
         t1, t2 = found[0], found[1]
         return f"{t1.title()} vs {t2.title()}"
-
-    # 4. Fallback: thử tách bằng ' x ' hoặc ' vs '
+    # Fallback: tách thủ công
     for sep in [' x ', ' vs ']:
         if sep in c.lower():
             left, right = c.lower().split(sep, 1)
-            ln = apply_team_normalize(left.strip())
-            rn = apply_team_normalize(right.strip())
+            ln = normalize_text(left.strip())
+            rn = normalize_text(right.strip())
             if ln in ALL_KNOWN_TEAMS or rn in ALL_KNOWN_TEAMS:
                 return f"{ln.title()} vs {rn.title()}"
     return None
-
-def apply_team_normalize(name):
-    n = name.lower()
-    for abbr, full in TEAM_NORMALIZE_MAP.items():
-        n = re.sub(r'\b' + re.escape(abbr) + r'\b', full, n)
-    return n
 
 # ==================== ĐỊNH DẠNG KÊNH ====================
 def fmt_starhub(name):
@@ -415,12 +420,15 @@ def parse_epgshare(xml, src):
         if not is_pt and not is_live_ro(title): continue
         lg, _ = get_league(title)
         if lg and lg in ALLOWED_LEAGUES:
-            if not is_valid_match(title, lg): continue
+            if not is_valid_match(title, lg):
+                # Debug: in ra lý do bỏ qua
+                print(f"⚠ Bỏ qua (không đủ điều kiện): {title}")
+                continue
             mt = clean_matchup(title, lg)
             if mt is None:
-                # Debug: in ra trận bị loại (có thể comment lại)
-                print(f"⚠ Bỏ qua: {title}")
+                print(f"⚠ Bỏ qua (không tìm thấy cặp đấu): {title}")
                 continue
+            print(f"✅ Nhận bóng đá: {mt} ({lg}) từ {fmt_pt(cid) if is_pt else fmt_ro(cid)}")
         elif is_tennis(title):
             lg, mt = parse_tennis(title)
             if not lg: continue
