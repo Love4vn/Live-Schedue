@@ -9,13 +9,9 @@ from collections import defaultdict
 
 # ================================================
 # SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ & TENNIS (5 NGUỒN)
-# ✅ StarHub: Premier League, FA Cup, Tennis
-# ✅ nt74: Tennis
-# ✅ xvb: Tennis
-# ✅ PT1 (Bồ Đào Nha): Bóng đá nam + Tennis
-# ✅ RO1 (Romania): Bóng đá nam + Tennis
-# ✅ Sửa lỗi trùng tên đội, mở rộng viết tắt, loại bỏ chương trình phi trận đấu
-# ✅ Chỉ lấy trận từ -6h đến +72h
+# ✅ Gộp kênh theo thời gian lệch ≤ 30 phút
+# ✅ Trích xuất đội bóng bằng danh sách thông minh
+# ✅ Hỗ trợ đầy đủ viết tắt đội bóng (Man. United, PSG, B. Munique...)
 # ================================================
 
 EPG_URL_STARHUB = "https://raw.githubusercontent.com/dbghelp/StarHub-TV-EPG/refs/heads/main/starhub.xml"
@@ -26,8 +22,9 @@ EPG_URL_RO1 = "https://epgshare01.online/epgshare01/epg_ripper_RO1.xml.gz"
 OUTPUT_FILE = "live_matches.json"
 HOURS_BEFORE = 6
 HOURS_AFTER = 72
+MERGE_TIME_TOLERANCE_MINUTES = 30   # gộp nếu cùng ngày, lệch giờ ≤ 30 phút
 
-# ==================== DANH SÁCH GIẢI ĐẤU & ĐỘI BÓNG ====================
+# ==================== DANH SÁCH GIẢI ĐẤU VÀ ĐỘI BÓNG ====================
 ALLOWED_LEAGUES = {
     "Premier League", "Serie A", "La Liga", "Bundesliga", "Ligue 1",
     "UEFA Champions League", "UEFA Europa League", "UEFA Europa Conference League",
@@ -51,119 +48,88 @@ ALLOWED_TEAMS_PER_LEAGUE = {
     "Carabao Cup": PREMIER_LEAGUE_TEAMS,
 }
 
+# Tập hợp tất cả các tên đội (đã chuẩn hóa) từ các giải – dùng cho Champions League, v.v.
+ALL_KNOWN_TEAMS = set().union(*[teams for league, teams in ALLOWED_TEAMS_PER_LEAGUE.items() if teams is not None])
+
 EUROPEAN_COUNTRIES = {
     "albania", "andorra", "armenia", "austria", "azerbaijan", "belarus", "belgium", "bosnia",
     "bulgaria", "croatia", "cyprus", "czech", "denmark", "england", "estonia", "faroe",
     "finland", "france", "georgia", "germany", "gibraltar", "greece", "hungary", "iceland",
     "israel", "italy", "kazakhstan", "kosovo", "latvia", "liechtenstein", "lithuania",
-    "luxembourg", "malta", "moldova", "monaco", "montenegro", "netherlands", "north macedonia",
+    "luxembourg", "malta", "moldova", "monaco", "montenegro", "netherlands", "macedonia",
     "northern ireland", "norway", "poland", "portugal", "republic of ireland", "romania",
     "russia", "san marino", "scotland", "serbia", "slovakia", "slovenia", "spain", "sweden",
     "switzerland", "turkey", "ukraine", "wales"
 }
-
 AMERICAS_TEAMS = {"argentina", "brazil"}
 ASIA_TEAMS = {"japan", "south korea"}
 
-# ==================== TỪ KHÓA LOẠI TRỪ ====================
+# Từ khóa loại trừ (giải nữ, trẻ, chương trình không phải trận đấu)
 WOMEN_KEYWORDS = [
     "women", "womens", "women's", "woman", "female",
-    "frauen", "damen", "weiblich",
-    "donne", "femminile",
-    "mujeres", "femenino", "femenina",
-    "femmes", "féminin", "féminine",
-    "mulheres", "feminino",
-    "vrouwen", "női", "kadın",
+    "frauen", "damen", "weiblich", "donne", "femminile",
+    "mujeres", "femenino", "femenina", "femmes", "féminin", "féminine",
+    "mulheres", "feminino", "vrouwen", "női", "kadın"
 ]
-
 YOUTH_KEYWORDS = [
     "youth", "junior", "academy", "reserves", "reserve", "ii", "b",
     "zweite", "second team", "sub", "u-", "under",
-    "jugend", "juniorer",
-    "giovanili", "primavera",
-    "cantera", "filial",
-    "jeunes", "espoirs",
-    "jong", "beloften",
+    "jugend", "juniorer", "giovanili", "primavera", "cantera", "filial",
+    "jeunes", "espoirs", "jong", "beloften"
 ]
-
 NON_MATCH_KEYWORDS = [
     "estúdios", "estúdio", "antevisão", "antevisao", "magazine", "debate",
-    "pré-jogo", "pos-jogo", "pre-jogo", "pos-jogo", "highlight", "highlights",
-    "resumo", "compacto", "análise", "analise", "comentário", "comentario",
-    "review", "preview", "previa", "previo", "flash", "interview", "entrevista",
-    "conference", "press", "conferência", "conferencia",
+    "pré-jogo", "pos-jogo", "highlight", "resumo", "compacto", "análise",
+    "comentário", "review", "preview", "flash", "interview", "entrevista",
+    "conference", "press"
 ]
 
-# ==================== MAP CHUẨN HÓA TÊN ĐỘI (MỞ RỘNG) ====================
+# ==================== CHUẨN HÓA TÊN ĐỘI (MỞ RỘNG) ====================
 TEAM_NORMALIZE_MAP = {
     # Premier League
-    "man. united": "manchester united",
-    "man united": "manchester united",
-    "man utd": "manchester united",
-    "man. city": "manchester city",
-    "man city": "manchester city",
-    "wolves": "wolverhampton",
-    "spurs": "tottenham",
-    "newcastle": "newcastle",
-    "brighton": "brighton",
-    "brentford": "brentford",
+    "man. united": "manchester united", "man united": "manchester united",
+    "man utd": "manchester united", "man. city": "manchester city",
+    "man city": "manchester city", "wolves": "wolverhampton",
+    "spurs": "tottenham", "newcastle": "newcastle",
+    "brighton": "brighton", "brentford": "brentford",
     # Serie A
-    "inter": "inter milan",
-    "milan": "ac milan",
-    "juve": "juventus",
-    "napoli": "napoli",
-    "roma": "roma",
-    "atalanta": "atalanta",
-    "lazio": "lazio",
+    "inter": "inter milan", "milan": "ac milan", "juve": "juventus",
+    "napoli": "napoli", "roma": "roma", "atalanta": "atalanta", "lazio": "lazio",
     # La Liga
-    "barcelona": "barcelona",
-    "barça": "barcelona",
-    "barca": "barcelona",
-    "real madrid": "real madrid",
-    "real": "real madrid",
-    "atlético": "atletico madrid",
-    "atletico": "atletico madrid",
+    "barcelona": "barcelona", "barça": "barcelona", "barca": "barcelona",
+    "real madrid": "real madrid", "real": "real madrid",
+    "atlético": "atletico madrid", "atletico": "atletico madrid",
     # Bundesliga
-    "bayern": "bayern munich",
-    "b. munique": "bayern munich",
-    "b. münchen": "bayern munich",
-    "b. munich": "bayern munich",
-    "bayern münchen": "bayern munich",
-    "borussia dortmund": "borussia dortmund",
-    "dortmund": "borussia dortmund",
+    "bayern": "bayern munich", "b. munique": "bayern munich",
+    "b. münchen": "bayern munich", "b. munich": "bayern munich",
+    "borussia dortmund": "borussia dortmund", "dortmund": "borussia dortmund",
     "b. dortmund": "borussia dortmund",
-    "bayer leverkusen": "bayer leverkusen",
-    "leverkusen": "bayer leverkusen",
+    "bayer leverkusen": "bayer leverkusen", "leverkusen": "bayer leverkusen",
     "b. leverkusen": "bayer leverkusen",
     # Ligue 1
-    "psg": "paris saint-germain",
-    "paris sg": "paris saint-germain",
-    "marseille": "olympique marseille",
-    "om": "olympique marseille",
-    "olympique marseille": "olympique marseille",
+    "psg": "paris saint-germain", "paris sg": "paris saint-germain",
+    "marseille": "olympique marseille", "om": "olympique marseille",
 }
 
 # ==================== TIỆN ÍCH CHUNG ====================
 def download_xml(url: str) -> str:
     print(f"📥 Đang tải EPG từ {url.split('/')[-1]}...")
-    response = requests.get(url, timeout=30)
-    response.raise_for_status()
-    print(f"✅ Tải thành công ({len(response.content):,} bytes)")
-    return response.text
+    resp = requests.get(url, timeout=30)
+    resp.raise_for_status()
+    print(f"✅ Tải thành công ({len(resp.content):,} bytes)")
+    return resp.text
 
 def download_and_decompress_gz(url: str) -> str:
-    print(f"📥 Đang tải & giải nén EPG từ {url.split('/')[-1]}...")
-    response = requests.get(url, timeout=60)
-    response.raise_for_status()
-    buf = io.BytesIO(response.content)
-    with gzip.GzipFile(fileobj=buf) as f:
-        xml_bytes = f.read()
-    print(f"✅ Giải nén thành công ({len(xml_bytes):,} bytes)")
-    return xml_bytes.decode('utf-8')
+    print(f"📥 Đang tải & giải nén {url.split('/')[-1]}...")
+    resp = requests.get(url, timeout=60)
+    resp.raise_for_status()
+    with gzip.GzipFile(fileobj=io.BytesIO(resp.content)) as f:
+        data = f.read()
+    print(f"✅ Giải nén thành công ({len(data):,} bytes)")
+    return data.decode('utf-8')
 
 def has_live_indicator_starhub(title: str, desc: str) -> bool:
-    text = f"{title} {desc}".lower()
-    return bool(re.search(r'\(live\)', text, re.IGNORECASE))
+    return bool(re.search(r'\(live\)', f"{title} {desc}", re.IGNORECASE))
 
 def has_live_indicator_fr(desc: str) -> bool:
     return bool(re.search(r'en\s+direct', desc, re.IGNORECASE))
@@ -175,331 +141,153 @@ def is_live_ro1(title: str) -> bool:
     return bool(re.search(r'\bLive\b', title))
 
 def is_women_or_youth(title: str) -> bool:
-    lower = title.lower()
-    for kw in WOMEN_KEYWORDS:
-        if kw in lower:
-            return True
-    for kw in YOUTH_KEYWORDS:
-        if kw in lower:
-            return True
-    return False
+    t = title.lower()
+    return any(kw in t for kw in WOMEN_KEYWORDS) or any(kw in t for kw in YOUTH_KEYWORDS)
 
 def is_tennis_title(title: str) -> bool:
-    text = title.lower()
-    tennis_keywords = {
-        "atp", "wta", "tenis", "tennis", "atp tour", "wta tour", "grand slam",
-        "australian open", "roland garros", "french open", "wimbledon", "us open",
-        "madrid open", "mutua madrid", "davis cup", "laver cup"
-    }
-    has_tennis = any(kw in text for kw in tennis_keywords)
-    has_padel = "padel" in text or "padbol" in text
-    return has_tennis and not has_padel
+    t = title.lower()
+    kw = {"atp", "wta", "tenis", "tennis", "grand slam", "australian open", "roland garros",
+          "french open", "wimbledon", "us open", "madrid open", "mutua madrid", "davis cup", "laver cup"}
+    return any(w in t for w in kw) and not any(p in t for p in ["padel", "padbol"])
 
 def parse_tennis_matchup(title: str) -> tuple[str, str]:
-    clean_title = re.sub(r'\(Live\)', '', title, flags=re.IGNORECASE).strip()
-    clean_title = re.sub(r'\(Direto\)', '', clean_title, flags=re.IGNORECASE).strip()
-    clean_title = re.sub(r'^(Tennis|Tenis)\s*:\s*', '', clean_title, flags=re.IGNORECASE).strip()
-    clean_title = re.sub(r'^Live\s+', '', clean_title, flags=re.IGNORECASE).strip()
-    if ":" in clean_title:
-        parts = clean_title.split(":", 1)
-        league_candidate = parts[0].strip()
-        matchup_candidate = parts[1].strip()
-        if any(kw in league_candidate.lower() for kw in ["atp", "wta", "tournoi", "tennis", "tenis"]):
-            return league_candidate, matchup_candidate
-    text = clean_title.lower()
-    if "atp masters" in text:
-        league = "ATP Masters"
-    elif "wta 1000" in text:
-        league = "WTA 1000"
-    elif "tournoi wta" in text or "wta" in text:
-        league = "WTA"
-    elif "atp" in text:
-        league = "ATP"
-    else:
-        league = "Tennis"
-    return league, clean_title
+    clean = re.sub(r'\((?:Live|Direto)\)', '', title, flags=re.IGNORECASE).strip()
+    clean = re.sub(r'^(Tennis|Tenis)\s*:\s*', '', clean, flags=re.IGNORECASE)
+    clean = re.sub(r'^Live\s+', '', clean, flags=re.IGNORECASE)
+    if ":" in clean:
+        left, right = clean.split(":", 1)
+        if any(k in left.lower() for k in ["atp", "wta", "tournoi", "tennis"]):
+            return left.strip(), right.strip()
+    l = clean.lower()
+    if "atp masters" in l: league = "ATP Masters"
+    elif "wta 1000" in l: league = "WTA 1000"
+    elif "tournoi wta" in l or "wta" in l: league = "WTA"
+    elif "atp" in l: league = "ATP"
+    else: league = "Tennis"
+    return league, clean
 
 # ==================== XỬ LÝ GIẢI ĐẤU & ĐỘI BÓNG ====================
 def extract_league_from_title(title: str):
-    lower = title.lower()
-    league_patterns = [
+    t = title.lower()
+    patterns = [
         (r'uefa\s+europa\s+conference\s+league', 'UEFA Europa Conference League'),
         (r'uefa\s+europa\s+league', 'UEFA Europa League'),
         (r'uefa\s+champions\s+league', 'UEFA Champions League'),
         (r'premier\s+league', 'Premier League'),
-        (r'serie\s+a\b', 'Serie A'),
-        (r'la\s+liga', 'La Liga'),
-        (r'bundesliga', 'Bundesliga'),
-        (r'ligue\s+1', 'Ligue 1'),
-        (r'fa\s+cup', 'FA Cup'),
-        (r'carabao\s+cup', 'Carabao Cup'),
-        (r'uefa\s+euro', 'UEFA Euro'),
-        (r'fifa\s+world\s+cup', 'FIFA World Cup'),
-        (r'international\s+friendlies', 'International Friendlies'),
+        (r'serie\s+a\b', 'Serie A'), (r'la\s+liga', 'La Liga'),
+        (r'bundesliga', 'Bundesliga'), (r'ligue\s+1', 'Ligue 1'),
+        (r'fa\s+cup', 'FA Cup'), (r'carabao\s+cup', 'Carabao Cup'),
+        (r'uefa\s+euro', 'UEFA Euro'), (r'fifa\s+world\s+cup', 'FIFA World Cup'),
+        (r'international\s+friendlies', 'International Friendlies')
     ]
-    for pattern, league_name in league_patterns:
-        if re.search(pattern, lower):
-            return league_name, title
+    for pat, name in patterns:
+        if re.search(pat, t):
+            return name, title
     return None, title
 
 def is_valid_match(title: str, league: str) -> bool:
     if is_women_or_youth(title):
         return False
-    if league in ["UEFA Champions League", "UEFA Europa League", "UEFA Europa Conference League", "FIFA World Cup"]:
+    if league in {"UEFA Champions League", "UEFA Europa League", "UEFA Europa Conference League", "FIFA World Cup"}:
         return True
     if league == "UEFA Euro":
-        lower = title.lower()
-        return any(country in lower for country in EUROPEAN_COUNTRIES)
+        return any(c in title.lower() for c in EUROPEAN_COUNTRIES)
     if league == "International Friendlies":
         allowed = EUROPEAN_COUNTRIES | AMERICAS_TEAMS | ASIA_TEAMS
-        lower = title.lower()
-        found = [c for c in allowed if c in lower]
+        found = [c for c in allowed if c in title.lower()]
         return len(found) >= 2
+    # Các giải có danh sách đội
     teams = find_allowed_teams_in_text(title, league)
     return len(teams) > 0
 
 def find_allowed_teams_in_text(text: str, league: str) -> list:
     if league not in ALLOWED_TEAMS_PER_LEAGUE or ALLOWED_TEAMS_PER_LEAGUE[league] is None:
         return []
-    allowed_teams = ALLOWED_TEAMS_PER_LEAGUE[league]
-    lower_text = text.lower()
-    # Áp dụng chuẩn hóa
+    allowed = ALLOWED_TEAMS_PER_LEAGUE[league]
+    txt = text.lower()
     for abbr, full in TEAM_NORMALIZE_MAP.items():
-        lower_text = re.sub(r'\b' + re.escape(abbr) + r'\b', full, lower_text)
+        txt = re.sub(r'\b' + re.escape(abbr) + r'\b', full, txt)
+    return [team for team in allowed if team in txt]
+
+# ==================== TRÍCH XUẤT MATCHUP THÔNG MINH ====================
+def clean_football_matchup_generic(title: str, league: str) -> str or None:
+    """Tìm 2 đội bóng đã biết trong title, trả về 'Team1 vs Team2' hoặc None."""
+    # Loại bỏ tag
+    clean = re.sub(r'\((?:Direto|Live)\)', '', title, flags=re.IGNORECASE)
+    clean = re.sub(r'\bLive\b', '', clean, flags=re.IGNORECASE)
+    clean = re.sub(r'\b(Md|Jornada)\s*\d+\b', '', clean, flags=re.IGNORECASE)
+    clean = re.sub(r'\d{4}-\d{2}', '', clean)
+    # Chuẩn hóa khoảng trắng
+    clean = re.sub(r'\s+', ' ', clean).strip()
+
+    # Chuẩn hóa toàn bộ văn bản (tên viết tắt)
+    norm = clean.lower()
+    for abbr, full in TEAM_NORMALIZE_MAP.items():
+        norm = re.sub(r'\b' + re.escape(abbr) + r'\b', full, norm)
+
+    # Các đội đã biết (từ tất cả giải) để tìm
+    known_teams = ALL_KNOWN_TEAMS   # tập các tên đã chuẩn hóa (vd: "manchester united", "brentford")
     found = []
-    for team in allowed_teams:
-        if team in lower_text:
-            found.append(team)
-    return found
-
-def clean_football_matchup_generic(title: str, league: str):
-    """Trả về matchup string hoặc None nếu không phải trận đấu thực sự."""
-    lower_title = title.lower()
-    for kw in NON_MATCH_KEYWORDS:
-        if kw in lower_title:
-            return None
-
-    cleaned = re.sub(r'\(Direto\)', '', title, flags=re.IGNORECASE)
-    cleaned = re.sub(r'\(Live\)', '', cleaned, flags=re.IGNORECASE)
-    cleaned = re.sub(r'\bLive\b', '', cleaned, flags=re.IGNORECASE)
-    cleaned = re.sub(r'\bMd\d+\b', '', cleaned)
-    cleaned = re.sub(r'\bJornada\s+\d+\b', '', cleaned, flags=re.IGNORECASE)
-    cleaned = re.sub(r'\d{4}-\d{2}', '', cleaned)
-    # Loại bỏ tên giải đấu
-    for pattern, lname in [
-        (r'premier\s+league', 'Premier League'),
-        (r'serie\s+a\b', 'Serie A'),
-        (r'la\s+liga', 'La Liga'),
-        (r'bundesliga', 'Bundesliga'),
-        (r'ligue\s+1', 'Ligue 1'),
-        (r'fa\s+cup', 'FA Cup'),
-        (r'carabao\s+cup', 'Carabao Cup'),
-        (r'uefa\s+champions\s+league', 'UEFA Champions League'),
-        (r'uefa\s+europa\s+league', 'UEFA Europa League'),
-    ]:
-        if league == lname:
-            cleaned = re.sub(pattern, '', cleaned, flags=re.IGNORECASE)
-    cleaned = re.sub(r'\s+', ' ', cleaned).strip('- ')
-    # Tìm cặp đấu
-    match = re.search(r'\s+vs\s+', cleaned)
-    if not match:
-        match = re.search(r'\s+x\s+', cleaned)
-    if not match:
-        match = re.search(r'\s+v\s+', cleaned)
-    if not match:
+    for team in known_teams:
+        if team in norm:
+            start = norm.index(team)
+            found.append((start, team))
+    if len(found) < 2:
         return None
-    parts = [p.strip() for p in re.split(r'\s+(?:vs|x|v)\s+', cleaned, maxsplit=1)]
-    if len(parts) != 2:
-        return None
-    team1_raw, team2_raw = parts
-    team1_raw = re.sub(r'\s*-.*$', '', team1_raw).strip()
-    team2_raw = re.sub(r'\s*-.*$', '', team2_raw).strip()
-    if not team1_raw or not team2_raw:
-        return None
-    for kw in NON_MATCH_KEYWORDS:
-        if kw in team1_raw.lower() or kw in team2_raw.lower():
-            return None
-
-    def norm(name):
-        n = name.lower()
-        for abbr, full in TEAM_NORMALIZE_MAP.items():
-            n = re.sub(r'\b' + re.escape(abbr) + r'\b', full, n)
-        return n
-
-    tn1 = norm(team1_raw)
-    tn2 = norm(team2_raw)
-    if league in ALLOWED_TEAMS_PER_LEAGUE and ALLOWED_TEAMS_PER_LEAGUE[league]:
-        allowed = ALLOWED_TEAMS_PER_LEAGUE[league]
-        t1f = next((t for t in allowed if t in tn1), tn1.title())
-        t2f = next((t for t in allowed if t in tn2), tn2.title())
-    else:
-        t1f = tn1.title()
-        t2f = tn2.title()
-    return f"{t1f} vs {t2f}"
+    found.sort(key=lambda x: x[0])
+    t1 = found[0][1]
+    t2 = found[1][1]
+    # Trả về với viết hoa đẹp: dùng tên từ tập gốc (đã có sẵn)
+    # Tuy nhiên tên trong known_teams đã là chữ thường, ta có thể viết hoa từng chữ cái đầu
+    def pretty(name):
+        return name.title()
+    return f"{pretty(t1)} vs {pretty(t2)}"
 
 # ==================== ĐỊNH DẠNG TÊN KÊNH ====================
 def format_channel_starhub(name: str) -> str:
-    if re.search(r'bein\s*sports', name, re.IGNORECASE):
-        return f"{name} Malaysia"
-    return name
+    return f"{name} Malaysia" if re.search(r'bein\s*sports', name, re.IGNORECASE) else name
 
 def format_channel_nt74(channel_id: str) -> str:
-    match = re.match(r'sportklub(\d+)\.rs', channel_id, re.IGNORECASE)
-    if match:
-        return f"Sport Klub {match.group(1)} Hrvatska"
-    return channel_id.replace('.rs', '').upper()
+    m = re.match(r'sportklub(\d+)\.rs', channel_id, re.IGNORECASE)
+    return f"Sport Klub {m.group(1)} Hrvatska" if m else channel_id.replace('.rs', '').upper()
 
 def format_channel_xvb(channel_id: str) -> str:
-    name = re.sub(r'\.fr$', '', channel_id, flags=re.IGNORECASE)
-    name = name.replace('.', ' ')
+    name = re.sub(r'\.fr$', '', channel_id, flags=re.IGNORECASE).replace('.', ' ')
     name = name.title()
     name = re.sub(r'\bBein\b', 'beIN', name)
     return f"{name} France"
 
 def format_channel_pt1(channel_id: str) -> str:
-    name = channel_id.replace('.pt', '').replace('.', ' ')
-    name = name.title()
+    name = channel_id.replace('.pt', '').replace('.', ' ').title()
     return f"{name} Portugal"
 
 def format_channel_ro1(channel_id: str) -> str:
-    name = channel_id.replace('.ro', '').replace('.', ' ')
-    name = name.title()
+    name = channel_id.replace('.ro', '').replace('.', ' ').title()
     return f"{name} Romania"
 
-# ==================== PARSE CÁC NGUỒN ====================
+# ==================== XỬ LÝ THỜI GIAN ====================
 def parse_start_time(start_str: str) -> datetime:
     try:
         return datetime.strptime(start_str, "%Y%m%d%H%M%S %z")
     except ValueError:
-        dt_naive = datetime.strptime(start_str[:14], "%Y%m%d%H%M%S")
-        return dt_naive.replace(tzinfo=timezone.utc)
+        return datetime.strptime(start_str[:14], "%Y%m%d%H%M%S").replace(tzinfo=timezone.utc)
 
 def is_within_time_window(start_utc: datetime, now_utc: datetime) -> bool:
-    return (now_utc - timedelta(hours=HOURS_BEFORE)) <= start_utc <= (now_utc + timedelta(hours=HOURS_AFTER))
+    return now_utc - timedelta(hours=HOURS_BEFORE) <= start_utc <= now_utc + timedelta(hours=HOURS_AFTER)
 
-def _groups_to_output(groups: dict) -> list:
-    output = []
-    for (date, time, _), items in groups.items():
-        first = items[0]
-        services = sorted({item["channel"] for item in items})
-        output.append({
-            "Date": date,
-            "Time": time,
-            "League": first["league"],
-            "Matchup": first["matchup"],
-            "Services": services
-        })
-    output.sort(key=lambda x: (x["Date"], x["Time"]))
-    return output
-
-def merge_match_lists(*lists) -> list:
-    merged = defaultdict(list)
-    for lst in lists:
-        for item in lst:
-            key = (item["Date"], item["Time"], item["Matchup"].lower())
-            merged[key].append(item)
-    final_output = []
-    for (date, time, _), items in merged.items():
-        league = next((it["League"] for it in items if it["League"]), "Unknown")
-        all_services = set()
-        for it in items:
-            all_services.update(it["Services"])
-        final_output.append({
-            "Date": date,
-            "Time": time,
-            "League": league,
-            "Matchup": items[0]["Matchup"],
-            "Services": sorted(all_services)
-        })
-    final_output.sort(key=lambda x: (x["Date"], x["Time"]))
-    return final_output
-
-# --- StarHub ---
-def parse_channels_starhub(xml_content: str) -> dict:
-    root = ET.fromstring(xml_content)
-    channels = {}
-    for channel in root.findall("channel"):
-        chan_id = channel.get("id")
-        display_name = channel.findtext("display-name", "").strip()
-        if chan_id and display_name:
-            channels[chan_id] = display_name
-    print(f"📺 Tìm thấy {len(channels)} kênh (StarHub)")
-    return channels
-
-def is_fa_cup(title: str) -> bool:
-    return bool(re.search(r'\bFA\s+Cup\b', title, re.IGNORECASE))
-
-def extract_teams_starhub(text: str) -> list:
-    lower_text = text.lower()
-    for abbr, full in TEAM_ABBR_STARHUB.items():
-        lower_text = lower_text.replace(abbr, full)
-    found = []
-    for team in sorted(PREMIER_LEAGUE_TEAMS, key=len, reverse=True):
-        if team in lower_text:
-            if not any(team != existing and team in existing for existing in found):
-                found.append(team)
-    return found
-
-def has_any_premier_league_team(text: str) -> bool:
-    return len(extract_teams_starhub(text)) > 0
-
-def is_premier_league(title: str, desc: str) -> bool:
-    if not has_live_indicator_starhub(title, desc):
-        return False
-    if is_fa_cup(title):
-        return False
-    teams = extract_teams_starhub(title + " " + desc)
-    return len(teams) >= 2
-
-def clean_football_matchup_starhub(title: str) -> str:
-    title = re.sub(r'\(Live\)', '', title, flags=re.IGNORECASE)
-    title = re.sub(r'\(MW\d+\)', '', title, flags=re.IGNORECASE)
-    title = re.sub(r'\(Goal\s*Rush\)', '', title, flags=re.IGNORECASE)
-    title = re.sub(r'-\s*EP\s*\d+', '', title, flags=re.IGNORECASE)
-    title = re.sub(r'LFCTV[^:]*:', '', title, flags=re.IGNORECASE)
-    title = re.sub(r'\s+v\s+', ' vs ', title)
-    title = re.sub(r'\s+', ' ', title).strip()
-    teams = extract_teams_starhub(title)
-    if len(teams) >= 2:
-        lower_title = title.lower()
-        positions = [(team, lower_title.find(team)) for team in teams if team in lower_title]
-        positions.sort(key=lambda x: x[1])
-        team1 = positions[0][0].title()
-        team2 = positions[1][0].title()
-        return f"{team1} vs {team2}"
-    elif len(teams) == 1:
-        parts = [p.strip() for p in title.split(' vs ', 1)]
-        if len(parts) == 2:
-            return f"{parts[0]} vs {parts[1]}"
-        return title
-    else:
-        return title
-
-TEAM_ABBR_STARHUB = {
-    "rpool": "liverpool",
-    "man city": "manchester city",
-    "man utd": "manchester united",
-    "newcastle": "newcastle",
-    "wolves": "wolverhampton",
-    "fulham": "fulham",
-    "everton": "everton",
-}
-
+# ==================== PARSE CÁC NGUỒN ====================
 def parse_programmes_starhub(xml_content: str, channels: dict) -> list:
     root = ET.fromstring(xml_content)
     groups = defaultdict(list)
-    now_utc = datetime.now(timezone.utc)
+    now = datetime.now(timezone.utc)
     for prog in root.findall("programme"):
-        channel_id = prog.get("channel")
-        start_str = prog.get("start")
-        title_elem = prog.find("title")
-        desc_elem = prog.find("desc")
-        if title_elem is None or not start_str:
-            continue
-        title = (title_elem.text or "").strip()
-        desc = (desc_elem.text or "").strip() if desc_elem is not None else ""
-        league = None
-        matchup = None
+        cid = prog.get("channel")
+        start = prog.get("start")
+        tel = prog.find("title")
+        if tel is None or not start: continue
+        title = (tel.text or "").strip()
+        desc = (prog.find("desc").text or "").strip() if prog.find("desc") is not None else ""
+        league = matchup = None
         if is_fa_cup(title) and has_live_indicator_starhub(title, desc):
             if has_any_premier_league_team(title + " " + desc):
                 league = "FA Cup"
@@ -511,179 +299,243 @@ def parse_programmes_starhub(xml_content: str, channels: dict) -> list:
             league, matchup = parse_tennis_matchup(title)
         else:
             continue
-        dt_utc = parse_start_time(start_str)
-        if not is_within_time_window(dt_utc, now_utc):
-            continue
+        dt_utc = parse_start_time(start)
+        if not is_within_time_window(dt_utc, now): continue
         dt_vn = dt_utc + timedelta(hours=7)
-        date_str = dt_vn.strftime("%Y-%m-%d")
-        time_str = dt_vn.strftime("%H:%M")
-        raw_name = channels.get(channel_id, f"Channel {channel_id}")
-        channel_name = format_channel_starhub(raw_name)
-        key = (date_str, time_str, matchup.lower())
-        groups[key].append({
-            "channel": channel_name,
-            "league": league,
-            "matchup": matchup,
-            "date": date_str,
-            "time": time_str,
+        ch_name = format_channel_starhub(channels.get(cid, f"Channel {cid}"))
+        groups[(dt_vn, matchup.lower())].append({
+            "channel": ch_name, "league": league, "matchup": matchup,
+            "start_utc": dt_utc
         })
     return _groups_to_output(groups)
 
-# --- nt74 ---
 def parse_programmes_nt74(xml_content: str) -> list:
     root = ET.fromstring(xml_content)
     groups = defaultdict(list)
-    now_utc = datetime.now(timezone.utc)
+    now = datetime.now(timezone.utc)
     for prog in root.findall("programme"):
-        channel_id = prog.get("channel")
-        start_str = prog.get("start")
-        title_elem = prog.find("title")
-        desc_elem = prog.find("desc")
-        if title_elem is None or not start_str:
-            continue
-        title = (title_elem.text or "").strip()
-        desc = (desc_elem.text or "").strip() if desc_elem is not None else ""
-        if not (is_tennis_title(title) and has_live_indicator_starhub(title, desc)):
-            continue
+        cid = prog.get("channel")
+        start = prog.get("start")
+        tel = prog.find("title")
+        if tel is None or not start: continue
+        title = (tel.text or "").strip()
+        desc = (prog.find("desc").text or "").strip() if prog.find("desc") is not None else ""
+        if not (is_tennis_title(title) and has_live_indicator_starhub(title, desc)): continue
         league, matchup = parse_tennis_matchup(title)
-        dt_utc = parse_start_time(start_str)
-        if not is_within_time_window(dt_utc, now_utc):
-            continue
+        dt_utc = parse_start_time(start)
+        if not is_within_time_window(dt_utc, now): continue
         dt_vn = dt_utc + timedelta(hours=7)
-        date_str = dt_vn.strftime("%Y-%m-%d")
-        time_str = dt_vn.strftime("%H:%M")
-        channel_name = format_channel_nt74(channel_id) if channel_id else "Unknown"
-        key = (date_str, time_str, matchup.lower())
-        groups[key].append({
-            "channel": channel_name,
-            "league": league,
-            "matchup": matchup,
-            "date": date_str,
-            "time": time_str,
+        ch_name = format_channel_nt74(cid) if cid else "Unknown"
+        groups[(dt_vn, matchup.lower())].append({
+            "channel": ch_name, "league": league, "matchup": matchup,
+            "start_utc": dt_utc
         })
     return _groups_to_output(groups)
 
-# --- xvb ---
 def parse_programmes_xvb(xml_content: str) -> list:
     root = ET.fromstring(xml_content)
     groups = defaultdict(list)
-    now_utc = datetime.now(timezone.utc)
+    now = datetime.now(timezone.utc)
     for prog in root.findall("programme"):
-        channel_id = prog.get("channel")
-        start_str = prog.get("start")
-        title_elem = prog.find("title")
-        desc_elem = prog.find("desc")
-        if title_elem is None or not start_str:
-            continue
-        title = (title_elem.text or "").strip()
-        desc = (desc_elem.text or "").strip() if desc_elem is not None else ""
-        if not is_tennis_title(title) or not has_live_indicator_fr(desc):
-            continue
+        cid = prog.get("channel")
+        start = prog.get("start")
+        tel = prog.find("title")
+        if tel is None or not start: continue
+        title = (tel.text or "").strip()
+        desc = (prog.find("desc").text or "").strip() if prog.find("desc") is not None else ""
+        if not is_tennis_title(title) or not has_live_indicator_fr(desc): continue
         league, matchup = parse_tennis_matchup(title)
-        dt_utc = parse_start_time(start_str)
-        if not is_within_time_window(dt_utc, now_utc):
-            continue
+        dt_utc = parse_start_time(start)
+        if not is_within_time_window(dt_utc, now): continue
         dt_vn = dt_utc + timedelta(hours=7)
-        date_str = dt_vn.strftime("%Y-%m-%d")
-        time_str = dt_vn.strftime("%H:%M")
-        channel_name = format_channel_xvb(channel_id) if channel_id else "Unknown"
-        key = (date_str, time_str, matchup.lower())
-        groups[key].append({
-            "channel": channel_name,
-            "league": league,
-            "matchup": matchup,
-            "date": date_str,
-            "time": time_str,
+        ch_name = format_channel_xvb(cid) if cid else "Unknown"
+        groups[(dt_vn, matchup.lower())].append({
+            "channel": ch_name, "league": league, "matchup": matchup,
+            "start_utc": dt_utc
         })
     return _groups_to_output(groups)
 
-# --- PT1 & RO1 ---
 def parse_programmes_epgshare(xml_content: str, source: str) -> list:
     root = ET.fromstring(xml_content)
     groups = defaultdict(list)
-    now_utc = datetime.now(timezone.utc)
-    is_pt = (source == 'PT1')
+    now = datetime.now(timezone.utc)
+    is_pt = source == 'PT1'
     for prog in root.findall("programme"):
-        channel_id = prog.get("channel")
-        start_str = prog.get("start")
-        title_elem = prog.find("title")
-        desc_elem = prog.find("desc")
-        if title_elem is None or not start_str:
-            continue
-        title = (title_elem.text or "").strip()
-        desc = (desc_elem.text or "").strip() if desc_elem is not None else ""
-        if is_pt and not is_live_pt1(title):
-            continue
-        if not is_pt and not is_live_ro1(title):
-            continue
+        cid = prog.get("channel")
+        start = prog.get("start")
+        tel = prog.find("title")
+        if tel is None or not start: continue
+        title = (tel.text or "").strip()
+        if is_pt and not is_live_pt1(title): continue
+        if not is_pt and not is_live_ro1(title): continue
         league, _ = extract_league_from_title(title)
         if league and league in ALLOWED_LEAGUES:
-            if not is_valid_match(title, league):
-                continue
+            if not is_valid_match(title, league): continue
             matchup = clean_football_matchup_generic(title, league)
-            if matchup is None:
-                continue
+            if matchup is None: continue
         elif is_tennis_title(title):
             league, matchup = parse_tennis_matchup(title)
-            if not league:
-                continue
+            if not league: continue
         else:
             continue
-        dt_utc = parse_start_time(start_str)
-        if not is_within_time_window(dt_utc, now_utc):
-            continue
+        dt_utc = parse_start_time(start)
+        if not is_within_time_window(dt_utc, now): continue
         dt_vn = dt_utc + timedelta(hours=7)
-        date_str = dt_vn.strftime("%Y-%m-%d")
-        time_str = dt_vn.strftime("%H:%M")
-        if is_pt:
-            channel_name = format_channel_pt1(channel_id)
-        else:
-            channel_name = format_channel_ro1(channel_id)
-        key = (date_str, time_str, matchup.lower())
-        groups[key].append({
-            "channel": channel_name,
-            "league": league,
-            "matchup": matchup,
-            "date": date_str,
-            "time": time_str,
+        ch_name = format_channel_pt1(cid) if is_pt else format_channel_ro1(cid)
+        groups[(dt_vn, matchup.lower())].append({
+            "channel": ch_name, "league": league, "matchup": matchup,
+            "start_utc": dt_utc
         })
     return _groups_to_output(groups)
+
+def _groups_to_output(groups: dict) -> list:
+    output = []
+    for (dt_vn, _), items in groups.items():
+        date = dt_vn.strftime("%Y-%m-%d")
+        time = dt_vn.strftime("%H:%M")
+        services = sorted({it["channel"] for it in items})
+        output.append({
+            "Date": date,
+            "Time": time,
+            "League": items[0]["league"],
+            "Matchup": items[0]["matchup"],
+            "Services": services
+        })
+    output.sort(key=lambda x: (x["Date"], x["Time"]))
+    return output
+
+def merge_match_lists(*lists) -> list:
+    """
+    Gộp các trận cùng ngày, chênh lệch giờ ≤ MERGE_TIME_TOLERANCE_MINUTES,
+    lấy giờ sớm nhất làm giờ hiển thị.
+    """
+    # Gom tất cả items vào dict key = (date, matchup_lower)
+    from collections import defaultdict
+    raw = defaultdict(list)
+    for lst in lists:
+        for item in lst:
+            key = (item["Date"], item["Matchup"].lower())
+            raw[key].append(item)
+    final = []
+    for (date, _), items in raw.items():
+        # Nhóm theo khung giờ: chuyển Time thành số phút từ 0h
+        def time_to_min(t):
+            h, m = map(int, t.split(":"))
+            return h * 60 + m
+        # Sắp xếp theo phút
+        items_sorted = sorted(items, key=lambda x: time_to_min(x["Time"]))
+        # Gom thành cluster cách nhau ≤ MERGE_TIME_TOLERANCE_MINUTES
+        clusters = []
+        cur_cluster = []
+        last_min = -9999
+        for it in items_sorted:
+            t_min = time_to_min(it["Time"])
+            if cur_cluster and (t_min - last_min > MERGE_TIME_TOLERANCE_MINUTES):
+                clusters.append(cur_cluster)
+                cur_cluster = []
+            cur_cluster.append(it)
+            last_min = t_min
+        if cur_cluster:
+            clusters.append(cur_cluster)
+        for cluster in clusters:
+            # Lấy giờ sớm nhất
+            earliest = min(cluster, key=lambda x: time_to_min(x["Time"]))
+            # Gom tất cả kênh
+            services = sorted({ch for it in cluster for ch in it["Services"]})
+            league = cluster[0]["League"]  # giả định cùng league
+            final.append({
+                "Date": date,
+                "Time": earliest["Time"],
+                "League": league,
+                "Matchup": earliest["Matchup"],
+                "Services": services
+            })
+    final.sort(key=lambda x: (x["Date"], x["Time"]))
+    return final
+
+# ==================== CÁC HÀM PHỤ CHO STARHUB ====================
+def is_fa_cup(title: str) -> bool:
+    return bool(re.search(r'\bFA\s+Cup\b', title, re.IGNORECASE))
+
+def has_any_premier_league_team(text: str) -> bool:
+    t = text.lower()
+    for abbr, full in TEAM_ABBR_STARHUB.items():
+        t = t.replace(abbr, full)
+    return any(team in t for team in PREMIER_LEAGUE_TEAMS)
+
+def extract_teams_starhub(text: str) -> list:
+    t = text.lower()
+    for abbr, full in TEAM_ABBR_STARHUB.items():
+        t = t.replace(abbr, full)
+    found = []
+    for team in sorted(PREMIER_LEAGUE_TEAMS, key=len, reverse=True):
+        if team in t and not any(team != ex and team in ex for ex in found):
+            found.append(team)
+    return found
+
+def is_premier_league(title: str, desc: str) -> bool:
+    if not has_live_indicator_starhub(title, desc) or is_fa_cup(title):
+        return False
+    return len(extract_teams_starhub(title + " " + desc)) >= 2
+
+def clean_football_matchup_starhub(title: str) -> str:
+    t = re.sub(r'\(Live\)', '', title, flags=re.IGNORECASE)
+    t = re.sub(r'\(MW\d+\)', '', t, flags=re.IGNORECASE)
+    t = re.sub(r'\(Goal\s*Rush\)', '', t, flags=re.IGNORECASE)
+    t = re.sub(r'-\s*EP\s*\d+', '', t, flags=re.IGNORECASE)
+    t = re.sub(r'LFCTV[^:]*:', '', t, flags=re.IGNORECASE)
+    t = re.sub(r'\s+v\s+', ' vs ', t)
+    t = re.sub(r'\s+', ' ', t).strip()
+    teams = extract_teams_starhub(t)
+    if len(teams) >= 2:
+        pos = [(team, t.lower().find(team)) for team in teams if team in t.lower()]
+        pos.sort(key=lambda x: x[1])
+        return f"{pos[0][0].title()} vs {pos[1][0].title()}"
+    elif len(teams) == 1:
+        parts = [p.strip() for p in t.split(' vs ', 1)]
+        return f"{parts[0]} vs {parts[1]}" if len(parts) == 2 else t
+    return t
+
+TEAM_ABBR_STARHUB = {
+    "rpool": "liverpool", "man city": "manchester city", "man utd": "manchester united",
+    "newcastle": "newcastle", "wolves": "wolverhampton", "fulham": "fulham", "everton": "everton",
+}
+
+def parse_channels_starhub(xml_content: str) -> dict:
+    root = ET.fromstring(xml_content)
+    return {c.get("id"): c.findtext("display-name", "").strip()
+            for c in root.findall("channel") if c.get("id") and c.findtext("display-name")}
 
 # ==================== MAIN ====================
 def main():
     try:
         # StarHub
-        xml_starhub = download_xml(EPG_URL_STARHUB)
-        ch_starhub = parse_channels_starhub(xml_starhub)
-        matches_starhub = parse_programmes_starhub(xml_starhub, ch_starhub)
-        print(f"⚽🎾 StarHub: {len(matches_starhub)} trận")
+        xml_s = download_xml(EPG_URL_STARHUB)
+        ch_s = parse_channels_starhub(xml_s)
+        m_s = parse_programmes_starhub(xml_s, ch_s)
+        print(f"⚽🎾 StarHub: {len(m_s)} trận")
 
         # nt74
-        xml_nt74 = download_xml(EPG_URL_NT74)
-        matches_nt74 = parse_programmes_nt74(xml_nt74)
-        print(f"🎾 nt74: {len(matches_nt74)} trận")
+        m_n = parse_programmes_nt74(download_xml(EPG_URL_NT74))
+        print(f"🎾 nt74: {len(m_n)} trận")
 
         # xvb
-        xml_xvb = download_xml(EPG_URL_XVB)
-        matches_xvb = parse_programmes_xvb(xml_xvb)
-        print(f"🎾 xvb (France): {len(matches_xvb)} trận")
+        m_x = parse_programmes_xvb(download_xml(EPG_URL_XVB))
+        print(f"🎾 xvb (France): {len(m_x)} trận")
 
         # PT1
-        xml_pt1 = download_and_decompress_gz(EPG_URL_PT1)
-        matches_pt1 = parse_programmes_epgshare(xml_pt1, 'PT1')
-        print(f"🇵🇹 PT1: {len(matches_pt1)} trận")
+        m_pt = parse_programmes_epgshare(download_and_decompress_gz(EPG_URL_PT1), 'PT1')
+        print(f"🇵🇹 PT1: {len(m_pt)} trận")
 
         # RO1
-        xml_ro1 = download_and_decompress_gz(EPG_URL_RO1)
-        matches_ro1 = parse_programmes_epgshare(xml_ro1, 'RO1')
-        print(f"🇷🇴 RO1: {len(matches_ro1)} trận")
+        m_ro = parse_programmes_epgshare(download_and_decompress_gz(EPG_URL_RO1), 'RO1')
+        print(f"🇷🇴 RO1: {len(m_ro)} trận")
 
-        all_matches = merge_match_lists(matches_starhub, matches_nt74, matches_xvb, matches_pt1, matches_ro1)
-        print(f"📋 Tổng sau gộp: {len(all_matches)} trận")
+        all_m = merge_match_lists(m_s, m_n, m_x, m_pt, m_ro)
+        print(f"📋 Tổng sau gộp: {len(all_m)} trận")
 
         with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-            json.dump(all_matches, f, ensure_ascii=False, indent=2)
-
+            json.dump(all_m, f, ensure_ascii=False, indent=2)
         print(f"✅ Hoàn thành! Đã lưu {OUTPUT_FILE}")
 
     except Exception as e:
