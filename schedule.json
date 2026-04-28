@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-28 21:33 VN",
+  "updated": "2026-04-29 00:00 VN",
   "days": {
     "20260428": {
       "date": "Tuesday, 28/04",
@@ -241,14 +241,14 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP Tour 2026 Mutua Madrid Open (1000) R16 Session 3",
-          "kick_utc": 1777384800,
-          "time": "28/04 09:00 PM",
+          "match": "Masters 1000 de Madrid",
+          "kick_utc": 1777392000,
+          "time": "28/04 11:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Hub Sports 2 HD"
+                "Eurosport 1 France"
               ]
             }
           ],
@@ -256,15 +256,45 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis: ATP Madrid",
-          "kick_utc": 1777384800,
-          "time": "28/04 09:00 PM",
+          "match": "Masters 1000 de Madrid",
+          "kick_utc": 1777402800,
+          "time": "29/04 02:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
+                "Eurosport 1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Masters 1000 de Madrid",
+          "kick_utc": 1777406400,
+          "time": "29/04 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Voosport World1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Masters 1000 de Madrid",
+          "kick_utc": 1777478400,
+          "time": "29/04 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 France",
+                "Voosport World1 France"
               ]
             }
           ],
@@ -342,81 +372,6 @@
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA de Madrid",
-          "kick_utc": 1777388400,
-          "time": "28/04 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 4 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA de Madrid",
-          "kick_utc": 1777410000,
-          "time": "29/04 04:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 4 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Madrid",
-          "kick_utc": 1777392000,
-          "time": "28/04 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Madrid",
-          "kick_utc": 1777402800,
-          "time": "29/04 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Madrid",
-          "kick_utc": 1777406400,
-          "time": "29/04 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Voosport World1 France"
               ]
             }
           ],
@@ -514,6 +469,21 @@
         },
         {
           "league": "Tennis",
+          "match": "Tournoi WTA de Madrid",
+          "kick_utc": 1777410000,
+          "time": "29/04 04:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "beIN Sports Max 4 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Tenis: WTA Madrid Sferturi",
           "kick_utc": 1777410000,
           "time": "29/04 04:00 AM",
@@ -553,6 +523,22 @@
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 2 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: ATP Madrid Sferturi",
+          "kick_utc": 1777482000,
+          "time": "30/04 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
               ]
             }
           ],
@@ -605,16 +591,14 @@
         },
         {
           "league": "Tennis",
-          "match": ": Mutua Madrid Open - Madrid",
-          "kick_utc": 1777381500,
-          "time": "28/04 08:05 PM",
+          "match": "Mutua Madrid Open -Round 16 (B)",
+          "kick_utc": 1777395600,
+          "time": "29/04 12:00 AM",
           "tv_channels": [
             {
               "country": "NowTV",
               "channels": [
-                "Ziggo Sport",
-                "Ziggo Sport 4",
-                "Ziggo Sport Kanaal 14"
+                "Now Sports 6"
               ]
             }
           ],
@@ -647,21 +631,6 @@
                 "Ziggo Sport",
                 "Ziggo Sport 4",
                 "Ziggo Sport Kanaal 14"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Mutua Madrid Open -Round 16 (B)",
-          "kick_utc": 1777395600,
-          "time": "29/04 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports 6"
               ]
             }
           ],
