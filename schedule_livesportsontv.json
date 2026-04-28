@@ -1,28 +1,6 @@
 [
     {
         "Date": "2026-04-29",
-        "Time": "00:00",
-        "League": "Tennis (ATP)",
-        "Matchup": "Madrid Open",
-        "Services": [
-            "Tennis Channel",
-            "T2",
-            "TSN2"
-        ]
-    },
-    {
-        "Date": "2026-04-29",
-        "Time": "01:00",
-        "League": "Tennis (WTA)",
-        "Matchup": "Madrid Open",
-        "Services": [
-            "TSN5",
-            "TVA Sports",
-            "DAZN Canada"
-        ]
-    },
-    {
-        "Date": "2026-04-29",
         "Time": "02:00",
         "League": "UEFA Champions League",
         "Matchup": "Paris St Germain vs Bayern Munich",
@@ -59,6 +37,7 @@
             "Futbol TV Tajikistan",
             "Futbol TV Uzbekistan",
             "Go3 Extra Sport Baltics",
+            "IRIB TV3 HD",
             "Jurnal TV Moldova",
             "Kanal A Slovenija HD",
             "La Nouvelle Chaîne Ivorienne",
@@ -117,7 +96,7 @@
             "Ziggo Sport HD",
             "Zor TV Uzbekistan",
             "Amazon Prime Video Great Britain",
-            "Sport 1 Germany",
+            "Amazon Prime Video Germany",
             "Cosmote Sport 1 Greece",
             "TUDN Spain",
             "Sky Sport Uno Italy",
@@ -127,7 +106,7 @@
             "Amazon Prime Video Great Britain",
             "V Sport Premium SD Sweden",
             "TUDN SD Spain",
-            "Sport 1 SD Germany",
+            "Amazon Prime Video SD Germany",
             "Canal+ Foot SD France",
             "V Sport Premium SD Sweden",
             "Paramount+ (US)",
@@ -268,6 +247,24 @@
             "TUDN",
             "Univision",
             "ViX"
+        ]
+    },
+    {
+        "Date": "2026-04-30",
+        "Time": "02:30",
+        "League": "Tennis (ATP)",
+        "Matchup": "Madrid Open",
+        "Services": [
+            "RDS 2"
+        ]
+    },
+    {
+        "Date": "2026-04-30",
+        "Time": "03:00",
+        "League": "Tennis (ATP)",
+        "Matchup": "Madrid Open",
+        "Services": [
+            "TSN3"
         ]
     }
 ]
