@@ -8,7 +8,7 @@ import io
 from collections import defaultdict
 
 # ================================================
-# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ & TENNIS (5 NGUỒN) – FINAL FIX 6
+# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ & TENNIS (5 NGUỒN) – FINAL FIX 7
 # ================================================
 
 EPG_URL_STARHUB = "https://raw.githubusercontent.com/dbghelp/StarHub-TV-EPG/refs/heads/main/starhub.xml"
@@ -92,6 +92,12 @@ TEAM_NORMALIZE_MAP = {
     "marseille": "olympique marseille", "om": "olympique marseille",
 }
 
+# Tập tất cả các tên đội đã biết (dùng cho giải không hạn chế)
+ALL_KNOWN_TEAMS = set()
+for t in ALLOWED_TEAMS_PER_LEAGUE.values():
+    if t is not None:
+        ALL_KNOWN_TEAMS.update(t)
+
 # ==================== HÀM TIỆN ÍCH ====================
 def download(url):
     print(f"📥 {url.split('/')[-1]}")
@@ -173,7 +179,7 @@ def normalize_team_name(name: str) -> str:
 
 # ==================== TRÍCH XUẤT CẶP ĐẤU (HỖ TRỢ '-') ====================
 def clean_matchup(title, league=None):
-    # Loại bỏ các tag
+    # Làm sạch
     c = re.sub(r'\((?:Direto|Live)\)', '', title, flags=re.I)
     c = re.sub(r'\bLive\b', '', c, flags=re.I)
     c = re.sub(r'\b(Md|Jornada|Etapa)\s*\d+\b', '', c, flags=re.I)
@@ -182,7 +188,7 @@ def clean_matchup(title, league=None):
     c = re.sub(r'[-–:]\s*$', '', c)
     c = re.sub(r'\s+', ' ', c).strip()
 
-    # Tìm phần có khả năng chứa cặp đấu (nếu có dấu ' - ')
+    # Tìm phần có khả năng chứa cặp đấu
     parts = [p.strip() for p in c.split(' - ')]
     candidate = None
     for p in parts:
@@ -192,7 +198,7 @@ def clean_matchup(title, league=None):
     if not candidate:
         candidate = parts[-1] if parts else c
 
-    # Thử tách bằng ' vs ', ' x ', ' - '
+    # Thử tách bằng các phân cách thông thường
     for sep in [' vs ', ' x ', ' - ']:
         if sep in candidate:
             left, right = candidate.split(sep, 1)
@@ -200,15 +206,27 @@ def clean_matchup(title, league=None):
             right = re.sub(r'\s*[-–]\s*.*$', '', right).strip()
             if left and right:
                 return normalize_team_name(left), normalize_team_name(right)
-    # Nếu không có, thử tách bằng '-' đơn khi hai bên không có khoảng trắng
-    # (chỉ áp dụng nếu không tìm thấy các dấu hiệu trên)
-    match = re.search(r'^(\S+)-(\S+)$', candidate)
+
+    # Xử lý dấu gạch ngang không có khoảng trắng (Torino-Inter)
+    # Tìm vị trí dấu '-' không nằm trong tên đội có sẵn (ví dụ Atlético Madrid không bị ảnh hưởng)
+    # Chỉ áp dụng khi hai bên là từ đơn (không chứa khoảng trắng) và ít nhất một bên khớp với danh sách
+    match = re.search(r'\b(\w+)-\w+\b', candidate)
     if match:
-        left = match.group(1)
-        right = match.group(2)
-        # kiểm tra nếu bên trái/phải không chứa dấu '-' khác (tránh tên như "b. munich")
-        if '-' not in left and '-' not in right:
-            return normalize_team_name(left), normalize_team_name(right)
+        # Tìm tất cả các dấu gạch ngang
+        for m in re.finditer(r'(\w+)-(\w+)', candidate):
+            left = m.group(1)
+            right = m.group(2)
+            # kiểm tra xem trái/phải có phải là tên đội không (hoặc nếu không có khoảng trắng)
+            if ' ' not in left and ' ' not in right:
+                ln = normalize_team_name(left)
+                rn = normalize_team_name(right)
+                # Nếu ít nhất một trong hai đã có trong danh sách, coi là cặp đấu
+                if ln in ALL_KNOWN_TEAMS or rn in ALL_KNOWN_TEAMS:
+                    return ln, rn
+                # Nếu không có trong danh sách nhưng không chứa chữ cái thường nào khác ngoài tên (để tránh nhầm)
+                # Có thể chấp nhận rủi ro, nhưng chỉ khi league không hạn chế
+                if league and ALLOWED_TEAMS_PER_LEAGUE.get(league) is None:
+                    return ln, rn
     return None
 
 # ==================== KIỂM TRA ĐỘI ĐƯỢC PHÉP ====================
