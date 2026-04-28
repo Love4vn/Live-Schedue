@@ -1,8 +1,8 @@
 {
-  "updated": "2026-04-28 05:00 VN",
+  "updated": "2026-04-28 10:53 VN",
   "days": {
-    "20260427": {
-      "date": "Monday, 27/04",
+    "20260428": {
+      "date": "Tuesday, 28/04",
       "games": [
         {
           "league": "UEFA Champions League",
@@ -43,10 +43,10 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "RDS 2",
                 "DAZN Canada",
-                "TVA Sports",
                 "TSN5",
-                "RDS 2"
+                "TVA Sports"
               ]
             }
           ],
@@ -121,51 +121,6 @@
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: WTA Madrid Sferturi",
-          "kick_utc": 1777323600,
-          "time": "28/04 04:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: Madrid",
-          "kick_utc": 1777327200,
-          "time": "28/04 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: ATP Madrid Sferturi",
-          "kick_utc": 1777330800,
-          "time": "28/04 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -461,6 +416,21 @@
           "match": "Tenis: ATP Madrid",
           "kick_utc": 1777413600,
           "time": "29/04 05:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: ATP Madrid",
+          "kick_utc": 1777420800,
+          "time": "29/04 07:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
