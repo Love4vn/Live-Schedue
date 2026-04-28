@@ -8,7 +8,7 @@ import io
 from collections import defaultdict
 
 # ================================================
-# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ & TENNIS (5 NGUỒN) – FINAL COMPLETE
+# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ & TENNIS (5 NGUỒN) – FINAL FIX 8
 # ================================================
 
 EPG_URL_STARHUB = "https://raw.githubusercontent.com/dbghelp/StarHub-TV-EPG/refs/heads/main/starhub.xml"
@@ -175,9 +175,8 @@ def normalize_team_name(name):
             return full
     return n
 
-# ==================== TRÍCH XUẤT CẶP ĐẤU MỚI ====================
+# ==================== TRÍCH XUẤT CẶP ĐẤU ====================
 def clean_matchup(title, league=None):
-    # Làm sạch
     c = re.sub(r'\((?:Direto|Live)\)', '', title, flags=re.I)
     c = re.sub(r'\bLive\b', '', c, flags=re.I)
     c = re.sub(r'\b(Md|Jornada|Etapa)\s*\d+\b', '', c, flags=re.I)
@@ -186,7 +185,7 @@ def clean_matchup(title, league=None):
     c = re.sub(r'[-–:]\s*$', '', c)
     c = re.sub(r'\s+', ' ', c).strip()
 
-    # Tìm phần chứa cặp đấu (ưu tiên phần có ' x ' hoặc ' vs ')
+    # Tìm đoạn có ' x ' hoặc ' vs '
     parts = [p.strip() for p in c.split(' - ')]
     candidate = None
     for p in parts:
@@ -196,7 +195,6 @@ def clean_matchup(title, league=None):
     if not candidate:
         candidate = parts[-1] if parts else c
 
-    # Thử tách bằng ' vs ' hoặc ' x '
     for sep in [' vs ', ' x ']:
         if sep in candidate:
             left, right = candidate.split(sep, 1)
@@ -205,8 +203,7 @@ def clean_matchup(title, league=None):
             if left and right:
                 return normalize_team_name(left), normalize_team_name(right)
 
-    # Nếu không, thử dấu gạch ngang không khoảng trắng (Torino-Inter)
-    # Chỉ áp dụng khi cả hai bên đều là từ đơn
+    # Dấu gạch ngang không khoảng trắng
     for m in re.finditer(r'(\w+)-(\w+)', candidate):
         left = m.group(1)
         right = m.group(2)
@@ -399,6 +396,11 @@ def parse_epgshare(xml, src):
         tel = p.find("title")
         if tel is None or not start: continue
         title = (tel.text or "").strip()
+        
+        # DEBUG: In ra nếu có liên quan đến PSG hoặc Munich
+        if is_pt and ('psg' in title.lower() or 'munique' in title.lower()):
+            print(f"DEBUG TITLE FOUND: {title}")
+            
         if is_pt and not is_live_pt(title): continue
         if not is_pt and not is_live_ro(title): continue
 
@@ -407,7 +409,6 @@ def parse_epgshare(xml, src):
             if is_women_youth(title):
                 continue
 
-            # Với giải đặc biệt
             if lg in {"UEFA Euro", "International Friendlies"}:
                 if not is_valid_special(title, lg):
                     continue
