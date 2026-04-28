@@ -35,7 +35,7 @@ TENNIS_KEYWORDS = {
 }
 # ===============================
 
-# ---------- Helper Functions ----------
+# ---------- Helpers ----------
 def normalize_matchup(matchup: str) -> str:
     text = matchup.lower()
     text = re.sub(r'[^\w\s]', '', text)
@@ -45,28 +45,8 @@ def normalize_matchup(matchup: str) -> str:
 def clean_brackets(text: str) -> str:
     return re.sub(r"\[.*?\]", "", text).strip()
 
-def is_live(title: str) -> bool:
-    return bool(re.search(r"\[Live\]", title, re.IGNORECASE))
-
-def extract_league_matchup(title: str) -> Tuple[str, str]:
-    cleaned = clean_brackets(title)
-    cleaned = re.sub(r"\s*Live\s*$", "", cleaned, flags=re.IGNORECASE).strip()
-
-    tennis_pattern = re.compile(r"^(ATP|WTA)\s+\d{1,4}\b", re.IGNORECASE)
-    tennis_match = tennis_pattern.search(cleaned)
-    if tennis_match:
-        league_part = tennis_match.group(0)
-        matchup_part = cleaned[tennis_match.end():].strip()
-        return league_part, matchup_part if matchup_part else cleaned
-
-    parts = re.split(r"\s*[:：\-–]\s*", cleaned, maxsplit=1)
-    if len(parts) == 2:
-        league = re.sub(r"\s*Live\b", "", parts[0], flags=re.IGNORECASE).strip()
-        matchup = re.sub(r"\s*Live\b", "", parts[1], flags=re.IGNORECASE).strip()
-        matchup = re.sub(r"\s+-\s+", " vs ", matchup)
-        return league, matchup
-    else:
-        return "", cleaned
+def is_live(text: str) -> bool:
+    return bool(re.search(r"\[Live\]", text, re.IGNORECASE))
 
 def is_football_league_allowed(text: str) -> bool:
     text_lower = text.lower()
@@ -76,7 +56,48 @@ def is_tennis_event(text: str) -> bool:
     text_lower = text.lower()
     return any(kw in text_lower for kw in TENNIS_KEYWORDS)
 
-# ---------- Now TV Fetcher ----------
+def extract_league_matchup(title: str) -> Tuple[str, str]:
+    """Extract League and Matchup. Returns (league, matchup)."""
+    cleaned = clean_brackets(title)
+    cleaned = re.sub(r"\s*Live\s*$", "", cleaned, flags=re.IGNORECASE).strip()
+
+    # Tennis pattern (year after ATP/WTA)
+    tennis_pattern = re.compile(r"^(ATP|WTA)\s+\d{1,4}\b", re.IGNORECASE)
+    tennis_match = tennis_pattern.search(cleaned)
+    if tennis_match:
+        league_part = tennis_match.group(0)
+        matchup_part = cleaned[tennis_match.end():].strip()
+        return league_part, matchup_part if matchup_part else cleaned
+
+    # 1) Colon
+    if re.search(r"[:：]", cleaned):
+        parts = re.split(r"\s*[:：]\s*", cleaned, maxsplit=1)
+        league = parts[0].strip()
+        matchup = parts[1].strip()
+        league = re.sub(r"\s*Live\b", "", league, flags=re.IGNORECASE).strip()
+        matchup = re.sub(r"\s*Live\b", "", matchup, flags=re.IGNORECASE).strip()
+        matchup = re.sub(r"\s+-\s+", " vs ", matchup)
+        return league, matchup
+
+    # 2) Dash/hyphen only if left side looks like a league
+    if re.search(r"[-–]", cleaned):
+        parts = re.split(r"\s*[-–]\s*", cleaned, maxsplit=1)
+        left = parts[0].strip()
+        right = parts[1].strip() if len(parts) > 1 else ""
+        if is_football_league_allowed(left) or any(kw in left.lower() for kw in TENNIS_KEYWORDS):
+            league = re.sub(r"\s*Live\b", "", left, flags=re.IGNORECASE).strip()
+            matchup = re.sub(r"\s*Live\b", "", right, flags=re.IGNORECASE).strip()
+            matchup = re.sub(r"\s+-\s+", " vs ", matchup)
+            return league, matchup
+        else:
+            # Likely just "Team A - Team B": whole is matchup, no league
+            matchup = re.sub(r"\s+[-–]\s+", " vs ", cleaned)
+            return "", matchup
+
+    # No separators
+    return "", cleaned
+
+# ---------- Now TV Fetcher (unchanged apart from filtering) ----------
 class NowTVFetcher:
     def __init__(self):
         self.base_url = "https://nowplayer.now.com"
@@ -140,6 +161,7 @@ class NowTVFetcher:
                         continue
                     if not (is_football_league_allowed(title) or is_tennis_event(title)):
                         continue
+                    # Premier League must contain vs/v
                     if "premier league" in title.lower():
                         if not re.search(r"\s+vs\s+|\s+v\s+", title, re.IGNORECASE):
                             continue
@@ -147,11 +169,14 @@ class NowTVFetcher:
                     league, matchup = extract_league_matchup(title)
                     if not league and is_tennis_event(title):
                         league = "Tennis"
-                        matchup = title
                     if not league:
                         league = "Sports"
                     if not matchup:
                         matchup = title
+
+                    # For football, must have " vs "
+                    if is_football_league_allowed(title) and " vs " not in matchup:
+                        continue
 
                     start_ts = epg_item.get("start", 0) / 1000
                     dt_start = datetime.fromtimestamp(start_ts, tz=VIETNAM_TZ)
@@ -205,7 +230,6 @@ class ZiggoFetcher:
                 for prog in channel_data.get("programming", []):
                     if not prog.get("live"):
                         continue
-                    # sportName could be null -> use empty string instead of None
                     sport_name = (prog.get("sportName") or "").lower()
                     if sport_name not in ("voetbal", "tennis"):
                         continue
@@ -222,6 +246,10 @@ class ZiggoFetcher:
                             league = "Sports"
                     if not matchup:
                         matchup = title
+
+                    # Football must contain " vs " after conversion
+                    if sport_name == "voetbal" and " vs " not in matchup:
+                        continue
 
                     start_ts = prog.get("timeStart")
                     if start_ts:
@@ -279,6 +307,26 @@ def deduplicate_events(events: List[Dict]) -> List[Dict]:
             merged.append(merged_ev)
     return merged
 
+# ---------- League Enrichment ----------
+def enrich_leagues(events: List[Dict]) -> List[Dict]:
+    """
+    For events with unknown/generic League ('Football','Sports'), try to fill
+    from events that have a clear league on the same date and same normalized matchup.
+    """
+    # Build a lookup: (date, norm_matchup) -> best league (from events that have a known league)
+    league_map = {}
+    for ev in events:
+        if ev["League"] not in ("Football", "Sports", "Unknown", ""):
+            key = (ev["Date"], normalize_matchup(ev["Matchup"]))
+            league_map[key] = ev["League"]
+
+    for ev in events:
+        if ev["League"] in ("Football", "Sports", "Unknown", ""):
+            key = (ev["Date"], normalize_matchup(ev["Matchup"]))
+            if key in league_map:
+                ev["League"] = league_map[key]
+    return events
+
 # ---------- Main ----------
 async def main():
     print("🚀 Combined Now TV & Ziggo Sport Live Schedule Extractor")
@@ -302,7 +350,8 @@ async def main():
     print(f"📊 Combined raw events: {len(all_events)}")
 
     all_events = deduplicate_events(all_events)
-    print(f"✅ After dedup: {len(all_events)} events")
+    all_events = enrich_leagues(all_events)
+    print(f"✅ After dedup & enrichment: {len(all_events)} events")
 
     all_events.sort(key=lambda x: (x["Date"], x["Time"]))
 
