@@ -8,7 +8,7 @@ import io
 from collections import defaultdict
 
 # ================================================
-# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ & TENNIS (5 NGUỒN) – FINAL FIX 12
+# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ & TENNIS (5 NGUỒN) – FINAL COMPLETE
 # ================================================
 
 EPG_URL_STARHUB = "https://raw.githubusercontent.com/dbghelp/StarHub-TV-EPG/refs/heads/main/starhub.xml"
@@ -44,9 +44,13 @@ ALLOWED_TEAMS_PER_LEAGUE = {
     "Ligue 1": {"paris saint-germain", "marseille", "olympique marseille"},
     "FA Cup": PREMIER_LEAGUE_TEAMS,
     "Carabao Cup": PREMIER_LEAGUE_TEAMS,
-    "Champions League": None,
-    "Europa League": None,
-    "Europa Conference League": None,
+}
+
+# Thêm các đội thường gặp ở cúp châu Âu để đối chiếu khi cần
+EXTRA_EUROPEAN_TEAMS = {
+    "sporting cp", "porto", "benfica", "braga", "freiburg", "aalborg", "shakhtar donetsk",
+    "ajax", "p sv", "feyenoord", "celtic", "rangers", "galatasaray", "fenerbahce",
+    "basel", "young boys", "salzburg", "dinamo zagreb", "crvena zvezda"
 }
 
 EUROPEAN_COUNTRIES = {
@@ -62,28 +66,19 @@ EUROPEAN_COUNTRIES = {
 AMERICAS_TEAMS = {"argentina", "brazil"}
 ASIA_TEAMS = {"japan", "south korea"}
 
-# ==================== TỪ KHÓA LOẠI TRỪ ====================
 WOMEN_KEYWORDS = [
-    "women", "womens", "women's", "woman", "female",
-    "frauen", "damen", "weiblich",
-    "donne", "femminile",
-    "mujeres", "femenino", "femenina",
-    "femmes", "féminin", "féminine",
-    "mulheres", "feminino",
-    "vrouwen", "női", "kadın",
+    "women", "womens", "women's", "woman", "female", "frauen", "damen", "weiblich",
+    "donne", "femminile", "mujeres", "femenino", "femenina", "femmes", "féminin",
+    "féminine", "mulheres", "feminino", "vrouwen", "női", "kadın"
 ]
-
 YOUTH_KEYWORDS = [
     "youth", "junior", "academy", "reserves", "reserve", "ii", "b",
-    "zweite", "second team", "sub", "u-", "under",
-    "jugend", "juniorer",
-    "giovanili", "primavera",
-    "cantera", "filial",
-    "jeunes", "espoirs",
-    "jong", "beloften",
+    "zweite", "second team", "sub", "u-", "under", "jugend", "juniorer",
+    "giovanili", "primavera", "cantera", "filial", "jeunes", "espoirs",
+    "jong", "beloften"
 ]
 
-# ==================== MAP CHUẨN HOÁ TÊN ĐỘI ====================
+# ==================== MAP CHUẨN HOÁ TÊN ĐỘI (MỞ RỘNG) ====================
 TEAM_NORMALIZE_MAP = {
     "man. united": "manchester united", "man united": "manchester united",
     "man utd": "manchester united", "man. city": "manchester city",
@@ -104,12 +99,16 @@ TEAM_NORMALIZE_MAP = {
     "b. leverkusen": "bayer leverkusen",
     "psg": "paris saint-germain", "paris sg": "paris saint-germain",
     "marseille": "olympique marseille", "om": "olympique marseille",
+    # Thêm các tên viết tắt từ Bồ Đào Nha
+    "scp": "sporting cp", "sc braga": "braga", "friburgo": "freiburg",
+    "aalborg": "aalborg",
 }
 
 ALL_KNOWN_TEAMS = set()
 for t in ALLOWED_TEAMS_PER_LEAGUE.values():
     if t is not None:
         ALL_KNOWN_TEAMS.update(t)
+ALL_KNOWN_TEAMS.update(EXTRA_EUROPEAN_TEAMS)
 
 # ==================== HÀM TIỆN ÍCH ====================
 def download(url):
@@ -140,7 +139,6 @@ def is_live_ro(title):
     return bool(re.search(r'\bLive\b', title))
 
 def is_women_youth(title):
-    """Kiểm tra title có chứa từ khóa nữ/trẻ hay không, sử dụng word boundary để tránh nhầm chữ 'b' trong tên đội."""
     t = title.lower()
     for kw in WOMEN_KEYWORDS:
         if re.search(r'\b' + re.escape(kw) + r'\b', t):
@@ -210,6 +208,7 @@ def clean_matchup(title, league=None):
     c = re.sub(r'[-–:]\s*$', '', c)
     c = re.sub(r'\s+', ' ', c).strip()
 
+    # Tìm phần có khả năng chứa cặp đấu
     parts = [p.strip() for p in c.split(' - ')]
     candidate = None
     for p in parts:
@@ -227,7 +226,7 @@ def clean_matchup(title, league=None):
             if left and right:
                 return normalize_team_name(left), normalize_team_name(right)
 
-    # Fallback: dấu gạch ngang không khoảng trắng
+    # Dấu gạch ngang không khoảng trắng
     for m in re.finditer(r'(\w+)-(\w+)', candidate):
         left = m.group(1)
         right = m.group(2)
@@ -241,6 +240,9 @@ def clean_matchup(title, league=None):
 
 def is_team_allowed(team_norm, league):
     if league not in ALLOWED_TEAMS_PER_LEAGUE or ALLOWED_TEAMS_PER_LEAGUE[league] is None:
+        # Với các giải châu Âu không giới hạn, chỉ giữ nếu một trong hai đội nằm trong ALL_KNOWN_TEAMS
+        if league in {"Champions League", "Europa League", "Europa Conference League"}:
+            return team_norm in ALL_KNOWN_TEAMS
         return True
     return team_norm in ALLOWED_TEAMS_PER_LEAGUE[league]
 
@@ -439,10 +441,10 @@ def parse_epgshare(xml, src):
                     continue
                 left_norm, right_norm = pair
 
-                if ALLOWED_TEAMS_PER_LEAGUE.get(lg) is not None:
-                    if not (is_team_allowed(left_norm, lg) or is_team_allowed(right_norm, lg)):
-                        print(f"⚠ Bỏ qua (không có đội được phép): {title} → {left_norm} vs {right_norm}")
-                        continue
+                # Kiểm tra đội được phép (với các giải có danh sách hoặc giải châu Âu)
+                if not (is_team_allowed(left_norm, lg) or is_team_allowed(right_norm, lg)):
+                    print(f"⚠ Bỏ qua (không có đội được phép): {title} → {left_norm} vs {right_norm}")
+                    continue
 
                 mt = f"{left_norm.title()} vs {right_norm.title()}"
                 print(f"✅ Nhận bóng đá: {mt} ({lg}) từ {fmt_pt(cid) if is_pt else fmt_ro(cid)}")
