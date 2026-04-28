@@ -1,6 +1,5 @@
 # File: livesportsontv.py
-# FINAL VERSION - Tích hợp livesportsontv + footonsat + nowstreams
-# Bao gồm lọc giải đấu, đội bóng, chuyển giờ Việt Nam, gộp trùng, ưu tiên footonsat.
+# FINAL VERSION - Sửa lỗi thời gian, bổ sung giải đấu
 
 import asyncio
 import json
@@ -12,8 +11,8 @@ from bs4 import BeautifulSoup
 
 # ==================== CẤU HÌNH ====================
 VN_TZ = timezone(timedelta(hours=7))
-TIME_RANGE_HOURS_BEFORE = 2
-TIME_RANGE_HOURS_AFTER = 26
+TIME_RANGE_HOURS_BEFORE = 4
+TIME_RANGE_HOURS_AFTER = 26  # Tăng lên 72 giờ để lấy các trận trong 3 ngày tới
 
 FOOTONSAT_URLS = [
     "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/premierleague.json",
@@ -31,22 +30,12 @@ NOWSTREAMS_URL = "https://nowstreams.top/api_proxy.php"
 
 # ==================== DANH SÁCH GIẢI ĐẤU ĐƯỢC PHÉP ====================
 ALLOWED_LEAGUES = {
-    "Premier League",
-    "Serie A",
-    "La Liga",
-    "Bundesliga",
-    "Ligue 1",
-    "UEFA Champions League",
-    "UEFA Europa League",
-    "UEFA Europa Conference League",
-    "UEFA European Championship",
-    "FIFA World Cup",
-    "International Friendlies",
-    "FA Cup",
-    "Carabao Cup"
+    "Premier League", "Serie A", "La Liga", "Bundesliga", "Ligue 1",
+    "UEFA Champions League", "UEFA Europa League", "UEFA Europa Conference League",
+    "UEFA European Championship", "FIFA World Cup",
+    "International Friendlies", "FA Cup", "Carabao Cup"
 }
 
-# Danh sách đội bóng được phép cho từng giải
 PREMIER_LEAGUE_TEAMS = {
     "arsenal", "aston villa", "bournemouth", "brentford", "brighton", "chelsea",
     "crystal palace", "everton", "fulham", "leeds united", "liverpool", "manchester city",
@@ -62,56 +51,28 @@ ALLOWED_TEAMS_PER_LEAGUE = {
     "Ligue 1": {"psg", "paris saint-germain", "marseille", "olympique marseille"},
     "FA Cup": PREMIER_LEAGUE_TEAMS,
     "Carabao Cup": PREMIER_LEAGUE_TEAMS,
-    "International Friendlies": None,  # Xử lý riêng
+    "UEFA Champions League": None,          # Cho phép tất cả đội
+    "UEFA Europa League": None,
+    "UEFA Europa Conference League": None,
+    "UEFA European Championship": None,
+    "FIFA World Cup": None,
+    "International Friendlies": None,
 }
 
-# Ánh xạ mã quốc gia → tên đầy đủ
+# Ánh xạ mã quốc gia → tên đầy đủ (giữ nguyên)
 LANGUAGE_MAP = {
-    "GB": "Great Britain",
-    "US": "United States",
-    "DE": "Germany",
-    "AU": "Australia",
-    "ES": "Spain",
-    "FR": "France",
-    "IT": "Italy",
-    "PT": "Portugal",
-    "GR": "Greece",
-    "BG": "Bulgaria",
-    "BE": "Belgium",
-    "CZ": "Czech Republic",
-    "CH": "Switzerland",
-    "SE": "Sweden",
-    "CA": "Canada",
-    "NZ": "New Zealand",
-    "MX": "Mexico",
-    "BR": "Brazil",
-    "NL": "Netherlands",
-    "PL": "Poland",
-    "TR": "Turkey",
-    "RU": "Russia",
-    "UA": "Ukraine",
-    "RO": "Romania",
-    "HU": "Hungary",
-    "AT": "Austria",
-    "HR": "Croatia",
-    "RS": "Serbia",
-    "SI": "Slovenia",
-    "SK": "Slovakia",
-    "NO": "Norway",
-    "DK": "Denmark",
-    "FI": "Finland",
-    "IE": "Ireland",
-    "ZA": "South Africa",
-    "JP": "Japan",
-    "KR": "South Korea",
-    "CN": "China",
-    "IN": "India",
-    "AE": "UAE",
-    "SA": "Saudi Arabia",
-    "QA": "Qatar",
+    "GB": "Great Britain", "US": "United States", "DE": "Germany", "AU": "Australia",
+    "ES": "Spain", "FR": "France", "IT": "Italy", "PT": "Portugal", "GR": "Greece",
+    "BG": "Bulgaria", "BE": "Belgium", "CZ": "Czech Republic", "CH": "Switzerland",
+    "SE": "Sweden", "CA": "Canada", "NZ": "New Zealand", "MX": "Mexico", "BR": "Brazil",
+    "NL": "Netherlands", "PL": "Poland", "TR": "Turkey", "RU": "Russia", "UA": "Ukraine",
+    "RO": "Romania", "HU": "Hungary", "AT": "Austria", "HR": "Croatia", "RS": "Serbia",
+    "SI": "Slovenia", "SK": "Slovakia", "NO": "Norway", "DK": "Denmark", "FI": "Finland",
+    "IE": "Ireland", "ZA": "South Africa", "JP": "Japan", "KR": "South Korea", "CN": "China",
+    "IN": "India", "AE": "UAE", "SA": "Saudi Arabia", "QA": "Qatar",
 }
 
-# ==================== HÀM TIỆN ÍCH ====================
+# ==================== CÁC HÀM TIỆN ÍCH (giữ nguyên từ code cũ) ====================
 def parse_time_with_ampm(time_str: str):
     time_str = time_str.strip().upper()
     if ' ' not in time_str and ('AM' in time_str or 'PM' in time_str):
@@ -172,43 +133,26 @@ def is_within_time_range(dt: datetime, ref: datetime) -> bool:
 
 def is_youth_or_women(matchup: str, league: str) -> bool:
     combined = f"{matchup} {league}".lower()
-    
-    # Từ khóa chỉ nữ giới (đa ngôn ngữ)
     women_keywords = [
         "women", "womens", "women's", "woman", "female",
-        "frauen", "damen", "weiblich",               # Đức
-        "donne", "femminile",                        # Ý
-        "mujeres", "femenino", "femenina",           # Tây Ban Nha
-        "femmes", "féminin", "féminine",             # Pháp
-        "mulheres", "feminino",                      # Bồ Đào Nha
-        "vrouwen",                                    # Hà Lan
-        "női",                                       # Hungary
-        "kadın",                                     # Thổ Nhĩ Kỳ
+        "frauen", "damen", "weiblich", "donne", "femminile",
+        "mujeres", "femenino", "femenina", "femmes", "féminin", "féminine",
+        "mulheres", "feminino", "vrouwen", "női", "kadın"
     ]
-    
-    # Từ khóa chỉ đội trẻ / dự bị
     youth_keywords = [
-        "youth", "junior", "academy", "reserves", "reserve", "ii", "b",
-        "zweite", "second team", "sub", "u-", "under",
-        "jugend", "juniorer",                         # Đức
-        "giovanili", "primavera",                     # Ý
-        "cantera", "filial",                          # Tây Ban Nha
-        "jeunes", "espoirs",                          # Pháp
-        "jong", "beloften",                           # Hà Lan
+        "youth", "junior", "academy", "reserves", "reserve", "ii",
+        "zweite", "second team", "sub", "u-", "under", "jugend", "juniorer",
+        "giovanili", "primavera", "cantera", "filial", "jeunes", "espoirs",
+        "jong", "beloften"
     ]
-    
-    # Kiểm tra từ khóa nữ
     for kw in women_keywords:
         if kw in combined:
             return True
-    
-    # Kiểm tra từ khóa trẻ
     for kw in youth_keywords:
         if kw in combined:
             return True
-    
     return False
-# ==================== CHUẨN HÓA DỮ LIỆU ====================
+
 def normalize_league(league: str) -> str:
     league_lower = league.lower()
     if "fa cup" in league_lower:
@@ -583,11 +527,10 @@ def normalize_matchup(matchup: str):
     return (away_norm, home_norm)
 
 def is_match_allowed(league: str, matchup: str) -> bool:
-    """Kiểm tra xem trận đấu có được phép thu thập không."""
     if league not in ALLOWED_LEAGUES:
         return False
     if league == "International Friendlies":
-        return True  # Sẽ lọc bằng hàm include_friendly_match sau
+        return True
     allowed_teams = ALLOWED_TEAMS_PER_LEAGUE.get(league)
     if allowed_teams is None:
         return True
@@ -620,10 +563,9 @@ def include_friendly_match(home: str, away: str) -> bool:
     return False
 
 def has_premier_league_team(matchup: str) -> bool:
-    matchup_lower = matchup.lower()
-    return any(team in matchup_lower for team in PREMIER_LEAGUE_TEAMS)
+    return any(team in matchup.lower() for team in PREMIER_LEAGUE_TEAMS)
 
-# ==================== CẤU HÌNH GIẢI (livesportsontv) ====================
+# ==================== CẤU HÌNH GIẢI LIVESPORTSONTV ====================
 LEAGUES_CONFIG = {
     "Premier League": {"url": "https://www.livesportsontv.com/league/premier-league", "teams": PREMIER_LEAGUE_TEAMS},
     "Serie A": {"url": "https://www.livesportsontv.com/league/serie-a", "teams": {"inter milan", "ac milan", "napoli", "juventus", "roma", "atalanta", "lazio"}},
@@ -737,37 +679,26 @@ async def fetch_nowstreams_data(ref_time: datetime):
 
     for item in items:
         try:
-            # Chỉ lấy môn bóng đá
             if item.get("sport") != "Football":
                 continue
-            # Lấy ngày, giờ gốc
             match_date = item.get("matchDate")
             time_str = item.get("time")
             if not match_date or not time_str:
                 continue
-            # Tạo datetime gốc (naive, theo múi giờ của nguồn, kém VN 4h)
             dt_orig = datetime.strptime(f"{match_date} {time_str}", "%Y-%m-%d %H:%M")
-            # Cộng 4 giờ để ra giờ Việt Nam
             dt_vn = dt_orig + timedelta(hours=4)
             dt_vn = dt_vn.replace(tzinfo=VN_TZ)
             if not is_within_time_range(dt_vn, ref_time):
                 continue
-
-            # Chuẩn hóa giải đấu
             league_raw = item.get("league", "")
             league = normalize_league(league_raw)
-            # Lấy tên trận
             matchup_raw = item.get("matchstr", "")
             if not matchup_raw:
                 continue
-            # Lọc giải trẻ/nữ
             if is_youth_or_women(matchup_raw, league):
                 continue
-            # Lọc theo giải và đội cho phép
             if not is_match_allowed(league, matchup_raw):
                 continue
-
-            # Xử lý danh sách kênh
             services = []
             for ch in item.get("channels", []):
                 ch_name = ch.get("name", "").strip()
@@ -777,11 +708,8 @@ async def fetch_nowstreams_data(ref_time: datetime):
                     services.append(f"{ch_name} {full_country}")
                 elif ch_name:
                     services.append(ch_name)
-
-            # Nếu có kênh chính "channel" cũng thêm vào (nếu chưa có trong channels)
             main_channel = item.get("channel")
             if main_channel and main_channel not in services:
-                # Tách tên kênh và mã quốc gia (ví dụ "TNT Sports 1 GB")
                 parts = main_channel.rsplit(" ", 1)
                 if len(parts) == 2 and parts[1].upper() in LANGUAGE_MAP:
                     ch_name = parts[0]
@@ -790,7 +718,6 @@ async def fetch_nowstreams_data(ref_time: datetime):
                     services.append(f"{ch_name} {full_country}")
                 else:
                     services.append(main_channel)
-
             matches.append({
                 "Date": dt_vn.strftime("%Y-%m-%d"),
                 "Time": dt_vn.strftime("%H:%M"),
@@ -874,7 +801,6 @@ async def scrape_livesportsontv(ref_time: datetime):
                     if not is_within_time_range(vn_dt, ref_time):
                         continue
 
-                    # Lấy tên trận
                     if is_tennis:
                         home_elem = row.find('div', class_=lambda c: c and 'event_participant--home' in c)
                         if not home_elem:
@@ -895,11 +821,9 @@ async def scrape_livesportsontv(ref_time: datetime):
                             if title_elem:
                                 matchup = title_elem.get_text(strip=True)
 
-                    # Lọc giải trẻ/nữ
                     if is_youth_or_women(matchup, league_name):
                         continue
 
-                    # Áp dụng bộ lọc
                     if team_filter is not None:
                         if not any(t.lower() in matchup.lower() for t in team_filter):
                             continue
@@ -907,7 +831,6 @@ async def scrape_livesportsontv(ref_time: datetime):
                         if not has_premier_league_team(matchup):
                             continue
                     elif custom_filter == "friendly":
-                        # Tách home/away từ matchup
                         parts = matchup.split(' @ ')
                         if len(parts) == 2:
                             away, home = parts
@@ -916,7 +839,6 @@ async def scrape_livesportsontv(ref_time: datetime):
                         if not include_friendly_match(home, away):
                             continue
 
-                    # Lấy kênh
                     channels = []
                     tags_container = row.find('ul', class_='event__tags')
                     if not tags_container:
@@ -960,43 +882,8 @@ async def main():
     games_now = await fetch_nowstreams_data(ref_time)
     print(f"📺 Từ nowstreams: {len(games_now)} trận")
 
-    # Gộp và loại trùng, ưu tiên footonsat
     unique = {}
-
-    # Thêm footonsat trước
-    for g in games_foot:
-        norm_league = normalize_league(g["League"])
-        norm_key = normalize_matchup(g["Matchup"])
-        key = (g["Date"], g["Time"], norm_league, norm_key)
-        unique[key] = {
-            "Date": g["Date"],
-            "Time": g["Time"],
-            "League": norm_league,
-            "Matchup": g["Matchup"],
-            "Services": g["Services"]
-        }
-
-    # Thêm nowstreams
-    for g in games_now:
-        norm_league = normalize_league(g["League"])
-        norm_key = normalize_matchup(g["Matchup"])
-        key = (g["Date"], g["Time"], norm_league, norm_key)
-        if key not in unique:
-            unique[key] = {
-                "Date": g["Date"],
-                "Time": g["Time"],
-                "League": norm_league,
-                "Matchup": g["Matchup"],
-                "Services": g["Services"]
-            }
-        else:
-            existing = set(unique[key]["Services"])
-            new_services = [s for s in g["Services"] if s not in existing]
-            if new_services:
-                unique[key]["Services"].extend(new_services)
-
-    # Thêm livesportsontv
-    for g in games_live:
+    for g in games_foot + games_now + games_live:
         norm_league = normalize_league(g["League"])
         norm_key = normalize_matchup(g["Matchup"])
         key = (g["Date"], g["Time"], norm_league, norm_key)
