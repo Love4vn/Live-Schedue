@@ -8,7 +8,7 @@ import io
 from collections import defaultdict
 
 # ================================================
-# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ & TENNIS (5 NGUỒN) – FINAL FIX 9
+# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ & TENNIS (5 NGUỒN) – FINAL FIX 10
 # ================================================
 
 EPG_URL_STARHUB = "https://raw.githubusercontent.com/dbghelp/StarHub-TV-EPG/refs/heads/main/starhub.xml"
@@ -21,7 +21,6 @@ HOURS_BEFORE = 6
 HOURS_AFTER = 72
 MERGE_MINUTES = 30
 
-# ==================== DANH SÁCH GIẢI ĐẤU & ĐỘI BÓNG ====================
 ALLOWED_LEAGUES = {
     "Premier League", "Serie A", "La Liga", "Bundesliga", "Ligue 1",
     "UEFA Champions League", "UEFA Europa League", "UEFA Europa Conference League",
@@ -70,7 +69,6 @@ YOUTH_KEYWORDS = [
     "jong", "beloften"
 ]
 
-# ==================== MAP CHUẨN HOÁ TÊN ĐỘI ====================
 TEAM_NORMALIZE_MAP = {
     "man. united": "manchester united", "man united": "manchester united",
     "man utd": "manchester united", "man. city": "manchester city",
@@ -175,22 +173,17 @@ def normalize_team_name(name):
             return full
     return n
 
-# ==================== TRÍCH XUẤT CẶP ĐẤU (ĐÃ SỬA) ====================
+# ==================== TRÍCH XUẤT CẶP ĐẤU ====================
 def clean_matchup(title, league=None):
-    # Loại bỏ các tag không cần thiết
     c = re.sub(r'\((?:Direto|Live)\)', '', title, flags=re.I)
     c = re.sub(r'\bLive\b', '', c, flags=re.I)
     c = re.sub(r'\b(Md|Jornada|Etapa)\s*\d+\b', '', c, flags=re.I)
     c = re.sub(r'\d{4}-\d{2}', '', c)
-    
-    # Xóa toàn bộ mô tả vòng đấu kiểu Bồ Đào Nha (1ª Mão, Meia-Final, Quartos-de-Final...)
     c = re.sub(r'\b\d+ª\s*Mão\s*(da\s*)?\w+-?\w*\b', '', c, flags=re.I)
     c = re.sub(r'\b(Meia-?Final|Quartos?-?de-?Final|Oitavos?-?de-?Final|Antevisão|Rescaldo)\b', '', c, flags=re.I)
-    
     c = re.sub(r'[-–:]\s*$', '', c)
     c = re.sub(r'\s+', ' ', c).strip()
 
-    # Tìm phần có dấu hiệu cặp đấu (x, vs)
     parts = [p.strip() for p in c.split(' - ')]
     candidate = None
     for p in parts:
@@ -200,7 +193,6 @@ def clean_matchup(title, league=None):
     if not candidate:
         candidate = parts[-1] if parts else c
 
-    # Thử tách bằng ' vs ' hoặc ' x '
     for sep in [' vs ', ' x ']:
         if sep in candidate:
             left, right = candidate.split(sep, 1)
@@ -209,7 +201,6 @@ def clean_matchup(title, league=None):
             if left and right:
                 return normalize_team_name(left), normalize_team_name(right)
 
-    # Fallback dấu gạch ngang không khoảng trắng
     for m in re.finditer(r'(\w+)-(\w+)', candidate):
         left = m.group(1)
         right = m.group(2)
@@ -402,12 +393,22 @@ def parse_epgshare(xml, src):
         tel = p.find("title")
         if tel is None or not start: continue
         title = (tel.text or "").strip()
-        if is_pt and not is_live_pt(title): continue
-        if not is_pt and not is_live_ro(title): continue
+
+        # DEBUG PSG
+        if "psg" in title.lower() and "champions" in title.lower():
+            print(f"DEBUG PSG: TITLE = {title}")
+
+        if is_pt and not is_live_pt(title):
+            if "psg" in title.lower(): print("DEBUG PSG: bỏ qua vì không live")
+            continue
+        if not is_pt and not is_live_ro(title):
+            continue
 
         lg, _ = get_league(title)
+        if "psg" in title.lower(): print(f"DEBUG PSG: lg = {lg}")
         if lg and lg in ALLOWED_LEAGUES:
             if is_women_youth(title):
+                if "psg" in title.lower(): print("DEBUG PSG: blocked by women/youth")
                 continue
 
             if lg in {"UEFA Euro", "International Friendlies"}:
@@ -416,6 +417,7 @@ def parse_epgshare(xml, src):
                 mt = re.sub(r'\((?:Direto|Live)\)', '', title, flags=re.I).strip()
             else:
                 pair = clean_matchup(title, lg)
+                if "psg" in title.lower(): print(f"DEBUG PSG: pair = {pair}")
                 if pair is None:
                     print(f"⚠ Bỏ qua (không tách được cặp đấu): {title}")
                     continue
@@ -427,6 +429,7 @@ def parse_epgshare(xml, src):
                         continue
 
                 mt = f"{left_norm.title()} vs {right_norm.title()}"
+                if "psg" in title.lower(): print(f"DEBUG PSG: final mt = {mt}")
                 print(f"✅ Nhận bóng đá: {mt} ({lg}) từ {fmt_pt(cid) if is_pt else fmt_ro(cid)}")
         elif is_tennis(title):
             lg, mt = parse_tennis(title)
