@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-28 10:53 VN",
+  "updated": "2026-04-28 15:36 VN",
   "days": {
     "20260428": {
       "date": "Tuesday, 28/04",
@@ -43,9 +43,9 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "RDS 2",
                 "DAZN Canada",
                 "TSN5",
+                "RDS 2",
                 "TVA Sports"
               ]
             }
@@ -511,6 +511,36 @@
               "country": "Hubsport",
               "channels": [
                 "Hub Sports 2 HD"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: WTA Madrid Sferturi",
+          "kick_utc": 1777410000,
+          "time": "29/04 04:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: ATP Madrid Sferturi",
+          "kick_utc": 1777417200,
+          "time": "29/04 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania"
               ]
             }
           ],
