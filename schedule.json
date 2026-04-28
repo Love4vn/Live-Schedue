@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-29 00:00 VN",
+  "updated": "2026-04-29 02:51 VN",
   "days": {
     "20260428": {
       "date": "Tuesday, 28/04",
@@ -111,11 +111,123 @@
                 "beIN Sports 1 Saudi Arabia",
                 "V Sport Premium Sweden",
                 "Amazon Prime Video Great Britain",
+                "V Sport Premium SD Sweden",
+                "TUDN SD Spain",
+                "Sport 1 SD Germany",
+                "Canal+ Foot SD France",
+                "V Sport Premium SD Sweden",
                 "Paramount+ (US)",
                 "DAZN US",
                 "CBS",
                 "TUDN",
                 "Univision"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Champions League",
+          "match": "Atlético Madrid vs Arsenal",
+          "kick_utc": 1777489200,
+          "time": "30/04 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena Premium 1 BiH HD",
+                "Arena Premium 1 Srbija HD",
+                "Arena Sport 1 Hrvatska HD",
+                "beIN Sports 1 HD",
+                "beIN Sports MENA 1 HD",
+                "beIN Sports MENA English 1 HD",
+                "beIN Sports MENA French 1 HD",
+                "Canal+ Extra 1 Polska HD",
+                "Canal+ France HD",
+                "Canal+ Live 1 France HD",
+                "Cosmote Sport 1 HD",
+                "Cytavision Sports 3 HD",
+                "Cytavision Sports 4K 1 UHD",
+                "Cytavision Sports PPV 2 HD",
+                "DAZN 1 Bar Deutsch HD",
+                "DAZN Deutsch",
+                "Digi 4K UHD",
+                "Digi Sport 1 Romania HD",
+                "Fast Sports TV Armenia",
+                "Go3 Extra Sport Baltics",
+                "HBO Max",
+                "HRT 2 Hrvatska HD",
+                "Jurnal TV Moldova",
+                "Kanal A Slovenija HD",
+                "M+ Liga de Campeones HD",
+                "M+ Liga de Campeones HDR",
+                "MEGA Hellas HD",
+                "Megogo Futbol 1",
+                "MTV Urheilu 1 Suomi HD",
+                "Nova Sport 3 Czech HD",
+                "Okko Futbol HD",
+                "Pickx+ Sports 1 HD",
+                "Play RTS Sport",
+                "Premier Sports 1 Ireland HD",
+                "Premier Sports 2 Mongolia HD",
+                "Prima Sport RO 1 HD",
+                "Prime Video Italia",
+                "QazSport HD",
+                "RSI La 2 Svizzera HD",
+                "RTK 1 Kosovo HD",
+                "RTL Club Belgique",
+                "RTL+ Hungary",
+                "RTS 1 Srbija HD",
+                "RTS 2 Suisse HD",
+                "RTÉ 2 Ireland HD",
+                "RTÉ Player",
+                "Silk Universal HD",
+                "Sony Sports TEN 2 India HD",
+                "Sony Sports TEN 3 India HD",
+                "Sony Sports TEN 4 India HD",
+                "Sport 24 At Sea HD",
+                "Sport 24 In Flight HD",
+                "Sport TV Azerbaijan",
+                "Sport TV5 Portugal HD",
+                "SRF Zwei Schweiz HD",
+                "Stan Sport Australia",
+                "SuperSport Grandstand HD",
+                "SuperSport MáXimo 1 HD",
+                "SuperSport Premier League HD",
+                "SÝN Sport 1 Ísland HD",
+                "TNT Sports 1 HD",
+                "TNT Sports Ultimate UHD",
+                "Tring Sport 1 HD",
+                "TRT 1 Türkiye HD",
+                "TSN Malta 1 HD",
+                "Turkmenistan Sport HD",
+                "TV2 Sport 1 Norge HD",
+                "TV3+ Dansk HD",
+                "TVP 1 Polska HD",
+                "V Sport Premium HD",
+                "V Sport Ultra 4K UHD",
+                "ViaPlay Sport Sverige HD",
+                "Vizion Plus HD",
+                "VTM 2 Belgium HD",
+                "Ziggo Sport HD",
+                "TNT Sports 1 Great Britain",
+                "DAZN1 Germany",
+                "Cosmote Sport 1 Greece",
+                "TUDN Spain",
+                "Canal+ France",
+                "beIN Sports 1 Saudi Arabia",
+                "V Sport Premium Sweden",
+                "TNT Sports 1 Great Britain",
+                "V Sport Premium SD Sweden",
+                "Canal+ SD France",
+                "TUDN SD Spain",
+                "TNT Sports 1 SD Great Britain",
+                "V Sport Premium SD Sweden",
+                "Paramount+ (US)",
+                "CBS",
+                "TUDN",
+                "Univision",
+                "ViX"
               ]
             }
           ],
@@ -137,21 +249,21 @@
           "source": "wheresthematch"
         },
         {
-          "league": "Tennis",
-          "match": "Madrid Open",
-          "kick_utc": 1777395600,
-          "time": "29/04 12:00 AM",
+          "league": "UEFA Champions League",
+          "match": "Atletico-Madrid vs Arsenal",
+          "kick_utc": 1777489200,
+          "time": "30/04 02:00 AM",
           "tv_channels": [
             {
-              "country": "LiveSportsOnTV",
+              "country": "Wheresthematch",
               "channels": [
-                "Tennis Channel",
-                "T2",
-                "TSN2"
+                "TNT Sports 1",
+                "TNT Sports Ultimate",
+                "HBO Max"
               ]
             }
           ],
-          "source": "livesportsontv"
+          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
@@ -205,6 +317,23 @@
         },
         {
           "league": "Tennis",
+          "match": "Madrid Open",
+          "kick_utc": 1777485600,
+          "time": "30/04 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "TSN3",
+                "TVA Sports",
+                "DAZN Canada"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
           "match": "Mutua Madrid Open",
           "kick_utc": 1777399200,
           "time": "29/04 01:00 AM",
@@ -241,14 +370,30 @@
         },
         {
           "league": "Tennis",
-          "match": "Masters 1000 de Madrid",
-          "kick_utc": 1777392000,
-          "time": "28/04 11:00 PM",
+          "match": "Mutua Madrid Open",
+          "kick_utc": 1777485600,
+          "time": "30/04 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Sky Sports Tennis",
+                "Sky Sports+"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "WTA Tour 2026 Mutua Madrid Open (1000) QF 2",
+          "kick_utc": 1777399200,
+          "time": "29/04 01:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Eurosport 1 France"
+                "Hub Sports 6 HD"
               ]
             }
           ],
@@ -256,14 +401,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Masters 1000 de Madrid",
-          "kick_utc": 1777402800,
-          "time": "29/04 02:00 AM",
+          "match": "1/4 Finale 2",
+          "kick_utc": 1777399200,
+          "time": "29/04 01:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Eurosport 1 France"
+                "Sport Klub 2 Hrvatska"
               ]
             }
           ],
@@ -271,46 +416,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Masters 1000 de Madrid",
-          "kick_utc": 1777406400,
-          "time": "29/04 03:00 AM",
+          "match": "1/4 Finale 2",
+          "kick_utc": 1777491900,
+          "time": "30/04 02:45 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Voosport World1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Madrid",
-          "kick_utc": 1777478400,
-          "time": "29/04 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 France",
-                "Voosport World1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: ATP Madrid",
-          "kick_utc": 1777392000,
-          "time": "28/04 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
+                "Sport Klub 2 Hrvatska"
               ]
             }
           ],
@@ -379,66 +492,6 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP Tour 2026 Mutua Madrid Open (1000) R16 Session 4",
-          "kick_utc": 1777395600,
-          "time": "29/04 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Hub Sports 2 HD"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP Masters 1000 - Madrid 2026",
-          "kick_utc": 1777395600,
-          "time": "29/04 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "WTA Tour 2026 Mutua Madrid Open (1000) QF 2",
-          "kick_utc": 1777399200,
-          "time": "29/04 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Hub Sports 6 HD"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "1/4 Finale 2",
-          "kick_utc": 1777399200,
-          "time": "29/04 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Klub 2 Hrvatska"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
           "match": "ATP Tour 2026 Mutua Madrid Open (1000) R16 Session 5",
           "kick_utc": 1777402800,
           "time": "29/04 02:00 AM",
@@ -447,6 +500,52 @@
               "country": "Hubsport",
               "channels": [
                 "Hub Sports 2 HD"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Masters 1000 de Madrid",
+          "kick_utc": 1777402800,
+          "time": "29/04 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Masters 1000 de Madrid",
+          "kick_utc": 1777406400,
+          "time": "29/04 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Voosport World1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Masters 1000 de Madrid",
+          "kick_utc": 1777478400,
+          "time": "29/04 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 France",
+                "Voosport World1 France"
               ]
             }
           ],
@@ -561,6 +660,21 @@
         },
         {
           "league": "Tennis",
+          "match": "1/4 Finale 3",
+          "kick_utc": 1777460400,
+          "time": "29/04 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Klub 2 Hrvatska"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "ATP Tour 2026 Mutua Madrid Open (1000) QF 1",
           "kick_utc": 1777471200,
           "time": "29/04 09:00 PM",
@@ -569,6 +683,21 @@
               "country": "Hubsport",
               "channels": [
                 "Hub Sports 2 HD"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "1/4 Finale 1",
+          "kick_utc": 1777471200,
+          "time": "29/04 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Klub 2 Hrvatska"
               ]
             }
           ],
@@ -591,50 +720,63 @@
         },
         {
           "league": "Tennis",
-          "match": "Mutua Madrid Open -Round 16 (B)",
-          "kick_utc": 1777395600,
-          "time": "29/04 12:00 AM",
+          "match": "ATP Masters 1000 - Madrid 2026 - Quartos-de-Final",
+          "kick_utc": 1777491000,
+          "time": "30/04 02:30 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 6"
+                "Sport Tv3 Hd Portugal"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
-          "match": ": Mutua Madrid Open - Madrid",
-          "kick_utc": 1777395600,
-          "time": "29/04 12:00 AM",
+          "match": "WTA Tour 2026 Mutua Madrid Open (1000) QF 4",
+          "kick_utc": 1777485600,
+          "time": "30/04 01:00 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Ziggo Sport 4"
+                "Hub Sports 6 HD"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
-          "match": ": Mutua Madrid Open - Madrid",
-          "kick_utc": 1777471200,
-          "time": "29/04 09:00 PM",
+          "match": "1/4 Finale 4",
+          "kick_utc": 1777485600,
+          "time": "30/04 01:00 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Ziggo Sport",
-                "Ziggo Sport 4",
-                "Ziggo Sport Kanaal 14"
+                "Sport Klub 2 Hrvatska"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP Tour 2026 Mutua Madrid Open (1000) QF 2",
+          "kick_utc": 1777491000,
+          "time": "30/04 02:30 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Hub Sports 2 HD"
+              ]
+            }
+          ],
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -646,6 +788,21 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Mutua Madrid Open -QF (2)",
+          "kick_utc": 1777491000,
+          "time": "30/04 02:30 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
               ]
             }
           ],
@@ -676,6 +833,53 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports 6"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Mutua Madrid Open - Madrid",
+          "kick_utc": 1777471200,
+          "time": "29/04 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Mutua Madrid Open - Madrid",
+          "kick_utc": 1777491000,
+          "time": "30/04 02:30 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Mutua Madrid Open -QF(4)",
+          "kick_utc": 1777485600,
+          "time": "30/04 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
               ]
             }
           ],
