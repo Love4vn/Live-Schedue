@@ -19,14 +19,12 @@ from bs4 import BeautifulSoup
 VIETNAM_TZ = pytz.timezone("Asia/Ho_Chi_Minh")
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
 
-# Allowed football leagues (for both sources)
 ALLOWED_FOOTBALL_LEAGUES = {
     "Premier League", "Serie A", "La Liga", "Bundesliga", "Ligue 1",
     "UEFA Champions League", "UEFA Europa League", "UEFA Europa Conference League",
     "UEFA Euro", "FA Cup", "League Cup", "FIFA World Cup", "International Friendly"
 }
 
-# Tennis keywords for fallback detection (used if Ziggo sportName is missing)
 TENNIS_KEYWORDS = {
     "atp", "wta", "atp tour", "wta tour", "atp world tour",
     "grand slam", "australian open", "roland garros", "french open",
@@ -39,7 +37,6 @@ TENNIS_KEYWORDS = {
 
 # ---------- Helper Functions ----------
 def normalize_matchup(matchup: str) -> str:
-    """Lowercase, remove punctuation and extra spaces for dedup."""
     text = matchup.lower()
     text = re.sub(r'[^\w\s]', '', text)
     text = re.sub(r'\s+', ' ', text).strip()
@@ -49,15 +46,12 @@ def clean_brackets(text: str) -> str:
     return re.sub(r"\[.*?\]", "", text).strip()
 
 def is_live(title: str) -> bool:
-    """Now TV: check for [Live] tag."""
     return bool(re.search(r"\[Live\]", title, re.IGNORECASE))
 
 def extract_league_matchup(title: str) -> Tuple[str, str]:
-    """Extract League and Matchup from a title (both sources)."""
     cleaned = clean_brackets(title)
     cleaned = re.sub(r"\s*Live\s*$", "", cleaned, flags=re.IGNORECASE).strip()
 
-    # Tennis special pattern: "ATP 1000 Mutua Madrid Open Final"
     tennis_pattern = re.compile(r"^(ATP|WTA)\s+\d{1,4}\b", re.IGNORECASE)
     tennis_match = tennis_pattern.search(cleaned)
     if tennis_match:
@@ -65,12 +59,10 @@ def extract_league_matchup(title: str) -> Tuple[str, str]:
         matchup_part = cleaned[tennis_match.end():].strip()
         return league_part, matchup_part if matchup_part else cleaned
 
-    # General split by colon or dash
     parts = re.split(r"\s*[:：\-–]\s*", cleaned, maxsplit=1)
     if len(parts) == 2:
         league = re.sub(r"\s*Live\b", "", parts[0], flags=re.IGNORECASE).strip()
         matchup = re.sub(r"\s*Live\b", "", parts[1], flags=re.IGNORECASE).strip()
-        # Standardize "Team A - Team B" to "Team A vs Team B"
         matchup = re.sub(r"\s+-\s+", " vs ", matchup)
         return league, matchup
     else:
@@ -91,7 +83,6 @@ class NowTVFetcher:
         self.channel_filter = "now Sports"
 
     def fetch_channels(self) -> Dict[str, str]:
-        """Return {channelNo: channelName} for channels starting with 'now Sports'."""
         print("📡 [NowTV] Fetching channels...")
         url = f"{self.base_url}/channels"
         headers = {"User-Agent": USER_AGENT, "Accept-Language": "en,zh;q=0.9"}
@@ -144,12 +135,11 @@ class NowTVFetcher:
                 ch_no = channel_numbers[idx]
                 ch_name = channel_map.get(ch_no, f"Channel {ch_no}")
                 for epg_item in channel_progs:
-                    title = epg_item.get("name", "").strip()
+                    title = (epg_item.get("name") or "").strip()
                     if not title or not is_live(title):
                         continue
                     if not (is_football_league_allowed(title) or is_tennis_event(title)):
                         continue
-                    # Premier League must contain " vs " or " v "
                     if "premier league" in title.lower():
                         if not re.search(r"\s+vs\s+|\s+v\s+", title, re.IGNORECASE):
                             continue
@@ -180,7 +170,6 @@ class ZiggoFetcher:
         self.base_url = "https://www.ziggosport.nl"
 
     def get_available_dates(self) -> List[str]:
-        """Return list of date strings like '2026-04-28' from index.json."""
         index_url = f"{self.base_url}/cache/site/ZiggosportNL/json/epg/index.json"
         try:
             resp = requests.get(index_url)
@@ -193,7 +182,6 @@ class ZiggoFetcher:
             return []
 
     def fetch_epg_for_date(self, date_str: str) -> List[Dict]:
-        """Return list of channels with programmes for a day."""
         url = f"{self.base_url}/cache/site/ZiggosportNL/json/epg/epg-{date_str}.json"
         try:
             resp = requests.get(url)
@@ -217,10 +205,13 @@ class ZiggoFetcher:
                 for prog in channel_data.get("programming", []):
                     if not prog.get("live"):
                         continue
-                    sport_name = prog.get("sportName", "").lower()
+                    # sportName could be null -> use empty string instead of None
+                    sport_name = (prog.get("sportName") or "").lower()
                     if sport_name not in ("voetbal", "tennis"):
                         continue
-                    title = prog.get("title", "").strip()
+                    title = (prog.get("title") or "").strip()
+                    if not title:
+                        continue
                     league, matchup = extract_league_matchup(title)
                     if not league:
                         if sport_name == "tennis":
@@ -250,10 +241,8 @@ class ZiggoFetcher:
                     })
         return events
 
-# ---------- Deduplication (common) ----------
+# ---------- Deduplication ----------
 def deduplicate_events(events: List[Dict]) -> List[Dict]:
-    """Merge events that are same match within 30 minutes."""
-    # Group by date and normalized matchup
     groups = {}
     for ev in events:
         date = ev["Date"]
@@ -294,7 +283,6 @@ def deduplicate_events(events: List[Dict]) -> List[Dict]:
 async def main():
     print("🚀 Combined Now TV & Ziggo Sport Live Schedule Extractor")
 
-    # --- Now TV ---
     nowtv = NowTVFetcher()
     nowtv_channels = nowtv.fetch_channels()
     nowtv_events = []
@@ -306,23 +294,18 @@ async def main():
     else:
         print("⚠️ [NowTV] No channels, skipping.")
 
-    # --- Ziggo Sport ---
     ziggo = ZiggoFetcher()
     ziggo_events = ziggo.parse_events(days=7)
     print(f"🎯 [Ziggo] {len(ziggo_events)} raw events")
 
-    # Combine
     all_events = nowtv_events + ziggo_events
     print(f"📊 Combined raw events: {len(all_events)}")
 
-    # Deduplicate (same match same day within 30 min)
     all_events = deduplicate_events(all_events)
     print(f"✅ After dedup: {len(all_events)} events")
 
-    # Sort
     all_events.sort(key=lambda x: (x["Date"], x["Time"]))
 
-    # Clean output fields
     output = []
     for ev in all_events:
         output.append({
@@ -337,7 +320,6 @@ async def main():
         json.dump(output, f, ensure_ascii=False, indent=2)
     print(f"💾 File saved: nowtv_sports_schedule_en.json")
 
-    # Print first 5
     print("\n📋 Sample (first 5):")
     for ev in output[:5]:
         print(f"{ev['Date']} {ev['Time']} | {ev['League']} | {ev['Matchup']} | {', '.join(ev['Services'])}")
