@@ -8,7 +8,7 @@ import io
 from collections import defaultdict
 
 # ================================================
-# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ & TENNIS (5 NGUỒN) – FIX PSG
+# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ & TENNIS (5 NGUỒN) – FINAL COMPLETE
 # ================================================
 
 EPG_URL_STARHUB = "https://raw.githubusercontent.com/dbghelp/StarHub-TV-EPG/refs/heads/main/starhub.xml"
@@ -21,6 +21,7 @@ HOURS_BEFORE = 6
 HOURS_AFTER = 72
 MERGE_MINUTES = 30
 
+# ==================== DANH SÁCH GIẢI ĐẤU & ĐỘI BÓNG ====================
 ALLOWED_LEAGUES = {
     "Premier League", "Serie A", "La Liga", "Bundesliga", "Ligue 1",
     "UEFA Champions League", "UEFA Europa League", "UEFA Europa Conference League",
@@ -57,9 +58,19 @@ EUROPEAN_COUNTRIES = {
 AMERICAS_TEAMS = {"argentina", "brazil"}
 ASIA_TEAMS = {"japan", "south korea"}
 
-WOMEN_KEYWORDS = [...]
-YOUTH_KEYWORDS = [...]
+WOMEN_KEYWORDS = [
+    "women", "womens", "women's", "woman", "female", "frauen", "damen", "weiblich",
+    "donne", "femminile", "mujeres", "femenino", "femenina", "femmes", "féminin",
+    "féminine", "mulheres", "feminino", "vrouwen", "női", "kadın"
+]
+YOUTH_KEYWORDS = [
+    "youth", "junior", "academy", "reserves", "reserve", "ii", "b",
+    "zweite", "second team", "sub", "u-", "under", "jugend", "juniorer",
+    "giovanili", "primavera", "cantera", "filial", "jeunes", "espoirs",
+    "jong", "beloften"
+]
 
+# ==================== MAP CHUẨN HOÁ TÊN ĐỘI ====================
 TEAM_NORMALIZE_MAP = {
     "man. united": "manchester united", "man united": "manchester united",
     "man utd": "manchester united", "man. city": "manchester city",
@@ -86,6 +97,7 @@ for t in ALLOWED_TEAMS_PER_LEAGUE.values():
     if t is not None:
         ALL_KNOWN_TEAMS.update(t)
 
+# ==================== HÀM TIỆN ÍCH ====================
 def download(url):
     print(f"📥 {url.split('/')[-1]}")
     r = requests.get(url, timeout=30)
@@ -157,23 +169,24 @@ def get_league(title):
 
 def normalize_team_name(name):
     n = name.lower().strip()
-    for abbr, full in sorted(TEAM_NORMALIZE_MAP.items(), key=lambda x: len(x[0]), reverse=True):
+    sorted_map = sorted(TEAM_NORMALIZE_MAP.items(), key=lambda x: len(x[0]), reverse=True)
+    for abbr, full in sorted_map:
         if abbr == n:
             return full
     return n
 
+# ==================== TRÍCH XUẤT CẶP ĐẤU MỚI ====================
 def clean_matchup(title, league=None):
+    # Làm sạch
     c = re.sub(r'\((?:Direto|Live)\)', '', title, flags=re.I)
     c = re.sub(r'\bLive\b', '', c, flags=re.I)
     c = re.sub(r'\b(Md|Jornada|Etapa)\s*\d+\b', '', c, flags=re.I)
     c = re.sub(r'\d{4}-\d{2}', '', c)
-    # Xóa mô tả vòng đấu kiểu Bồ Đào Nha (1ª Mão da Meia-Final)
     c = re.sub(r'\b\d+ª\s*Mão\s*(da\s*)?(Meia-?Final)?\b', '', c, flags=re.I)
-    # Xóa từ khóa Meia-Final còn sót
-    c = re.sub(r'\bMeia-?Final\b', '', c, flags=re.I)
     c = re.sub(r'[-–:]\s*$', '', c)
     c = re.sub(r'\s+', ' ', c).strip()
 
+    # Tìm phần chứa cặp đấu (ưu tiên phần có ' x ' hoặc ' vs ')
     parts = [p.strip() for p in c.split(' - ')]
     candidate = None
     for p in parts:
@@ -181,11 +194,9 @@ def clean_matchup(title, league=None):
             candidate = p
             break
     if not candidate:
-        # lấy phần cuối cùng
         candidate = parts[-1] if parts else c
 
-    # debug được gọi từ ngoài
-    # thử tách
+    # Thử tách bằng ' vs ' hoặc ' x '
     for sep in [' vs ', ' x ']:
         if sep in candidate:
             left, right = candidate.split(sep, 1)
@@ -194,15 +205,17 @@ def clean_matchup(title, league=None):
             if left and right:
                 return normalize_team_name(left), normalize_team_name(right)
 
-    # dấu gạch ngang không khoảng trắng
-    for m in re.finditer(r'(\S)-(\S)', candidate):
+    # Nếu không, thử dấu gạch ngang không khoảng trắng (Torino-Inter)
+    # Chỉ áp dụng khi cả hai bên đều là từ đơn
+    for m in re.finditer(r'(\w+)-(\w+)', candidate):
         left = m.group(1)
         right = m.group(2)
-        if ' ' not in left and ' ' not in right:
-            ln = normalize_team_name(left)
-            rn = normalize_team_name(right)
-            if ln in ALL_KNOWN_TEAMS or rn in ALL_KNOWN_TEAMS:
-                return ln, rn
+        ln = normalize_team_name(left)
+        rn = normalize_team_name(right)
+        if ln in ALL_KNOWN_TEAMS or rn in ALL_KNOWN_TEAMS:
+            return ln, rn
+        if league and ALLOWED_TEAMS_PER_LEAGUE.get(league) is None:
+            return ln, rn
     return None
 
 def is_team_allowed(team_norm, league):
@@ -210,6 +223,7 @@ def is_team_allowed(team_norm, league):
         return True
     return team_norm in ALLOWED_TEAMS_PER_LEAGUE[league]
 
+# ==================== ĐỊNH DẠNG KÊNH ====================
 def fmt_starhub(name):
     return f"{name} Malaysia" if re.search(r'bein\s*sports', name, re.I) else name
 
@@ -231,6 +245,7 @@ def fmt_ro(cid):
     n = cid.replace('.ro','').replace('.',' ').title()
     return f"{n} Romania"
 
+# ==================== PARSE TỪNG NGUỒN ====================
 def parse_time(s):
     try:
         return datetime.strptime(s, "%Y%m%d%H%M%S %z")
@@ -255,60 +270,32 @@ def output(groups):
     return out
 
 # StarHub parser (giữ nguyên)
-def parse_epgshare(xml, src):
+def parse_starhub(xml, ch):
     root = ET.fromstring(xml)
     groups = defaultdict(list)
     now = datetime.now(timezone.utc)
-    is_pt = src == 'PT1'
     for p in root.findall("programme"):
         cid = p.get("channel")
         start = p.get("start")
         tel = p.find("title")
         if tel is None or not start: continue
         title = (tel.text or "").strip()
-        if is_pt and not is_live_pt(title): continue
-        if not is_pt and not is_live_ro(title): continue
-
-        # DEBUG: in mọi title có "psg"
-        if "psg" in title.lower():
-            print(f"DEBUG FOUND PSG TITLE: {title}")
-
-        lg, _ = get_league(title)
-        if lg and lg in ALLOWED_LEAGUES:
-            if is_women_youth(title):
-                if "psg" in title.lower(): print("DEBUG: blocked by women/youth")
-                continue
-
-            if lg in {"UEFA Euro", "International Friendlies"}:
-                if not is_valid_special(title, lg):
-                    continue
-                mt = re.sub(r'\((?:Direto|Live)\)', '', title, flags=re.I).strip()
-            else:
-                pair = clean_matchup(title, lg)
-                if pair is None:
-                    if "psg" in title.lower(): print("DEBUG: clean_matchup returned None")
-                    print(f"⚠ Bỏ qua (không tách được cặp đấu): {title}")
-                    continue
-                left_norm, right_norm = pair
-                if "psg" in title.lower(): print(f"DEBUG PAIR: {left_norm} vs {right_norm}")
-
-                if ALLOWED_TEAMS_PER_LEAGUE.get(lg) is not None:
-                    if not (is_team_allowed(left_norm, lg) or is_team_allowed(right_norm, lg)):
-                        print(f"⚠ Bỏ qua (không có đội được phép): {title} → {left_norm} vs {right_norm}")
-                        continue
-
-                mt = f"{left_norm.title()} vs {right_norm.title()}"
-                print(f"✅ Nhận bóng đá: {mt} ({lg}) từ {fmt_pt(cid) if is_pt else fmt_ro(cid)}")
-        elif is_tennis(title):
+        des = (p.find("desc").text or "").strip() if p.find("desc") is not None else ""
+        lg = mt = None
+        if is_fa_cup(title) and has_live_starhub(title, des) and has_any_pl_team(title+" "+des):
+            lg = "FA Cup"
+            mt = clean_football_starhub(title)
+        elif is_pl(title, des):
+            lg = "Premier League"
+            mt = clean_football_starhub(title)
+        elif is_tennis(title) and has_live_starhub(title, des):
             lg, mt = parse_tennis(title)
-            if not lg: continue
         else:
             continue
-
         dt = parse_time(start)
         if not in_window(dt, now): continue
         dt_vn = dt + timedelta(hours=7)
-        cn = fmt_pt(cid) if is_pt else fmt_ro(cid)
+        cn = fmt_starhub(ch.get(cid, f"Ch {cid}"))
         groups[(dt_vn, mt.lower())].append({"channel": cn, "league": lg, "matchup": mt})
     return output(groups)
 
@@ -358,6 +345,7 @@ def parse_channels_starhub(xml):
     root = ET.fromstring(xml)
     return {c.get("id"): c.findtext("display-name","").strip() for c in root.findall("channel") if c.get("id")}
 
+# nt74
 def parse_nt74(xml):
     root = ET.fromstring(xml)
     groups = defaultdict(list)
@@ -378,6 +366,7 @@ def parse_nt74(xml):
         groups[(dt_vn, mt.lower())].append({"channel": cn, "league": lg, "matchup": mt})
     return output(groups)
 
+# xvb
 def parse_xvb(xml):
     root = ET.fromstring(xml)
     groups = defaultdict(list)
@@ -398,6 +387,7 @@ def parse_xvb(xml):
         groups[(dt_vn, mt.lower())].append({"channel": cn, "league": lg, "matchup": mt})
     return output(groups)
 
+# PT1 / RO1
 def parse_epgshare(xml, src):
     root = ET.fromstring(xml)
     groups = defaultdict(list)
@@ -417,10 +407,7 @@ def parse_epgshare(xml, src):
             if is_women_youth(title):
                 continue
 
-            # Debug cho PSG
-            if is_pt and "psg" in title.lower() and "champions" in title.lower():
-                print(f"DEBUG TITLE: {title}")
-
+            # Với giải đặc biệt
             if lg in {"UEFA Euro", "International Friendlies"}:
                 if not is_valid_special(title, lg):
                     continue
@@ -428,13 +415,9 @@ def parse_epgshare(xml, src):
             else:
                 pair = clean_matchup(title, lg)
                 if pair is None:
-                    if "psg" in title.lower() and "champions" in title.lower():
-                        print("DEBUG clean_matchup returned None")
                     print(f"⚠ Bỏ qua (không tách được cặp đấu): {title}")
                     continue
                 left_norm, right_norm = pair
-                if "psg" in title.lower() and "champions" in title.lower():
-                    print(f"DEBUG PAIR: {left_norm} vs {right_norm}")
 
                 if ALLOWED_TEAMS_PER_LEAGUE.get(lg) is not None:
                     if not (is_team_allowed(left_norm, lg) or is_team_allowed(right_norm, lg)):
@@ -464,6 +447,7 @@ def is_valid_special(title, league):
         return len([c for c in allowed if c in title.lower()]) >= 2
     return True
 
+# Gộp kênh
 def merge_all(*match_lists):
     merged = defaultdict(list)
     for lst in match_lists:
@@ -499,6 +483,7 @@ def merge_all(*match_lists):
 
 def main():
     try:
+        # StarHub
         xml_s = download(EPG_URL_STARHUB)
         ch_s = parse_channels_starhub(xml_s)
         m_s = parse_starhub(xml_s, ch_s)
