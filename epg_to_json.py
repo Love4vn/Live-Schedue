@@ -8,7 +8,7 @@ import io
 from collections import defaultdict
 
 # ================================================
-# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ & TENNIS (5 NGUỒN) – FINAL FIX 10
+# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ & TENNIS (5 NGUỒN) – FINAL FIX 12
 # ================================================
 
 EPG_URL_STARHUB = "https://raw.githubusercontent.com/dbghelp/StarHub-TV-EPG/refs/heads/main/starhub.xml"
@@ -21,10 +21,12 @@ HOURS_BEFORE = 6
 HOURS_AFTER = 72
 MERGE_MINUTES = 30
 
+# ==================== DANH SÁCH GIẢI ĐẤU & ĐỘI BÓNG ====================
 ALLOWED_LEAGUES = {
     "Premier League", "Serie A", "La Liga", "Bundesliga", "Ligue 1",
     "UEFA Champions League", "UEFA Europa League", "UEFA Europa Conference League",
-    "UEFA Euro", "FIFA World Cup", "International Friendlies", "FA Cup", "Carabao Cup"
+    "UEFA Euro", "FIFA World Cup", "International Friendlies", "FA Cup", "Carabao Cup",
+    "Champions League", "Europa League", "Europa Conference League"
 }
 
 PREMIER_LEAGUE_TEAMS = {
@@ -42,6 +44,9 @@ ALLOWED_TEAMS_PER_LEAGUE = {
     "Ligue 1": {"paris saint-germain", "marseille", "olympique marseille"},
     "FA Cup": PREMIER_LEAGUE_TEAMS,
     "Carabao Cup": PREMIER_LEAGUE_TEAMS,
+    "Champions League": None,
+    "Europa League": None,
+    "Europa Conference League": None,
 }
 
 EUROPEAN_COUNTRIES = {
@@ -57,18 +62,28 @@ EUROPEAN_COUNTRIES = {
 AMERICAS_TEAMS = {"argentina", "brazil"}
 ASIA_TEAMS = {"japan", "south korea"}
 
+# ==================== TỪ KHÓA LOẠI TRỪ ====================
 WOMEN_KEYWORDS = [
-    "women", "womens", "women's", "woman", "female", "frauen", "damen", "weiblich",
-    "donne", "femminile", "mujeres", "femenino", "femenina", "femmes", "féminin",
-    "féminine", "mulheres", "feminino", "vrouwen", "női", "kadın"
-]
-YOUTH_KEYWORDS = [
-    "youth", "junior", "academy", "reserves", "reserve", "ii", "b",
-    "zweite", "second team", "sub", "u-", "under", "jugend", "juniorer",
-    "giovanili", "primavera", "cantera", "filial", "jeunes", "espoirs",
-    "jong", "beloften"
+    "women", "womens", "women's", "woman", "female",
+    "frauen", "damen", "weiblich",
+    "donne", "femminile",
+    "mujeres", "femenino", "femenina",
+    "femmes", "féminin", "féminine",
+    "mulheres", "feminino",
+    "vrouwen", "női", "kadın",
 ]
 
+YOUTH_KEYWORDS = [
+    "youth", "junior", "academy", "reserves", "reserve", "ii", "b",
+    "zweite", "second team", "sub", "u-", "under",
+    "jugend", "juniorer",
+    "giovanili", "primavera",
+    "cantera", "filial",
+    "jeunes", "espoirs",
+    "jong", "beloften",
+]
+
+# ==================== MAP CHUẨN HOÁ TÊN ĐỘI ====================
 TEAM_NORMALIZE_MAP = {
     "man. united": "manchester united", "man united": "manchester united",
     "man utd": "manchester united", "man. city": "manchester city",
@@ -82,6 +97,7 @@ TEAM_NORMALIZE_MAP = {
     "atlético": "atletico madrid", "atletico": "atletico madrid",
     "bayern": "bayern munich", "b. munique": "bayern munich",
     "b. münchen": "bayern munich", "b. munich": "bayern munich",
+    "bayern munchen": "bayern munich",
     "borussia dortmund": "borussia dortmund", "dortmund": "borussia dortmund",
     "b. dortmund": "borussia dortmund",
     "bayer leverkusen": "bayer leverkusen", "leverkusen": "bayer leverkusen",
@@ -124,8 +140,15 @@ def is_live_ro(title):
     return bool(re.search(r'\bLive\b', title))
 
 def is_women_youth(title):
+    """Kiểm tra title có chứa từ khóa nữ/trẻ hay không, sử dụng word boundary để tránh nhầm chữ 'b' trong tên đội."""
     t = title.lower()
-    return any(k in t for k in WOMEN_KEYWORDS) or any(k in t for k in YOUTH_KEYWORDS)
+    for kw in WOMEN_KEYWORDS:
+        if re.search(r'\b' + re.escape(kw) + r'\b', t):
+            return True
+    for kw in YOUTH_KEYWORDS:
+        if re.search(r'\b' + re.escape(kw) + r'\b', t):
+            return True
+    return False
 
 def is_tennis(title):
     t = title.lower()
@@ -150,9 +173,12 @@ def parse_tennis(title):
 def get_league(title):
     t = title.lower()
     patterns = [
-        (r'uefa\s+europa\s+conference\s+league', 'UEFA Europa Conference League'),
-        (r'uefa\s+europa\s+league', 'UEFA Europa League'),
-        (r'uefa\s+champions\s+league', 'UEFA Champions League'),
+        (r'uefa\s+europa\s+conference\s+league', 'Europa Conference League'),
+        (r'uefa\s+europa\s+league', 'Europa League'),
+        (r'uefa\s+champions\s+league', 'Champions League'),
+        (r'\bchampions\s+league\b', 'Champions League'),
+        (r'\beuropa\s+league\b', 'Europa League'),
+        (r'\beuropa\s+conference\s+league\b', 'Europa Conference League'),
         (r'premier\s+league', 'Premier League'),
         (r'serie\s+a\b', 'Serie A'), (r'la\s+liga', 'La Liga'),
         (r'bundesliga', 'Bundesliga'), (r'ligue\s+1', 'Ligue 1'),
@@ -180,20 +206,20 @@ def clean_matchup(title, league=None):
     c = re.sub(r'\b(Md|Jornada|Etapa)\s*\d+\b', '', c, flags=re.I)
     c = re.sub(r'\d{4}-\d{2}', '', c)
     c = re.sub(r'\b\d+ª\s*Mão\s*(da\s*)?\w+-?\w*\b', '', c, flags=re.I)
-    c = re.sub(r'\b(Meia-?Final|Quartos?-?de-?Final|Oitavos?-?de-?Final|Antevisão|Rescaldo)\b', '', c, flags=re.I)
+    c = re.sub(r'\b(Meia-?Final|Quartos?-?de-?Final|Oitavos?-?de-?Final|Antevisão|Rescaldo|Semifinale?|Sferturi)\b', '', c, flags=re.I)
     c = re.sub(r'[-–:]\s*$', '', c)
     c = re.sub(r'\s+', ' ', c).strip()
 
     parts = [p.strip() for p in c.split(' - ')]
     candidate = None
     for p in parts:
-        if re.search(r'\s+x\s+|\s+vs\s+', p):
+        if re.search(r'\s+x\s+|\s+vs\s+|\s+-\s+', p):
             candidate = p
             break
     if not candidate:
         candidate = parts[-1] if parts else c
 
-    for sep in [' vs ', ' x ']:
+    for sep in [' vs ', ' x ', ' - ']:
         if sep in candidate:
             left, right = candidate.split(sep, 1)
             left = re.sub(r'\s*[-–]\s*.*$', '', left).strip()
@@ -201,6 +227,7 @@ def clean_matchup(title, league=None):
             if left and right:
                 return normalize_team_name(left), normalize_team_name(right)
 
+    # Fallback: dấu gạch ngang không khoảng trắng
     for m in re.finditer(r'(\w+)-(\w+)', candidate):
         left = m.group(1)
         right = m.group(2)
@@ -393,22 +420,12 @@ def parse_epgshare(xml, src):
         tel = p.find("title")
         if tel is None or not start: continue
         title = (tel.text or "").strip()
-
-        # DEBUG PSG
-        if "psg" in title.lower() and "champions" in title.lower():
-            print(f"DEBUG PSG: TITLE = {title}")
-
-        if is_pt and not is_live_pt(title):
-            if "psg" in title.lower(): print("DEBUG PSG: bỏ qua vì không live")
-            continue
-        if not is_pt and not is_live_ro(title):
-            continue
+        if is_pt and not is_live_pt(title): continue
+        if not is_pt and not is_live_ro(title): continue
 
         lg, _ = get_league(title)
-        if "psg" in title.lower(): print(f"DEBUG PSG: lg = {lg}")
         if lg and lg in ALLOWED_LEAGUES:
             if is_women_youth(title):
-                if "psg" in title.lower(): print("DEBUG PSG: blocked by women/youth")
                 continue
 
             if lg in {"UEFA Euro", "International Friendlies"}:
@@ -417,7 +434,6 @@ def parse_epgshare(xml, src):
                 mt = re.sub(r'\((?:Direto|Live)\)', '', title, flags=re.I).strip()
             else:
                 pair = clean_matchup(title, lg)
-                if "psg" in title.lower(): print(f"DEBUG PSG: pair = {pair}")
                 if pair is None:
                     print(f"⚠ Bỏ qua (không tách được cặp đấu): {title}")
                     continue
@@ -429,7 +445,6 @@ def parse_epgshare(xml, src):
                         continue
 
                 mt = f"{left_norm.title()} vs {right_norm.title()}"
-                if "psg" in title.lower(): print(f"DEBUG PSG: final mt = {mt}")
                 print(f"✅ Nhận bóng đá: {mt} ({lg}) từ {fmt_pt(cid) if is_pt else fmt_ro(cid)}")
         elif is_tennis(title):
             lg, mt = parse_tennis(title)
