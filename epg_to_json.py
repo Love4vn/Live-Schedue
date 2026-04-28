@@ -66,7 +66,8 @@ YOUTH_KEYWORDS = [
     "youth", "junior", "academy", "reserves", "reserve", "ii",
     "zweite", "second team", "sub", "u-", "under", "jugend", "juniorer",
     "giovanili", "primavera", "cantera", "filial", "jeunes", "espoirs",
-    "jong", "beloften"
+    "jong", "beloften",
+    "estúdios - antevisão", "estúdios - rescaldo"
 ]
 
 TEAM_NORMALIZE_MAP = {
@@ -88,6 +89,9 @@ TEAM_NORMALIZE_MAP = {
     "b. leverkusen": "bayer leverkusen",
     "psg": "paris saint-germain", "paris sg": "paris saint-germain",
     "marseille": "olympique marseille", "om": "olympique marseille",
+    # Thêm các tên viết tắt từ Bồ Đào Nha
+    "scp": "sporting cp", "sc braga": "braga", "friburgo": "freiburg",
+    "aalborg": "aalborg",
 }
 
 ALL_KNOWN_TEAMS = set()
