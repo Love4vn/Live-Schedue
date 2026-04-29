@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-29 10:51 VN",
+  "updated": "2026-04-29 15:29 VN",
   "days": {
     "20260429": {
       "date": "Wednesday, 29/04",
@@ -20,6 +20,7 @@
                 "beIN Sports MENA 1 HD",
                 "beIN Sports MENA English 1 HD",
                 "beIN Sports MENA French 1 HD",
+                "bTV Action HD",
                 "Canal+ Extra 1 Polska HD",
                 "Canal+ France HD",
                 "Canal+ Live 1 France HD",
@@ -32,6 +33,7 @@
                 "Digi 4K UHD",
                 "Digi Sport 1 Romania HD",
                 "Fast Sports TV Armenia",
+                "Futbol TV Tajikistan",
                 "Go3 Extra Sport Baltics",
                 "HBO Max",
                 "HRT 2 Hrvatska HD",
@@ -50,6 +52,7 @@
                 "Premier Sports 2 Mongolia HD",
                 "Prima Sport RO 1 HD",
                 "Prime Video Italia",
+                "Prime Video Sportsbar IT HD",
                 "QazSport HD",
                 "RSI La 2 Svizzera HD",
                 "RTK 1 Kosovo HD",
@@ -84,6 +87,7 @@
                 "TVP 1 Polska HD",
                 "V Sport Premium HD",
                 "V Sport Ultra 4K UHD",
+                "Varzish TV Sport HD",
                 "ViaPlay Sport Sverige HD",
                 "Vizion Plus HD",
                 "VTM 2 Belgium HD",
@@ -485,6 +489,21 @@
               "country": "Hubsport",
               "channels": [
                 "Sport Klub 2 Hrvatska"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: ATP Madrid Semifinala",
+          "kick_utc": 1777496400,
+          "time": "30/04 04:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania"
               ]
             }
           ],
