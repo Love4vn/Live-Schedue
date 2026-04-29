@@ -1,8 +1,8 @@
 {
-  "updated": "2026-04-29 05:06 VN",
+  "updated": "2026-04-29 10:51 VN",
   "days": {
-    "20260428": {
-      "date": "Tuesday, 28/04",
+    "20260429": {
+      "date": "Wednesday, 29/04",
       "games": [
         {
           "league": "UEFA Champions League",
@@ -187,8 +187,8 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "RDS 2",
-                "TSN3"
+                "TSN3",
+                "RDS 2"
               ]
             }
           ],
@@ -203,8 +203,8 @@
             {
               "country": "Wheresthematch",
               "channels": [
-                "Sky Sports Main Event",
                 "Sky Sports Tennis",
+                "Sky Sports Main Event",
                 "Sky Sports Ultra HDR",
                 "Sky Sports+"
               ]
@@ -245,128 +245,6 @@
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA de Madrid",
-          "kick_utc": 1777410000,
-          "time": "29/04 04:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 4 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: WTA Madrid Sferturi",
-          "kick_utc": 1777410000,
-          "time": "29/04 04:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: WTA Madrid Sferturi",
-          "kick_utc": 1777471200,
-          "time": "29/04 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: WTA Madrid Sferturi",
-          "kick_utc": 1777496400,
-          "time": "30/04 04:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: ATP Madrid",
-          "kick_utc": 1777413600,
-          "time": "29/04 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: ATP Madrid",
-          "kick_utc": 1777420800,
-          "time": "29/04 07:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: ATP Madrid Sferturi",
-          "kick_utc": 1777417200,
-          "time": "29/04 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: ATP Madrid Sferturi",
-          "kick_utc": 1777482000,
-          "time": "30/04 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -460,6 +338,37 @@
         },
         {
           "league": "Tennis",
+          "match": "Tenis: WTA Madrid Sferturi",
+          "kick_utc": 1777471200,
+          "time": "29/04 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: WTA Madrid Sferturi",
+          "kick_utc": 1777496400,
+          "time": "30/04 04:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Masters 1000 de Madrid",
           "kick_utc": 1777478400,
           "time": "29/04 11:00 PM",
@@ -485,6 +394,37 @@
               "channels": [
                 "Eurosport 1 France",
                 "Voosport World1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: ATP Madrid Sferturi",
+          "kick_utc": 1777482000,
+          "time": "30/04 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: ATP Madrid Sferturi",
+          "kick_utc": 1777503600,
+          "time": "30/04 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Romania"
               ]
             }
           ],
