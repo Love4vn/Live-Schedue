@@ -1,8 +1,8 @@
 {
-  "updated": "2026-04-30 05:07 VN",
+  "updated": "2026-04-30 10:52 VN",
   "days": {
-    "20260429": {
-      "date": "Wednesday, 29/04",
+    "20260430": {
+      "date": "Thursday, 30/04",
       "games": [
         {
           "league": "UEFA Europa League",
@@ -98,20 +98,20 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "RTL+ Deutschland",
-                "TSN Malta 4 HD",
-                "Premier Sports 2 Ireland HD",
-                "Premier Sports 3 Mongolia HD",
                 "Fast Sports 2 Armenia",
-                "Canal+ Sport France",
-                "ViX",
-                "beIN Sports MENA 4 HD",
-                "TNT Sports 2 Great Britain",
-                "TNT Sports 2 HD",
-                "M+ Liga de Campeones 5 Spain",
                 "Paramount+ (US)",
-                "TRT 1 Türkiye HD",
-                "DAZN Canada",
+                "beIN Sports MENA 4 HD",
                 "HBO Max",
+                "TSN Malta 4 HD",
+                "Canal+ Sport France",
+                "M+ Liga de Campeones 5 Spain",
+                "TNT Sports 2 Great Britain",
+                "ViX",
+                "DAZN Canada",
+                "Premier Sports 2 Ireland HD",
+                "TRT 1 Türkiye HD",
+                "Premier Sports 3 Mongolia HD",
+                "TNT Sports 2 HD",
                 "Megogo Futbol 1"
               ]
             },
@@ -133,23 +133,23 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Movistar Plus+ HD",
-                "RTL+ Deutschland",
-                "TNT Sports 5 HD",
-                "Paramount+ (US)",
-                "ViX",
-                "TSN Malta 5 HD",
-                "Canal+ Live 1 France HD",
                 "Orange Fútbol 1 HD",
-                "Megogo Sport Ukraine HD",
-                "M+ Liga de Campeones HD",
-                "DAZN Canada",
-                "Premier Sports 4 Mongolia HD",
+                "RTL+ Deutschland",
+                "Canal+ Live 1 France HD",
                 "Canal+ France",
-                "M+ Liga de Campeones Spain",
+                "Paramount+ (US)",
+                "Movistar Plus+ HD",
                 "HBO Max",
-                "TNT Sports 5 Great Britain",
-                "beIN Sports MENA 3 HD"
+                "TSN Malta 5 HD",
+                "Premier Sports 4 Mongolia HD",
+                "ViX",
+                "DAZN Canada",
+                "M+ Liga de Campeones Spain",
+                "M+ Liga de Campeones HD",
+                "TNT Sports 5 HD",
+                "Megogo Sport Ukraine HD",
+                "beIN Sports MENA 3 HD",
+                "TNT Sports 5 Great Britain"
               ]
             },
             {
@@ -309,24 +309,6 @@
         {
           "league": "Tennis",
           "match": "Mutua Madrid Open",
-          "kick_utc": 1777494600,
-          "time": "30/04 03:30 AM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Tennis",
-                "Sky Sports Main Event",
-                "Sky Sports Ultra HDR",
-                "Sky Sports+"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Mutua Madrid Open",
           "kick_utc": 1777546800,
           "time": "30/04 06:00 PM",
           "tv_channels": [
@@ -341,22 +323,6 @@
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1777546800,
-          "time": "30/04 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
-              ]
-            }
-          ],
-          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -405,114 +371,6 @@
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: ATP Madrid Semifinala",
-          "kick_utc": 1777496400,
-          "time": "30/04 04:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: WTA Madrid Sferturi",
-          "kick_utc": 1777496400,
-          "time": "30/04 04:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Madrid",
-          "kick_utc": 1777498200,
-          "time": "30/04 04:30 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 France",
-                "Voosport World1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Madrid",
-          "kick_utc": 1777554000,
-          "time": "30/04 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 France",
-                "Voosport World1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Madrid",
-          "kick_utc": 1777579200,
-          "time": "01/05 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: ATP Madrid Sferturi",
-          "kick_utc": 1777503600,
-          "time": "30/04 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: ATP Madrid Sferturi",
-          "kick_utc": 1777557600,
-          "time": "30/04 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -576,6 +434,37 @@
         },
         {
           "league": "Tennis",
+          "match": "Masters 1000 de Madrid",
+          "kick_utc": 1777554000,
+          "time": "30/04 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 France",
+                "Voosport World1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Masters 1000 de Madrid",
+          "kick_utc": 1777579200,
+          "time": "01/05 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "WTA Tour 2026 Mutua Madrid Open (1000) SF 1",
           "kick_utc": 1777557600,
           "time": "30/04 09:00 PM",
@@ -599,6 +488,22 @@
               "country": "Hubsport",
               "channels": [
                 "Sport Klub 2 Hrvatska"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: ATP Madrid Sferturi",
+          "kick_utc": 1777557600,
+          "time": "30/04 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
               ]
             }
           ],
