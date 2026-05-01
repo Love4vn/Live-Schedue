@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-01 17:39 VN",
+  "updated": "2026-05-01 20:45 VN",
   "days": {
     "20260501": {
       "date": "Friday, 01/05",
@@ -21,6 +21,21 @@
           "source": "livesportsontv"
         },
         {
+          "league": "Ligue 1",
+          "match": "Nantes vs Marseille",
+          "kick_utc": 1777726800,
+          "time": "02/05 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Ligue 1+"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
           "league": "Premier League",
           "match": "Leeds United vs Burnley",
           "kick_utc": 1777662000,
@@ -29,49 +44,75 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Sky Sports Premier League HD",
-                "Stan Sport Australia",
-                "Sky Sport Premier League Germany",
-                "Monomax Streaming",
-                "ViaPlay Suomi HD",
-                "DAZN Canada",
-                "Sky Go UK",
-                "Play Sports 1 Belgium",
-                "Go3 Extra Sport Baltics",
-                "DAZN España",
-                "NBC Universo",
                 "beIN Sports MENA 1 HD",
-                "USA Network",
                 "Sky Sports Main Event UHD",
-                "VOYO Pro TV Romania",
-                "Canal+ Foot France",
-                "Sky Sports Main Event HD",
-                "beIN Sports Türkiye 3 HD",
-                "ViaPlay Sverige HD",
+                "Play Sports 1 Belgium",
+                "Sky Sports Premier League HD",
+                "ViaPlay Suomi HD",
                 "beIN Sports MENA English 1 HD",
-                "ViaPlay Nederland HD",
-                "ViaPlay Norge HD",
-                "beIN Connect Türkiye",
-                "FuboTV Canada",
+                "VOYO Pro TV Romania",
+                "V Sport Premium Sweden",
+                "Go3 Extra Sport Baltics",
                 "beIN Connect MENA",
-                "Fast Sports",
-                "Sky UK Ultra HD 1",
-                "USA Network United States",
+                "ViaPlay Nederland HD",
                 "ViaPlay Danmark HD",
-                "V Sport Premium Sweden"
-              ]
-            },
-            {
-              "country": "Ausport",
-              "channels": [
-                "Stan Sport"
+                "DAZN España",
+                "Sky UK Ultra HD 1",
+                "Monomax Streaming",
+                "Sky Sports Main Event HD",
+                "Sky Go UK",
+                "USA Network United States",
+                "Sky Sport Premier League Germany",
+                "FuboTV Canada",
+                "Fast Sports",
+                "ViaPlay Norge HD",
+                "NBC Universo",
+                "beIN Connect Türkiye",
+                "USA Network",
+                "ViaPlay Sverige HD",
+                "DAZN Canada",
+                "beIN Sports Türkiye 3 HD",
+                "Stan Sport Australia",
+                "Canal+ Foot France"
               ]
             },
             {
               "country": "NowTV",
               "channels": [
-                "Now Sports Premier League 1",
-                "Now Sports Premier League TV"
+                "Now Sports Premier League TV",
+                "Now Sports Premier League 1"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Premier League",
+          "match": "Aston Villa vs Tottenham Hotspur",
+          "kick_utc": 1777721400,
+          "time": "02/05 06:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "beIN Connect MENA",
+                "beIN Connect Türkiye",
+                "beIN Sports Türkiye 5 HD",
+                "DAZN España",
+                "Fast Sports",
+                "FuboTV Canada",
+                "Go3 Extra Sport Baltics",
+                "HBO Max",
+                "Monomax Streaming",
+                "Play Sports 1 Belgium",
+                "Stan Sport Australia",
+                "TNT Sports 1 HD",
+                "TNT Sports Digital Exclusive",
+                "TNT Sports Ultimate UHD",
+                "ViaPlay Nederland HD",
+                "ViaPlay Norge HD",
+                "ViaPlay Suomi HD",
+                "VOYO Pro TV Romania"
               ]
             }
           ],
@@ -96,9 +137,9 @@
         },
         {
           "league": "Premier League",
-          "match": "WELCOME TO THE WEEKEND - FRI 01 MAY",
-          "kick_utc": 1777633200,
-          "time": "01/05 06:00 PM",
+          "match": "PREMIER LEAGUE LIVE",
+          "kick_utc": 1777726800,
+          "time": "02/05 08:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -108,23 +149,6 @@
             }
           ],
           "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Madrid Open",
-          "kick_utc": 1777635000,
-          "time": "01/05 06:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "T2",
-                "TSN+"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
@@ -162,22 +186,6 @@
         {
           "league": "Tennis",
           "match": "Mutua Madrid Open",
-          "kick_utc": 1777635000,
-          "time": "01/05 06:30 PM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Tennis",
-                "Sky Sports+"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Mutua Madrid Open",
           "kick_utc": 1777644000,
           "time": "01/05 09:00 PM",
           "tv_channels": [
@@ -194,65 +202,19 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1777644000,
-          "time": "01/05 09:00 PM",
+          "match": "Mutua Madrid Open",
+          "kick_utc": 1777723200,
+          "time": "02/05 07:00 PM",
           "tv_channels": [
             {
-              "country": "Ausport",
+              "country": "Wheresthematch",
               "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
+                "Sky Sports Tennis",
+                "Sky Sports+"
               ]
             }
           ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1777658400,
-          "time": "02/05 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Jannik Sinner vs Arthur Fils",
-          "kick_utc": 1777644000,
-          "time": "01/05 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "(Parovi) 1/2 Finale A",
-          "kick_utc": 1777635000,
-          "time": "01/05 06:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Klub 2 Hrvatska"
-              ]
-            }
-          ],
-          "source": "hubsport"
+          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
@@ -445,6 +407,36 @@
               "country": "Hubsport",
               "channels": [
                 "Sport Klub 2 Hrvatska"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Championnats du monde par équipes",
+          "kick_utc": 1777719600,
+          "time": "02/05 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Judo Grand Slam 2026 - Dushanbe - Dia 2",
+          "kick_utc": 1777723200,
+          "time": "02/05 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
               ]
             }
           ],
