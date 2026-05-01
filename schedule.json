@@ -1,8 +1,8 @@
 {
-  "updated": "2026-05-01 05:02 VN",
+  "updated": "2026-05-01 11:03 VN",
   "days": {
-    "20260430": {
-      "date": "Thursday, 30/04",
+    "20260501": {
+      "date": "Friday, 01/05",
       "games": [
         {
           "league": "Ligue 1",
@@ -29,35 +29,35 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Sky Sport Premier League Germany",
-                "ViaPlay Sverige HD",
-                "beIN Sports Türkiye 3 HD",
-                "beIN Sports MENA English 1 HD",
-                "beIN Sports MENA 1 HD",
-                "DAZN Canada",
-                "Stan Sport Australia",
-                "Play Sports 1 Belgium",
-                "Sky Sports Main Event UHD",
-                "Fast Sports",
-                "Sky Sports Main Event HD",
-                "ViaPlay Norge HD",
-                "Sky Go UK",
-                "Sky Sports Premier League HD",
-                "Canal+ Foot France",
-                "V Sport Premium Sweden",
-                "USA Network",
-                "NBC Universo",
-                "ViaPlay Suomi HD",
-                "ViaPlay Nederland HD",
-                "ViaPlay Danmark HD",
-                "USA Network United States",
                 "FuboTV Canada",
+                "VOYO Pro TV Romania",
+                "Stan Sport Australia",
+                "ViaPlay Norge HD",
+                "ViaPlay Suomi HD",
+                "beIN Sports Türkiye 3 HD",
                 "Monomax Streaming",
                 "beIN Connect MENA",
-                "VOYO Pro TV Romania",
-                "Sky UK Ultra HD 1",
                 "beIN Connect Türkiye",
+                "ViaPlay Sverige HD",
+                "ViaPlay Danmark HD",
                 "DAZN España",
-                "Go3 Extra Sport Baltics"
+                "USA Network",
+                "Go3 Extra Sport Baltics",
+                "DAZN Canada",
+                "V Sport Premium Sweden",
+                "Sky Sports Main Event UHD",
+                "Canal+ Foot France",
+                "Sky Go UK",
+                "beIN Sports MENA English 1 HD",
+                "NBC Universo",
+                "beIN Sports MENA 1 HD",
+                "Fast Sports",
+                "ViaPlay Nederland HD",
+                "Play Sports 1 Belgium",
+                "Sky Sports Premier League HD",
+                "Sky UK Ultra HD 1",
+                "Sky Sports Main Event HD",
+                "USA Network United States"
               ]
             },
             {
@@ -196,28 +196,13 @@
             {
               "country": "Wheresthematch",
               "channels": [
-                "Sky Sports Main Event",
                 "Sky Sports Tennis",
+                "Sky Sports Main Event",
                 "Sky Sports Ultra HDR"
               ]
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Jannik Sinner vs Arthur Fils",
-          "kick_utc": 1777633200,
-          "time": "01/05 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -253,49 +238,18 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis: ATP Madrid Semifinala",
-          "kick_utc": 1777582800,
-          "time": "01/05 04:00 AM",
+          "match": "Jannik Sinner vs Arthur Fils",
+          "kick_utc": 1777644000,
+          "time": "01/05 09:00 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "Digi Sport 2 Hd Romania"
+                "beIN Sports Connect"
               ]
             }
           ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: ATP Madrid Semifinala",
-          "kick_utc": 1777654800,
-          "time": "02/05 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: ATP Madrid Semifinala",
-          "kick_utc": 1777669200,
-          "time": "02/05 04:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -429,6 +383,37 @@
               "channels": [
                 "Eurosport 1 France",
                 "Voosport World1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: ATP Madrid Semifinala",
+          "kick_utc": 1777654800,
+          "time": "02/05 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: ATP Madrid Semifinala",
+          "kick_utc": 1777669200,
+          "time": "02/05 04:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Romania"
               ]
             }
           ],
