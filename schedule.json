@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-01 15:22 VN",
+  "updated": "2026-05-01 17:39 VN",
   "days": {
     "20260501": {
       "date": "Friday, 01/05",
@@ -29,36 +29,36 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Sky UK Ultra HD 1",
-                "Sky Sport Premier League Germany",
-                "beIN Sports MENA 1 HD",
-                "Go3 Extra Sport Baltics",
-                "USA Network United States",
-                "Sky Sports Main Event HD",
-                "beIN Connect MENA",
-                "ViaPlay Suomi HD",
-                "beIN Connect Türkiye",
-                "DAZN Canada",
-                "Play Sports 1 Belgium",
-                "DAZN España",
-                "USA Network",
-                "beIN Sports Türkiye 3 HD",
-                "Sky Sports Main Event UHD",
-                "ViaPlay Danmark HD",
-                "ViaPlay Norge HD",
-                "V Sport Premium Sweden",
-                "NBC Universo",
-                "beIN Sports MENA English 1 HD",
-                "Fast Sports",
-                "ViaPlay Sverige HD",
-                "VOYO Pro TV Romania",
-                "FuboTV Canada",
                 "Sky Sports Premier League HD",
+                "Stan Sport Australia",
+                "Sky Sport Premier League Germany",
                 "Monomax Streaming",
-                "ViaPlay Nederland HD",
-                "Canal+ Foot France",
+                "ViaPlay Suomi HD",
+                "DAZN Canada",
                 "Sky Go UK",
-                "Stan Sport Australia"
+                "Play Sports 1 Belgium",
+                "Go3 Extra Sport Baltics",
+                "DAZN España",
+                "NBC Universo",
+                "beIN Sports MENA 1 HD",
+                "USA Network",
+                "Sky Sports Main Event UHD",
+                "VOYO Pro TV Romania",
+                "Canal+ Foot France",
+                "Sky Sports Main Event HD",
+                "beIN Sports Türkiye 3 HD",
+                "ViaPlay Sverige HD",
+                "beIN Sports MENA English 1 HD",
+                "ViaPlay Nederland HD",
+                "ViaPlay Norge HD",
+                "beIN Connect Türkiye",
+                "FuboTV Canada",
+                "beIN Connect MENA",
+                "Fast Sports",
+                "Sky UK Ultra HD 1",
+                "USA Network United States",
+                "ViaPlay Danmark HD",
+                "V Sport Premium Sweden"
               ]
             },
             {
@@ -119,6 +119,7 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Tennis Channel",
+                "T2",
                 "TSN+"
               ]
             }
@@ -127,22 +128,7 @@
         },
         {
           "league": "Tennis",
-          "match": "Madrid Open",
-          "kick_utc": 1777640400,
-          "time": "01/05 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "T2"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Madrid Open",
+          "match": "Jannik Sinner",
           "kick_utc": 1777644000,
           "time": "01/05 09:00 PM",
           "tv_channels": [
@@ -158,7 +144,7 @@
         },
         {
           "league": "Tennis",
-          "match": "Madrid Open",
+          "match": "Alexander Blockx",
           "kick_utc": 1777658400,
           "time": "02/05 01:00 AM",
           "tv_channels": [
@@ -367,8 +353,7 @@
             {
               "country": "Hubsport",
               "channels": [
-                "Eurosport 1 France",
-                "Voosport World1 France"
+                "Eurosport 1 France"
               ]
             }
           ],
@@ -383,8 +368,7 @@
             {
               "country": "Hubsport",
               "channels": [
-                "Eurosport 1 France",
-                "Voosport World1 France"
+                "Eurosport 1 France"
               ]
             }
           ],
@@ -499,8 +483,8 @@
         {
           "league": "Tennis",
           "match": ": Mutua Madrid Open - Madrid",
-          "kick_utc": 1777647600,
-          "time": "01/05 10:00 PM",
+          "kick_utc": 1777647900,
+          "time": "01/05 10:05 PM",
           "tv_channels": [
             {
               "country": "NowTV",
