@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-01 23:02 VN",
+  "updated": "2026-05-02 02:22 VN",
   "days": {
     "20260501": {
       "date": "Friday, 01/05",
@@ -31,12 +31,12 @@
               "channels": [
                 "beIN SPORTS 4",
                 "beIN Sport Canada Espanol",
+                "Ligue1+ France",
                 "beIN Sport Canada",
                 "beIN Sport USA",
-                "beIN Sport USA Espanol",
-                "beIN SPORTS en Espanol Spain",
                 "beIN SPORTS United States",
-                "Ligue1+ France"
+                "beIN SPORTS en Espanol Spain",
+                "beIN Sport USA Espanol"
               ]
             },
             {
@@ -57,36 +57,36 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "FuboTV Canada",
+                "Stan Sport Australia",
                 "beIN Connect Türkiye",
-                "Sky Sports Main Event HD",
-                "beIN Sports MENA 1 HD",
-                "Sky UK Ultra HD 1",
-                "USA Network United States",
-                "ViaPlay Nederland HD",
-                "VOYO Pro TV Romania",
-                "beIN Sports Türkiye 3 HD",
-                "Sky Go UK",
-                "NBC Universo",
-                "Play Sports 1 Belgium",
-                "beIN Sports MENA English 1 HD",
-                "Sky Sport Premier League Germany",
-                "Canal+ Foot France",
-                "DAZN España",
-                "beIN Connect MENA",
-                "ViaPlay Suomi HD",
-                "ViaPlay Norge HD",
                 "Sky Sports Premier League HD",
-                "USA Network",
-                "ViaPlay Sverige HD",
-                "DAZN Canada",
                 "V Sport Premium Sweden",
-                "Go3 Extra Sport Baltics",
-                "Sky Sports Main Event UHD",
-                "ViaPlay Danmark HD",
-                "Fast Sports",
+                "beIN Sports Türkiye 3 HD",
+                "FuboTV Canada",
+                "ViaPlay Norge HD",
+                "Sky Sports Main Event HD",
+                "USA Network",
+                "NBC Universo",
+                "Sky UK Ultra HD 1",
                 "Monomax Streaming",
-                "Stan Sport Australia"
+                "Go3 Extra Sport Baltics",
+                "Fast Sports",
+                "ViaPlay Nederland HD",
+                "ViaPlay Sverige HD",
+                "DAZN España",
+                "VOYO Pro TV Romania",
+                "ViaPlay Suomi HD",
+                "Sky Sport Premier League Germany",
+                "Sky Go UK",
+                "beIN Connect MENA",
+                "beIN Sports MENA 1 HD",
+                "Play Sports 1 Belgium",
+                "ViaPlay Danmark HD",
+                "DAZN Canada",
+                "beIN Sports MENA English 1 HD",
+                "USA Network United States",
+                "Sky Sports Main Event UHD",
+                "Canal+ Foot France"
               ]
             },
             {
@@ -214,39 +214,39 @@
             {
               "country": "Hubsport",
               "channels": [
-                "Hub Premier 4",
+                "Dazn 1 Portugal",
                 "Hub Premier 1",
-                "Dazn 1 Portugal"
+                "Hub Premier 4"
               ]
             },
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "FuboTV Canada",
+                "Stan Sport Australia",
                 "beIN Connect Türkiye",
-                "beIN Sports MENA 1 HD",
-                "USA Network United States",
-                "ViaPlay Nederland HD",
-                "VOYO Pro TV Romania",
-                "beIN Sports MENA 4 HD",
-                "NBC Universo",
-                "Play Sports 1 Belgium",
-                "beIN Sports MENA English 1 HD",
-                "Premier Sports 2 Ireland HD",
-                "DAZN España",
-                "beIN Connect MENA",
-                "ViaPlay Suomi HD",
+                "FuboTV Canada",
                 "ViaPlay Norge HD",
                 "USA Network",
-                "ViaPlay Sverige HD",
-                "DAZN Canada",
-                "Go3 Extra Sport Baltics",
+                "NBC Universo",
                 "Hub Premier 4 Great Britain",
-                "ViaPlay Danmark HD",
-                "Fast Sports",
                 "Monomax Streaming",
+                "Go3 Extra Sport Baltics",
+                "Fast Sports",
+                "ViaPlay Nederland HD",
+                "ViaPlay Sverige HD",
+                "DAZN España",
+                "VOYO Pro TV Romania",
+                "beIN Sports MENA 4 HD",
+                "ViaPlay Suomi HD",
+                "beIN Connect MENA",
+                "beIN Sports MENA 1 HD",
+                "Play Sports 1 Belgium",
+                "ViaPlay Danmark HD",
+                "DAZN Canada",
+                "beIN Sports MENA English 1 HD",
+                "USA Network United States",
                 "Universo Spain",
-                "Stan Sport Australia"
+                "Premier Sports 2 Ireland HD"
               ]
             },
             {
@@ -332,6 +332,157 @@
                 "beIN Sport USA Espanol",
                 "beIN Sport Canada",
                 "beIN Sport Canada Espanol"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Serie A",
+          "match": "Como vs Napoli",
+          "kick_utc": 1777737600,
+          "time": "02/05 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "TLN",
+                "TNT Sports 1 Great Britain",
+                "beIN SPORTS 3 Australia",
+                "DAZN US",
+                "DAZN Zona Italy",
+                "DAZN Canada",
+                "TV4 Fotball Sweden",
+                "Paramount+ (US)"
+              ]
+            },
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "TNT Sports 1",
+                "HBO Max",
+                "DAZN"
+              ]
+            },
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN SPORTS 3",
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Premier League",
+          "match": "Arsenal vs Fulham",
+          "kick_utc": 1777739400,
+          "time": "02/05 11:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Stan Sport Australia",
+                "TNT Sports Ultimate UHD",
+                "TNT Sports 1 HD",
+                "beIN Connect Türkiye",
+                "Sky Sports Premier League HD",
+                "V Sport Premium Sweden",
+                "beIN Sports Türkiye 3 HD",
+                "FuboTV Canada",
+                "Telemundo",
+                "ViaPlay Norge HD",
+                "Sky Sports Main Event HD",
+                "NBC Universo",
+                "Peacock",
+                "Sky UK Ultra HD 1",
+                "Monomax Streaming",
+                "Go3 Extra Sport Baltics",
+                "Fast Sports",
+                "ViaPlay Nederland HD",
+                "ViaPlay Sverige HD",
+                "NBC",
+                "DAZN España",
+                "VOYO Pro TV Romania",
+                "ViaPlay Suomi HD",
+                "Sky Go UK",
+                "Hub Premier Great Britain",
+                "beIN Connect MENA",
+                "beIN Sports MENA 1 HD",
+                "Play Sports 1 Belgium",
+                "TNT Sports Digital Exclusive",
+                "ViaPlay Danmark HD",
+                "NBC Sports 4K",
+                "Canal+ France",
+                "beIN Sports MENA English 1 HD",
+                "USA Network United States",
+                "Universo Spain",
+                "Sky Sports Main Event UHD",
+                "HBO Max"
+              ]
+            },
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Sky Sports Main Event",
+                "Sky Sports Ultra HDR",
+                "Sky Sports Premier League"
+              ]
+            },
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            },
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Dazn 1 Portugal"
+              ]
+            },
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4K 1",
+                "Now Sports Premier League TV",
+                "Now Sports Premier League 1"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Bundesliga",
+          "match": "Bayer Leverkusen vs RB Leipzig",
+          "kick_utc": 1777739400,
+          "time": "02/05 11:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "S Sport+ Streaming",
+                "Tivibu Spor 2 HD",
+                "Sky Sport Bundesliga 1 HD",
+                "Sky Go UK",
+                "YouTube: Sky Sports Football",
+                "Sky Sports MIX UK HD",
+                "Sky Sport Bundesliga 1 Germany",
+                "Sky Sports Mix Great Britain",
+                "Sky Sport Bundesliga HD",
+                "Sky Sport Top Event HD",
+                "ESPN Unlimited",
+                "ESPN Select",
+                "DAZN Canada",
+                "Sky Sport Bundesliga UHD",
+                "OneFootball"
+              ]
+            },
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
               ]
             }
           ],
@@ -448,23 +599,59 @@
           "source": "wheresthematch"
         },
         {
-          "league": "Serie A",
-          "match": "Como vs Napoli",
-          "kick_utc": 1777737600,
-          "time": "02/05 11:00 PM",
+          "league": "Bundesliga",
+          "match": "Bayer-Leverkusen vs Red-Bull-Leipzig",
+          "kick_utc": 1777739400,
+          "time": "02/05 11:30 PM",
           "tv_channels": [
             {
               "country": "Wheresthematch",
               "channels": [
-                "TNT Sports 1",
-                "DAZN",
-                "HBO Max"
+                "Sky Sports Mix",
+                "Sky Sports YouTube"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Serie A",
+          "match": "Atalanta vs Genoa",
+          "kick_utc": 1777747500,
+          "time": "03/05 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "DAZN"
               ]
             },
             {
               "country": "Ausport",
               "channels": [
                 "beIN SPORTS 3",
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "La Liga",
+          "match": "Osasuna vs Barcelona",
+          "kick_utc": 1777748400,
+          "time": "03/05 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Disney+"
+              ]
+            },
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN SPORTS 2",
                 "beIN Sports Connect"
               ]
             }
@@ -550,7 +737,8 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "TVA Sports 2",
-                "TSN2"
+                "TSN2",
+                "DAZN Canada"
               ]
             }
           ],
@@ -587,82 +775,6 @@
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Madrid",
-          "kick_utc": 1777651200,
-          "time": "01/05 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Madrid",
-          "kick_utc": 1777665600,
-          "time": "02/05 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Madrid",
-          "kick_utc": 1777737600,
-          "time": "02/05 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Voosport World1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: ATP Madrid Semifinala",
-          "kick_utc": 1777654800,
-          "time": "02/05 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: ATP Madrid Semifinala",
-          "kick_utc": 1777669200,
-          "time": "02/05 04:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -719,6 +831,51 @@
               "country": "Hubsport",
               "channels": [
                 "Sport Klub 2 Hrvatska"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Masters 1000 de Madrid",
+          "kick_utc": 1777665600,
+          "time": "02/05 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Masters 1000 de Madrid",
+          "kick_utc": 1777737600,
+          "time": "02/05 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Voosport World1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: ATP Madrid Semifinala",
+          "kick_utc": 1777669200,
+          "time": "02/05 04:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Romania"
               ]
             }
           ],
@@ -831,15 +988,29 @@
         },
         {
           "league": "Tennis",
-          "match": ": Mutua Madrid Open - Madrid",
-          "kick_utc": 1777647900,
-          "time": "01/05 10:05 PM",
+          "match": "Tournoi WTA de Madrid",
+          "kick_utc": 1777741200,
+          "time": "03/05 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "beIN Sports 2 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Mutua Madrid Open -SF (2)",
+          "kick_utc": 1777658400,
+          "time": "02/05 01:00 AM",
           "tv_channels": [
             {
               "country": "NowTV",
               "channels": [
-                "Ziggo Sport",
-                "Ziggo Sport Kanaal 14"
+                "Now Sports 6"
               ]
             }
           ],
@@ -855,21 +1026,6 @@
               "country": "NowTV",
               "channels": [
                 "Ziggo Sport 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Mutua Madrid Open -SF (2)",
-          "kick_utc": 1777658400,
-          "time": "02/05 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports 6"
               ]
             }
           ],
