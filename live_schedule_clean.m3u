@@ -1,25 +1,17 @@
 #EXTM3U
 #PLAYLIST:Live Schedule Cleaned - Cleaned
 #GENERATED-BY: CXT Cleaner v2.0
-#VALIDATION-DATE: 2026-05-01 11:12:57
+#VALIDATION-DATE: 2026-05-01 15:24:27
 #TOTAL-STREAMS-CHECKED: 132
-#TOTAL-VALID-STREAMS: 82
-#SUCCESS-RATE: 62.1%
+#TOTAL-VALID-STREAMS: 74
+#SUCCESS-RATE: 56.1%
 #FILTERS-APPLIED: ADULT, .mp4, cinehub24.com
 #ORDER-PRESERVATION: Original channel order maintained
 ########################################
 #EXTINF:-1 tvg-id="Hub.Premier.1.sg" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/hub-premier-1.png",01/05 06:00 PM | WELCOME TO THE WEEKEND - FRI 01 MAY (Hub Premier 1)
 http://greenslime.cx/live/Bklyn347/QY06ksq41x/57435.ts
-#EXTINF:-1 tvg-id="TennisChannel.us" group-title="🎾|Live Tennis" tvg-logo="https://i.imgur.com/tsljAnY.png",01/05 06:30 PM | Madrid Open (Tennis Channel)
-https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg01444-tennischannelth-tennischannelnl-samsungnl/playlist.m3u8
-#EXTINF:-1 tvg-id="Tennis.Channel.HD.us2" group-title="🎾|Live Tennis" tvg-logo="http://schedulesdirect-api20141201-logos.s3.dualstack.us-east-1.amazonaws.com/stationLogos/s60316_dark_360w_270h.png",01/05 06:30 PM | Madrid Open (Tennis Channel)
-https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg01444-tennischannelth-tennischnlintl-lggb/playlist.m3u8
 #EXTINF:-1 tvg-id="" group-title="🎾|Live Tennis" tvg-logo="https://docdog.top/logo/countries/germany/new/SKY_SPORT_TENNIS_HD.png",01/05 06:30 PM | Madrid Open (Tennis Channel)
 https://otte.live.fly.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/bfigtl960n/out/v1/5ba5484550e84681bff2e8ca994266c1/cenc.mpd
-#EXTINF:-1 tvg-id="ATBA2200008XN" group-title="🎾|Live Tennis" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/ATBA2200008XN_20251125T100519SQUARE.png",01/05 06:30 PM | Madrid Open (Tennis Channel)
-https://jmp2.uk/stvp-ATBA2200008XN
-#EXTINF:-1 tvg-id="CHBA22000080G" group-title="🎾|Live Tennis" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/CHBA22000080G_20251125T102207SQUARE.png",01/05 06:30 PM | Madrid Open (Tennis Channel)
-https://jmp2.uk/stvp-CHBA22000080G
 #EXTINF:-1 tvg-id="" group-title="🎾|Live Tennis" tvg-logo="https://freeshot.live/upload/source/Tennis_Channel-logo.png",01/05 06:30 PM | Madrid Open (Tennis Channel)
 http://cdn.tv-rds.workers.dev/TennisChannel.m3u8
 #EXTINF:-1 tvg-id="Tennis.Channel.HD.us2" group-title="🎾|Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/tennis-channel.png",01/05 06:30 PM | Madrid Open (Tennis Channel)
@@ -34,8 +26,6 @@ https://restream-live.realiptv.to/MotherOfPins3/8746645/21607
 http://tvmate.icu:8080/kenvdh@comcast.net/bsxUzgG6uT/20184
 #EXTINF:-1 tvg-id="" group-title="🎾|Live Tennis",01/05 06:30 PM | Madrid Open (Tennis Channel)
 https://amg01935-amg01935c1-amgplt0020.playout.now3.amagi.tv/playlist/amg01935-amg01935c1-amgplt0020/playlist.m3u8
-#EXTINF:-1 tvg-id="463795" group-title="🎾|Live Tennis" tvg-logo="https://provider-static.plex.tv/epg/cms/production/704e7af1-90a0-4ad4-94de-af2559c19fa6/1_Tennis_Plus_Logo__Dark_Mode__1500x1000px.png",01/05 06:30 PM | Madrid Open (Tennis Channel)
-https://epg.provider.plex.tv/library/parts/646546f35db8ada4c8edd7e5-6761f91555e174e95ccc4e4c.m3u8?X-Plex-Token=gtgBuXHN8zYnkxr9Lg78
 #EXTINF:-1 tvg-id="463795" group-title="🎾|Live Tennis",01/05 06:30 PM | Madrid Open (Tennis Channel)
 https://amg01935-amg01935c1-amgplt0352.playout.now3.amagi.tv/ts-eu-w1-n2/playlist/amg01935-amg01935c1-amgplt0352/playlist.m3u8
 #EXTINF:-1 tvg-id="" group-title="🎾|Live Tennis",01/05 06:30 PM | Mutua Madrid Open (Sky Sports Tennis)
@@ -44,10 +34,6 @@ http://lb.wisp.cat/lb0/DE_Sky_Sport_Tennis_HD/video.m3u8?token=AUSnMTD
 http://cdn.tv-rds.workers.dev/SkySportTennisIT.m3u8
 #EXTINF:-1 tvg-id="" group-title="🎾|Live Tennis" tvg-logo="https://sonic.shliv.fun/crchd/assets/tvlogos/SkySportsTennis.jpg",01/05 06:30 PM | Mutua Madrid Open (Sky Sports Tennis)
 https://v.antsports.tv/live/28/index.m3u8
-#EXTINF:-1 tvg-id="Sky.Sports.Plus.ie" group-title="🎾|Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-plus.png",01/05 06:30 PM | Mutua Madrid Open (Sky Sports+)
-https://restream-live.realiptv.to/MotherOfPins3/8746645/2193
-#EXTINF:-1 tvg-id="" group-title="🎾|Live Tennis" tvg-logo="http://s3.i3ns.net:2052/portal/picon/2021-09/f03f8c517a5e79b9e8e927180496370d.png",01/05 06:30 PM | (Parovi) 1/2 Finale A (Sport Klub 2 Hrvatska)
-http://013tv.com:8080/F13836/35b68aca/279841
 #EXTINF:-1 tvg-id="470888" group-title="🎾|Live Tennis" tvg-logo="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgU_KRPKTPLMzB56CYaJlcEsY0HaL7KClo8gPZoDc0_ytIJi9qYzcPbmyhnkRHmrf_D7pH3nG35kc3onQpwU_Mi5OmVOJnjEemkY5Iv3Bz8Xibf7qBkOJO9tolqIpDmGLVc488-QEWrnOhezCsXCz6EK8PmLUVFtRFzFB3MqxRIyXABxllTO3iMtZ3YKwlN/s700/TSN%203.png",01/05 09:00 PM | Madrid Open (TSN3)
 https://qw.live.pv-cdn.net/OTTB/sin-nitro/live/clients/dash/enc/lzhmuzmjsl/out/v1/c171eeb214c749f2b351c79df317b21e/cenc.mpd
 #EXTINF:-1 tvg-id="470888" group-title="🎾|Live Tennis" tvg-logo="http://103.127.132.205/wiki/wikipedia/commons/thumb/9/90/TSN_Logo.svg/2560px-TSN_Logo.svg.png",01/05 09:00 PM | Madrid Open (TSN3)
@@ -58,8 +44,6 @@ https://restream-live.realiptv.to/MotherOfPins3/8746645/3144
 http://tvmate.icu:8080/kenvdh@comcast.net/bsxUzgG6uT/47444
 #EXTINF:-1 tvg-id="TSN.3.ca2" group-title="🎾|Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/tsn-3.png",01/05 09:00 PM | Madrid Open (TSN3)
 http://tvmate.icu:8080/kenvdh@comcast.net/bsxUzgG6uT/10389
-#EXTINF:-1 tvg-id="470888" group-title="🎾|Live Tennis" tvg-logo="https://mimipipi22.github.io/logo/png/tsn3.png",01/05 09:00 PM | Madrid Open (TSN3)
-https://otte.cache.aiv-cdn.net/bom-nitro/live/clients/dash/enc/lzhmuzmjsl/out/v1/c171eeb214c749f2b351c79df317b21e/cenc.mpd
 #EXTINF:-1 tvg-id="470888" group-title="🎾|Live Tennis",01/05 09:00 PM | Madrid Open (TSN3)
 https://tvpass.org/live/tsn3/sd
 #EXTINF:-1 tvg-id="470888" group-title="🎾|Live Tennis" tvg-logo="https://freeshot.live/upload/source/TSN3_Logo.png",01/05 09:00 PM | Madrid Open (TSN3)
@@ -70,8 +54,6 @@ https://v.antsports.tv/live/20/index.m3u8
 http://greenslime.cx/live/Bklyn347/QY06ksq41x/59265.ts
 #EXTINF:-1 tvg-id="Sky.Sports.Main.Event.ie" group-title="🎾|Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-main-event.png",01/05 09:00 PM | Mutua Madrid Open (Sky Sports Main Event)
 http://greenslime.cx/live/Bklyn347/QY06ksq41x/16563.ts
-#EXTINF:-1 tvg-id="Sky.Sports.Main.Event.ie" group-title="🎾|Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-main-event.png",01/05 09:00 PM | Mutua Madrid Open (Sky Sports Main Event)
-http://greenslime.cx/live/Bklyn347/QY06ksq41x/58925.ts
 #EXTINF:-1 tvg-id="Sky.Sports.Main.Event.ie" group-title="🎾|Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-main-event.png",01/05 09:00 PM | Mutua Madrid Open (Sky Sports Main Event)
 https://restream-live.realiptv.to/MotherOfPins3/8746645/2185
 #EXTINF:-1 tvg-id="Sky.Sports.Main.Event.ie" group-title="🎾|Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-main-event.png",01/05 09:00 PM | Mutua Madrid Open (Sky Sports Main Event)
@@ -84,8 +66,6 @@ http://s.only4.tv/5588/index.m3u8?token=jZqqvnnqCs
 http://99.27.51.147:8080/BeinSport/index.m3u8
 #EXTINF:-1 tvg-id="" group-title="🎾|Live Tennis",01/05 09:00 PM |  (beIN SPORTS 1)
 http://77.137.40.221:8000/play/a01e
-#EXTINF:-1 tvg-id="532981" group-title="🎾|Live Tennis",01/05 09:00 PM |  (beIN SPORTS 1)
-http://Rochdi@starshare.net:80/live/Suryaaa/SURYAAAA/652310.ts
 #EXTINF:-1 tvg-id="beIN_SPORTS1_DIGITAL_Mono_AR.bein" group-title="🎾|Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/bein-sports-1.png",01/05 09:00 PM |  (beIN SPORTS 1)
 https://restream-live.realiptv.to/MotherOfPins3/8746645/659436
 #EXTINF:-1 tvg-id="beIN_SPORTS1_DIGITAL_Mono_AR.bein" group-title="🎾|Live Tennis" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/bein-sports-1.png",01/05 09:00 PM |  (beIN SPORTS 1)
@@ -102,14 +82,36 @@ http://cdn.tv-rds.workers.dev/EURO1GR.m3u8
 http://lb.wisp.cat/lb0/Eurosport_1_HD_CEE/video.m3u8?token=AUSnMTD
 #EXTINF:-1 tvg-id="" group-title="🎾|Live Tennis" tvg-logo="https://freeshot.live/upload/source/Eurosport_1_logo.png",01/05 11:00 PM | Masters 1000 de Madrid (Eurosport 1 France)
 http://cdn.tv-rds.workers.dev/Eurosport1NL.m3u8
+#EXTINF:-1 tvg-id="sport.tr" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League",02/05 02:00 AM | Leeds United vs Burnley (beIN Sports MENA 1 HD)
+https://andro.226503.xyz/checklist/androstreamlivebsm1.m3u8
+#EXTINF:-1 tvg-id="" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://sonic.shliv.fun/crchd/assets/tvlogos/SkySportsMainEvent.jpg",02/05 02:00 AM | Leeds United vs Burnley (Sky Sports Main Event HD)
+https://v.antsports.tv/live/20/index.m3u8
+#EXTINF:-1 tvg-id="Sky.Sports.Main.Event.ie" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-main-event.png",02/05 02:00 AM | Leeds United vs Burnley (Sky Sports Main Event HD)
+http://greenslime.cx/live/Bklyn347/QY06ksq41x/59265.ts
+#EXTINF:-1 tvg-id="Sky.Sports.Main.Event.ie" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-main-event.png",02/05 02:00 AM | Leeds United vs Burnley (Sky Sports Main Event HD)
+http://greenslime.cx/live/Bklyn347/QY06ksq41x/16563.ts
+#EXTINF:-1 tvg-id="Sky.Sports.Main.Event.ie" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-main-event.png",02/05 02:00 AM | Leeds United vs Burnley (Sky Sports Main Event HD)
+https://restream-live.realiptv.to/MotherOfPins3/8746645/2185
+#EXTINF:-1 tvg-id="Sky.Sports.Main.Event.ie" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-main-event.png",02/05 02:00 AM | Leeds United vs Burnley (Sky Sports Main Event HD)
+https://restream-live.realiptv.to/MotherOfPins3/8746645/2184
+#EXTINF:-1 tvg-id="" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://freeshot.live/upload/source/sky-sports-main-event-logo.png",02/05 02:00 AM | Leeds United vs Burnley (Sky Sports Main Event HD)
+http://cdn.tv-rds.workers.dev/SkySportsMainEvent.m3u8
+#EXTINF:-1 tvg-id="USA.Network.HD.us2" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/usa-network.png",02/05 02:00 AM | Leeds United vs Burnley (USA Network)
+https://restream-live.realiptv.to/MotherOfPins3/8746645/3694
+#EXTINF:-1 tvg-id="USA.Network.HD.us2" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/usa-network.png",02/05 02:00 AM | Leeds United vs Burnley (USA Network)
+https://restream-live.realiptv.to/MotherOfPins3/8746645/3767
+#EXTINF:-1 tvg-id="USA.Network.HD.us2" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/usa-network.png",02/05 02:00 AM | Leeds United vs Burnley (USA Network)
+http://tvmate.icu:8080/kenvdh@comcast.net/bsxUzgG6uT/10252
+#EXTINF:-1 tvg-id="USA.br" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://logos.imperioapps.top/USANETWORK.png",02/05 02:00 AM | Leeds United vs Burnley (USA Network)
+http://172.110.219.252:80/live/47125065/12264670/151463.ts
+#EXTINF:-1 tvg-id="470317" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://logos.imperioapps.top/USANETWORK.png",02/05 02:00 AM | Leeds United vs Burnley (USA Network)
+http://172.110.219.252:80/live/47125065/12264670/151464.ts
 #EXTINF:-1 tvg-id="" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League",02/05 02:00 AM | Leeds United vs Burnley (beIN Sports Türkiye 3 HD)
 http://99.27.51.147:8080/BeinSport3/index.m3u8
 #EXTINF:-1 tvg-id="" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League",02/05 02:00 AM | Leeds United vs Burnley (beIN Sports Türkiye 3 HD)
 http://145.239.5.177:80/559/index.m3u8
 #EXTINF:-1 tvg-id="" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League",02/05 02:00 AM | Leeds United vs Burnley (beIN Sports Türkiye 3 HD)
 http://77.137.40.221:8000/play/a01h
-#EXTINF:-1 tvg-id="532983" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League",02/05 02:00 AM | Leeds United vs Burnley (beIN Sports Türkiye 3 HD)
-http://Rochdi@starshare.net:80/live/Suryaaa/SURYAAAA/652312.ts
 #EXTINF:-1 tvg-id="532983" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League",02/05 02:00 AM | Leeds United vs Burnley (beIN Sports Türkiye 3 HD)
 https://st11.lol/static/bs3.m3u8
 #EXTINF:-1 tvg-id="532983" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League",02/05 02:00 AM | Leeds United vs Burnley (beIN Sports Türkiye 3 HD)
@@ -118,24 +120,6 @@ https://andro.226503.xyz/checklist/androstreamlivebs3.m3u8
 https://otte.live.fly.ww.aiv-cdn.net/syd-nitro/live/clients/dash/enc/q4u5nwaogz/out/v1/18de6d3e65934f3a8de4358e69eab86c/cenc.mpd
 #EXTINF:-1 tvg-id="532983" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League",02/05 02:00 AM | Leeds United vs Burnley (beIN Sports Türkiye 3 HD)
 https://dga1op10s1u3leo.6c2c54919ddfa1.click/live/sbeinsports-3/playlist.m3u8
-#EXTINF:-1 tvg-id="USA.Network.HD.us2" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/usa-network.png",02/05 02:00 AM | Leeds United vs Burnley (USA Network)
-https://restream-live.realiptv.to/MotherOfPins3/8746645/3694
-#EXTINF:-1 tvg-id="USA.Network.HD.us2" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/usa-network.png",02/05 02:00 AM | Leeds United vs Burnley (USA Network)
-https://restream-live.realiptv.to/MotherOfPins3/8746645/3767
-#EXTINF:-1 tvg-id="USA.Network.HD.us2" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/usa-network.png",02/05 02:00 AM | Leeds United vs Burnley (USA Network)
-http://tvmate.icu:8080/kenvdh@comcast.net/bsxUzgG6uT/10252
-#EXTINF:-1 tvg-id="" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://sonic.shliv.fun/crchd/assets/tvlogos/SkySportsMainEvent.jpg",02/05 02:00 AM | Leeds United vs Burnley (Sky Sports Main Event UHD)
-https://v.antsports.tv/live/20/index.m3u8
-#EXTINF:-1 tvg-id="Sky.Sports.Main.Event.ie" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-main-event.png",02/05 02:00 AM | Leeds United vs Burnley (Sky Sports Main Event UHD)
-https://restream-live.realiptv.to/MotherOfPins3/8746645/2185
-#EXTINF:-1 tvg-id="Sky.Sports.Main.Event.ie" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-main-event.png",02/05 02:00 AM | Leeds United vs Burnley (Sky Sports Main Event UHD)
-https://restream-live.realiptv.to/MotherOfPins3/8746645/2184
-#EXTINF:-1 tvg-id="" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://freeshot.live/upload/source/sky-sports-main-event-logo.png",02/05 02:00 AM | Leeds United vs Burnley (Sky Sports Main Event UHD)
-http://cdn.tv-rds.workers.dev/SkySportsMainEvent.m3u8
-#EXTINF:-1 tvg-id="538283" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://freeshot.live/upload/source/Canal+Foot-logo.png",02/05 02:00 AM | Leeds United vs Burnley (Canal+ Foot France)
-http://cdn.tv-rds.workers.dev/FootPlusFR.m3u8
-#EXTINF:-1 tvg-id="sport.tr" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League",02/05 02:00 AM | Leeds United vs Burnley (beIN Sports MENA 1 HD)
-https://andro.226503.xyz/checklist/androstreamlivebsm1.m3u8
 #EXTINF:-1 tvg-id="" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League",02/05 02:00 AM | Leeds United vs Burnley (Sky Sports Premier League HD)
 http://lb.wisp.cat/lb0/DE_Sky_Sport_Premier_League/video.m3u8?token=AUSnMTD
 #EXTINF:-1 tvg-id="" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://sonic.shliv.fun/crchd/assets/tvlogos/SkySportsPremierLeague.jpg",02/05 02:00 AM | Leeds United vs Burnley (Sky Sports Premier League HD)
@@ -143,11 +127,11 @@ https://v.antsports.tv/live/24/index.m3u8
 #EXTINF:-1 tvg-id="Sky.Sports.Premier.League.ie" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-premier-league.png",02/05 02:00 AM | Leeds United vs Burnley (Sky Sports Premier League HD)
 http://greenslime.cx/live/Bklyn347/QY06ksq41x/58924.ts
 #EXTINF:-1 tvg-id="Sky.Sports.Premier.League.ie" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-premier-league.png",02/05 02:00 AM | Leeds United vs Burnley (Sky Sports Premier League HD)
-http://greenslime.cx/live/Bklyn347/QY06ksq41x/16559.ts
-#EXTINF:-1 tvg-id="Sky.Sports.Premier.League.ie" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-premier-league.png",02/05 02:00 AM | Leeds United vs Burnley (Sky Sports Premier League HD)
 https://restream-live.realiptv.to/MotherOfPins3/8746645/2182
 #EXTINF:-1 tvg-id="Sky.Sports.Premier.League.ie" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://raw.githubusercontent.com/lamtung16/iptv/refs/heads/main/logos/sky-sports-premier-league.png",02/05 02:00 AM | Leeds United vs Burnley (Sky Sports Premier League HD)
 https://restream-live.realiptv.to/MotherOfPins3/8746645/2181
+#EXTINF:-1 tvg-id="538283" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://freeshot.live/upload/source/Canal+Foot-logo.png",02/05 02:00 AM | Leeds United vs Burnley (Canal+ Foot France)
+http://cdn.tv-rds.workers.dev/FootPlusFR.m3u8
 #EXTINF:-1 tvg-id="" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League" tvg-logo="https://freeshot.live/upload/source/Nova-Sports-Premier-League-logo.png",02/05 02:00 AM | Leeds United vs Burnley (Now Sports Premier League TV)
 http://cdn.tv-rds.workers.dev/NOVASPORTSPL.m3u8
 #EXTINF:-1 tvg-id="" group-title="⚽️🏴󠁧󠁢󠁥󠁮󠁧󠁿|Live Premier League",02/05 02:00 AM | Leeds-United vs Burnley (Sky Sports Premier League)
