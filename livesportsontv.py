@@ -690,15 +690,20 @@ async def fetch_nowstreams_data(ref_time: datetime):
             dt_vn = dt_vn.replace(tzinfo=VN_TZ)
             if not is_within_time_range(dt_vn, ref_time):
                 continue
+
             league_raw = item.get("league", "")
-            league = normalize_league(league_raw)
             matchup_raw = item.get("matchstr", "")
             if not matchup_raw:
                 continue
-            if is_youth_or_women(matchup_raw, league):
+
+            # *** SỬA LỖI: kiểm tra nữ/trẻ trước khi chuẩn hóa tên giải ***
+            if is_youth_or_women(matchup_raw, league_raw):
                 continue
+
+            league = normalize_league(league_raw)
             if not is_match_allowed(league, matchup_raw):
                 continue
+
             services = []
             for ch in item.get("channels", []):
                 ch_name = ch.get("name", "").strip()
@@ -708,6 +713,7 @@ async def fetch_nowstreams_data(ref_time: datetime):
                     services.append(f"{ch_name} {full_country}")
                 elif ch_name:
                     services.append(ch_name)
+
             main_channel = item.get("channel")
             if main_channel and main_channel not in services:
                 parts = main_channel.rsplit(" ", 1)
@@ -718,6 +724,7 @@ async def fetch_nowstreams_data(ref_time: datetime):
                     services.append(f"{ch_name} {full_country}")
                 else:
                     services.append(main_channel)
+
             matches.append({
                 "Date": dt_vn.strftime("%Y-%m-%d"),
                 "Time": dt_vn.strftime("%H:%M"),
@@ -728,9 +735,9 @@ async def fetch_nowstreams_data(ref_time: datetime):
         except Exception as e:
             print(f"⚠️ Lỗi xử lý match nowstreams: {e}")
             continue
+
     print(f"📡 nowstreams: {len(matches)} trận")
     return matches
-
 # ==================== LIVESPORTSONTV SCRAPING ====================
 async def scrape_livesportsontv(ref_time: datetime):
     all_games = []
