@@ -134,7 +134,7 @@ def is_within_time_range(dt: datetime, ref: datetime) -> bool:
 def is_youth_or_women(matchup: str, league: str) -> bool:
     combined = f"{matchup} {league}".lower()
     women_keywords = [
-        "women", "womens", "women's", "woman", "female",
+        "women", "womens", "women's", "woman", "female", "Women's",
         "frauen", "damen", "weiblich", "donne", "femminile",
         "mujeres", "femenino", "femenina", "femmes", "féminin", "féminine",
         "mulheres", "feminino", "vrouwen", "női", "kadın"
