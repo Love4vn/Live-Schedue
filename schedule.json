@@ -1,36 +1,34 @@
 {
-  "updated": "2026-05-02 04:58 VN",
+  "updated": "2026-05-02 10:36 VN",
   "days": {
-    "20260501": {
-      "date": "Friday, 01/05",
+    "20260502": {
+      "date": "Saturday, 02/05",
       "games": [
         {
-          "league": "Premier League",
-          "match": "Aston Villa vs Tottenham Hotspur",
-          "kick_utc": 1777721400,
-          "time": "02/05 06:30 PM",
+          "league": "Ligue 1",
+          "match": "Nantes vs Marseille",
+          "kick_utc": 1777726800,
+          "time": "02/05 08:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "beIN Connect MENA",
+                "beIN Sport Canada",
+                "beIN SPORTS United States",
                 "beIN Connect Türkiye",
-                "beIN Sports Türkiye 5 HD",
-                "DAZN España",
-                "Fast Sports",
-                "FuboTV Canada",
-                "Go3 Extra Sport Baltics",
-                "HBO Max",
-                "Monomax Streaming",
-                "Play Sports 1 Belgium",
-                "Stan Sport Australia",
-                "TNT Sports 1 HD",
-                "TNT Sports Digital Exclusive",
-                "TNT Sports Ultimate UHD",
-                "ViaPlay Nederland HD",
-                "ViaPlay Norge HD",
-                "ViaPlay Suomi HD",
-                "VOYO Pro TV Romania"
+                "beIN SPORTS en Espanol Spain",
+                "beIN SPORTS 4",
+                "Ligue 1+",
+                "beIN Sport USA",
+                "beIN Sport Canada Espanol",
+                "beIN Sport USA Espanol",
+                "Ligue1+ France"
+              ]
+            },
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Ligue 1+"
               ]
             }
           ],
@@ -53,34 +51,6 @@
           "source": "livesportsontv"
         },
         {
-          "league": "Ligue 1",
-          "match": "Nantes vs Olympique Marseille",
-          "kick_utc": 1777726800,
-          "time": "02/05 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "beIN SPORTS en Espanol Spain",
-                "Ligue1+ France",
-                "beIN Sport Canada Espanol",
-                "beIN Sport Canada",
-                "beIN SPORTS 4",
-                "beIN Sport USA Espanol",
-                "beIN Sport USA",
-                "beIN SPORTS United States"
-              ]
-            },
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Ligue 1+"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
           "league": "Bundesliga",
           "match": "Bayern Munich vs Heidenheim",
           "kick_utc": 1777728600,
@@ -94,6 +64,7 @@
                 "Sky Sport Bundesliga 1 HD",
                 "Sky Sport Bundesliga HD",
                 "Sky Sport Bundesliga UHD",
+                "Sky Sport Max Italia HD",
                 "Sky Sport Top Event HD",
                 "Tivibu Spor 2 HD",
                 "YouTube: Bundesliga",
@@ -108,39 +79,6 @@
         },
         {
           "league": "Premier League",
-          "match": "Bournemouth vs Crystal Palace",
-          "kick_utc": 1777730400,
-          "time": "02/05 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "beIN Connect MENA",
-                "beIN Connect Türkiye",
-                "beIN Sports Türkiye 4 HD",
-                "DAZN España",
-                "Fast Sports",
-                "FuboTV Canada",
-                "Go3 Extra Sport Baltics",
-                "Monomax Streaming",
-                "Play Sports 2 Belgium",
-                "Sky Go UK",
-                "Sky Sports HD",
-                "Sky Sports+ TV HD",
-                "Stan Sport Australia",
-                "ViaPlay Danmark HD",
-                "ViaPlay Nederland HD",
-                "ViaPlay Norge HD",
-                "ViaPlay Suomi HD",
-                "ViaPlay Sverige HD",
-                "VOYO Pro TV Romania"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Premier League",
           "match": "Brentford vs West Ham United",
           "kick_utc": 1777730400,
           "time": "02/05 09:00 PM",
@@ -148,39 +86,40 @@
             {
               "country": "Hubsport",
               "channels": [
-                "Dazn 1 Portugal",
+                "Hub Premier 4",
                 "Hub Premier 1",
-                "Hub Premier 4"
+                "Dazn 1 Portugal"
               ]
             },
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "beIN Sports MENA English 1 HD",
-                "beIN Connect MENA",
-                "Go3 Extra Sport Baltics",
-                "Universo Spain",
-                "ViaPlay Norge HD",
-                "USA Network United States",
-                "Premier Sports 2 Ireland HD",
-                "VOYO Pro TV Romania",
-                "ViaPlay Sverige HD",
-                "NBC Universo",
-                "ViaPlay Suomi HD",
-                "Monomax Streaming",
-                "DAZN España",
+                "Sky Sport 251 Italia HD",
                 "beIN Sports MENA 4 HD",
-                "Hub Premier 4 Great Britain",
                 "Play Sports 1 Belgium",
-                "FuboTV Canada",
-                "ViaPlay Nederland HD",
-                "Fast Sports",
-                "beIN Connect Türkiye",
-                "beIN Sports MENA 1 HD",
-                "ViaPlay Danmark HD",
-                "DAZN Canada",
+                "USA Network",
+                "DAZN España",
                 "Stan Sport Australia",
-                "USA Network"
+                "ViaPlay Danmark HD",
+                "beIN Sports MENA 1 HD",
+                "beIN Sports MENA English 1 HD",
+                "ViaPlay Norge HD",
+                "VOYO Pro TV Romania",
+                "Go3 Extra Sport Baltics",
+                "NBC Universo",
+                "beIN Connect Türkiye",
+                "Fast Sports",
+                "ViaPlay Suomi HD",
+                "Premier Sports 2 Ireland HD",
+                "Monomax Streaming",
+                "USA Network United States",
+                "Universo Spain",
+                "FuboTV Canada",
+                "Hub Premier 4 Great Britain",
+                "ViaPlay Nederland HD",
+                "beIN Connect MENA",
+                "ViaPlay Sverige HD",
+                "DAZN Canada"
               ]
             },
             {
@@ -206,11 +145,15 @@
                 "beIN Connect Türkiye",
                 "beIN Sports MENA 1 HD",
                 "beIN Sports MENA 4 HD",
+                "CRTV Sports Cameroon",
                 "DAZN España",
+                "Diema Sport 2 HD",
                 "Fast Sports",
                 "FuboTV Canada",
                 "Go3 Extra Sport Baltics",
                 "Monomax Streaming",
+                "Sky Sport Calcio HD",
+                "Sporty TV Africa",
                 "Stan Sport Australia",
                 "ViaPlay Danmark HD",
                 "ViaPlay Nederland HD",
@@ -218,6 +161,7 @@
                 "ViaPlay Suomi HD",
                 "ViaPlay Sverige HD",
                 "VOYO Pro TV Romania",
+                "YTV Botswana",
                 "Hub Premier 2 Great Britain",
                 "Canal+ Sport360 France",
                 "Hub Premier 2 Great Britain",
@@ -280,21 +224,26 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "S Sport+ Streaming",
                 "beIN SPORTS 3 Australia",
-                "TLN",
-                "DAZN US",
-                "DAZN Canada",
                 "DAZN Zona Italy",
+                "DAZN 1 Italia HD",
                 "TV4 Fotball Sweden",
                 "TNT Sports 1 Great Britain",
-                "Paramount+ (US)"
+                "MAX Sport 3 Bulgaria HD",
+                "S Sport 2 Türkiye HD",
+                "Paramount+ (US)",
+                "DAZN US",
+                "DAZN Canada",
+                "TLN",
+                "Tivibu Spor 1 HD"
               ]
             },
             {
               "country": "Wheresthematch",
               "channels": [
-                "DAZN",
                 "TNT Sports 1",
+                "DAZN",
                 "HBO Max"
               ]
             },
@@ -317,60 +266,63 @@
             {
               "country": "Hubsport",
               "channels": [
-                "Dazn 1 Portugal",
-                "Hub Premier 1",
                 "Hub Premier 2 (4K)",
-                "Hub Premier 2 (HD)"
+                "Hub Premier 2 (HD)",
+                "Dazn 1 Portugal",
+                "Hub Premier 1"
               ]
             },
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "NBC Sports 4K",
-                "TNT Sports Digital Exclusive",
                 "Telemundo",
-                "Peacock",
-                "beIN Sports MENA English 1 HD",
-                "Hub Premier Great Britain",
-                "beIN Connect MENA",
-                "Sky Sports Premier League HD",
-                "Sky UK Ultra HD 1",
-                "Go3 Extra Sport Baltics",
-                "Universo Spain",
-                "ViaPlay Norge HD",
-                "USA Network United States",
                 "Sky Sports Main Event HD",
-                "VOYO Pro TV Romania",
-                "beIN Sports Türkiye 3 HD",
-                "ViaPlay Sverige HD",
-                "NBC Universo",
-                "TNT Sports Ultimate UHD",
-                "ViaPlay Suomi HD",
-                "Monomax Streaming",
-                "DAZN España",
-                "HBO Max",
-                "Canal+ France",
-                "Play Sports 1 Belgium",
-                "FuboTV Canada",
-                "ViaPlay Nederland HD",
                 "NBC",
-                "Fast Sports",
-                "beIN Connect Türkiye",
                 "TNT Sports 1 HD",
-                "beIN Sports MENA 1 HD",
-                "Sky Sports Main Event UHD",
-                "ViaPlay Danmark HD",
-                "V Sport Premium Sweden",
+                "Play Sports 1 Belgium",
+                "HBO Max",
+                "DAZN España",
+                "Hub Premier Great Britain",
+                "Diema Sport 2 HD",
+                "Varzish TV Sport HD",
                 "Stan Sport Australia",
-                "Sky Go UK"
+                "ViaPlay Danmark HD",
+                "beIN Sports MENA 1 HD",
+                "beIN Sports MENA English 1 HD",
+                "ViaPlay Norge HD",
+                "TNT Sports Ultimate UHD",
+                "VOYO Pro TV Romania",
+                "Go3 Extra Sport Baltics",
+                "Peacock",
+                "NBC Universo",
+                "beIN Connect Türkiye",
+                "Fast Sports",
+                "TNT Sports Digital Exclusive",
+                "ViaPlay Suomi HD",
+                "beIN Sports Türkiye 3 HD",
+                "Monomax Streaming",
+                "Sky Go UK",
+                "Sky Sports Main Event UHD",
+                "USA Network United States",
+                "Canal+ France",
+                "Universo Spain",
+                "Sky Sports Premier League HD",
+                "FuboTV Canada",
+                "NBC Sports 4K",
+                "ViaPlay Nederland HD",
+                "beIN Connect MENA",
+                "V Sport Premium Sweden",
+                "Sky UK Ultra HD 1",
+                "ViaPlay Sverige HD",
+                "Sky Sport Calcio HD"
               ]
             },
             {
               "country": "Wheresthematch",
               "channels": [
-                "Sky Sports Premier League",
+                "Sky Sports Main Event",
                 "Sky Sports Ultra HDR",
-                "Sky Sports Main Event"
+                "Sky Sports Premier League"
               ]
             },
             {
@@ -382,9 +334,9 @@
             {
               "country": "NowTV",
               "channels": [
+                "Now Sports Premier League TV",
                 "Now Sports Premier League 1",
-                "Now Sports 4K 1",
-                "Now Sports Premier League TV"
+                "Now Sports 4K 1"
               ]
             }
           ],
@@ -399,21 +351,25 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "YouTube: Sky Sports Football",
-                "Sky Sports MIX UK HD",
-                "Sky Sports Mix Great Britain",
-                "ESPN Unlimited",
-                "DAZN Canada",
-                "OneFootball",
-                "Sky Sport Bundesliga 1 Germany",
-                "Sky Sport Top Event HD",
-                "Tivibu Spor 2 HD",
-                "Sky Sport Bundesliga HD",
-                "S Sport+ Streaming",
-                "Sky Go UK",
-                "ESPN Select",
+                "Nova Sport Bulgaria HD",
                 "Sky Sport Bundesliga UHD",
-                "Sky Sport Bundesliga 1 HD"
+                "Sky Sport Bundesliga 1 Germany",
+                "Sky Sports Mix Great Britain",
+                "Futbol TV Tajikistan",
+                "Sky Sport Max Italia HD",
+                "S Sport+ Streaming",
+                "Sky Sports MIX UK HD",
+                "OneFootball",
+                "Sky Sport Bundesliga HD",
+                "ESPN Select",
+                "Tivibu Spor 2 HD",
+                "ESPN Unlimited",
+                "Sporty TV Africa",
+                "Sky Go UK",
+                "YouTube: Sky Sports Football",
+                "Sky Sport Top Event HD",
+                "Sky Sport Bundesliga 1 HD",
+                "DAZN Canada"
               ]
             },
             {
@@ -434,12 +390,20 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Sky Sport 251 Italia HD",
+                "S Sport+ Streaming",
                 "beIN SPORTS 3 Australia",
+                "Sky Sport Italia 4K UHD",
                 "TV4 Sport Live 1 Sweden",
+                "MAX Sport 3 Bulgaria HD",
+                "Futbol TV Tajikistan",
+                "S Sport 2 Türkiye HD",
+                "Paramount+ (US)",
+                "Sky Sport Calcio HD",
                 "DAZN US",
                 "DAZN Canada",
-                "Sky Sport Calcio Italy",
-                "Paramount+ (US)"
+                "Tivibu Spor 1 HD",
+                "Sky Sport Calcio Italy"
               ]
             },
             {
@@ -467,13 +431,19 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "ESPN Deportes",
+                "S Sport+ Streaming",
+                "DAZN 1 Italia HD",
+                "Varzish TV Sport HD",
                 "beIN SPORTS 2 Australia",
-                "ESPN Unlimited",
-                "ESPN Deportes Spain",
+                "ESPN Deportes",
+                "Disney+ UK",
                 "DAZN2 Germany",
+                "S Sport 1 Türkiye HD",
+                "MAX Sport 4 Bulgaria HD",
+                "ESPN Select",
                 "TV4 Fotball Sweden",
-                "ESPN Select"
+                "ESPN Unlimited",
+                "ESPN Deportes Spain"
               ]
             },
             {
@@ -491,6 +461,22 @@
             }
           ],
           "source": "livesportsontv"
+        },
+        {
+          "league": "Bundesliga",
+          "match": "Bayern-Munich vs Heidenheim",
+          "kick_utc": 1777728600,
+          "time": "02/05 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Bundesliga YouTube",
+                "Bundesliga App"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
         },
         {
           "league": "Premier League",
@@ -704,66 +690,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Masters 1000 de Madrid",
-          "kick_utc": 1777665600,
-          "time": "02/05 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Madrid",
-          "kick_utc": 1777737600,
-          "time": "02/05 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Voosport World1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Madrid",
-          "kick_utc": 1777752000,
-          "time": "03/05 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Voosport World1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: ATP Madrid Semifinala",
-          "kick_utc": 1777669200,
-          "time": "02/05 04:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
           "match": "Championnats du monde par équipes",
           "kick_utc": 1777719600,
           "time": "02/05 06:00 PM",
@@ -877,6 +803,36 @@
               "country": "Hubsport",
               "channels": [
                 "Sport Klub 2 Hrvatska"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Masters 1000 de Madrid",
+          "kick_utc": 1777737600,
+          "time": "02/05 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Voosport World1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Masters 1000 de Madrid",
+          "kick_utc": 1777752000,
+          "time": "03/05 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Voosport World1 France"
               ]
             }
           ],
