@@ -1,211 +1,9 @@
 {
-  "updated": "2026-05-04 02:11 VN",
+  "updated": "2026-05-04 04:53 VN",
   "days": {
     "20260503": {
       "date": "Sunday, 03/05",
       "games": [
-        {
-          "league": "Premier League",
-          "match": "Aston Villa vs Tottenham Hotspur",
-          "kick_utc": 1777831200,
-          "time": "04/05 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports Premier League TV",
-                "Now Sports Premier League 1"
-              ]
-            },
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Dazn 2 Portugal",
-                "Hub Premier 1"
-              ]
-            },
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "beIN Connect MENA",
-                "Canal+ Foot France",
-                "Canal+ Foot HD",
-                "Monomax Streaming",
-                "DAZN 1 Bar Espana",
-                "Setanta Sports Ukraine HD",
-                "TNT Sports Ultimate UHD",
-                "V Sport Premier League HD",
-                "Cytavision Sports PPV 3 HD",
-                "Cytavision Sports 3 HD",
-                "HBO Max",
-                "Canal+ Sport 1 Czech HD",
-                "Fast Sports",
-                "Sky Sport Premier League DE HD",
-                "Universo Spain",
-                "beIN Connect Türkiye",
-                "ViaPlay 2 Urheilu HD",
-                "SuperSport MáXimo 1 HD",
-                "SuperSport 3 Albania HD",
-                "Spíler 1 TV Hungary HD",
-                "Sky Sport Max Italia HD",
-                "FuboTV Canada",
-                "Go3 Extra Sport Baltics",
-                "SuperSport MáXimo 2A HD",
-                "TNT Sports 1 Great Britain",
-                "DAZN 2 Portugal HD",
-                "Setanta Sports 1 Georgia HD",
-                "Astro Premier League 2 HD",
-                "Fast Sports 1 Armenia",
-                "VOYO Pro TV Romania",
-                "DAZN 1 Espana HD",
-                "DAZN España",
-                "Idman TV HD",
-                "Canal+ Extra 1 Polska HD",
-                "beIN Sports Türkiye 5 HD",
-                "SuperSport Premier League HD",
-                "Setanta Sports 1 Eurasia HD",
-                "Telemundo",
-                "Stan Sport Australia",
-                "Nova Sports Premier League HD",
-                "ViaPlay Nederland HD",
-                "DAZN Canada",
-                "Hub Premier Great Britain",
-                "Diema Sport 2 HD",
-                "USA Network United States",
-                "ViaPlay Suomi HD",
-                "TNT Sports 1 HD",
-                "Futbol TV Tajikistan",
-                "USA Network",
-                "ViaPlay Norge HD",
-                "TNT Sports Digital Exclusive",
-                "Play Sports 1 Belgium"
-              ]
-            },
-            {
-              "country": "Ausport",
-              "channels": [
-                "Stan Sport"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Serie A",
-          "match": "Inter Milan vs Parma",
-          "kick_utc": 1777833900,
-          "time": "04/05 01:45 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "ART Motion Sport 1 HD",
-                "Astro Football HD",
-                "Azam Sports 3 HD",
-                "Cytavision Sports 4 HD",
-                "DAZN 1 Italia HD",
-                "DAZN Great Britain",
-                "DAZN Ireland",
-                "Eleven Sports 3 Polska HD",
-                "ESPN 1 Brazil HD",
-                "Fast Sports TV Armenia",
-                "Go3 Sport 2 Baltic HD",
-                "HBO Max",
-                "Match 4 Hungary HD",
-                "MAX Sport 3 Bulgaria HD",
-                "Megogo Futbol 2",
-                "MTV Urheilu 1 Suomi HD",
-                "Persiana Sports 2 HD",
-                "Polsat Sport Premium 2 HD",
-                "Prima Sport RO 2 HD",
-                "S Sport 2 Türkiye HD",
-                "Setanta Sports 2 Baltic",
-                "Setanta Sports 2 Georgia HD",
-                "Setanta Sports Qazaqstan HD",
-                "Sport TV Azerbaijan",
-                "Sport TV2 Portugal HD",
-                "Sporty TV Africa",
-                "SuperSport Football HD",
-                "SuperSport MáXimo 360",
-                "TNT Sports 2 HD",
-                "Tring Sport 1 HD",
-                "TV2 Sport X Dansk HD",
-                "TV4 Fotboll HD",
-                "VG+ Sport Norge"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "La Liga",
-          "match": "Espanyol vs Real Madrid",
-          "kick_utc": 1777834800,
-          "time": "04/05 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Nova Sports 1 Hellas HD",
-                "Go3 Sport Open Baltic",
-                "Setanta Sports 1 Baltic",
-                "Varzish TV Sport HD",
-                "DAZN2 Germany",
-                "New World Sport 3 Togo",
-                "TV2 Sport Premium HD",
-                "M+ Vamos 2 España HD",
-                "MTV Urheilu 3 Suomi HD",
-                "TV12 Sverige HD",
-                "SuperSport 2 Albania HD",
-                "beIN Sports 2 HD",
-                "Prima Sport RO 3 HD",
-                "SuperSport LaLiga HD",
-                "DAZN 1 Portugal HD",
-                "DAZN 2 Bar Deutsch HD",
-                "Fast Sports 2 Armenia",
-                "ESPN2",
-                "Megogo Futbol 1",
-                "Fubo Sports",
-                "Movistar Plus+ HD",
-                "Cytavision Sports 4K 2 UHD",
-                "Spíler 2 TV Hungary HD",
-                "Nova Sport 4 Czech HD",
-                "ESPN Unlimited",
-                "LaLiga TV Bar HD",
-                "Eleven Sports 2 Polska HD",
-                "S Sport 1 Türkiye HD",
-                "SuperSport MáXimo 3A HD",
-                "Premier Sports GB Player HD",
-                "ESPN Deportes",
-                "Premier Sports 1 UK HD",
-                "M+ LaLiga HDR",
-                "Ziggo Sport 2",
-                "Premier Sports 1 Ireland HD",
-                "Meraj TV",
-                "ART Motion Sport 4 HD",
-                "beIN Sports France 1 HD",
-                "beIN Sports 1 France",
-                "ESPN Select",
-                "Cytavision Sports 8 HD",
-                "TV12 Sweden Sweden",
-                "MAX Sport 4 Bulgaria HD",
-                "ESPN2 United States",
-                "Azam Sports 4 HD",
-                "Persiana Sport HD",
-                "ESPN Deportes Spain",
-                "Orange Fútbol 1 HD"
-              ]
-            },
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 3",
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "Premier League",
           "match": "Chelsea vs Nottingham Forest",
@@ -215,68 +13,68 @@
             {
               "country": "Hubsport",
               "channels": [
-                "Hub Premier 1",
-                "Dazn 1 Portugal"
+                "Dazn 1 Portugal",
+                "Hub Premier 1"
               ]
             },
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Astro Premier League HD",
+                "beIN Connect Türkiye",
+                "Sky Sports Main Event HD",
                 "beIN Connect MENA",
+                "USA Network United States",
+                "Sky Sports Main Event UHD",
+                "ViaPlay Nederland HD",
+                "Sky Sports Premier League HD",
+                "Sky Sport Italia 4K UHD",
+                "Fast Sports TV Armenia",
+                "Go3 Extra Sport Baltics",
+                "beIN Sports MENA 1 HD",
+                "FuboTV Canada",
+                "Universo Spain",
+                "V Sport Premium Sweden",
+                "DAZN España",
+                "VOYO Pro TV Romania",
                 "Sky UK Ultra HD 1",
-                "Canal+ Foot France",
-                "Sky Sport Top Event HD",
-                "Monomax Streaming",
-                "DAZN 1 Bar Espana",
-                "ViaPlay Sverige HD",
-                "beIN Sports MENA English 1 HD",
-                "Cytavision Sports PPV 3 HD",
+                "DAZN 1 Espana HD",
                 "Cytavision Sports 3 HD",
-                "SuperSport 2 Albania HD",
+                "V Sport Premium HD",
+                "Cytavision Sports PPV 3 HD",
+                "Canal+ Foot France",
+                "Stan Sport Australia",
+                "beIN Sports MENA English 1 HD",
+                "Sky Sport Premier League DE HD",
+                "Setanta Sports 1 Georgia HD",
+                "DAZN Canada",
                 "Canal+ Sport 1 Czech HD",
+                "ViaPlay Danmark HD",
+                "Sky Sport Calcio HD",
+                "Monomax Streaming",
+                "SuperSport 2 Albania HD",
+                "SuperSport Premier League HD",
+                "Sky Sport Top Event HD",
+                "ViaPlay Sverige HD",
+                "ViaPlay Suomi HD",
+                "Astro Grandstand HD",
+                "ViaPlay Norge HD",
+                "NBC Universo",
+                "Nova Sports Premier League HD",
+                "beIN Sports Türkiye 3 HD",
+                "USA Network",
+                "DAZN 1 Bar Espana",
                 "Fast Sports",
                 "DAZN 1 Portugal HD",
-                "Sky Sport Premier League DE HD",
-                "V Sport Premium HD",
-                "Universo Spain",
-                "beIN Connect Türkiye",
-                "Sky Sport Italia 4K UHD",
-                "Sky Sports Main Event HD",
-                "Astro Grandstand HD",
-                "FuboTV Canada",
-                "ViaPlay Danmark HD",
-                "NBC Universo",
-                "Go3 Extra Sport Baltics",
-                "Fast Sports TV Armenia",
-                "Setanta Sports 1 Georgia HD",
-                "VOYO Pro TV Romania",
-                "DAZN 1 Espana HD",
-                "DAZN España",
-                "Sky Sports Main Event UHD",
-                "Sky Go UK",
-                "SuperSport Premier League HD",
-                "Stan Sport Australia",
-                "Nova Sports Premier League HD",
-                "V Sport Premium Sweden",
-                "ViaPlay Nederland HD",
-                "DAZN Canada",
                 "TeleXitos",
-                "beIN Sports MENA 1 HD",
-                "Sky Sports Premier League HD",
-                "Sky Sport Calcio HD",
-                "USA Network United States",
-                "ViaPlay Suomi HD",
-                "USA Network",
-                "ViaPlay Norge HD",
-                "beIN Sports Türkiye 3 HD"
+                "Astro Premier League HD",
+                "Sky Go UK"
               ]
             },
             {
               "country": "NowTV",
               "channels": [
-                "Now Sports Premier League TV",
-                "Now Sports Premier League 1"
+                "Now Sports Premier League 1",
+                "Now Sports Premier League TV"
               ]
             }
           ],
@@ -291,22 +89,67 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "VG+ Sport Norge",
-                "DAZN 1 Italia HD",
-                "Fast Sports TV Armenia",
-                "DAZN Zona Italy",
-                "DAZN US",
-                "DAZN2 Germany",
                 "SuperSport Football HD",
                 "DAZN Ireland",
-                "Paramount+ (US)",
-                "DAZN Great Britain",
-                "FOX Deportes",
+                "VG+ Sport Norge",
                 "Fox Deportes Spain",
+                "Cytavision Sports 4 HD",
+                "DAZN 1 Italia HD",
+                "FOX Deportes",
+                "DAZN Zona Italy",
+                "DAZN Great Britain",
                 "ART Motion Sport 2 HD",
-                "DAZN Canada",
+                "Fast Sports TV Armenia",
+                "Paramount+ (US)",
                 "MAX Sport 3 Bulgaria HD",
-                "Cytavision Sports 4 HD"
+                "DAZN US",
+                "DAZN Canada",
+                "DAZN2 Germany"
+              ]
+            },
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "DAZN"
+              ]
+            },
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN SPORTS 2",
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Serie A",
+          "match": "Roma vs Fiorentina",
+          "kick_utc": 1777920300,
+          "time": "05/05 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "SuperSport Football HD",
+                "VG+ Sport Norge",
+                "Fox Deportes Spain",
+                "Fast Sports 1 Armenia",
+                "Cytavision Sports 4 HD",
+                "FOX Deportes",
+                "Ziggo Sport 3",
+                "Sky Sport Calcio HD",
+                "Sky Sport Calcio Italy",
+                "ART Motion Sport 2 HD",
+                "Sky Sport Italia 4K UHD",
+                "DAZN Canada",
+                "Sky Sport 251 Italia HD",
+                "Paramount+ (US)",
+                "MAX Sport 3 Bulgaria HD",
+                "DAZN US",
+                "Astro Football HD",
+                "DAZN2 Germany"
               ]
             },
             {
@@ -327,52 +170,89 @@
         },
         {
           "league": "Premier League",
-          "match": "Aston-Villa vs Tottenham-Hotspur",
-          "kick_utc": 1777831200,
-          "time": "04/05 01:00 AM",
+          "match": "Everton vs Manchester City",
+          "kick_utc": 1777921200,
+          "time": "05/05 02:00 AM",
           "tv_channels": [
             {
-              "country": "Wheresthematch",
+              "country": "Hubsport",
               "channels": [
-                "TNT Sports 1",
-                "TNT Sports Ultimate",
-                "HBO Max"
+                "Dazn 1 Portugal",
+                "Hub Premier 2 (HD)",
+                "Hub Premier 2 (4K)",
+                "Hub Premier 1"
+              ]
+            },
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "beIN Connect Türkiye",
+                "Sky Sports Main Event HD",
+                "beIN Connect MENA",
+                "USA Network United States",
+                "Sky Sports Main Event UHD",
+                "ViaPlay Nederland HD",
+                "Sky Sports Premier League HD",
+                "Fast Sports TV Armenia",
+                "Go3 Extra Sport Baltics",
+                "beIN Sports MENA 1 HD",
+                "FuboTV Canada",
+                "Meraj TV",
+                "Universo Spain",
+                "DAZN España",
+                "V Sport Premium Sweden",
+                "VOYO Pro TV Romania",
+                "Sky UK Ultra HD 1",
+                "DAZN 1 Espana HD",
+                "Cytavision Sports 3 HD",
+                "V Sport Premium HD",
+                "Cytavision Sports PPV 3 HD",
+                "Canal+ Foot France",
+                "Stan Sport Australia",
+                "beIN Sports MENA English 1 HD",
+                "Sky Sport Premier League DE HD",
+                "Setanta Sports 1 Georgia HD",
+                "DAZN Canada",
+                "Canal+ Sport 1 Czech HD",
+                "Sky Sport Deutsch UHD",
+                "ViaPlay Danmark HD",
+                "Monomax Streaming",
+                "SuperSport 2 Albania HD",
+                "SuperSport Premier League HD",
+                "Sky Sport Top Event HD",
+                "ViaPlay Sverige HD",
+                "ViaPlay Suomi HD",
+                "Astro Grandstand HD",
+                "ViaPlay Norge HD",
+                "NBC Universo",
+                "Nova Sports Premier League HD",
+                "beIN Sports Türkiye 3 HD",
+                "Cytavision Sports 4K 1 UHD",
+                "DAZN 1 Bar Espana",
+                "USA Network",
+                "Fast Sports",
+                "DAZN 1 Portugal HD",
+                "TeleXitos",
+                "Astro Premier League HD",
+                "Sky Go UK"
+              ]
+            },
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            },
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4K 1",
+                "Now Sports Premier League 1",
+                "Now Sports Premier League TV"
               ]
             }
           ],
-          "source": "wheresthematch"
-        },
-        {
-          "league": "Serie A",
-          "match": "Inter-Milan vs Parma",
-          "kick_utc": 1777833900,
-          "time": "04/05 01:45 AM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "DAZN",
-                "TNT Sports 2",
-                "HBO Max"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
-        },
-        {
-          "league": "La Liga",
-          "match": "Espanyol vs Real-Madrid",
-          "kick_utc": 1777834800,
-          "time": "04/05 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Premier Sports 1"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
+          "source": "hubsport"
         },
         {
           "league": "Premier League",
@@ -386,28 +266,6 @@
                 "Sky Sports Premier League",
                 "Sky Sports Main Event",
                 "Sky Sports Ultra HDR"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
-        },
-        {
-          "league": "Serie A",
-          "match": "Roma vs Fiorentina",
-          "kick_utc": 1777920300,
-          "time": "05/05 01:45 AM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "DAZN"
-              ]
-            },
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 2",
-                "beIN Sports Connect"
               ]
             }
           ],
@@ -447,38 +305,6 @@
         },
         {
           "league": "Premier League",
-          "match": "Everton vs Manchester City",
-          "kick_utc": 1777921200,
-          "time": "05/05 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Hub Premier 2 (HD)",
-                "Hub Premier 1",
-                "Dazn 1 Portugal",
-                "Hub Premier 2 (4K)"
-              ]
-            },
-            {
-              "country": "Ausport",
-              "channels": [
-                "Stan Sport"
-              ]
-            },
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports Premier League TV",
-                "Now Sports Premier League 1",
-                "Now Sports 4K 1"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Premier League",
           "match": "PREMIER LEAGUE LIVE",
           "kick_utc": 1777917600,
           "time": "05/05 01:00 AM",
@@ -495,21 +321,6 @@
         {
           "league": "Tennis",
           "match": "Championnats du monde par équipes",
-          "kick_utc": 1777831200,
-          "time": "04/05 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "L'Equipe France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Championnats du monde par équipes",
           "kick_utc": 1777901400,
           "time": "04/05 08:30 PM",
           "tv_channels": [
@@ -517,37 +328,6 @@
               "country": "Hubsport",
               "channels": [
                 "L'Equipe France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Finala",
-          "kick_utc": 1777831200,
-          "time": "04/05 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Eurosport Tennis Club",
-          "kick_utc": 1777834800,
-          "time": "04/05 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 France"
               ]
             }
           ],
