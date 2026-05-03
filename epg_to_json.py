@@ -67,7 +67,7 @@ YOUTH_KEYWORDS = [
     "zweite", "second team", "sub", "u-", "under", "jugend", "juniorer",
     "giovanili", "primavera", "cantera", "filial", "jeunes", "espoirs",
     "jong", "beloften",
-    "estúdios - antevisão", "estúdios - rescaldo"
+    "estúdios - antevisão", "estúdios - rescaldo", "pré-jogo"
 ]
 
 TEAM_NORMALIZE_MAP = {
