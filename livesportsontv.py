@@ -137,13 +137,13 @@ def is_youth_or_women(matchup: str, league: str) -> bool:
         "women", "womens", "women's", "woman", "female", "Women's",
         "frauen", "damen", "weiblich", "donne", "femminile",
         "mujeres", "femenino", "femenina", "femmes", "féminin", "féminine",
-        "mulheres", "feminino", "vrouwen", "női", "kadın"
+        "mulheres", "feminino", "vrouwen", "női", "kadın", "w/serie"
     ]
     youth_keywords = [
         "youth", "junior", "academy", "reserves", "reserve", "ii",
         "zweite", "second team", "sub", "u-", "under", "jugend", "juniorer",
         "giovanili", "primavera", "cantera", "filial", "jeunes", "espoirs",
-        "jong", "beloften"
+        "jong", "beloften", "greek super"
     ]
     for kw in women_keywords:
         if kw in combined:
