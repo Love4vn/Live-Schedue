@@ -1,14 +1,14 @@
 {
-  "updated": "2026-05-06 02:50 VN",
+  "updated": "2026-05-06 05:07 VN",
   "days": {
     "20260505": {
       "date": "Tuesday, 05/05",
       "games": [
         {
           "league": "UEFA Champions League",
-          "match": "Arsenal vs Atlético Madrid",
-          "kick_utc": 1778007600,
-          "time": "06/05 02:00 AM",
+          "match": "Bayern Munich vs Paris St Germain",
+          "kick_utc": 1778094000,
+          "time": "07/05 02:00 AM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
@@ -16,108 +16,77 @@
                 "Arena Premium 1 BiH HD",
                 "Arena Premium 1 Srbija HD",
                 "Arena Sport 1 Hrvatska HD",
-                "ART Motion Sport 1 HD",
                 "beIN Sports 1 HD",
-                "beIN Sports MENA 1 HD",
-                "beIN Sports MENA English 1 HD",
-                "beIN Sports MENA French 1 HD",
-                "Blue Sport 1 Live HD",
-                "Blue Sport 1 Live UHD",
-                "Blue Sport 2 Live HDR",
-                "Blue Sport D 2 HD",
                 "Canal+ Extra 1 Polska HD",
-                "Canal+ Foot HD",
+                "Canal+ France HD",
                 "Canal+ Live 1 France HD",
-                "CBS USA",
                 "Cosmote Sport 1 HD",
                 "Cosmote Sport 4K UHD",
                 "Cytavision Sports 3 HD",
                 "Cytavision Sports 4K 1 UHD",
-                "Cytavision Sports PPV 1 HD",
-                "DAZN Canada",
+                "Cytavision Sports PPV 3 HD",
+                "DAZN 1 Bar Deutsch HD",
+                "DAZN Deutsch",
                 "Digi 4K UHD",
                 "Digi Sport 1 Romania HD",
-                "Esteqlal TV",
                 "Fast Sports TV Armenia",
-                "Futbol TV Tajikistan",
-                "Futbol TV Uzbekistan",
                 "GEM Sport HD",
                 "Go3 Extra Sport Baltics",
-                "Ictimai TV HD",
+                "HBO Max",
+                "HRT 2 Hrvatska HD",
                 "Jurnal TV Moldova",
                 "Kanal A Slovenija HD",
                 "LaLiga TV Bar HD",
                 "M+ Liga de Campeones HD",
                 "M+ Liga de Campeones HDR",
-                "MAX Sport 3 Bulgaria HD",
+                "MEGA Hellas HD",
                 "Megogo Futbol 1",
                 "Meraj TV",
+                "Movistar Plus+ HD",
                 "MTV Urheilu 1 Suomi HD",
-                "New World Sport 1 Mauritius",
-                "Nova Sport 6 Czech HD",
-                "Okko Futbol HD",
-                "Paramount+ USA",
-                "Persiana Sport HD",
+                "Nova Sport 3 Czech HD",
+                "Nova Sport 4 Czech HD",
+                "Orange Fútbol 1 HD",
                 "Premier Sports 1 Ireland HD",
+                "Premier Sports 2 Mongolia HD",
                 "Prima Sport RO 1 HD",
-                "Prime Video Deutsch",
-                "Prime Video Sportsbar DE HD",
-                "Prime Video UK",
-                "Qazaqstan TV HD",
+                "Prime Video Sportsbar IT HD",
+                "QazSport HD",
+                "RSI La 2 Svizzera HD",
                 "RTL Club Belgique",
-                "RTL Hungary HD",
                 "RTL+ Hungary",
+                "RTS 1 Srbija HD",
+                "RTS 2 Suisse HD",
+                "RTÉ 2 Ireland HD",
+                "RTÉ Player",
                 "Setanta Sports 1 Georgia HD",
                 "Silk Universal HD",
-                "Sky Sport 1 Austria HD",
-                "Sky Sport 251 Italia HD",
-                "Sky Sport Italia 4K UHD",
-                "Sky Sport Uno Italia HD",
-                "Solh TV",
                 "Sport TV5 Portugal HD",
+                "SRF Zwei Schweiz HD",
                 "Stan Sport Australia",
-                "SuperSport Grandstand HD",
                 "SuperSport MáXimo 1 HD",
                 "SuperSport Premier League HD",
+                "TNT Sports 1 HD",
                 "Tring Sport 1 HD",
                 "TRT 1 Türkiye HD",
                 "TSN Malta 1 HD",
-                "TUDN Español USA",
-                "Turkmenistan Sport HD",
+                "TV2 Sport 1 Norge HD",
                 "TV3+ Dansk HD",
-                "TVP 1 Polska HD",
-                "Univision USA",
                 "V Sport Premium HD",
                 "V Sport Ultra 4K UHD",
-                "Varzish TV Sport HD",
-                "ViaPlay Sport Sverige HD",
+                "Vizion Plus HD",
                 "VTM 2 Belgium HD",
                 "Ziggo Sport HD",
                 "Zor TV Uzbekistan",
                 "Paramount+ (US)",
+                "DAZN US",
                 "CBS",
                 "TUDN",
-                "Univision",
-                "ViX"
+                "Univision"
               ]
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Champions League",
-          "match": "Arsenal vs Atletico-Madrid",
-          "kick_utc": 1778007600,
-          "time": "06/05 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Amazon Prime Video"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
         },
         {
           "league": "UEFA Champions League",
@@ -222,9 +191,9 @@
             {
               "country": "Ausport",
               "channels": [
-                "beIN SPORTS 1",
+                "beIN Sports Connect",
                 "beIN SPORTS 2",
-                "beIN Sports Connect"
+                "beIN SPORTS 1"
               ]
             }
           ],
@@ -261,37 +230,6 @@
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: WTA Roma",
-          "kick_utc": 1778004000,
-          "time": "06/05 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: Roma",
-          "kick_utc": 1778011200,
-          "time": "06/05 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -366,6 +304,37 @@
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: Roma",
+          "kick_utc": 1778097600,
+          "time": "07/05 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: Roma",
+          "kick_utc": 1778104800,
+          "time": "07/05 05:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
                 "Digi Sport 2 Romania"
               ]
             }
@@ -662,6 +631,21 @@
           "match": "Internazionali BNL d'Italia -Round 1 (A)",
           "kick_utc": 1778058000,
           "time": "06/05 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Internazionali BNL d'Italia -Round 1 (A)",
+          "kick_utc": 1778097600,
+          "time": "07/05 03:00 AM",
           "tv_channels": [
             {
               "country": "NowTV",
