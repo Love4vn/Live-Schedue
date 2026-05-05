@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-05 21:28 VN",
+  "updated": "2026-05-05 23:50 VN",
   "days": {
     "20260505": {
       "date": "Tuesday, 05/05",
@@ -37,8 +37,10 @@
                 "DAZN Canada",
                 "Digi 4K UHD",
                 "Digi Sport 1 Romania HD",
+                "Esteqlal TV",
                 "Fast Sports TV Armenia",
                 "Futbol TV Tajikistan",
+                "Futbol TV Uzbekistan",
                 "GEM Sport HD",
                 "Go3 Extra Sport Baltics",
                 "Ictimai TV HD",
@@ -71,6 +73,7 @@
                 "Sky Sport 251 Italia HD",
                 "Sky Sport Italia 4K UHD",
                 "Sky Sport Uno Italia HD",
+                "Solh TV",
                 "Sport TV5 Portugal HD",
                 "Stan Sport Australia",
                 "SuperSport Grandstand HD",
@@ -80,6 +83,7 @@
                 "TRT 1 Türkiye HD",
                 "TSN Malta 1 HD",
                 "TUDN Español USA",
+                "Turkmenistan Sport HD",
                 "TV3+ Dansk HD",
                 "TVP 1 Polska HD",
                 "Univision USA",
@@ -118,8 +122,8 @@
         {
           "league": "Tennis",
           "match": "Italian Open",
-          "kick_utc": 1777986000,
-          "time": "05/05 08:00 PM",
+          "kick_utc": 1778058000,
+          "time": "06/05 04:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
@@ -133,13 +137,14 @@
         {
           "league": "Tennis",
           "match": "Italian Open",
-          "kick_utc": 1778058000,
-          "time": "06/05 04:00 PM",
+          "kick_utc": 1778074200,
+          "time": "06/05 08:30 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "T2"
+                "T2",
+                "RDS 2"
               ]
             }
           ],
@@ -170,9 +175,9 @@
             {
               "country": "Ausport",
               "channels": [
-                "beIN SPORTS 2",
+                "beIN SPORTS 1",
                 "beIN Sports Connect",
-                "beIN SPORTS 1"
+                "beIN SPORTS 2"
               ]
             }
           ],
@@ -180,45 +185,30 @@
         },
         {
           "league": "Tennis",
-          "match": "Championnats du monde par équipes",
-          "kick_utc": 1777987800,
-          "time": "05/05 08:30 PM",
+          "match": "",
+          "kick_utc": 1778079600,
+          "time": "06/05 10:00 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "L'Equipe France"
+                "beIN SPORTS 1",
+                "beIN Sports Connect"
               ]
             }
           ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
-          "match": "Championnats du monde par équipes",
-          "kick_utc": 1778074200,
-          "time": "06/05 08:30 PM",
+          "match": "Li - Zhang (UKLJUČENJE)",
+          "kick_utc": 1777995000,
+          "time": "05/05 10:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "L'Equipe France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: WTA Roma",
-          "kick_utc": 1777989600,
-          "time": "05/05 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
+                "Sport Klub 2 Hrvatska"
               ]
             }
           ],
@@ -251,21 +241,6 @@
               "channels": [
                 "Digi Sport 2 Hd Romania",
                 "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Li - Zhang (UKLJUČENJE)",
-          "kick_utc": 1777995000,
-          "time": "05/05 10:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Klub 2 Hrvatska"
               ]
             }
           ],
@@ -322,6 +297,22 @@
           "match": "Tenis: Roma",
           "kick_utc": 1778076000,
           "time": "06/05 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: Roma",
+          "kick_utc": 1778083200,
+          "time": "06/05 11:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -395,9 +386,39 @@
         },
         {
           "league": "Tennis",
+          "match": "ATP Masters & WTA 1000 Rome",
+          "kick_utc": 1778083200,
+          "time": "06/05 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Klub 5 Hrvatska"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "ATP Masters 1000 - Roma 2026",
           "kick_utc": 1778058000,
           "time": "06/05 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP Masters 1000 - Roma 2026",
+          "kick_utc": 1778079600,
+          "time": "06/05 10:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -440,6 +461,21 @@
         },
         {
           "league": "Tennis",
+          "match": "Tournoi WTA de Rome",
+          "kick_utc": 1778079600,
+          "time": "06/05 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "beIN Sports Max 4 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "WTA Tour 2026 Internazionali BNL d'Italia (1000) Day 1 Session 2",
           "kick_utc": 1778068800,
           "time": "06/05 07:00 PM",
@@ -448,6 +484,36 @@
               "country": "Hubsport",
               "channels": [
                 "Hub Sports 2 HD"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Championnats du monde par équipes",
+          "kick_utc": 1778074200,
+          "time": "06/05 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP Tour 2026 Internazionali BNL d’Italia (1000) Day 1 R1 Session 3",
+          "kick_utc": 1778079600,
+          "time": "06/05 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Hub Sports 1  HD"
               ]
             }
           ],
