@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-05 15:22 VN",
+  "updated": "2026-05-05 17:51 VN",
   "days": {
     "20260505": {
       "date": "Tuesday, 05/05",
@@ -21,6 +21,9 @@
                 "beIN Sports MENA 1 HD",
                 "beIN Sports MENA English 1 HD",
                 "beIN Sports MENA French 1 HD",
+                "Blue Sport 1 Live HD",
+                "Blue Sport 1 Live UHD",
+                "Blue Sport 2 Live HDR",
                 "Blue Sport D 2 HD",
                 "Canal+ Extra 1 Polska HD",
                 "Canal+ Foot HD",
@@ -36,6 +39,7 @@
                 "Digi Sport 1 Romania HD",
                 "Fast Sports TV Armenia",
                 "Futbol TV Tajikistan",
+                "GEM Sport HD",
                 "Go3 Extra Sport Baltics",
                 "Ictimai TV HD",
                 "Jurnal TV Moldova",
@@ -86,21 +90,6 @@
                 "VTM 2 Belgium HD",
                 "Ziggo Sport HD",
                 "Zor TV Uzbekistan",
-                "Blue Sport 1 Live HD",
-                "Blue Sport 1 Live UHD",
-                "Blue Sport 2 Live HDR",
-                "Amazon Prime Video Great Britain",
-                "CBS United States",
-                "Amazon Prime Video Germany",
-                "Cosmote Sport 1 Greece",
-                "TUDN Spain",
-                "Sky Sport Uno Italy",
-                "Canal+ Foot France",
-                "Canal+ Extra 1 Poland",
-                "V Sport Premium Sweden",
-                "Ziggo Sport Netherlands",
-                "TRT 1 Turkey",
-                "Amazon Prime Video Great Britain",
                 "Paramount+ (US)",
                 "CBS",
                 "TUDN",
@@ -159,6 +148,21 @@
         },
         {
           "league": "Tennis",
+          "match": "Italian Open",
+          "kick_utc": 1778058000,
+          "time": "06/05 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "T2"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
           "match": "Internazionali BNL dItalia",
           "kick_utc": 1777971600,
           "time": "05/05 04:00 PM",
@@ -172,6 +176,39 @@
             }
           ],
           "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "Internazionali BNL dItalia",
+          "kick_utc": 1778058000,
+          "time": "06/05 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Sky Sports Tennis",
+                "Sky Sports+"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1778058000,
+          "time": "06/05 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN SPORTS 2",
+                "beIN SPORTS 1",
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -296,6 +333,83 @@
             }
           ],
           "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "WTA Tour 2026 Internazionali BNL d'Italia (1000) Day 1 Session 1",
+          "kick_utc": 1778058000,
+          "time": "06/05 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Hub Sports 2 HD"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP Masters 1000 - Roma 2026",
+          "kick_utc": 1778058000,
+          "time": "06/05 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Internazionali BNL d'Italia E1",
+          "kick_utc": 1778058000,
+          "time": "06/05 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Internazionali BNL d'Italia -Round 1 (A)",
+          "kick_utc": 1778058000,
+          "time": "06/05 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Internazionali BNL d'Italia - Rome",
+          "kick_utc": 1778058000,
+          "time": "06/05 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
         }
       ]
     }
