@@ -279,6 +279,12 @@ def parse_starhub(xml, ch):
         if tel is None or not start: continue
         title = (tel.text or "").strip()
         des = (p.find("desc").text or "").strip() if p.find("desc") is not None else ""
+
+        # ===== THÊM DÒNG NÀY =====
+        if is_women_youth(title):   # bỏ qua giải nữ hoặc trẻ
+            continue
+        # =========================
+
         lg = mt = None
         if is_fa_cup(title) and has_live_starhub(title, des) and has_any_pl_team(title+" "+des):
             lg = "FA Cup"
@@ -290,6 +296,7 @@ def parse_starhub(xml, ch):
             lg, mt = parse_tennis(title)
         else:
             continue
+        # ... phần còn lại giữ nguyên   
         dt = parse_time(start)
         if not in_window(dt, now): continue
         dt_vn = dt + timedelta(hours=7)
