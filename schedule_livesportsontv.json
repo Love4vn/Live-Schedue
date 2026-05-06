@@ -1,16 +1,5 @@
 [
     {
-        "Date": "2026-05-06",
-        "Time": "20:30",
-        "League": "Tennis (ATP)",
-        "Matchup": "Italian Open",
-        "Services": [
-            "T2",
-            "TSN+",
-            "RDS 2"
-        ]
-    },
-    {
         "Date": "2026-05-07",
         "Time": "02:00",
         "League": "UEFA Champions League",
@@ -25,6 +14,7 @@
             "Canal+ Extra 1 Polska HD",
             "Canal+ France HD",
             "Canal+ Live 1 France HD",
+            "CBC Sport HD",
             "CBS USA",
             "Cosmote Sport 1 HD",
             "Cosmote Sport 4K UHD",
@@ -40,10 +30,12 @@
             "Esteqlal TV",
             "Fast Sports TV Armenia",
             "Futbol TV Tajikistan",
+            "Futbol TV Uzbekistan",
             "GEM Sport HD",
             "Go3 Extra Sport Baltics",
             "HBO Max",
             "HRT 2 Hrvatska HD",
+            "IRIB TV3 HD",
             "Jurnal TV Moldova",
             "Kanal A Slovenija HD",
             "LaLiga TV Bar HD",
@@ -66,6 +58,7 @@
             "Prime Video Sportsbar IT HD",
             "QazSport HD",
             "RSI La 2 Svizzera HD",
+            "RTK 1 Kosovo HD",
             "RTL Club Belgique",
             "RTL+ Hungary",
             "RTS 1 Srbija HD",
@@ -74,6 +67,7 @@
             "RTÉ Player",
             "Setanta Sports 1 Georgia HD",
             "Silk Universal HD",
+            "Solh TV",
             "Sport TV Azerbaijan",
             "Sport TV5 Portugal HD",
             "SRF Zwei Schweiz HD",
@@ -108,6 +102,15 @@
     {
         "Date": "2026-05-07",
         "Time": "16:00",
+        "League": "Tennis (ATP)",
+        "Matchup": "Italian Open",
+        "Services": [
+            "T2"
+        ]
+    },
+    {
+        "Date": "2026-05-07",
+        "Time": "16:00",
         "League": "Tennis (WTA)",
         "Matchup": "Italian Open",
         "Services": [
@@ -121,7 +124,17 @@
         "League": "Tennis (ATP)",
         "Matchup": "Italian Open",
         "Services": [
+            "T2",
             "RDS 2"
+        ]
+    },
+    {
+        "Date": "2026-05-08",
+        "Time": "01:00",
+        "League": "Tennis (WTA)",
+        "Matchup": "Italian Open",
+        "Services": [
+            "DAZN Canada"
         ]
     }
 ]
