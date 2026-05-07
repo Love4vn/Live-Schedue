@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-07 18:17 VN",
+  "updated": "2026-05-07 21:37 VN",
   "days": {
     "20260507": {
       "date": "Thursday, 07/05",
@@ -49,8 +49,8 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "DAZN Canada",
                 "Paramount+ (US)",
+                "DAZN Canada",
                 "ViX"
               ]
             },
@@ -72,8 +72,8 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "DAZN Canada",
                 "Paramount+ (US)",
+                "DAZN Canada",
                 "ViX"
               ]
             },
@@ -207,8 +207,8 @@
               "channels": [
                 "DAZN Canada",
                 "T2",
-                "TSN4",
-                "TSN2"
+                "TSN2",
+                "TSN4"
               ]
             }
           ],
@@ -249,14 +249,28 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Hamad Medjedovic vs Valentin Royer",
           "kick_utc": 1778166000,
           "time": "07/05 10:00 PM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
-                "beIN Sports Connect",
+                "beIN SPORTS 2"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Belinda Bencic vs Bianca Vanessa Andreescu",
+          "kick_utc": 1778166000,
+          "time": "07/05 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
                 "beIN SPORTS 1"
               ]
             }
@@ -287,44 +301,60 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP Tour 2026 Internazionali BNL d’Italia (1000) Day 2 R1 Session 2",
-          "kick_utc": 1778151600,
-          "time": "07/05 06:00 PM",
+          "match": "Championnats du monde par équipes",
+          "kick_utc": 1778160600,
+          "time": "07/05 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Championnats du monde par équipes",
+          "kick_utc": 1778247000,
+          "time": "08/05 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: Sorana Cirstea - Tatjana Maria",
+          "kick_utc": 1778162400,
+          "time": "07/05 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP Tour 2026 Internazionali BNL d’Italia (1000) Day 2 R1 Session 3",
+          "kick_utc": 1778166000,
+          "time": "07/05 10:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
                 "Hub Sports 1  HD"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "WTA Tour 2026 Internazionali BNL d'Italia (1000) Day 2 Session 2",
-          "kick_utc": 1778151600,
-          "time": "07/05 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Hub Sports 2 HD"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA de Rome",
-          "kick_utc": 1778151600,
-          "time": "07/05 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 4 France"
               ]
             }
           ],
@@ -377,15 +407,29 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis: Roma",
-          "kick_utc": 1778155200,
-          "time": "07/05 07:00 PM",
+          "match": "ATP Masters 1000 - Roma 2026",
+          "kick_utc": 1778166000,
+          "time": "07/05 10:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP Masters 1000 - Roma 2026",
+          "kick_utc": 1778230800,
+          "time": "08/05 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
               ]
             }
           ],
@@ -456,24 +500,9 @@
         },
         {
           "league": "Tennis",
-          "match": "Championnats du monde par équipes",
-          "kick_utc": 1778160600,
-          "time": "07/05 08:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "L'Equipe France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: Sorana Cirstea - Tatjana Maria",
-          "kick_utc": 1778162400,
-          "time": "07/05 09:00 PM",
+          "match": "Tenis: Roma",
+          "kick_utc": 1778241600,
+          "time": "08/05 07:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -487,44 +516,15 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP Tour 2026 Internazionali BNL d’Italia (1000) Day 2 R1 Session 3",
-          "kick_utc": 1778166000,
-          "time": "07/05 10:00 PM",
+          "match": "Tenis: Roma",
+          "kick_utc": 1778248800,
+          "time": "08/05 09:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Hub Sports 1  HD"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP Masters 1000 - Roma 2026",
-          "kick_utc": 1778166000,
-          "time": "07/05 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP Masters 1000 - Roma 2026",
-          "kick_utc": 1778230800,
-          "time": "08/05 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
               ]
             }
           ],
@@ -637,18 +637,33 @@
         },
         {
           "league": "Tennis",
-          "match": "Internazionali BNL d'Italia E5",
-          "kick_utc": 1778151600,
-          "time": "07/05 06:00 PM",
+          "match": "Judo Grand Slam 2026 - Astana - Dia 1",
+          "kick_utc": 1778241600,
+          "time": "08/05 07:00 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 4"
+                "Sport Tv 6 Hd Portugal"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Judo : Grand Slam d'Astana",
+          "kick_utc": 1778248800,
+          "time": "08/05 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Rmc Sport Access France"
+              ]
+            }
+          ],
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -677,6 +692,37 @@
               "country": "NowTV",
               "channels": [
                 "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Internazionali BNL d'Italia - Rome",
+          "kick_utc": 1778245200,
+          "time": "08/05 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Internazionali BNL d'Italia - Rome",
+          "kick_utc": 1778249700,
+          "time": "08/05 09:15 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport",
+                "Ziggo Sport Kanaal 14"
               ]
             }
           ],
