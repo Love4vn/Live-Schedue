@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-07 10:51 VN",
+  "updated": "2026-05-07 15:45 VN",
   "days": {
     "20260507": {
       "date": "Thursday, 07/05",
@@ -96,23 +96,23 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Arena Sport 1 Srbija HD",
-                "RTL+ Hungary",
-                "beIN Sports MENA 3 HD",
-                "TV3+ Norge HD",
-                "Ziggo Sport 3",
-                "DAZN Canada",
-                "HBO Max",
-                "TRT Spor Türkiye HD",
                 "ViX",
-                "Premier Sports 2 Ireland HD",
-                "Megogo Futbol 1",
                 "TNT Sports 2 HD",
-                "Paramount+ (US)",
-                "RTL+ Deutschland",
-                "TSN Malta 5 HD",
+                "HBO Max",
+                "RTL+ Hungary",
+                "TRT Spor Türkiye HD",
+                "TV3+ Norge HD",
+                "DAZN Canada",
+                "Ziggo Sport 3",
                 "Prima Sport RO 4 HD",
-                "Arena Sport 4 Hrvatska HD"
+                "Premier Sports 2 Ireland HD",
+                "beIN Sports MENA 3 HD",
+                "Arena Sport 1 Srbija HD",
+                "TSN Malta 5 HD",
+                "Megogo Futbol 1",
+                "Arena Sport 4 Hrvatska HD",
+                "RTL+ Deutschland",
+                "Paramount+ (US)"
               ]
             },
             {
@@ -133,24 +133,24 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TNT Sports 5 HD",
-                "Movistar Plus+ HD",
-                "RTL+ Deutschland",
-                "RTL+ Hungary",
-                "Arena Sport 2 Srbija HD",
-                "V Sport 2 Norge HD",
-                "Megogo Futbol 3",
-                "DAZN Canada",
-                "HBO Max",
-                "Ziggo Sport 5",
                 "ViX",
                 "Prima Sport RO 2 HD",
                 "Tabii Spor 2",
-                "Paramount+ (US)",
-                "TSN Malta 4 HD",
-                "beIN Sports MENA 4 HD",
+                "HBO Max",
+                "RTL+ Hungary",
+                "TNT Sports 5 HD",
                 "Arena Sport 1 BiH HD",
-                "Arena Sport 6 Hrvatska HD"
+                "Arena Sport 6 Hrvatska HD",
+                "TSN Malta 4 HD",
+                "Ziggo Sport 5",
+                "DAZN Canada",
+                "Arena Sport 2 Srbija HD",
+                "beIN Sports MENA 4 HD",
+                "V Sport 2 Norge HD",
+                "Movistar Plus+ HD",
+                "Megogo Futbol 3",
+                "RTL+ Deutschland",
+                "Paramount+ (US)"
               ]
             },
             {
@@ -226,22 +226,6 @@
           "source": "ausport"
         },
         {
-          "league": "Premier League",
-          "match": "Aston Villa vs Nottingham Forest",
-          "kick_utc": 1778180100,
-          "time": "08/05 01:55 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Dazn 1 Portugal",
-                "beIN SPORTS HD Malaysia"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
           "league": "Tennis",
           "match": "Italian Open",
           "kick_utc": 1778144400,
@@ -250,8 +234,8 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "DAZN Canada",
                 "Tennis Channel",
+                "DAZN Canada",
                 "T2"
               ]
             }
@@ -539,22 +523,6 @@
         {
           "league": "Tennis",
           "match": "Tenis: Roma",
-          "kick_utc": 1778162400,
-          "time": "07/05 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: Roma",
           "kick_utc": 1778169600,
           "time": "07/05 11:00 PM",
           "tv_channels": [
@@ -625,6 +593,22 @@
               "country": "Hubsport",
               "channels": [
                 "L'Equipe France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: Sorana Cirstea - Tatjana Maria",
+          "kick_utc": 1778162400,
+          "time": "07/05 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
               ]
             }
           ],
