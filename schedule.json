@@ -1,8 +1,8 @@
 {
-  "updated": "2026-05-08 05:09 VN",
+  "updated": "2026-05-08 10:41 VN",
   "days": {
-    "20260507": {
-      "date": "Thursday, 07/05",
+    "20260508": {
+      "date": "Friday, 08/05",
       "games": [
         {
           "league": "Bundesliga",
@@ -76,10 +76,10 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "T2",
                 "TSN4",
                 "DAZN Canada",
-                "TSN2"
+                "TSN2",
+                "T2"
               ]
             }
           ],
@@ -109,8 +109,8 @@
             {
               "country": "Wheresthematch",
               "channels": [
-                "Sky Sports Main Event",
                 "Sky Sports Tennis",
+                "Sky Sports Main Event",
                 "Sky Sports Ultra HDR",
                 "Sky Sports+"
               ]
@@ -151,17 +151,10 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": ":",
           "kick_utc": 1778230800,
           "time": "08/05 04:00 PM",
           "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 1",
-                "beIN Sports Connect"
-              ]
-            },
             {
               "country": "NowTV",
               "channels": [
@@ -169,7 +162,7 @@
               ]
             }
           ],
-          "source": "ausport"
+          "source": "nowtv"
         },
         {
           "league": "Tennis",
@@ -186,115 +179,6 @@
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: Roma",
-          "kick_utc": 1778191200,
-          "time": "08/05 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: Roma",
-          "kick_utc": 1778241600,
-          "time": "08/05 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: Roma",
-          "kick_utc": 1778248800,
-          "time": "08/05 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: Roma",
-          "kick_utc": 1778256000,
-          "time": "08/05 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: Roma",
-          "kick_utc": 1778263200,
-          "time": "09/05 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: Roma",
-          "kick_utc": 1778270400,
-          "time": "09/05 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: Roma",
-          "kick_utc": 1778277600,
-          "time": "09/05 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -458,6 +342,100 @@
               "country": "Hubsport",
               "channels": [
                 "Sport Tv 6 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: Roma",
+          "kick_utc": 1778241600,
+          "time": "08/05 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: Roma",
+          "kick_utc": 1778248800,
+          "time": "08/05 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: Roma",
+          "kick_utc": 1778256000,
+          "time": "08/05 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: Roma",
+          "kick_utc": 1778263200,
+          "time": "09/05 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: Roma",
+          "kick_utc": 1778270400,
+          "time": "09/05 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: Roma",
+          "kick_utc": 1778277600,
+          "time": "09/05 05:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Romania"
               ]
             }
           ],
