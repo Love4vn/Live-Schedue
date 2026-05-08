@@ -1,30 +1,18 @@
 {
-  "updated": "2026-05-08 14:51 VN",
+  "updated": "2026-05-08 17:44 VN",
   "days": {
     "20260508": {
       "date": "Friday, 08/05",
       "games": [
         {
           "league": "Bundesliga",
-          "match": "Borussia Dortmund vs Eintracht Frankfurt",
+          "match": "Eintracht Frankfurt vs Borussia Dortmund",
           "kick_utc": 1778265000,
           "time": "09/05 01:30 AM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "BBC iPlayer",
-                "BBC iPlayer 4K",
-                "BBC Sport Website",
-                "beIN Sports France 2 HD",
-                "CRTV Sports Cameroon",
-                "S Sport+ Streaming",
-                "Sky Sport Bundesliga 1 HD",
-                "Sky Sport Bundesliga HD",
-                "Sky Sport Bundesliga UHD",
-                "Sky Sport Top Event HD",
-                "Tivibu Spor 1 HD",
-                "YouTube: Bundesliga",
                 "ESPN Select",
                 "ESPN Unlimited",
                 "DAZN Canada",
@@ -76,10 +64,27 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN2",
                 "TSN4",
+                "T2",
                 "DAZN Canada",
-                "T2"
+                "TSN2",
+                "TSN+"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Italian Open",
+          "kick_utc": 1778238000,
+          "time": "08/05 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "TSN+",
+                "RDS 2"
               ]
             }
           ],
@@ -95,6 +100,39 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "T2"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Italian Open",
+          "kick_utc": 1778259600,
+          "time": "09/05 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Italian Open",
+          "kick_utc": 1778317200,
+          "time": "09/05 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "T2",
+                "DAZN Canada",
+                "Tennis Channel",
+                "TSN5"
               ]
             }
           ],
@@ -151,6 +189,22 @@
         },
         {
           "league": "Tennis",
+          "match": "Internazionali BNL dItalia",
+          "kick_utc": 1778317200,
+          "time": "09/05 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Sky Sports Tennis",
+                "Sky Sports+"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
           "match": ":",
           "kick_utc": 1778230800,
           "time": "08/05 04:00 PM",
@@ -175,6 +229,28 @@
               "channels": [
                 "beIN Sports Connect",
                 "beIN SPORTS 1"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1778317200,
+          "time": "09/05 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN SPORTS 1",
+                "beIN Sports Connect"
+              ]
+            },
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
               ]
             }
           ],
@@ -251,6 +327,21 @@
               "country": "Hubsport",
               "channels": [
                 "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP Masters 1000 - Roma 2026",
+          "kick_utc": 1778317200,
+          "time": "09/05 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv5 Hd Portugal"
               ]
             }
           ],
@@ -548,6 +639,36 @@
         },
         {
           "league": "Tennis",
+          "match": "ATP Tour 2026 Internazionali BNL d’Italia (1000) Day 4 R2 Session 1",
+          "kick_utc": 1778317200,
+          "time": "09/05 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Hub Sports 1  HD"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "WTA Tour 2026 Internazionali BNL d'Italia (1000) Day 4 Session 1",
+          "kick_utc": 1778317200,
+          "time": "09/05 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Hub Sports 2 HD"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Internazionali BNL d'Italia E8",
           "kick_utc": 1778230800,
           "time": "08/05 04:00 PM",
@@ -609,8 +730,8 @@
         {
           "league": "Tennis",
           "match": ": Internazionali BNL d'Italia - Rome",
-          "kick_utc": 1778245200,
-          "time": "08/05 08:00 PM",
+          "kick_utc": 1778245500,
+          "time": "08/05 08:05 PM",
           "tv_channels": [
             {
               "country": "NowTV",
@@ -640,15 +761,13 @@
         {
           "league": "Tennis",
           "match": ": Internazionali BNL d'Italia - Rome",
-          "kick_utc": 1778259600,
-          "time": "09/05 12:00 AM",
+          "kick_utc": 1778259900,
+          "time": "09/05 12:05 AM",
           "tv_channels": [
             {
               "country": "NowTV",
               "channels": [
-                "Ziggo Sport",
-                "Ziggo Sport 4",
-                "Ziggo Sport Kanaal 14"
+                "Ziggo Sport 4"
               ]
             }
           ],
@@ -664,6 +783,36 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Internazionali BNL d'Italia E11",
+          "kick_utc": 1778317200,
+          "time": "09/05 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Internazionali BNL d'Italia -Round 2 (B)",
+          "kick_utc": 1778317200,
+          "time": "09/05 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
               ]
             }
           ],
