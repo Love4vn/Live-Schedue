@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-08 10:41 VN",
+  "updated": "2026-05-08 14:51 VN",
   "days": {
     "20260508": {
       "date": "Friday, 08/05",
@@ -76,9 +76,9 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "TSN2",
                 "TSN4",
                 "DAZN Canada",
-                "TSN2",
                 "T2"
               ]
             }
@@ -335,8 +335,8 @@
         {
           "league": "Tennis",
           "match": "Judo Grand Slam 2026 - Astana - Dia 1",
-          "kick_utc": 1778241600,
-          "time": "08/05 07:00 PM",
+          "kick_utc": 1778241480,
+          "time": "08/05 06:58 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -405,21 +405,6 @@
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: Roma",
-          "kick_utc": 1778270400,
-          "time": "09/05 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
                 "Digi Sport 2 Romania"
               ]
             }
@@ -541,6 +526,21 @@
               "country": "Hubsport",
               "channels": [
                 "Hub Sports 1  HD"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: Roma Jaqueline Cristian - Karolína Plíšková",
+          "kick_utc": 1778270400,
+          "time": "09/05 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Romania"
               ]
             }
           ],
