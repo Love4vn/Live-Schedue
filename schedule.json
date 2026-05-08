@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-08 17:44 VN",
+  "updated": "2026-05-08 21:07 VN",
   "days": {
     "20260508": {
       "date": "Friday, 08/05",
@@ -17,6 +17,23 @@
                 "ESPN Unlimited",
                 "DAZN Canada",
                 "OneSoccer"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Premier League",
+          "match": "Chelsea vs Liverpool FC",
+          "kick_utc": 1778326200,
+          "time": "09/05 06:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Peacock",
+                "NBC Sports Network",
+                "DAZN Canada"
               ]
             }
           ],
@@ -42,53 +59,180 @@
         },
         {
           "league": "Premier League",
-          "match": "WELCOME TO THE WEEKEND - FRI 08 MAY",
-          "kick_utc": 1778238000,
-          "time": "08/05 06:00 PM",
+          "match": "Liverpool vs Chelsea",
+          "kick_utc": 1778326200,
+          "time": "09/05 06:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Hub Premier 1"
+                "Dazn 1 Portugal",
+                "Hub Premier 1",
+                "Hub Premier 2 (HD)",
+                "Hub Premier 8",
+                "Hub Premier 2 (4K)"
+              ]
+            },
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "TNT Sports 1",
+                "HBO Max",
+                "TNT Sports Ultimate"
+              ]
+            },
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            },
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports Premier League 1",
+                "Now Sports Premier League TV",
+                "Now Sports 4K 1"
               ]
             }
           ],
           "source": "hubsport"
         },
         {
-          "league": "Tennis",
-          "match": "Italian Open",
-          "kick_utc": 1778230800,
-          "time": "08/05 04:00 PM",
+          "league": "Bundesliga",
+          "match": "VfB-Stuttgart vs Bayer-Leverkusen",
+          "kick_utc": 1778333400,
+          "time": "09/05 08:30 PM",
           "tv_channels": [
             {
-              "country": "LiveSportsOnTV",
+              "country": "Wheresthematch",
               "channels": [
-                "TSN4",
-                "T2",
-                "DAZN Canada",
-                "TSN2",
-                "TSN+"
+                "Bundesliga YouTube",
+                "Bundesliga App"
               ]
             }
           ],
-          "source": "livesportsontv"
+          "source": "wheresthematch"
         },
         {
-          "league": "Tennis",
-          "match": "Italian Open",
-          "kick_utc": 1778238000,
-          "time": "08/05 06:00 PM",
+          "league": "Premier League",
+          "match": "Brighton vs Wolverhampton",
+          "kick_utc": 1778335200,
+          "time": "09/05 09:00 PM",
           "tv_channels": [
             {
-              "country": "LiveSportsOnTV",
+              "country": "Hubsport",
               "channels": [
-                "TSN+",
-                "RDS 2"
+                "Hub Premier 3"
+              ]
+            },
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Not Televised"
               ]
             }
           ],
-          "source": "livesportsontv"
+          "source": "hubsport"
+        },
+        {
+          "league": "Premier League",
+          "match": "Fulham vs Bournemouth-AFC",
+          "kick_utc": 1778335200,
+          "time": "09/05 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Not Televised"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Premier League",
+          "match": "Sunderland vs Manchester-United",
+          "kick_utc": 1778335200,
+          "time": "09/05 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Not Televised"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Bundesliga",
+          "match": "VfB Stuttgart vs Bayer Leverkusen",
+          "kick_utc": 1778333400,
+          "time": "09/05 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Premier League",
+          "match": "Fulham vs Bournemouth",
+          "kick_utc": 1778334600,
+          "time": "09/05 08:50 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Hub Premier 2 (HD)",
+                "Hub Premier 2 (4K)",
+                "Dazn 3 Portugal"
+              ]
+            },
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports Premier League 2"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Premier League",
+          "match": "Brighton & Hove Albion vs Wolverhampton Wanderers",
+          "kick_utc": 1778334600,
+          "time": "09/05 08:50 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports Premier League 3"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Premier League",
+          "match": "SUNDERLAND vs MANCHESTER UNITED",
+          "kick_utc": 1778335200,
+          "time": "09/05 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports Premier League 1",
+                "Now Sports Premier League TV"
+              ]
+            }
+          ],
+          "source": "nowtv"
         },
         {
           "league": "Tennis",
@@ -129,10 +273,10 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "TSN5",
                 "T2",
-                "DAZN Canada",
                 "Tennis Channel",
-                "TSN5"
+                "DAZN Canada"
               ]
             }
           ],
@@ -140,21 +284,18 @@
         },
         {
           "league": "Tennis",
-          "match": "Internazionali BNL dItalia",
-          "kick_utc": 1778230800,
-          "time": "08/05 04:00 PM",
+          "match": "Italian Open",
+          "kick_utc": 1778324400,
+          "time": "09/05 06:00 PM",
           "tv_channels": [
             {
-              "country": "Wheresthematch",
+              "country": "LiveSportsOnTV",
               "channels": [
-                "Sky Sports Tennis",
-                "Sky Sports Main Event",
-                "Sky Sports Ultra HDR",
-                "Sky Sports+"
+                "RDS"
               ]
             }
           ],
-          "source": "wheresthematch"
+          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
@@ -205,24 +346,9 @@
         },
         {
           "league": "Tennis",
-          "match": ":",
-          "kick_utc": 1778230800,
-          "time": "08/05 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1778252400,
-          "time": "08/05 10:00 PM",
+          "match": "Yannick Hanfmann vs Luciano Darderi",
+          "kick_utc": 1778254200,
+          "time": "08/05 10:30 PM",
           "tv_channels": [
             {
               "country": "Ausport",
@@ -258,14 +384,14 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP Tour 2026 Internazionali BNL d’Italia (1000) Day 3 R2 Session 1",
-          "kick_utc": 1778230800,
-          "time": "08/05 04:00 PM",
+          "match": "Championnats du monde par équipes",
+          "kick_utc": 1778247000,
+          "time": "08/05 08:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Hub Sports 1  HD"
+                "L'Equipe France"
               ]
             }
           ],
@@ -273,14 +399,14 @@
         },
         {
           "league": "Tennis",
-          "match": "WTA Tour 2026 Internazionali BNL d'Italia (1000) Day 3 Session 1",
-          "kick_utc": 1778230800,
-          "time": "08/05 04:00 PM",
+          "match": "Judo : Grand Slam d'Astana",
+          "kick_utc": 1778248800,
+          "time": "08/05 09:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Hub Sports 2 HD"
+                "Rmc Sport Access France"
               ]
             }
           ],
@@ -288,167 +414,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Rome International BNL D'Italia",
-          "kick_utc": 1778230800,
-          "time": "08/05 04:00 PM",
+          "match": "Judo : Grand Slam d'Astana",
+          "kick_utc": 1778335200,
+          "time": "09/05 09:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Sport Klub 2 Hrvatska",
-                "Sport Klub 4 Hrvatska"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP Masters 1000 - Roma 2026",
-          "kick_utc": 1778230800,
-          "time": "08/05 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP Masters 1000 - Roma 2026",
-          "kick_utc": 1778252400,
-          "time": "08/05 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP Masters 1000 - Roma 2026",
-          "kick_utc": 1778317200,
-          "time": "09/05 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv5 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP Tour 2026 Internazionali BNL d’Italia (1000) Day 3 R2 Session 2",
-          "kick_utc": 1778238000,
-          "time": "08/05 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Hub Sports 1  HD"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "WTA Tour 2026 Internazionali BNL d'Italia (1000) Day 3 Session 2",
-          "kick_utc": 1778238000,
-          "time": "08/05 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Hub Sports 2 HD"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA de Rome",
-          "kick_utc": 1778238000,
-          "time": "08/05 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 4 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA de Rome",
-          "kick_utc": 1778252400,
-          "time": "08/05 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 4 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA de Rome",
-          "kick_utc": 1778266800,
-          "time": "09/05 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 4 France",
-                "beIN Sports Max 7 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Judo Grand Slam 2026 - Astana - Dia 1",
-          "kick_utc": 1778241480,
-          "time": "08/05 06:58 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv 6 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: Roma",
-          "kick_utc": 1778241600,
-          "time": "08/05 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
+                "Rmc Sport Access France"
               ]
             }
           ],
@@ -519,29 +492,15 @@
         },
         {
           "league": "Tennis",
-          "match": "Championnats du monde par équipes",
-          "kick_utc": 1778247000,
-          "time": "08/05 08:30 PM",
+          "match": "Tenis: Roma",
+          "kick_utc": 1778328000,
+          "time": "09/05 07:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "L'Equipe France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Judo : Grand Slam d'Astana",
-          "kick_utc": 1778248800,
-          "time": "08/05 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Rmc Sport Access France"
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
               ]
             }
           ],
@@ -557,6 +516,52 @@
               "country": "Hubsport",
               "channels": [
                 "Hub Sports 1  HD"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi WTA de Rome",
+          "kick_utc": 1778252400,
+          "time": "08/05 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "beIN Sports Max 4 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi WTA de Rome",
+          "kick_utc": 1778266800,
+          "time": "09/05 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "beIN Sports Max 4 France",
+                "beIN Sports Max 7 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi WTA de Rome",
+          "kick_utc": 1778324400,
+          "time": "09/05 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "beIN Sports Max 8 France"
               ]
             }
           ],
@@ -587,6 +592,36 @@
               "country": "Hubsport",
               "channels": [
                 "Eurosport 2 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP Masters 1000 - Roma 2026",
+          "kick_utc": 1778252400,
+          "time": "08/05 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP Masters 1000 - Roma 2026",
+          "kick_utc": 1778317200,
+          "time": "09/05 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv5 Hd Portugal"
               ]
             }
           ],
@@ -669,63 +704,64 @@
         },
         {
           "league": "Tennis",
-          "match": "Internazionali BNL d'Italia E8",
-          "kick_utc": 1778230800,
-          "time": "08/05 04:00 PM",
+          "match": "ATP Tour 2026 Internazionali BNL d’Italia (1000) Day 4 R2 Session 2",
+          "kick_utc": 1778324400,
+          "time": "09/05 06:00 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 4"
+                "Hub Sports 1  HD"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
-          "match": "Internazionali BNL d'Italia -Round 2 (A)",
-          "kick_utc": 1778230800,
-          "time": "08/05 04:00 PM",
+          "match": "WTA Tour 2026 Internazionali BNL d'Italia (1000) Day 4 Session 2",
+          "kick_utc": 1778324400,
+          "time": "09/05 06:00 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 6"
+                "Hub Sports 2 HD"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
-          "match": "Internazionali BNL d'Italia -Round 2 (A)",
-          "kick_utc": 1778270400,
-          "time": "09/05 03:00 AM",
+          "match": "Asii Tenisului",
+          "kick_utc": 1778324400,
+          "time": "09/05 06:00 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 6"
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
-          "match": "Internazionali BNL d'Italia E9",
-          "kick_utc": 1778238000,
-          "time": "08/05 06:00 PM",
+          "match": "Judo Grand Slam 2026 - Astana - Dia 2",
+          "kick_utc": 1778328000,
+          "time": "09/05 07:00 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 4"
+                "Sport Tv 6 Hd Portugal"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -775,6 +811,21 @@
         },
         {
           "league": "Tennis",
+          "match": ": Internazionali BNL d'Italia - Rome",
+          "kick_utc": 1778331600,
+          "time": "09/05 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
           "match": "Internazionali BNL d'Italia E10",
           "kick_utc": 1778259600,
           "time": "09/05 12:00 AM",
@@ -783,6 +834,21 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Internazionali BNL d'Italia -Round 2 (A)",
+          "kick_utc": 1778270400,
+          "time": "09/05 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
               ]
             }
           ],
@@ -813,6 +879,21 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports 6"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Internazionali BNL d'Italia E12",
+          "kick_utc": 1778324400,
+          "time": "09/05 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
               ]
             }
           ],
