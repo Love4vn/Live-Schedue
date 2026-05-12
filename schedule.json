@@ -1,8 +1,8 @@
 {
-  "updated": "2026-05-12 05:13 VN",
+  "updated": "2026-05-12 10:55 VN",
   "days": {
-    "20260511": {
-      "date": "Monday, 11/05",
+    "20260512": {
+      "date": "Tuesday, 12/05",
       "games": [
         {
           "league": "La Liga",
@@ -120,17 +120,10 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": ":",
           "kick_utc": 1778576400,
           "time": "12/05 04:00 PM",
           "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
-              ]
-            },
             {
               "country": "NowTV",
               "channels": [
@@ -140,22 +133,7 @@
               ]
             }
           ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1778583600,
-          "time": "12/05 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
+          "source": "nowtv"
         },
         {
           "league": "Tennis",
@@ -175,33 +153,18 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis: WTA Roma Semifinala",
-          "kick_utc": 1778536800,
-          "time": "12/05 05:00 AM",
+          "match": "",
+          "kick_utc": 1778605200,
+          "time": "13/05 12:00 AM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "Digi Sport 2 Hd Romania"
+                "beIN Sports Connect"
               ]
             }
           ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: WTA Roma Semifinala",
-          "kick_utc": 1778623200,
-          "time": "13/05 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -481,6 +444,21 @@
           "match": "Tenis: ATP Roma Sferturi",
           "kick_utc": 1778616000,
           "time": "13/05 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: WTA Roma Semifinala",
+          "kick_utc": 1778623200,
+          "time": "13/05 05:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
