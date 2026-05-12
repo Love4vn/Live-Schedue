@@ -1,72 +1,9 @@
 {
-  "updated": "2026-05-13 03:03 VN",
+  "updated": "2026-05-13 05:18 VN",
   "days": {
     "20260512": {
       "date": "Tuesday, 12/05",
       "games": [
-        {
-          "league": "La Liga",
-          "match": "Atletico Madrid vs Osasuna",
-          "kick_utc": 1778614200,
-          "time": "13/05 02:30 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "ESPN Select",
-                "ESPN Unlimited",
-                "ESPN Deportes"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "La Liga",
-          "match": "Alavés vs Barcelona",
-          "kick_utc": 1778688000,
-          "time": "13/05 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "DAZN 2 Portugal HD",
-                "M+ LaLiga HD",
-                "M+ LaLiga HDR",
-                "New World Sport 3 Togo",
-                "Premier Sports 2 Ireland HD",
-                "Premier Sports 2 UK HD",
-                "Premier Sports GB Player HD",
-                "Setanta Sports 2 Eurasia HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "La Liga",
-          "match": "Real Madrid vs Real Oviedo",
-          "kick_utc": 1778688000,
-          "time": "13/05 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "DAZN 1 Bar Deutsch HD",
-                "DAZN 1 Portugal HD",
-                "DAZN LaLiga HD",
-                "Idman TV HD",
-                "M+ LaLiga HD",
-                "New World Sport 3 Togo",
-                "Premier Sports 1 Ireland HD",
-                "Premier Sports 1 UK HD",
-                "Premier Sports GB Player HD",
-                "Setanta Sports 1 Eurasia HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "Premier League",
           "match": "Manchester City vs Crystal Palace",
@@ -74,21 +11,32 @@
           "time": "14/05 02:00 AM",
           "tv_channels": [
             {
+              "country": "Hubsport",
+              "channels": [
+                "Dazn 1 Portugal",
+                "Hub Premier 2 (4K)",
+                "Hub Premier 1",
+                "Hub Premier 2 (HD)"
+              ]
+            },
+            {
               "country": "LiveSportsOnTV",
               "channels": [
-                "USA Network",
                 "DAZN 1 Portugal HD",
                 "Diema Sport 2 HD",
+                "Sky Sports Main Event HD",
+                "ESPN 1 Brazil HD",
+                "Futbol TV Tajikistan",
+                "beIN Sports Türkiye 3 HD",
                 "Setanta Sports 1 Eurasia HD",
-                "Setanta Sports Ukraine HD",
+                "DAZN Canada",
+                "DigiTurk 4K UHD",
+                "beIN Sports MENA 2 HD",
+                "M+ #Vamos Bar",
+                "USA Network",
                 "Sky Sports Main Event UHD",
                 "Idman TV HD",
-                "M+ #Vamos Bar",
-                "Sky Sports Main Event HD",
-                "DAZN Canada",
-                "beIN Sports MENA 2 HD",
-                "Futbol TV Tajikistan",
-                "ESPN 1 Brazil HD"
+                "Setanta Sports Ukraine HD"
               ]
             },
             {
@@ -98,21 +46,15 @@
               ]
             },
             {
-              "country": "Hubsport",
-              "channels": [
-                "Dazn 1 Portugal"
-              ]
-            },
-            {
               "country": "NowTV",
               "channels": [
-                "Now Sports Premier League 1",
                 "Now Sports 4K 1",
+                "Now Sports Premier League 1",
                 "Now Sports Premier League TV"
               ]
             }
           ],
-          "source": "livesportsontv"
+          "source": "hubsport"
         },
         {
           "league": "Ligue 1",
@@ -133,18 +75,43 @@
         },
         {
           "league": "La Liga",
-          "match": "Osasuna vs Atletico-Madrid",
-          "kick_utc": 1778614200,
-          "time": "13/05 02:30 AM",
+          "match": "Alavés vs Barcelona",
+          "kick_utc": 1778700600,
+          "time": "14/05 02:30 AM",
           "tv_channels": [
             {
-              "country": "Wheresthematch",
+              "country": "LiveSportsOnTV",
               "channels": [
-                "Premier Sports 1"
+                "DAZN 2 Portugal HD",
+                "M+ LaLiga HD",
+                "M+ LaLiga HDR",
+                "New World Sport 3 Togo",
+                "Premier Sports 2 Ireland HD",
+                "Premier Sports 2 UK HD",
+                "Premier Sports GB Player HD",
+                "Setanta Sports 2 Eurasia HD"
               ]
             }
           ],
-          "source": "wheresthematch"
+          "source": "livesportsontv"
+        },
+        {
+          "league": "La Liga",
+          "match": "FC Barcelona vs Deportivo Alavés",
+          "kick_utc": 1778700600,
+          "time": "14/05 02:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "ESPN Select",
+                "ESPN Unlimited",
+                "ESPN Deportes",
+                "TSN3"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
         },
         {
           "league": "Premier League",
@@ -211,19 +178,19 @@
           "source": "ausport"
         },
         {
-          "league": "Tennis",
-          "match": "Thiago Agustin Tirante",
-          "kick_utc": 1778610600,
-          "time": "13/05 01:30 AM",
+          "league": "Premier League",
+          "match": "PREMIER LEAGUE LIVE",
+          "kick_utc": 1778695200,
+          "time": "14/05 01:00 AM",
           "tv_channels": [
             {
-              "country": "LiveSportsOnTV",
+              "country": "Hubsport",
               "channels": [
-                "Tennis Channel"
+                "Hub Premier 1"
               ]
             }
           ],
-          "source": "livesportsontv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -322,9 +289,9 @@
             {
               "country": "NowTV",
               "channels": [
-                "Ziggo Sport Kanaal 14",
+                "Ziggo Sport",
                 "Ziggo Sport 4",
-                "Ziggo Sport"
+                "Ziggo Sport Kanaal 14"
               ]
             }
           ],
@@ -354,36 +321,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Tirante - Medvedev",
-          "kick_utc": 1778611500,
-          "time": "13/05 01:45 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Klub 2 Hrvatska"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP Tour 2026 Internazionali BNL d’Italia (1000) Day 7 R16 Session 6",
-          "kick_utc": 1778612400,
-          "time": "13/05 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Hub Sports 1  HD"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
           "match": "Masters 1000 de Rome",
           "kick_utc": 1778617800,
           "time": "13/05 03:30 AM",
@@ -402,6 +339,22 @@
           "match": "Masters 1000 de Rome",
           "kick_utc": 1778684400,
           "time": "13/05 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 2 France",
+                "Voosport World1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Masters 1000 de Rome",
+          "kick_utc": 1778704200,
+          "time": "14/05 03:30 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -552,6 +505,21 @@
         },
         {
           "league": "Tennis",
+          "match": "WTA Tour 2026 Internazionali BNL d'Italia (1000) QF 4",
+          "kick_utc": 1778691600,
+          "time": "14/05 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Hub Sports 2 HD"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "1/4 Finale 4",
           "kick_utc": 1778691600,
           "time": "14/05 12:00 AM",
@@ -560,6 +528,21 @@
               "country": "Hubsport",
               "channels": [
                 "Sport Klub 2 Hrvatska"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP Tour 2026 Internazionali BNL d’Italia (1000) QF 2",
+          "kick_utc": 1778697000,
+          "time": "14/05 01:30 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Hub Sports 1  HD"
               ]
             }
           ],
@@ -594,36 +577,6 @@
             }
           ],
           "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": ": Internazionali BNL d'Italia - Rome",
-          "kick_utc": 1778610600,
-          "time": "13/05 01:30 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Internazionali BNL d'Italia -Round 16",
-          "kick_utc": 1778616000,
-          "time": "13/05 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports 6"
-              ]
-            }
-          ],
-          "source": "nowtv"
         },
         {
           "league": "Tennis",
