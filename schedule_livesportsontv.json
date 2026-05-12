@@ -5,6 +5,18 @@
         "League": "Tennis (ATP)",
         "Matchup": "Italian Open",
         "Services": [
+            "Tennis Channel",
+            "T2",
+            "TSN5"
+        ]
+    },
+    {
+        "Date": "2026-05-12",
+        "Time": "16:00",
+        "League": "Tennis (ATP)",
+        "Matchup": "Casper Ruud",
+        "Services": [
+            "Tennis Channel",
             "T2",
             "TSN5"
         ]
@@ -24,8 +36,9 @@
         "Date": "2026-05-12",
         "Time": "20:00",
         "League": "Tennis (ATP)",
-        "Matchup": "Italian Open",
+        "Matchup": "Jannik Sinner",
         "Services": [
+            "Tennis Channel",
             "T2",
             "RDS 2"
         ]
@@ -43,6 +56,15 @@
     },
     {
         "Date": "2026-05-13",
+        "Time": "01:30",
+        "League": "Tennis (ATP)",
+        "Matchup": "Thiago Agustin Tirante",
+        "Services": [
+            "Tennis Channel"
+        ]
+    },
+    {
+        "Date": "2026-05-13",
         "Time": "02:30",
         "League": "La Liga",
         "Matchup": "Atletico Madrid @ Osasuna",
@@ -50,6 +72,17 @@
             "ESPN Select",
             "ESPN Unlimited",
             "ESPN Deportes"
+        ]
+    },
+    {
+        "Date": "2026-05-13",
+        "Time": "18:00",
+        "League": "Tennis (WTA)",
+        "Matchup": "Italian Open",
+        "Services": [
+            "TSN2",
+            "TVA Sports",
+            "DAZN Canada"
         ]
     }
 ]
