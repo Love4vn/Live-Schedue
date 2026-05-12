@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-12 18:25 VN",
+  "updated": "2026-05-12 21:47 VN",
   "days": {
     "20260512": {
       "date": "Tuesday, 12/05",
@@ -38,16 +38,16 @@
         },
         {
           "league": "Tennis",
-          "match": "Italian Open",
-          "kick_utc": 1778583600,
-          "time": "12/05 06:00 PM",
+          "match": "Jannik Sinner",
+          "kick_utc": 1778590800,
+          "time": "12/05 08:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN2",
-                "TVA Sports",
-                "DAZN Canada"
+                "Tennis Channel",
+                "T2",
+                "RDS 2"
               ]
             }
           ],
@@ -89,16 +89,15 @@
         },
         {
           "league": "Tennis",
-          "match": "Jannik Sinner",
-          "kick_utc": 1778590800,
-          "time": "12/05 08:00 PM",
+          "match": "Italian Open",
+          "kick_utc": 1778677200,
+          "time": "13/05 08:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Tennis Channel",
-                "T2",
-                "RDS 2"
+                "RDS",
+                "TSN2"
               ]
             }
           ],
@@ -136,7 +135,7 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Hamad Medjedovic vs Martin Landaluce",
           "kick_utc": 1778598000,
           "time": "12/05 10:00 PM",
           "tv_channels": [
@@ -152,14 +151,15 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Cori Gauff vs Mirra Andreeva",
           "kick_utc": 1778605200,
           "time": "13/05 12:00 AM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
-                "beIN Sports Connect"
+                "beIN Sports Connect",
+                "Stan Sport"
               ]
             }
           ],
@@ -168,13 +168,22 @@
         {
           "league": "Tennis",
           "match": "",
-          "kick_utc": 1778670000,
-          "time": "13/05 06:00 PM",
+          "kick_utc": 1778677200,
+          "time": "13/05 08:00 PM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
+                "beIN SPORTS 1",
                 "beIN Sports Connect"
+              ]
+            },
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport Kanaal 14",
+                "Ziggo Sport 4",
+                "Ziggo Sport"
               ]
             }
           ],
@@ -182,120 +191,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Ténis - ATP Challenger Tour 2026 - ATP Ch 100 Oeiras Iv",
-          "kick_utc": 1778579880,
-          "time": "12/05 04:58 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ténis - ATP Challenger Tour 2026 - ATP Ch 100 Oeiras Iv",
-          "kick_utc": 1778666400,
-          "time": "13/05 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP Tour 2026 Internazionali BNL d’Italia (1000) Day 7 R16 Session 2",
-          "kick_utc": 1778583600,
-          "time": "12/05 06:00 PM",
+          "match": "ATP Tour 2026 Internazionali BNL d’Italia (1000) Day 7 R16 Session 3",
+          "kick_utc": 1778590800,
+          "time": "12/05 08:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
                 "Hub Sports 1  HD"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "WTA Tour 2026 Internazionali BNL d'Italia (1000) QF 1",
-          "kick_utc": 1778583600,
-          "time": "12/05 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Hub Sports 2 HD"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Rome",
-          "kick_utc": 1778583600,
-          "time": "12/05 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Voosport World1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Rome",
-          "kick_utc": 1778608800,
-          "time": "13/05 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 2 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Rome",
-          "kick_utc": 1778617800,
-          "time": "13/05 03:30 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 2 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: Roma",
-          "kick_utc": 1778587200,
-          "time": "12/05 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
               ]
             }
           ],
@@ -327,21 +230,6 @@
               "channels": [
                 "Digi Sport 2 Hd Romania",
                 "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP Tour 2026 Internazionali BNL d’Italia (1000) Day 7 R16 Session 3",
-          "kick_utc": 1778590800,
-          "time": "12/05 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Hub Sports 1  HD"
               ]
             }
           ],
@@ -424,6 +312,36 @@
         },
         {
           "league": "Tennis",
+          "match": "Masters 1000 de Rome",
+          "kick_utc": 1778608800,
+          "time": "13/05 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 2 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Masters 1000 de Rome",
+          "kick_utc": 1778617800,
+          "time": "13/05 03:30 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 2 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "ATP Tour 2026 Internazionali BNL d’Italia (1000) Day 7 R16 Session 6",
           "kick_utc": 1778612400,
           "time": "13/05 02:00 AM",
@@ -432,6 +350,21 @@
               "country": "Hubsport",
               "channels": [
                 "Hub Sports 1  HD"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - ATP Challenger Tour 2026 - ATP Ch 100 Oeiras Iv",
+          "kick_utc": 1778666400,
+          "time": "13/05 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
               ]
             }
           ],
@@ -454,18 +387,49 @@
         },
         {
           "league": "Tennis",
-          "match": "Internazionali BNL d'Italia -QF(1)",
-          "kick_utc": 1778583600,
-          "time": "12/05 06:00 PM",
+          "match": "ATP Tour 2026 Internazionali BNL d’Italia (1000) QF 1",
+          "kick_utc": 1778677200,
+          "time": "13/05 08:00 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 4"
+                "Hub Sports 1  HD"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP Masters 1000 - Roma 2026 - Quartos-de-Final",
+          "kick_utc": 1778677200,
+          "time": "13/05 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: WTA Roma Sferturi",
+          "kick_utc": 1778680800,
+          "time": "13/05 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -539,6 +503,21 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Internazionali BNL d'Italia -QF (1)",
+          "kick_utc": 1778677200,
+          "time": "13/05 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
               ]
             }
           ],
