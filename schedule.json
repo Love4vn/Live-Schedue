@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-12 10:55 VN",
+  "updated": "2026-05-12 15:50 VN",
   "days": {
     "20260512": {
       "date": "Tuesday, 12/05",
@@ -341,8 +341,7 @@
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
+                "Digi Sport 2 Hd Romania"
               ]
             }
           ],
@@ -374,6 +373,21 @@
               "country": "Hubsport",
               "channels": [
                 "Hub Sports 1  HD"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Sorana Cirstea - Jelena Ostapenko",
+          "kick_utc": 1778594400,
+          "time": "12/05 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 1 Romania"
               ]
             }
           ],
@@ -434,36 +448,6 @@
               "country": "Hubsport",
               "channels": [
                 "Hub Sports 1  HD"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: ATP Roma Sferturi",
-          "kick_utc": 1778616000,
-          "time": "13/05 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: WTA Roma Semifinala",
-          "kick_utc": 1778623200,
-          "time": "13/05 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
               ]
             }
           ],
