@@ -1,8 +1,8 @@
 {
-  "updated": "2026-05-13 05:18 VN",
+  "updated": "2026-05-13 11:03 VN",
   "days": {
-    "20260512": {
-      "date": "Tuesday, 12/05",
+    "20260513": {
+      "date": "Wednesday, 13/05",
       "games": [
         {
           "league": "Premier League",
@@ -14,43 +14,37 @@
               "country": "Hubsport",
               "channels": [
                 "Dazn 1 Portugal",
-                "Hub Premier 2 (4K)",
                 "Hub Premier 1",
-                "Hub Premier 2 (HD)"
+                "Hub Premier 2 (HD)",
+                "Hub Premier 2 (4K)"
               ]
             },
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "DAZN 1 Portugal HD",
-                "Diema Sport 2 HD",
-                "Sky Sports Main Event HD",
-                "ESPN 1 Brazil HD",
-                "Futbol TV Tajikistan",
-                "beIN Sports Türkiye 3 HD",
-                "Setanta Sports 1 Eurasia HD",
-                "DAZN Canada",
-                "DigiTurk 4K UHD",
-                "beIN Sports MENA 2 HD",
-                "M+ #Vamos Bar",
-                "USA Network",
-                "Sky Sports Main Event UHD",
                 "Idman TV HD",
+                "Setanta Sports 1 Eurasia HD",
+                "beIN Sports Türkiye 3 HD",
+                "beIN Sports MENA 2 HD",
+                "Futbol TV Tajikistan",
+                "Sky Sports Main Event UHD",
+                "USA Network",
+                "Diema Sport 2 HD",
+                "ESPN 1 Brazil HD",
+                "DAZN Canada",
+                "M+ #Vamos Bar",
+                "Sky Sports Main Event HD",
+                "DigiTurk 4K UHD",
+                "DAZN 1 Portugal HD",
                 "Setanta Sports Ukraine HD"
-              ]
-            },
-            {
-              "country": "Ausport",
-              "channels": [
-                "Stan Sport"
               ]
             },
             {
               "country": "NowTV",
               "channels": [
-                "Now Sports 4K 1",
                 "Now Sports Premier League 1",
-                "Now Sports Premier League TV"
+                "Now Sports Premier League TV",
+                "Now Sports 4K 1"
               ]
             }
           ],
@@ -122,8 +116,8 @@
             {
               "country": "Wheresthematch",
               "channels": [
-                "Sky Sports Main Event",
                 "Sky Sports Premier League",
+                "Sky Sports Main Event",
                 "Sky Sports Ultra HDR"
               ]
             }
@@ -160,22 +154,6 @@
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "La Liga",
-          "match": "Alaves vs Barcelona",
-          "kick_utc": 1778700600,
-          "time": "14/05 02:30 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 3",
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
         },
         {
           "league": "Premier League",
@@ -272,99 +250,6 @@
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1778677200,
-          "time": "13/05 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
-              ]
-            },
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport",
-                "Ziggo Sport 4",
-                "Ziggo Sport Kanaal 14"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": ":",
-          "kick_utc": 1778698800,
-          "time": "14/05 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 4"
-              ]
-            },
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Rome",
-          "kick_utc": 1778617800,
-          "time": "13/05 03:30 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 2 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Rome",
-          "kick_utc": 1778684400,
-          "time": "13/05 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 2 France",
-                "Voosport World1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Rome",
-          "kick_utc": 1778704200,
-          "time": "14/05 03:30 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 2 France",
-                "Voosport World1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -489,6 +374,38 @@
         },
         {
           "league": "Tennis",
+          "match": "Masters 1000 de Rome",
+          "kick_utc": 1778684400,
+          "time": "13/05 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 2 France",
+                "Voosport World1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Masters 1000 de Rome",
+          "kick_utc": 1778704200,
+          "time": "14/05 03:30 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 2 France",
+                "Voosport World1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Tenis: ATP Roma Sferturi",
           "kick_utc": 1778688000,
           "time": "13/05 11:00 PM",
@@ -603,6 +520,38 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports 6"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ":",
+          "kick_utc": 1778677200,
+          "time": "13/05 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ":",
+          "kick_utc": 1778697000,
+          "time": "14/05 01:30 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
               ]
             }
           ],
