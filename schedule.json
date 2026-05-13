@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-13 15:54 VN",
+  "updated": "2026-05-13 18:34 VN",
   "days": {
     "20260513": {
       "date": "Wednesday, 13/05",
@@ -13,39 +13,73 @@
             {
               "country": "Hubsport",
               "channels": [
+                "Hub Premier 2 (HD)",
                 "Dazn 1 Portugal",
                 "Hub Premier 2 (4K)",
-                "Hub Premier 1",
-                "Hub Premier 2 (HD)"
+                "Hub Premier 1"
               ]
             },
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "DigiTurk 4K UHD",
                 "Idman TV HD",
-                "Sky Sports Main Event HD",
-                "Setanta Sports 1 Eurasia HD",
-                "beIN Sports Türkiye 3 HD",
-                "ESPN 1 Brazil HD",
-                "Diema Sport 2 HD",
-                "Sky Go UK",
-                "Sky UK Ultra HD 1",
-                "Setanta Sports Ukraine HD",
                 "DAZN 1 Portugal HD",
-                "beIN Sports MENA 2 HD",
                 "M+ #Vamos Bar",
-                "Sky Sports Main Event UHD",
+                "Solh TV",
+                "ViaPlay 2 Urheilu HD",
+                "Diema Sport 2 HD",
                 "USA Network",
+                "TV3+ Norge HD",
+                "Futbol TV Tajikistan",
+                "See Dansk HD",
+                "Setanta Sports 1 Eurasia HD",
+                "V Sport Premier League HD",
                 "DAZN Canada",
-                "Futbol TV Tajikistan"
+                "Sky Sport Premier League DE HD",
+                "Canal+ Foot HD",
+                "VOYO Pro TV Romania",
+                "V Sport Ultra 4K UHD",
+                "SuperSport 1 Albania HD",
+                "DigiTurk 4K UHD",
+                "Astro Premier League HD",
+                "ESPN 1 Brazil HD",
+                "V Sport Premium HD",
+                "Canal+ Extra 1 Polska HD",
+                "Sky Sports Main Event UHD",
+                "Sky Sport 258 Italia HD",
+                "beIN Sports MENA 2 HD",
+                "Spíler 1 TV Hungary HD",
+                "SuperSport MáXimo 1 HD",
+                "SuperSport Premier League HD",
+                "Nova Sports Premier League HD",
+                "SuperSport Grandstand HD",
+                "Sky Sport Top Event HD",
+                "beIN Sports MENA 4K UHD",
+                "beIN Sports MENA English 1 HD",
+                "Sky Go UK",
+                "Sky Sport Arena Italia HD",
+                "Fast Sports TV Armenia",
+                "Arena Sport 1 Hrvatska HD",
+                "DAZN 1 Espana HD",
+                "Arena Premium 4 Srbija HD",
+                "Setanta Sports Ukraine HD",
+                "M+ Liga de Campeones HD",
+                "beIN Sports Türkiye 3 HD",
+                "Sky Sport Deutsch UHD",
+                "Sky UK Ultra HD 1",
+                "Sky Sports Main Event HD",
+                "Setanta Sports 1 Georgia HD",
+                "Arena Premium 1 BiH HD",
+                "SuperSport MáXimo 2A HD",
+                "DAZN 1 Bar Espana",
+                "Astro Grandstand HD"
               ]
             },
             {
               "country": "NowTV",
               "channels": [
-                "Now Sports Premier League 1",
                 "Now Sports 4K 1",
+                "Now Sports Premier League 1",
                 "Now Sports Premier League TV"
               ]
             }
@@ -78,14 +112,49 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Arena Premium 3 BiH HD",
+                "Arena Premium 5 Srbija HD",
+                "Arena Sport 4 Hrvatska HD",
+                "ART Motion Sport 3 HD",
+                "beIN Sports 1 HD",
+                "beIN Sports France 2 HD",
+                "Canal+ Sport 1 Polska HD",
+                "Cytavision Sports 8 HD",
+                "DAZN 1 Italia HD",
                 "DAZN 2 Portugal HD",
+                "Digi Sport 2 Romania HD",
+                "Fast Sports 2 Armenia",
+                "Go3 Sport 1 Baltic HD",
                 "M+ LaLiga HD",
                 "M+ LaLiga HDR",
+                "MAX Sport 4 Bulgaria HD",
+                "Megogo Futbol 3",
+                "Meraj TV",
+                "Movistar Plus+ HD",
+                "MTV Urheilu 2 Suomi HD",
                 "New World Sport 3 Togo",
+                "Nova Sport 3 Czech HD",
+                "Nova Sports 1 Hellas HD",
+                "Orange Fútbol 1 HD",
+                "Persiana Sport HD",
                 "Premier Sports 2 Ireland HD",
                 "Premier Sports 2 UK HD",
                 "Premier Sports GB Player HD",
-                "Setanta Sports 2 Eurasia HD"
+                "Prima Sport RO 2 HD",
+                "S Sport 2 Türkiye HD",
+                "S Sport+ Streaming",
+                "Setanta Sports 1 Baltic",
+                "Setanta Sports 2 Eurasia HD",
+                "Spíler 2 TV Hungary HD",
+                "SuperSport 2 Albania HD",
+                "SuperSport LaLiga HD",
+                "SuperSport MáXimo 3A HD",
+                "Tivibu Spor 1 HD",
+                "TV2 Sport Premium HD",
+                "TV2 Sport X Dansk HD",
+                "TV4 Fotboll HD",
+                "Varzish TV Sport HD",
+                "Ziggo Sport 2"
               ]
             }
           ],
@@ -192,22 +261,6 @@
         {
           "league": "Tennis",
           "match": "Italian Open",
-          "kick_utc": 1778677200,
-          "time": "13/05 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "RDS",
-                "TSN2"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Italian Open",
           "kick_utc": 1778691600,
           "time": "14/05 12:00 AM",
           "tv_channels": [
@@ -231,8 +284,57 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN2",
                 "RDS 2"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Casper Ruud",
+          "kick_utc": 1778677200,
+          "time": "13/05 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel",
+                "RDS",
+                "TSN2"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Rafael Jodar",
+          "kick_utc": 1778697000,
+          "time": "14/05 01:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel",
+                "TSN2"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Jannik Sinner",
+          "kick_utc": 1778756400,
+          "time": "14/05 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel",
+                "RDS",
+                "TSN2"
               ]
             }
           ],
@@ -255,9 +357,39 @@
         },
         {
           "league": "Tennis",
+          "match": "Internazionali BNL dItalia",
+          "kick_utc": 1778756400,
+          "time": "14/05 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Sky Sports Tennis"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
           "match": "Ténis - ATP Challenger Tour 2026 - ATP Ch 100 Oeiras Iv",
           "kick_utc": 1778666280,
           "time": "13/05 04:58 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - ATP Challenger Tour 2026 - ATP Ch 100 Oeiras Iv",
+          "kick_utc": 1778752800,
+          "time": "14/05 05:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -288,6 +420,21 @@
           "match": "1/4 Finale 3",
           "kick_utc": 1778670000,
           "time": "13/05 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Klub 2 Hrvatska"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "1/4 Finale 3",
+          "kick_utc": 1778756400,
+          "time": "14/05 06:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -353,6 +500,21 @@
               "country": "Hubsport",
               "channels": [
                 "Sport Tv4 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP Masters 1000 - Roma 2026 - Quartos-de-Final",
+          "kick_utc": 1778756400,
+          "time": "14/05 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
               ]
             }
           ],
@@ -529,6 +691,21 @@
         },
         {
           "league": "Tennis",
+          "match": "ATP Tour 2026 Internazionali BNL d’Italia (1000) QF 3",
+          "kick_utc": 1778756400,
+          "time": "14/05 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Hub Sports 1  HD"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Internazionali BNL d'Italia -QF(3)",
           "kick_utc": 1778670000,
           "time": "13/05 06:00 PM",
@@ -537,6 +714,21 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Internazionali BNL d'Italia -QF (3)",
+          "kick_utc": 1778756400,
+          "time": "14/05 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
               ]
             }
           ],
@@ -584,6 +776,23 @@
               "country": "NowTV",
               "channels": [
                 "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ":",
+          "kick_utc": 1778756400,
+          "time": "14/05 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
               ]
             }
           ],
