@@ -1,54 +1,9 @@
 {
-  "updated": "2026-05-15 02:56 VN",
+  "updated": "2026-05-15 05:16 VN",
   "days": {
     "20260514": {
       "date": "Thursday, 14/05",
       "games": [
-        {
-          "league": "La Liga",
-          "match": "Real Madrid vs Real Oviedo",
-          "kick_utc": 1778787000,
-          "time": "15/05 02:30 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Futbol TV Uzbekistan",
-                "ESPN Unlimited",
-                "Premier Sports 1 UK HD",
-                "Setanta Sports 1 Eurasia HD",
-                "Zor TV Uzbekistan",
-                "DAZN 1 Portugal HD",
-                "Digi 4K UHD",
-                "ART Motion Sport 1 HD",
-                "DAZN 1 Bar Deutsch HD",
-                "beIN Sports MENA 1 HD",
-                "Cytavision Sports 8 HD",
-                "ESPN Deportes",
-                "Idman TV HD",
-                "Cytavision Sports 4K 1 UHD",
-                "DAZN LaLiga HD",
-                "M+ LaLiga HD",
-                "ESPN Select",
-                "Persiana Sport HD",
-                "SuperSport 2 Albania HD",
-                "S Sport+ Streaming",
-                "New World Sport 3 Togo",
-                "Premier Sports 1 Ireland HD",
-                "S Sport 1 Türkiye HD",
-                "Premier Sports GB Player HD"
-              ]
-            },
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 3"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "Premier League",
           "match": "Liverpool FC vs Aston Villa",
@@ -65,21 +20,6 @@
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "La Liga",
-          "match": "Real-Madrid vs Real-Oviedo",
-          "kick_utc": 1778787000,
-          "time": "15/05 02:30 AM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Premier Sports 1"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
         },
         {
           "league": "Premier League",
@@ -107,9 +47,9 @@
             {
               "country": "Hubsport",
               "channels": [
-                "Hub Premier 1",
                 "Hub Premier 2 (HD)",
                 "Dazn 1 Portugal",
+                "Hub Premier 1",
                 "Hub Premier 2 (4K)"
               ]
             },
@@ -122,9 +62,9 @@
             {
               "country": "NowTV",
               "channels": [
+                "Now Sports Premier League TV",
                 "Now Sports 4K 1",
-                "Now Sports Premier League 1",
-                "Now Sports Premier League TV"
+                "Now Sports Premier League 1"
               ]
             }
           ],
@@ -144,23 +84,6 @@
             }
           ],
           "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Italian Open",
-          "kick_utc": 1778785200,
-          "time": "15/05 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "TVA Sports",
-                "DAZN Canada",
-                "TSN2"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
@@ -227,22 +150,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Iga Swiatek vs Elina Svitolina",
-          "kick_utc": 1778783400,
-          "time": "15/05 01:30 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 1",
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
           "match": "",
           "kick_utc": 1778851800,
           "time": "15/05 08:30 PM",
@@ -296,135 +203,12 @@
               "country": "NowTV",
               "channels": [
                 "Ziggo Sport 4",
-                "Ziggo Sport",
-                "Ziggo Sport Kanaal 14"
+                "Ziggo Sport Kanaal 14",
+                "Ziggo Sport"
               ]
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "WTA Tour 2026 Internazionali BNL d'Italia (1000) SF 2",
-          "kick_utc": 1778783400,
-          "time": "15/05 01:30 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Hub Sports 2 HD"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "1/2 Finale B",
-          "kick_utc": 1778784300,
-          "time": "15/05 01:45 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Klub 2 Hrvatska"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "1/2 Finale B",
-          "kick_utc": 1778864400,
-          "time": "16/05 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Klub 2 Hrvatska"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Rome",
-          "kick_utc": 1778785200,
-          "time": "15/05 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 2 France",
-                "Voosport World1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Rome",
-          "kick_utc": 1778859000,
-          "time": "15/05 10:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 2 France",
-                "Voosport World1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Rome",
-          "kick_utc": 1778871600,
-          "time": "16/05 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 2 France",
-                "Voosport World1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: ATP Roma Semifinala",
-          "kick_utc": 1778788800,
-          "time": "15/05 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: ATP Roma Sferturi",
-          "kick_utc": 1778788800,
-          "time": "15/05 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -451,6 +235,21 @@
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: WTA Roma Semifinala Dublu",
+          "kick_utc": 1778882400,
+          "time": "16/05 05:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
                 "Digi Sport 2 Romania"
               ]
             }
@@ -594,6 +393,38 @@
         },
         {
           "league": "Tennis",
+          "match": "Masters 1000 de Rome",
+          "kick_utc": 1778859000,
+          "time": "15/05 10:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 2 France",
+                "Voosport World1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Masters 1000 de Rome",
+          "kick_utc": 1778871600,
+          "time": "16/05 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 2 France",
+                "Voosport World1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Tenis: ATP Roma Semifinale",
           "kick_utc": 1778862600,
           "time": "15/05 11:30 PM",
@@ -625,6 +456,21 @@
         },
         {
           "league": "Tennis",
+          "match": "1/2 Finale B",
+          "kick_utc": 1778864400,
+          "time": "16/05 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Klub 2 Hrvatska"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "(Parovi) 1/2 Finale B",
           "kick_utc": 1778871600,
           "time": "16/05 02:00 AM",
@@ -640,24 +486,24 @@
         },
         {
           "league": "Tennis",
-          "match": "Internazionali BNL d'Italia -SF(2)",
-          "kick_utc": 1778783400,
-          "time": "15/05 01:30 AM",
+          "match": "Tenis: ATP Roma Semifinala",
+          "kick_utc": 1778875200,
+          "time": "16/05 03:00 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 4"
+                "Digi Sport 2 Romania"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
-          "match": "Internazionali BNL d'Italia -SF (2)",
-          "kick_utc": 1778864400,
-          "time": "16/05 12:00 AM",
+          "match": "Internazionali BNL d'Italia -SF (1)",
+          "kick_utc": 1778851800,
+          "time": "15/05 08:30 PM",
           "tv_channels": [
             {
               "country": "NowTV",
@@ -670,9 +516,9 @@
         },
         {
           "league": "Tennis",
-          "match": "Internazionali BNL d'Italia -SF (1)",
-          "kick_utc": 1778851800,
-          "time": "15/05 08:30 PM",
+          "match": "Internazionali BNL d'Italia -SF (2)",
+          "kick_utc": 1778864400,
+          "time": "16/05 12:00 AM",
           "tv_channels": [
             {
               "country": "NowTV",
