@@ -1,8 +1,8 @@
 {
-  "updated": "2026-05-15 05:16 VN",
+  "updated": "2026-05-15 11:07 VN",
   "days": {
-    "20260514": {
-      "date": "Thursday, 14/05",
+    "20260515": {
+      "date": "Friday, 15/05",
       "games": [
         {
           "league": "Premier League",
@@ -47,10 +47,10 @@
             {
               "country": "Hubsport",
               "channels": [
+                "Hub Premier 2 (4K)",
                 "Hub Premier 2 (HD)",
                 "Dazn 1 Portugal",
-                "Hub Premier 1",
-                "Hub Premier 2 (4K)"
+                "Hub Premier 1"
               ]
             },
             {
@@ -62,8 +62,8 @@
             {
               "country": "NowTV",
               "channels": [
-                "Now Sports Premier League TV",
                 "Now Sports 4K 1",
+                "Now Sports Premier League TV",
                 "Now Sports Premier League 1"
               ]
             }
@@ -150,17 +150,10 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": ":",
           "kick_utc": 1778851800,
           "time": "15/05 08:30 PM",
           "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 1",
-                "beIN Sports Connect"
-              ]
-            },
             {
               "country": "NowTV",
               "channels": [
@@ -168,7 +161,7 @@
               ]
             }
           ],
-          "source": "ausport"
+          "source": "nowtv"
         },
         {
           "league": "Tennis",
@@ -202,74 +195,13 @@
             {
               "country": "NowTV",
               "channels": [
+                "Ziggo Sport",
                 "Ziggo Sport 4",
-                "Ziggo Sport Kanaal 14",
-                "Ziggo Sport"
+                "Ziggo Sport Kanaal 14"
               ]
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: WTA Roma Semifinala Dublu",
-          "kick_utc": 1778796000,
-          "time": "15/05 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: WTA Roma Semifinala Dublu",
-          "kick_utc": 1778855400,
-          "time": "15/05 09:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: WTA Roma Semifinala Dublu",
-          "kick_utc": 1778882400,
-          "time": "16/05 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: WTA Roma Semifinala",
-          "kick_utc": 1778796000,
-          "time": "15/05 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -386,6 +318,37 @@
               "country": "Hubsport",
               "channels": [
                 "Sport Tv4 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: WTA Roma Semifinala Dublu",
+          "kick_utc": 1778855400,
+          "time": "15/05 09:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: WTA Roma Semifinala Dublu",
+          "kick_utc": 1778882400,
+          "time": "16/05 05:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Romania"
               ]
             }
           ],
