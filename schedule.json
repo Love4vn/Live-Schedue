@@ -1,97 +1,9 @@
 {
-  "updated": "2026-05-16 02:48 VN",
+  "updated": "2026-05-16 05:04 VN",
   "days": {
     "20260515": {
       "date": "Friday, 15/05",
       "games": [
-        {
-          "league": "Premier League",
-          "match": "Aston Villa vs Liverpool",
-          "kick_utc": 1778871600,
-          "time": "16/05 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Hub Premier 2 (HD)",
-                "Hub Premier 2 (4K)",
-                "Hub Premier 1",
-                "Dazn 1 Portugal"
-              ]
-            },
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "beIN Connect Türkiye",
-                "Nova Sports Premier League HD",
-                "Sky Go UK",
-                "Canal+ Extra 1 Polska HD",
-                "Setanta Sports Ukraine HD",
-                "Sky Sport Deutsch UHD",
-                "beIN Sports Türkiye 3 HD",
-                "Peacock",
-                "Sky Sport 251 Italia HD",
-                "DAZN Canada",
-                "Setanta Sports 1 Eurasia HD",
-                "See Dansk HD",
-                "FuboTV Canada",
-                "Persiana Sport HD",
-                "Sky UK Ultra HD 1",
-                "SuperSport MáXimo 1 HD",
-                "Varzish TV Sport HD",
-                "Diema Sport 2 HD",
-                "Monomax Streaming",
-                "Stan Sport Australia",
-                "Go3 Extra Sport Baltics",
-                "SuperSport Premier League HD",
-                "GEM Sport HD",
-                "Astro Premier League HD",
-                "Sky Sports HD",
-                "DAZN España",
-                "ESPN 1 Brazil HD",
-                "DAZN 1 Bar Espana",
-                "Fast Sports",
-                "Sky Sports Main Event UHD",
-                "Sky Sports Main Event HD",
-                "Sky Sport Italia 4K UHD",
-                "ViaPlay Suomi HD",
-                "VOYO Pro TV Romania",
-                "NBC Sports Network",
-                "SuperSport MáXimo 2A HD",
-                "Solh TV",
-                "ViaPlay Norge HD",
-                "Sky Sport Top Event HD",
-                "Astro Grandstand HD",
-                "DAZN 1 Portugal HD",
-                "Play Sports 1 Belgium",
-                "Sky Sports Premier League HD",
-                "Sky Sport Calcio HD",
-                "Diema Sport 2 4K",
-                "Canal+ Sport 1 Czech HD",
-                "Sky Sport Premier League DE HD",
-                "beIN Connect MENA",
-                "DAZN 1 Espana HD",
-                "Astro Sports UHD",
-                "ViaPlay Nederland HD"
-              ]
-            },
-            {
-              "country": "Ausport",
-              "channels": [
-                "Stan Sport"
-              ]
-            },
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports Premier League TV",
-                "Now Sports 4K 1",
-                "Now Sports Premier League 1"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
         {
           "league": "Bundesliga",
           "match": "Bayern Munich vs FC Cologne",
@@ -119,7 +31,9 @@
                 "Sky Sport Top Event HD",
                 "SporTV Brazil HD",
                 "Tivibu Spor 4 HD",
+                "Tring Sport 1 HD",
                 "TV3 MAX Dansk HD",
+                "V Sport 1 Sverige HD",
                 "ESPN Select",
                 "ESPN Unlimited",
                 "DAZN Canada"
@@ -144,6 +58,7 @@
                 "Sky Sport Bundesliga 5 HD",
                 "SporTV 2 Brazil HD",
                 "Tivibu Spor 4 HD",
+                "Tring Sport 7 HD",
                 "ESPN Select",
                 "ESPN Unlimited",
                 "DAZN Canada"
@@ -165,7 +80,8 @@
                 "Nova Sports 5 Hellas HD",
                 "S Sport+ Streaming",
                 "Sky Sport Bundesliga 2 HD",
-                "Tivibu Spor 4 HD"
+                "Tivibu Spor 4 HD",
+                "Tring Sport 4 HD"
               ]
             }
           ],
@@ -223,29 +139,14 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "beIN Connect Türkiye",
+                "Fast Sports 2 Armenia",
                 "Ligue 1+",
-                "Nova Sport Bulgaria HD"
+                "Nova Sport Bulgaria HD",
+                "SuperSport 3 Albania HD"
               ]
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "Premier League",
-          "match": "Aston-Villa vs Liverpool",
-          "kick_utc": 1778871600,
-          "time": "16/05 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Premier League",
-                "Sky Sports Main Event",
-                "Sky Sports Ultra HDR"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
         },
         {
           "league": "Bundesliga",
@@ -262,21 +163,6 @@
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Premier League",
-          "match": "PREMIER LEAGUE LIVE",
-          "kick_utc": 1778869800,
-          "time": "16/05 01:30 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Hub Premier 1"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -325,52 +211,6 @@
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "(Parovi) 1/2 Finale B",
-          "kick_utc": 1778871600,
-          "time": "16/05 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Klub 2 Hrvatska"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Rome",
-          "kick_utc": 1778871600,
-          "time": "16/05 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 2 France",
-                "Voosport World1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: ATP Roma Semifinala",
-          "kick_utc": 1778875200,
-          "time": "16/05 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
