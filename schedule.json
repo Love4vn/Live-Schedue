@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-16 10:50 VN",
+  "updated": "2026-05-16 15:13 VN",
   "days": {
     "20260516": {
       "date": "Saturday, 16/05",
@@ -34,6 +34,7 @@
                 "Tring Sport 1 HD",
                 "TV3 MAX Dansk HD",
                 "V Sport 1 Sverige HD",
+                "YouTube: Bundesliga",
                 "ESPN Select",
                 "ESPN Unlimited",
                 "DAZN Canada"
@@ -113,11 +114,57 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "ESPN Deportes",
                 "Fubo Sports",
                 "ESPN Select",
-                "ESPN Unlimited",
                 "ESPN2",
-                "ESPN Deportes"
+                "ESPN Unlimited"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "FA Cup",
+          "match": "Chelsea vs Manchester City",
+          "kick_utc": 1778943600,
+          "time": "16/05 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "ESPN 1 Brazil HD",
+                "SuperSport Premier League HD",
+                "Setanta Sports Ukraine HD",
+                "M+ #Vamos Bar 2",
+                "Cosmote Sport 2 HD",
+                "M+ Liga de Campeones HD",
+                "Diema Sport 3 HD",
+                "TV3+ Dansk HD",
+                "Sport TV2 Portugal HD",
+                "SuperSport 2 Albania HD",
+                "V Sport Premium HD",
+                "DAZN 2 Bar Deutsch HD",
+                "Movistar Plus+ HD",
+                "SuperSport MáXimo 360"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Champions League",
+          "match": "Al Nassr vs Gamba Osaka",
+          "kick_utc": 1778953500,
+          "time": "17/05 12:45 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Canal 11 Portugal HD",
+                "ESPN 4 Brazil HD",
+                "Nova Sport Bulgaria HD",
+                "Sportdigital FUSSBALL HD"
               ]
             }
           ],
