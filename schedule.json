@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-16 17:22 VN",
+  "updated": "2026-05-16 20:48 VN",
   "days": {
     "20260516": {
       "date": "Saturday, 16/05",
@@ -185,11 +185,7 @@
                 "V Sport Premium HD",
                 "ViaPlay 2 Urheilu HD",
                 "VOYO Pro TV Romania",
-                "Zor TV Uzbekistan",
-                "Fubo Sports",
-                "ESPN Select",
-                "ESPN Unlimited",
-                "ESPN2"
+                "Zor TV Uzbekistan"
               ]
             }
           ],
@@ -230,80 +226,194 @@
         },
         {
           "league": "Serie A",
-          "match": "Juventus vs Fiorentina",
-          "kick_utc": 1779012000,
-          "time": "17/05 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 2"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Serie A",
-          "match": "AS Roma vs Lazio",
-          "kick_utc": 1779012000,
-          "time": "17/05 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 3"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Serie A",
-          "match": "Pisa vs Napoli",
-          "kick_utc": 1779012000,
-          "time": "17/05 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Serie A",
-          "match": "Genoa vs AC Milan",
-          "kick_utc": 1779012000,
-          "time": "17/05 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Italian Open",
-          "kick_utc": 1778925600,
-          "time": "16/05 05:00 PM",
+          "match": "AC Milan vs Genoa",
+          "kick_utc": 1779013800,
+          "time": "17/05 05:30 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Tennis Channel"
+                "Paramount+ (US)",
+                "DAZN US",
+                "DAZN Canada"
               ]
             }
           ],
           "source": "livesportsontv"
+        },
+        {
+          "league": "Serie A",
+          "match": "Fiorentina vs Juventus",
+          "kick_utc": 1779013800,
+          "time": "17/05 05:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Paramount+ (US)",
+                "DAZN US",
+                "DAZN Canada"
+              ]
+            },
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "DAZN"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Serie A",
+          "match": "Napoli vs Pisa",
+          "kick_utc": 1779013800,
+          "time": "17/05 05:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Paramount+ (US)",
+                "DAZN US",
+                "DAZN Canada"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Serie A",
+          "match": "Lazio vs Roma",
+          "kick_utc": 1779013800,
+          "time": "17/05 05:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Paramount+ (US)",
+                "DAZN US",
+                "DAZN Canada",
+                "FOX Deportes"
+              ]
+            },
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "TNT Sports 1",
+                "HBO Max",
+                "DAZN"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Premier League",
+          "match": "Manchester United vs Nottingham Forest",
+          "kick_utc": 1779017400,
+          "time": "17/05 06:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Dazn 1 Portugal",
+                "Hub Premier 1"
+              ]
+            },
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DAZN Canada",
+                "Telemundo",
+                "USA Network"
+              ]
+            },
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports Premier League 1",
+                "Now Sports Premier League TV"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Serie A",
+          "match": "Genoa vs AC-Milan",
+          "kick_utc": 1779013800,
+          "time": "17/05 05:30 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "DAZN"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Serie A",
+          "match": "Pisa-SC vs Napoli",
+          "kick_utc": 1779013800,
+          "time": "17/05 05:30 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "DAZN"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Premier League",
+          "match": "Manchester-United vs Nottingham-Forest",
+          "kick_utc": 1779017400,
+          "time": "17/05 06:30 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Sky Sports Main Event",
+                "Sky Sports Premier League",
+                "Sky Sports Ultra HDR"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Serie A",
+          "match": "Inter-Milan vs Verona",
+          "kick_utc": 1779022800,
+          "time": "17/05 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "DAZN"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Premier League",
+          "match": "PREMIER LEAGUE LIVE",
+          "kick_utc": 1779013800,
+          "time": "17/05 05:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Hub Premier 1"
+              ]
+            }
+          ],
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -325,18 +435,18 @@
         },
         {
           "league": "Tennis",
-          "match": "Internazionali BNL dItalia",
-          "kick_utc": 1778925600,
-          "time": "16/05 05:00 PM",
+          "match": "Internationaux de Strasbourg",
+          "kick_utc": 1779013800,
+          "time": "17/05 05:30 PM",
           "tv_channels": [
             {
-              "country": "Wheresthematch",
+              "country": "LiveSportsOnTV",
               "channels": [
-                "Sky Sports Tennis"
+                "DAZN Canada"
               ]
             }
           ],
-          "source": "wheresthematch"
+          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
@@ -353,51 +463,6 @@
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "1/2 Finale: (parovi)",
-          "kick_utc": 1778925600,
-          "time": "16/05 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Klub 2 Hrvatska"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ténis - ATP Challenger Tour 2026 - ATP Ch 100 Oeiras Iv - Final",
-          "kick_utc": 1778925600,
-          "time": "16/05 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv 6 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA 125 de Paris",
-          "kick_utc": 1778931000,
-          "time": "16/05 06:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 9 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -478,6 +543,97 @@
         },
         {
           "league": "Tennis",
+          "match": "(Parovi) FINALE",
+          "kick_utc": 1779019200,
+          "time": "17/05 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Klub 2 Hrvatska"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "WTA Tour 2026 Internationaux de Strasbourg (500) Day 1",
+          "kick_utc": 1779013800,
+          "time": "17/05 05:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Hub Sports 2 HD"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "WTA 500 Strasbourg",
+          "kick_utc": 1779013800,
+          "time": "17/05 05:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Klub 4 Hrvatska",
+                "Sport Klub 5 Hrvatska"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP Tour 2026 bitpanda Hamburg Open (500) Day 1 Round 1",
+          "kick_utc": 1779017400,
+          "time": "17/05 06:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Hub Sports 6 HD"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP 500 Hamburg & WTA 500 Strasbourg",
+          "kick_utc": 1779017400,
+          "time": "17/05 06:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Klub 4 Hrvatska"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP 250 Geneva & ATP 500 Hamburg & WTA 500 Strasbourg",
+          "kick_utc": 1779019200,
+          "time": "17/05 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Klub 4 Hrvatska"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Internazionali BNL d'Italia -SF (2)",
           "kick_utc": 1778936400,
           "time": "16/05 08:00 PM",
@@ -496,6 +652,21 @@
           "match": "Internazionali BNL d'Italia -Final",
           "kick_utc": 1778943600,
           "time": "16/05 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Internationaux de Strasbourg presented by Mammotion E1",
+          "kick_utc": 1779013800,
+          "time": "17/05 05:30 PM",
           "tv_channels": [
             {
               "country": "NowTV",
