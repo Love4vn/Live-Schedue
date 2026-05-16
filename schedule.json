@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-16 15:13 VN",
+  "updated": "2026-05-16 17:22 VN",
   "days": {
     "20260516": {
       "date": "Saturday, 16/05",
@@ -13,53 +13,43 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Arena Premium 2 BiH HD",
+                "Arena Premium 2 Srbija HD",
                 "beIN Sports 3 HD",
                 "beIN Sports France 2 HD",
                 "DAZN 2 Portugal HD",
+                "Digi Sport 3 Romania",
+                "Eleven Sports 2 Polska HD",
+                "Go3 Sport 1 Baltic HD",
                 "M+ #Vamos Bar",
                 "M+ Liga de Campeones 2 HD",
+                "Nova Sport 3 Czech HD",
                 "Nova Sports 3 Hellas HD",
+                "Okko Futbol HD",
                 "Orange Fútbol 3 HD",
+                "Persiana Sports 2 HD",
                 "Play Sports 2 Belgium",
+                "Premier Sports 5 Mongolia HD",
+                "Prima Sport RO 1 HD",
                 "S Sport+ Streaming",
                 "Setanta Sports 1 Eurasia HD",
+                "Setanta Sports 2 Baltic",
                 "Setanta Sports+ Ukraine HD",
                 "Sky Sport 251 Italia HD",
                 "Sky Sport Bundesliga 1 HD",
                 "Sky Sport Bundesliga HD",
                 "Sky Sport Bundesliga UHD",
                 "Sky Sport Top Event HD",
+                "Sport TV3 Slovenija",
+                "SportKlub 8 Hrvatska",
                 "SporTV Brazil HD",
+                "ST World Football HD",
                 "Tivibu Spor 4 HD",
                 "Tring Sport 1 HD",
                 "TV3 MAX Dansk HD",
+                "V Sport 1 Norge HD",
                 "V Sport 1 Sverige HD",
                 "YouTube: Bundesliga",
-                "ESPN Select",
-                "ESPN Unlimited",
-                "DAZN Canada"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Bundesliga",
-          "match": "Werder Bremen vs Borussia Dortmund",
-          "kick_utc": 1778938200,
-          "time": "16/05 08:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "beIN Sports France 4 HD max",
-                "DAZN 3 Portugal HD",
-                "Nova Sports 4 Hellas HD",
-                "S Sport+ Streaming",
-                "Sky Sport Bundesliga 5 HD",
-                "SporTV 2 Brazil HD",
-                "Tivibu Spor 4 HD",
-                "Tring Sport 7 HD",
                 "ESPN Select",
                 "ESPN Unlimited",
                 "DAZN Canada"
@@ -77,12 +67,46 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Arena Premium 3 BiH HD",
+                "Arena Sport 3 Srbija HD",
                 "beIN Sports France 7 HD max",
                 "Nova Sports 5 Hellas HD",
+                "Polsat Sport Extra 1 HD",
+                "Prima Sport RO PPV 4",
                 "S Sport+ Streaming",
                 "Sky Sport Bundesliga 2 HD",
+                "SportKlub 1 Hrvatska HD",
+                "ST Sports Arena",
                 "Tivibu Spor 4 HD",
                 "Tring Sport 4 HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Bundesliga",
+          "match": "Werder Bremen vs Borussia Dortmund",
+          "kick_utc": 1778938200,
+          "time": "16/05 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena Premium 3 Srbija HD",
+                "DAZN 3 Portugal HD",
+                "Nova Sports 4 Hellas HD",
+                "Prima Sport RO PPV 2",
+                "S Sport+ Streaming",
+                "Sky Sport Bundesliga 5 HD",
+                "SportKlub 11 Hrvatska",
+                "SporTV 2 Brazil HD",
+                "ST Sports Premium HD",
+                "Tivibu Spor 4 HD",
+                "Tring Sport 7 HD",
+                "ESPN Select",
+                "ESPN Unlimited",
+                "DAZN Canada"
               ]
             }
           ],
@@ -107,46 +131,65 @@
         },
         {
           "league": "FA Cup",
-          "match": "Manchester City vs Chelsea",
+          "match": "Chelsea vs Manchester City",
           "kick_utc": 1778940000,
           "time": "16/05 09:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Arena Premium 1 BiH HD",
+                "Arena Premium 1 Srbija HD",
+                "Arena Sport 1 Hrvatska HD",
+                "Arena Sport 1 Slovenija HD",
+                "Astro Football HD",
+                "Astro Grandstand HD",
+                "BBC iPlayer",
+                "BBC One HD",
+                "beIN Sports France 1 HD",
+                "beIN Sports MENA 1 HD",
+                "beIN Sports MENA English 1 HD",
+                "Canal+ Sport 3 Afrique HD",
+                "Cosmote Sport 2 HD",
+                "Cytavision Sports 3 HD",
+                "Cytavision Sports PPV 3 HD",
+                "DAZN 2 Bar Deutsch HD",
+                "DAZN Italia",
+                "Diema Sport 3 HD",
+                "ESPN 1 Brazil HD",
+                "ESPN 2 USA",
                 "ESPN Deportes",
+                "Futbol TV Uzbekistan",
+                "Go3 Extra Sport Baltics",
+                "M+ #Vamos Bar 2",
+                "M+ Liga de Campeones HD",
+                "Movistar Plus+ HD",
+                "Nova Sport 1 Czech HD",
+                "Persiana Sport HD",
+                "Premier Sports 2 Mongolia HD",
+                "QazSport HD",
+                "Setanta Sports 1 Georgia HD",
+                "Setanta Sports Ukraine HD",
+                "Sport TV2 Portugal HD",
+                "SportsNet 1 Canada HD",
+                "Spíler 1 TV Hungary HD",
+                "SuperSport 2 Albania HD",
+                "SuperSport MáXimo 2A HD",
+                "SuperSport MáXimo 360",
+                "SuperSport Premier League HD",
+                "Tabii Spor Türkiye",
+                "TNT Sports 1 HD",
+                "TNT Sports Ultimate UHD",
+                "TV3+ Dansk HD",
+                "TVP Sport Polska HD",
+                "V Sport Premium HD",
+                "ViaPlay 2 Urheilu HD",
+                "VOYO Pro TV Romania",
+                "Zor TV Uzbekistan",
                 "Fubo Sports",
                 "ESPN Select",
-                "ESPN2",
-                "ESPN Unlimited"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "FA Cup",
-          "match": "Chelsea vs Manchester City",
-          "kick_utc": 1778943600,
-          "time": "16/05 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "ESPN 1 Brazil HD",
-                "SuperSport Premier League HD",
-                "Setanta Sports Ukraine HD",
-                "M+ #Vamos Bar 2",
-                "Cosmote Sport 2 HD",
-                "M+ Liga de Campeones HD",
-                "Diema Sport 3 HD",
-                "TV3+ Dansk HD",
-                "Sport TV2 Portugal HD",
-                "SuperSport 2 Albania HD",
-                "V Sport Premium HD",
-                "DAZN 2 Bar Deutsch HD",
-                "Movistar Plus+ HD",
-                "SuperSport MáXimo 360"
+                "ESPN Unlimited",
+                "ESPN2"
               ]
             }
           ],
@@ -161,33 +204,91 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Al Kass 5 HD",
+                "Antena Play Live",
+                "beIN Sports MENA 2 HD",
                 "Canal 11 Portugal HD",
+                "ESPN 2 Nederland HD",
                 "ESPN 4 Brazil HD",
+                "IRIB Varzesh HD",
                 "Nova Sport Bulgaria HD",
-                "Sportdigital FUSSBALL HD"
+                "Persiana Sport HD",
+                "Q Sport Football HD",
+                "Spor Smart Türkiye HD",
+                "Sport 1 Baltic",
+                "Sport 1 Ukraine",
+                "Sportdigital FUSSBALL HD",
+                "SportKlub 1 Hrvatska HD",
+                "SportKlub 5 Slovenija",
+                "TV Start Triumph HD",
+                "Varzish TV Sport HD",
+                "Z Sports 1 Angola"
               ]
             }
           ],
           "source": "livesportsontv"
         },
         {
-          "league": "Ligue 1",
-          "match": "Marseille vs Rennes",
-          "kick_utc": 1778958000,
-          "time": "17/05 02:00 AM",
+          "league": "Serie A",
+          "match": "Juventus vs Fiorentina",
+          "kick_utc": 1779012000,
+          "time": "17/05 05:00 PM",
           "tv_channels": [
             {
-              "country": "LiveSportsOnTV",
+              "country": "Ausport",
               "channels": [
-                "beIN Connect Türkiye",
-                "Fast Sports 2 Armenia",
-                "Ligue 1+",
-                "Nova Sport Bulgaria HD",
-                "SuperSport 3 Albania HD"
+                "beIN Sports Connect",
+                "beIN SPORTS 2"
               ]
             }
           ],
-          "source": "livesportsontv"
+          "source": "ausport"
+        },
+        {
+          "league": "Serie A",
+          "match": "AS Roma vs Lazio",
+          "kick_utc": 1779012000,
+          "time": "17/05 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 3"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Serie A",
+          "match": "Pisa vs Napoli",
+          "kick_utc": 1779012000,
+          "time": "17/05 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Serie A",
+          "match": "Genoa vs AC Milan",
+          "kick_utc": 1779012000,
+          "time": "17/05 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -232,6 +333,22 @@
               "country": "Wheresthematch",
               "channels": [
                 "Sky Sports Tennis"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "Internazionali BNL dItalia",
+          "kick_utc": 1779012000,
+          "time": "17/05 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Sky Sports Tennis",
+                "Sky Sports+"
               ]
             }
           ],
@@ -343,6 +460,36 @@
             }
           ],
           "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "(Parovi) FINALE",
+          "kick_utc": 1779012000,
+          "time": "17/05 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Klub 2 Hrvatska"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Internazionali BNL d'Italia -SF (2)",
+          "kick_utc": 1778936400,
+          "time": "16/05 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
+              ]
+            }
+          ],
+          "source": "nowtv"
         },
         {
           "league": "Tennis",
