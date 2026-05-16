@@ -1,8 +1,8 @@
 {
-  "updated": "2026-05-16 05:04 VN",
+  "updated": "2026-05-16 10:50 VN",
   "days": {
-    "20260515": {
-      "date": "Friday, 15/05",
+    "20260516": {
+      "date": "Saturday, 16/05",
       "games": [
         {
           "league": "Bundesliga",
@@ -96,15 +96,9 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "ESPN Select",
                 "ESPN Unlimited",
-                "DAZN Canada",
-                "ESPN Select"
-              ]
-            },
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect"
+                "DAZN Canada"
               ]
             }
           ],
@@ -147,22 +141,6 @@
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "Bundesliga",
-          "match": "Bayern Munich vs FC Koln",
-          "kick_utc": 1778938200,
-          "time": "16/05 08:30 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 2"
-              ]
-            }
-          ],
-          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -211,21 +189,6 @@
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: WTA Roma Semifinala Dublu",
-          "kick_utc": 1778882400,
-          "time": "16/05 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
