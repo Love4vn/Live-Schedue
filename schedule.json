@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-21 11:24 VN",
+  "updated": "2026-05-21 16:57 VN",
   "days": {
     "20260521": {
       "date": "Thursday, 21/05",
@@ -66,6 +66,21 @@
         },
         {
           "league": "Tennis",
+          "match": "Roland Garros French Open",
+          "kick_utc": 1779436800,
+          "time": "22/05 03:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "HBO Max"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
           "match": "ATP Tennis",
           "kick_utc": 1779354000,
           "time": "21/05 04:00 PM",
@@ -112,6 +127,36 @@
         },
         {
           "league": "Tennis",
+          "match": "ATP World Tour 500 - Hamburgo 2026",
+          "kick_utc": 1779357540,
+          "time": "21/05 04:59 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 500 - Hamburgo 2026",
+          "kick_utc": 1779379200,
+          "time": "21/05 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "ATP Tour 2026 bitpanda Hamburg Open (500) QF 1 & 2 & 3",
           "kick_utc": 1779357600,
           "time": "21/05 05:00 PM",
@@ -142,39 +187,9 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP World Tour 500 - Hamburgo 2026",
-          "kick_utc": 1779357600,
-          "time": "21/05 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 500 - Hamburgo 2026",
-          "kick_utc": 1779379200,
-          "time": "21/05 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
           "match": "ATP World Tour 250 - Genebra 2026",
-          "kick_utc": 1779361200,
-          "time": "21/05 06:00 PM",
+          "kick_utc": 1779361140,
+          "time": "21/05 05:59 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -188,8 +203,8 @@
         {
           "league": "Tennis",
           "match": "ATP World Tour 250 - Genebra 2026",
-          "kick_utc": 1779379200,
-          "time": "21/05 11:00 PM",
+          "kick_utc": 1779379140,
+          "time": "21/05 10:59 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -241,8 +256,7 @@
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
+                "Digi Sport 2 Hd Romania"
               ]
             }
           ],
@@ -274,6 +288,21 @@
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1779397200,
+          "time": "22/05 04:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
                 "Digi Sport 2 Romania"
               ]
             }
@@ -320,6 +349,21 @@
               "country": "Hubsport",
               "channels": [
                 "beIN Sports Max 4 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Jaqueline Cristian - Daria Kasatkina Ziua 5",
+          "kick_utc": 1779377400,
+          "time": "21/05 10:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Romania"
               ]
             }
           ],
@@ -380,6 +424,21 @@
               "country": "Hubsport",
               "channels": [
                 "Eurosport 2 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "1/2 Finale: (parovi)",
+          "kick_utc": 1779442200,
+          "time": "22/05 04:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Klub 2 Hrvatska"
               ]
             }
           ],
