@@ -32,7 +32,7 @@
     "away": "",
     "vietnam_time": "19:30",
     "vietnam_date": "23/05/2026",
-    "channels": "beIN SPORTS 1 | beIN Sports Connect",
+    "channels": "beIN Sports Connect | beIN SPORTS 1",
     "sport": "Tennis"
   },
   {
@@ -41,7 +41,7 @@
     "away": "",
     "vietnam_time": "20:00",
     "vietnam_date": "23/05/2026",
-    "channels": "beIN SPORTS 2 | beIN Sports Connect",
+    "channels": "beIN Sports Connect | beIN SPORTS 2",
     "sport": "Tennis"
   },
   {
@@ -50,16 +50,7 @@
     "away": "Pisa",
     "vietnam_time": "01:45",
     "vietnam_date": "24/05/2026",
-    "channels": "beIN Sports Connect",
-    "sport": "Soccer"
-  },
-  {
-    "competition": "La Liga",
-    "home": "Real Madrid",
-    "away": "Athletic Bilbao",
-    "vietnam_time": "02:00",
-    "vietnam_date": "24/05/2026",
-    "channels": "beIN Sports Connect",
+    "channels": "beIN Sports Connect | beIN SPORTS 1",
     "sport": "Soccer"
   },
   {
@@ -68,7 +59,25 @@
     "away": "Barcelona",
     "vietnam_time": "02:00",
     "vietnam_date": "24/05/2026",
-    "channels": "beIN Sports Connect",
+    "channels": "beIN Sports Connect | beIN SPORTS 2",
     "sport": "Soccer"
+  },
+  {
+    "competition": "La Liga",
+    "home": "Real Madrid",
+    "away": "Athletic Bilbao",
+    "vietnam_time": "02:00",
+    "vietnam_date": "24/05/2026",
+    "channels": "beIN Sports Connect | beIN SPORTS 3",
+    "sport": "Soccer"
+  },
+  {
+    "competition": "ATP French Open",
+    "home": "",
+    "away": "",
+    "vietnam_time": "16:00",
+    "vietnam_date": "24/05/2026",
+    "channels": "9Gem | Stan Sport",
+    "sport": "Tennis"
   }
 ]
