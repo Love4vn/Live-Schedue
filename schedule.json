@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-26 02:51 VN",
+  "updated": "2026-05-26 05:14 VN",
   "days": {
     "20260525": {
       "date": "Monday, 25/05",
@@ -35,24 +35,6 @@
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Roland Garros French Open",
-          "kick_utc": 1779732900,
-          "time": "26/05 01:15 AM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "TNT Sports 1",
-                "TNT Sports 4",
-                "TNT Sports Ultimate",
-                "HBO Max"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
@@ -95,21 +77,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Hugo Gaston vs Gael Monfils",
-          "kick_utc": 1779732900,
-          "time": "26/05 01:15 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "Stan Sport"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
           "match": "",
           "kick_utc": 1779786000,
           "time": "26/05 04:00 PM",
@@ -126,14 +93,44 @@
         },
         {
           "league": "Tennis",
-          "match": "Ténis - Grand Slam, Roland Garros",
-          "kick_utc": 1779732000,
-          "time": "26/05 01:00 AM",
+          "match": "Roland-Garros",
+          "kick_utc": 1779793200,
+          "time": "26/05 06:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Eurosport 1 Hd Portugal"
+                "Tipik France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Roland-Garros",
+          "kick_utc": 1779810900,
+          "time": "26/05 10:55 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Tipik France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Roland-Garros",
+          "kick_utc": 1779825300,
+          "time": "27/05 02:55 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "France 3 France"
               ]
             }
           ],
@@ -164,51 +161,6 @@
               "country": "Hubsport",
               "channels": [
                 "Eurosport 1 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Roland-Garros",
-          "kick_utc": 1779738900,
-          "time": "26/05 02:55 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "France 3 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Roland-Garros",
-          "kick_utc": 1779793200,
-          "time": "26/05 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Tipik France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Roland-Garros",
-          "kick_utc": 1779810900,
-          "time": "26/05 10:55 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Tipik France"
               ]
             }
           ],
