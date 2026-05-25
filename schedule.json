@@ -1,14 +1,14 @@
 {
-  "updated": "2026-05-25 22:23 VN",
+  "updated": "2026-05-26 02:51 VN",
   "days": {
     "20260525": {
       "date": "Monday, 25/05",
       "games": [
         {
           "league": "UEFA Euro",
-          "match": "Estonia U17 vs Spain U17",
-          "kick_utc": 1779728400,
-          "time": "26/05 12:00 AM",
+          "match": "Italy U17 vs France U17",
+          "kick_utc": 1779795000,
+          "time": "26/05 06:30 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
@@ -22,9 +22,9 @@
         },
         {
           "league": "UEFA Euro",
-          "match": "Italy U17 vs France U17",
-          "kick_utc": 1779795000,
-          "time": "26/05 06:30 PM",
+          "match": "Montenegro U17 vs Denmark U17",
+          "kick_utc": 1779811200,
+          "time": "26/05 11:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
@@ -77,6 +77,24 @@
         },
         {
           "league": "Tennis",
+          "match": "Roland Garros French Open",
+          "kick_utc": 1779819300,
+          "time": "27/05 01:15 AM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "TNT Sports 1",
+                "TNT Sports 4",
+                "TNT Sports Ultimate",
+                "HBO Max"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
           "match": "Hugo Gaston vs Gael Monfils",
           "kick_utc": 1779732900,
           "time": "26/05 01:15 AM",
@@ -108,14 +126,44 @@
         },
         {
           "league": "Tennis",
-          "match": "Roland-Garros",
-          "kick_utc": 1779725820,
-          "time": "25/05 11:17 PM",
+          "match": "Ténis - Grand Slam, Roland Garros",
+          "kick_utc": 1779732000,
+          "time": "26/05 01:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Tipik France"
+                "Eurosport 1 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - Grand Slam, Roland Garros",
+          "kick_utc": 1779804000,
+          "time": "26/05 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - Grand Slam, Roland Garros",
+          "kick_utc": 1779818400,
+          "time": "27/05 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 Hd Portugal"
               ]
             }
           ],
@@ -153,29 +201,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Ténis - Grand Slam, Roland Garros",
-          "kick_utc": 1779732000,
-          "time": "26/05 01:00 AM",
+          "match": "Roland-Garros",
+          "kick_utc": 1779810900,
+          "time": "26/05 10:55 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Eurosport 1 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ténis - Grand Slam, Roland Garros",
-          "kick_utc": 1779804000,
-          "time": "26/05 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 2 Hd Portugal"
+                "Tipik France"
               ]
             }
           ],
