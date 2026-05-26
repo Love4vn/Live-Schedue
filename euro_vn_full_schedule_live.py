@@ -579,7 +579,7 @@ def parse_livesportsontv(entry: dict) -> Optional[Dict]:
         dt = dt.replace(tzinfo=TIMEZONE)
         kick_utc = int(dt.timestamp())
         league = entry.get('League', '')
-        if "Tennis" in league or "Tenis" in league or "ATP" in league or "WTA" in league:
+        if "Tennis" in league or "Tenis" in league or "ATP" in league or "WTA" in league or "french open" in league:
             league = "Tennis"
         else:
             if "UEFA Europa League" in league:
