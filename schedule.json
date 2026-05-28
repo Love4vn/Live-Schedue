@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-28 11:18 VN",
+  "updated": "2026-05-28 17:19 VN",
   "days": {
     "20260528": {
       "date": "Thursday, 28/05",
@@ -43,6 +43,42 @@
             }
           ],
           "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "Roland Garros French Open",
+          "kick_utc": 1780045200,
+          "time": "29/05 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "TNT Sports 1",
+                "TNT Sports 4",
+                "TNT Sports 5",
+                "TNT Sports 6",
+                "TNT Sports Ultimate",
+                "HBO Max"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1780045200,
+          "time": "29/05 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "9Gem",
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
         },
         {
           "league": "Tennis",
