@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-29 03:33 VN",
+  "updated": "2026-05-29 05:43 VN",
   "days": {
     "20260528": {
       "date": "Thursday, 28/05",
@@ -93,21 +93,6 @@
         {
           "league": "Tennis",
           "match": "Roland-Garros",
-          "kick_utc": 1779998100,
-          "time": "29/05 02:55 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "France 3 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Roland-Garros",
           "kick_utc": 1780052400,
           "time": "29/05 06:00 PM",
           "tv_channels": [
@@ -190,6 +175,21 @@
               "country": "Hubsport",
               "channels": [
                 "Eurosport 1 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "PRO A",
+          "kick_utc": 1780087200,
+          "time": "30/05 03:40 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
               ]
             }
           ],
