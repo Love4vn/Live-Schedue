@@ -1,5 +1,8 @@
 # File: livesportsontv.py
-# FINAL VERSION - Sửa lỗi thời gian, bổ sung giải đấu
+# FINAL VERSION - Hoàn chỉnh: scrape livesportsontv + footonsat + nowstreams
+# - Cập nhật URL tennis (ATP, WTA, Grand Slams) theo cấu trúc mới của livesportsontv.com
+# - Tennis: League = "Tennis (ATP)" / "Tennis (WTA)" / "Tennis (Grand Slam)", Matchup = tên giải hoặc tên trận
+# - Xử lý gộp trùng, lọc giải đấu, đội bóng, nữ/trẻ, chuyển giờ Việt Nam
 
 import asyncio
 import json
@@ -12,7 +15,7 @@ from bs4 import BeautifulSoup
 # ==================== CẤU HÌNH ====================
 VN_TZ = timezone(timedelta(hours=7))
 TIME_RANGE_HOURS_BEFORE = 4
-TIME_RANGE_HOURS_AFTER = 26  # Tăng lên 72 giờ để lấy các trận trong 3 ngày tới
+TIME_RANGE_HOURS_AFTER = 72   # Lấy các trận trong 3 ngày tới
 
 FOOTONSAT_URLS = [
     "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/premierleague.json",
@@ -33,7 +36,8 @@ ALLOWED_LEAGUES = {
     "Premier League", "Serie A", "La Liga", "Bundesliga", "Ligue 1",
     "UEFA Champions League", "UEFA Europa League", "UEFA Europa Conference League",
     "UEFA European Championship", "FIFA World Cup",
-    "International Friendlies", "FA Cup", "Carabao Cup"
+    "International Friendlies", "FA Cup", "Carabao Cup",
+    "Tennis (ATP)", "Tennis (WTA)", "Tennis (Grand Slam)"
 }
 
 PREMIER_LEAGUE_TEAMS = {
@@ -51,7 +55,7 @@ ALLOWED_TEAMS_PER_LEAGUE = {
     "Ligue 1": {"psg", "paris saint-germain", "marseille", "olympique marseille"},
     "FA Cup": PREMIER_LEAGUE_TEAMS,
     "Carabao Cup": PREMIER_LEAGUE_TEAMS,
-    "UEFA Champions League": None,          # Cho phép tất cả đội
+    "UEFA Champions League": None,
     "UEFA Europa League": None,
     "UEFA Europa Conference League": None,
     "UEFA European Championship": None,
@@ -59,7 +63,6 @@ ALLOWED_TEAMS_PER_LEAGUE = {
     "International Friendlies": None,
 }
 
-# Ánh xạ mã quốc gia → tên đầy đủ (giữ nguyên)
 LANGUAGE_MAP = {
     "GB": "Great Britain", "US": "United States", "DE": "Germany", "AU": "Australia",
     "ES": "Spain", "FR": "France", "IT": "Italy", "PT": "Portugal", "GR": "Greece",
@@ -72,7 +75,7 @@ LANGUAGE_MAP = {
     "IN": "India", "AE": "UAE", "SA": "Saudi Arabia", "QA": "Qatar",
 }
 
-# ==================== CÁC HÀM TIỆN ÍCH (giữ nguyên từ code cũ) ====================
+# ==================== HÀM TIỆN ÍCH ====================
 def parse_time_with_ampm(time_str: str):
     time_str = time_str.strip().upper()
     if ' ' not in time_str and ('AM' in time_str or 'PM' in time_str):
@@ -134,16 +137,14 @@ def is_within_time_range(dt: datetime, ref: datetime) -> bool:
 def is_youth_or_women(matchup: str, league: str) -> bool:
     combined = f"{matchup} {league}".lower()
     women_keywords = [
-        "women", "womens", "women's", "woman", "female", "Women's",
-        "frauen", "damen", "weiblich", "donne", "femminile",
-        "mujeres", "femenino", "femenina", "femmes", "féminin", "féminine",
-        "mulheres", "feminino", "vrouwen", "női", "kadın", "w/serie"
+        "women", "womens", "women's", "woman", "female", "frauen", "damen", "weiblich",
+        "donne", "femminile", "mujeres", "femenino", "femenina", "femmes", "féminin",
+        "féminine", "mulheres", "feminino", "vrouwen", "női", "kadın", "w/serie"
     ]
     youth_keywords = [
-        "youth", "junior", "academy", "reserves", "reserve", "ii",
-        "zweite", "second team", "sub", "u-", "under", "jugend", "juniorer",
-        "giovanili", "primavera", "cantera", "filial", "jeunes", "espoirs",
-        "jong", "beloften", "greek super"
+        "youth", "junior", "academy", "reserves", "reserve", "ii", "zweite", "second team",
+        "sub", "u-", "under", "jugend", "juniorer", "giovanili", "primavera", "cantera",
+        "filial", "jeunes", "espoirs", "jong", "beloften", "greek super"
     ]
     for kw in women_keywords:
         if kw in combined:
@@ -181,8 +182,16 @@ def normalize_league(league: str) -> str:
         return "FIFA World Cup"
     if "friendly" in league_lower:
         return "International Friendlies"
+    # Tennis
+    if "atp" in league_lower:
+        return "Tennis (ATP)"
+    if "wta" in league_lower:
+        return "Tennis (WTA)"
+    if "grand slam" in league_lower or "australian open" in league_lower or "french open" in league_lower or "wimbledon" in league_lower or "us open" in league_lower:
+        return "Tennis (Grand Slam)"
     return league.strip()
 
+# ==================== BẢNG ÁNH XẠ TÊN ĐỘI ====================
 # Bảng ánh xạ tên đội chuẩn (canonical) và các biến thể
 TEAM_NAME_MAPPING = {
     # Premier League
@@ -567,6 +576,7 @@ def has_premier_league_team(matchup: str) -> bool:
 
 # ==================== CẤU HÌNH GIẢI LIVESPORTSONTV ====================
 LEAGUES_CONFIG = {
+    # Bóng đá
     "Premier League": {"url": "https://www.livesportsontv.com/league/premier-league", "teams": PREMIER_LEAGUE_TEAMS},
     "Serie A": {"url": "https://www.livesportsontv.com/league/serie-a", "teams": {"inter milan", "ac milan", "napoli", "juventus", "roma", "atalanta", "lazio"}},
     "La Liga": {"url": "https://www.livesportsontv.com/league/la-liga", "teams": {"barcelona", "real madrid", "atletico madrid"}},
@@ -580,12 +590,13 @@ LEAGUES_CONFIG = {
     "International Friendlies": {"url": "https://www.livesportsontv.com/league/friendly", "teams": None, "custom_filter": "friendly"},
     "FA Cup": {"url": "https://www.livesportsontv.com/league/fa-cup", "teams": None, "custom_filter": "premier_league_only"},
     "Carabao Cup": {"url": "https://www.livesportsontv.com/league/carabao-cup", "teams": None, "custom_filter": "premier_league_only"},
-    "Tennis (ATP)": {"url": "https://www.livesportsontv.com/league/atp", "is_tennis": True},
-    "Tennis (WTA)": {"url": "https://www.livesportsontv.com/league/wta", "is_tennis": True},
-    "Australian Open": {"url": "https://www.livesportsontv.com/league/australian-open", "is_tennis": True},
-    "French Open": {"url": "https://www.livesportsontv.com/league/roland-garros", "is_tennis": True},
-    "Wimbledon": {"url": "https://www.livesportsontv.com/league/wimbledon", "is_tennis": True},
-    "US Open": {"url": "https://www.livesportsontv.com/league/us-open", "is_tennis": True}
+    # Tennis – Cập nhật URL mới
+    "Tennis (ATP)": {"url": "https://www.livesportsontv.com/league/atp/", "is_tennis": True},
+    "Tennis (WTA)": {"url": "https://www.livesportsontv.com/league/wta/", "is_tennis": True},
+    "Australian Open": {"url": "https://www.livesportsontv.com/league/grand-slam/australian-open/", "is_tennis": True},
+    "French Open": {"url": "https://www.livesportsontv.com/league/grand-slam/french-open/", "is_tennis": True},
+    "Wimbledon": {"url": "https://www.livesportsontv.com/league/grand-slam/wimbledon/", "is_tennis": True},
+    "US Open": {"url": "https://www.livesportsontv.com/league/grand-slam/us-open/", "is_tennis": True}
 }
 
 # ==================== FOOTONSAT ====================
@@ -695,11 +706,9 @@ async def fetch_nowstreams_data(ref_time: datetime):
             matchup_raw = item.get("matchstr", "")
             if not matchup_raw:
                 continue
-
-            # *** SỬA LỖI: kiểm tra nữ/trẻ trước khi chuẩn hóa tên giải ***
+            # Lọc nữ/trẻ trước khi chuẩn hóa
             if is_youth_or_women(matchup_raw, league_raw):
                 continue
-
             league = normalize_league(league_raw)
             if not is_match_allowed(league, matchup_raw):
                 continue
@@ -713,7 +722,6 @@ async def fetch_nowstreams_data(ref_time: datetime):
                     services.append(f"{ch_name} {full_country}")
                 elif ch_name:
                     services.append(ch_name)
-
             main_channel = item.get("channel")
             if main_channel and main_channel not in services:
                 parts = main_channel.rsplit(" ", 1)
@@ -735,9 +743,9 @@ async def fetch_nowstreams_data(ref_time: datetime):
         except Exception as e:
             print(f"⚠️ Lỗi xử lý match nowstreams: {e}")
             continue
-
     print(f"📡 nowstreams: {len(matches)} trận")
     return matches
+
 # ==================== LIVESPORTSONTV SCRAPING ====================
 async def scrape_livesportsontv(ref_time: datetime):
     all_games = []
@@ -808,7 +816,9 @@ async def scrape_livesportsontv(ref_time: datetime):
                     if not is_within_time_range(vn_dt, ref_time):
                         continue
 
+                    # Lấy tên trận / giải
                     if is_tennis:
+                        # Tennis: ưu tiên lấy tên giải từ event__participant--home
                         home_elem = row.find('div', class_=lambda c: c and 'event_participant--home' in c)
                         if not home_elem:
                             home_elem = row.find('div', class_='event__participant--home')
@@ -817,6 +827,11 @@ async def scrape_livesportsontv(ref_time: datetime):
                         else:
                             title_elem = row.find('a', class_='event__title')
                             matchup = title_elem.get_text(strip=True) if title_elem else "Tennis Match"
+                        # Nếu league_name là Grand Slam (Australian Open, etc.) thì không thay đổi League
+                        if league_name in ["Australian Open", "French Open", "Wimbledon", "US Open"]:
+                            league_display = "Tennis (Grand Slam)"
+                        else:
+                            league_display = league_name  # "Tennis (ATP)" hoặc "Tennis (WTA)"
                     else:
                         home_elem = row.find('div', class_=lambda c: c and 'event__participant--home' in c)
                         away_elem = row.find('div', class_=lambda c: c and 'event__participant--away' in c)
@@ -827,10 +842,12 @@ async def scrape_livesportsontv(ref_time: datetime):
                             title_elem = row.find('a', class_='event__title')
                             if title_elem:
                                 matchup = title_elem.get_text(strip=True)
+                        league_display = league_name
 
-                    if is_youth_or_women(matchup, league_name):
+                    if is_youth_or_women(matchup, league_display):
                         continue
 
+                    # Áp dụng bộ lọc
                     if team_filter is not None:
                         if not any(t.lower() in matchup.lower() for t in team_filter):
                             continue
@@ -863,7 +880,7 @@ async def scrape_livesportsontv(ref_time: datetime):
                     all_games.append({
                         "Date": vn_dt.strftime("%Y-%m-%d"),
                         "Time": vn_dt.strftime("%H:%M"),
-                        "League": league_name,
+                        "League": league_display,
                         "Matchup": matchup,
                         "Services": channels
                     })
