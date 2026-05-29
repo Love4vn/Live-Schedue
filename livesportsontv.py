@@ -594,7 +594,7 @@ LEAGUES_CONFIG = {
     "Tennis (ATP)": {"url": "https://www.livesportsontv.com/league/atp/", "is_tennis": True},
     "Tennis (WTA)": {"url": "https://www.livesportsontv.com/league/wta/", "is_tennis": True},
     "Australian Open": {"url": "https://www.livesportsontv.com/league/grand-slam/australian-open/", "is_tennis": True},
-    "French Open": {"url": "https://www.livesportsontv.com/league/grand-slam/french-open/", "is_tennis": True},
+    "French Open": {"url": "https://www.livesportsontv.com/league/roland-garros", "is_tennis": True},
     "Wimbledon": {"url": "https://www.livesportsontv.com/league/grand-slam/wimbledon/", "is_tennis": True},
     "US Open": {"url": "https://www.livesportsontv.com/league/grand-slam/us-open/", "is_tennis": True}
 }
