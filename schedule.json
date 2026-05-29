@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-30 03:35 VN",
+  "updated": "2026-05-30 05:40 VN",
   "days": {
     "20260529": {
       "date": "Friday, 29/05",
@@ -32,6 +32,7 @@
                 "Canal+ Live 1 France HD",
                 "Canal+ Sport 1 Afrique HD",
                 "Canal+ Sport 2 Afrique HD",
+                "CBC Sport HD",
                 "CBS USA",
                 "Cosmote Sport 1 HD",
                 "Cosmote Sport 4K UHD",
@@ -45,6 +46,8 @@
                 "DAZN USA en Español",
                 "Digi 4K UHD",
                 "Digi Sport 1 Romania HD",
+                "Fast Sports TV Armenia",
+                "Futbol TV Tajikistan",
                 "GEM Sport HD",
                 "Go3 Extra Sport Baltics",
                 "HBO Max",
@@ -296,21 +299,6 @@
         {
           "league": "Tennis",
           "match": "Roland-Garros",
-          "kick_utc": 1780084500,
-          "time": "30/05 02:55 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "France 3 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Roland-Garros",
           "kick_utc": 1780138800,
           "time": "30/05 06:00 PM",
           "tv_channels": [
@@ -364,21 +352,6 @@
               "country": "Hubsport",
               "channels": [
                 "France 3 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "PRO A",
-          "kick_utc": 1780087200,
-          "time": "30/05 03:40 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "L'Equipe France"
               ]
             }
           ],
