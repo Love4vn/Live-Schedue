@@ -1,25 +1,9 @@
 {
-  "updated": "2026-05-29 23:01 VN",
+  "updated": "2026-05-30 03:35 VN",
   "days": {
     "20260529": {
       "date": "Friday, 29/05",
       "games": [
-        {
-          "league": "UEFA Euro",
-          "match": "France U17 vs Denmark U17",
-          "kick_utc": 1780070400,
-          "time": "29/05 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Sportdigital FUSSBALL Germany",
-                "Sportdigital FUSSBALL Germany"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "UEFA Champions League",
           "match": "Paris St Germain vs Arsenal",
@@ -193,37 +177,6 @@
         {
           "league": "Tennis",
           "match": "French Open",
-          "kick_utc": 1780066800,
-          "time": "29/05 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "HBO Max (US)",
-                "truTV"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "French Open",
-          "kick_utc": 1780070400,
-          "time": "29/05 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "RDS 2"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "French Open",
           "kick_utc": 1780131600,
           "time": "30/05 04:00 PM",
           "tv_channels": [
@@ -274,9 +227,9 @@
         },
         {
           "league": "Tennis",
-          "match": "Quentin Halys",
-          "kick_utc": 1780078500,
-          "time": "30/05 01:15 AM",
+          "match": "French Open",
+          "kick_utc": 1780164000,
+          "time": "31/05 01:00 AM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
@@ -289,24 +242,6 @@
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Roland Garros French Open",
-          "kick_utc": 1780078500,
-          "time": "30/05 01:15 AM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "TNT Sports 1",
-                "TNT Sports 4",
-                "TNT Sports Ultimate",
-                "HBO Max"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
@@ -327,18 +262,20 @@
         },
         {
           "league": "Tennis",
-          "match": "Quentin Halys vs Alexander Zverev",
-          "kick_utc": 1780078500,
-          "time": "30/05 01:15 AM",
+          "match": "Roland Garros French Open",
+          "kick_utc": 1780164900,
+          "time": "31/05 01:15 AM",
           "tv_channels": [
             {
-              "country": "Ausport",
+              "country": "Wheresthematch",
               "channels": [
-                "Stan Sport"
+                "TNT Sports 4",
+                "TNT Sports 5",
+                "HBO Max"
               ]
             }
           ],
-          "source": "ausport"
+          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
@@ -355,51 +292,6 @@
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ténis - Grand Slam, Roland Garros",
-          "kick_utc": 1780069500,
-          "time": "29/05 10:45 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ténis - Grand Slam, Roland Garros",
-          "kick_utc": 1780077600,
-          "time": "30/05 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Roland-Garros",
-          "kick_utc": 1780072260,
-          "time": "29/05 11:31 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Tipik France"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -464,6 +356,21 @@
         },
         {
           "league": "Tennis",
+          "match": "Roland-Garros",
+          "kick_utc": 1780170900,
+          "time": "31/05 02:55 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "France 3 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "PRO A",
           "kick_utc": 1780087200,
           "time": "30/05 03:40 AM",
@@ -472,6 +379,21 @@
               "country": "Hubsport",
               "channels": [
                 "L'Equipe France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - Grand Slam, Roland Garros",
+          "kick_utc": 1780164000,
+          "time": "31/05 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 Hd Portugal"
               ]
             }
           ],
