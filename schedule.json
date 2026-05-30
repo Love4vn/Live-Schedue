@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-30 20:56 VN",
+  "updated": "2026-05-30 23:10 VN",
   "days": {
     "20260530": {
       "date": "Saturday, 30/05",
@@ -264,6 +264,22 @@
         },
         {
           "league": "Tennis",
+          "match": "French Open",
+          "kick_utc": 1780239600,
+          "time": "31/05 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "HBO Max (US)",
+                "truTV"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
           "match": "Felix Auger-Aliassime",
           "kick_utc": 1780164900,
           "time": "31/05 01:15 AM",
@@ -333,21 +349,6 @@
         {
           "league": "Tennis",
           "match": "Roland-Garros",
-          "kick_utc": 1780145700,
-          "time": "30/05 07:55 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "France 3 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Roland-Garros",
           "kick_utc": 1780156500,
           "time": "30/05 10:55 PM",
           "tv_channels": [
@@ -401,6 +402,21 @@
               "country": "Hubsport",
               "channels": [
                 "France 3 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Roland-Garros",
+          "kick_utc": 1780238820,
+          "time": "31/05 09:47 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Tipik France"
               ]
             }
           ],
