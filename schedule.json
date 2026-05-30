@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-30 11:05 VN",
+  "updated": "2026-05-30 15:36 VN",
   "days": {
     "20260530": {
       "date": "Saturday, 30/05",
@@ -72,6 +72,7 @@
                 "Okko Futbol HD",
                 "Orange Fútbol 1 HD",
                 "Paramount+ USA",
+                "Persiana Sport HD",
                 "Pickx+ Sports 1 HD",
                 "Pop TV Slovenija HD",
                 "Premier Sports 1 Ireland HD",
@@ -346,6 +347,21 @@
           "match": "Ténis - Grand Slam, Roland Garros",
           "kick_utc": 1780164000,
           "time": "31/05 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - Grand Slam, Roland Garros",
+          "kick_utc": 1780216200,
+          "time": "31/05 03:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
