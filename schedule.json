@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-30 15:36 VN",
+  "updated": "2026-05-30 17:50 VN",
   "days": {
     "20260530": {
       "date": "Saturday, 30/05",
@@ -191,7 +191,7 @@
                 "Tennis Channel",
                 "TNT",
                 "truTV",
-                "TSN1"
+                "TSN+"
               ]
             }
           ],
@@ -206,6 +206,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "TSN+",
                 "TSN2",
                 "RDS 2"
               ]
@@ -232,8 +233,27 @@
         {
           "league": "Tennis",
           "match": "French Open",
-          "kick_utc": 1780164000,
-          "time": "31/05 01:00 AM",
+          "kick_utc": 1780218000,
+          "time": "31/05 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Sling TV",
+                "HBO Max (US)",
+                "Tennis Channel",
+                "TNT",
+                "TSN1"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Felix Auger-Aliassime",
+          "kick_utc": 1780164900,
+          "time": "31/05 01:15 AM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
@@ -280,6 +300,39 @@
             }
           ],
           "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "Roland Garros French Open",
+          "kick_utc": 1780218000,
+          "time": "31/05 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "TNT Sports 4",
+                "TNT Sports 5",
+                "HBO Max"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1780218000,
+          "time": "31/05 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "9Gem",
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
         },
         {
           "league": "Tennis",
