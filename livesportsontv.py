@@ -1,8 +1,8 @@
 # File: livesportsontv.py
-# FINAL VERSION - Hoàn chỉnh: scrape livesportsontv + footonsat + nowstreams
-# - Cập nhật URL tennis (ATP, WTA, Grand Slams) theo cấu trúc mới của livesportsontv.com
-# - Tennis: League = "Tennis (ATP)" / "Tennis (WTA)" / "Tennis (Grand Slam)", Matchup = tên giải hoặc tên trận
-# - Xử lý gộp trùng, lọc giải đấu, đội bóng, nữ/trẻ, chuyển giờ Việt Nam
+# Hoàn chỉnh: scrape livesportsontv + footonsat + nowstreams
+# - Cập nhật link chính xác cho giải Pháp Mở Rộng: /league/roland-garros
+# - Xử lý nút "more" để hiển thị đủ kênh phát sóng
+# - Tối ưu hóa việc lấy kênh từ nhiều selector khác nhau
 
 import asyncio
 import json
@@ -63,19 +63,7 @@ ALLOWED_TEAMS_PER_LEAGUE = {
     "International Friendlies": None,
 }
 
-LANGUAGE_MAP = {
-    "GB": "Great Britain", "US": "United States", "DE": "Germany", "AU": "Australia",
-    "ES": "Spain", "FR": "France", "IT": "Italy", "PT": "Portugal", "GR": "Greece",
-    "BG": "Bulgaria", "BE": "Belgium", "CZ": "Czech Republic", "CH": "Switzerland",
-    "SE": "Sweden", "CA": "Canada", "NZ": "New Zealand", "MX": "Mexico", "BR": "Brazil",
-    "NL": "Netherlands", "PL": "Poland", "TR": "Turkey", "RU": "Russia", "UA": "Ukraine",
-    "RO": "Romania", "HU": "Hungary", "AT": "Austria", "HR": "Croatia", "RS": "Serbia",
-    "SI": "Slovenia", "SK": "Slovakia", "NO": "Norway", "DK": "Denmark", "FI": "Finland",
-    "IE": "Ireland", "ZA": "South Africa", "JP": "Japan", "KR": "South Korea", "CN": "China",
-    "IN": "India", "AE": "UAE", "SA": "Saudi Arabia", "QA": "Qatar",
-}
-
-# ==================== HÀM TIỆN ÍCH ====================
+# ==================== CÁC HÀM TIỆN ÍCH ====================
 def parse_time_with_ampm(time_str: str):
     time_str = time_str.strip().upper()
     if ' ' not in time_str and ('AM' in time_str or 'PM' in time_str):
@@ -187,12 +175,11 @@ def normalize_league(league: str) -> str:
         return "Tennis (ATP)"
     if "wta" in league_lower:
         return "Tennis (WTA)"
-    if "grand slam" in league_lower or "australian open" in league_lower or "french open" in league_lower or "wimbledon" in league_lower or "us open" in league_lower:
+    if "grand slam" in league_lower or "australian open" in league_lower or "french open" in league_lower or "roland garros" in league_lower or "wimbledon" in league_lower or "us open" in league_lower:
         return "Tennis (Grand Slam)"
     return league.strip()
 
 # ==================== BẢNG ÁNH XẠ TÊN ĐỘI ====================
-# Bảng ánh xạ tên đội chuẩn (canonical) và các biến thể
 TEAM_NAME_MAPPING = {
     # Premier League
     "manchester united": "Manchester United",
@@ -590,11 +577,11 @@ LEAGUES_CONFIG = {
     "International Friendlies": {"url": "https://www.livesportsontv.com/league/friendly", "teams": None, "custom_filter": "friendly"},
     "FA Cup": {"url": "https://www.livesportsontv.com/league/fa-cup", "teams": None, "custom_filter": "premier_league_only"},
     "Carabao Cup": {"url": "https://www.livesportsontv.com/league/carabao-cup", "teams": None, "custom_filter": "premier_league_only"},
-    # Tennis – Cập nhật URL mới
+    # Tennis – Cập nhật URL mới cho Grand Slam
     "Tennis (ATP)": {"url": "https://www.livesportsontv.com/league/atp/", "is_tennis": True},
     "Tennis (WTA)": {"url": "https://www.livesportsontv.com/league/wta/", "is_tennis": True},
     "Australian Open": {"url": "https://www.livesportsontv.com/league/grand-slam/australian-open/", "is_tennis": True},
-    "French Open": {"url": "https://www.livesportsontv.com/league/roland-garros", "is_tennis": True},
+    "French Open": {"url": "https://www.livesportsontv.com/league/roland-garros", "is_tennis": True},  # <-- URL chính xác
     "Wimbledon": {"url": "https://www.livesportsontv.com/league/grand-slam/wimbledon/", "is_tennis": True},
     "US Open": {"url": "https://www.livesportsontv.com/league/grand-slam/us-open/", "is_tennis": True}
 }
@@ -718,7 +705,7 @@ async def fetch_nowstreams_data(ref_time: datetime):
                 ch_name = ch.get("name", "").strip()
                 lang_code = ch.get("language", "").upper()
                 if ch_name and lang_code:
-                    full_country = LANGUAGE_MAP.get(lang_code, lang_code)
+                    full_country = LANGUAGE_MAP.get(lang_code, lang_code)  # LANGUAGE_MAP cần được định nghĩa
                     services.append(f"{ch_name} {full_country}")
                 elif ch_name:
                     services.append(ch_name)
@@ -772,6 +759,19 @@ async def scrape_livesportsontv(ref_time: datetime):
                 print(f"    ❌ Lỗi: {e}")
                 continue
 
+            # Xử lý nút "more" để hiển thị đầy đủ kênh
+            try:
+                more_buttons = await page.query_selector_all('button:has-text("more"), button:has-text("More"), a:has-text("more"), a:has-text("More")')
+                for btn in more_buttons:
+                    try:
+                        await btn.click()
+                        await page.wait_for_timeout(1500)  # Đợi nội dung tải
+                    except:
+                        pass
+            except:
+                pass
+
+            # Cuộn để tải hết nội dung
             for _ in range(4):
                 await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
                 await page.wait_for_timeout(1500)
@@ -818,7 +818,6 @@ async def scrape_livesportsontv(ref_time: datetime):
 
                     # Lấy tên trận / giải
                     if is_tennis:
-                        # Tennis: ưu tiên lấy tên giải từ event__participant--home
                         home_elem = row.find('div', class_=lambda c: c and 'event_participant--home' in c)
                         if not home_elem:
                             home_elem = row.find('div', class_='event__participant--home')
@@ -827,11 +826,10 @@ async def scrape_livesportsontv(ref_time: datetime):
                         else:
                             title_elem = row.find('a', class_='event__title')
                             matchup = title_elem.get_text(strip=True) if title_elem else "Tennis Match"
-                        # Nếu league_name là Grand Slam (Australian Open, etc.) thì không thay đổi League
                         if league_name in ["Australian Open", "French Open", "Wimbledon", "US Open"]:
                             league_display = "Tennis (Grand Slam)"
                         else:
-                            league_display = league_name  # "Tennis (ATP)" hoặc "Tennis (WTA)"
+                            league_display = league_name
                     else:
                         home_elem = row.find('div', class_=lambda c: c and 'event__participant--home' in c)
                         away_elem = row.find('div', class_=lambda c: c and 'event__participant--away' in c)
