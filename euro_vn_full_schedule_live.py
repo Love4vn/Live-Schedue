@@ -4,6 +4,7 @@ euro_vn_full_schedule_live.py
 PHIÊN BẢN CẢI THIỆN GỘP TRẬN – DÙNG TỪ ĐIỂN TÊN ĐỘI
 - Chuẩn hóa tên đội để gộp chính xác các trận từ nhiều nguồn.
 - Tạm dừng SofaScore (403), tập trung vào các nguồn JSON.
+- ĐÃ SỬA: Bổ sung hỗ trợ International Friendly và FIFA World Cup.
 """
 
 import asyncio
@@ -43,7 +44,9 @@ ALLOWED_TENNIS_TOURNAMENTS = {
 ALLOWED_FOOTBALL_LEAGUES = {
     "Premier League", "Serie A", "La Liga", "Bundesliga", "Ligue 1",
     "UEFA Champions League", "UEFA Europa League", "UEFA Europa Conference League",
-    "UEFA Euro", "FA Cup", "League Cup"
+    "UEFA Euro", "FA Cup", "League Cup",
+    "International Friendly",            # Đã thêm
+    "FIFA World Cup"                     # THÊM DÒNG NÀY
 }
 
 PREMIER_LEAGUE_TEAMS = {
@@ -76,8 +79,8 @@ LEAGUE_GROUP_NAME = {
     "FA Cup": "Live FA, League Cup",
     "League Cup": "Live FA, League Cup",
     "Tennis": "🎾|Live Tennis",
-    "FIFA World Cup": "Live Fifa World Cup",
-    "International Friendly": "Live International Friendly"
+    "FIFA World Cup": "🏆|Live FIFA World Cup",           # THÊM DÒNG NÀY
+    "International Friendly": "🌍|Live International Friendly"
 }
 
 ALLOWED_NON_EURO_TEAMS = {"argentina", "brazil", "japan", "south korea"}
@@ -604,6 +607,10 @@ def parse_livesportsontv(entry: dict) -> Optional[Dict]:
                 league = "League Cup"
             elif "Euro" in league:
                 league = "UEFA Euro"
+            elif "International Friendly" in league or "International Friendlies" in league:
+                league = "International Friendly"
+            elif "World Cup" in league or "FIFA World Cup" in league:
+                league = "FIFA World Cup"
             else:
                 return None
         if league not in ALLOWED_FOOTBALL_LEAGUES and league != "Tennis":
@@ -659,6 +666,10 @@ def parse_wheresthematch(entry: dict) -> Optional[Dict]:
                 league = "League Cup"
             elif "Euro" in league:
                 league = "UEFA Euro"
+            elif "International Friendly" in league or "International Friendlies" in league:
+                league = "International Friendly"
+            elif "World Cup" in league or "FIFA World Cup" in league:
+                league = "FIFA World Cup"
             else:
                 return None
         if league not in ALLOWED_FOOTBALL_LEAGUES and league != "Tennis":
@@ -715,6 +726,10 @@ def parse_ausport(entry: dict) -> Optional[Dict]:
             league = "Tennis"
         elif "Euro" in league:
             league = "UEFA Euro"
+        elif "International Friendly" in league or "International Friendlies" in league:
+            league = "International Friendly"
+        elif "World Cup" in league or "FIFA World Cup" in league:
+            league = "FIFA World Cup"
         else:
             return None
         if league not in ALLOWED_FOOTBALL_LEAGUES and league != "Tennis":
@@ -771,6 +786,10 @@ def parse_hubsport(entry: dict) -> Optional[Dict]:
             league = "Tennis"
         elif "Premier League" in league:
             league = "Premier League"
+        elif "International Friendly" in league or "International Friendlies" in league:
+            league = "International Friendly"
+        elif "World Cup" in league or "FIFA World Cup" in league:
+            league = "FIFA World Cup"
         else:
             return None
         if league not in ALLOWED_FOOTBALL_LEAGUES and league != "Tennis":
@@ -806,6 +825,10 @@ def parse_nowtv(entry: dict) -> Optional[Dict]:
             league = "Tennis"
         elif "Premier League" in league or "PREMIER LEAGUE" in league:
             league = "Premier League"
+        elif "International Friendly" in league or "International Friendlies" in league:
+            league = "International Friendly"
+        elif "World Cup" in league or "FIFA World Cup" in league:
+            league = "FIFA World Cup"
         else:
             return None
         if league not in ALLOWED_FOOTBALL_LEAGUES and league != "Tennis":
