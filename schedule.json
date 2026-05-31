@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-31 17:40 VN",
+  "updated": "2026-05-31 18:05 VN",
   "days": {
     "20260531": {
       "date": "Sunday, 31/05",
@@ -262,25 +262,6 @@
         {
           "league": "Tennis",
           "match": "French Open",
-          "kick_utc": 1780218000,
-          "time": "31/05 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Sling TV",
-                "HBO Max (US)",
-                "Tennis Channel",
-                "TNT",
-                "truTV"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "French Open",
           "kick_utc": 1780225200,
           "time": "31/05 06:00 PM",
           "tv_channels": [
@@ -332,6 +313,25 @@
         },
         {
           "league": "Tennis",
+          "match": "French Open",
+          "kick_utc": 1780311600,
+          "time": "01/06 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Sling TV",
+                "HBO Max (US)",
+                "Tennis Channel",
+                "TNT",
+                "RDS"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
           "match": "Casper Ruud",
           "kick_utc": 1780251300,
           "time": "01/06 01:15 AM",
@@ -348,23 +348,6 @@
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Roland Garros French Open",
-          "kick_utc": 1780218000,
-          "time": "31/05 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "TNT Sports 4",
-                "TNT Sports 5",
-                "HBO Max"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
@@ -482,6 +465,21 @@
         },
         {
           "league": "Tennis",
+          "match": "Roland-Garros",
+          "kick_utc": 1780311600,
+          "time": "01/06 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Tipik France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Ténis - Grand Slam, Roland Garros",
           "kick_utc": 1780225200,
           "time": "31/05 06:00 PM",
@@ -515,6 +513,21 @@
           "match": "Ténis - Grand Slam, Roland Garros",
           "kick_utc": 1780302600,
           "time": "01/06 03:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - Grand Slam, Roland Garros",
+          "kick_utc": 1780311600,
+          "time": "01/06 06:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
