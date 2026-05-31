@@ -1,29 +1,9 @@
 {
-  "updated": "2026-05-31 18:05 VN",
+  "updated": "2026-05-31 21:02 VN",
   "days": {
     "20260531": {
       "date": "Sunday, 31/05",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Japan vs Iceland",
-          "kick_utc": 1780223100,
-          "time": "31/05 05:25 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "DAZN Japan",
-                "IRIB Varzesh HD",
-                "M+ Fanzone HD",
-                "M+ Liga de Campeones HD",
-                "SporTV Brazil HD",
-                "SÝN Sport 1 Ísland HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "International Friendly",
           "match": "Switzerland vs Jordan",
@@ -262,23 +242,6 @@
         {
           "league": "Tennis",
           "match": "French Open",
-          "kick_utc": 1780225200,
-          "time": "31/05 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Sling TV",
-                "HBO Max (US)",
-                "TNT"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "French Open",
           "kick_utc": 1780239600,
           "time": "31/05 10:00 PM",
           "tv_channels": [
@@ -405,22 +368,6 @@
         {
           "league": "Tennis",
           "match": "Roland-Garros",
-          "kick_utc": 1780225200,
-          "time": "31/05 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "France 3 France",
-                "Tipik France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Roland-Garros",
           "kick_utc": 1780232100,
           "time": "31/05 07:55 PM",
           "tv_channels": [
@@ -481,21 +428,6 @@
         {
           "league": "Tennis",
           "match": "Ténis - Grand Slam, Roland Garros",
-          "kick_utc": 1780225200,
-          "time": "31/05 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ténis - Grand Slam, Roland Garros",
           "kick_utc": 1780250400,
           "time": "01/06 01:00 AM",
           "tv_channels": [
@@ -528,6 +460,21 @@
           "match": "Ténis - Grand Slam, Roland Garros",
           "kick_utc": 1780311600,
           "time": "01/06 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - Grand Slam, Roland Garros",
+          "kick_utc": 1780322400,
+          "time": "01/06 09:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
