@@ -1,101 +1,9 @@
 {
-  "updated": "2026-05-31 21:02 VN",
+  "updated": "2026-05-31 23:18 VN",
   "days": {
     "20260531": {
       "date": "Sunday, 31/05",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Switzerland vs Jordan",
-          "kick_utc": 1780232400,
-          "time": "31/05 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena Sport 1 Srbija HD",
-                "ART Motion Sport 6 HD",
-                "Diema Sport HD",
-                "Digi Sport 2 Romania HD",
-                "Fast Sports TV Armenia",
-                "Fox Sports 2 USA HD",
-                "IRIB Varzesh HD",
-                "Jordan Sport HD",
-                "L´Équipe Live Foot",
-                "Megogo Futbol 2",
-                "Persiana Sport HD",
-                "Play RTS Sport",
-                "Polsat Sport 2 HD",
-                "Premier Sports 3 Mongolia HD",
-                "Prima Sport RO 2 HD",
-                "RSI La 2 Svizzera HD",
-                "RTS 2 Suisse HD",
-                "Sky Sport Calcio HD",
-                "Sony Sports TEN 1 India HD",
-                "Sport 2 Czechia HD",
-                "Sport TV1 Portugal HD",
-                "SportKlub 2 Slovenija",
-                "SportKlub 5 Hrvatska",
-                "Spíler 2 TV Hungary HD",
-                "SRF Info Schweiz HD",
-                "SRF Zwei Schweiz HD",
-                "TV2 Sport Premium HD",
-                "TV2 Sport X Dansk HD",
-                "ViX TV"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Cape Verde vs Serbia",
-          "kick_utc": 1780234200,
-          "time": "31/05 08:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena Premium 1 Srbija HD",
-                "Canal 11 Portugal HD",
-                "RTS 2 Srbija HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Czechia vs Kosovo",
-          "kick_utc": 1780236000,
-          "time": "31/05 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "beIN Sports MENA 4 HD",
-                "CT 2 Czech HD",
-                "Cytavision Sports 3 HD",
-                "Cytavision Sports PPV 1 HD",
-                "Diema Sport 3 HD",
-                "Digi Sport 1 Romania HD",
-                "Fast Sports 1 Armenia",
-                "L´Équipe Live Foot",
-                "Megogo Futbol 3",
-                "New World Sport 3 Togo",
-                "Okko Futbol HD",
-                "Persiana Sports 2 HD",
-                "Polsat Sport Premium 1 HD",
-                "Premier Sports 2 Mongolia HD",
-                "Prima Sport RO 1 HD",
-                "SportKlub 1 Hrvatska HD",
-                "SuperSport 2 Albania HD",
-                "ViX TV"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "International Friendly",
           "match": "Poland vs Ukraine",
@@ -198,6 +106,8 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Astro Football HD",
+                "Astro Grandstand HD",
                 "DAZN 1 Bar Deutsch HD",
                 "DAZN Japan",
                 "ESPN 4 Brazil HD",
@@ -295,6 +205,22 @@
         },
         {
           "league": "Tennis",
+          "match": "French Open",
+          "kick_utc": 1780326000,
+          "time": "01/06 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "HBO Max (US)",
+                "truTV"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
           "match": "Casper Ruud",
           "kick_utc": 1780251300,
           "time": "01/06 01:15 AM",
@@ -368,21 +294,6 @@
         {
           "league": "Tennis",
           "match": "Roland-Garros",
-          "kick_utc": 1780232100,
-          "time": "31/05 07:55 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "France 3 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Roland-Garros",
           "kick_utc": 1780238820,
           "time": "31/05 09:47 PM",
           "tv_channels": [
@@ -415,6 +326,21 @@
           "match": "Roland-Garros",
           "kick_utc": 1780311600,
           "time": "01/06 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Tipik France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Roland-Garros",
+          "kick_utc": 1780330680,
+          "time": "01/06 11:18 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -475,6 +401,21 @@
           "match": "Ténis - Grand Slam, Roland Garros",
           "kick_utc": 1780322400,
           "time": "01/06 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - Grand Slam, Roland Garros",
+          "kick_utc": 1780329600,
+          "time": "01/06 11:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
