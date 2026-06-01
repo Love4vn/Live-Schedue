@@ -1,118 +1,20 @@
 {
-  "updated": "2026-06-02 00:56 VN",
+  "updated": "2026-06-02 04:41 VN",
   "days": {
     "20260601": {
       "date": "Monday, 01/06",
       "games": [
         {
           "league": "International Friendly",
-          "match": "Slovakia vs Malta",
-          "kick_utc": 1780329600,
-          "time": "01/06 11:00 PM",
+          "match": "Colombia vs Costa Rica",
+          "kick_utc": 1780354800,
+          "time": "02/06 06:00 AM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Diema Sport HD",
-                "Fast Sports 1 Armenia",
-                "SportKlub 2 Slovenija",
-                "SportKlub 3 Hrvatska"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Bulgaria vs Montenegro",
-          "kick_utc": 1780329600,
-          "time": "01/06 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "SportKlub 1 Slovenija HD",
-                "SportKlub 2 Hrvatska"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Türkiye vs North Macedonia",
-          "kick_utc": 1780331400,
-          "time": "01/06 11:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "DAZN 2 Bar Deutsch HD",
-                "Diema Sport 2 HD",
-                "Digi Sport 2 Romania HD",
-                "Polsat Sport Premium 1 HD",
-                "SportKlub 4 Hrvatska",
-                "SportKlub 4 Slovenija"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Norway vs Sweden",
-          "kick_utc": 1780333200,
-          "time": "02/06 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "DAZN 1 Bar Deutsch HD",
-                "Diema Sport 3 HD",
-                "Digi Sport 3 Romania",
-                "Fast Sports TV Armenia",
-                "Polsat Sport 1 HD",
-                "SportKlub 5 Slovenija",
-                "SportKlub 6 Hrvatska"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Austria vs Tunisia",
-          "kick_utc": 1780339500,
-          "time": "02/06 01:45 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Diema Sport HD",
-                "Digi Sport 4 Romania",
-                "Fast Sports 1 Armenia",
-                "Polsat Sport 3 HD",
-                "SportKlub 1 Hrvatska HD",
-                "SportKlub 2 Slovenija"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Aryna Sabalenka",
-          "kick_utc": 1780337700,
-          "time": "02/06 01:15 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Sling TV",
-                "HBO Max (US)",
-                "Tennis Channel",
-                "TNT",
-                "truTV"
+                "SporTV Brazil HD",
+                "TLN Canada"
               ]
             }
           ],
@@ -174,6 +76,25 @@
         },
         {
           "league": "Tennis",
+          "match": "French Open",
+          "kick_utc": 1780423200,
+          "time": "03/06 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Sling TV",
+                "HBO Max (US)",
+                "Tennis Channel",
+                "TNT",
+                "truTV"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
           "match": "Birmingham Open",
           "kick_utc": 1780401600,
           "time": "02/06 07:00 PM",
@@ -186,23 +107,6 @@
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Roland Garros French Open",
-          "kick_utc": 1780336800,
-          "time": "02/06 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "TNT Sports 1",
-                "TNT Sports Ultimate",
-                "HBO Max"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
@@ -224,18 +128,21 @@
         },
         {
           "league": "Tennis",
-          "match": "Aryna Sabalenka vs Naomi Osaka",
-          "kick_utc": 1780337700,
-          "time": "02/06 01:15 AM",
+          "match": "Roland Garros French Open",
+          "kick_utc": 1780424100,
+          "time": "03/06 01:15 AM",
           "tv_channels": [
             {
-              "country": "Ausport",
+              "country": "Wheresthematch",
               "channels": [
-                "Stan Sport"
+                "TNT Sports 1",
+                "TNT Sports 4",
+                "TNT Sports Ultimate",
+                "HBO Max"
               ]
             }
           ],
-          "source": "ausport"
+          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
@@ -255,93 +162,18 @@
         },
         {
           "league": "Tennis",
-          "match": "Ténis - Grand Slam, Roland Garros",
-          "kick_utc": 1780329600,
-          "time": "01/06 11:00 PM",
+          "match": "",
+          "kick_utc": 1780424100,
+          "time": "03/06 01:15 AM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "Eurosport 1 Hd Portugal"
+                "Stan Sport"
               ]
             }
           ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ténis - Grand Slam, Roland Garros",
-          "kick_utc": 1780336800,
-          "time": "02/06 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ténis - Grand Slam - Roland-Garros",
-          "kick_utc": 1780389000,
-          "time": "02/06 03:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ténis - Grand Slam - Roland-Garros",
-          "kick_utc": 1780398000,
-          "time": "02/06 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ténis - Grand Slam - Roland-Garros",
-          "kick_utc": 1780405200,
-          "time": "02/06 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Roland-Garros",
-          "kick_utc": 1780330680,
-          "time": "01/06 11:18 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Tipik France"
-              ]
-            }
-          ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -398,6 +230,66 @@
               "country": "Hubsport",
               "channels": [
                 "Tipik France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - Grand Slam - Roland-Garros",
+          "kick_utc": 1780389000,
+          "time": "02/06 03:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - Grand Slam - Roland-Garros",
+          "kick_utc": 1780398000,
+          "time": "02/06 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - Grand Slam - Roland-Garros",
+          "kick_utc": 1780405200,
+          "time": "02/06 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - Grand Slam - Roland-Garros",
+          "kick_utc": 1780423200,
+          "time": "03/06 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 Hd Portugal"
               ]
             }
           ],
