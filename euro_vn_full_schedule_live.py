@@ -3,8 +3,8 @@ euro_vn_full_schedule_live.py
 ================================
 PHIÊN BẢN CẢI THIỆN GỘP TRẬN – DÙNG TỪ ĐIỂN TÊN ĐỘI
 - Chuẩn hóa tên đội để gộp chính xác các trận từ nhiều nguồn.
-- Tạm dừng SofaScore (403), tập trung vào các nguồn JSON.
-- ĐÃ SỬA: Bổ sung hỗ trợ International Friendly và FIFA World Cup.
+- ĐÃ BẬT LẠI SOFASCORE (dùng curl_cffi để tránh 403).
+- Hỗ trợ International Friendly, FIFA World Cup.
 """
 
 import asyncio
@@ -20,10 +20,11 @@ from itertools import groupby
 
 import pycountry
 import aiohttp
+from curl_cffi.requests import AsyncSession      # <--- THÊM IMPORT
 
 # ================== CẤU HÌNH ==================
 ENABLE_VALIDATION = False
-ENABLE_SOFASCORE = False          # Tạm tắt SofaScore do bị chặn
+ENABLE_SOFASCORE = True           # <--- BẬT LẠI SOFASCORE
 TIMEZONE = ZoneInfo("Asia/Ho_Chi_Minh")
 M3U_LIST_FILE = "M3U_list.txt"
 SCHEDULE_FILE = "schedule.json"
@@ -45,8 +46,8 @@ ALLOWED_FOOTBALL_LEAGUES = {
     "Premier League", "Serie A", "La Liga", "Bundesliga", "Ligue 1",
     "UEFA Champions League", "UEFA Europa League", "UEFA Europa Conference League",
     "UEFA Euro", "FA Cup", "League Cup",
-    "International Friendly",            # Đã thêm
-    "FIFA World Cup"                     # THÊM DÒNG NÀY
+    "International Friendly",
+    "FIFA World Cup"
 }
 
 PREMIER_LEAGUE_TEAMS = {
@@ -79,7 +80,7 @@ LEAGUE_GROUP_NAME = {
     "FA Cup": "Live FA, League Cup",
     "League Cup": "Live FA, League Cup",
     "Tennis": "🎾|Live Tennis",
-    "FIFA World Cup": "🏆|Live FIFA World Cup",           # THÊM DÒNG NÀY
+    "FIFA World Cup": "🏆|Live FIFA World Cup",
     "International Friendly": "🌍|Live International Friendly"
 }
 
@@ -238,336 +239,187 @@ def get_country_priority(country_name: str) -> int:
     return 50
 
 # ================== TỪ ĐIỂN CHUẨN HÓA TÊN ĐỘI ==================
-# Bảng ánh xạ tên đội chuẩn (canonical) và các biến thể
 TEAM_NAME_MAPPING = {
-    # Premier League
-    "manchester united": "Manchester United",
-    "man utd": "Manchester United",
-    "man united": "Manchester United",
-    "manchester city": "Manchester City",
-    "man city": "Manchester City",
-    "arsenal": "Arsenal",
-    "arsenal london": "Arsenal",
-    "chelsea": "Chelsea",
-    "chelsea london": "Chelsea",
-    "liverpool": "Liverpool",
-    "lfc": "Liverpool",
-    "tottenham hotspur": "Tottenham Hotspur",
-    "tottenham": "Tottenham Hotspur",
-    "spurs": "Tottenham Hotspur",
-    "aston villa": "Aston Villa",
-    "villa": "Aston Villa",
-    "newcastle united": "Newcastle United",
-    "newcastle": "Newcastle United",
-    "west ham united": "West Ham United",
-    "west ham": "West Ham United",
-    "the hammers": "West Ham United",
-    "everton": "Everton",
-    "the toffees": "Everton",
-    "fulham": "Fulham",
-    "the cottagers": "Fulham",
-    "crystal palace": "Crystal Palace",
-    "palace": "Crystal Palace",
-    "eagles": "Crystal Palace",
-    "brighton & hove albion": "Brighton",
-    "brighton": "Brighton",
-    "brentford": "Brentford",
-    "the bees": "Brentford",
-    "leeds united": "Leeds United",
-    "leeds": "Leeds United",
-    "wolverhampton wanderers": "Wolverhampton Wanderers",
-    "wolves": "Wolverhampton Wanderers",
-    "wolverhampton": "Wolverhampton Wanderers",
-    "nottingham forest": "Nottingham Forest",
-    "forest": "Nottingham Forest",
-    "sunderland": "Sunderland",
-    "black cats": "Sunderland",
-    "leicester city": "Leicester City",
-    "leicester": "Leicester City",
-    "southampton": "Southampton",
-    "saints": "Southampton",
-    "burnley": "Burnley",
-    "the clarets": "Burnley",
-    "west bromwich albion": "West Brom",
-    "west brom": "West Brom",
-    
-    # Bundesliga
-    "bayern munich": "Bayern Munich",
-    "bayern münchen": "Bayern Munich",
-    "bayern": "Bayern Munich",
-    "bayern-munich": "Bayern Munich",
-    "borussia dortmund": "Borussia Dortmund",
-    "dortmund": "Borussia Dortmund",
-    "bvb": "Borussia Dortmund",
-    "bayer leverkusen": "Bayer Leverkusen",
-    "leverkusen": "Bayer Leverkusen",
-    "rb leipzig": "RB Leipzig",
-    "leipzig": "RB Leipzig",
-    "borussia mönchengladbach": "Borussia Mönchengladbach",
-    "mönchengladbach": "Borussia Mönchengladbach",
-    "gladbach": "Borussia Mönchengladbach",
-    "1. fc köln": "1. FC Köln",
-    "fc köln": "1. FC Köln",
-    "fc cologne": "1. FC Köln",
-    "köln": "1. FC Köln",
-    "cologne": "1. FC Köln",
-    "eintracht frankfurt": "Eintracht Frankfurt",
-    "frankfurt": "Eintracht Frankfurt",
-    "vfb stuttgart": "VfB Stuttgart",
-    "stuttgart": "VfB Stuttgart",
-    "werder bremen": "Werder Bremen",
-    "bremen": "Werder Bremen",
-    "fc augsburg": "FC Augsburg",
-    "augsburg": "FC Augsburg",
-    "1899 hoffenheim": "1899 Hoffenheim",
-    "hoffenheim": "1899 Hoffenheim",
-    "fsv mainz 05": "Mainz 05",
-    "mainz 05": "Mainz 05",
-    "mainz": "Mainz 05",
-    "hertha berlin": "Hertha Berlin",
-    "hertha bsc": "Hertha Berlin",
-    "union berlin": "Union Berlin",
-    "vfl wolfsburg": "Wolfsburg",
-    "wolfsburg": "Wolfsburg",
-    "vfl bochum": "Bochum",
-    "bochum": "Bochum",
-    "darmstadt 98": "Darmstadt 98",
-    "darmstadt": "Darmstadt 98",
-    "fc heidenheim": "Heidenheim",
-    "heidenheim": "Heidenheim",
-    
-    # La Liga
-    "real madrid": "Real Madrid",
-    "madrid": "Real Madrid",
-    "los blancos": "Real Madrid",
-    "fc barcelona": "Barcelona",
-    "barcelona": "Barcelona",
-    "barça": "Barcelona",
-    "atletico madrid": "Atletico Madrid",
-    "atlético madrid": "Atletico Madrid",
-    "atletico": "Atletico Madrid",
-    "atleti": "Atletico Madrid",
-    "colchoneros": "Atletico Madrid",
-    "atletico-madrid": "Atletico Madrid",
-    "real sociedad": "Real Sociedad",
-    "real betis": "Real Betis",
-    "betis": "Real Betis",
-    "athletic bilbao": "Athletic Bilbao",
-    "bilbao": "Athletic Bilbao",
-    "valencia": "Valencia",
-    "valencia cf": "Valencia",
-    "villarreal": "Villarreal",
-    "yellow submarine": "Villarreal",
-    "sevilla": "Sevilla",
-    "sevilla fc": "Sevilla",
-    "getafe": "Getafe",
-    "getafe cf": "Getafe",
-    "espanyol": "Espanyol",
-    "rcd espanyol": "Espanyol",
-    "osasuna": "Osasuna",
-    "ca osasuna": "Osasuna",
-    "granada": "Granada",
-    "granada cf": "Granada",
-    "cadiz": "Cadiz",
-    "cadiz cf": "Cadiz",
-    "rayo vallecano": "Rayo Vallecano",
-    "rayo": "Rayo Vallecano",
-    "elche": "Elche",
-    "elche cf": "Elche",
-    "alaves": "Alaves",
-    "deportivo alaves": "Alaves",
-    "mallorca": "Mallorca",
-    "rcd mallorca": "Mallorca",
-    "girona": "Girona",
-    "girona fc": "Girona",
-    "celta vigo": "Celta Vigo",
-    "celta": "Celta Vigo",
-    
-    # Serie A
-    "ac milan": "AC Milan",
-    "milan": "AC Milan",
-    "rossoneri": "AC Milan",
-    "inter milan": "Inter Milan",
-    "inter": "Inter Milan",
-    "nerazzurri": "Inter Milan",
-    "juventus": "Juventus",
-    "juve": "Juventus",
-    "bianconeri": "Juventus",
-    "vecchia signora": "Juventus",
-    "napoli": "Napoli",
-    "partenopei": "Napoli",
-    "ssc napoli": "Napoli",
-    "roma": "Roma",
-    "giallorossi": "Roma",
-    "as roma": "Roma",
-    "lazio": "Lazio",
-    "biancocelesti": "Lazio",
-    "ss lazio": "Lazio",
-    "atalanta": "Atalanta",
-    "la dea": "Atalanta",
-    "bergamo": "Atalanta",
-    "fiorentina": "Fiorentina",
-    "viola": "Fiorentina",
-    "acf fiorentina": "Fiorentina",
-    "torino": "Torino",
-    "il toro": "Torino",
-    "granata": "Torino",
-    "bologna": "Bologna",
-    "rossoblu": "Bologna",
-    "udinese": "Udinese",
-    "bianconeri friulani": "Udinese",
-    "genoa": "Genoa",
-    "grifone": "Genoa",
-    "sampdoria": "Sampdoria",
-    "blucerchiati": "Sampdoria",
-    "verona": "Hellas Verona",
-    "hellas verona": "Hellas Verona",
-    "gialloblu": "Hellas Verona",
-    "lecce": "Lecce",
-    "giallorossi salentini": "Lecce",
-    "salernitana": "Salernitana",
-    "granata campani": "Salernitana",
-    "monza": "Monza",
-    "brianzoli": "Monza",
-    "cremonese": "Cremonese",
-    "grigiorossi": "Cremonese",
-    "empoli": "Empoli",
-    "azzurri": "Empoli",
-    "spezia": "Spezia",
-    "aquilotti": "Spezia",
-    
-    # Ligue 1
-    "psg": "Paris Saint-Germain",
-    "paris saint-germain": "Paris Saint-Germain",
-    "paris st germain": "Paris Saint-Germain",
-    "paris sg": "Paris Saint-Germain",
-    "paris-saint-germain": "Paris Saint-Germain",
-    "olympique marseille": "Marseille",
-    "marseille": "Marseille",
-    "om": "Marseille",
-    "olympique lyon": "Lyon",
-    "lyon": "Lyon",
-    "ol": "Lyon",
-    "as monaco": "Monaco",
-    "monaco": "Monaco",
-    "loscilly": "Monaco",
-    "losc lille": "Lille",
-    "lille": "Lille",
-    "loscilly": "Lille",
-    "ogc nice": "Nice",
-    "nice": "Nice",
-    "fc nantes": "Nantes",
-    "nantes": "Nantes",
-    "rc lens": "Lens",
-    "lens": "Lens",
-    "stade rennais": "Rennes",
-    "rennes": "Rennes",
-    "srfc": "Rennes",
-    "montpellier": "Montpellier",
-    "mhsc": "Montpellier",
-    "clermont foot": "Clermont",
-    "clermont": "Clermont",
-    "strasbourg": "Strasbourg",
-    "rc strasbourg": "Strasbourg",
-    "angers": "Angers",
-    "angers sco": "Angers",
-    "sco": "Angers",
-    "brest": "Brest",
-    "stade brestois": "Brest",
-    "toulouse": "Toulouse",
-    "tfc": "Toulouse",
-    "stade de reims": "Reims",
-    "reims": "Reims",
-    "fc metz": "Metz",
-    "metz": "Metz",
-    "ajaccio": "Ajaccio",
-    "ac ajaccio": "Ajaccio",
-    "auxerre": "Auxerre",
-    "aja": "Auxerre",
-    
-    # Giải vô địch thế giới và các đội tuyển quốc gia
-    "germany": "Germany",
-    "deutschland": "Germany",
-    "nationalelf": "Germany",
-    "dfb elf": "Germany",
-    "die mannschaft": "Germany",
-    "france": "France",
-    "les bleus": "France",
-    "england": "England",
-    "three lions": "England",
-    "spain": "Spain",
-    "la roja": "Spain",
-    "furias rojas": "Spain",
-    "italy": "Italy",
-    "azzurri": "Italy",
-    "squadra azzurra": "Italy",
-    "portugal": "Portugal",
-    "selecao das quinas": "Portugal",
-    "netherlands": "Netherlands",
-    "holland": "Netherlands",
-    "oranje": "Netherlands",
-    "belgium": "Belgium",
-    "red devils": "Belgium",
-    "croats": "Croatia",
-    "vatreni": "Croatia",
-    "argentina": "Argentina",
-    "albiceleste": "Argentina",
-    "brazil": "Brazil",
-    "selecao": "Brazil",
-    "canarinho": "Brazil",
-    "japan": "Japan",
-    "blue samurai": "Japan",
-    "south korea": "South Korea",
-    "republic of korea": "South Korea",
-    "tigers of asia": "South Korea",
-    "usa": "United States",
-    "usmnt": "United States",
-    "the stars and stripes": "United States",
-    
-    # European National Teams
-    "austria": "Austria",
-    "wunderteam": "Austria",
-    "czech republic": "Czech Republic",
-    "czechia": "Czech Republic",
-    "denmark": "Denmark",
-    "danish dynamite": "Denmark",
-    "poland": "Poland",
-    "bialo-czerwoni": "Poland",
-    "sweden": "Sweden",
-    "blagult": "Sweden",
-    "switzerland": "Switzerland",
-    "nati": "Switzerland",
-    "turkey": "Turkey",
-    "ayyildizlilar": "Turkey",
-    "russia": "Russia",
-    "sbornaya": "Russia",
-    "ukraine": "Ukraine",
-    "z birna": "Ukraine",
-    "serbia": "Serbia",
-    "orlovi": "Serbia",
-    "greece": "Greece",
-    "pirasma": "Greece",
-    "scotland": "Scotland",
-    "tartan army": "Scotland",
-    "wales": "Wales",
-    "dragons": "Wales",
-    }
+    "manchester united": "Manchester United", "man utd": "Manchester United",
+    "man city": "Manchester City", "manchester city": "Manchester City",
+    "arsenal": "Arsenal", "chelsea": "Chelsea", "liverpool": "Liverpool",
+    "tottenham hotspur": "Tottenham Hotspur", "tottenham": "Tottenham Hotspur",
+    "spurs": "Tottenham Hotspur", "aston villa": "Aston Villa", "newcastle": "Newcastle United",
+    "west ham": "West Ham United", "everton": "Everton", "fulham": "Fulham",
+    "crystal palace": "Crystal Palace", "brighton": "Brighton", "brentford": "Brentford",
+    "leeds united": "Leeds United", "wolves": "Wolverhampton Wanderers",
+    "nottingham forest": "Nottingham Forest", "sunderland": "Sunderland",
+    "bayern munich": "Bayern Munich", "borussia dortmund": "Borussia Dortmund",
+    "bayer leverkusen": "Bayer Leverkusen", "rb leipzig": "RB Leipzig",
+    "real madrid": "Real Madrid", "barcelona": "Barcelona", "atletico madrid": "Atletico Madrid",
+    "ac milan": "AC Milan", "inter milan": "Inter Milan", "juventus": "Juventus",
+    "napoli": "Napoli", "roma": "Roma", "lazio": "Lazio", "atalanta": "Atalanta",
+    "psg": "Paris Saint-Germain", "marseille": "Marseille", "lyon": "Lyon",
+    "germany": "Germany", "france": "France", "england": "England", "spain": "Spain",
+    "italy": "Italy", "portugal": "Portugal", "netherlands": "Netherlands",
+    "belgium": "Belgium", "argentina": "Argentina", "brazil": "Brazil", "japan": "Japan",
+    "south korea": "South Korea", "usa": "United States", "switzerland": "Switzerland",
+    "serbia": "Serbia", "czech republic": "Czech Republic", "austria": "Austria"
+}
 
 def canonical_team_name(name: str) -> str:
-    """Chuẩn hóa tên đội về dạng canonical để so khớp."""
     name = name.strip().lower()
-    # Thay dấu gạch ngang bằng khoảng trắng
     name = re.sub(r'[-–—]', ' ', name)
-    # Loại bỏ ký tự đặc biệt
     name = re.sub(r'[^\w\s]', '', name)
     name = ' '.join(name.split())
-    # Kiểm tra trong mapping
     if name in TEAM_NAME_MAPPING:
         return TEAM_NAME_MAPPING[name]
-    # Nếu không có, trả về tên đã làm sạch (giữ nguyên)
     return name
 
-# ================== SECONDARY SOURCES ==================
+# ================== SOFASCORE (DÙNG CURL_CFFI) ==================
+async def get_channel_name_sofascore(session, channel_id):
+    """Lấy tên kênh từ channel_id"""
+    url = f"https://api.sofascore1.com/api/v1/tv/channel/{channel_id}/schedule"
+    try:
+        res = await session.get(url, impersonate="chrome120", timeout=5)
+        if res.status_code == 200:
+            data = res.json()
+            return data.get('channel', {}).get('name', 'Unknown Channel')
+    except:
+        pass
+    return "Unknown Channel"
+
+async def get_tv_data_sofascore(session, match_id):
+    """Lấy danh sách kênh theo quốc gia cho một trận đấu"""
+    tv_url = f"https://api.sofascore1.com/api/v1/tv/event/{match_id}/country-channels"
+    broadcasters = []
+    try:
+        res = await session.get(tv_url, impersonate="chrome120", timeout=10)
+        if res.status_code != 200:
+            return []
+        country_channels = res.json().get('countryChannels', {})
+        for country_code, channel_ids in country_channels.items():
+            try:
+                full_country = pycountry.countries.get(alpha_2=country_code).name
+            except:
+                full_country = country_code
+            # Lấy tên kênh đồng thời
+            tasks = [get_channel_name_sofascore(session, cid) for cid in channel_ids]
+            names = await asyncio.gather(*tasks)
+            clean_names = list(set([n for n in names if n != "Unknown Channel"]))
+            if clean_names:
+                broadcasters.append({
+                    "country": full_country,
+                    "channels": clean_names
+                })
+        return sorted(broadcasters, key=lambda x: x['country'])
+    except:
+        return []
+
+def map_sofascore_league(tournament_name: str) -> str:
+    """Ánh xạ tên giải từ SofaScore sang tên chuẩn trong ALLOWED_FOOTBALL_LEAGUES"""
+    name = tournament_name.strip()
+    # Các giải đặc biệt
+    if "World Cup" in name:
+        return "FIFA World Cup"
+    if "International Friendly" in name or "Friendlies" in name:
+        return "International Friendly"
+    if "Premier League" in name:
+        return "Premier League"
+    if "Serie A" in name and "Italy" in name:
+        return "Serie A"
+    if "Bundesliga" in name:
+        return "Bundesliga"
+    if "La Liga" in name:
+        return "La Liga"
+    if "Ligue 1" in name:
+        return "Ligue 1"
+    if "UEFA Champions League" in name:
+        return "UEFA Champions League"
+    if "UEFA Europa League" in name:
+        return "UEFA Europa League"
+    if "UEFA Europa Conference League" in name:
+        return "UEFA Europa Conference League"
+    if "Euro" in name:
+        return "UEFA Euro"
+    if "FA Cup" in name:
+        return "FA Cup"
+    if "League Cup" in name or "Carabao" in name:
+        return "League Cup"
+    # Mặc định trả về nguyên bản, sẽ được lọc sau
+    return name
+
+async def fetch_sofascore_match_details(session, match_id):
+    """Lấy chi tiết trận đấu (thời gian, tên đội, giải, kênh)"""
+    event_url = f"https://api.sofascore1.com/api/v1/event/{match_id}"
+    try:
+        res = await session.get(event_url, impersonate="chrome120", timeout=10)
+        if res.status_code != 200:
+            return None
+        ev = res.json().get('event', {})
+        tv_info = await get_tv_data_sofascore(session, match_id)
+        tournament = ev.get('tournament', {})
+        league_name = tournament.get('name', 'Unknown')
+        league = map_sofascore_league(league_name)
+        # Chỉ giữ lại các giải được phép
+        if league not in ALLOWED_FOOTBALL_LEAGUES and league != "Tennis":
+            return None
+        kick_utc = ev.get('startTimestamp')
+        if not kick_utc:
+            return None
+        home = ev.get('homeTeam', {}).get('name', '')
+        away = ev.get('awayTeam', {}).get('name', '')
+        match_str = f"{home} vs {away}" if home and away else ''
+        return {
+            "league": league,
+            "match": match_str,
+            "kick_utc": kick_utc,
+            "time": vn_time(kick_utc),
+            "tv_channels": tv_info,
+            "source": "sofascore"
+        }
+    except:
+        return None
+
+async def fetch_sofascore_games(start_ts: int, max_ts: int) -> List[Dict]:
+    """Lấy tất cả các trận từ SofaScore trong khoảng thời gian start_ts đến max_ts"""
+    start_date = datetime.fromtimestamp(start_ts, tz=TIMEZONE).date()
+    end_date = datetime.fromtimestamp(max_ts, tz=TIMEZONE).date()
+    all_games = []
+    async with AsyncSession() as session:
+        # Duyệt từng ngày
+        current = start_date
+        while current <= end_date:
+            date_str = current.strftime("%Y-%m-%d")
+            print(f"   📡 SofaScore: đang lấy ngày {date_str}...")
+            schedule_url = f"https://api.sofascore1.com/api/v1/sport/football/scheduled-events/{date_str}"
+            try:
+                resp = await session.get(schedule_url, impersonate="chrome120", timeout=30)
+                if resp.status_code != 200:
+                    print(f"      ⚠️ Lỗi HTTP {resp.status_code} cho ngày {date_str}")
+                    current += timedelta(days=1)
+                    await asyncio.sleep(2)
+                    continue
+                events = resp.json().get('events', [])
+                if not events:
+                    print(f"      Không có trận nào ngày {date_str}")
+                    current += timedelta(days=1)
+                    await asyncio.sleep(2)
+                    continue
+                print(f"      Tìm thấy {len(events)} trận, đang lấy chi tiết...")
+                # Xử lý song song có giới hạn để tránh rate limit
+                sem = asyncio.Semaphore(10)
+                async def limited_fetch(match_id):
+                    async with sem:
+                        return await fetch_sofascore_match_details(session, match_id)
+                tasks = [limited_fetch(event['id']) for event in events]
+                results = await asyncio.gather(*tasks)
+                for game in results:
+                    if game and start_ts <= game['kick_utc'] <= max_ts:
+                        all_games.append(game)
+                print(f"      Đã lấy xong {len([g for g in results if g])} trận hợp lệ")
+            except Exception as e:
+                print(f"      ❌ Lỗi khi lấy ngày {date_str}: {e}")
+            current += timedelta(days=1)
+            await asyncio.sleep(2)  # Tránh spam API
+    return all_games
+
+# ================== CÁC NGUỒN JSON PHỤ (GIỮ NGUYÊN) ==================
 def load_json_file(filename: str) -> list:
     try:
         with open(filename, 'r', encoding='utf-8') as f:
@@ -752,7 +604,7 @@ def parse_ausport(entry: dict) -> Optional[Dict]:
     except:
         return None
 
-# ================== CÁC NGUỒN MỚI TỪ GITHUB ==================
+# ================== CÁC NGUỒN TỪ GITHUB (GIỮ NGUYÊN) ==================
 async def fetch_json(session, url):
     try:
         async with session.get(url, timeout=aiohttp.ClientTimeout(total=10)) as resp:
@@ -882,7 +734,7 @@ async def load_all_secondary_sources(start_ts: int, max_ts: int) -> List[Dict]:
         for g in games:
             src = g.get('source', 'unknown')
             sources[src] = sources.get(src, 0) + 1
-        print(f"   📊 Số trận từ các nguồn: {sources}")
+        print(f"   📊 Số trận từ các nguồn phụ: {sources}")
     return games
 
 def merge_games(primary: List[Dict], secondary: List[Dict]) -> List[Dict]:
@@ -1037,14 +889,16 @@ async def main():
 
     print("🔄 Bắt đầu lấy lịch từ 2 GIỜ TRƯỚC đến 24 GIỜ TỚI...")
 
-    # 1. SofaScore (tạm tắt)
+    # 1. SofaScore (đã bật lại, dùng curl_cffi)
     sofascore_games = []
     if ENABLE_SOFASCORE:
-        # Nếu sau này có giải pháp, thêm code tại đây
-        pass
-    print(f"   ✅ SofaScore: {len(sofascore_games)} trận")
+        print("📡 Đang lấy dữ liệu từ SofaScore (có thể mất vài phút)...")
+        sofascore_games = await fetch_sofascore_games(start_ts, max_ts)
+        print(f"   ✅ SofaScore: {len(sofascore_games)} trận")
+    else:
+        print("   ⚠️ SofaScore đang tắt (ENABLE_SOFASCORE = False)")
 
-    # 2. Nguồn phụ
+    # 2. Nguồn phụ (JSON cục bộ + từ xa)
     print("📡 Đang đọc các nguồn JSON phụ (cục bộ + từ xa)...")
     secondary_games = await load_all_secondary_sources(start_ts, max_ts)
     print(f"   ✅ Các nguồn phụ: {len(secondary_games)} trận")
@@ -1058,7 +912,6 @@ async def main():
         if league == "Tennis":
             clean = re.sub(r'[^\w\s]', ' ', match_str.lower())
             return ' '.join(clean.split())
-        # Bóng đá: chuẩn hóa tên đội trước khi tạo key
         clean = match_str.lower()
         clean = re.sub(r'[-–—]', ' vs ', clean)
         clean = re.sub(r'\bvs\.?\b', ' vs ', clean)
