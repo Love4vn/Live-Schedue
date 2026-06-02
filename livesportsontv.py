@@ -1,8 +1,6 @@
 # File: livesportsontv.py
 # Hoàn chỉnh: scrape livesportsontv + footonsat + nowstreams
-# - Cập nhật link chính xác cho giải Pháp Mở Rộng: /league/roland-garros
-# - Xử lý nút "more" để hiển thị đủ kênh phát sóng
-# - Tối ưu hóa việc lấy kênh từ nhiều selector khác nhau
+# Xử lý nút "more" cho từng sự kiện, lấy đủ kênh
 
 import asyncio
 import json
@@ -15,7 +13,7 @@ from bs4 import BeautifulSoup
 # ==================== CẤU HÌNH ====================
 VN_TZ = timezone(timedelta(hours=7))
 TIME_RANGE_HOURS_BEFORE = 4
-TIME_RANGE_HOURS_AFTER = 72   # Lấy các trận trong 3 ngày tới
+TIME_RANGE_HOURS_AFTER = 72
 
 FOOTONSAT_URLS = [
     "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/premierleague.json",
@@ -63,7 +61,19 @@ ALLOWED_TEAMS_PER_LEAGUE = {
     "International Friendlies": None,
 }
 
-# ==================== CÁC HÀM TIỆN ÍCH ====================
+LANGUAGE_MAP = {
+    "GB": "Great Britain", "US": "United States", "DE": "Germany", "AU": "Australia",
+    "ES": "Spain", "FR": "France", "IT": "Italy", "PT": "Portugal", "GR": "Greece",
+    "BG": "Bulgaria", "BE": "Belgium", "CZ": "Czech Republic", "CH": "Switzerland",
+    "SE": "Sweden", "CA": "Canada", "NZ": "New Zealand", "MX": "Mexico", "BR": "Brazil",
+    "NL": "Netherlands", "PL": "Poland", "TR": "Turkey", "RU": "Russia", "UA": "Ukraine",
+    "RO": "Romania", "HU": "Hungary", "AT": "Austria", "HR": "Croatia", "RS": "Serbia",
+    "SI": "Slovenia", "SK": "Slovakia", "NO": "Norway", "DK": "Denmark", "FI": "Finland",
+    "IE": "Ireland", "ZA": "South Africa", "JP": "Japan", "KR": "South Korea", "CN": "China",
+    "IN": "India", "AE": "UAE", "SA": "Saudi Arabia", "QA": "Qatar",
+}
+
+# ==================== HÀM TIỆN ÍCH (giữ nguyên) ====================
 def parse_time_with_ampm(time_str: str):
     time_str = time_str.strip().upper()
     if ' ' not in time_str and ('AM' in time_str or 'PM' in time_str):
@@ -170,7 +180,6 @@ def normalize_league(league: str) -> str:
         return "FIFA World Cup"
     if "friendly" in league_lower:
         return "International Friendlies"
-    # Tennis
     if "atp" in league_lower:
         return "Tennis (ATP)"
     if "wta" in league_lower:
@@ -577,11 +586,11 @@ LEAGUES_CONFIG = {
     "International Friendlies": {"url": "https://www.livesportsontv.com/league/friendly", "teams": None, "custom_filter": "friendly"},
     "FA Cup": {"url": "https://www.livesportsontv.com/league/fa-cup", "teams": None, "custom_filter": "premier_league_only"},
     "Carabao Cup": {"url": "https://www.livesportsontv.com/league/carabao-cup", "teams": None, "custom_filter": "premier_league_only"},
-    # Tennis – Cập nhật URL mới cho Grand Slam
+    # Tennis – Cập nhật URL mới
     "Tennis (ATP)": {"url": "https://www.livesportsontv.com/league/atp/", "is_tennis": True},
     "Tennis (WTA)": {"url": "https://www.livesportsontv.com/league/wta/", "is_tennis": True},
     "Australian Open": {"url": "https://www.livesportsontv.com/league/grand-slam/australian-open/", "is_tennis": True},
-    "French Open": {"url": "https://www.livesportsontv.com/league/roland-garros", "is_tennis": True},  # <-- URL chính xác
+    "French Open": {"url": "https://www.livesportsontv.com/league/roland-garros", "is_tennis": True},
     "Wimbledon": {"url": "https://www.livesportsontv.com/league/grand-slam/wimbledon/", "is_tennis": True},
     "US Open": {"url": "https://www.livesportsontv.com/league/grand-slam/us-open/", "is_tennis": True}
 }
@@ -688,24 +697,21 @@ async def fetch_nowstreams_data(ref_time: datetime):
             dt_vn = dt_vn.replace(tzinfo=VN_TZ)
             if not is_within_time_range(dt_vn, ref_time):
                 continue
-
             league_raw = item.get("league", "")
             matchup_raw = item.get("matchstr", "")
             if not matchup_raw:
                 continue
-            # Lọc nữ/trẻ trước khi chuẩn hóa
             if is_youth_or_women(matchup_raw, league_raw):
                 continue
             league = normalize_league(league_raw)
             if not is_match_allowed(league, matchup_raw):
                 continue
-
             services = []
             for ch in item.get("channels", []):
                 ch_name = ch.get("name", "").strip()
                 lang_code = ch.get("language", "").upper()
                 if ch_name and lang_code:
-                    full_country = LANGUAGE_MAP.get(lang_code, lang_code)  # LANGUAGE_MAP cần được định nghĩa
+                    full_country = LANGUAGE_MAP.get(lang_code, lang_code)
                     services.append(f"{ch_name} {full_country}")
                 elif ch_name:
                     services.append(ch_name)
@@ -719,7 +725,6 @@ async def fetch_nowstreams_data(ref_time: datetime):
                     services.append(f"{ch_name} {full_country}")
                 else:
                     services.append(main_channel)
-
             matches.append({
                 "Date": dt_vn.strftime("%Y-%m-%d"),
                 "Time": dt_vn.strftime("%H:%M"),
@@ -733,7 +738,7 @@ async def fetch_nowstreams_data(ref_time: datetime):
     print(f"📡 nowstreams: {len(matches)} trận")
     return matches
 
-# ==================== LIVESPORTSONTV SCRAPING ====================
+# ==================== LIVESPORTSONTV SCRAPING (cập nhật xử lý nút "more") ====================
 async def scrape_livesportsontv(ref_time: datetime):
     all_games = []
     current_year = ref_time.year
@@ -759,35 +764,38 @@ async def scrape_livesportsontv(ref_time: datetime):
                 print(f"    ❌ Lỗi: {e}")
                 continue
 
-            # Xử lý nút "more" để hiển thị đầy đủ kênh
-            try:
-                more_buttons = await page.query_selector_all('button:has-text("more"), button:has-text("More"), a:has-text("more"), a:has-text("More")')
-                for btn in more_buttons:
-                    try:
-                        await btn.click()
-                        await page.wait_for_timeout(1500)  # Đợi nội dung tải
-                    except:
-                        pass
-            except:
-                pass
-
             # Cuộn để tải hết nội dung
             for _ in range(4):
                 await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
                 await page.wait_for_timeout(1500)
 
-            html = await page.content()
-            soup = BeautifulSoup(html, 'html.parser')
-            page_tz = extract_timezone_from_html(soup)
-
-            rows = soup.find_all('div', class_='event--wrapp')
+            # Lấy danh sách các sự kiện
+            rows = await page.query_selector_all('div.event--wrapp')
             print(f"    📊 {len(rows)} sự kiện")
 
             added = 0
-            for row in rows:
+            for idx, row in enumerate(rows):
                 try:
-                    date_div = row.find('div', class_='event__info--date')
-                    if not date_div: continue
+                    # Click vào nút "more" nếu có (trong row hiện tại)
+                    more_button = await row.query_selector('button:has-text("more"), a:has-text("more"), button:has-text("More"), a:has-text("More")')
+                    if more_button:
+                        try:
+                            await more_button.click()
+                            await page.wait_for_timeout(1500)  # Chờ nội dung tải
+                            # Lấy lại row sau khi click (vì DOM thay đổi)
+                            rows = await page.query_selector_all('div.event--wrapp')
+                            row = rows[idx]  # Cập nhật row mới
+                        except Exception as e:
+                            print(f"      Lỗi click more: {e}")
+
+                    # Lấy lại nội dung HTML của row (sau khi click)
+                    row_html = await row.inner_html()
+                    soup_row = BeautifulSoup(row_html, 'html.parser')
+
+                    # Trích xuất ngày tháng từ row
+                    date_div = soup_row.find('div', class_='event__info--date')
+                    if not date_div:
+                        continue
                     date_text = date_div.get_text(separator=' ').strip()
                     day_str, month_str = parse_date_from_text(date_text)
                     if not day_str or not month_str:
@@ -796,19 +804,129 @@ async def scrape_livesportsontv(ref_time: datetime):
                         if day_tag and month_tag:
                             day_str = day_tag.get_text(strip=True)
                             month_str = month_tag.get_text(strip=True).lower()
-                    if not day_str or not month_str: continue
+                    if not day_str or not month_str:
+                        continue
 
                     month_num = get_month_number(month_str)
                     day_num = int(day_str)
 
-                    time_tag = row.find('time')
-                    if not time_tag: continue
+                    # Lấy giờ
+                    time_tag = soup_row.find('time')
+                    if not time_tag:
+                        continue
                     time_str = time_tag.get_text(strip=True)
                     try:
                         hour, minute = parse_time_with_ampm(time_str)
                     except:
                         continue
 
+                    # Tạo datetime với múi giờ của trang (giả sử trang hiển thị theo giờ địa phương, cần extract timezone)
+                    # Vì ta không có soup của toàn trang, nhưng có thể lấy page_tz từ toàn trang.
+                    # Ta sẽ lấy page_tz từ toàn trang (đã có từ đầu)
+                    # Cần lấy page_tz trước khi vòng lặp. Ta lấy từ soup toàn trang.
+                    # Để đơn giản, ta sẽ lấy page_tz từ soup toàn trang (đã lấy ở trên)
+                    # Ở đây cần có biến page_tz. Ta sẽ lấy nó từ soup toàn trang trước vòng lặp.
+                    # Hãy sửa: trước vòng lặp, lấy soup toàn trang và page_tz.
+                    # Tôi sẽ điều chỉnh lại một chút: lấy page_tz từ soup toàn trang trước khi duyệt rows.
+                    pass
+                except Exception as e:
+                    print(f"      Lỗi xử lý row: {e}")
+                    continue
+
+            # Tôi thấy cần tái cấu trúc lại phần này. Hãy để tôi viết lại hoàn chỉnh hàm scrape_livesportsontv bên dưới.
+            # Vì vậy, tôi sẽ viết lại toàn bộ hàm này.
+
+# Tôi sẽ viết lại hàm scrape_livesportsontv hoàn chỉnh.
+# Tạm thời, tôi sẽ bỏ qua phần còn lại và viết lại từ đầu.
+
+# ==================== VIẾT LẠI HÀM SCRAPE_LIVESPORTSONTV ====================
+async def scrape_livesportsontv(ref_time: datetime):
+    all_games = []
+    current_year = ref_time.year
+
+    async with async_playwright() as p:
+        print("🚀 Khởi động trình duyệt...")
+        browser = await p.chromium.launch(headless=True, args=["--no-sandbox"])
+        page = await browser.new_page()
+        page.set_default_navigation_timeout(120000)
+        page.set_default_timeout(60000)
+
+        for league_name, cfg in LEAGUES_CONFIG.items():
+            url = cfg["url"]
+            team_filter = cfg.get("teams")
+            custom_filter = cfg.get("custom_filter")
+            is_tennis = cfg.get("is_tennis", False)
+            print(f"\n--- {league_name} ---")
+            print(f"    URL: {url}")
+
+            try:
+                await page.goto(url, wait_until="domcontentloaded", timeout=120000)
+            except Exception as e:
+                print(f"    ❌ Lỗi: {e}")
+                continue
+
+            # Cuộn để tải hết nội dung
+            for _ in range(4):
+                await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+                await page.wait_for_timeout(1500)
+
+            # Lấy HTML toàn trang để xác định múi giờ
+            html = await page.content()
+            soup = BeautifulSoup(html, 'html.parser')
+            page_tz = extract_timezone_from_html(soup)
+
+            # Lấy danh sách các sự kiện
+            rows = await page.query_selector_all('div.event--wrapp')
+            print(f"    📊 {len(rows)} sự kiện")
+
+            added = 0
+            for idx, row in enumerate(rows):
+                try:
+                    # Click vào nút "more" nếu có trong row này
+                    more_button = await row.query_selector('button:has-text("more"), a:has-text("more"), button:has-text("More"), a:has-text("More")')
+                    if more_button:
+                        try:
+                            await more_button.click()
+                            await page.wait_for_timeout(1500)
+                            # Lấy lại row sau khi click (vì DOM thay đổi)
+                            rows = await page.query_selector_all('div.event--wrapp')
+                            row = rows[idx]
+                        except Exception as e:
+                            print(f"      Lỗi click more: {e}")
+
+                    # Lấy nội dung HTML của row
+                    row_html = await row.inner_html()
+                    soup_row = BeautifulSoup(row_html, 'html.parser')
+
+                    # Lấy ngày tháng
+                    date_div = soup_row.find('div', class_='event__info--date')
+                    if not date_div:
+                        continue
+                    date_text = date_div.get_text(separator=' ').strip()
+                    day_str, month_str = parse_date_from_text(date_text)
+                    if not day_str or not month_str:
+                        day_tag = date_div.find('b')
+                        month_tag = date_div.find('span')
+                        if day_tag and month_tag:
+                            day_str = day_tag.get_text(strip=True)
+                            month_str = month_tag.get_text(strip=True).lower()
+                    if not day_str or not month_str:
+                        continue
+
+                    month_num = get_month_number(month_str)
+                    day_num = int(day_str)
+
+                    # Lấy giờ
+                    time_tag = soup_row.find('time')
+                    if not time_tag:
+                        continue
+                    time_str = time_tag.get_text(strip=True)
+                    try:
+                        hour, minute = parse_time_with_ampm(time_str)
+                    except:
+                        continue
+
+                    # Tạo datetime và chuyển sang VN
                     page_dt = datetime(current_year, month_num, day_num, hour, minute)
                     page_dt = page_dt.replace(tzinfo=page_tz)
                     vn_dt = page_dt.astimezone(VN_TZ)
@@ -818,30 +936,31 @@ async def scrape_livesportsontv(ref_time: datetime):
 
                     # Lấy tên trận / giải
                     if is_tennis:
-                        home_elem = row.find('div', class_=lambda c: c and 'event_participant--home' in c)
+                        home_elem = soup_row.find('div', class_=lambda c: c and 'event_participant--home' in c)
                         if not home_elem:
-                            home_elem = row.find('div', class_='event__participant--home')
+                            home_elem = soup_row.find('div', class_='event__participant--home')
                         if home_elem:
                             matchup = home_elem.get_text(strip=True)
                         else:
-                            title_elem = row.find('a', class_='event__title')
+                            title_elem = soup_row.find('a', class_='event__title')
                             matchup = title_elem.get_text(strip=True) if title_elem else "Tennis Match"
                         if league_name in ["Australian Open", "French Open", "Wimbledon", "US Open"]:
                             league_display = "Tennis (Grand Slam)"
                         else:
                             league_display = league_name
                     else:
-                        home_elem = row.find('div', class_=lambda c: c and 'event__participant--home' in c)
-                        away_elem = row.find('div', class_=lambda c: c and 'event__participant--away' in c)
+                        home_elem = soup_row.find('div', class_=lambda c: c and 'event__participant--home' in c)
+                        away_elem = soup_row.find('div', class_=lambda c: c and 'event__participant--away' in c)
                         home = home_elem.get_text(strip=True) if home_elem else "?"
                         away = away_elem.get_text(strip=True) if away_elem else "?"
                         matchup = f"{away} @ {home}"
                         if home == "?" and away == "?":
-                            title_elem = row.find('a', class_='event__title')
+                            title_elem = soup_row.find('a', class_='event__title')
                             if title_elem:
                                 matchup = title_elem.get_text(strip=True)
                         league_display = league_name
 
+                    # Lọc giải trẻ/nữ
                     if is_youth_or_women(matchup, league_display):
                         continue
 
@@ -861,10 +980,11 @@ async def scrape_livesportsontv(ref_time: datetime):
                         if not include_friendly_match(home, away):
                             continue
 
+                    # Lấy kênh - tìm tất cả thẻ <a> trong .event__tags
                     channels = []
-                    tags_container = row.find('ul', class_='event__tags')
+                    tags_container = soup_row.find('ul', class_='event__tags')
                     if not tags_container:
-                        tags_container = row.find('div', class_='event__tags')
+                        tags_container = soup_row.find('div', class_='event__tags')
                     if tags_container:
                         for link in tags_container.find_all('a'):
                             aria = link.get('aria-label')
@@ -883,7 +1003,8 @@ async def scrape_livesportsontv(ref_time: datetime):
                         "Services": channels
                     })
                     added += 1
-                except Exception:
+                except Exception as e:
+                    print(f"      Lỗi xử lý row {idx}: {e}")
                     continue
             print(f"    ✅ Thêm {added} trận")
         await browser.close()
@@ -904,6 +1025,7 @@ async def main():
     games_now = await fetch_nowstreams_data(ref_time)
     print(f"📺 Từ nowstreams: {len(games_now)} trận")
 
+    # Gộp và loại trùng
     unique = {}
     for g in games_foot + games_now + games_live:
         norm_league = normalize_league(g["League"])
