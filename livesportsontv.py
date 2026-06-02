@@ -914,7 +914,7 @@ async def scrape_livesportsontv(ref_time: datetime):
                     channels = list(dict.fromkeys(channels))
 
                     # Debug cho French Open
-                    if "French Open" in matchup and "truTV" not in [c.lower() for c in channels]:
+                    if "French Open" in matchup and "TSN" not in [c.lower() for c in channels]:
                         print(f"    ⚠️ French Open channels found: {channels}")
                         print(f"    Snippet: {row.prettify()[:800]}")
 
