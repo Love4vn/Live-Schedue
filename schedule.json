@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-02 21:36 VN",
+  "updated": "2026-06-02 23:48 VN",
   "days": {
     "20260602": {
       "date": "Tuesday, 02/06",
@@ -64,6 +64,14 @@
           "match": "Tanzania vs Malawi",
           "kick_utc": 1780488000,
           "time": "03/06 07:00 PM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Jordan vs Malaysia",
+          "kick_utc": 1780498800,
+          "time": "03/06 10:00 PM",
           "tv_channels": [],
           "source": "sofascore"
         },
@@ -201,6 +209,21 @@
           "source": "livesportsontv"
         },
         {
+          "league": "UEFA Euro",
+          "match": "Latvia U17 vs Albania U17",
+          "kick_utc": 1780498800,
+          "time": "03/06 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Sport 2 IL"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
           "league": "Tennis",
           "match": "French Open",
           "kick_utc": 1780412400,
@@ -269,6 +292,25 @@
                 "Sling TV",
                 "HBO Max (US)",
                 "TNT",
+                "HBO Max"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "French Open",
+          "kick_utc": 1780498800,
+          "time": "03/06 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Sling TV",
+                "HBO Max (US)",
+                "TNT",
+                "truTV",
                 "HBO Max"
               ]
             }
@@ -348,18 +390,33 @@
         },
         {
           "league": "Tennis",
-          "match": "Roland-Garros",
-          "kick_utc": 1780404900,
-          "time": "02/06 07:55 PM",
+          "match": "Jakub Mensik vs Joao Fonseca",
+          "kick_utc": 1780424100,
+          "time": "03/06 01:15 AM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "France 3 France"
+                "Stan Sport"
               ]
             }
           ],
-          "source": "hubsport"
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Felix Auger-Aliassime vs Flavio Cobolli",
+          "kick_utc": 1780477200,
+          "time": "03/06 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -408,14 +465,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Ténis - Grand Slam - Roland-Garros",
-          "kick_utc": 1780405200,
-          "time": "02/06 08:00 PM",
+          "match": "Roland-Garros",
+          "kick_utc": 1780499940,
+          "time": "03/06 10:19 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Eurosport 1 Hd Portugal"
+                "Tipik France"
               ]
             }
           ],
