@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-03 04:18 VN",
+  "updated": "2026-06-03 11:59 VN",
   "days": {
-    "20260602": {
-      "date": "Tuesday, 02/06",
+    "20260603": {
+      "date": "Wednesday, 03/06",
       "games": [
         {
           "league": "Premier League",
@@ -66,23 +66,6 @@
           "time": "03/06 10:00 PM",
           "tv_channels": [],
           "source": "sofascore"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Haiti vs New Zealand",
-          "kick_utc": 1780444800,
-          "time": "03/06 07:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Premier Sports 2 Great Britain",
-                "Fox Deportes Spain",
-                "Premier Sports 2 Great Britain"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
         },
         {
           "league": "FIFA World Cup",
@@ -214,6 +197,22 @@
                 "Sport 2 Czech Republic",
                 "RAI 1 Italy",
                 "Sky Sport 5 New Zealand"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Korea Republic vs El Salvador",
+          "kick_utc": 1780527600,
+          "time": "04/06 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "SporTV Brazil",
+                "SporTV Brazil"
               ]
             }
           ],
@@ -367,36 +366,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Felix Auger-Aliassime vs Flavio Cobolli",
-          "kick_utc": 1780477200,
-          "time": "03/06 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "Stan Sport"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1780510500,
-          "time": "04/06 01:15 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "Stan Sport"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
           "match": "Ténis - Grand Slam - Roland-Garros",
           "kick_utc": 1780475400,
           "time": "03/06 03:30 PM",
@@ -457,6 +426,56 @@
         },
         {
           "league": "Tennis",
+          "match": "2026 Roland-Garros Tennis",
+          "kick_utc": 1780477200,
+          "time": "03/06 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "TSN 1 Canada",
+                "TSN 4 Canada",
+                "TSN 4 Hd Canada",
+                "TSN Hd Canada"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Internationaux de France 2026",
+          "kick_utc": 1780477200,
+          "time": "03/06 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Réseau Des Sports (Rds) Canada",
+                "Réseau Des Sports (Rds) Hd Canada"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Internationaux de France 2026",
+          "kick_utc": 1780510500,
+          "time": "04/06 01:15 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Rds2 Canada",
+                "Rds2 Hd Canada"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Roland-Garros",
           "kick_utc": 1780484400,
           "time": "03/06 06:00 PM",
@@ -495,6 +514,21 @@
               "country": "Hubsport",
               "channels": [
                 "Tipik France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Stade 2 la quotidienne Roland-Garros",
+          "kick_utc": 1780516800,
+          "time": "04/06 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "France 3 France"
               ]
             }
           ],
