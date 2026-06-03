@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Combined Now TV & Ziggo Sport Live Sports Schedule Extractor
-Output: nowtv_sports_schedule_en.json (events from both sources)
+Combined Now TV, Ziggo Sport & TSN Live Sports Schedule Extractor
+Output: nowtv_sports_schedule_en.json (events from all three sources)
 """
 
 import asyncio
@@ -57,11 +57,9 @@ def is_tennis_event(text: str) -> bool:
     return any(kw in text_lower for kw in TENNIS_KEYWORDS)
 
 def extract_league_matchup(title: str) -> Tuple[str, str]:
-    """Extract League and Matchup. Returns (league, matchup)."""
     cleaned = clean_brackets(title)
     cleaned = re.sub(r"\s*Live\s*$", "", cleaned, flags=re.IGNORECASE).strip()
 
-    # Tennis pattern (year after ATP/WTA)
     tennis_pattern = re.compile(r"^(ATP|WTA)\s+\d{1,4}\b", re.IGNORECASE)
     tennis_match = tennis_pattern.search(cleaned)
     if tennis_match:
@@ -69,7 +67,6 @@ def extract_league_matchup(title: str) -> Tuple[str, str]:
         matchup_part = cleaned[tennis_match.end():].strip()
         return league_part, matchup_part if matchup_part else cleaned
 
-    # 1) Colon
     if re.search(r"[:：]", cleaned):
         parts = re.split(r"\s*[:：]\s*", cleaned, maxsplit=1)
         league = parts[0].strip()
@@ -79,7 +76,6 @@ def extract_league_matchup(title: str) -> Tuple[str, str]:
         matchup = re.sub(r"\s+-\s+", " vs ", matchup)
         return league, matchup
 
-    # 2) Dash/hyphen only if left side looks like a league
     if re.search(r"[-–]", cleaned):
         parts = re.split(r"\s*[-–]\s*", cleaned, maxsplit=1)
         left = parts[0].strip()
@@ -90,14 +86,12 @@ def extract_league_matchup(title: str) -> Tuple[str, str]:
             matchup = re.sub(r"\s+-\s+", " vs ", matchup)
             return league, matchup
         else:
-            # Likely just "Team A - Team B": whole is matchup, no league
             matchup = re.sub(r"\s+[-–]\s+", " vs ", cleaned)
             return "", matchup
 
-    # No separators
     return "", cleaned
 
-# ---------- Now TV Fetcher (unchanged apart from filtering) ----------
+# ---------- Now TV Fetcher (giữ nguyên) ----------
 class NowTVFetcher:
     def __init__(self):
         self.base_url = "https://nowplayer.now.com"
@@ -161,7 +155,6 @@ class NowTVFetcher:
                         continue
                     if not (is_football_league_allowed(title) or is_tennis_event(title)):
                         continue
-                    # Premier League must contain vs/v
                     if "premier league" in title.lower():
                         if not re.search(r"\s+vs\s+|\s+v\s+", title, re.IGNORECASE):
                             continue
@@ -174,7 +167,6 @@ class NowTVFetcher:
                     if not matchup:
                         matchup = title
 
-                    # For football, must have " vs "
                     if is_football_league_allowed(title) and " vs " not in matchup:
                         continue
 
@@ -189,7 +181,7 @@ class NowTVFetcher:
                     })
         return events
 
-# ---------- Ziggo Sport Fetcher ----------
+# ---------- Ziggo Sport Fetcher (giữ nguyên) ----------
 class ZiggoFetcher:
     def __init__(self):
         self.base_url = "https://www.ziggosport.nl"
@@ -247,7 +239,6 @@ class ZiggoFetcher:
                     if not matchup:
                         matchup = title
 
-                    # Football must contain " vs " after conversion
                     if sport_name == "voetbal" and " vs " not in matchup:
                         continue
 
@@ -269,7 +260,128 @@ class ZiggoFetcher:
                     })
         return events
 
-# ---------- Deduplication ----------
+# ---------- TSN Fetcher (MỚI) ----------
+class TSNFetcher:
+    def __init__(self):
+        self.base_url = "https://www.tsn.ca"
+
+    def parse_events(self, days_ahead: int = 7) -> List[Dict]:
+        """Scrape the main schedule page (it shows upcoming days)."""
+        print("📡 [TSN] Fetching schedule...")
+        url = f"{self.base_url}/live/schedule/"
+        headers = {"User-Agent": USER_AGENT}
+        try:
+            resp = requests.get(url, headers=headers, timeout=10)
+            resp.raise_for_status()
+        except Exception as e:
+            print(f"❌ [TSN] Failed to load page: {e}")
+            return []
+
+        soup = BeautifulSoup(resp.text, "html.parser")
+        events = []
+        # TSN hiển thị lịch dưới dạng các thẻ <div class="schedule-day">, mỗi ngày có các <div class="schedule-event">
+        day_sections = soup.find_all("div", class_="schedule-day")
+        if not day_sections:
+            print("⚠️ [TSN] Could not find schedule-day divs, trying alternative selectors...")
+            # Fallback: tìm bất kỳ container nào chứa class có "schedule" hoặc "event"
+            day_sections = soup.find_all(["div", "section"], class_=re.compile(r"schedule|event"))
+
+        for day_section in day_sections:
+            # Extract date from section header (thường có thẻ <h2> hoặc <time>)
+            date_tag = day_section.find(["h2", "time"])
+            if not date_tag:
+                continue
+            date_str = date_tag.get_text(strip=True)
+            # Chuyển đổi định dạng ngày có thể có (vd "Tuesday, June 3") -> YYYY-MM-DD
+            # Vì TSN thường dùng tên ngày, ta phải tự xác định năm. Giả sử là năm hiện tại.
+            try:
+                # TSN hiển thị như "June 3" hoặc "Tuesday, June 3"
+                # Loại bỏ tên thứ nếu có
+                clean_date = re.sub(r"^[A-Za-z]+,\s*", "", date_str)
+                dt = datetime.strptime(clean_date, "%B %d")
+                # Gán năm hiện tại
+                current_year = datetime.now().year
+                dt = dt.replace(year=current_year)
+                # Nếu ngày đã qua (ví dụ parse tháng 6 khi hiện tại là 2026, nhưng năm thì đúng) - không cần điều chỉnh
+                date_formatted = dt.strftime("%Y-%m-%d")
+            except:
+                # Nếu không parse được, bỏ qua section này
+                continue
+
+            # Lấy tất cả sự kiện trong ngày
+            event_items = day_section.find_all("div", class_="schedule-event")
+            for event in event_items:
+                # Lấy tiêu đề
+                title_tag = event.find(["h3", "a", "span"], class_="event-title")
+                if not title_tag:
+                    continue
+                title = title_tag.get_text(strip=True)
+
+                # Lấy thời gian bắt đầu
+                time_tag = event.find("time") or event.find("span", class_="event-time")
+                time_str = time_tag.get_text(strip=True) if time_tag else ""
+                # Định dạng giờ: "7:30 PM ET" -> chuyển về 24h, múi giờ ET (UTC-5/UTC-4)
+                time_match = re.search(r"(\d{1,2}:\d{2})\s*(AM|PM)?", time_str, re.IGNORECASE)
+                if time_match:
+                    raw_time = time_match.group(1)
+                    ampm = time_match.group(2)
+                    # Parse giờ
+                    hour, minute = map(int, raw_time.split(":"))
+                    if ampm and ampm.upper() == "PM" and hour != 12:
+                        hour += 12
+                    elif ampm and ampm.upper() == "AM" and hour == 12:
+                        hour = 0
+                    # Múi giờ ET (Eastern Time). TSN thường dùng ET.
+                    # Xác định offset: EDT (UTC-4) hoặc EST (UTC-5). Để đơn giản, dùng UTC-4 (giờ mùa hè)
+                    et_tz = pytz.timezone("US/Eastern")
+                    try:
+                        # Tạo datetime với ngày và giờ, gán ET
+                        dt_et = et_tz.localize(datetime(dt.year, dt.month, dt.day, hour, minute))
+                        # Chuyển sang Việt Nam
+                        dt_vn = dt_et.astimezone(VIETNAM_TZ)
+                        date_final = dt_vn.strftime("%Y-%m-%d")
+                        time_final = dt_vn.strftime("%H:%M")
+                    except:
+                        # fallback: dùng giờ ET như hiển thị nhưng không chuyển đổi? Tốt hơn là giữ nguyên giờ ET và ghi chú, nhưng ở đây chuyển đổi.
+                        date_final = date_formatted
+                        time_final = f"{hour:02d}:{minute:02d}"
+                else:
+                    date_final = date_formatted
+                    time_final = "00:00"
+
+                # Lọc môn thể thao: TSN thường có class hoặc meta, nhưng trong tiêu đề thường chứa tên môn. Ta dùng từ khóa.
+                if not (is_football_league_allowed(title) or is_tennis_event(title)):
+                    continue
+
+                # Xác định league và matchup
+                league, matchup = extract_league_matchup(title)
+                if not league and is_tennis_event(title):
+                    league = "Tennis"
+                if not league:
+                    league = "Sports"
+                if not matchup:
+                    matchup = title
+
+                # Bóng đá bắt buộc có " vs "
+                if is_football_league_allowed(title) and " vs " not in matchup:
+                    continue
+
+                # Kênh: TSN thường có tên kênh trong sự kiện, ta lấy nếu có
+                channel_tag = event.find("span", class_="channel") or event.find("div", class_="network")
+                channel = channel_tag.get_text(strip=True) if channel_tag else "TSN"
+
+                events.append({
+                    "Date": date_final,
+                    "Time": time_final,
+                    "League": league,
+                    "Matchup": matchup,
+                    "Services": [channel],
+                })
+
+        print(f"🎯 [TSN] {len(events)} raw events")
+        return events
+
+# ---------- Deduplication & Enrichment (giữ nguyên) ----------
 def deduplicate_events(events: List[Dict]) -> List[Dict]:
     groups = {}
     for ev in events:
@@ -307,13 +419,7 @@ def deduplicate_events(events: List[Dict]) -> List[Dict]:
             merged.append(merged_ev)
     return merged
 
-# ---------- League Enrichment ----------
 def enrich_leagues(events: List[Dict]) -> List[Dict]:
-    """
-    For events with unknown/generic League ('Football','Sports'), try to fill
-    from events that have a clear league on the same date and same normalized matchup.
-    """
-    # Build a lookup: (date, norm_matchup) -> best league (from events that have a known league)
     league_map = {}
     for ev in events:
         if ev["League"] not in ("Football", "Sports", "Unknown", ""):
@@ -329,7 +435,7 @@ def enrich_leagues(events: List[Dict]) -> List[Dict]:
 
 # ---------- Main ----------
 async def main():
-    print("🚀 Combined Now TV & Ziggo Sport Live Schedule Extractor")
+    print("🚀 Combined Now TV, Ziggo Sport & TSN Live Schedule Extractor")
 
     nowtv = NowTVFetcher()
     nowtv_channels = nowtv.fetch_channels()
@@ -346,7 +452,11 @@ async def main():
     ziggo_events = ziggo.parse_events(days=7)
     print(f"🎯 [Ziggo] {len(ziggo_events)} raw events")
 
-    all_events = nowtv_events + ziggo_events
+    tsn = TSNFetcher()
+    tsn_events = tsn.parse_events(days_ahead=7)
+    print(f"🎯 [TSN] {len(tsn_events)} raw events")
+
+    all_events = nowtv_events + ziggo_events + tsn_events
     print(f"📊 Combined raw events: {len(all_events)}")
 
     all_events = deduplicate_events(all_events)
