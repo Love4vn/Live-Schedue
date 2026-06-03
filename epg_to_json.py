@@ -8,7 +8,7 @@ import io
 from collections import defaultdict
 
 # ================================================
-# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ & TENNIS (5 NGUỒN) – FINAL FIX 10
+# SCRIPT LẤY LỊCH TRẬN BÓNG ĐÁ & TENNIS (5+1 NGUỒN) – FINAL FIX 10 + CA2
 # ================================================
 
 EPG_URL_STARHUB = "https://raw.githubusercontent.com/dbghelp/StarHub-TV-EPG/refs/heads/main/starhub.xml"
@@ -16,6 +16,7 @@ EPG_URL_NT74 = "https://raw.githubusercontent.com/nt74/epglist/refs/heads/main/g
 EPG_URL_XVB = "https://raw.githubusercontent.com/xvb-lab/xvb-epg/refs/heads/main/epg/epg-fr.xml"
 EPG_URL_PT1 = "https://epgshare01.online/epgshare01/epg_ripper_PT1.xml.gz"
 EPG_URL_RO1 = "https://epgshare01.online/epgshare01/epg_ripper_RO1.xml.gz"
+EPG_URL_CA2 = "https://epgshare01.online/epgshare01/epg_ripper_CA2.xml.gz"  # Nguồn mới
 OUTPUT_FILE = "live_matches.json"
 HOURS_BEFORE = 6
 HOURS_AFTER = 72
@@ -89,7 +90,6 @@ TEAM_NORMALIZE_MAP = {
     "b. leverkusen": "bayer leverkusen",
     "psg": "paris saint-germain", "paris sg": "paris saint-germain",
     "marseille": "olympique marseille", "om": "olympique marseille",
-    # Thêm các tên viết tắt từ Bồ Đào Nha
     "scp": "sporting cp", "sc braga": "braga", "friburgo": "freiburg",
     "aalborg": "aalborg",
 }
@@ -127,13 +127,17 @@ def is_live_pt(title):
 def is_live_ro(title):
     return bool(re.search(r'\bLive\b', title))
 
+def is_live_ca2(title):
+    """Kiểm tra chương trình trực tiếp từ nguồn CA2 (bắt đầu bằng 'Live:')"""
+    return title.strip().lower().startswith("live:")
+
 def is_women_youth(title):
     t = title.lower()
     return any(k in t for k in WOMEN_KEYWORDS) or any(k in t for k in YOUTH_KEYWORDS)
 
 def is_tennis(title):
     t = title.lower()
-    return any(w in t for w in ["atp","wta","tenis","tennis","grand slam","australian open","french open","wimbledon","us open"]) and not any(p in t for p in ["padel","padbol"])
+    return any(w in t for w in ["atp","wta","tenis","tennis","grand slam","australian open","french open","wimbledon","us open", "roland-garros"]) and not any(p in t for p in ["padel","padbol"])
 
 def parse_tennis(title):
     c = re.sub(r'\((?:Live|Direto)\)', '', title, flags=re.I).strip()
@@ -243,6 +247,14 @@ def fmt_ro(cid):
     n = cid.replace('.ro','').replace('.',' ').title()
     return f"{n} Romania"
 
+def fmt_ca2(cid):
+    """Định dạng kênh cho nguồn CA2 (Canada)"""
+    # Ví dụ: TSN.5.ca2 -> TSN 5 Canada
+    n = cid.replace('.ca2', '').replace('.', ' ').title()
+    # Chuẩn hóa một số tên đặc biệt
+    n = n.replace('Tsn', 'TSN').replace('Sportsnet', 'Sportsnet')
+    return f"{n} Canada"
+
 # ==================== PARSE TỪNG NGUỒN ====================
 def parse_time(s):
     try:
@@ -267,57 +279,31 @@ def output(groups):
     out.sort(key=lambda x: (x["Date"], x["Time"]))
     return out
 
-# StarHub parser (giữ nguyên)
-def parse_starhub(xml, ch):
-    root = ET.fromstring(xml)
-    groups = defaultdict(list)
-    now = datetime.now(timezone.utc)
-    for p in root.findall("programme"):
-        cid = p.get("channel")
-        start = p.get("start")
-        tel = p.find("title")
-        if tel is None or not start: continue
-        title = (tel.text or "").strip()
-        des = (p.find("desc").text or "").strip() if p.find("desc") is not None else ""
+# StarHub parser (giữ nguyên cấu trúc ban đầu, nhưng đã được sửa lỗi thiếu hàm is_fa_cup, extract_teams_starhub, ...)
+# Lưu ý: Trong code gốc có một số hàm được định nghĩa sau khi dùng (is_fa_cup, extract_teams_starhub, is_pl, clean_football_starhub)
+# Để tránh lỗi, tôi sẽ giữ nguyên logic nhưng sắp xếp lại thứ tự các hàm.
 
-        # ===== THÊM DÒNG NÀY =====
-        if is_women_youth(title):   # bỏ qua giải nữ hoặc trẻ
-            continue
-        # =========================
-
-        lg = mt = None
-        if is_fa_cup(title) and has_live_starhub(title, des) and has_any_pl_team(title+" "+des):
-            lg = "FA Cup"
-            mt = clean_football_starhub(title)
-        elif is_pl(title, des):
-            lg = "Premier League"
-            mt = clean_football_starhub(title)
-        elif is_tennis(title) and has_live_starhub(title, des):
-            lg, mt = parse_tennis(title)
-        else:
-            continue
-        # ... phần còn lại giữ nguyên   
-        dt = parse_time(start)
-        if not in_window(dt, now): continue
-        dt_vn = dt + timedelta(hours=7)
-        cn = fmt_starhub(ch.get(cid, f"Ch {cid}"))
-        groups[(dt_vn, mt.lower())].append({"channel": cn, "league": lg, "matchup": mt})
-    return output(groups)
-
+# Các hàm hỗ trợ cho StarHub
 def is_fa_cup(t):
     return bool(re.search(r'\bFA\s+Cup\b', t, re.I))
 
-def has_any_pl_team(txt):
-    return len(extract_teams_starhub(txt)) > 0
-
 def extract_teams_starhub(txt):
     t = txt.lower()
-    for a,f in TEAM_ABBR_STARHUB.items(): t = t.replace(a, f)
+    # Áp dụng ánh xạ viết tắt
+    team_abbr = {
+        "rpool":"liverpool", "man city":"manchester city", "man utd":"manchester united",
+        "newcastle":"newcastle", "wolves":"wolverhampton", "fulham":"fulham", "everton":"everton"
+    }
+    for abbr, full in team_abbr.items():
+        t = t.replace(abbr, full)
     teams = []
     for tm in sorted(PREMIER_LEAGUE_TEAMS, key=len, reverse=True):
         if tm in t and not any(tm != ex and tm in ex for ex in teams):
             teams.append(tm)
     return teams
+
+def has_any_pl_team(txt):
+    return len(extract_teams_starhub(txt)) > 0
 
 def is_pl(t,d):
     return has_live_starhub(t,d) and not is_fa_cup(t) and len(extract_teams_starhub(t+" "+d)) >= 2
@@ -341,10 +327,41 @@ def clean_football_starhub(t):
             return f"{parts[0]} vs {parts[1]}"
     return t
 
-TEAM_ABBR_STARHUB = {
-    "rpool":"liverpool","man city":"manchester city","man utd":"manchester united",
-    "newcastle":"newcastle","wolves":"wolverhampton","fulham":"fulham","everton":"everton"
-}
+def parse_starhub(xml, ch):
+    root = ET.fromstring(xml)
+    groups = defaultdict(list)
+    now = datetime.now(timezone.utc)
+    for p in root.findall("programme"):
+        cid = p.get("channel")
+        start = p.get("start")
+        tel = p.find("title")
+        if tel is None or not start: continue
+        title = (tel.text or "").strip()
+        des = (p.find("desc").text or "").strip() if p.find("desc") is not None else ""
+
+        # Bỏ qua giải nữ hoặc trẻ
+        if is_women_youth(title):
+            continue
+
+        lg = None
+        mt = None
+        if is_fa_cup(title) and has_live_starhub(title, des) and has_any_pl_team(title+" "+des):
+            lg = "FA Cup"
+            mt = clean_football_starhub(title)
+        elif is_pl(title, des):
+            lg = "Premier League"
+            mt = clean_football_starhub(title)
+        elif is_tennis(title) and has_live_starhub(title, des):
+            lg, mt = parse_tennis(title)
+        else:
+            continue
+
+        dt = parse_time(start)
+        if not in_window(dt, now): continue
+        dt_vn = dt + timedelta(hours=7)
+        cn = fmt_starhub(ch.get(cid, f"Ch {cid}"))
+        groups[(dt_vn, mt.lower())].append({"channel": cn, "league": lg, "matchup": mt})
+    return output(groups)
 
 def parse_channels_starhub(xml):
     root = ET.fromstring(xml)
@@ -392,7 +409,7 @@ def parse_xvb(xml):
         groups[(dt_vn, mt.lower())].append({"channel": cn, "league": lg, "matchup": mt})
     return output(groups)
 
-# PT1 / RO1
+# PT1 / RO1 dùng chung hàm parse_epgshare
 def parse_epgshare(xml, src):
     root = ET.fromstring(xml)
     groups = defaultdict(list)
@@ -405,21 +422,14 @@ def parse_epgshare(xml, src):
         if tel is None or not start: continue
         title = (tel.text or "").strip()
 
-        # DEBUG PSG
-        if "psg" in title.lower() and "champions" in title.lower():
-            print(f"DEBUG PSG: TITLE = {title}")
-
         if is_pt and not is_live_pt(title):
-            if "psg" in title.lower(): print("DEBUG PSG: bỏ qua vì không live")
             continue
         if not is_pt and not is_live_ro(title):
             continue
 
         lg, _ = get_league(title)
-        if "psg" in title.lower(): print(f"DEBUG PSG: lg = {lg}")
         if lg and lg in ALLOWED_LEAGUES:
             if is_women_youth(title):
-                if "psg" in title.lower(): print("DEBUG PSG: blocked by women/youth")
                 continue
 
             if lg in {"UEFA Euro", "International Friendlies"}:
@@ -428,7 +438,6 @@ def parse_epgshare(xml, src):
                 mt = re.sub(r'\((?:Direto|Live)\)', '', title, flags=re.I).strip()
             else:
                 pair = clean_matchup(title, lg)
-                if "psg" in title.lower(): print(f"DEBUG PSG: pair = {pair}")
                 if pair is None:
                     print(f"⚠ Bỏ qua (không tách được cặp đấu): {title}")
                     continue
@@ -440,7 +449,6 @@ def parse_epgshare(xml, src):
                         continue
 
                 mt = f"{left_norm.title()} vs {right_norm.title()}"
-                if "psg" in title.lower(): print(f"DEBUG PSG: final mt = {mt}")
                 print(f"✅ Nhận bóng đá: {mt} ({lg}) từ {fmt_pt(cid) if is_pt else fmt_ro(cid)}")
         elif is_tennis(title):
             lg, mt = parse_tennis(title)
@@ -462,6 +470,64 @@ def is_valid_special(title, league):
         allowed = EUROPEAN_COUNTRIES | AMERICAS_TEAMS | ASIA_TEAMS
         return len([c for c in allowed if c in title.lower()]) >= 2
     return True
+
+# CA2 parser (mới)
+def parse_ca2(xml):
+    root = ET.fromstring(xml)
+    groups = defaultdict(list)
+    now = datetime.now(timezone.utc)
+    for p in root.findall("programme"):
+        cid = p.get("channel")
+        start = p.get("start")
+        tel = p.find("title")
+        if tel is None or not start:
+            continue
+        title = (tel.text or "").strip()
+        # Chỉ lấy các chương trình có "Live:" ở đầu (không phân biệt hoa thường)
+        if not is_live_ca2(title):
+            continue
+        # Loại bỏ "Live:" để lấy nội dung thực
+        content = re.sub(r'^Live:\s*', '', title, flags=re.I).strip()
+        # Bỏ qua women/youth
+        if is_women_youth(content):
+            continue
+
+        # Xác định bộ môn: ưu tiên bóng đá (nếu có giải đấu hợp lệ) hoặc tennis
+        lg, _ = get_league(content)
+        if lg and lg in ALLOWED_LEAGUES:
+            # Xử lý bóng đá
+            if lg in {"UEFA Euro", "International Friendlies"}:
+                if not is_valid_special(content, lg):
+                    continue
+                mt = content
+            else:
+                pair = clean_matchup(content, lg)
+                if pair is None:
+                    print(f"⚠ CA2 bỏ qua (không tách được cặp đấu): {content}")
+                    continue
+                left_norm, right_norm = pair
+                if ALLOWED_TEAMS_PER_LEAGUE.get(lg) is not None:
+                    if not (is_team_allowed(left_norm, lg) or is_team_allowed(right_norm, lg)):
+                        print(f"⚠ CA2 bỏ qua (không có đội được phép): {content} → {left_norm} vs {right_norm}")
+                        continue
+                mt = f"{left_norm.title()} vs {right_norm.title()}"
+                print(f"✅ CA2 nhận bóng đá: {mt} ({lg}) từ {fmt_ca2(cid)}")
+        elif is_tennis(content):
+            lg, mt = parse_tennis(content)
+            if not lg:
+                continue
+            print(f"🎾 CA2 nhận tennis: {mt} ({lg}) từ {fmt_ca2(cid)}")
+        else:
+            # Không phải bóng đá hoặc tennis thì bỏ qua
+            continue
+
+        dt = parse_time(start)
+        if not in_window(dt, now):
+            continue
+        dt_vn = dt + timedelta(hours=7)
+        cn = fmt_ca2(cid) if cid else "Unknown Canada"
+        groups[(dt_vn, mt.lower())].append({"channel": cn, "league": lg, "matchup": mt})
+    return output(groups)
 
 # Gộp kênh
 def merge_all(*match_lists):
@@ -517,7 +583,16 @@ def main():
         m_ro = parse_epgshare(download_gz(EPG_URL_RO1), 'RO1')
         print(f"🇷🇴 RO1: {len(m_ro)}")
 
-        all_m = merge_all(m_s, m_n, m_x, m_pt, m_ro)
+        # Nguồn CA2
+        try:
+            xml_ca2 = download_gz(EPG_URL_CA2)
+            m_ca2 = parse_ca2(xml_ca2)
+            print(f"🇨🇦 CA2: {len(m_ca2)}")
+        except Exception as e:
+            print(f"⚠️ Không thể tải/xử lý CA2: {e}")
+            m_ca2 = []
+
+        all_m = merge_all(m_s, m_n, m_x, m_pt, m_ro, m_ca2)
         print(f"📋 Tổng: {len(all_m)}")
 
         with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
