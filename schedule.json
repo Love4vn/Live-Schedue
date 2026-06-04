@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-04 17:08 VN",
+  "updated": "2026-06-04 22:33 VN",
   "days": {
     "20260604": {
       "date": "Thursday, 04/06",
@@ -13,18 +13,11 @@
           "source": "sofascore"
         },
         {
-          "league": "UEFA Euro",
-          "match": "Belgium U17 vs France U17",
-          "kick_utc": 1780572600,
-          "time": "04/06 06:30 PM",
-          "tv_channels": [
-            {
-              "country": "France",
-              "channels": [
-                "L'Équipe Live Foot"
-              ]
-            }
-          ],
+          "league": "Premier League",
+          "match": "Logan Lightning vs Capalaba Bulldogs",
+          "kick_utc": 1780655400,
+          "time": "05/06 05:30 PM",
+          "tv_channels": [],
           "source": "sofascore"
         },
         {
@@ -36,7 +29,62 @@
             {
               "country": "Andorra",
               "channels": [
-                "Teledeporte"
+                "Teledeporte",
+                "RTVE Play"
+              ]
+            },
+            {
+              "country": "Argentina",
+              "channels": [
+                "ViX"
+              ]
+            },
+            {
+              "country": "Bolivia, Plurinational State of",
+              "channels": [
+                "ViX"
+              ]
+            },
+            {
+              "country": "Chile",
+              "channels": [
+                "ViX"
+              ]
+            },
+            {
+              "country": "Colombia",
+              "channels": [
+                "ViX"
+              ]
+            },
+            {
+              "country": "Costa Rica",
+              "channels": [
+                "ViX"
+              ]
+            },
+            {
+              "country": "Croatia",
+              "channels": [
+                "VOYO"
+              ]
+            },
+            {
+              "country": "Dominican Republic",
+              "channels": [
+                "ViX"
+              ]
+            },
+            {
+              "country": "Ecuador",
+              "channels": [
+                "ViX"
+              ]
+            },
+            {
+              "country": "El Salvador",
+              "channels": [
+                "ViX"
               ]
             },
             {
@@ -52,9 +100,57 @@
               ]
             },
             {
+              "country": "Guatemala",
+              "channels": [
+                "ViX"
+              ]
+            },
+            {
+              "country": "Honduras",
+              "channels": [
+                "ViX"
+              ]
+            },
+            {
               "country": "Italy",
               "channels": [
                 "RaiPlay"
+              ]
+            },
+            {
+              "country": "Mexico",
+              "channels": [
+                "ViX"
+              ]
+            },
+            {
+              "country": "Nicaragua",
+              "channels": [
+                "ViX"
+              ]
+            },
+            {
+              "country": "Panama",
+              "channels": [
+                "ViX"
+              ]
+            },
+            {
+              "country": "Paraguay",
+              "channels": [
+                "ViX"
+              ]
+            },
+            {
+              "country": "Peru",
+              "channels": [
+                "ViX"
+              ]
+            },
+            {
+              "country": "Puerto Rico",
+              "channels": [
+                "ViX"
               ]
             },
             {
@@ -66,7 +162,8 @@
             {
               "country": "Spain",
               "channels": [
-                "Teledeporte"
+                "Teledeporte",
+                "RTVE Play"
               ]
             },
             {
@@ -75,52 +172,114 @@
                 "Teledeporte",
                 "Sportdigital FUSSBALL"
               ]
+            },
+            {
+              "country": "United States",
+              "channels": [
+                "ViX"
+              ]
+            },
+            {
+              "country": "Uruguay",
+              "channels": [
+                "ViX"
+              ]
+            },
+            {
+              "country": "Venezuela, Bolivarian Republic of",
+              "channels": [
+                "ViX"
+              ]
             }
           ],
           "source": "sofascore"
         },
         {
-          "league": "International Friendly",
-          "match": "Slovenia vs Cyprus",
-          "kick_utc": 1780574400,
-          "time": "04/06 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "DAZN2 Germany",
-                "Nova Sports Start Greece"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
+          "league": "FIFA World Cup",
+          "match": "Czechia vs Albania",
+          "kick_utc": 1780673400,
+          "time": "05/06 10:30 PM",
+          "tv_channels": [],
+          "source": "sofascore"
         },
         {
-          "league": "International Friendly",
-          "match": "Slovenia vs Cyprus",
-          "kick_utc": 1780588800,
-          "time": "04/06 11:00 PM",
+          "league": "FIFA World Cup",
+          "match": "Slovakia vs Finland",
+          "kick_utc": 1780668000,
+          "time": "05/06 09:00 PM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Bosnia & Herzegovina vs Lithuania",
+          "kick_utc": 1780671600,
+          "time": "05/06 10:00 PM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Bulgaria vs Gibraltar",
+          "kick_utc": 1780671600,
+          "time": "05/06 10:00 PM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Azerbaijan vs Hungary",
+          "kick_utc": 1780668000,
+          "time": "05/06 09:00 PM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Georgia vs Faroe Islands",
+          "kick_utc": 1780666200,
+          "time": "05/06 08:30 PM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Moldova vs Romania",
+          "kick_utc": 1780671600,
+          "time": "05/06 10:00 PM",
           "tv_channels": [
             {
-              "country": "LiveSportsOnTV",
+              "country": "Romania",
               "channels": [
-                "DAZN 2 Bar Deutsch HD",
-                "Persiana Sports 2 HD",
-                "Fast Sports 1 Armenia",
-                "Polsat Sport 2 HD",
-                "Prima Sport RO 2 HD",
-                "RIK 2 Cyprus HD",
-                "Nova Sports Start Hellas HD",
-                "SportKlub 1 Slovenija HD",
-                "Megogo Futbol 2",
-                "Digi Sport 2 Romania HD",
-                "SportKlub 5 Hrvatska",
-                "QazSport HD",
-                "Sport 2 Czechia HD"
+                "FRF TV"
               ]
             }
           ],
-          "source": "livesportsontv"
+          "source": "sofascore"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Armenia vs Kazakhstan",
+          "kick_utc": 1780668000,
+          "time": "05/06 09:00 PM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "Premier League",
+          "match": "Oleksandria vs FC Livyi Bereh Kyiv",
+          "kick_utc": 1780662600,
+          "time": "05/06 07:30 PM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "Premier League",
+          "match": "Kudrivka vs Ahrobiznes Volochysk",
+          "kick_utc": 1780671600,
+          "time": "05/06 10:00 PM",
+          "tv_channels": [],
+          "source": "sofascore"
         },
         {
           "league": "International Friendly",
@@ -163,6 +322,33 @@
                 "SportKlub 6 Hrvatska",
                 "Diema Sport Bulgaria",
                 "Diema Sport Bulgaria"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Slovenia vs Cyprus",
+          "kick_utc": 1780588800,
+          "time": "04/06 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DAZN 2 Bar Deutsch HD",
+                "Digi Sport 2 Romania HD",
+                "Fast Sports 1 Armenia",
+                "Megogo Futbol 2",
+                "Nova Sports Start Hellas HD",
+                "Persiana Sports 2 HD",
+                "Polsat Sport 2 HD",
+                "Prima Sport RO 2 HD",
+                "QazSport HD",
+                "RIK 2 Cyprus HD",
+                "Sport 2 Czechia HD",
+                "SportKlub 1 Slovenija HD",
+                "SportKlub 5 Hrvatska"
               ]
             }
           ],
@@ -272,6 +458,8 @@
                 "Prima Sport RO 2 HD",
                 "Prime Video UK PPV",
                 "S Sport+ Streaming",
+                "Silk Universal HD",
+                "Solh TV",
                 "Sport 2 Czechia HD",
                 "Sport TV2 Portugal HD",
                 "SportKlub 4 Hrvatska",
@@ -408,65 +596,6 @@
         {
           "league": "Tennis",
           "match": "French Open",
-          "kick_utc": 1780563600,
-          "time": "04/06 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Sling TV",
-                "HBO Max (US)",
-                "Tennis Channel",
-                "truTV",
-                "HBO Max"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "French Open",
-          "kick_utc": 1780567200,
-          "time": "04/06 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Sling TV",
-                "HBO Max (US)",
-                "TNT",
-                "truTV",
-                "TSN+",
-                "HBO Max"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "French Open",
-          "kick_utc": 1780578000,
-          "time": "04/06 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Sling TV",
-                "HBO Max (US)",
-                "TNT",
-                "truTV",
-                "RDS",
-                "HBO Max"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "French Open",
           "kick_utc": 1780596000,
           "time": "05/06 01:00 AM",
           "tv_channels": [
@@ -505,14 +634,19 @@
         },
         {
           "league": "Tennis",
-          "match": "Birmingham Open",
-          "kick_utc": 1780570800,
-          "time": "04/06 06:00 PM",
+          "match": "French Open",
+          "kick_utc": 1780662600,
+          "time": "05/06 07:30 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "T2"
+                "Sling TV",
+                "HBO Max (US)",
+                "TNT",
+                "truTV",
+                "RDS",
+                "HBO Max"
               ]
             }
           ],
@@ -536,14 +670,13 @@
         {
           "league": "Tennis",
           "match": "Roland Garros French Open",
-          "kick_utc": 1780567200,
-          "time": "04/06 05:00 PM",
+          "kick_utc": 1780662600,
+          "time": "05/06 07:30 PM",
           "tv_channels": [
             {
               "country": "Wheresthematch",
               "channels": [
                 "TNT Sports 1",
-                "TNT Sports 4",
                 "TNT Sports Ultimate",
                 "HBO Max"
               ]
@@ -553,146 +686,34 @@
         },
         {
           "league": "Tennis",
-          "match": "Roland Garros French Open",
-          "kick_utc": 1780576200,
-          "time": "04/06 07:30 PM",
+          "match": "",
+          "kick_utc": 1780661700,
+          "time": "05/06 07:15 PM",
           "tv_channels": [
             {
-              "country": "Wheresthematch",
+              "country": "Ausport",
               "channels": [
-                "TNT Sports 1",
-                "TNT Sports 4",
-                "TNT Sports Ultimate",
-                "HBO Max"
+                "9Gem",
+                "Stan Sport"
               ]
             }
           ],
-          "source": "wheresthematch"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
-          "match": "Ténis - Grand Slam - Roland-Garros",
-          "kick_utc": 1780567200,
-          "time": "04/06 05:00 PM",
+          "match": "",
+          "kick_utc": 1780668000,
+          "time": "05/06 09:00 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "Eurosport 1 Hd Portugal"
+                "9Gem"
               ]
             }
           ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ténis - Grand Slam, Roland-Garros,",
-          "kick_utc": 1780578000,
-          "time": "04/06 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ténis - Grand Slam, Roland-Garros,",
-          "kick_utc": 1780585200,
-          "time": "04/06 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "2026 Roland-Garros Tennis",
-          "kick_utc": 1780567200,
-          "time": "04/06 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "TSN 1 Canada",
-                "TSN Hd Canada"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "2026 Roland-Garros Tennis",
-          "kick_utc": 1780578000,
-          "time": "04/06 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "TSN 1 Canada",
-                "TSN 4 Canada",
-                "TSN 4 Hd Canada",
-                "TSN Hd Canada"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ténis - Roland-Garros Courtside",
-          "kick_utc": 1780576200,
-          "time": "04/06 07:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ténis - Roland-Garros Courtside",
-          "kick_utc": 1780592400,
-          "time": "05/06 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Internationaux de France 2026",
-          "kick_utc": 1780578000,
-          "time": "04/06 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Réseau Des Sports (Rds) Canada",
-                "Réseau Des Sports (Rds) Hd Canada"
-              ]
-            }
-          ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -714,6 +735,21 @@
           "match": "Roland-Garros",
           "kick_utc": 1780594740,
           "time": "05/06 12:39 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Tipik France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Roland-Garros",
+          "kick_utc": 1780669800,
+          "time": "05/06 09:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -749,6 +785,96 @@
               "country": "Hubsport",
               "channels": [
                 "Srf Zwei France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tennis",
+          "kick_utc": 1780669800,
+          "time": "05/06 09:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Srf Zwei France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - Grand Slam, Roland-Garros,",
+          "kick_utc": 1780585200,
+          "time": "04/06 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - Grand Slam, Roland-Garros,",
+          "kick_utc": 1780662600,
+          "time": "05/06 07:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - Roland-Garros Courtside",
+          "kick_utc": 1780592400,
+          "time": "05/06 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - Roland-Garros Courtside",
+          "kick_utc": 1780660800,
+          "time": "05/06 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - Roland-Garros Courtside",
+          "kick_utc": 1780673400,
+          "time": "05/06 10:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 Hd Portugal"
               ]
             }
           ],
@@ -795,13 +921,62 @@
         {
           "league": "Tennis",
           "match": "Golf : US Open féminin",
-          "kick_utc": 1780614000,
-          "time": "05/06 06:00 AM",
+          "kick_utc": 1780614120,
+          "time": "05/06 06:02 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
                 "Canal+ Sport France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Golf : US Open féminin",
+          "kick_utc": 1780624920,
+          "time": "05/06 09:02 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Canal+ Sport France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "2026 Roland-Garros Tennis",
+          "kick_utc": 1780662600,
+          "time": "05/06 07:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "TSN 1 Canada",
+                "TSN 4 Canada",
+                "TSN 4 Hd Canada",
+                "TSN Hd Canada"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Internationaux de France 2026",
+          "kick_utc": 1780662600,
+          "time": "05/06 07:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Réseau Des Sports (Rds) Canada",
+                "Réseau Des Sports (Rds) Hd Canada"
               ]
             }
           ],
