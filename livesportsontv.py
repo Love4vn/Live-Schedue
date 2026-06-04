@@ -24,6 +24,7 @@ FOOTONSAT_URLS = [
     "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/championsleague.json",
     "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/europaleague.json",
     "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/ConferenceLeague.json",
+    "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/worldcup.json",
     "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/today.json"
 ]
 
