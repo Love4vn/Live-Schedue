@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-04 04:24 VN",
+  "updated": "2026-06-04 11:52 VN",
   "days": {
-    "20260603": {
-      "date": "Wednesday, 03/06",
+    "20260604": {
+      "date": "Thursday, 04/06",
       "games": [
         {
           "league": "Ligue 1",
@@ -74,15 +74,15 @@
         },
         {
           "league": "International Friendly",
-          "match": "Korea Republic vs El Salvador",
-          "kick_utc": 1780527600,
-          "time": "04/06 06:00 AM",
+          "match": "Slovenia vs Cyprus",
+          "kick_utc": 1780574400,
+          "time": "04/06 07:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "SporTV Brazil",
-                "SporTV Brazil"
+                "Nova Sports Start Greece",
+                "DAZN2 Germany"
               ]
             }
           ],
@@ -91,15 +91,13 @@
         {
           "league": "International Friendly",
           "match": "Slovenia vs Cyprus",
-          "kick_utc": 1780574400,
-          "time": "04/06 07:00 PM",
+          "kick_utc": 1780588800,
+          "time": "04/06 11:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "DAZN2 Germany",
-                "Nova Sports Start Greece",
-                "DAZN2 Germany"
+                "Megogo Futbol 2"
               ]
             }
           ],
@@ -130,6 +128,11 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "BBC iPlayer",
+                "BBC iPlayer 4K",
+                "BBC Sport NI Online",
+                "BBC Two Northern Ireland HD",
+                "Diema Sport HD",
                 "Diema Sport Bulgaria",
                 "Diema Sport Bulgaria"
               ]
@@ -146,6 +149,15 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Diema Sport 2 HD",
+                "Fast Sports TV Armenia",
+                "Megogo Futbol 3",
+                "Megogo Sport Ukraine HD",
+                "Okko Prime Sport HD",
+                "Premier Sports 1 Mongolia HD",
+                "Prime Video UK PPV",
+                "SÝN Sport ViaPlay HD",
+                "TV2 Sport X Dansk HD",
                 "DAZN1 Germany",
                 "Alpha TV Greece",
                 "Viaplay Sport Sweden",
@@ -164,6 +176,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Fox Soccer Plus USA",
                 "Fox Soccer Plus United States",
                 "Fox Soccer Plus United States"
               ]
@@ -180,11 +193,43 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Diema Sport 3 HD",
+                "Megogo Futbol 2",
+                "Premier Sports 2 Mongolia HD",
+                "Prime Video UK PPV",
+                "S Sport+ Streaming",
                 "Nova Sports Start Greece",
                 "TVE La 1 Spain",
                 "Polsat Sport Premium 1 Poland",
                 "MTV Urheilu 3 Finland",
                 "Nova Sports Start Greece"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "France vs Ivory Coast",
+          "kick_utc": 1780600200,
+          "time": "05/06 02:10 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Diema Sport 2 HD",
+                "Fast Sports TV Armenia",
+                "Fox Soccer Plus USA",
+                "Megogo Futbol 1",
+                "Okko Prime Sport HD",
+                "Premier Sports 5 Mongolia HD",
+                "Prime Video UK PPV",
+                "S Sport+ Streaming",
+                "SporTV Brazil HD",
+                "SÝN Sport ViaPlay HD",
+                "Virgin Media PLAY",
+                "Virgin Media Three",
+                "Virgin Media TV"
               ]
             }
           ],
@@ -204,6 +249,41 @@
                 "TF1 France",
                 "Fox Soccer Plus United States",
                 "DAZN1 Germany"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Czech Republic vs Guatemala",
+          "kick_utc": 1780617600,
+          "time": "05/06 07:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Polsat Sport 3 Poland",
+                "SporTV Brazil",
+                "Polsat Sport 3 Poland"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Mexico vs Serbia",
+          "kick_utc": 1780624800,
+          "time": "05/06 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "M. Liga de Campeones Spain",
+                "TUDN Spain",
+                "Fox Deportes Spain",
+                "M. Liga de Campeones Spain"
               ]
             }
           ],
@@ -557,6 +637,21 @@
                 "France 3 - Provence Alpes France",
                 "France 3 - Rhône-Alpes France",
                 "France 3 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Golf : US Open féminin",
+          "kick_utc": 1780614000,
+          "time": "05/06 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Canal+ Sport France"
               ]
             }
           ],
