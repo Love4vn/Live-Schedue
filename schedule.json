@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-05 17:05 VN",
+  "updated": "2026-06-05 22:21 VN",
   "days": {
     "20260605": {
       "date": "Friday, 05/06",
@@ -81,14 +81,6 @@
         },
         {
           "league": "Premier League",
-          "match": "Logan Lightning vs Capalaba Bulldogs",
-          "kick_utc": 1780655400,
-          "time": "05/06 05:30 PM",
-          "tv_channels": [],
-          "source": "sofascore"
-        },
-        {
-          "league": "Premier League",
           "match": "Brisbane Strikers vs Robina City",
           "kick_utc": 1780729200,
           "time": "06/06 02:00 PM",
@@ -126,6 +118,12 @@
           "time": "05/06 11:15 PM",
           "tv_channels": [
             {
+              "country": "Bosnia and Herzegovina",
+              "channels": [
+                "Arena Sport 2 SRB"
+              ]
+            },
+            {
               "country": "Brazil",
               "channels": [
                 "Betano"
@@ -134,8 +132,8 @@
             {
               "country": "Italy",
               "channels": [
-                "Rai 2",
-                "RaiPlay"
+                "RaiPlay",
+                "Rai 2"
               ]
             },
             {
@@ -145,10 +143,28 @@
               ]
             },
             {
+              "country": "Montenegro",
+              "channels": [
+                "Arena Sport 2 SRB"
+              ]
+            },
+            {
+              "country": "North Macedonia",
+              "channels": [
+                "Arena Sport 2 SRB"
+              ]
+            },
+            {
               "country": "San Marino",
               "channels": [
-                "Rai 2",
-                "RaiPlay"
+                "RaiPlay",
+                "Rai 2"
+              ]
+            },
+            {
+              "country": "Serbia",
+              "channels": [
+                "Arena Sport 2 SRB"
               ]
             }
           ],
@@ -163,42 +179,42 @@
             {
               "country": "Denmark",
               "channels": [
-                "SVT 1",
                 "SVT 2",
                 "SVT Play",
-                "DR1"
+                "DR1",
+                "SVT 1"
               ]
             },
             {
               "country": "Faroe Islands",
               "channels": [
-                "SVT 1",
                 "SVT 2",
-                "SVT Play"
+                "SVT Play",
+                "SVT 1"
               ]
             },
             {
               "country": "Greenland",
               "channels": [
                 "SVT 1",
-                "SVT 2",
-                "SVT Play"
+                "SVT Play",
+                "SVT 2"
               ]
             },
             {
               "country": "Norway",
               "channels": [
-                "SVT 1",
                 "SVT 2",
-                "SVT Play"
+                "SVT Play",
+                "SVT 1"
               ]
             },
             {
               "country": "Sweden",
               "channels": [
                 "SVT 1",
-                "SVT 2",
-                "SVT Play"
+                "SVT Play",
+                "SVT 2"
               ]
             }
           ],
@@ -247,23 +263,24 @@
             {
               "country": "Ireland",
               "channels": [
+                "RTE 2",
                 "RTE Player",
-                "RTE 2 +1",
-                "RTE 2"
+                "RTE 2 +1"
               ]
             },
             {
               "country": "Netherlands",
               "channels": [
-                "NPO 3",
-                "NOS Live"
+                "Canal+ Netherlands",
+                "NOS Live",
+                "NPO 3"
               ]
             },
             {
               "country": "United Kingdom",
               "channels": [
-                "RTE Player",
-                "RTE 2"
+                "RTE 2",
+                "RTE Player"
               ]
             }
           ],
@@ -286,16 +303,16 @@
             {
               "country": "Andorra",
               "channels": [
-                "Teledeporte",
-                "TVE La 1"
+                "TVE La 1",
+                "Teledeporte"
               ]
             },
             {
               "country": "Brazil",
               "channels": [
                 "Disney+",
-                "Betano",
-                "ESPN"
+                "ESPN",
+                "Betano"
               ]
             },
             {
@@ -309,8 +326,8 @@
             {
               "country": "Norway",
               "channels": [
-                "Viaplay",
-                "V Sport+ Norway"
+                "V Sport+ Norway",
+                "Viaplay"
               ]
             },
             {
@@ -328,8 +345,8 @@
             {
               "country": "Spain",
               "channels": [
-                "Teledeporte",
-                "TVE La 1"
+                "TVE La 1",
+                "Teledeporte"
               ]
             },
             {
@@ -343,8 +360,8 @@
               "channels": [
                 "STV Scotland",
                 "ITVX",
-                "STV Player",
-                "ITV"
+                "ITV",
+                "STV Player"
               ]
             },
             {
@@ -356,10 +373,10 @@
             {
               "country": "Wheresthematch",
               "channels": [
-                "STV",
-                "ITV1",
+                "STV Player",
                 "ITVX",
-                "STV Player"
+                "ITV1",
+                "STV"
               ]
             }
           ],
@@ -438,8 +455,8 @@
               "country": "Brazil",
               "channels": [
                 "Disney+",
-                "Betano",
                 "ESPN 4",
+                "Betano",
                 "DAZN"
               ]
             },
@@ -495,15 +512,15 @@
             {
               "country": "Netherlands",
               "channels": [
-                "FIFA +",
-                "Das Erste"
+                "Das Erste",
+                "FIFA +"
               ]
             },
             {
               "country": "Norway",
               "channels": [
-                "NRK TV",
-                "NRK 1"
+                "NRK 1",
+                "NRK TV"
               ]
             },
             {
@@ -540,7 +557,20 @@
           "match": "Czechia vs Albania",
           "kick_utc": 1780673400,
           "time": "05/06 10:30 PM",
-          "tv_channels": [],
+          "tv_channels": [
+            {
+              "country": "Czechia",
+              "channels": [
+                "ČT2"
+              ]
+            },
+            {
+              "country": "Slovakia",
+              "channels": [
+                "ČT2"
+              ]
+            }
+          ],
           "source": "sofascore"
         },
         {
@@ -552,25 +582,25 @@
             {
               "country": "Ireland",
               "channels": [
+                "BBC Sport Web",
                 "BBC Two Wales",
-                "BBC iPlayer",
-                "BBC Sport Web"
+                "BBC iPlayer"
               ]
             },
             {
               "country": "United Kingdom",
               "channels": [
+                "BBC Sport Web",
                 "BBC Two Wales",
-                "BBC iPlayer",
-                "BBC Sport Web"
+                "BBC iPlayer"
               ]
             },
             {
               "country": "Wheresthematch",
               "channels": [
-                "BBC iPlayer",
                 "BBC2 Wales",
-                "BBC Sport Website"
+                "BBC Sport Website",
+                "BBC iPlayer"
               ]
             }
           ],
@@ -585,22 +615,22 @@
             {
               "country": "Ireland",
               "channels": [
-                "BBC iPlayer",
-                "BBC Sport Web"
+                "BBC Sport Web",
+                "BBC iPlayer"
               ]
             },
             {
               "country": "United Kingdom",
               "channels": [
-                "BBC iPlayer",
-                "BBC Sport Web"
+                "BBC Sport Web",
+                "BBC iPlayer"
               ]
             },
             {
               "country": "Wheresthematch",
               "channels": [
-                "BBC iPlayer",
-                "BBC Sport Website"
+                "BBC Sport Website",
+                "BBC iPlayer"
               ]
             }
           ],
@@ -653,22 +683,22 @@
             {
               "country": "Ireland",
               "channels": [
-                "BBC iPlayer",
-                "BBC Sport Web"
+                "BBC Sport Web",
+                "BBC iPlayer"
               ]
             },
             {
               "country": "United Kingdom",
               "channels": [
-                "BBC iPlayer",
-                "BBC Sport Web"
+                "BBC Sport Web",
+                "BBC iPlayer"
               ]
             },
             {
               "country": "Wheresthematch",
               "channels": [
-                "BBC iPlayer",
-                "BBC Sport Website"
+                "BBC Sport Website",
+                "BBC iPlayer"
               ]
             }
           ],
@@ -681,9 +711,21 @@
           "time": "06/06 01:15 AM",
           "tv_channels": [
             {
+              "country": "Belgium",
+              "channels": [
+                "Ketnet"
+              ]
+            },
+            {
               "country": "Brazil",
               "channels": [
                 "Disney+"
+              ]
+            },
+            {
+              "country": "Netherlands",
+              "channels": [
+                "Ketnet"
               ]
             }
           ],
@@ -758,7 +800,14 @@
           "match": "Azerbaijan vs Hungary",
           "kick_utc": 1780668000,
           "time": "05/06 09:00 PM",
-          "tv_channels": [],
+          "tv_channels": [
+            {
+              "country": "Azerbaijan",
+              "channels": [
+                "CBC Sport"
+              ]
+            }
+          ],
           "source": "sofascore"
         },
         {
@@ -802,17 +851,17 @@
         },
         {
           "league": "Premier League",
-          "match": "Oleksandria vs FC Livyi Bereh Kyiv",
-          "kick_utc": 1780662600,
-          "time": "05/06 07:30 PM",
+          "match": "Kudrivka vs Ahrobiznes Volochysk",
+          "kick_utc": 1780671600,
+          "time": "05/06 10:00 PM",
           "tv_channels": [],
           "source": "sofascore"
         },
         {
-          "league": "Premier League",
-          "match": "Kudrivka vs Ahrobiznes Volochysk",
-          "kick_utc": 1780671600,
-          "time": "05/06 10:00 PM",
+          "league": "International Friendly",
+          "match": "Egypt vs Tunisia",
+          "kick_utc": 1780675200,
+          "time": "05/06 11:00 PM",
           "tv_channels": [],
           "source": "sofascore"
         },
@@ -865,6 +914,22 @@
         },
         {
           "league": "International Friendly",
+          "match": "Singapore vs Cambodia",
+          "kick_utc": 1780743600,
+          "time": "06/06 06:00 PM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "Premier League",
+          "match": "Milford FC vs Cape Town City FC",
+          "kick_utc": 1780750800,
+          "time": "06/06 08:00 PM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "International Friendly",
           "match": "Georgia vs Bahrain",
           "kick_utc": 1780675200,
           "time": "05/06 11:00 PM",
@@ -872,6 +937,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "1TV Georgia HD",
                 "Megogo Futbol 6",
                 "1TV GE",
                 "DAZN Germany"
@@ -889,8 +955,9 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Megogo Futbol 3",
                 "DAZN Germany",
-                "Megogo Futbol 3"
+                "Spíler 2 TV Hungary HD"
               ]
             }
           ],
@@ -938,6 +1005,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Arena 4 Hungary HD",
                 "Sport 1 Czech Republic",
                 "MTV Urheilu 2 Finland",
                 "Sport 1 Czech Republic"
@@ -971,8 +1039,10 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "M4 Sport Hungary HD",
                 "Megogo Futbol 5",
                 "S Sport+ Streaming",
+                "TV2 Sport X Dansk HD",
                 "M4 Sports Hungary",
                 "V Sport Premium Finland",
                 "Fox Soccer Plus United States",
@@ -1066,69 +1136,66 @@
           "source": "livesportsontv"
         },
         {
-          "league": "Tennis",
-          "match": "Birmingham Open",
-          "kick_utc": 1780651800,
-          "time": "05/06 04:30 PM",
+          "league": "International Friendly",
+          "match": "Belgium vs Tunisia",
+          "kick_utc": 1780750800,
+          "time": "06/06 08:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "T2"
+                "DAZN1 Germany",
+                "La Une Belgium",
+                "V Sport Premium Sweden",
+                "DAZN1 Germany"
               ]
             }
           ],
           "source": "livesportsontv"
         },
         {
-          "league": "Tennis",
-          "match": "Birmingham Open",
-          "kick_utc": 1780740000,
-          "time": "06/06 05:00 PM",
+          "league": "International Friendly",
+          "match": "Lithuania vs Latvia",
+          "kick_utc": 1780750800,
+          "time": "06/06 08:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "T2"
+                "Fox Soccer Plus United States",
+                "Fox Soccer Plus United States"
               ]
             }
           ],
           "source": "livesportsontv"
         },
         {
-          "league": "Tennis",
-          "match": "M. Granollers / H. Zeballos - S. Bolelli / A. Vavassori",
-          "kick_utc": 1780653600,
-          "time": "05/06 05:00 PM",
+          "league": "International Friendly",
+          "match": "Azerbaijan U21 vs Bahrain U21",
+          "kick_utc": 1780754400,
+          "time": "06/06 09:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Sling TV",
-                "HBO Max (US)",
-                "Tennis Channel",
-                "truTV",
-                "HBO Max"
+                "CBC Sport AZ"
               ]
             }
           ],
           "source": "livesportsontv"
         },
         {
-          "league": "Tennis",
-          "match": "Jakub Mensik",
-          "kick_utc": 1780662600,
-          "time": "05/06 07:30 PM",
+          "league": "International Friendly",
+          "match": "Estonia vs Faroe Islands",
+          "kick_utc": 1780758000,
+          "time": "06/06 10:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Sling TV",
-                "HBO Max (US)",
-                "TNT",
-                "truTV",
-                "RDS",
-                "HBO Max"
+                "beIN Sports English 2 Great Britain",
+                "ETV 2 EE",
+                "beIN Sports English 2 Great Britain"
               ]
             }
           ],
@@ -1176,20 +1243,38 @@
         },
         {
           "league": "Tennis",
-          "match": "Roland Garros French Open",
-          "kick_utc": 1780662600,
-          "time": "05/06 07:30 PM",
+          "match": "Birmingham Open",
+          "kick_utc": 1780740000,
+          "time": "06/06 05:00 PM",
           "tv_channels": [
             {
-              "country": "Wheresthematch",
+              "country": "LiveSportsOnTV",
               "channels": [
-                "TNT Sports 1",
-                "TNT Sports Ultimate",
+                "T2"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Maja Chwalinska",
+          "kick_utc": 1780750800,
+          "time": "06/06 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Sling TV",
+                "HBO Max (US)",
+                "TNT",
+                "truTV",
+                "TSN1",
                 "HBO Max"
               ]
             }
           ],
-          "source": "wheresthematch"
+          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
@@ -1227,61 +1312,106 @@
         },
         {
           "league": "Tennis",
-          "match": "Jakub Mensik vs Alexander Zverev",
-          "kick_utc": 1780662600,
-          "time": "05/06 07:30 PM",
+          "match": "Roland Garros French Open",
+          "kick_utc": 1780750800,
+          "time": "06/06 08:00 PM",
           "tv_channels": [
             {
-              "country": "Ausport",
+              "country": "Wheresthematch",
               "channels": [
-                "9Gem",
-                "Stan Sport"
+                "TNT Sports 1",
+                "TNT Sports Ultimate",
+                "HBO Max"
               ]
             }
           ],
-          "source": "ausport"
+          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
-          "match": "Matteo Arnaldi vs Flavio Cobolli",
-          "kick_utc": 1780678800,
-          "time": "06/06 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "9Gem",
-                "Stan Sport"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1780735500,
-          "time": "06/06 03:45 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "Stan Sport"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ténis - Roland-Garros Courtside",
-          "kick_utc": 1780660800,
-          "time": "05/06 07:00 PM",
+          "match": "Roland-Garros",
+          "kick_utc": 1780669800,
+          "time": "05/06 09:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Eurosport 1 Hd Portugal"
+                "Tipik France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Roland-Garros",
+          "kick_utc": 1780678200,
+          "time": "05/06 11:50 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Tipik France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Roland-Garros",
+          "kick_utc": 1780689300,
+          "time": "06/06 02:55 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "France 3 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Roland-Garros",
+          "kick_utc": 1780757700,
+          "time": "06/06 09:55 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Tipik France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tennis",
+          "kick_utc": 1780669800,
+          "time": "05/06 09:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Srf Zwei France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tennis",
+          "kick_utc": 1780696200,
+          "time": "06/06 04:50 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Srf Zwei France"
               ]
             }
           ],
@@ -1334,9 +1464,9 @@
         },
         {
           "league": "Tennis",
-          "match": "Ténis - Grand Slam, Roland-Garros,",
-          "kick_utc": 1780662600,
-          "time": "05/06 07:30 PM",
+          "match": "Ténis - Roland-Garros Courtside",
+          "kick_utc": 1780749000,
+          "time": "06/06 07:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -1379,17 +1509,14 @@
         },
         {
           "league": "Tennis",
-          "match": "2026 Roland-Garros Tennis",
-          "kick_utc": 1780662600,
-          "time": "05/06 07:30 PM",
+          "match": "Ténis - Grand Slam - Roland-Garros",
+          "kick_utc": 1780752600,
+          "time": "06/06 08:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "TSN 1",
-                "TSN 4",
-                "TSN 4 Hd",
-                "TSN Hd"
+                "Eurosport 1 Hd Portugal"
               ]
             }
           ],
@@ -1431,15 +1558,17 @@
         },
         {
           "league": "Tennis",
-          "match": "Internationaux de France 2026",
-          "kick_utc": 1780662600,
-          "time": "05/06 07:30 PM",
+          "match": "2026 Roland-Garros Tennis",
+          "kick_utc": 1780750800,
+          "time": "06/06 08:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Réseau Des Sports (Rds)",
-                "Réseau Des Sports (Rds) Hd"
+                "TSN 1",
+                "TSN 4",
+                "TSN 4 Hd",
+                "TSN Hd"
               ]
             }
           ],
@@ -1463,74 +1592,15 @@
         },
         {
           "league": "Tennis",
-          "match": "Roland-Garros",
-          "kick_utc": 1780669800,
-          "time": "05/06 09:30 PM",
+          "match": "Internationaux de France 2026",
+          "kick_utc": 1780750800,
+          "time": "06/06 08:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Tipik France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Roland-Garros",
-          "kick_utc": 1780678200,
-          "time": "05/06 11:50 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Tipik France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Roland-Garros",
-          "kick_utc": 1780689300,
-          "time": "06/06 02:55 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "France 3 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tennis",
-          "kick_utc": 1780669800,
-          "time": "05/06 09:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Srf Zwei France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tennis",
-          "kick_utc": 1780696200,
-          "time": "06/06 04:50 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Srf Zwei France"
+                "Rds2",
+                "Rds2 Hd"
               ]
             }
           ],
@@ -1561,6 +1631,22 @@
               "country": "Hubsport",
               "channels": [
                 "Canal+ Sport France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Asii Tenisului",
+          "kick_utc": 1780752600,
+          "time": "06/06 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 1 Hd Romania",
+                "Digi Sport 1 Romania"
               ]
             }
           ],
