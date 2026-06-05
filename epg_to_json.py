@@ -253,7 +253,7 @@ def fmt_ca2(cid):
     n = cid.replace('.ca2', '').replace('.', ' ').title()
     # Chuẩn hóa một số tên đặc biệt
     n = n.replace('Tsn', 'TSN').replace('Sportsnet', 'Sportsnet')
-    return f"{n} Canada"
+    return f"{n}"
 
 # ==================== PARSE TỪNG NGUỒN ====================
 def parse_time(s):
