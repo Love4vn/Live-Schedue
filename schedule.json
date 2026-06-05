@@ -1,9 +1,36 @@
 {
-  "updated": "2026-06-05 05:25 VN",
+  "updated": "2026-06-05 11:27 VN",
   "days": {
-    "20260604": {
-      "date": "Thursday, 04/06",
+    "20260605": {
+      "date": "Friday, 05/06",
       "games": [
+        {
+          "league": "Premier League",
+          "match": "Vancouver FC vs Atlético Ottawa",
+          "kick_utc": 1780711200,
+          "time": "06/06 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "Bermuda",
+              "channels": [
+                "Fox Soccer Plus"
+              ]
+            },
+            {
+              "country": "Canada",
+              "channels": [
+                "OneSoccer"
+              ]
+            },
+            {
+              "country": "United States",
+              "channels": [
+                "Fox Soccer Plus"
+              ]
+            }
+          ],
+          "source": "sofascore"
+        },
         {
           "league": "Ligue 1",
           "match": "ES Mostaganem vs MC El Bayadh",
@@ -67,6 +94,12 @@
           "time": "05/06 11:15 PM",
           "tv_channels": [
             {
+              "country": "Brazil",
+              "channels": [
+                "Betano"
+              ]
+            },
+            {
               "country": "Italy",
               "channels": [
                 "Rai 2"
@@ -97,9 +130,9 @@
               "country": "Denmark",
               "channels": [
                 "SVT Play",
-                "DR1",
                 "SVT 2",
-                "SVT 1"
+                "SVT 1",
+                "DR1"
               ]
             },
             {
@@ -114,8 +147,8 @@
               "country": "Greenland",
               "channels": [
                 "SVT Play",
-                "SVT 2",
-                "SVT 1"
+                "SVT 1",
+                "SVT 2"
               ]
             },
             {
@@ -130,8 +163,8 @@
               "country": "Sweden",
               "channels": [
                 "SVT Play",
-                "SVT 2",
-                "SVT 1"
+                "SVT 1",
+                "SVT 2"
               ]
             }
           ],
@@ -180,9 +213,9 @@
             {
               "country": "Ireland",
               "channels": [
-                "RTE 2 +1",
                 "RTE Player",
-                "RTE 2"
+                "RTE 2",
+                "RTE 2 +1"
               ]
             },
             {
@@ -224,6 +257,14 @@
               ]
             },
             {
+              "country": "Brazil",
+              "channels": [
+                "Betano",
+                "ESPN",
+                "Disney+"
+              ]
+            },
+            {
               "country": "Ireland",
               "channels": [
                 "ITVX",
@@ -234,6 +275,7 @@
             {
               "country": "Norway",
               "channels": [
+                "V Sport+ Norway",
                 "Viaplay"
               ]
             },
@@ -265,19 +307,25 @@
             {
               "country": "United Kingdom",
               "channels": [
+                "STV Player",
                 "ITVX",
-                "ITV",
                 "STV Scotland",
-                "STV Player"
+                "ITV"
+              ]
+            },
+            {
+              "country": "United States",
+              "channels": [
+                "CBS Sports Network"
               ]
             },
             {
               "country": "Wheresthematch",
               "channels": [
+                "STV Player",
                 "ITVX",
-                "ITV1",
                 "STV",
-                "STV Player"
+                "ITV1"
               ]
             }
           ],
@@ -353,6 +401,15 @@
               ]
             },
             {
+              "country": "Brazil",
+              "channels": [
+                "ESPN 4",
+                "Betano",
+                "DAZN",
+                "Disney+"
+              ]
+            },
+            {
               "country": "Bulgaria",
               "channels": [
                 "Das Erste"
@@ -361,8 +418,8 @@
             {
               "country": "Denmark",
               "channels": [
-                "NRK 1",
-                "Das Erste"
+                "Das Erste",
+                "NRK 1"
               ]
             },
             {
@@ -411,8 +468,8 @@
             {
               "country": "Norway",
               "channels": [
-                "NRK 1",
-                "NRK TV"
+                "NRK TV",
+                "NRK 1"
               ]
             },
             {
@@ -437,8 +494,8 @@
             {
               "country": "Wheresthematch",
               "channels": [
-                "FIFA+",
-                "DFB Play"
+                "DFB Play",
+                "FIFA+"
               ]
             }
           ],
@@ -461,25 +518,25 @@
             {
               "country": "Ireland",
               "channels": [
-                "BBC Sport Web",
                 "BBC iPlayer",
-                "BBC Two Wales"
+                "BBC Two Wales",
+                "BBC Sport Web"
               ]
             },
             {
               "country": "United Kingdom",
               "channels": [
-                "BBC Sport Web",
                 "BBC iPlayer",
-                "BBC Two Wales"
+                "BBC Two Wales",
+                "BBC Sport Web"
               ]
             },
             {
               "country": "Wheresthematch",
               "channels": [
                 "BBC iPlayer",
-                "BBC Sport Website",
-                "BBC2 Wales"
+                "BBC2 Wales",
+                "BBC Sport Website"
               ]
             }
           ],
@@ -494,15 +551,15 @@
             {
               "country": "Ireland",
               "channels": [
-                "BBC Sport Web",
-                "BBC iPlayer"
+                "BBC iPlayer",
+                "BBC Sport Web"
               ]
             },
             {
               "country": "United Kingdom",
               "channels": [
-                "BBC Sport Web",
-                "BBC iPlayer"
+                "BBC iPlayer",
+                "BBC Sport Web"
               ]
             },
             {
@@ -555,15 +612,15 @@
             {
               "country": "Ireland",
               "channels": [
-                "BBC Sport Web",
-                "BBC iPlayer"
+                "BBC iPlayer",
+                "BBC Sport Web"
               ]
             },
             {
               "country": "United Kingdom",
               "channels": [
-                "BBC Sport Web",
-                "BBC iPlayer"
+                "BBC iPlayer",
+                "BBC Sport Web"
               ]
             },
             {
@@ -581,7 +638,14 @@
           "match": "Belgium vs Luxembourg",
           "kick_utc": 1780683300,
           "time": "06/06 01:15 AM",
-          "tv_channels": [],
+          "tv_channels": [
+            {
+              "country": "Brazil",
+              "channels": [
+                "Disney+"
+              ]
+            }
+          ],
           "source": "sofascore"
         },
         {
@@ -602,6 +666,12 @@
               "country": "Afghanistan",
               "channels": [
                 "FIFA +"
+              ]
+            },
+            {
+              "country": "Brazil",
+              "channels": [
+                "DAZN"
               ]
             },
             {
@@ -710,43 +780,31 @@
           "match": "New Zealand vs Haiti",
           "kick_utc": 1780675200,
           "time": "05/06 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Brazil",
+              "channels": [
+                "Betano"
+              ]
+            }
+          ],
+          "source": "sofascore"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Panama vs Jamaica",
+          "kick_utc": 1780707600,
+          "time": "06/06 08:00 AM",
           "tv_channels": [],
           "source": "sofascore"
         },
         {
           "league": "International Friendly",
-          "match": "Czech Republic vs Guatemala",
-          "kick_utc": 1780617600,
-          "time": "05/06 07:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Polsat Sport 3 Poland",
-                "SporTV Brazil",
-                "Polsat Sport 3 Poland"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Mexico vs Serbia",
-          "kick_utc": 1780624800,
-          "time": "05/06 09:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "M. Liga de Campeones Spain",
-                "TUDN Spain",
-                "Fox Deportes Spain",
-                "M. Liga de Campeones Spain"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
+          "match": "El Salvador vs Costa Rica",
+          "kick_utc": 1780711200,
+          "time": "06/06 09:00 AM",
+          "tv_channels": [],
+          "source": "sofascore"
         },
         {
           "league": "International Friendly",
@@ -880,6 +938,56 @@
           "source": "livesportsontv"
         },
         {
+          "league": "International Friendly",
+          "match": "Puerto Rico vs Saudi Arabia",
+          "kick_utc": 1780700400,
+          "time": "06/06 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Sport TV2 Portugal",
+                "Sport TV2 Portugal"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Canada vs Ireland Republic",
+          "kick_utc": 1780702200,
+          "time": "06/06 06:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "TSN4 Canada",
+                "Fox Sports 2 United States",
+                "TSN4 Canada"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Haiti vs Peru",
+          "kick_utc": 1780704000,
+          "time": "06/06 07:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Fox Soccer Plus United States",
+                "Fox Deportes Spain",
+                "Fox Soccer Plus United States"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
           "league": "Tennis",
           "match": "Birmingham Open",
           "kick_utc": 1780651800,
@@ -989,9 +1097,9 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1780661700,
-          "time": "05/06 07:15 PM",
+          "match": "Jakub Mensik vs Alexander Zverev",
+          "kick_utc": 1780662600,
+          "time": "05/06 07:30 PM",
           "tv_channels": [
             {
               "country": "Ausport",
@@ -1005,24 +1113,9 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1780668000,
-          "time": "05/06 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "9Gem"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1780677900,
-          "time": "05/06 11:45 PM",
+          "match": "Matteo Arnaldi vs Flavio Cobolli",
+          "kick_utc": 1780678800,
+          "time": "06/06 12:00 AM",
           "tv_channels": [
             {
               "country": "Ausport",
@@ -1033,36 +1126,6 @@
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Golf : US Open féminin",
-          "kick_utc": 1780614120,
-          "time": "05/06 06:02 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Canal+ Sport France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Golf : US Open féminin",
-          "kick_utc": 1780624920,
-          "time": "05/06 09:02 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Canal+ Sport France"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -1163,10 +1226,10 @@
             {
               "country": "Hubsport",
               "channels": [
-                "TSN 1 Canada",
-                "TSN 4 Canada",
-                "TSN 4 Hd Canada",
-                "TSN Hd Canada"
+                "TSN 1",
+                "TSN 4",
+                "TSN 4 Hd",
+                "TSN Hd"
               ]
             }
           ],
@@ -1181,10 +1244,10 @@
             {
               "country": "Hubsport",
               "channels": [
-                "TSN 1 Canada",
-                "TSN 4 Canada",
-                "TSN 4 Hd Canada",
-                "TSN Hd Canada"
+                "TSN 1",
+                "TSN 4",
+                "TSN 4 Hd",
+                "TSN Hd"
               ]
             }
           ],
@@ -1199,8 +1262,8 @@
             {
               "country": "Hubsport",
               "channels": [
-                "Réseau Des Sports (Rds) Canada",
-                "Réseau Des Sports (Rds) Hd Canada"
+                "Réseau Des Sports (Rds)",
+                "Réseau Des Sports (Rds) Hd"
               ]
             }
           ],
@@ -1215,8 +1278,8 @@
             {
               "country": "Hubsport",
               "channels": [
-                "Réseau Des Sports (Rds) Canada",
-                "Réseau Des Sports (Rds) Hd Canada"
+                "Réseau Des Sports (Rds)",
+                "Réseau Des Sports (Rds) Hd"
               ]
             }
           ],
@@ -1292,6 +1355,36 @@
               "country": "Hubsport",
               "channels": [
                 "Srf Zwei France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Golf : US Open féminin",
+          "kick_utc": 1780701120,
+          "time": "06/06 06:12 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Canal+ Sport France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Golf : US Open féminin",
+          "kick_utc": 1780711920,
+          "time": "06/06 09:12 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Canal+ Sport France"
               ]
             }
           ],
