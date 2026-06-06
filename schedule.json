@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-06 05:20 VN",
+  "updated": "2026-06-06 11:09 VN",
   "days": {
-    "20260605": {
-      "date": "Friday, 05/06",
+    "20260606": {
+      "date": "Saturday, 06/06",
       "games": [
         {
           "league": "Premier League",
@@ -14,26 +14,23 @@
         },
         {
           "league": "Premier League",
-          "match": "Vancouver FC vs Atlético Ottawa",
-          "kick_utc": 1780711200,
-          "time": "06/06 09:00 AM",
+          "match": "Cavalry FC vs HFX Wanderers FC",
+          "kick_utc": 1780786800,
+          "time": "07/06 06:00 AM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "Premier League",
+          "match": "FC Supra Du Quebec vs Pacific FC",
+          "kick_utc": 1780786800,
+          "time": "07/06 06:00 AM",
           "tv_channels": [
-            {
-              "country": "Bermuda",
-              "channels": [
-                "Fox Soccer Plus"
-              ]
-            },
             {
               "country": "Canada",
               "channels": [
-                "OneSoccer"
-              ]
-            },
-            {
-              "country": "United States",
-              "channels": [
-                "Fox Soccer Plus"
+                "OneSoccer",
+                "TSN2"
               ]
             }
           ],
@@ -52,7 +49,14 @@
           "match": "MC Oran vs USM Alger",
           "kick_utc": 1780765200,
           "time": "07/06 12:00 AM",
-          "tv_channels": [],
+          "tv_channels": [
+            {
+              "country": "Algeria",
+              "channels": [
+                "TV 6"
+              ]
+            }
+          ],
           "source": "sofascore"
         },
         {
@@ -89,22 +93,6 @@
         },
         {
           "league": "International Friendly",
-          "match": "Panama vs Jamaica",
-          "kick_utc": 1780707600,
-          "time": "06/06 08:00 AM",
-          "tv_channels": [],
-          "source": "sofascore"
-        },
-        {
-          "league": "International Friendly",
-          "match": "El Salvador vs Costa Rica",
-          "kick_utc": 1780711200,
-          "time": "06/06 09:00 AM",
-          "tv_channels": [],
-          "source": "sofascore"
-        },
-        {
-          "league": "International Friendly",
           "match": "Japan vs South Africa",
           "kick_utc": 1780728600,
           "time": "06/06 01:50 PM",
@@ -134,6 +122,12 @@
           "time": "07/06 04:30 AM",
           "tv_channels": [
             {
+              "country": "Brazil",
+              "channels": [
+                "Betano"
+              ]
+            },
+            {
               "country": "United States",
               "channels": [
                 "TNT",
@@ -150,78 +144,6 @@
             }
           ],
           "source": "sofascore"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Puerto Rico vs Saudi Arabia",
-          "kick_utc": 1780700400,
-          "time": "06/06 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "stc tv sports HD 3",
-                "Sport TV2 Portugal",
-                "Sport TV2 Portugal"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Canada vs Ireland",
-          "kick_utc": 1780702200,
-          "time": "06/06 06:30 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Fox Sports 2 USA HD",
-                "M+ Fanzone HD",
-                "M+ Liga de Campeones HD",
-                "RTÉ 2 Ireland HD",
-                "RTÉ Player",
-                "TSN Canada 4 HD",
-                "TSN Canada 5 HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Canada vs Ireland Republic",
-          "kick_utc": 1780702200,
-          "time": "06/06 06:30 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "TSN4 Canada",
-                "Fox Sports 2 United States",
-                "TSN4 Canada"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Haiti vs Peru",
-          "kick_utc": 1780704000,
-          "time": "06/06 07:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Fox Soccer Plus United States",
-                "Fox Deportes Spain",
-                "Fox Soccer Plus United States"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
         },
         {
           "league": "International Friendly",
@@ -475,6 +397,24 @@
           "source": "livesportsontv"
         },
         {
+          "league": "International Friendly",
+          "match": "Argentina vs Honduras",
+          "kick_utc": 1780790400,
+          "time": "07/06 07:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "M. Liga de Campeones Spain",
+                "TyC Sports Argentina Spain",
+                "ESPN Deportes Spain",
+                "M. Liga de Campeones Spain"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
           "league": "Tennis",
           "match": "French Open",
           "kick_utc": 1780736400,
@@ -565,24 +505,9 @@
         },
         {
           "league": "Tennis",
-          "match": "Tennis",
-          "kick_utc": 1780696200,
-          "time": "06/06 04:50 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Srf Zwei France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
           "match": "Golf : US Open féminin",
-          "kick_utc": 1780701120,
-          "time": "06/06 06:12 AM",
+          "kick_utc": 1780711920,
+          "time": "06/06 09:12 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -596,8 +521,23 @@
         {
           "league": "Tennis",
           "match": "Golf : US Open féminin",
-          "kick_utc": 1780711920,
-          "time": "06/06 09:12 AM",
+          "kick_utc": 1780786860,
+          "time": "07/06 06:01 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Canal+ Sport France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Golf : US Open féminin",
+          "kick_utc": 1780797660,
+          "time": "07/06 09:01 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
