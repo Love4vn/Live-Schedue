@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-06 23:13 VN",
+  "updated": "2026-06-07 02:41 VN",
   "days": {
     "20260606": {
       "date": "Saturday, 06/06",
@@ -29,23 +29,27 @@
           "source": "sofascore"
         },
         {
-          "league": "Ligue 1",
-          "match": "Olympique Akbou vs ES Ben Aknoun",
-          "kick_utc": 1780761600,
-          "time": "06/06 11:00 PM",
-          "tv_channels": [],
-          "source": "sofascore"
-        },
-        {
-          "league": "Ligue 1",
-          "match": "MC Oran vs USM Alger",
-          "kick_utc": 1780765200,
-          "time": "07/06 12:00 AM",
+          "league": "Premier League",
+          "match": "Inter Toronto vs Forge FC",
+          "kick_utc": 1780855200,
+          "time": "08/06 01:00 AM",
           "tv_channels": [
             {
-              "country": "Algeria",
+              "country": "Bermuda",
               "channels": [
-                "TV 6"
+                "Fox Soccer Plus"
+              ]
+            },
+            {
+              "country": "Canada",
+              "channels": [
+                "OneSoccer"
+              ]
+            },
+            {
+              "country": "United States",
+              "channels": [
+                "Fox Soccer Plus"
               ]
             }
           ],
@@ -60,10 +64,10 @@
           "source": "sofascore"
         },
         {
-          "league": "International Friendly",
-          "match": "Palestine vs Malaysia",
-          "kick_utc": 1780758000,
-          "time": "06/06 10:00 PM",
+          "league": "UEFA Euro",
+          "match": "Belgium U17 vs Italy U17",
+          "kick_utc": 1780851600,
+          "time": "08/06 12:00 AM",
           "tv_channels": [],
           "source": "sofascore"
         },
@@ -82,31 +86,33 @@
             {
               "country": "United States",
               "channels": [
-                "Peacock",
-                "TNT"
+                "TNT",
+                "Peacock"
               ]
             },
             {
               "country": "LiveSportsOnTV",
               "channels": [
                 "Abu Dhabi Sports 1 HD",
-                "ON Sport 1 HD",
-                "Sporty TV Africa",
-                "Ziggo Sport 2",
-                "SuperSport 2 Albania HD",
-                "Sport TV1 Portugal",
                 "Arena Premium 1 BiH HD",
-                "SporTV Brazil HD",
-                "Ziggo Sport HD",
+                "Arena Premium 1 Srbija HD",
+                "ESPN Deportes",
+                "L´Équipe Live Foot",
                 "Match 4 Hungary HD",
-                "SporTV Brazil",
+                "ON Sport 1 HD",
+                "Polsat Sport 1 HD",
                 "Polsat Sport Extra 1 HD",
                 "Sport TV1 Portugal HD",
-                "ESPN Deportes",
-                "Polsat Sport 1 HD",
-                "L´Équipe Live Foot",
-                "Arena Premium 1 Srbija HD",
-                "ESPN Deportes Spain"
+                "SporTV Brazil HD",
+                "Sporty TV Africa",
+                "SuperSport 2 Albania HD",
+                "VG+ Sport Norge",
+                "Ziggo Sport 2",
+                "Ziggo Sport HD",
+                "Sport TV1 Portugal",
+                "SporTV Brazil",
+                "ESPN Deportes Spain",
+                "Sport TV1 Portugal"
               ]
             }
           ],
@@ -119,71 +125,6 @@
           "time": "07/06 06:00 PM",
           "tv_channels": [],
           "source": "sofascore"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Estonia vs Faroe Islands",
-          "kick_utc": 1780758000,
-          "time": "06/06 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Digi Sport 3 Romania",
-                "ETV 2 Estonia",
-                "KVF Sjónvarp Faroes",
-                "Megogo Futbol 6",
-                "Prima Sport RO 2 HD",
-                "SportKlub 1 Hrvatska HD",
-                "SportKlub 2 Slovenija",
-                "TV2 Play Norge",
-                "beIN Sports English 2 Great Britain",
-                "ETV 2 EE",
-                "beIN Sports English 2 Great Britain"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Armenia vs Kazakhstan",
-          "kick_utc": 1780761600,
-          "time": "06/06 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "beIN Sports English 1 Great Britain",
-                "beIN Sports English 1 Great Britain"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Gibraltar vs Cayman Islands",
-          "kick_utc": 1780765200,
-          "time": "07/06 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "beIN Sports MENA 7 HD",
-                "Digi Sport 4 Romania",
-                "GBC TV Gibraltar",
-                "Megogo Futbol 7",
-                "Okko Futbol HD",
-                "Prima Sport RO 2 HD",
-                "SportKlub 3 Hrvatska",
-                "TV2 Play Norge",
-                "DAZN Germany",
-                "DAZN Germany"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
         },
         {
           "league": "International Friendly",
@@ -225,8 +166,10 @@
                 "RTP 1 Portugal HD",
                 "Silk Universal HD",
                 "Sky Sport Calcio HD",
+                "Solh TV",
                 "Sony Sports TEN 2 India HD",
                 "Sport 1 Czechia HD",
+                "Sport 24 Extra HD",
                 "Sport TV1 Portugal HD",
                 "SportKlub 1 Hrvatska HD",
                 "SportKlub 2 Slovenija",
@@ -321,6 +264,7 @@
                 "A Spor Türkiye HD",
                 "Astro Football HD",
                 "Astro Grandstand HD",
+                "DAZN Canada",
                 "ESPN 1 Nederland HD",
                 "ESPN 4 Brazil HD",
                 "JOJ Šport SVK HD",
@@ -328,6 +272,7 @@
                 "M+ Fanzone HD",
                 "M+ Liga de Campeones HD",
                 "Megogo Futbol 1",
+                "NBC Universo USA",
                 "Persiana Sports 2 HD",
                 "Premier Sports 2 Ireland HD",
                 "Premier Sports 2 UK HD",
@@ -337,6 +282,8 @@
                 "RTL Österreich HD",
                 "S Sport+ Streaming",
                 "Sporty TV Africa",
+                "Telemundo USA",
+                "TNT USA",
                 "VG+ Sport Norge",
                 "TNT United States",
                 "RTL Germany",
@@ -356,38 +303,38 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "SuperSport 4 Albania HD",
-                "SportKlub 1 Slovenija HD",
+                "SRF Zwei Schweiz HD",
+                "New World Sport 3 Togo",
+                "Premier Sports 1 Mongolia HD",
+                "L´Équipe Live Foot",
+                "Diema Sport HD",
+                "Prima Sport RO 2 HD",
+                "RSI La 2 Svizzera HD",
+                "Sky Sport 2 New Zealand",
+                "Persiana Sports 3 HD",
                 "ART Motion Sport 3 HD",
-                "Megogo Futbol 3",
-                "beIN Sports MENA 8 HD",
-                "Fast Sports 2 Armenia",
-                "Arena Premium 5 BiH HD",
-                "Cytavision Sports PPV 3 HD",
-                "Sony Sports TEN 5 India HD",
+                "Play RTS Sport",
+                "SportKlub 1 Slovenija HD",
+                "Polsat Sport Premium 2 HD",
                 "RTS 2 Suisse HD",
+                "Fast Sports 2 Armenia",
+                "beIN Sports MENA 8 HD",
+                "TV2 Play Norge",
+                "SRF zwei Austria",
+                "Arena Premium 5 BiH HD",
+                "Megogo Futbol 3",
+                "Okko Futbol HD",
+                "SuperSport 4 Albania HD",
+                "Cytavision Sports PPV 3 HD",
+                "Arena Premium 4 Srbija HD",
+                "Cytavision Sports 6 HD",
+                "Prime Video UK PPV",
+                "SportKlub 2 Hrvatska",
+                "Sport TV5 Portugal HD",
                 "MTV MAX Suomi HD",
                 "Digi Sport 4 Romania",
                 "Spíler 2 TV Hungary HD",
-                "Cytavision Sports 6 HD",
-                "Prime Video UK PPV",
-                "TV2 Play Norge",
-                "Persiana Sports 3 HD",
-                "Okko Futbol HD",
-                "Play RTS Sport",
-                "SportKlub 2 Hrvatska",
-                "RSI La 2 Svizzera HD",
-                "Diema Sport HD",
-                "Premier Sports 1 Mongolia HD",
-                "Sky Sport 2 New Zealand",
-                "Prima Sport RO 2 HD",
-                "SRF zwei Austria",
-                "Arena Premium 4 Srbija HD",
-                "SRF Zwei Schweiz HD",
-                "Sport TV5 Portugal HD",
-                "L´Équipe Live Foot",
-                "Polsat Sport Premium 2 HD",
-                "New World Sport 3 Togo"
+                "Sony Sports TEN 5 India HD"
               ]
             }
           ],
@@ -417,9 +364,9 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Viaplay Sport Sweden",
+                "ITV 1 Great Britain",
                 "Fox Soccer Plus United States",
-                "ITV 1 Great Britain"
+                "Viaplay Sport Sweden"
               ]
             }
           ],
@@ -434,56 +381,59 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Sky Sport Calcio HD",
-                "TV2 Sport Premium HD",
-                "Polsat Sport Extra 2 HD",
-                "SportKlub 1 Hrvatska HD",
-                "beIN Sports MENA English 1 HD",
-                "SuperSport 1 Albania HD",
-                "UTV Northern Ireland HD",
+                "La Chaine L´Équipe HD",
+                "Cytavision Sports 3 HD",
                 "Sport 2 Czechia HD",
-                "Persiana Sport HD",
-                "Spíler 1 TV Hungary HD",
+                "L´Équipe Live Foot",
+                "Digi Sport 2 Romania HD",
                 "ITV 1 England HD",
+                "Persiana Sport HD",
+                "SporTV 3 Brazil HD",
+                "beIN Sports MENA English 1 HD",
+                "Virgin Media Three",
                 "MTV Urheilu 2 Suomi HD",
                 "Virgin Media TV",
-                "IRIB Varzesh HD",
-                "SuperSport MáXimo 1 HD",
-                "La Chaine L´Équipe HD",
-                "TV2 Sport X Dansk HD",
-                "Arena Premium 2 BiH HD",
-                "Fast Sports TV Armenia",
-                "Digi Sport 2 Romania HD",
-                "SportKlub 2 Slovenija",
-                "Virgin Media PLAY",
-                "Nova Sports Start Hellas HD",
-                "Polsat Sport Extra 1 HD",
-                "TV2 Play Norge",
-                "ViaPlay Sport Sverige HD",
-                "Prima Sport RO 1 HD",
-                "Cytavision Sports PPV 1 HD",
-                "Diema Sport 3 HD",
-                "QazSport HD",
-                "ITV X",
                 "Silk Universal HD",
-                "SuperSport PSL HD",
-                "Ziggo Sport HD",
-                "SporTV 3 Brazil HD",
                 "STV Player",
-                "Sport TV3 Portugal HD",
-                "Polsat Sport 1 HD",
-                "Premier Sports 2 Mongolia HD",
-                "ART Motion Sport 4 HD",
+                "Sport 24 At Sea HD",
+                "Polsat Sport Extra 2 HD",
+                "ViaPlay Sport Sverige HD",
+                "Diema Sport 3 HD",
                 "Megogo Futbol 2",
-                "Virgin Media Three",
-                "DAZN 1 Bar Deutsch HD",
-                "beIN Sports MENA 1 HD",
-                "STV Scotland HD",
-                "Cytavision Sports 3 HD",
                 "Okko Prime Sport HD",
-                "L´Équipe Live Foot",
+                "ART Motion Sport 4 HD",
+                "beIN Sports MENA 1 HD",
+                "Premier Sports 2 Mongolia HD",
+                "SportKlub 2 Slovenija",
+                "TV2 Sport Premium HD",
+                "Nova Sports Start Hellas HD",
+                "Ziggo Sport HD",
+                "IRIB Varzesh HD",
+                "Polsat Sport 1 HD",
+                "Polsat Sport Extra 1 HD",
+                "QazSport HD",
+                "Fast Sports TV Armenia",
+                "UTV Northern Ireland HD",
+                "Arena Premium 2 BiH HD",
+                "SportKlub 1 Hrvatska HD",
+                "SuperSport PSL HD",
+                "Fox Soccer Plus USA",
+                "Virgin Media PLAY",
+                "Sky Sport Calcio HD",
+                "Sport 24 In Flight HD",
+                "DAZN 1 Bar Deutsch HD",
+                "Spíler 1 TV Hungary HD",
+                "STV Scotland HD",
                 "Arena Premium 1 Srbija HD",
-                "New World Sport 4 Togo"
+                "SuperSport 1 Albania HD",
+                "SuperSport MáXimo 1 HD",
+                "Cytavision Sports PPV 1 HD",
+                "ITV X",
+                "New World Sport 4 Togo",
+                "Prima Sport RO 1 HD",
+                "Sport TV3 Portugal HD",
+                "TV2 Sport X Dansk HD",
+                "TV2 Play Norge"
               ]
             }
           ],
@@ -561,6 +511,7 @@
                 "ATV Türkiye HD",
                 "Digi Sport 2 Romania HD",
                 "ESPN 1 Brazil HD",
+                "Fox Soccer Plus USA",
                 "L´Équipe Live Foot",
                 "Megogo Futbol 1",
                 "Megogo Sport Ukraine HD",
@@ -593,21 +544,6 @@
                 "Fox Soccer Plus United States",
                 "TRT Spor Turkey",
                 "Diema Sport 3 Bulgaria"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Puerto Rico vs Saudi Arabia",
-          "kick_utc": 1780786800,
-          "time": "07/06 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "stc tv sports HD 3"
               ]
             }
           ],
@@ -666,16 +602,89 @@
           "source": "livesportsontv"
         },
         {
-          "league": "Tennis",
-          "match": "French Open",
-          "kick_utc": 1780759800,
-          "time": "06/06 10:30 PM",
+          "league": "International Friendly",
+          "match": "Denmark vs Ukraine",
+          "kick_utc": 1780849800,
+          "time": "07/06 11:30 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN1",
-                "TSN4"
+                "Sky Sport 9 New Zealand",
+                "TV2 Denmark Denmark",
+                "Fox Sports 2 United States",
+                "Sky Sport 9 New Zealand"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Kosovo vs Andorra",
+          "kick_utc": 1780851600,
+          "time": "08/06 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Diema Sport Bulgaria",
+                "Diema Sport Bulgaria"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Croatia vs Slovenia",
+          "kick_utc": 1780857900,
+          "time": "08/06 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Nova TV Croatia",
+                "MTV Urheilu 1 Finland",
+                "Fox Sports 2 United States",
+                "Nova TV Croatia"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Morocco vs Norway",
+          "kick_utc": 1780858800,
+          "time": "08/06 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "ITV 4 Great Britain",
+                "M. Liga de Campeones Spain",
+                "TV 2 Direkte Norway",
+                "ESPN Deportes Spain",
+                "ITV 4 Great Britain"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Greece vs Italy",
+          "kick_utc": 1780858800,
+          "time": "08/06 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Alpha TV Greece",
+                "RAI 1 Italy",
+                "DAZN Germany",
+                "Alpha TV Greece"
               ]
             }
           ],
@@ -769,66 +778,6 @@
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Roland-Garros",
-          "kick_utc": 1780757700,
-          "time": "06/06 09:55 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Tipik France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Roland-Garros",
-          "kick_utc": 1780844100,
-          "time": "07/06 09:55 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Tipik France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ténis - Roland-Garros Courtside",
-          "kick_utc": 1780759800,
-          "time": "06/06 10:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ténis - Roland-Garros Courtside",
-          "kick_utc": 1780835400,
-          "time": "07/06 07:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -956,6 +905,36 @@
         },
         {
           "league": "Tennis",
+          "match": "Ténis - Roland-Garros Courtside",
+          "kick_utc": 1780835400,
+          "time": "07/06 07:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - Roland-Garros Courtside",
+          "kick_utc": 1780849800,
+          "time": "07/06 11:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Internationaux de France 2026",
           "kick_utc": 1780837200,
           "time": "07/06 08:00 PM",
@@ -965,6 +944,21 @@
               "channels": [
                 "Rds2",
                 "Rds2 Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Roland-Garros",
+          "kick_utc": 1780844100,
+          "time": "07/06 09:55 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Tipik France"
               ]
             }
           ],
