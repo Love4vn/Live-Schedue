@@ -1,33 +1,9 @@
 {
-  "updated": "2026-06-07 05:10 VN",
+  "updated": "2026-06-07 11:46 VN",
   "days": {
-    "20260606": {
-      "date": "Saturday, 06/06",
+    "20260607": {
+      "date": "Sunday, 07/06",
       "games": [
-        {
-          "league": "Premier League",
-          "match": "Cavalry FC vs HFX Wanderers FC",
-          "kick_utc": 1780786800,
-          "time": "07/06 06:00 AM",
-          "tv_channels": [],
-          "source": "sofascore"
-        },
-        {
-          "league": "Premier League",
-          "match": "FC Supra Du Quebec vs Pacific FC",
-          "kick_utc": 1780786800,
-          "time": "07/06 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Canada",
-              "channels": [
-                "OneSoccer",
-                "TSN2"
-              ]
-            }
-          ],
-          "source": "sofascore"
-        },
         {
           "league": "Premier League",
           "match": "Inter Toronto vs Forge FC",
@@ -86,127 +62,11 @@
         },
         {
           "league": "International Friendly",
-          "match": "Brazil vs USA",
-          "kick_utc": 1780781400,
-          "time": "07/06 04:30 AM",
-          "tv_channels": [
-            {
-              "country": "Brazil",
-              "channels": [
-                "Betano"
-              ]
-            },
-            {
-              "country": "United States",
-              "channels": [
-                "TNT",
-                "Peacock"
-              ]
-            },
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Abu Dhabi Sports 1 HD",
-                "Arena Premium 1 BiH HD",
-                "Arena Premium 1 Srbija HD",
-                "ESPN Deportes",
-                "L´Équipe Live Foot",
-                "Match 4 Hungary HD",
-                "ON Sport 1 HD",
-                "Polsat Sport 1 HD",
-                "Polsat Sport Extra 1 HD",
-                "Sport TV1 Portugal HD",
-                "SporTV Brazil HD",
-                "Sporty TV Africa",
-                "SuperSport 2 Albania HD",
-                "VG+ Sport Norge",
-                "Ziggo Sport 2",
-                "Ziggo Sport HD",
-                "Sport TV1 Portugal",
-                "SporTV Brazil",
-                "ESPN Deportes Spain",
-                "Sport TV1 Portugal"
-              ]
-            }
-          ],
-          "source": "sofascore"
-        },
-        {
-          "league": "International Friendly",
           "match": "China vs Russia",
           "kick_utc": 1780830000,
           "time": "07/06 06:00 PM",
           "tv_channels": [],
           "source": "sofascore"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Venezuela vs Türkiye",
-          "kick_utc": 1780783200,
-          "time": "07/06 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "ART Motion Sport 2 HD",
-                "ATV Türkiye HD",
-                "Digi Sport 2 Romania HD",
-                "ESPN 1 Brazil HD",
-                "Fox Soccer Plus USA",
-                "L´Équipe Live Foot",
-                "Megogo Futbol 1",
-                "Megogo Sport Ukraine HD",
-                "New World Sport 1 Mauritius",
-                "Nova Sport Bulgaria HD",
-                "Okko Futbol HD",
-                "Okko Prime Sport HD",
-                "Polsat Sport Extra 2 HD",
-                "Polsat Sport Fight HD",
-                "Premier Sports 5 Mongolia HD",
-                "Sport TV2 Portugal HD",
-                "SportKlub 1 Hrvatska HD",
-                "SportKlub 1 Slovenija HD",
-                "TV2 Play Norge"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Venezuela vs Turkey",
-          "kick_utc": 1780783200,
-          "time": "07/06 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Diema Sport 3 Bulgaria",
-                "Fox Soccer Plus United States",
-                "TRT Spor Turkey",
-                "Diema Sport 3 Bulgaria"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Argentina vs Honduras",
-          "kick_utc": 1780790400,
-          "time": "07/06 07:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "M. Liga de Campeones Spain",
-                "TyC Sports Argentina Spain",
-                "ESPN Deportes Spain",
-                "M. Liga de Campeones Spain"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
         },
         {
           "league": "International Friendly",
@@ -332,6 +192,24 @@
           "source": "livesportsontv"
         },
         {
+          "league": "International Friendly",
+          "match": "Colombia vs Jordan",
+          "kick_utc": 1780873200,
+          "time": "08/06 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Sport TV1 Portugal",
+                "M. Liga de Campeones Spain",
+                "ESPN Deportes Spain",
+                "Sport TV1 Portugal"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
           "league": "Tennis",
           "match": "K. Siniakova / T. Townsend - A. Danilina / A. Krunic",
           "kick_utc": 1780822800,
@@ -422,48 +300,19 @@
         },
         {
           "league": "Tennis",
-          "match": "Golf : US Open féminin",
-          "kick_utc": 1780786860,
-          "time": "07/06 06:01 AM",
+          "match": "Flavio Cobolli vs Alexander Zverev",
+          "kick_utc": 1780837200,
+          "time": "07/06 08:00 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "Canal+ Sport France"
+                "9Gem",
+                "Stan Sport"
               ]
             }
           ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Golf : US Open féminin",
-          "kick_utc": 1780797660,
-          "time": "07/06 09:01 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Canal+ Sport France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Golf : US Open féminin",
-          "kick_utc": 1780866000,
-          "time": "08/06 04:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Canal+ Sport France"
-              ]
-            }
-          ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -600,6 +449,36 @@
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 2 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Golf : US Open féminin",
+          "kick_utc": 1780866000,
+          "time": "08/06 04:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Canal+ Sport France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Golf : US Open féminin",
+          "kick_utc": 1780876800,
+          "time": "08/06 07:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Canal+ Sport France"
               ]
             }
           ],
