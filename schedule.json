@@ -1,9 +1,25 @@
 {
-  "updated": "2026-06-08 11:50 VN",
+  "updated": "2026-06-08 18:12 VN",
   "days": {
     "20260608": {
       "date": "Monday, 08/06",
       "games": [
+        {
+          "league": "Premier League",
+          "match": "Ipswich FC vs Robina City",
+          "kick_utc": 1780997400,
+          "time": "09/06 04:30 PM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "Premier League",
+          "match": "Logan Lightning vs Redlands United",
+          "kick_utc": 1781001000,
+          "time": "09/06 05:30 PM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
         {
           "league": "International Friendly",
           "match": "Haiti vs Equatorial Guinea",
@@ -17,6 +33,70 @@
           "match": "Panama vs Jamaica",
           "kick_utc": 1780966800,
           "time": "09/06 08:00 AM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Japan vs South Africa",
+          "kick_utc": 1780986600,
+          "time": "09/06 01:30 PM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Indonesia vs Cambodia",
+          "kick_utc": 1780993800,
+          "time": "09/06 03:30 PM",
+          "tv_channels": [
+            {
+              "country": "Afghanistan",
+              "channels": [
+                "FIFA +"
+              ]
+            },
+            {
+              "country": "Indonesia",
+              "channels": [
+                "Indosiar"
+              ]
+            },
+            {
+              "country": "Netherlands",
+              "channels": [
+                "FIFA +"
+              ]
+            }
+          ],
+          "source": "sofascore"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Australia vs Mexico",
+          "kick_utc": 1780995600,
+          "time": "09/06 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Australia",
+              "channels": [
+                "Paramount+"
+              ]
+            },
+            {
+              "country": "United States",
+              "channels": [
+                "Paramount+"
+              ]
+            }
+          ],
+          "source": "sofascore"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Myanmar vs Thailand",
+          "kick_utc": 1781001000,
+          "time": "09/06 05:30 PM",
           "tv_channels": [],
           "source": "sofascore"
         },
@@ -61,6 +141,12 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Arena Premium 2 Srbija HD",
+                "L´Équipe Live Foot",
+                "Polsat Sport 3 HD",
+                "QazSport HD",
+                "TV2 Play Norge",
+                "TV2 Sport 2 Norge HD",
                 "TV 2 Sport 2 Norway",
                 "Viaplay Sport Sweden",
                 "Fox Soccer Plus United States",
@@ -80,6 +166,25 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Arena Premium 3 Srbija HD",
+                "BBC iPlayer",
+                "BBC Sport",
+                "BBC Sport Website",
+                "BBC Three HD",
+                "BBC Two Northern Ireland HD",
+                "Polsat Sport 2 HD",
+                "Sky Sport Calcio HD",
+                "Sky Sport Uno Italia HD",
+                "Sport TV1 Portugal HD",
+                "TF1 4K UHD",
+                "TF1 France HD",
+                "TF1 Suisse HD",
+                "TV2 Play Norge",
+                "TV2 Sport 1 Norge HD",
+                "Virgin Media PLAY",
+                "Virgin Media Three",
+                "Virgin Media TV",
+                "Ziggo Sport 2",
                 "TF1 France",
                 "MTV Urheilu 1 Finland",
                 "V Sport Premium Sweden",
@@ -125,6 +230,21 @@
         },
         {
           "league": "Tennis",
+          "match": "Libema Open",
+          "kick_utc": 1780921800,
+          "time": "08/06 07:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "TSN+"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
           "match": "Stuttgart Open",
           "kick_utc": 1780938000,
           "time": "09/06 12:00 AM",
@@ -137,21 +257,6 @@
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP Tennis",
-          "kick_utc": 1780909200,
-          "time": "08/06 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Tennis"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
@@ -191,63 +296,18 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP World Tour 250 - Estugarda",
-          "kick_utc": 1780909140,
-          "time": "08/06 03:59 PM",
+          "match": "ATP Tennis",
+          "kick_utc": 1780995600,
+          "time": "09/06 04:00 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Wheresthematch",
               "channels": [
-                "Sport Tv3 Hd Portugal"
+                "Sky Sports Tennis"
               ]
             }
           ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Estugarda",
-          "kick_utc": 1780930800,
-          "time": "08/06 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - S-Hertogenbosch",
-          "kick_utc": 1780909200,
-          "time": "08/06 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - S-Hertogenbosch",
-          "kick_utc": 1780930800,
-          "time": "08/06 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
+          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
@@ -274,8 +334,7 @@
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
+                "Digi Sport 2 Hd Romania"
               ]
             }
           ],
@@ -361,16 +420,119 @@
         },
         {
           "league": "Tennis",
-          "match": "Libéma Open vs 'S vs Hertogenbosch",
-          "kick_utc": 1780909200,
-          "time": "08/06 04:00 PM",
+          "match": "ATP World Tour 250 - Estugarda",
+          "kick_utc": 1780930800,
+          "time": "08/06 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Estugarda",
+          "kick_utc": 1780995540,
+          "time": "09/06 03:59 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - S-Hertogenbosch",
+          "kick_utc": 1780930800,
+          "time": "08/06 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - S-Hertogenbosch",
+          "kick_utc": 1780995600,
+          "time": "09/06 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "WTA Londra (ziua 1) Jaqueline Cristian - Qinwen Zheng",
+          "kick_utc": 1780930800,
+          "time": "08/06 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "The HSBC Championships E1",
+          "kick_utc": 1780920000,
+          "time": "08/06 07:00 PM",
           "tv_channels": [
             {
               "country": "NowTV",
               "channels": [
-                "Ziggo Sport",
-                "Ziggo Sport 4",
-                "Ziggo Sport Kanaal 14"
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Boss Open - Stuttgart",
+          "kick_utc": 1780923600,
+          "time": "08/06 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 5"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Boss Open - Stuttgart",
+          "kick_utc": 1780995600,
+          "time": "09/06 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 5"
               ]
             }
           ],
@@ -395,44 +557,16 @@
         },
         {
           "league": "Tennis",
-          "match": ": Boss Open - Stuttgart",
-          "kick_utc": 1780909200,
-          "time": "08/06 04:00 PM",
+          "match": "Libéma Open vs 'S vs Hertogenbosch",
+          "kick_utc": 1780995600,
+          "time": "09/06 04:00 PM",
           "tv_channels": [
             {
               "country": "NowTV",
               "channels": [
-                "Ziggo Sport 5"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": ": Boss Open - Stuttgart",
-          "kick_utc": 1780923600,
-          "time": "08/06 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 5"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "The HSBC Championships E1",
-          "kick_utc": 1780920000,
-          "time": "08/06 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports 4"
+                "Ziggo Sport",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
               ]
             }
           ],
