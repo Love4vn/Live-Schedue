@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-08 05:12 VN",
+  "updated": "2026-06-08 11:50 VN",
   "days": {
-    "20260607": {
-      "date": "Sunday, 07/06",
+    "20260608": {
+      "date": "Monday, 08/06",
       "games": [
         {
           "league": "International Friendly",
@@ -14,28 +14,11 @@
         },
         {
           "league": "International Friendly",
-          "match": "Colombia vs Jordan",
-          "kick_utc": 1780873200,
-          "time": "08/06 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "ESPN Deportes",
-                "Jordan Sport HD",
-                "M+ Fanzone HD",
-                "M+ Liga de Campeones HD",
-                "Sport TV1 Portugal HD",
-                "SporTV Brazil HD",
-                "TLN Canada",
-                "Sport TV1 Portugal",
-                "M. Liga de Campeones Spain",
-                "ESPN Deportes Spain",
-                "Sport TV1 Portugal"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
+          "match": "Panama vs Jamaica",
+          "kick_utc": 1780966800,
+          "time": "09/06 08:00 AM",
+          "tv_channels": [],
+          "source": "sofascore"
         },
         {
           "league": "International Friendly",
@@ -102,6 +85,24 @@
                 "V Sport Premium Sweden",
                 "Fox Sports 2 United States",
                 "TF1 France"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Peru vs Spain",
+          "kick_utc": 1780970400,
+          "time": "09/06 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Sport TV1 Portugal",
+                "TVE La 1 Spain",
+                "Fox Sports 2 United States",
+                "Sport TV1 Portugal"
               ]
             }
           ],
@@ -187,36 +188,6 @@
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Golf : US Open féminin",
-          "kick_utc": 1780866000,
-          "time": "08/06 04:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Canal+ Sport France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Golf : US Open féminin",
-          "kick_utc": 1780876800,
-          "time": "08/06 07:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Canal+ Sport France"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
