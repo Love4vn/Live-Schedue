@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-08 23:09 VN",
+  "updated": "2026-06-09 03:27 VN",
   "days": {
     "20260608": {
       "date": "Monday, 08/06",
@@ -21,83 +21,426 @@
           "source": "sofascore"
         },
         {
-          "league": "International Friendly",
-          "match": "Haiti vs Equatorial Guinea",
-          "kick_utc": 1780934400,
-          "time": "08/06 11:00 PM",
-          "tv_channels": [],
-          "source": "sofascore"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Panama vs Jamaica",
-          "kick_utc": 1780966800,
-          "time": "09/06 08:00 AM",
-          "tv_channels": [],
-          "source": "sofascore"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Japan vs South Africa",
-          "kick_utc": 1780986600,
-          "time": "09/06 01:30 PM",
-          "tv_channels": [],
-          "source": "sofascore"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Indonesia vs Cambodia",
-          "kick_utc": 1780993800,
-          "time": "09/06 03:30 PM",
+          "league": "FIFA World Cup",
+          "match": "Serbia vs Denmark",
+          "kick_utc": 1781024400,
+          "time": "10/06 12:00 AM",
           "tv_channels": [
             {
-              "country": "Afghanistan",
+              "country": "Bosnia and Herzegovina",
               "channels": [
-                "FIFA +"
+                "Arena Sport Premium 1"
               ]
             },
             {
-              "country": "Indonesia",
+              "country": "Denmark",
               "channels": [
-                "Indosiar"
+                "DR 1"
+              ]
+            },
+            {
+              "country": "Faroe Islands",
+              "channels": [
+                "DR 1"
+              ]
+            },
+            {
+              "country": "Greenland",
+              "channels": [
+                "DR 1"
+              ]
+            },
+            {
+              "country": "North Macedonia",
+              "channels": [
+                "Arena Sport Premium 1"
+              ]
+            },
+            {
+              "country": "Serbia",
+              "channels": [
+                "Arena Sport Premium 1"
+              ]
+            }
+          ],
+          "source": "sofascore"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Sweden vs Italy",
+          "kick_utc": 1781024400,
+          "time": "10/06 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Argentina",
+              "channels": [
+                "ESPN 2 Sur"
+              ]
+            },
+            {
+              "country": "Bolivia, Plurinational State of",
+              "channels": [
+                "Disney+ Premium Chile",
+                "ESPN 2 Sur"
+              ]
+            },
+            {
+              "country": "Brazil",
+              "channels": [
+                "Disney+",
+                "ESPN 4"
+              ]
+            },
+            {
+              "country": "Chile",
+              "channels": [
+                "Disney+ Premium Chile",
+                "ESPN 2 Sur"
+              ]
+            },
+            {
+              "country": "Czechia",
+              "channels": [
+                "Nova Sport 6"
+              ]
+            },
+            {
+              "country": "Denmark",
+              "channels": [
+                "SVT 2",
+                "SVT Play"
+              ]
+            },
+            {
+              "country": "Ecuador",
+              "channels": [
+                "ESPN 2 Sur"
+              ]
+            },
+            {
+              "country": "Faroe Islands",
+              "channels": [
+                "SVT 2",
+                "SVT Play"
+              ]
+            },
+            {
+              "country": "Greenland",
+              "channels": [
+                "SVT 2",
+                "SVT Play"
+              ]
+            },
+            {
+              "country": "Italy",
+              "channels": [
+                "Rai 2"
+              ]
+            },
+            {
+              "country": "Malta",
+              "channels": [
+                "Rai 2"
+              ]
+            },
+            {
+              "country": "Norway",
+              "channels": [
+                "SVT 2",
+                "SVT Play"
+              ]
+            },
+            {
+              "country": "Paraguay",
+              "channels": [
+                "ESPN 2 Sur"
+              ]
+            },
+            {
+              "country": "Peru",
+              "channels": [
+                "Disney+ Premium Chile",
+                "ESPN 2 Sur"
+              ]
+            },
+            {
+              "country": "Poland",
+              "channels": [
+                "Polsat Sport 2"
+              ]
+            },
+            {
+              "country": "San Marino",
+              "channels": [
+                "Rai 2"
+              ]
+            },
+            {
+              "country": "Slovakia",
+              "channels": [
+                "Nova Sport 6"
+              ]
+            },
+            {
+              "country": "Sweden",
+              "channels": [
+                "SVT 2",
+                "SVT Play"
+              ]
+            },
+            {
+              "country": "Uruguay",
+              "channels": [
+                "ESPN 2 Sur"
+              ]
+            }
+          ],
+          "source": "sofascore"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "France vs Ireland",
+          "kick_utc": 1781031600,
+          "time": "10/06 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Argentina",
+              "channels": [
+                "ESPN 2 Sur"
+              ]
+            },
+            {
+              "country": "Bolivia, Plurinational State of",
+              "channels": [
+                "Disney+ Premium Chile",
+                "ESPN 2 Sur"
+              ]
+            },
+            {
+              "country": "Brazil",
+              "channels": [
+                "Disney+",
+                "ESPN 4"
+              ]
+            },
+            {
+              "country": "Chile",
+              "channels": [
+                "Disney+ Premium Chile",
+                "ESPN 2 Sur"
+              ]
+            },
+            {
+              "country": "Czechia",
+              "channels": [
+                "Nova Sport 2"
+              ]
+            },
+            {
+              "country": "Ecuador",
+              "channels": [
+                "ESPN 2 Sur"
+              ]
+            },
+            {
+              "country": "France",
+              "channels": [
+                "France 4"
+              ]
+            },
+            {
+              "country": "Ireland",
+              "channels": [
+                "RTE Player",
+                "RTE 2"
+              ]
+            },
+            {
+              "country": "Paraguay",
+              "channels": [
+                "ESPN 2 Sur"
+              ]
+            },
+            {
+              "country": "Peru",
+              "channels": [
+                "Disney+ Premium Chile",
+                "ESPN 2 Sur"
+              ]
+            },
+            {
+              "country": "Poland",
+              "channels": [
+                "Polsat Sport 3"
+              ]
+            },
+            {
+              "country": "Slovakia",
+              "channels": [
+                "Nova Sport 2"
+              ]
+            },
+            {
+              "country": "United Kingdom",
+              "channels": [
+                "RTE Player",
+                "RTE 2"
+              ]
+            },
+            {
+              "country": "Uruguay",
+              "channels": [
+                "ESPN 2 Sur"
+              ]
+            }
+          ],
+          "source": "sofascore"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Netherlands vs Poland",
+          "kick_utc": 1781031600,
+          "time": "10/06 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Aruba",
+              "channels": [
+                "NOS Live"
+              ]
+            },
+            {
+              "country": "Cyprus",
+              "channels": [
+                "Cablenet Sports 3"
               ]
             },
             {
               "country": "Netherlands",
               "channels": [
-                "FIFA +"
-              ]
-            }
-          ],
-          "source": "sofascore"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Australia vs Mexico",
-          "kick_utc": 1780995600,
-          "time": "09/06 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Australia",
-              "channels": [
-                "Paramount+"
+                "NPO 3",
+                "NOS Live"
               ]
             },
             {
-              "country": "United States",
+              "country": "Poland",
               "channels": [
-                "Paramount+"
+                "TVP Sport HD"
               ]
             }
           ],
           "source": "sofascore"
         },
         {
-          "league": "International Friendly",
-          "match": "Myanmar vs Thailand",
-          "kick_utc": 1781001000,
-          "time": "09/06 05:30 PM",
-          "tv_channels": [],
+          "league": "FIFA World Cup",
+          "match": "England vs Ukraine",
+          "kick_utc": 1781031600,
+          "time": "10/06 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Bolivia, Plurinational State of",
+              "channels": [
+                "Disney+ Premium Chile"
+              ]
+            },
+            {
+              "country": "Brazil",
+              "channels": [
+                "Disney+",
+                "ESPN"
+              ]
+            },
+            {
+              "country": "Chile",
+              "channels": [
+                "Disney+ Premium Chile"
+              ]
+            },
+            {
+              "country": "Czechia",
+              "channels": [
+                "Nova Sport 1"
+              ]
+            },
+            {
+              "country": "Ireland",
+              "channels": [
+                "ITVX",
+                "ITV",
+                "STV Scotland"
+              ]
+            },
+            {
+              "country": "Peru",
+              "channels": [
+                "Disney+ Premium Chile"
+              ]
+            },
+            {
+              "country": "Poland",
+              "channels": [
+                "Polsat Sport 2"
+              ]
+            },
+            {
+              "country": "Sint Maarten (Dutch part)",
+              "channels": [
+                "STV Player"
+              ]
+            },
+            {
+              "country": "Slovakia",
+              "channels": [
+                "Nova Sport 1"
+              ]
+            },
+            {
+              "country": "United Kingdom",
+              "channels": [
+                "ITVX",
+                "ITV",
+                "STV Scotland",
+                "STV Player"
+              ]
+            },
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "ITVX",
+                "ITV1",
+                "STV",
+                "STV Player"
+              ]
+            }
+          ],
+          "source": "sofascore"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Iceland vs Spain",
+          "kick_utc": 1781031600,
+          "time": "10/06 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Andorra",
+              "channels": [
+                "Teledeporte",
+                "RTVE Play"
+              ]
+            },
+            {
+              "country": "Spain",
+              "channels": [
+                "Teledeporte",
+                "RTVE Play"
+              ]
+            },
+            {
+              "country": "Switzerland",
+              "channels": [
+                "Teledeporte"
+              ]
+            }
+          ],
           "source": "sofascore"
         },
         {
@@ -115,8 +458,8 @@
             {
               "country": "Norway",
               "channels": [
-                "TV2 Play",
-                "TV 2 Direkte"
+                "TV 2 Direkte",
+                "TV2 Play"
               ]
             },
             {
@@ -155,7 +498,8 @@
             {
               "country": "Brazil",
               "channels": [
-                "FIFA+"
+                "FIFA+",
+                "DAZN"
               ]
             },
             {
@@ -339,6 +683,241 @@
           "source": "sofascore"
         },
         {
+          "league": "FIFA World Cup",
+          "match": "Albania vs Montenegro",
+          "kick_utc": 1781024400,
+          "time": "10/06 12:00 AM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Wales vs Czechia",
+          "kick_utc": 1781024400,
+          "time": "10/06 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Czechia",
+              "channels": [
+                "ČT Sport"
+              ]
+            },
+            {
+              "country": "Ireland",
+              "channels": [
+                "BBC Two Wales",
+                "BBC iPlayer",
+                "BBC Sport Web"
+              ]
+            },
+            {
+              "country": "Slovakia",
+              "channels": [
+                "ČT Sport"
+              ]
+            },
+            {
+              "country": "United Kingdom",
+              "channels": [
+                "BBC Sport Web",
+                "BBC Two Wales",
+                "BBC iPlayer"
+              ]
+            }
+          ],
+          "source": "sofascore"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Malta vs Türkiye",
+          "kick_utc": 1781024400,
+          "time": "10/06 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Türkiye",
+              "channels": [
+                "TRT Spor Yildiz"
+              ]
+            }
+          ],
+          "source": "sofascore"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Northern Ireland vs Switzerland",
+          "kick_utc": 1781024400,
+          "time": "10/06 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Germany",
+              "channels": [
+                "SRF zwei"
+              ]
+            },
+            {
+              "country": "Ireland",
+              "channels": [
+                "BBC iPlayer",
+                "BBC Sport Web"
+              ]
+            },
+            {
+              "country": "Switzerland",
+              "channels": [
+                "SRF zwei"
+              ]
+            },
+            {
+              "country": "United Kingdom",
+              "channels": [
+                "BBC Sport Web",
+                "BBC iPlayer"
+              ]
+            },
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "BBC iPlayer",
+                "BBC Sport Website"
+              ]
+            }
+          ],
+          "source": "sofascore"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Finland vs Portugal",
+          "kick_utc": 1781024400,
+          "time": "10/06 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Portugal",
+              "channels": [
+                "Canal 11"
+              ]
+            }
+          ],
+          "source": "sofascore"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Latvia vs Slovakia",
+          "kick_utc": 1781024400,
+          "time": "10/06 12:00 AM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Israel vs Scotland",
+          "kick_utc": 1781024400,
+          "time": "10/06 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ireland",
+              "channels": [
+                "BBC iPlayer",
+                "BBC Sport Web"
+              ]
+            },
+            {
+              "country": "United Kingdom",
+              "channels": [
+                "BBC Sport Web",
+                "BBC iPlayer"
+              ]
+            },
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "BBC iPlayer",
+                "BBC Sport Website"
+              ]
+            }
+          ],
+          "source": "sofascore"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Luxembourg vs Belgium",
+          "kick_utc": 1781024400,
+          "time": "10/06 12:00 AM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Estonia vs Bosnia & Herzegovina",
+          "kick_utc": 1781024400,
+          "time": "10/06 12:00 AM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Lithuania vs Liechtenstein",
+          "kick_utc": 1781024400,
+          "time": "10/06 12:00 AM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Croatia vs Bulgaria",
+          "kick_utc": 1781024400,
+          "time": "10/06 12:00 AM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Gibraltar vs Kosovo",
+          "kick_utc": 1781024400,
+          "time": "10/06 12:00 AM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Hungary vs Andorra",
+          "kick_utc": 1781024400,
+          "time": "10/06 12:00 AM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "North Macedonia vs Azerbaijan",
+          "kick_utc": 1781024400,
+          "time": "10/06 12:00 AM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Georgia vs Greece",
+          "kick_utc": 1781024400,
+          "time": "10/06 12:00 AM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Cyprus vs Moldova",
+          "kick_utc": 1781024400,
+          "time": "10/06 12:00 AM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Belarus vs Armenia",
+          "kick_utc": 1781024400,
+          "time": "10/06 12:00 AM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
           "league": "Premier League",
           "match": "FC Livyi Bereh Kyiv vs Oleksandria",
           "kick_utc": 1781008200,
@@ -356,6 +935,84 @@
         },
         {
           "league": "International Friendly",
+          "match": "Panama vs Jamaica",
+          "kick_utc": 1780966800,
+          "time": "09/06 08:00 AM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Japan vs South Africa",
+          "kick_utc": 1780986600,
+          "time": "09/06 01:30 PM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Indonesia vs Cambodia",
+          "kick_utc": 1780993800,
+          "time": "09/06 03:30 PM",
+          "tv_channels": [
+            {
+              "country": "Afghanistan",
+              "channels": [
+                "FIFA +"
+              ]
+            },
+            {
+              "country": "Brazil",
+              "channels": [
+                "DAZN"
+              ]
+            },
+            {
+              "country": "Indonesia",
+              "channels": [
+                "Indosiar"
+              ]
+            },
+            {
+              "country": "Netherlands",
+              "channels": [
+                "FIFA +"
+              ]
+            }
+          ],
+          "source": "sofascore"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Australia vs Mexico",
+          "kick_utc": 1780995600,
+          "time": "09/06 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Australia",
+              "channels": [
+                "Paramount+"
+              ]
+            },
+            {
+              "country": "United States",
+              "channels": [
+                "Paramount+"
+              ]
+            }
+          ],
+          "source": "sofascore"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Myanmar vs Thailand",
+          "kick_utc": 1781001000,
+          "time": "09/06 05:30 PM",
+          "tv_channels": [],
+          "source": "sofascore"
+        },
+        {
+          "league": "International Friendly",
           "match": "Jordan vs Palestine",
           "kick_utc": 1781017200,
           "time": "09/06 10:00 PM",
@@ -363,7 +1020,6 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Palestine Sport Saudi Arabia",
                 "Palestine Sport Saudi Arabia"
               ]
             }
@@ -377,38 +1033,6 @@
           "time": "09/06 11:00 PM",
           "tv_channels": [],
           "source": "sofascore"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Norway U21 vs Finland U21",
-          "kick_utc": 1780934400,
-          "time": "08/06 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "TV2 Sport Norway",
-                "TV2 Sport Norway"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Italy U21 vs Albania U21",
-          "kick_utc": 1780935300,
-          "time": "08/06 11:15 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Rai 2 Italy",
-                "Rai 2 Italy"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
         },
         {
           "league": "International Friendly",
@@ -499,19 +1123,71 @@
           "source": "livesportsontv"
         },
         {
-          "league": "Tennis",
-          "match": "Stuttgart Open",
-          "kick_utc": 1780938000,
-          "time": "09/06 12:00 AM",
+          "league": "International Friendly",
+          "match": "Belarus vs Burkina Faso",
+          "kick_utc": 1781022600,
+          "time": "09/06 11:30 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Tennis Channel"
+                "Fox Soccer Plus United States",
+                "Fox Soccer Plus United States"
               ]
             }
           ],
           "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Hungary vs Kazakhstan",
+          "kick_utc": 1781024400,
+          "time": "10/06 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "M4 Sports Hungary",
+                "Fox Sports 2 United States",
+                "M4 Sports Hungary"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Azerbaijan vs San Marino",
+          "kick_utc": 1781028000,
+          "time": "10/06 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Diema Sport 3 Bulgaria",
+                "CBC Sport AZ",
+                "Diema Sport 3 Bulgaria"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Wales-Women vs Czech-Republic-Women",
+          "kick_utc": 1781024400,
+          "time": "10/06 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "BBC iPlayer",
+                "BBC2 Wales",
+                "BBC Sport Website"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
@@ -530,17 +1206,29 @@
         },
         {
           "league": "Tennis",
-          "match": "Queens Club Championships",
-          "kick_utc": 1780938000,
-          "time": "09/06 12:00 AM",
+          "match": "Stuttgart Open",
+          "kick_utc": 1781024400,
+          "time": "10/06 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP Tennis",
+          "kick_utc": 1780995600,
+          "time": "09/06 04:00 PM",
           "tv_channels": [
             {
               "country": "Wheresthematch",
               "channels": [
-                "BBC iPlayer",
-                "Tennis Channel",
-                "BBC Sport Website",
-                "BBC Red Button"
+                "Sky Sports Tennis"
               ]
             }
           ],
@@ -566,14 +1254,17 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP Tennis",
-          "kick_utc": 1780995600,
-          "time": "09/06 04:00 PM",
+          "match": "Queens Club Championships",
+          "kick_utc": 1781024400,
+          "time": "10/06 12:00 AM",
           "tv_channels": [
             {
               "country": "Wheresthematch",
               "channels": [
-                "Sky Sports Tennis"
+                "BBC iPlayer",
+                "Tennis Channel",
+                "BBC Sport Website",
+                "BBC Red Button"
               ]
             }
           ],
@@ -631,140 +1322,19 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP World Tour 250 - Estugarda",
-          "kick_utc": 1780930800,
-          "time": "08/06 10:00 PM",
+          "match": "",
+          "kick_utc": 1781022600,
+          "time": "09/06 11:30 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "Sport Tv3 Hd Portugal"
+                "beIN Sports Connect",
+                "beIN SPORTS 3"
               ]
             }
           ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Estugarda",
-          "kick_utc": 1780995540,
-          "time": "09/06 03:59 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Estugarda",
-          "kick_utc": 1781017200,
-          "time": "09/06 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - S-Hertogenbosch",
-          "kick_utc": 1780930800,
-          "time": "08/06 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - S-Hertogenbosch",
-          "kick_utc": 1780995600,
-          "time": "09/06 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - S-Hertogenbosch",
-          "kick_utc": 1781017200,
-          "time": "09/06 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "WTA Londra (ziua 1) Jaqueline Cristian - Qinwen Zheng",
-          "kick_utc": 1780930800,
-          "time": "08/06 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1780934400,
-          "time": "08/06 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1780941600,
-          "time": "09/06 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -832,9 +1402,115 @@
         },
         {
           "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1781028000,
+          "time": "10/06 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1781035200,
+          "time": "10/06 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Estugarda",
+          "kick_utc": 1780995540,
+          "time": "09/06 03:59 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Estugarda",
+          "kick_utc": 1781017200,
+          "time": "09/06 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - S-Hertogenbosch",
+          "kick_utc": 1780995600,
+          "time": "09/06 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - S-Hertogenbosch",
+          "kick_utc": 1781017200,
+          "time": "09/06 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Tournoi WTA du Queen's",
           "kick_utc": 1781013600,
           "time": "09/06 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "beIN Sports 2 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi WTA du Queen's",
+          "kick_utc": 1781035200,
+          "time": "10/06 03:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -929,6 +1605,21 @@
           "match": "The HSBC Championships E2",
           "kick_utc": 1781006400,
           "time": "09/06 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "The HSBC Championships E3",
+          "kick_utc": 1781022600,
+          "time": "09/06 11:30 PM",
           "tv_channels": [
             {
               "country": "NowTV",
