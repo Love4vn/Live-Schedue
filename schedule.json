@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-10 05:41 VN",
+  "updated": "2026-06-10 11:24 VN",
   "days": {
-    "20260609": {
-      "date": "Tuesday, 09/06",
+    "20260610": {
+      "date": "Wednesday, 10/06",
       "games": [
         {
           "league": "Premier League",
@@ -14,59 +14,52 @@
         },
         {
           "league": "Premier League",
-          "match": "Atlético Ottawa vs FC Supra Du Quebec",
-          "kick_utc": 1781046000,
-          "time": "10/06 06:00 AM",
+          "match": "Forge FC vs HFX Wanderers FC",
+          "kick_utc": 1781132400,
+          "time": "11/06 06:00 AM",
           "tv_channels": [
             {
               "country": "Canada",
               "channels": [
-                "TSN5",
-                "TSN3",
-                "OneSoccer"
-              ]
-            }
-          ],
-          "source": "sofascore"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Guatemala vs El Salvador",
-          "kick_utc": 1781038800,
-          "time": "10/06 04:00 AM",
-          "tv_channels": [],
-          "source": "sofascore"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Brazil vs USA",
-          "kick_utc": 1781051400,
-          "time": "10/06 07:30 AM",
-          "tv_channels": [
-            {
-              "country": "Brazil",
-              "channels": [
-                "TV Globo",
-                "Globoplay",
-                "GE TV",
-                "Sportv"
+                "OneSoccer",
+                "TSN3"
               ]
             },
             {
               "country": "United States",
               "channels": [
-                "Peacock",
-                "TNT"
+                "Fox Sports 2"
               ]
             }
           ],
           "source": "sofascore"
         },
         {
-          "league": "International Friendly",
-          "match": "Costa Rica vs Canada",
-          "kick_utc": 1781055000,
-          "time": "10/06 08:30 AM",
+          "league": "Premier League",
+          "match": "Inter Toronto vs Cavalry FC",
+          "kick_utc": 1781134200,
+          "time": "11/06 06:30 AM",
+          "tv_channels": [
+            {
+              "country": "Bermuda",
+              "channels": [
+                "Fox Soccer Plus"
+              ]
+            },
+            {
+              "country": "United States",
+              "channels": [
+                "Fox Soccer Plus"
+              ]
+            }
+          ],
+          "source": "sofascore"
+        },
+        {
+          "league": "Premier League",
+          "match": "Vancouver FC vs Pacific FC",
+          "kick_utc": 1781143200,
+          "time": "11/06 09:00 AM",
           "tv_channels": [],
           "source": "sofascore"
         },
@@ -77,56 +70,6 @@
           "time": "10/06 07:00 PM",
           "tv_channels": [],
           "source": "sofascore"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Saudi Arabia vs Senegal",
-          "kick_utc": 1781046000,
-          "time": "10/06 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "RTS 1 Senegal HD",
-                "stc tv sports HD 3"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Argentina vs Iceland",
-          "kick_utc": 1781053200,
-          "time": "10/06 08:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "ESPN United States",
-                "Fox Soccer Plus United States",
-                "ESPN Deportes Spain",
-                "ESPN United States"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Iraq vs Venezuela",
-          "kick_utc": 1781053200,
-          "time": "10/06 08:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Al Iraqiya Sports Saudi Arabia",
-                "Al Iraqiya Sports Saudi Arabia"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
         },
         {
           "league": "International Friendly",
@@ -230,6 +173,72 @@
             }
           ],
           "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1781082000,
+          "time": "10/06 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN SPORTS 2",
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1781087400,
+          "time": "10/06 05:30 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 3"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1781096400,
+          "time": "10/06 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN SPORTS 2",
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1781109000,
+          "time": "10/06 11:30 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 3"
+              ]
+            }
+          ],
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -433,6 +442,21 @@
         },
         {
           "league": "Tennis",
+          "match": "HSBC BWF World Tour 2026 SATHIO GROUP Australian Open (S500) R16 Session 1",
+          "kick_utc": 1781143200,
+          "time": "11/06 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Hub Sports 1  HD"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Libéma Open vs 'S vs Hertogenbosch",
           "kick_utc": 1781082000,
           "time": "10/06 04:00 PM",
@@ -520,6 +544,21 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "R16",
+          "kick_utc": 1781143200,
+          "time": "11/06 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports Plus"
               ]
             }
           ],
