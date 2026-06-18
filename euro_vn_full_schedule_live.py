@@ -24,7 +24,7 @@ from curl_cffi.requests import AsyncSession      # <--- THÊM IMPORT
 
 # ================== CẤU HÌNH ==================
 ENABLE_VALIDATION = False
-ENABLE_SOFASCORE = True           # <--- BẬT LẠI SOFASCORE
+ENABLE_SOFASCORE = False           # <--- BẬT LẠI SOFASCORE
 TIMEZONE = ZoneInfo("Asia/Ho_Chi_Minh")
 M3U_LIST_FILE = "M3U_list.txt"
 SCHEDULE_FILE = "schedule.json"
