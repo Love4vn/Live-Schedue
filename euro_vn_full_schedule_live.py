@@ -491,11 +491,21 @@ def parse_wheresthematch(entry: dict) -> Optional[Dict]:
         dt = datetime.strptime(dt_str, "%Y-%m-%d %H:%M")
         dt = dt.replace(tzinfo=TIMEZONE)
         kick_utc = int(dt.timestamp())
+        
         league = entry.get('competition', '')
         sport = entry.get('sport', '')
-        if sport == "Tennis" or "Tennis" in league or "Tenis" in league:
+        title = entry.get('title', '')
+        
+        # ---- NHẬN DIỆN TENNIS (sửa ở đây) ----
+        is_tennis = (
+            (sport and "Tennis" in sport) or
+            (title and ("ATP" in title or "WTA" in title or "Tennis" in title)) or
+            (league and ("Tennis" in league or "Tenis" in league))
+        )
+        if is_tennis:
             league = "Tennis"
         else:
+            # Xử lý bóng đá
             if "UEFA Europa League" in league:
                 league = "UEFA Europa League"
             elif "UEFA Europa Conference League" in league:
@@ -524,16 +534,22 @@ def parse_wheresthematch(entry: dict) -> Optional[Dict]:
                 league = "FIFA World Cup"
             else:
                 return None
+        
+        # Kiểm tra giải đấu được phép
         if league not in ALLOWED_FOOTBALL_LEAGUES and league != "Tennis":
             return None
+        
+        # Lấy tên trận
         match = entry.get('title', '')
         if not match:
             home = entry.get('home', '')
             away = entry.get('away', '')
-            match = f"{home} vs {away}" if home and away else ''
+            match = f"{home} vs {away}" if home and away else home or away or ''
+        
         channels = entry.get('channels', [])
         if not channels:
             return None
+        
         return {
             "league": league,
             "match": match,
@@ -542,9 +558,10 @@ def parse_wheresthematch(entry: dict) -> Optional[Dict]:
             "tv_channels": [{"country": "Wheresthematch", "channels": channels}],
             "source": "wheresthematch"
         }
-    except:
+    except Exception as e:
+        # Bỏ qua lỗi để không làm gián đoạn
         return None
-
+        
 def parse_ausport(entry: dict) -> Optional[Dict]:
     try:
         day, month, year = entry['vietnam_date'].split('/')
