@@ -1,32 +1,5 @@
 [
     {
-        "Date": "2026-06-22",
-        "Time": "16:00",
-        "League": "Tennis (WTA)",
-        "Matchup": "Bad Homburg Open",
-        "Services": [
-            "DAZN Canada"
-        ]
-    },
-    {
-        "Date": "2026-06-22",
-        "Time": "17:00",
-        "League": "Tennis (ATP)",
-        "Matchup": "Rothesay International Eastbourne",
-        "Services": [
-            "TSN+"
-        ]
-    },
-    {
-        "Date": "2026-06-22",
-        "Time": "17:30",
-        "League": "Tennis (ATP)",
-        "Matchup": "Mallorca Championship",
-        "Services": [
-            "TSN+"
-        ]
-    },
-    {
         "Date": "2026-06-23",
         "Time": "00:00",
         "League": "FIFA World Cup",
@@ -634,6 +607,26 @@
         "Date": "2026-06-25",
         "Time": "08:00",
         "League": "FIFA World Cup",
+        "Matchup": "South Africa vs South Korea",
+        "Services": [
+            "BBC iPlayer",
+            "BBC iPlayer 4K",
+            "BBC Sport",
+            "BBC Sport Website",
+            "BBC Two HD",
+            "beIN Connect MENA",
+            "beIN Sports MENA Max 2 HD",
+            "beIN Sports MENA Max 5 HD",
+            "Magenta Sport",
+            "RTÉ Player",
+            "SABC 1 HD",
+            "SABC 3 HD"
+        ]
+    },
+    {
+        "Date": "2026-06-25",
+        "Time": "08:00",
+        "League": "FIFA World Cup",
         "Matchup": "Czechia vs Mexico",
         "Services": [
             "BBC iPlayer",
@@ -652,22 +645,20 @@
     },
     {
         "Date": "2026-06-25",
-        "Time": "08:00",
-        "League": "FIFA World Cup",
-        "Matchup": "South Africa vs South Korea",
+        "Time": "16:00",
+        "League": "Tennis (WTA)",
+        "Matchup": "Bad Homburg Open",
         "Services": [
-            "BBC iPlayer",
-            "BBC iPlayer 4K",
-            "BBC Sport",
-            "BBC Sport Website",
-            "BBC Two HD",
-            "beIN Connect MENA",
-            "beIN Sports MENA Max 2 HD",
-            "beIN Sports MENA Max 5 HD",
-            "Magenta Sport",
-            "RTÉ Player",
-            "SABC 1 HD",
-            "SABC 3 HD"
+            "DAZN Canada"
+        ]
+    },
+    {
+        "Date": "2026-06-25",
+        "Time": "17:00",
+        "League": "Tennis (WTA)",
+        "Matchup": "Rothesay International Eastbourne",
+        "Services": [
+            "DAZN Canada"
         ]
     }
 ]
