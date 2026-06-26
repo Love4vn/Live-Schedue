@@ -1,5 +1,5 @@
 // src/scrape-wtm.js
-// WTM SCRAPER - Lọc từ 8h trước đến 48h sau (tổng 56h), giờ Việt Nam (UTC+7)
+// WTM SCRAPER - Lọc từ 8h trước đến 48h sau, giờ Việt Nam (UTC+7), chỉ bóng đá/tennis, xuất JSON
 
 const axios = require("axios");
 const cheerio = require("cheerio");
@@ -145,7 +145,6 @@ function getCurrentVietnamTime() {
   return new Date(now.getTime() + 7 * 3600000);
 }
 
-// Lấy 5 ngày (hôm nay + 4 ngày tới) để đảm bảo đủ dữ liệu cho 56h
 function getDatesToScrape() {
   const nowVN = getCurrentVietnamTime();
   const dates = [];
@@ -164,7 +163,7 @@ function buildDailyUrl(dateYYYYMMDD) {
   return `https://www.wheresthematch.com/live-sport-on-tv/?showdatestart=${dateYYYYMMDD}`;
 }
 
-// Chuyển đổi thời gian từ chuỗi gốc (giờ UK BST = UTC+1) sang giờ Việt Nam (UTC+7)
+// Chuyển đổi thời gian từ chuỗi isoZ (giờ UK BST) sang giờ Việt Nam (cộng 6 giờ)
 function isoToVietnamParts(isoZ) {
   if (!isoZ) return null;
   let raw = isoZ.trim();
@@ -175,7 +174,7 @@ function isoToVietnamParts(isoZ) {
     dt = new Date(raw);
     if (isNaN(dt.getTime())) return null;
   }
-  // Cộng 6 giờ (UK BST = UTC+1, VN = UTC+7, chênh 6 giờ)
+  // UK hiện tại BST = UTC+1, VN = UTC+7, chênh 6 giờ
   const vnTime = new Date(dt.getTime() + 6 * 3600000);
   const yyyy = vnTime.getUTCFullYear();
   const mm = String(vnTime.getUTCMonth() + 1).padStart(2, '0');
@@ -217,6 +216,7 @@ function uniqKeepOrder(arr) {
   return out;
 }
 
+// ========== HÀM PARSE (ĐÃ SỬA) ==========
 function parseWTMEvents($, pageNum, sourceDate) {
   const rows = [];
 
@@ -230,12 +230,22 @@ function parseWTMEvents($, pageNum, sourceDate) {
     const home = parts[0]?.trim() || "";
     const away = parts[1]?.trim() || "";
 
-    const $sportImg = $fx.find(".fixture-sport img");
-    let sport = $sportImg.attr("alt")?.trim() || $sportImg.attr("title")?.trim() || "";
+    // ---- LẤY SPORT TỪ CỘT competition-name (ưu tiên) ----
+    let sport = "";
+    const $compImg = $tr.find("td.competition-name img");
+    if ($compImg.length) {
+      sport = $compImg.attr("alt")?.trim() || $compImg.attr("title")?.trim() || "";
+    }
+    // Nếu không có, fallback sang fixture-sport
     if (!sport) {
-      sport = $fx.find(".fixture-sport").text().trim();
+      const $sportImg = $fx.find(".fixture-sport img");
+      sport = $sportImg.attr("alt")?.trim() || $sportImg.attr("title")?.trim() || "";
+      if (!sport) {
+        sport = $fx.find(".fixture-sport").text().trim();
+      }
     }
 
+    // Lấy competition từ fixture-comp a
     const competition = $fx.find(".fixture-comp a").first().text().trim() || "";
 
     const isoZ =
@@ -368,8 +378,8 @@ function filterEventsBySport(events) {
 // ========== MAIN ==========
 async function main() {
   const nowVN = getCurrentVietnamTime();
-  const startVN = new Date(nowVN.getTime() - 8 * 3600000); // 8 giờ trước
-  const endVN = new Date(nowVN.getTime() + 48 * 3600000); // 48 giờ sau
+  const startVN = new Date(nowVN.getTime() - 8 * 3600000);
+  const endVN = new Date(nowVN.getTime() + 48 * 3600000);
 
   const dates = getDatesToScrape();
   console.log("Scraping dates:", dates);
