@@ -216,7 +216,7 @@ function uniqKeepOrder(arr) {
   return out;
 }
 
-// ========== HÀM PARSE (ĐÃ SỬA) ==========
+// ========== HÀM PARSE (ĐÃ SỬA LỖI CHANNELS) ==========
 function parseWTMEvents($, pageNum, sourceDate) {
   const rows = [];
 
@@ -256,10 +256,12 @@ function parseWTMEvents($, pageNum, sourceDate) {
     const w = isoToVietnamParts(isoZ);
     if (!w) return;
 
+    // ---- XỬ LÝ CHANNELS (ĐÃ SỬA) ----
     const channels = [];
     $tr.find("td.channel-details img").each((_, img) => {
       let t = $(img).attr("title") || $(img).attr("alt") || "";
-      t = t.replace(/Live on\s*/i, "").replace(/\s*logo\s*$/i, "").trim();
+      // Loại bỏ "Watch ... " và "Live on" để chỉ giữ tên kênh
+      t = t.replace(/^Watch\s+.*?\s+(?:Live\s+on\s*)?/i, "").replace(/\s*logo\s*$/i, "").trim();
       if (t) channels.push(t);
     });
 
