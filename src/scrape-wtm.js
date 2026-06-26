@@ -163,7 +163,6 @@ function buildDailyUrl(dateYYYYMMDD) {
   return `https://www.wheresthematch.com/live-sport-on-tv/?showdatestart=${dateYYYYMMDD}`;
 }
 
-// Chuyển đổi thời gian từ chuỗi isoZ (giờ UK BST) sang giờ Việt Nam (cộng 6 giờ)
 function isoToVietnamParts(isoZ) {
   if (!isoZ) return null;
   let raw = isoZ.trim();
@@ -174,7 +173,6 @@ function isoToVietnamParts(isoZ) {
     dt = new Date(raw);
     if (isNaN(dt.getTime())) return null;
   }
-  // UK hiện tại BST = UTC+1, VN = UTC+7, chênh 6 giờ
   const vnTime = new Date(dt.getTime() + 6 * 3600000);
   const yyyy = vnTime.getUTCFullYear();
   const mm = String(vnTime.getUTCMonth() + 1).padStart(2, '0');
@@ -216,7 +214,7 @@ function uniqKeepOrder(arr) {
   return out;
 }
 
-// ========== HÀM PARSE (ĐÃ SỬA LỖI CHANNELS) ==========
+// ========== HÀM PARSE (SỬA LỖI CHANNELS) ==========
 function parseWTMEvents($, pageNum, sourceDate) {
   const rows = [];
 
@@ -230,13 +228,12 @@ function parseWTMEvents($, pageNum, sourceDate) {
     const home = parts[0]?.trim() || "";
     const away = parts[1]?.trim() || "";
 
-    // ---- LẤY SPORT TỪ CỘT competition-name (ưu tiên) ----
+    // Lấy sport từ cột competition-name (ưu tiên)
     let sport = "";
     const $compImg = $tr.find("td.competition-name img");
     if ($compImg.length) {
       sport = $compImg.attr("alt")?.trim() || $compImg.attr("title")?.trim() || "";
     }
-    // Nếu không có, fallback sang fixture-sport
     if (!sport) {
       const $sportImg = $fx.find(".fixture-sport img");
       sport = $sportImg.attr("alt")?.trim() || $sportImg.attr("title")?.trim() || "";
@@ -245,7 +242,6 @@ function parseWTMEvents($, pageNum, sourceDate) {
       }
     }
 
-    // Lấy competition từ fixture-comp a
     const competition = $fx.find(".fixture-comp a").first().text().trim() || "";
 
     const isoZ =
@@ -256,12 +252,21 @@ function parseWTMEvents($, pageNum, sourceDate) {
     const w = isoToVietnamParts(isoZ);
     if (!w) return;
 
-    // ---- XỬ LÝ CHANNELS (ĐÃ SỬA) ----
+    // ---- XỬ LÝ CHANNELS (LẤY TÊN KÊNH SAU " Live on ") ----
     const channels = [];
     $tr.find("td.channel-details img").each((_, img) => {
       let t = $(img).attr("title") || $(img).attr("alt") || "";
-      // Loại bỏ "Watch ... " và "Live on" để chỉ giữ tên kênh
-      t = t.replace(/^Watch\s+.*?\s+(?:Live\s+on\s*)?/i, "").replace(/\s*logo\s*$/i, "").trim();
+      // Tìm vị trí " Live on "
+      const liveOnIndex = t.indexOf(" Live on ");
+      if (liveOnIndex !== -1) {
+        t = t.substring(liveOnIndex + " Live on ".length).trim();
+      } else {
+        // Fallback: nếu không có "Live on", thử lấy phần sau " - " hoặc giữ nguyên
+        // Một số ảnh có thể có title trực tiếp là tên kênh
+        t = t.trim();
+      }
+      // Loại bỏ " logo" nếu có ở cuối
+      t = t.replace(/\s*logo\s*$/i, "").trim();
       if (t) channels.push(t);
     });
 
@@ -302,7 +307,7 @@ function dedupRows(rows) {
   return Array.from(map.values());
 }
 
-// ========== SCRAPE MỘT NGÀY (CHỈ LẤY PAGE 1) ==========
+// ========== SCRAPE MỘT NGÀY ==========
 async function scrapeOneDate(dateYYYYMMDD) {
   const url = buildDailyUrl(dateYYYYMMDD);
   console.log(`\n== DATE ${dateYYYYMMDD} ==`);
