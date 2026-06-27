@@ -1,32 +1,5 @@
 [
     {
-        "Date": "2026-06-27",
-        "Time": "20:00",
-        "League": "International Friendlies",
-        "Matchup": "Airdrieonians vs Elgin City",
-        "Services": [
-            "Diamonds TV"
-        ]
-    },
-    {
-        "Date": "2026-06-27",
-        "Time": "21:00",
-        "League": "International Friendlies",
-        "Matchup": "Clyde vs Dunfermline Athletic",
-        "Services": [
-            "Clyde FC Live Stream"
-        ]
-    },
-    {
-        "Date": "2026-06-27",
-        "Time": "21:30",
-        "League": "International Friendlies",
-        "Matchup": "Vojvodina vs Ararat-Armenia",
-        "Services": [
-            "Arena Premium 3 Srbija HD"
-        ]
-    },
-    {
         "Date": "2026-06-28",
         "Time": "04:00",
         "League": "FIFA World Cup",
@@ -60,6 +33,7 @@
             "Fox TV USA HD",
             "Fussball.TV1 UHD",
             "Futbol TV Tajikistan",
+            "Futbol TV Uzbekistan",
             "IRIB 4K UHD",
             "IRIB TV3 HD",
             "ITV 1 England HD",
@@ -201,6 +175,7 @@
             "Play RTS Sport",
             "QazSport HD",
             "RAI 1 Italia HD",
+            "RAI 4K UHD",
             "RDS 2 Canada",
             "RTB Zénith",
             "RTBF La Une HD",
@@ -222,6 +197,7 @@
             "Slovenija TV2 HD",
             "Sport 24 Extra HD",
             "Sport TV Belarus",
+            "Sport TV Uzbekistan",
             "Sport TV2 Portugal HD",
             "Sporty TV Africa",
             "SRF Zwei Schweiz HD",
@@ -306,6 +282,7 @@
             "Fox Sports 1 USA HD",
             "FOX Sports Plus USA 4K",
             "Fussball.TV2 UHD",
+            "Futbol TV Uzbekistan",
             "Gabon 1ère",
             "IRIB Varzesh HD",
             "Klan Plus HD",
@@ -358,6 +335,7 @@
             "TV2 Sport X Dansk HD",
             "TV4 Play Sverige",
             "TVCG 2 HD",
+            "TVM Malta HD",
             "TVP Sport Polska HD",
             "TVT Togo",
             "Télé Tchad",
@@ -457,6 +435,7 @@
             "Sigma TV Cyprus",
             "Sport 24 In Flight HD",
             "Sport TV Belarus",
+            "Sport TV Uzbekistan",
             "Sport TV1 Portugal HD",
             "Sport TV3 Portugal HD",
             "SporTV Brazil HD",
@@ -537,6 +516,7 @@
             "FOX TV USA 4K",
             "Fox TV USA HD",
             "Fussball.TV2 UHD",
+            "Futbol TV Uzbekistan",
             "HRT 2 Hrvatska HD",
             "Ictimai TV HD",
             "IRIB 4K UHD",
@@ -586,6 +566,7 @@
             "TV4 Play Sverige",
             "TV4 Sverige HD",
             "TVCG 1 HD",
+            "TVM Malta HD",
             "TVP 2 Polska HD",
             "Varzish TV Sport HD",
             "VRT 1 Belgium HD",
@@ -669,6 +650,7 @@
             "Sigma TV 2 HD Cyprus",
             "Sport 24 Extra HD",
             "Sport TV Belarus",
+            "Sport TV Uzbekistan",
             "Sport TV4 Portugal HD",
             "SporTV Brazil HD",
             "SRF Zwei Schweiz HD",
@@ -799,6 +781,34 @@
         ]
     },
     {
+        "Date": "2026-06-29",
+        "Time": "21:00",
+        "League": "International Friendlies",
+        "Matchup": "CSKA 1948 vs Partizan",
+        "Services": [
+            "Arena 3 Premium SR"
+        ]
+    },
+    {
+        "Date": "2026-06-29",
+        "Time": "22:00",
+        "League": "UEFA European Championship",
+        "Matchup": "Italy U19 vs Serbia U19",
+        "Services": [
+            "Sportdigital FUSSBALL Germany",
+            "Sportdigital FUSSBALL Germany"
+        ]
+    },
+    {
+        "Date": "2026-06-29",
+        "Time": "22:30",
+        "League": "International Friendlies",
+        "Matchup": "Crvena Zvezda vs Slovan Bratislava",
+        "Services": [
+            "Arena 2 Premium SR"
+        ]
+    },
+    {
         "Date": "2026-06-30",
         "Time": "00:00",
         "League": "FIFA World Cup",
@@ -847,7 +857,48 @@
             "TSN Canada 4 HD",
             "TSN+ Canada",
             "UTV Northern Ireland HD",
-            "ZDF Deutschland HD"
+            "ZDF Deutschland HD",
+            "BBC One Great Britain",
+            "MagentaTV Germany",
+            "TSN1 Canada",
+            "RAI 1 Italy",
+            "M6 France",
+            "TVP Sport Poland",
+            "HRT 2 Croatia",
+            "MTV Urheilu 1 Finland",
+            "TV4 Sweden",
+            "NPO 1 Netherlands",
+            "DAZN Mundial Spain",
+            "BBC One Great Britain"
+        ]
+    },
+    {
+        "Date": "2026-06-30",
+        "Time": "02:00",
+        "League": "UEFA European Championship",
+        "Matchup": "Croatia U19 vs Ukraine U19",
+        "Services": [
+            "Sportdigital FUSSBALL Germany",
+            "Sportdigital FUSSBALL Germany"
+        ]
+    },
+    {
+        "Date": "2026-06-30",
+        "Time": "03:00",
+        "League": "FIFA World Cup",
+        "Matchup": "Germany vs Paraguay",
+        "Services": [
+            "BBC One Great Britain",
+            "MagentaTV Germany",
+            "TSN1 Canada",
+            "M6 France",
+            "TVP Sport Poland",
+            "HRT 2 Croatia",
+            "MTV Urheilu 1 Finland",
+            "SVT 1 Sweden",
+            "NPO 1 Netherlands",
+            "DAZN Mundial Spain",
+            "BBC One Great Britain"
         ]
     },
     {
@@ -944,6 +995,53 @@
             "TSN Canada 1 HD",
             "TSN Canada 3 HD",
             "TSN Canada 4 HD",
+            "TSN+ Canada",
+            "UTV Northern Ireland HD",
+            "YLE AREENA",
+            "YLE TV2 Suomi HD"
+        ]
+    },
+    {
+        "Date": "2026-07-01",
+        "Time": "00:00",
+        "League": "FIFA World Cup",
+        "Matchup": "Ivory Coast vs Norway",
+        "Services": [
+            "ARD Das Erste HD",
+            "Arena Premium 1 Srbija HD",
+            "Arena Sport 1 Slovenija HD",
+            "BarTV Mundial HD",
+            "BBC iPlayer",
+            "BBC iPlayer 4K",
+            "BBC One HD",
+            "BBC Sport",
+            "BBC Sport Website",
+            "beIN Sports France 1 HD",
+            "DAZN España",
+            "DAZN Mundial Espana HD",
+            "HRT 2 Hrvatska HD",
+            "ITV 1 England HD",
+            "ITV X",
+            "M4 Sport Hungary HD",
+            "M6 France 4K UHD",
+            "M6 France HD",
+            "M6 Suisse HD",
+            "Magenta Sport",
+            "MATCH! Futbol 1 HD",
+            "MATCH! Premier HD",
+            "MATCH! Russia HD",
+            "MATCH! TV",
+            "NPO 1 Nederland HD",
+            "Play RTS Sport",
+            "RTÉ 2 Ireland HD",
+            "RTÉ Player",
+            "Slovenija TV2 HD",
+            "Sport TV5 Portugal HD",
+            "STV Player",
+            "STV Scotland HD",
+            "SuperSport Grandstand HD",
+            "SuperSport PSL HD",
+            "TRT 1 Türkiye HD",
             "TSN+ Canada",
             "UTV Northern Ireland HD",
             "YLE AREENA",
