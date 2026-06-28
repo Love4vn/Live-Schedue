@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-28 21:05 VN",
+  "updated": "2026-06-28 23:19 VN",
   "days": {
     "20260628": {
       "date": "Sunday, 28/06",
@@ -44,88 +44,87 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "ITV 1 Great Britain",
                 "TSN Canada 1 HD",
-                "Arena Premium 1 Srbija HD",
-                "SRF Zwei Schweiz HD",
-                "Antena 1 Romania HD",
-                "Servus TV Österreich HD",
-                "Slovenija TV2 HD",
+                "M6 France 4K UHD",
                 "Arena Sport 1 Slovenija HD",
-                "STV Player",
+                "TVP Sport Polska HD",
+                "Z Sports 1 Angola",
+                "beIN Sports MENA Max 6 HD",
+                "STV Scotland HD",
+                "SuperSport Grandstand HD",
+                "ITV 1 England HD",
+                "TVP Sport Poland",
+                "Slovenija TV2 HD",
+                "ARD Das Erste HD",
+                "SuperSport PSL HD",
+                "SABC 3 HD",
+                "BarTV Mundial HD",
+                "Sport TV1 Portugal HD",
+                "TSN+ Canada",
+                "Antena 1 Romania HD",
+                "ITV 1 Great Britain",
+                "M6 Suisse HD",
+                "TSN Canada 3 HD",
+                "MATCH! Premier HD",
+                "Arena Premium 1 Srbija HD",
+                "TSN Canada 4 HD",
+                "RTBF Tipik Belgique",
+                "Sport TV1 Portugal",
+                "MATCH! TV",
+                "Arena Sport 1 BiH HD",
+                "YLE AREENA",
+                "HRT 2 Croatia",
+                "NPO 1 Nederland HD",
+                "RTÉ Player",
+                "TV4 Sweden",
+                "NPO1 Netherlands",
+                "RSI La 2 Svizzera HD",
+                "SRF Zwei Schweiz HD",
+                "TVE La 1 HD España",
+                "Magenta Sport",
+                "MATCH! Russia HD",
+                "Servus TV Österreich HD",
+                "TRT 1 Türkiye HD",
+                "RTS 2 Suisse HD",
+                "DAZN España",
+                "MagentaTV Germany",
                 "M6 France",
-                "Futbol TV Tajikistan",
                 "Sport TV5 Portugal HD",
                 "M4 Sport Hungary HD",
-                "M6 France HD",
-                "HRT 2 Hrvatska HD",
-                "BarTV Mundial HD",
-                "MATCH! TV",
-                "Megogo Futbol 1",
-                "Arena Sport 1 BiH HD",
-                "RSI La 2 Svizzera HD",
-                "RTÉ Player",
-                "SuperSport Grandstand HD",
-                "Varzish TV Sport HD",
-                "TSN+ Canada",
-                "SABC 1 HD",
-                "UTV Northern Ireland HD",
-                "beIN Sports France 1 HD",
-                "MATCH! Futbol 1 HD",
-                "NPO1 Netherlands",
-                "SABC 3 HD",
-                "Sport TV1 Portugal",
-                "ITV 1 England HD",
-                "Play RTS Sport",
-                "TVP Sport Polska HD",
-                "YLE AREENA",
-                "RTS 2 Suisse HD",
-                "TSN Canada 4 HD",
-                "ARD Das Erste HD",
-                "BBC Sport",
-                "TSN1 Canada",
-                "RTÉ 2 Ireland HD",
-                "DAZN España",
-                "TRT 1 Türkiye HD",
-                "M6 Suisse HD",
-                "SuperSport PSL HD",
-                "MagentaTV Germany",
-                "BBC Sport Website",
-                "TVP Sport Poland",
-                "MATCH! Premier HD",
-                "DAZN Mundial Spain",
-                "TV4 Sweden",
-                "MATCH! Russia HD",
-                "NPO 1 Nederland HD",
-                "STV Scotland HD",
-                "M6 France 4K UHD",
                 "ITV X",
-                "HRT 2 Croatia",
-                "BBC iPlayer 4K",
-                "beIN Sports MENA Max 6 HD",
-                "BBC One HD",
-                "Magenta Sport",
-                "Sport TV1 Portugal HD",
-                "DAZN Mundial Espana HD",
-                "YLE TV2 Suomi HD",
-                "BBC iPlayer",
+                "TSN1 Canada",
+                "RAI 1 Italia HD",
+                "UTV Northern Ireland HD",
+                "Play RTS Sport",
+                "beIN Sports France 1 HD",
+                "STV Player",
+                "RTÉ 2 Ireland HD",
+                "MATCH! Futbol 1 HD",
                 "TVCG 1 HD",
-                "TSN Canada 3 HD",
-                "Z Sports 1 Angola"
+                "Varzish TV Sport HD",
+                "HRT 2 Hrvatska HD",
+                "Megogo Futbol 1",
+                "SABC 1 HD",
+                "DAZN Mundial Espana HD",
+                "M6 France HD",
+                "TVE La 1 UHD 4K",
+                "DAZN Mundial Spain",
+                "YLE TV2 Suomi HD",
+                "Futbol TV Tajikistan"
               ]
             },
             {
               "country": "Wheresthematch",
               "channels": [
-                "ITV TBC",
-                "BBC TBC"
+                "BBC TBC",
+                "ITV TBC"
               ]
             },
             {
               "country": "Ausport",
               "channels": [
-                "SBS On Demand",
-                "SBS Melbourne"
+                "SBS Melbourne",
+                "SBS On Demand"
               ]
             }
           ],
@@ -163,10 +162,57 @@
           "source": "livesportsontv"
         },
         {
+          "league": "UEFA Euro",
+          "match": "Italy U19 vs Serbia U19",
+          "kick_utc": 1782745200,
+          "time": "29/06 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Sportdigital FUSSBALL Germany",
+                "Sportdigital FUSSBALL Germany"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Crvena Zvezda vs Slovan Bratislava",
+          "kick_utc": 1782747000,
+          "time": "29/06 10:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena 2 Premium SR"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
           "league": "FIFA World Cup",
           "match": "Rd of 32 vs South Africa vs Canada",
           "kick_utc": 1782670500,
           "time": "29/06 01:15 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4K 616",
+                "Now Sports 618"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Rd of 32 vs Brazil vs Japan",
+          "kick_utc": 1782749700,
+          "time": "29/06 11:15 PM",
           "tv_channels": [
             {
               "country": "NowTV",
@@ -208,6 +254,36 @@
               "channels": [
                 "Bbc2 France",
                 "beIN Sports 2 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Wimbledon",
+          "kick_utc": 1782745200,
+          "time": "29/06 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Bbc1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Wimbledon",
+          "kick_utc": 1782748800,
+          "time": "29/06 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Bbc2 France"
               ]
             }
           ],
@@ -294,6 +370,22 @@
         },
         {
           "league": "Tennis",
+          "match": "Wimbledon 2026 - Wimbledon",
+          "kick_utc": 1782748740,
+          "time": "29/06 10:59 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal",
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Wimbledon 2026",
           "kick_utc": 1782727200,
           "time": "29/06 05:00 PM",
@@ -328,6 +420,21 @@
         },
         {
           "league": "Tennis",
+          "match": "Tennis",
+          "kick_utc": 1782743400,
+          "time": "29/06 09:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Srf Zwei France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Finals",
           "kick_utc": 1782673200,
           "time": "29/06 02:00 AM",
@@ -346,6 +453,23 @@
           "match": "Wimbledon Dag 1",
           "kick_utc": 1782727200,
           "time": "29/06 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Wimbledon Dag 1",
+          "kick_utc": 1782745200,
+          "time": "29/06 10:00 PM",
           "tv_channels": [
             {
               "country": "NowTV",
