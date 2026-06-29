@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-29 05:07 VN",
+  "updated": "2026-06-29 11:48 VN",
   "days": {
-    "20260628": {
-      "date": "Sunday, 28/06",
+    "20260629": {
+      "date": "Monday, 29/06",
       "games": [
         {
           "league": "International Friendly",
@@ -20,6 +20,21 @@
           "source": "livesportsontv"
         },
         {
+          "league": "International Friendly",
+          "match": "Partizan Belgrade vs CSKA 1948 Sofia",
+          "kick_utc": 1782745200,
+          "time": "29/06 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena Premium 3 Srbija HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
           "league": "UEFA Euro",
           "match": "Italy U19 vs Serbia U19",
           "kick_utc": 1782745200,
@@ -30,6 +45,21 @@
               "channels": [
                 "Sportdigital FUSSBALL Germany",
                 "Sportdigital FUSSBALL Germany"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Red Star Belgrade vs Slovan Bratislava",
+          "kick_utc": 1782747000,
+          "time": "29/06 10:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena Premium 2 Srbija HD"
               ]
             }
           ],
@@ -59,77 +89,84 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "DAZN España",
-                "MATCH! Premier HD",
-                "M6 France",
-                "M6 Suisse HD",
-                "ZDF Deutschland HD",
-                "M6 France HD",
-                "TV4 Sweden",
-                "MATCH! Russia HD",
-                "MATCH! TV",
-                "Play RTS Sport",
-                "SuperSport Grandstand HD",
-                "BBC One Great Britain",
-                "SRF Zwei Schweiz HD",
-                "MTV Urheilu 1 Suomi HD",
-                "MTV Urheilu 1 Finland",
-                "RSI La 2 Svizzera HD",
-                "RTÉ 2 Ireland HD",
-                "HRT 2 Croatia",
-                "RAI 1 Italia HD",
-                "BarTV Mundial HD",
-                "NPO 1 Netherlands",
-                "DAZN Mundial Espana HD",
-                "MATCH! Futbol 1 HD",
-                "TSN Canada 4 HD",
-                "Magenta Sport",
                 "TSN+ Canada",
-                "DAZN Mundial Spain",
+                "beIN Sports MENA 4K UHD",
+                "STV Player",
+                "Peacock ES",
+                "Arena Sport 1 Slovenija HD",
+                "ITV X",
                 "MagentaTV Germany",
                 "ITV 1 England HD",
-                "M4 Sport Hungary HD",
-                "NPO 1 Nederland HD",
-                "TRT 1 Türkiye HD",
-                "TVE La 1 HD España",
-                "TSN Canada 3 HD",
-                "ITV X",
-                "STV Player",
-                "Slovenija TV2 HD",
-                "Arena Sport 1 Slovenija HD",
-                "beIN Sports France 1 HD",
-                "ORF 1 Austria HD",
-                "TVE La 1 UHD 4K",
-                "NOW Sports HK 4K 616",
-                "SuperSport PSL HD",
-                "HRT 2 Hrvatska HD",
-                "M6 France 4K UHD",
-                "Sport TV5 Portugal HD",
-                "RTS 2 Suisse HD",
-                "UTV Northern Ireland HD",
-                "TVP Sport Poland",
-                "TSN Canada 1 HD",
+                "Fubo Sports",
+                "FOX Sports 4K",
+                "MATCH! Futbol 1 HD",
+                "SuperSport Grandstand HD",
                 "RAI 1 Italy",
-                "STV Scotland HD",
+                "BNT 3 Bulgaria HD",
+                "M6 France",
                 "beIN Sports MENA Max 5 HD",
+                "RSI La 2 Svizzera HD",
                 "beIN Sports MENA Max 1 HD",
-                "TSN1 Canada",
+                "M6 Suisse HD",
+                "ORF 1 Austria HD",
+                "SuperSport MáXimo 1 HD",
+                "STV Scotland HD",
+                "DAZN Mundial Espana HD",
+                "ZDF Deutschland HD",
+                "BNT 1 Bulgaria HD",
+                "M6 France 4K UHD",
+                "DAZN España",
+                "HRT 2 Croatia",
+                "Magenta Sport",
+                "MATCH! Russia HD",
+                "HRT 2 Hrvatska HD",
+                "Sport TV5 Portugal HD",
+                "TRT 1 Türkiye HD",
+                "NPO 1 Netherlands",
+                "BBC One Great Britain",
                 "Arena Premium 1 Srbija HD",
-                "RTÉ Player"
+                "Play RTS Sport",
+                "Fussball.TV1 UHD",
+                "Slovenija TV2 HD",
+                "DAZN Mundial Spain",
+                "beIN Sports France 1 HD",
+                "TV4 Sweden",
+                "TVP Sport Poland",
+                "RTÉ Player",
+                "FOX",
+                "MTV Urheilu 1 Suomi HD",
+                "TSN Canada 3 HD",
+                "MATCH! Premier HD",
+                "TSN1 Canada",
+                "FOX 4K",
+                "BBC RADIO 5 LIVE",
+                "NPO 1 Nederland HD",
+                "SuperSport PSL HD",
+                "RAI 1 Italia HD",
+                "SRF Zwei Schweiz HD",
+                "UTV Northern Ireland HD",
+                "M6 France HD",
+                "RTS 2 Suisse HD",
+                "TVE La 1 HD España",
+                "MTV Urheilu 1 Finland",
+                "MATCH! TV",
+                "TSN Canada 1 HD",
+                "BarTV Mundial HD",
+                "TSN Canada 4 HD",
+                "NOW Sports HK 4K 616",
+                "RTÉ 2 Ireland HD",
+                "TVE La 1 UHD 4K",
+                "M4 Sport Hungary HD",
+                "Antena 1 Romania HD"
               ]
             },
             {
               "country": "Wheresthematch",
               "channels": [
-                "ITV TBC",
-                "BBC TBC"
-              ]
-            },
-            {
-              "country": "Ausport",
-              "channels": [
-                "SBS Viceland",
-                "SBS On Demand"
+                "ITV1",
+                "STV Player",
+                "ITVX",
+                "STV"
               ]
             }
           ],
@@ -160,77 +197,158 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "DAZN España",
-                "MATCH! Premier HD",
-                "M6 France",
-                "M6 Suisse HD",
-                "BBC Sport Website",
-                "ZDF Deutschland HD",
-                "M6 France HD",
-                "MATCH! Russia HD",
-                "MATCH! TV",
-                "Play RTS Sport",
-                "SuperSport Grandstand HD",
-                "BBC One Great Britain",
-                "SRF Zwei Schweiz HD",
-                "Arena Premium 1 Srbija HD",
-                "MTV Urheilu 1 Finland",
-                "MTV Urheilu 1 Suomi HD",
-                "RSI La 2 Svizzera HD",
-                "HRT 2 Croatia",
-                "RTÉ 2 Ireland HD",
-                "BarTV Mundial HD",
-                "NPO 1 Netherlands",
-                "DAZN Mundial Espana HD",
-                "BBC Sport",
-                "MATCH! Futbol 1 HD",
-                "TSN Canada 4 HD",
-                "Magenta Sport",
-                "DAZN Mundial Spain",
                 "TSN+ Canada",
-                "BBC iPlayer",
-                "MagentaTV Germany",
-                "ITV 1 England HD",
-                "M4 Sport Hungary HD",
-                "NPO 1 Nederland HD",
-                "TRT 1 Türkiye HD",
-                "TSN Canada 3 HD",
-                "ITV X",
-                "STV Player",
-                "Slovenija TV2 HD",
-                "Arena Sport 1 Slovenija HD",
-                "BBC One HD",
-                "beIN Sports France 1 HD",
-                "ORF 1 Austria HD",
-                "MTV 3 Suomi HD",
-                "SVT 1 Sweden",
-                "SuperSport PSL HD",
-                "HRT 2 Hrvatska HD",
-                "M6 France 4K UHD",
-                "Sport TV5 Portugal HD",
-                "RTS 2 Suisse HD",
-                "UTV Northern Ireland HD",
-                "TVP Sport Poland",
-                "TSN Canada 1 HD",
-                "STV Scotland HD",
-                "beIN Sports MENA Max 5 HD",
-                "TSN1 Canada",
+                "beIN Sports MENA 4K UHD",
                 "beIN Sports MENA Max 2 HD",
-                "RTÉ Player"
+                "SVT 1 Sweden",
+                "Peacock ES",
+                "Arena Sport 1 Slovenija HD",
+                "MagentaTV Germany",
+                "Fubo Sports",
+                "FOX Sports 4K",
+                "MATCH! Futbol 1 HD",
+                "SuperSport Grandstand HD",
+                "M6 France",
+                "BNT 3 Bulgaria HD",
+                "beIN Sports MENA Max 5 HD",
+                "BBC Sport Website",
+                "RSI La 2 Svizzera HD",
+                "M6 Suisse HD",
+                "ORF 1 Austria HD",
+                "SuperSport MáXimo 1 HD",
+                "DAZN Mundial Espana HD",
+                "ZDF Deutschland HD",
+                "BNT 1 Bulgaria HD",
+                "HRT 2 Croatia",
+                "DAZN España",
+                "M6 France 4K UHD",
+                "BBC Sport",
+                "Magenta Sport",
+                "MATCH! Russia HD",
+                "NPO 1 Netherlands",
+                "HRT 2 Hrvatska HD",
+                "Sport TV5 Portugal HD",
+                "MTV 3 Suomi HD",
+                "TRT 1 Türkiye HD",
+                "BBC One Great Britain",
+                "DAZN Mundial Spain",
+                "Arena Premium 1 Srbija HD",
+                "Fussball.TV1 UHD",
+                "Play RTS Sport",
+                "Slovenija TV2 HD",
+                "beIN Sports France 1 HD",
+                "TVP Sport Poland",
+                "RTÉ Player",
+                "FOX",
+                "MTV Urheilu 1 Suomi HD",
+                "TSN Canada 3 HD",
+                "TSN1 Canada",
+                "MATCH! Premier HD",
+                "FOX 4K",
+                "NPO 1 Nederland HD",
+                "SuperSport PSL HD",
+                "SRF Zwei Schweiz HD",
+                "BBC iPlayer",
+                "M6 France HD",
+                "RTS 2 Suisse HD",
+                "MTV Urheilu 1 Finland",
+                "MATCH! TV",
+                "TSN Canada 1 HD",
+                "BarTV Mundial HD",
+                "TSN Canada 4 HD",
+                "RTÉ 2 Ireland HD",
+                "Antena 1 Romania HD",
+                "M4 Sport Hungary HD",
+                "BBC One HD",
+                "BBC RADIO 5 LIVE"
               ]
             },
             {
               "country": "Wheresthematch",
               "channels": [
-                "ITV TBC",
-                "BBC TBC"
+                "BBC Sport Website",
+                "BBC iPlayer",
+                "BBC1"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Netherlands vs Morocco",
+          "kick_utc": 1782781200,
+          "time": "30/06 08:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "TSN+ Canada",
+                "beIN Sports MENA 4K UHD",
+                "STV Player",
+                "SVT 1 Sweden",
+                "Peacock ES",
+                "Arena Sport 1 Slovenija HD",
+                "ITV X",
+                "MagentaTV Germany",
+                "ITV 1 England HD",
+                "Fubo Sports",
+                "FOX Sports 4K",
+                "MATCH! Futbol 1 HD",
+                "SuperSport Grandstand HD",
+                "BNT 3 Bulgaria HD",
+                "beIN Sports MENA Max 5 HD",
+                "YLE AREENA",
+                "SuperSport MáXimo 1 HD",
+                "STV Scotland HD",
+                "DAZN Mundial Espana HD",
+                "BNT 1 Bulgaria HD",
+                "DAZN España",
+                "HRT 2 Croatia",
+                "Magenta Sport",
+                "MATCH! Russia HD",
+                "HRT 2 Hrvatska HD",
+                "Sport TV5 Portugal HD",
+                "TRT 1 Türkiye HD",
+                "NPO 1 Netherlands",
+                "Arena Premium 1 Srbija HD",
+                "Play RTS Sport",
+                "Fussball.TV1 UHD",
+                "Slovenija TV2 HD",
+                "DAZN Mundial Spain",
+                "beIN Sports France 1 HD",
+                "TVP Sport Poland",
+                "RTÉ Player",
+                "FOX",
+                "TSN Canada 3 HD",
+                "YLE TV2 Suomi HD",
+                "MATCH! Premier HD",
+                "TSN1 Canada",
+                "FOX 4K",
+                "BBC RADIO 5 LIVE",
+                "NPO 1 Nederland HD",
+                "SuperSport PSL HD",
+                "UTV Northern Ireland HD",
+                "ITV 1 Great Britain",
+                "NPO 1 4K UHD",
+                "MATCH! TV",
+                "TSN Canada 1 HD",
+                "BarTV Mundial HD",
+                "TSN Canada 4 HD",
+                "NOW Sports HK 4K 616",
+                "RTÉ 2 Ireland HD",
+                "beIN Sports 1 France",
+                "M4 Sport Hungary HD",
+                "Antena 1 Romania HD"
               ]
             },
             {
-              "country": "Ausport",
+              "country": "Wheresthematch",
               "channels": [
-                "SBS On Demand",
-                "SBS Melbourne"
+                "ITV1",
+                "STV Player",
+                "ITVX",
+                "STV"
               ]
             }
           ],
@@ -253,11 +371,37 @@
           "source": "nowtv"
         },
         {
+          "league": "FIFA World Cup",
+          "match": "Rd of 32 vs Netherlands vs Morocco",
+          "kick_utc": 1782778500,
+          "time": "30/06 07:15 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4K 616",
+                "Now Sports 618"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
           "league": "Tennis",
           "match": "Wimbledon",
           "kick_utc": 1782727200,
           "time": "29/06 05:00 PM",
           "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Fubo Sports",
+                "ESPN Unlimited",
+                "ESPN",
+                "ESPN Deportes",
+                "Disney+"
+              ]
+            },
             {
               "country": "Wheresthematch",
               "channels": [
@@ -269,7 +413,7 @@
               ]
             }
           ],
-          "source": "wheresthematch"
+          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
@@ -320,6 +464,23 @@
         {
           "league": "Tennis",
           "match": "Wimbledon",
+          "kick_utc": 1782756000,
+          "time": "30/06 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "BBC1",
+                "BBC iPlayer",
+                "BBC Sport Website"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "Wimbledon",
           "kick_utc": 1782763200,
           "time": "30/06 03:00 AM",
           "tv_channels": [
@@ -335,7 +496,7 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Aleksandar Vukic vs Jenson Brooksby",
           "kick_utc": 1782727200,
           "time": "29/06 05:00 PM",
           "tv_channels": [
@@ -351,9 +512,219 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1782735000,
-          "time": "29/06 07:10 PM",
+          "match": "Rafael Jodar vs Felix Gill",
+          "kick_utc": 1782727200,
+          "time": "29/06 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Emilio Nava vs Ignacio Buse",
+          "kick_utc": 1782727200,
+          "time": "29/06 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Marco Trungelliti vs Martin Damm",
+          "kick_utc": 1782727200,
+          "time": "29/06 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Dalibor Svrcina vs Learner Tien",
+          "kick_utc": 1782727200,
+          "time": "29/06 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Andrey Rublev vs Roman Safiullin",
+          "kick_utc": 1782727200,
+          "time": "29/06 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Denis Shapovalov vs Pablo Carreno-Busta",
+          "kick_utc": 1782727200,
+          "time": "29/06 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Shintaro Mochizuki vs Max Basing",
+          "kick_utc": 1782727200,
+          "time": "29/06 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Luca van Assche vs Marton Fucsovics",
+          "kick_utc": 1782727200,
+          "time": "29/06 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Aleksandar Kovacevic vs Botic Van De Zandschulp",
+          "kick_utc": 1782727200,
+          "time": "29/06 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Jessica Pegula vs Darja Vidmanova",
+          "kick_utc": 1782727200,
+          "time": "29/06 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Belinda Bencic vs Mika Stojsavljevic",
+          "kick_utc": 1782727200,
+          "time": "29/06 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Mananchaya Sawangkaew vs Maja Chwalinska",
+          "kick_utc": 1782727200,
+          "time": "29/06 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Sara Sorribes Tormo vs Victoria Jimenez Kasintseva",
+          "kick_utc": 1782727200,
+          "time": "29/06 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Jaqueline Adina Cristian vs Iva Jovic",
+          "kick_utc": 1782727200,
+          "time": "29/06 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Alexandre Muller vs Tommy Paul",
+          "kick_utc": 1782732600,
+          "time": "29/06 06:30 PM",
           "tv_channels": [
             {
               "country": "Ausport",
@@ -367,15 +738,14 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1782741600,
-          "time": "29/06 09:00 PM",
+          "match": "Michael Zheng vs Cameron Norrie",
+          "kick_utc": 1782732600,
+          "time": "29/06 06:30 PM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
-                "Channel 9 Sydney",
-                "Channel 9 Melbourne"
+                "Stan Sport"
               ]
             }
           ],
@@ -383,18 +753,379 @@
         },
         {
           "league": "Tennis",
-          "match": "United States Smash",
-          "kick_utc": 1782680820,
-          "time": "29/06 04:07 AM",
+          "match": "Arthur Rinderknech vs Oliver Tarvet",
+          "kick_utc": 1782732600,
+          "time": "29/06 06:30 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "L'Equipe France"
+                "Stan Sport"
               ]
             }
           ],
-          "source": "hubsport"
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ann Li vs Zeynep Sonmez",
+          "kick_utc": 1782732600,
+          "time": "29/06 06:30 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Xinyu Wang vs Elisabaetta Cocciaretto",
+          "kick_utc": 1782732600,
+          "time": "29/06 06:30 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Casper Ruud vs Hubert Hurkacz",
+          "kick_utc": 1782734400,
+          "time": "29/06 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Woo Kwon Soon vs Martin Landaluce",
+          "kick_utc": 1782734400,
+          "time": "29/06 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Hugo Gaston vs Stefanos Tsitsipas",
+          "kick_utc": 1782734400,
+          "time": "29/06 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Camilo Ugo Carabelli vs Daniel Merida Aguilar",
+          "kick_utc": 1782734400,
+          "time": "29/06 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Nuno Borges vs Tristan Boyer",
+          "kick_utc": 1782734400,
+          "time": "29/06 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Hamad Medjedovic vs Sebastian Ofner",
+          "kick_utc": 1782734400,
+          "time": "29/06 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Antonia Ruzic vs Emma Raducanu",
+          "kick_utc": 1782734400,
+          "time": "29/06 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Alycia Parks vs Alicia Dudeney",
+          "kick_utc": 1782734400,
+          "time": "29/06 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Yulia Putintseva vs Tatjana Maria",
+          "kick_utc": 1782734400,
+          "time": "29/06 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Jelena Ostapenko vs Harriet Dart",
+          "kick_utc": 1782734400,
+          "time": "29/06 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Bianca Vanessa Andreescu vs Shuai Zhang",
+          "kick_utc": 1782734400,
+          "time": "29/06 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Jannik Sinner vs Miomir Kecmanovic",
+          "kick_utc": 1782736200,
+          "time": "29/06 07:30 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Channel 9 Perth"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Adam Walton vs Dino Prizmic",
+          "kick_utc": 1782738000,
+          "time": "29/06 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Channel 9 Adelaide",
+                "Channel 9 Darwin"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ethan Quinn vs Luciano Darderi",
+          "kick_utc": 1782738000,
+          "time": "29/06 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Felix Auger-Aliassime vs Alexander Shevchenko",
+          "kick_utc": 1782739800,
+          "time": "29/06 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Marin Cilic vs Daniil Medvedev",
+          "kick_utc": 1782739800,
+          "time": "29/06 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Alejandro Davidovich Fokina vs Juan Manuel Cerundolo",
+          "kick_utc": 1782739800,
+          "time": "29/06 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Roberto Bautista-Agut vs Joao Fonseca",
+          "kick_utc": 1782739800,
+          "time": "29/06 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Jan-Lennard Struff vs Sebastian Baez",
+          "kick_utc": 1782739800,
+          "time": "29/06 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Thiago Augustin Tirante vs Fabian Marozsan",
+          "kick_utc": 1782739800,
+          "time": "29/06 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Adolfo Daniel Vallejo vs Nicolas Mejia",
+          "kick_utc": 1782739800,
+          "time": "29/06 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Karolina Muchova vs Anastasia Zakharova",
+          "kick_utc": 1782739800,
+          "time": "29/06 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -472,6 +1203,21 @@
               "country": "Hubsport",
               "channels": [
                 "Srf Zwei France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "United States Smash",
+          "kick_utc": 1782775800,
+          "time": "30/06 06:30 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
               ]
             }
           ],
