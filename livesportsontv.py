@@ -583,7 +583,7 @@ LEAGUES_CONFIG = {
     "UEFA Europa League": {"url": "https://www.livesportsontv.com/league/uefa-europa-league", "teams": None},
     "UEFA Europa Conference League": {"url": "https://www.livesportsontv.com/league/uefa-conference-league", "teams": None},
     "UEFA European Championship": {"url": "https://www.livesportsontv.com/league/uefa-european-championship", "teams": None},
-    "FIFA World Cup": {"url": "https://www.livesportsontv.com/league/fifa-world-cup", "teams": None},
+    "FIFA World Cup": {"url": "https://www.livesportsontv.com/league/world-cup-5", "teams": None},
     "International Friendlies": {"url": "https://www.livesportsontv.com/league/friendly", "teams": None, "custom_filter": "friendly"},
     "FA Cup": {"url": "https://www.livesportsontv.com/league/fa-cup", "teams": None, "custom_filter": "premier_league_only"},
     "Carabao Cup": {"url": "https://www.livesportsontv.com/league/carabao-cup", "teams": None, "custom_filter": "premier_league_only"},
@@ -592,7 +592,7 @@ LEAGUES_CONFIG = {
     "Tennis (WTA)": {"url": "https://www.livesportsontv.com/league/wta/", "is_tennis": True},
     "Australian Open": {"url": "https://www.livesportsontv.com/league/grand-slam/australian-open/", "is_tennis": True},
     "French Open": {"url": "https://www.livesportsontv.com/league/roland-garros", "is_tennis": True},
-    "Wimbledon": {"url": "https://www.livesportsontv.com/league/grand-slam/wimbledon/", "is_tennis": True},
+    "Wimbledon": {"url": "https://www.livesportsontv.com/league/wimbledon-tennis", "is_tennis": True},
     "US Open": {"url": "https://www.livesportsontv.com/league/grand-slam/us-open/", "is_tennis": True}
 }
 
