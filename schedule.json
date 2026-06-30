@@ -1,9 +1,39 @@
 {
-  "updated": "2026-06-30 11:14 VN",
+  "updated": "2026-06-30 16:54 VN",
   "days": {
     "20260630": {
       "date": "Tuesday, 30/06",
       "games": [
+        {
+          "league": "International Friendly",
+          "match": "Zeleznicar vs Wolfsberger AC",
+          "kick_utc": 1782831600,
+          "time": "30/06 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena Premium 2 Srbija HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Brinje Grosuplje vs Rijeka",
+          "kick_utc": 1782835200,
+          "time": "30/06 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "MAX Sport 1 Hrvatska HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
         {
           "league": "FIFA World Cup",
           "match": "Ivory Coast vs Norway",
@@ -13,60 +43,61 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "YLE AREENA",
-                "BBC Sport",
-                "BBC iPlayer",
-                "RTÉ Player",
-                "Arena Sport 1 Slovenija HD",
-                "Peacock Premium USA",
-                "TSN Canada 4 HD",
-                "BBC One HD",
-                "MATCH! Russia HD",
-                "Azam Sports 2 HD",
-                "Sport TV5 Portugal HD",
-                "Slovenija TV2 HD",
-                "MATCH! Futbol 1 HD",
-                "ARD Das Erste HD",
-                "MATCH! Premier HD",
-                "Arena Premium 1 Srbija HD",
-                "TSN Canada 3 HD",
-                "Azam Sports 4 HD",
-                "Peacock ES",
-                "YLE TV2 Suomi HD",
-                "TRT 1 Türkiye HD",
-                "NPO 1 Nederland HD",
-                "Arena Sport 1 BiH HD",
-                "Fubo Sports",
-                "RTi La 3 Côte d’Ivoire",
-                "FOX 4K",
                 "RTÉ 2 Ireland HD",
-                "FOX Sports 4K",
-                "Magenta Sport",
-                "Telemundo USA",
-                "DAZN España",
-                "DR1 Dansk HD",
-                "FOX",
                 "SuperSport PSL HD",
-                "BBC Sport Website",
-                "M4 Sport Hungary HD",
-                "M6 Suisse HD",
-                "M6 France 4K UHD",
-                "TSN+ Canada",
-                "beIN Sports France 1 HD",
-                "SuperSport Grandstand HD",
+                "BBC One HD",
+                "BBC RADIO 5 LIVE",
+                "beIN Sports MENA Max 1 HD",
+                "Telemundo USA",
+                "FOX Sports 4K",
+                "TRT 1 Türkiye HD",
+                "Fubo Sports",
+                "Magenta Sport",
+                "NPO 1 Nederland HD",
                 "M6 France HD",
-                "BBC iPlayer 4K",
+                "MATCH! TV",
+                "TSN Canada 1 HD",
+                "M4 Sport Hungary HD",
+                "YLE AREENA",
+                "Slovenija TV2 HD",
+                "BarTV Mundial HD",
+                "YLE TV2 Suomi HD",
+                "Fubo Sports USA",
+                "Azam Sports 4 HD",
+                "FOX 4K",
+                "Arena Sport 1 BiH HD",
+                "DR1 Dansk HD",
+                "BBC Sport Website",
+                "ARD Das Erste HD",
+                "SuperSport Grandstand HD",
+                "M6 France 4K UHD",
+                "Arena Premium 1 Srbija HD",
+                "BBC iPlayer",
+                "beIN Sports France 1 HD",
+                "Play RTS Sport",
+                "FOX",
+                "Sport TV5 Portugal HD",
+                "HRT 2 Hrvatska HD",
+                "DAZN España",
+                "MATCH! Russia HD",
+                "Peacock ES",
+                "RTi La 3 Côte d’Ivoire",
+                "Arena Sport 1 Slovenija HD",
+                "RTÉ Player",
+                "DAZN Italia",
                 "beIN Sports MENA Max 5 HD",
                 "DAZN Mundial Espana HD",
-                "HRT 2 Hrvatska HD",
+                "Peacock Premium USA",
+                "TSN+ Canada",
+                "M6 Suisse HD",
+                "Azam Sports 2 HD",
+                "MATCH! Premier HD",
                 "La Nouvelle Chaîne Ivorienne",
-                "MATCH! TV",
-                "BarTV Mundial HD",
-                "TSN Canada 1 HD",
-                "BBC RADIO 5 LIVE",
-                "Play RTS Sport",
-                "Fubo Sports USA",
-                "beIN Sports MENA Max 1 HD",
+                "TSN Canada 4 HD",
+                "TSN Canada 3 HD",
+                "BBC Sport",
+                "MATCH! Futbol 1 HD",
+                "BBC iPlayer 4K",
                 "SABC 3 HD"
               ]
             },
@@ -74,15 +105,15 @@
               "country": "Wheresthematch",
               "channels": [
                 "BBC Sport Website",
-                "BBC1",
-                "BBC iPlayer"
+                "BBC iPlayer",
+                "BBC1"
               ]
             },
             {
               "country": "Ausport",
               "channels": [
-                "SBS On Demand",
-                "SBS Melbourne"
+                "SBS Melbourne",
+                "SBS On Demand"
               ]
             }
           ],
@@ -114,6 +145,36 @@
           "source": "livesportsontv"
         },
         {
+          "league": "International Friendly",
+          "match": "Raith Rovers vs Edinburgh City",
+          "kick_utc": 1782844200,
+          "time": "01/07 01:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Raith TV Live"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Shamrock Rovers vs Hibernian",
+          "kick_utc": 1782846000,
+          "time": "01/07 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "LOI TV"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
           "league": "FIFA World Cup",
           "match": "France vs Sweden",
           "kick_utc": 1782853200,
@@ -122,75 +183,76 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "YLE AREENA",
-                "TSN Canada 4 HD",
-                "RTÉ Player",
-                "Arena Sport 1 Slovenija HD",
-                "Peacock Premium USA",
-                "beIN Sports MENA Max 2 HD",
-                "TVE La 2 Cat",
-                "Azam Sports 2 HD",
-                "Sport TV5 Portugal HD",
-                "Slovenija TV2 HD",
-                "Arena Premium 1 Srbija HD",
-                "TSN Canada 3 HD",
-                "Azam Sports 4 HD",
-                "Peacock ES",
-                "YLE TV2 Suomi HD",
-                "RAI 1 Italia HD",
-                "TRT 1 Türkiye HD",
-                "NPO 1 Nederland HD",
-                "Arena Sport 1 BiH HD",
-                "Fubo Sports",
-                "FOX 4K",
                 "RTÉ 2 Ireland HD",
-                "FOX Sports 4K",
-                "STV Player",
-                "Magenta Sport",
-                "Telemundo USA",
-                "Fox TV USA HD",
-                "DAZN España",
-                "FOX",
                 "SuperSport PSL HD",
-                "ITV 1 England HD",
-                "M4 Sport Hungary HD",
-                "M6 Suisse HD",
-                "M6 France 4K UHD",
-                "TVE La 1 HD España",
-                "ITV X",
-                "TSN+ Canada",
-                "STV Scotland HD",
-                "beIN Sports France 1 HD",
-                "SuperSport Grandstand HD",
+                "TVE La 2 Cat",
+                "FOX Sports 4K",
+                "BBC RADIO 5 LIVE",
+                "Telemundo USA",
+                "Fubo Sports",
+                "Magenta Sport",
+                "NPO 1 Nederland HD",
                 "M6 France HD",
                 "MATCH! TV",
-                "beIN Sports MENA Max 5 HD",
-                "DAZN Mundial Espana HD",
-                "HRT 2 Hrvatska HD",
-                "BarTV Mundial HD",
                 "TSN Canada 1 HD",
-                "BBC RADIO 5 LIVE",
-                "TSN Canada 5 HD",
-                "Play RTS Sport",
+                "M4 Sport Hungary HD",
+                "YLE AREENA",
+                "Slovenija TV2 HD",
                 "UTV Northern Ireland HD",
+                "BarTV Mundial HD",
+                "YLE TV2 Suomi HD",
                 "Fubo Sports USA",
-                "TVE La 1 UHD 4K"
+                "Azam Sports 4 HD",
+                "FOX 4K",
+                "Arena Sport 1 BiH HD",
+                "TSN Canada 5 HD",
+                "beIN Sports MENA Max 2 HD",
+                "SuperSport Grandstand HD",
+                "M6 France 4K UHD",
+                "Arena Premium 1 Srbija HD",
+                "beIN Sports France 1 HD",
+                "Play RTS Sport",
+                "FOX",
+                "Sport TV5 Portugal HD",
+                "HRT 2 Hrvatska HD",
+                "DAZN España",
+                "TVE La 1 HD España",
+                "Peacock ES",
+                "Arena Sport 1 Slovenija HD",
+                "RTÉ Player",
+                "DAZN Italia",
+                "beIN Sports MENA Max 5 HD",
+                "ITV X",
+                "DAZN Mundial Espana HD",
+                "Peacock Premium USA",
+                "STV Player",
+                "TSN+ Canada",
+                "Azam Sports 2 HD",
+                "RAI 1 Italia HD",
+                "STV Scotland HD",
+                "ITV 1 England HD",
+                "TVE La 1 UHD 4K",
+                "TSN Canada 4 HD",
+                "TSN Canada 3 HD",
+                "M6 Suisse HD",
+                "TRT 1 Türkiye HD",
+                "Fox TV USA HD"
               ]
             },
             {
               "country": "Wheresthematch",
               "channels": [
+                "STV Player",
                 "ITV1",
                 "STV",
-                "ITVX",
-                "STV Player"
+                "ITVX"
               ]
             },
             {
               "country": "Ausport",
               "channels": [
-                "SBS On Demand",
-                "SBS Melbourne"
+                "SBS Melbourne",
+                "SBS On Demand"
               ]
             }
           ],
@@ -205,71 +267,72 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "YLE AREENA",
-                "TSN Canada 4 HD",
-                "RTÉ Player",
-                "Arena Sport 1 Slovenija HD",
-                "Peacock Premium USA",
-                "MATCH! Russia HD",
-                "Azam Sports 2 HD",
-                "Sport TV5 Portugal HD",
-                "Slovenija TV2 HD",
-                "MATCH! Futbol 1 HD",
-                "MATCH! Premier HD",
-                "Arena Premium 1 Srbija HD",
-                "TSN Canada 3 HD",
-                "Azam Sports 4 HD",
-                "Peacock ES",
-                "YLE TV2 Suomi HD",
-                "TRT 1 Türkiye HD",
-                "Arena Sport 1 BiH HD",
-                "Fubo Sports",
-                "FOX 4K",
                 "RTÉ 2 Ireland HD",
-                "FOX Sports 4K",
-                "STV Player",
-                "Magenta Sport",
-                "Telemundo USA",
-                "Fox TV USA HD",
-                "DAZN España",
-                "Megogo Sport Ukraine HD",
-                "FOX",
                 "SuperSport PSL HD",
-                "ITV 1 England HD",
-                "M4 Sport Hungary HD",
-                "ITV X",
-                "TSN+ Canada",
-                "STV Scotland HD",
-                "beIN Sports France 1 HD",
-                "SuperSport Grandstand HD",
-                "MATCH! TV",
-                "beIN Sports MENA Max 5 HD",
-                "DAZN Mundial Espana HD",
-                "HRT 2 Hrvatska HD",
-                "BarTV Mundial HD",
-                "TSN Canada 1 HD",
+                "beIN Sports MENA Max 1 HD",
                 "BBC RADIO 5 LIVE",
-                "TSN Canada 5 HD",
-                "Play RTS Sport",
+                "Telemundo USA",
+                "FOX Sports 4K",
+                "Fubo Sports",
+                "Magenta Sport",
+                "MATCH! TV",
+                "TSN Canada 1 HD",
+                "M4 Sport Hungary HD",
+                "YLE AREENA",
+                "Slovenija TV2 HD",
                 "UTV Northern Ireland HD",
+                "BarTV Mundial HD",
+                "YLE TV2 Suomi HD",
                 "Fubo Sports USA",
-                "beIN Sports MENA Max 1 HD"
+                "Azam Sports 4 HD",
+                "FOX 4K",
+                "Arena Sport 1 BiH HD",
+                "TSN Canada 5 HD",
+                "Megogo Sport Ukraine HD",
+                "SuperSport Grandstand HD",
+                "Arena Premium 1 Srbija HD",
+                "beIN Sports France 1 HD",
+                "Play RTS Sport",
+                "FOX",
+                "Sport TV5 Portugal HD",
+                "HRT 2 Hrvatska HD",
+                "DAZN España",
+                "MATCH! Russia HD",
+                "Peacock ES",
+                "Arena Sport 1 Slovenija HD",
+                "RTÉ Player",
+                "DAZN Italia",
+                "beIN Sports MENA Max 5 HD",
+                "ITV X",
+                "DAZN Mundial Espana HD",
+                "Peacock Premium USA",
+                "STV Player",
+                "TSN+ Canada",
+                "Azam Sports 2 HD",
+                "STV Scotland HD",
+                "ITV 1 England HD",
+                "MATCH! Premier HD",
+                "TSN Canada 4 HD",
+                "TSN Canada 3 HD",
+                "MATCH! Futbol 1 HD",
+                "TRT 1 Türkiye HD",
+                "Fox TV USA HD"
               ]
             },
             {
               "country": "Wheresthematch",
               "channels": [
+                "STV Player",
                 "ITV1",
                 "STV",
-                "ITVX",
-                "STV Player"
+                "ITVX"
               ]
             },
             {
               "country": "Ausport",
               "channels": [
-                "SBS On Demand",
-                "SBS Melbourne"
+                "SBS Melbourne",
+                "SBS On Demand"
               ]
             }
           ],
@@ -336,7 +399,7 @@
                 "ESPN Unlimited",
                 "ESPN",
                 "ESPN Deportes",
-                "TSN2"
+                "TSN+"
               ]
             },
             {
