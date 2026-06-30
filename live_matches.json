@@ -33,7 +33,7 @@
   },
   {
     "Date": "2026-06-30",
-    "Time": "18:30",
+    "Time": "19:00",
     "League": "Tennis",
     "Matchup": "Wimbledon",
     "Services": [
@@ -136,8 +136,16 @@
     "Matchup": "Wimbledon",
     "Services": [
       "Bbc1 France",
-      "Bbc2 France",
       "beIN Sports 2 France"
+    ]
+  },
+  {
+    "Date": "2026-07-01",
+    "Time": "21:00",
+    "League": "Tennis",
+    "Matchup": "Wimbledon",
+    "Services": [
+      "Bbc2 France"
     ]
   },
   {
@@ -203,6 +211,7 @@
     "League": "Tennis",
     "Matchup": "Wimbledon 2026",
     "Services": [
+      "Rds2",
       "Rds2 Hd"
     ]
   },
@@ -212,7 +221,9 @@
     "League": "Tennis",
     "Matchup": "2026 Wimbledon Championships",
     "Services": [
+      "TSN 2",
       "TSN 2 Hd",
+      "TSN 5",
       "TSN 5 Hd"
     ]
   },
@@ -222,16 +233,8 @@
     "League": "Tennis",
     "Matchup": "Wimbledon",
     "Services": [
+      "Bbc2 France",
       "beIN Sports 2 France"
-    ]
-  },
-  {
-    "Date": "2026-07-02",
-    "Time": "21:00",
-    "League": "Tennis",
-    "Matchup": "Wimbledon",
-    "Services": [
-      "Bbc2 France"
     ]
   },
   {
@@ -278,6 +281,35 @@
     "Matchup": "Wimbledon",
     "Services": [
       "Bbc1 France",
+      "beIN Sports 2 France"
+    ]
+  },
+  {
+    "Date": "2026-07-03",
+    "Time": "17:00",
+    "League": "Tennis",
+    "Matchup": "Wimbledon 2026",
+    "Services": [
+      "Rds2 Hd"
+    ]
+  },
+  {
+    "Date": "2026-07-03",
+    "Time": "17:00",
+    "League": "Tennis",
+    "Matchup": "2026 Wimbledon Championships",
+    "Services": [
+      "TSN 3 Hd",
+      "TSN 5 Hd"
+    ]
+  },
+  {
+    "Date": "2026-07-03",
+    "Time": "19:00",
+    "League": "Tennis",
+    "Matchup": "Wimbledon",
+    "Services": [
+      "Bbc2 France",
       "beIN Sports 2 France"
     ]
   }
