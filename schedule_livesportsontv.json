@@ -1,15 +1,5 @@
 [
     {
-        "Date": "2026-07-03",
-        "Time": "22:00",
-        "League": "Tennis (Grand Slam)",
-        "Matchup": "Aryna Sabalenka",
-        "Services": [
-            "Fubo Sports",
-            "ESPN Unlimited"
-        ]
-    },
-    {
         "Date": "2026-07-04",
         "Time": "01:00",
         "League": "FIFA World Cup",
@@ -94,6 +84,7 @@
             "RDS Canada",
             "RSI La 2 Svizzera HD",
             "RTBF La Une HD",
+            "RTK 1 Kosovo HD",
             "RTS 1 Srbija HD",
             "RTS 2 Suisse HD",
             "RTÉ 2 Ireland HD",
@@ -461,6 +452,7 @@
             "RTBF Tipik Belgique",
             "RTG Guinea",
             "RTi La 3 Côte d’Ivoire",
+            "RTK 1 Kosovo HD",
             "RTNC Congo DR",
             "RTS 1 Senegal HD",
             "RTS 1 Srbija HD",
@@ -548,6 +540,16 @@
     },
     {
         "Date": "2026-07-04",
+        "Time": "19:30",
+        "League": "Tennis (Grand Slam)",
+        "Matchup": "Alexandra Eala",
+        "Services": [
+            "Fubo Sports",
+            "ESPN Unlimited"
+        ]
+    },
+    {
+        "Date": "2026-07-04",
         "Time": "20:00",
         "League": "UEFA European Championship",
         "Matchup": "Denmark U19 vs Wales U19",
@@ -564,6 +566,16 @@
         "Services": [
             "Sportdigital FUSSBALL Germany",
             "Sportdigital FUSSBALL Germany"
+        ]
+    },
+    {
+        "Date": "2026-07-04",
+        "Time": "21:30",
+        "League": "Tennis (Grand Slam)",
+        "Matchup": "Amanda Anisimova",
+        "Services": [
+            "Fubo Sports",
+            "ESPN Unlimited"
         ]
     },
     {
@@ -657,10 +669,12 @@
     },
     {
         "Date": "2026-07-05",
-        "Time": "00:00",
+        "Time": "01:00",
         "League": "Tennis (Grand Slam)",
-        "Matchup": "Wimbledon",
+        "Matchup": "Grigor Dimitrov",
         "Services": [
+            "Fubo Sports",
+            "ESPN Unlimited",
             "TSN5",
             "RDS 2"
         ]
@@ -935,6 +949,56 @@
             "ESPN Unlimited",
             "ESPN",
             "TSN2"
+        ]
+    },
+    {
+        "Date": "2026-07-07",
+        "Time": "02:00",
+        "League": "FIFA World Cup",
+        "Matchup": "Portugal vs Spain",
+        "Services": [
+            "Arena Premium 1 Srbija HD",
+            "Arena Sport 1 Slovenija HD",
+            "BarTV Mundial HD",
+            "BBC iPlayer",
+            "BBC One HD",
+            "BBC Sport",
+            "BBC Sport Website",
+            "beIN Sports France 1 HD",
+            "DAZN España",
+            "DAZN Italia",
+            "DAZN Mundial Espana HD",
+            "Fubo Sports USA",
+            "Go3 World Cup Baltics",
+            "HRT 2 Hrvatska HD",
+            "JOJ Play",
+            "M4 Sport Hungary HD",
+            "Magenta Sport",
+            "MATCH! Futbol 1 HD",
+            "MATCH! Premier HD",
+            "MATCH! Russia HD",
+            "MATCH! TV",
+            "NPO 1 4K UHD",
+            "NPO 1 Nederland HD",
+            "Peacock Premium USA",
+            "Play RTS Sport",
+            "RTP 1 Portugal HD",
+            "RTÉ 2 Ireland HD",
+            "RTÉ Player",
+            "Slovenija TV2 HD",
+            "Sport TV5 Portugal HD",
+            "SuperSport PSL HD",
+            "Telemundo USA",
+            "TSN Canada 1 HD",
+            "TSN+ Canada",
+            "TVP 1 Polska HD",
+            "TVP Sport Polska HD",
+            "ZDF Deutschland HD",
+            "Fubo Sports",
+            "Peacock ES",
+            "FOX",
+            "FOX 4K",
+            "FOX Sports 4K"
         ]
     }
 ]
