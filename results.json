@@ -1,88 +1,5 @@
 [
   {
-    "hari": "Jumat",
-    "tanggal": "03-07-2026",
-    "time": "10:00",
-    "sport": "FIFA World Cup 2026 - Live Football",
-    "competition": "FIFA World Cup 2026",
-    "title": "Switzerland vs Algeria",
-    "home": "Switzerland",
-    "away": "Algeria",
-    "channels": [
-      "BBC1",
-      "BBC iPlayer",
-      "BBC Sport Website"
-    ],
-    "event_url": ""
-  },
-  {
-    "hari": "Sabtu",
-    "tanggal": "03-07-2026",
-    "time": "17:00",
-    "sport": "Grand Slam Tennis - Live Tennis",
-    "competition": "",
-    "title": "Wimbledon",
-    "home": "Wimbledon",
-    "away": "",
-    "channels": [
-      "BBC1",
-      "BBC2",
-      "BBC iPlayer",
-      "BBC Sport Website",
-      "BBC Red Button"
-    ],
-    "event_url": ""
-  },
-  {
-    "hari": "Sabtu",
-    "tanggal": "04-07-2026",
-    "time": "01:00",
-    "sport": "FIFA World Cup 2026 - Live Football",
-    "competition": "FIFA World Cup 2026",
-    "title": "Australia vs Egypt",
-    "home": "Australia",
-    "away": "Egypt",
-    "channels": [
-      "BBC1",
-      "BBC iPlayer",
-      "BBC Sport Website"
-    ],
-    "event_url": ""
-  },
-  {
-    "hari": "Sabtu",
-    "tanggal": "04-07-2026",
-    "time": "01:00",
-    "sport": "Grand Slam Tennis - Live Tennis",
-    "competition": "",
-    "title": "Wimbledon",
-    "home": "Wimbledon",
-    "away": "",
-    "channels": [
-      "BBC1",
-      "BBC iPlayer",
-      "BBC Sport Website"
-    ],
-    "event_url": ""
-  },
-  {
-    "hari": "Sabtu",
-    "tanggal": "04-07-2026",
-    "time": "05:00",
-    "sport": "FIFA World Cup 2026 - Live Football",
-    "competition": "FIFA World Cup 2026",
-    "title": "Argentina vs Cape Verde",
-    "home": "Argentina",
-    "away": "Cape Verde",
-    "channels": [
-      "ITV1",
-      "ITVX",
-      "STV",
-      "STV Player"
-    ],
-    "event_url": ""
-  },
-  {
     "hari": "Sabtu",
     "tanggal": "04-07-2026",
     "time": "08:30",
@@ -143,8 +60,10 @@
     "home": "Canada",
     "away": "Morocco",
     "channels": [
-      "ITV TBC",
-      "BBC TBC"
+      "ITV1",
+      "ITVX",
+      "STV",
+      "STV Player"
     ],
     "event_url": ""
   },
@@ -158,8 +77,76 @@
     "home": "Paraguay",
     "away": "France",
     "channels": [
-      "ITV TBC",
-      "BBC TBC"
+      "BBC1",
+      "BBC iPlayer",
+      "BBC Sport Website"
+    ],
+    "event_url": ""
+  },
+  {
+    "hari": "Senin",
+    "tanggal": "05-07-2026",
+    "time": "17:00",
+    "sport": "Grand Slam Tennis - Live Tennis",
+    "competition": "",
+    "title": "Wimbledon",
+    "home": "Wimbledon",
+    "away": "",
+    "channels": [
+      "BBC1",
+      "BBC2",
+      "BBC iPlayer",
+      "BBC Sport Website",
+      "BBC Red Button"
+    ],
+    "event_url": ""
+  },
+  {
+    "hari": "Senin",
+    "tanggal": "06-07-2026",
+    "time": "00:00",
+    "sport": "Grand Slam Tennis - Live Tennis",
+    "competition": "",
+    "title": "Wimbledon",
+    "home": "Wimbledon",
+    "away": "",
+    "channels": [
+      "BBC1",
+      "BBC iPlayer",
+      "BBC Sport Website"
+    ],
+    "event_url": ""
+  },
+  {
+    "hari": "Senin",
+    "tanggal": "06-07-2026",
+    "time": "03:00",
+    "sport": "FIFA World Cup 2026 - Live Football",
+    "competition": "FIFA World Cup 2026",
+    "title": "Brazil vs Norway",
+    "home": "Brazil",
+    "away": "Norway",
+    "channels": [
+      "ITV1",
+      "ITVX",
+      "STV",
+      "STV Player"
+    ],
+    "event_url": ""
+  },
+  {
+    "hari": "Senin",
+    "tanggal": "06-07-2026",
+    "time": "07:00",
+    "sport": "FIFA World Cup 2026 - Live Football",
+    "competition": "FIFA World Cup 2026",
+    "title": "Mexico vs England",
+    "home": "Mexico",
+    "away": "England",
+    "channels": [
+      "BBC1",
+      "BBC iPlayer",
+      "BBC Sport Website"
     ],
     "event_url": ""
   }
