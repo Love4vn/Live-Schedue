@@ -1,16 +1,6 @@
 [
     {
         "Date": "2026-07-07",
-        "Time": "21:30",
-        "League": "Tennis (Grand Slam)",
-        "Matchup": "Naomi Osaka",
-        "Services": [
-            "Fubo Sports",
-            "ESPN Unlimited"
-        ]
-    },
-    {
-        "Date": "2026-07-07",
         "Time": "22:30",
         "League": "International Friendlies",
         "Matchup": "Zeleznicar vs CSKA 1948 Sofia",
@@ -22,11 +12,11 @@
     },
     {
         "Date": "2026-07-07",
-        "Time": "22:30",
-        "League": "International Friendlies",
-        "Matchup": "CSKA 1948 Sofia vs Zeleznicar",
+        "Time": "23:00",
+        "League": "UEFA Champions League",
+        "Matchup": "Kauno Zalgiris vs Drita",
         "Services": [
-            "Arena 2 Premium SR"
+            "Solidsport Broadcast"
         ]
     },
     {
@@ -83,6 +73,7 @@
             "DAZN Mundial Espana HD",
             "Fast Sports",
             "Fast Sports TV Armenia",
+            "Filinfo TV Burkina Faso",
             "Fox Sports USA 4K",
             "Fox TV USA 4K",
             "Fox TV USA HD",
@@ -205,6 +196,7 @@
             "UBC TV Uganda",
             "UTV Northern Ireland HD",
             "VRT Canvas Belgium HD",
+            "We Sport Moldova",
             "YLE AREENA",
             "YLE TV2 Suomi HD",
             "Z Sports 1 Angola",
@@ -273,7 +265,8 @@
         "Matchup": "Vardar Skopje vs KuPS Kuopio",
         "Services": [
             "Arena Premium 3 BiH HD",
-            "Arena Sport 1 Srbija HD"
+            "Arena Sport 1 Srbija HD",
+            "Solidsport Broadcast"
         ]
     },
     {
@@ -305,6 +298,7 @@
         "Matchup": "Floriana vs Shamrock Rovers",
         "Services": [
             "OneFootball",
+            "Solidsport Broadcast",
             "TVM Sport+ HD",
             "Veikkaus TV",
             "TVMSport+ MT"
@@ -349,7 +343,8 @@
         "League": "UEFA Champions League",
         "Matchup": "KÍ Klaksvík vs Atert Bissen",
         "Services": [
-            "OneFootball"
+            "OneFootball",
+            "Solidsport Broadcast"
         ]
     },
     {
@@ -432,6 +427,7 @@
             "ITV X",
             "JOJ Play",
             "JOJ Šport SVK HD",
+            "Jurnal TV Moldova",
             "KTRK Sport",
             "M4 Sport Hungary HD",
             "M6 France 4K UHD",
@@ -465,6 +461,7 @@
             "RDS Canada",
             "RSI La 2 Svizzera HD",
             "RTBF Tipik Belgique",
+            "RTK 1 Kosovo HD",
             "RTS 1 Srbija HD",
             "RTS 2 Suisse HD",
             "RTÉ 2 Ireland HD",
@@ -559,7 +556,8 @@
         "Matchup": "Marta Kostyuk",
         "Services": [
             "Fubo Sports",
-            "ESPN Unlimited"
+            "ESPN Unlimited",
+            "ESPN Deportes"
         ]
     },
     {
@@ -724,6 +722,15 @@
     {
         "Date": "2026-07-09",
         "Time": "19:00",
+        "League": "International Friendlies",
+        "Matchup": "Debrecen vs Železničar Pančevo",
+        "Services": [
+            "Moja TV BH"
+        ]
+    },
+    {
+        "Date": "2026-07-09",
+        "Time": "19:00",
         "League": "Tennis (Grand Slam)",
         "Matchup": "Wimbledon",
         "Services": [
@@ -735,12 +742,50 @@
         ]
     },
     {
+        "Date": "2026-07-09",
+        "Time": "23:00",
+        "League": "UEFA Europa League",
+        "Matchup": "Qarabağ vs Vestri",
+        "Services": [
+            "CBC Sport Azerbaijan AZ"
+        ]
+    },
+    {
+        "Date": "2026-07-09",
+        "Time": "23:00",
+        "League": "UEFA Europa Conference League",
+        "Matchup": "Alashkert vs Yelimay Semey",
+        "Services": [
+            "Qazsport KZ"
+        ]
+    },
+    {
         "Date": "2026-07-10",
         "Time": "00:00",
         "League": "UEFA Europa League",
         "Matchup": "Dynamo Kyiv vs Universitatea Cluj",
         "Services": [
-            "Digi Sport 1 Romania HD"
+            "Digi Sport 1 Romania HD",
+            "Digi Sport 1 Romania",
+            "Digi Sport 1 Romania"
+        ]
+    },
+    {
+        "Date": "2026-07-10",
+        "Time": "00:00",
+        "League": "UEFA Europa Conference League",
+        "Matchup": "Velež vs Milsami",
+        "Services": [
+            "Moja TV BH"
+        ]
+    },
+    {
+        "Date": "2026-07-10",
+        "Time": "00:00",
+        "League": "UEFA Europa League",
+        "Matchup": "Sheriff vs Aluminij",
+        "Services": [
+            "We Sport MD"
         ]
     },
     {
@@ -770,7 +815,9 @@
         "League": "UEFA Europa League",
         "Matchup": "CSKA Sofia vs Derry City",
         "Services": [
-            "Diema Sport HD"
+            "Diema Sport HD",
+            "Diema Sport Bulgaria",
+            "Diema Sport Bulgaria"
         ]
     },
     {
@@ -780,7 +827,10 @@
         "Matchup": "Vojvodina vs Ferencváros",
         "Services": [
             "Arena Premium 3 Srbija HD",
-            "Duna World HD"
+            "Duna World HD",
+            "Duna World Hungary",
+            "Arena Sport 1x2 SR",
+            "Duna World Hungary"
         ]
     },
     {
@@ -789,7 +839,19 @@
         "League": "UEFA Europa League",
         "Matchup": "Hajduk Split vs MSK Zilina",
         "Services": [
-            "Hajduk TV"
+            "Hajduk TV",
+            "Hajduk TV Croatia",
+            "Hajduk TV Croatia"
+        ]
+    },
+    {
+        "Date": "2026-07-10",
+        "Time": "01:00",
+        "League": "UEFA Europa League",
+        "Matchup": "Hajduk Split vs Žilina",
+        "Services": [
+            "Dvojka Slovakia",
+            "Dvojka Slovakia"
         ]
     },
     {
@@ -831,6 +893,33 @@
     },
     {
         "Date": "2026-07-10",
+        "Time": "02:00",
+        "League": "UEFA Europa Conference League",
+        "Matchup": "Stjarnan vs Víkingur",
+        "Services": [
+            "SÝN Sport Ísland IS"
+        ]
+    },
+    {
+        "Date": "2026-07-10",
+        "Time": "02:00",
+        "League": "UEFA Europa Conference League",
+        "Matchup": "Sarajevo vs Inter Turku",
+        "Services": [
+            "Moja TV BH"
+        ]
+    },
+    {
+        "Date": "2026-07-10",
+        "Time": "02:00",
+        "League": "UEFA Europa Conference League",
+        "Matchup": "Dinamo City vs Astana",
+        "Services": [
+            "Kazach TV KA"
+        ]
+    },
+    {
+        "Date": "2026-07-10",
         "Time": "03:00",
         "League": "FIFA World Cup",
         "Matchup": "France vs Morocco",
@@ -840,6 +929,7 @@
             "Arena Sport 1 BiH HD",
             "Arena Sport 1 Slovenija HD",
             "BarTV Mundial HD",
+            "beIN Sports France 1 HD",
             "beIN Sports MENA Max 5 HD",
             "beIN Sports MENA Max 6 HD",
             "DAZN España",
@@ -867,6 +957,8 @@
             "Sport TV5 Portugal HD",
             "STV Player",
             "STV Scotland HD",
+            "SuperSport Grandstand HD",
+            "SuperSport PSL HD",
             "Telemundo USA",
             "TRT 1 Türkiye HD",
             "TSN Canada 1 HD",
@@ -882,6 +974,19 @@
             "VRT 1 Belgium HD",
             "YLE AREENA",
             "YLE TV2 Suomi HD",
+            "ITV1 Great Britain",
+            "Fox United States",
+            "MagentaTV Germany",
+            "TSN1 Canada",
+            "DAZN Italy",
+            "M6 France",
+            "TVP1 Poland",
+            "HRT 2 Croatia",
+            "YLE TV2 Finland",
+            "TV4 Sweden Sweden",
+            "NPO 1 Netherlands",
+            "DAZN Mundial Spain",
+            "ITV1 Great Britain",
             "Fubo Sports",
             "Peacock ES",
             "FOX",
