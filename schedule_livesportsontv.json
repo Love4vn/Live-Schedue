@@ -1,48 +1,6 @@
 [
     {
         "Date": "2026-07-07",
-        "Time": "17:00",
-        "League": "Tennis (Grand Slam)",
-        "Matchup": "Wimbledon",
-        "Services": [
-            "TSN+"
-        ]
-    },
-    {
-        "Date": "2026-07-07",
-        "Time": "19:00",
-        "League": "International Friendlies",
-        "Matchup": "Buducnost vs Radnicki 1923",
-        "Services": [
-            "Arena Premium 2 BH"
-        ]
-    },
-    {
-        "Date": "2026-07-07",
-        "Time": "19:30",
-        "League": "Tennis (Grand Slam)",
-        "Matchup": "Jannik Sinner",
-        "Services": [
-            "Fubo Sports",
-            "ESPN Unlimited",
-            "ESPN",
-            "ESPN2",
-            "ESPN Deportes"
-        ]
-    },
-    {
-        "Date": "2026-07-07",
-        "Time": "19:30",
-        "League": "Tennis (Grand Slam)",
-        "Matchup": "Jessica Pegula",
-        "Services": [
-            "Fubo Sports",
-            "ESPN Unlimited",
-            "TSN+"
-        ]
-    },
-    {
-        "Date": "2026-07-07",
         "Time": "21:30",
         "League": "Tennis (Grand Slam)",
         "Matchup": "Naomi Osaka",
@@ -77,6 +35,8 @@
         "League": "UEFA Champions League",
         "Matchup": "Ararat-Armenia vs FC Riga",
         "Services": [
+            "Armenia First TV",
+            "OneFootball",
             "Sporta Centrs TV",
             "TV4 Latvija"
         ]
@@ -109,6 +69,8 @@
             "BarTV Mundial HD",
             "beIN Sports France 1 HD",
             "beIN Sports MENA 4K UHD",
+            "beIN Sports MENA Max 1 HD",
+            "beIN Sports MENA Max 3 HD",
             "beIN Sports MENA Max 5 HD",
             "beIN Sports MENA Max 6 HD",
             "BNT 1 Bulgaria HD",
@@ -140,6 +102,7 @@
             "ITV 1 England HD",
             "ITV X",
             "JOJ Play",
+            "JOJ Šport SVK HD",
             "KBC 1 Kenya",
             "KC2 Rwanda",
             "KTRK Sport",
@@ -162,12 +125,16 @@
             "NOW Sports HK 4K 616",
             "NPO 1 4K UHD",
             "NPO 1 Nederland HD",
+            "ORF 1 Austria HD",
+            "ORF 4K UHD",
             "ORTB Benin",
+            "ORTM 1 Mali",
             "Peacock Premium USA",
             "Persiana Sport HD",
             "Persiana Sports 2 HD",
             "Play RTS Sport",
             "PTV Sports",
+            "Qazaqstan TV HD",
             "QazSport HD",
             "RAI 1 Italia HD",
             "RAI 4K UHD",
@@ -229,6 +196,7 @@
             "TVE La 1 UHD 4K",
             "TVE La 2 Cat",
             "TVM 1 Mozambique",
+            "TVM+ Malta HD",
             "TVP 2 Polska HD",
             "TVP Sport Polska HD",
             "TVT Togo",
@@ -281,7 +249,8 @@
         "Matchup": "Radnicki 1923 vs Buducnost",
         "Services": [
             "Arena Premium 2 BiH HD",
-            "Arena Premium 4 Srbija HD"
+            "Arena Premium 2 Srbija HD",
+            "Arena Sport 10 Srbija HD"
         ]
     },
     {
@@ -303,6 +272,7 @@
         "League": "UEFA Champions League",
         "Matchup": "Vardar Skopje vs KuPS Kuopio",
         "Services": [
+            "Arena Premium 3 BiH HD",
             "Arena Sport 1 Srbija HD"
         ]
     },
@@ -334,6 +304,7 @@
         "League": "UEFA Champions League",
         "Matchup": "Floriana vs Shamrock Rovers",
         "Services": [
+            "OneFootball",
             "TVM Sport+ HD",
             "Veikkaus TV",
             "TVMSport+ MT"
@@ -354,8 +325,6 @@
         "League": "UEFA Champions League",
         "Matchup": "Borac Banja Luka vs Levski Sofia",
         "Services": [
-            "Arena Premium 1 BiH HD",
-            "Arena Sport 1x2 Srbija",
             "Diema Sport HD",
             "Veikkaus TV",
             "Arena Sport 1 Premium BH"
@@ -367,9 +336,20 @@
         "League": "UEFA Champions League",
         "Matchup": "Tre Fiori vs Larne",
         "Services": [
+            "Arena Premium 2 BiH HD",
             "Arena Premium 4 Srbija HD",
+            "OneFootball",
             "Rtv San Marino DTT",
             "Arena 4 Premium SR"
+        ]
+    },
+    {
+        "Date": "2026-07-08",
+        "Time": "01:45",
+        "League": "UEFA Champions League",
+        "Matchup": "KÍ Klaksvík vs Atert Bissen",
+        "Services": [
+            "OneFootball"
         ]
     },
     {
@@ -419,6 +399,8 @@
             "BarTV Mundial HD",
             "beIN Sports France 1 HD",
             "beIN Sports MENA 4K UHD",
+            "beIN Sports MENA Max 2 HD",
+            "beIN Sports MENA Max 4 HD",
             "beIN Sports MENA Max 5 HD",
             "beIN Sports MENA Max 6 HD",
             "BNT 1 Bulgaria HD",
@@ -449,11 +431,13 @@
             "ITV 1 England HD",
             "ITV X",
             "JOJ Play",
+            "JOJ Šport SVK HD",
             "KTRK Sport",
             "M4 Sport Hungary HD",
             "M6 France 4K UHD",
             "M6 France HD",
             "M6 Suisse HD",
+            "Mafken TV Zambia",
             "Magenta Sport",
             "MATCH! Futbol 1 HD",
             "MATCH! Premier HD",
@@ -467,6 +451,8 @@
             "NPO 1 Nederland HD",
             "NRK 1 Norge HD",
             "NRK TV",
+            "ORF 1 Austria HD",
+            "ORF 4K UHD",
             "Peacock Premium USA",
             "Persiana Sport HD",
             "Persiana Sports 2 HD",
@@ -495,6 +481,7 @@
             "SRF Zwei Schweiz HD",
             "STV Player",
             "STV Scotland HD",
+            "Sun Sports TV Zambia",
             "SuperSport 2 Albania HD",
             "SuperSport Grandstand HD",
             "SuperSport MáXimo 1 HD",
@@ -512,6 +499,7 @@
             "TV Klan HD",
             "TVCG 1 HD",
             "TVM Sport+ HD",
+            "TVM+ Malta HD",
             "TVP 1 Polska HD",
             "TVP Sport Polska HD",
             "UTV Northern Ireland HD",
@@ -552,6 +540,46 @@
             "ESPN",
             "ESPN2",
             "ESPN Deportes"
+        ]
+    },
+    {
+        "Date": "2026-07-08",
+        "Time": "19:00",
+        "League": "Tennis (Grand Slam)",
+        "Matchup": "Linda Noskova",
+        "Services": [
+            "Fubo Sports",
+            "ESPN Unlimited"
+        ]
+    },
+    {
+        "Date": "2026-07-08",
+        "Time": "19:30",
+        "League": "Tennis (Grand Slam)",
+        "Matchup": "Marta Kostyuk",
+        "Services": [
+            "Fubo Sports",
+            "ESPN Unlimited"
+        ]
+    },
+    {
+        "Date": "2026-07-08",
+        "Time": "21:00",
+        "League": "Tennis (Grand Slam)",
+        "Matchup": "Taylor Fritz",
+        "Services": [
+            "Fubo Sports",
+            "ESPN Unlimited"
+        ]
+    },
+    {
+        "Date": "2026-07-08",
+        "Time": "21:30",
+        "League": "Tennis (Grand Slam)",
+        "Matchup": "Flavio Cobolli",
+        "Services": [
+            "Fubo Sports",
+            "ESPN Unlimited"
         ]
     },
     {
@@ -751,7 +779,7 @@
         "League": "UEFA Europa League",
         "Matchup": "Vojvodina vs Ferencváros",
         "Services": [
-            "Arena Sport 1x2 Srbija",
+            "Arena Premium 3 Srbija HD",
             "Duna World HD"
         ]
     },
@@ -809,9 +837,11 @@
         "Services": [
             "ARD Das Erste HD",
             "Arena Premium 1 Srbija HD",
+            "Arena Sport 1 BiH HD",
             "Arena Sport 1 Slovenija HD",
             "BarTV Mundial HD",
             "beIN Sports MENA Max 5 HD",
+            "beIN Sports MENA Max 6 HD",
             "DAZN España",
             "DAZN Italia",
             "DAZN Mundial Espana HD",
@@ -868,6 +898,19 @@
             "Fubo Sports",
             "ESPN Unlimited",
             "ESPN"
+        ]
+    },
+    {
+        "Date": "2026-07-10",
+        "Time": "19:00",
+        "League": "Tennis (Grand Slam)",
+        "Matchup": "Wimbledon",
+        "Services": [
+            "Fubo Sports",
+            "ESPN Unlimited",
+            "ESPN",
+            "ESPN Deportes",
+            "TSN1"
         ]
     }
 ]
