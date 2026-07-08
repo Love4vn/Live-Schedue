@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-08 18:10 VN",
+  "updated": "2026-07-08 21:31 VN",
   "days": {
     "20260708": {
       "date": "Wednesday, 08/07",
@@ -179,25 +179,15 @@
           "source": "livesportsontv"
         },
         {
-          "league": "Tennis",
-          "match": "Wimbledon",
-          "kick_utc": 1783504800,
-          "time": "08/07 05:00 PM",
+          "league": "International Friendly",
+          "match": "Debrecen vs Železničar Pančevo",
+          "kick_utc": 1783598400,
+          "time": "09/07 07:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN+"
-              ]
-            },
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "BBC1",
-                "BBC2",
-                "BBC iPlayer",
-                "BBC Sport Website",
-                "BBC Red Button"
+                "Moja TV BH"
               ]
             }
           ],
@@ -205,24 +195,31 @@
         },
         {
           "league": "Tennis",
-          "match": "Wimbledon",
-          "kick_utc": 1783512900,
-          "time": "08/07 07:15 PM",
+          "match": "Taylor Fritz",
+          "kick_utc": 1783519200,
+          "time": "08/07 09:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
                 "Fubo Sports",
-                "ESPN2",
-                "ESPN Deportes",
-                "ESPN Unlimited",
-                "ESPN"
+                "ESPN Unlimited"
               ]
-            },
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Flavio Cobolli",
+          "kick_utc": 1783521000,
+          "time": "08/07 09:30 PM",
+          "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "LiveSportsOnTV",
               "channels": [
-                "Bbc1 France"
+                "Fubo Sports",
+                "ESPN Unlimited"
               ]
             }
           ],
@@ -333,35 +330,18 @@
         },
         {
           "league": "Tennis",
-          "match": "Linda Noskova",
-          "kick_utc": 1783512000,
-          "time": "08/07 07:00 PM",
+          "match": "Wimbledon",
+          "kick_utc": 1783598400,
+          "time": "09/07 07:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
                 "Fubo Sports",
                 "ESPN Unlimited",
-                "TSN1",
-                "TSN4"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Marta Kostyuk",
-          "kick_utc": 1783513800,
-          "time": "08/07 07:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Fubo Sports",
-                "ESPN Unlimited",
+                "ESPN",
                 "ESPN Deportes",
-                "TSN+"
+                "RDS"
               ]
             }
           ],
@@ -369,47 +349,62 @@
         },
         {
           "league": "Tennis",
-          "match": "Taylor Fritz",
-          "kick_utc": 1783519200,
-          "time": "08/07 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Fubo Sports",
-                "ESPN Unlimited"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Flavio Cobolli",
-          "kick_utc": 1783521000,
-          "time": "08/07 09:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Fubo Sports",
-                "ESPN Unlimited"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Wimbledon 2026 - Wimbledon",
-          "kick_utc": 1783504740,
-          "time": "08/07 04:59 PM",
+          "match": "Wimbledon",
+          "kick_utc": 1783607400,
+          "time": "09/07 09:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Sport Tv2 Hd Portugal",
-                "Sport Tv3 Hd Portugal"
+                "Bbc1 France",
+                "beIN Sports 2 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1783600200,
+          "time": "09/07 07:30 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Channel 9 Sydney",
+                "Channel 9 Melbourne"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1783605600,
+          "time": "09/07 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Channel 9 Sydney",
+                "Channel 9 Melbourne"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tennis - Wimbledon Viertelfinal Frauen/Männer",
+          "kick_utc": 1783521000,
+          "time": "08/07 09:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Srf Zwei France"
               ]
             }
           ],
@@ -448,57 +443,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Wimbledon 2026",
-          "kick_utc": 1783512000,
-          "time": "08/07 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Rds2",
-                "Rds2 Hd",
-                "Réseau Des Sports (Rds)",
-                "Réseau Des Sports (Rds) Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "2026 Wimbledon Championships",
-          "kick_utc": 1783512000,
-          "time": "08/07 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "TSN 1",
-                "TSN 4",
-                "TSN 4 Hd",
-                "TSN Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tennis - Wimbledon Viertelfinal Frauen/Männer",
-          "kick_utc": 1783521000,
-          "time": "08/07 09:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Srf Zwei France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
           "match": "Breakfast at Wimbledon",
           "kick_utc": 1783594800,
           "time": "09/07 06:00 PM",
@@ -517,18 +461,52 @@
         },
         {
           "league": "Tennis",
-          "match": "Wimbledon Dag 10",
-          "kick_utc": 1783511400,
-          "time": "08/07 06:50 PM",
+          "match": "2026 Wimbledon Championships",
+          "kick_utc": 1783598400,
+          "time": "09/07 07:00 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Ziggo Sport 4"
+                "TSN 1",
+                "TSN 5",
+                "TSN 5 Hd",
+                "TSN Hd"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Wimbledon 2026",
+          "kick_utc": 1783600200,
+          "time": "09/07 07:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Réseau Des Sports (Rds)",
+                "Réseau Des Sports (Rds) Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tennis - Wimbledon Halbfinal Frauen",
+          "kick_utc": 1783607400,
+          "time": "09/07 09:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Srf Zwei France"
+              ]
+            }
+          ],
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -551,6 +529,23 @@
           "match": "Wimbledon Dag 10",
           "kick_utc": 1783530000,
           "time": "09/07 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Wimbledon Dag 11",
+          "kick_utc": 1783599600,
+          "time": "09/07 07:20 PM",
           "tv_channels": [
             {
               "country": "NowTV",
