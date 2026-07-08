@@ -1,26 +1,9 @@
 {
-  "updated": "2026-07-08 15:40 VN",
+  "updated": "2026-07-08 18:10 VN",
   "days": {
     "20260708": {
       "date": "Wednesday, 08/07",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Zemun vs Radnik Bijeljina",
-          "kick_utc": 1783522800,
-          "time": "08/07 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena Premium 1 BiH HD",
-                "Arena Sport 1 Srbija HD",
-                "Arena Sport 10 Srbija HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "International Friendly",
           "match": "Maccabi Haifa vs Paksi SE",
@@ -70,38 +53,6 @@
           "source": "livesportsontv"
         },
         {
-          "league": "UEFA Europa Conference League",
-          "match": "Zira vs Torpedo Kutaisi",
-          "kick_utc": 1783526400,
-          "time": "08/07 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Idman TV HD",
-                "Idman TV AZ"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Zenit St Petersburg vs Neftchi",
-          "kick_utc": 1783526400,
-          "time": "08/07 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "MATCH! Premier HD",
-                "MATCH! Russia HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
           "league": "International Friendly",
           "match": "Austria Wien vs DAC",
           "kick_utc": 1783526400,
@@ -134,16 +85,15 @@
           "source": "livesportsontv"
         },
         {
-          "league": "UEFA Champions League",
-          "match": "Vitebsk vs Universitatea Craiova",
-          "kick_utc": 1783530000,
-          "time": "09/07 12:00 AM",
+          "league": "UEFA Europa Conference League",
+          "match": "Zira vs Torpedo Kutaisi",
+          "kick_utc": 1783526400,
+          "time": "08/07 11:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Digi Sport 1 Romania HD",
-                "Prima Sport RO 1 HD"
+                "Idman TV AZ"
               ]
             }
           ],
@@ -175,36 +125,6 @@
               "channels": [
                 "Digi Sport 1 Romania",
                 "Digi Sport 1 Romania"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Europa Conference League",
-          "match": "Differdange 03 vs Ilves Tampere",
-          "kick_utc": 1783531800,
-          "time": "09/07 12:30 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "- - -"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Europa Conference League",
-          "match": "Connah's Quay vs Ballkani",
-          "kick_utc": 1783531800,
-          "time": "09/07 12:30 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Cymru Football TV"
               ]
             }
           ],
@@ -265,6 +185,12 @@
           "time": "08/07 05:00 PM",
           "tv_channels": [
             {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "TSN+"
+              ]
+            },
+            {
               "country": "Wheresthematch",
               "channels": [
                 "BBC1",
@@ -275,7 +201,7 @@
               ]
             }
           ],
-          "source": "wheresthematch"
+          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
@@ -286,11 +212,11 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "ESPN",
-                "ESPN Unlimited",
                 "Fubo Sports",
                 "ESPN2",
-                "ESPN Deportes"
+                "ESPN Deportes",
+                "ESPN Unlimited",
+                "ESPN"
               ]
             },
             {
@@ -381,6 +307,32 @@
         },
         {
           "league": "Tennis",
+          "match": "Wimbledon",
+          "kick_utc": 1783591200,
+          "time": "09/07 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Fubo Sports",
+                "ESPN Unlimited",
+                "ESPN"
+              ]
+            },
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "BBC2",
+                "BBC iPlayer",
+                "BBC Sport Website",
+                "BBC Red Button"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
           "match": "Linda Noskova",
           "kick_utc": 1783512000,
           "time": "08/07 07:00 PM",
@@ -389,7 +341,9 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Fubo Sports",
-                "ESPN Unlimited"
+                "ESPN Unlimited",
+                "TSN1",
+                "TSN4"
               ]
             }
           ],
@@ -406,7 +360,8 @@
               "channels": [
                 "Fubo Sports",
                 "ESPN Unlimited",
-                "ESPN Deportes"
+                "ESPN Deportes",
+                "TSN+"
               ]
             }
           ],
@@ -478,6 +433,21 @@
         },
         {
           "league": "Tennis",
+          "match": "Wimbledon 2026 - Wimbledon",
+          "kick_utc": 1783591200,
+          "time": "09/07 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Wimbledon 2026",
           "kick_utc": 1783512000,
           "time": "08/07 07:00 PM",
@@ -522,6 +492,24 @@
               "country": "Hubsport",
               "channels": [
                 "Srf Zwei France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Breakfast at Wimbledon",
+          "kick_utc": 1783594800,
+          "time": "09/07 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "TSN 1",
+                "TSN 5",
+                "TSN 5 Hd",
+                "TSN Hd"
               ]
             }
           ],
