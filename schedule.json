@@ -1,8 +1,8 @@
 {
-  "updated": "2026-07-08 05:17 VN",
+  "updated": "2026-07-08 10:31 VN",
   "days": {
-    "20260707": {
-      "date": "Tuesday, 07/07",
+    "20260708": {
+      "date": "Wednesday, 08/07",
       "games": [
         {
           "league": "International Friendly",
@@ -253,11 +253,11 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Fubo Sports",
-                "ESPN Unlimited",
-                "ESPN",
                 "ESPN Deportes",
-                "ESPN2"
+                "ESPN Unlimited",
+                "ESPN2",
+                "Fubo Sports",
+                "ESPN"
               ]
             },
             {
@@ -410,22 +410,6 @@
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1783512000,
-          "time": "08/07 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "Channel 9 Sydney",
-                "Channel 9 Melbourne"
-              ]
-            }
-          ],
-          "source": "ausport"
         },
         {
           "league": "Tennis",
