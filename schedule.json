@@ -1,9 +1,26 @@
 {
-  "updated": "2026-07-08 10:31 VN",
+  "updated": "2026-07-08 15:40 VN",
   "days": {
     "20260708": {
       "date": "Wednesday, 08/07",
       "games": [
+        {
+          "league": "International Friendly",
+          "match": "Zemun vs Radnik Bijeljina",
+          "kick_utc": 1783522800,
+          "time": "08/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena Premium 1 BiH HD",
+                "Arena Sport 1 Srbija HD",
+                "Arena Sport 10 Srbija HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
         {
           "league": "International Friendly",
           "match": "Maccabi Haifa vs Paksi SE",
@@ -63,6 +80,22 @@
               "channels": [
                 "Idman TV HD",
                 "Idman TV AZ"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Zenit St Petersburg vs Neftchi",
+          "kick_utc": 1783526400,
+          "time": "08/07 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "MATCH! Premier HD",
+                "MATCH! Russia HD"
               ]
             }
           ],
@@ -253,11 +286,11 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "ESPN Deportes",
+                "ESPN",
                 "ESPN Unlimited",
-                "ESPN2",
                 "Fubo Sports",
-                "ESPN"
+                "ESPN2",
+                "ESPN Deportes"
               ]
             },
             {
@@ -414,8 +447,8 @@
         {
           "league": "Tennis",
           "match": "Wimbledon 2026 - Wimbledon",
-          "kick_utc": 1783504800,
-          "time": "08/07 05:00 PM",
+          "kick_utc": 1783504740,
+          "time": "08/07 04:59 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -430,8 +463,8 @@
         {
           "league": "Tennis",
           "match": "Wimbledon 2026 - Wimbledon",
-          "kick_utc": 1783526400,
-          "time": "08/07 11:00 PM",
+          "kick_utc": 1783526340,
+          "time": "08/07 10:59 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
