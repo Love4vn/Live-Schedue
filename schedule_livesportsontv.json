@@ -1,24 +1,6 @@
 [
     {
         "Date": "2026-07-11",
-        "Time": "18:30",
-        "League": "International Friendlies",
-        "Matchup": "Olympiacos vs Leuven",
-        "Services": [
-            "Cosmote Sport 1 HD"
-        ]
-    },
-    {
-        "Date": "2026-07-11",
-        "Time": "19:00",
-        "League": "International Friendlies",
-        "Matchup": "Moyola Park vs Ballymena United",
-        "Services": [
-            "NIFL TV"
-        ]
-    },
-    {
-        "Date": "2026-07-11",
         "Time": "20:00",
         "League": "International Friendlies",
         "Matchup": "Linfield vs Aberdeen",
@@ -129,7 +111,8 @@
         "League": "International Friendlies",
         "Matchup": "Benfica vs Flamengo",
         "Services": [
-            "Benfica TV HD"
+            "Benfica TV HD",
+            "TVi Portugal HD"
         ]
     },
     {
@@ -162,7 +145,7 @@
             "DAZN Italia",
             "DAZN Mundial Espana HD",
             "ENTV Algérie HD",
-            "ERT 2 Sport Hellas HD",
+            "ERT 1 Hellas HD",
             "Eswatini TV",
             "ETV Estonia",
             "ETV+ Estonia",
@@ -174,7 +157,9 @@
             "Fussball.TV1 UHD",
             "Futbol TV Uzbekistan",
             "Gabon 1ère",
+            "GEM Sport HD",
             "Go3 World Cup Baltics",
+            "Grand Sport HD",
             "GRTS Gambia",
             "GTV Ghana",
             "GTV Sports + HD",
@@ -206,6 +191,7 @@
             "Megogo Futbol 1",
             "NBC 2 Namibia",
             "New World Sport 1 Mauritius",
+            "NHK BS Premium 4K",
             "Nova Action HD",
             "NOW Sports HK 4K 616",
             "NPO 1 4K UHD",
@@ -215,7 +201,6 @@
             "Persiana Sports 2 HD",
             "Play RTS Sport",
             "PTV Sports",
-            "Qazaqstan TV HD",
             "QazSport HD",
             "RAI 1 Italia HD",
             "RAI 4K UHD",
@@ -237,10 +222,12 @@
             "SABC 3 HD",
             "Servus TV Österreich HD",
             "Setanta Sports 1 Georgia HD",
+            "SIC Portugal HD",
             "Sigma TV Cyprus",
             "Slovenija TV2 HD",
             "Sport 24 In Flight HD",
             "Sport TV Belarus",
+            "Sport TV1 Portugal HD",
             "Sport TV5 Portugal HD",
             "Sporty TV Africa",
             "SRF Zwei Schweiz HD",
@@ -277,6 +264,8 @@
             "TV6 Latvija",
             "TVCG 1 HD",
             "TVM 1 Mozambique",
+            "TVM Sport+ HD",
+            "TVM+ Malta HD",
             "TVP 1 Polska HD",
             "TVP Sport Polska HD",
             "TVT Togo",
@@ -285,6 +274,7 @@
             "UBC TV Uganda",
             "UTV Northern Ireland HD",
             "VRT 1 Belgium HD",
+            "World Cup HD",
             "YLE AREENA",
             "YLE TV2 Suomi HD",
             "Z Sports 1 Angola",
@@ -323,6 +313,7 @@
             "BNT 1 Bulgaria HD",
             "BNT 3 Bulgaria HD",
             "Canal 2 International",
+            "Caracol Nacional",
             "ChileVision",
             "CRTV Sports Cameroon",
             "CT Sport Czech HD",
@@ -332,7 +323,7 @@
             "DAZN Mundial Espana HD",
             "DR TV",
             "DR1 Dansk HD",
-            "ERT 2 Sport Hellas HD",
+            "ERT 1 Hellas HD",
             "Fast Sports",
             "Fast Sports TV Armenia",
             "Fox Sports USA 4K",
@@ -341,7 +332,9 @@
             "Fussball.TV1 UHD",
             "Futbol TV Uzbekistan",
             "Gabon 1ère",
+            "GEM Sport HD",
             "Go3 World Cup Baltics",
+            "Grand Sport HD",
             "HRT 2 Hrvatska HD",
             "Ictimai TV HD",
             "IRIB 4K UHD",
@@ -356,12 +349,14 @@
             "Mafken TV Zambia",
             "Magenta Sport",
             "MATCH! TV",
+            "Media Sports Infos",
             "Megogo Futbol 2",
             "Megogo Sport Ukraine HD",
             "MTV 3 Suomi HD",
             "MTV Katsomon+",
             "MTV Urheilu 1 Suomi HD",
             "New World Sport 1 Mauritius",
+            "NHK BS Premium 4K",
             "NOW Sports HK 4K 616",
             "NPO 1 4K UHD",
             "NPO 1 Nederland HD",
@@ -375,6 +370,7 @@
             "QazSport HD",
             "RAI 1 Italia HD",
             "RAI 4K UHD",
+            "RCN TV HD",
             "RDS Canada",
             "RSI La 2 Svizzera HD",
             "RTB Zénith",
@@ -423,6 +419,8 @@
             "TV3 Lietuva HD",
             "TV6 Latvija",
             "TVCG 2 HD",
+            "TVM Sport+ HD",
+            "TVM+ Malta HD",
             "TVP 1 Polska HD",
             "TVP Sport Polska HD",
             "TVT Togo",
@@ -430,6 +428,8 @@
             "UTV Northern Ireland HD",
             "VRT 1 Belgium HD",
             "We Sport Moldova",
+            "World Cup HD",
+            "Z Sports 1 Angola",
             "Zor TV Uzbekistan",
             "Fubo Sports",
             "Peacock ES",
@@ -462,6 +462,24 @@
             "ESPN",
             "ESPN Deportes",
             "RDS"
+        ]
+    },
+    {
+        "Date": "2026-07-14",
+        "Time": "22:00",
+        "League": "UEFA Champions League",
+        "Matchup": "KuPS Kuopio vs Vardar Skopje",
+        "Services": [
+            "Solidsport Broadcast"
+        ]
+    },
+    {
+        "Date": "2026-07-14",
+        "Time": "23:00",
+        "League": "UEFA Champions League",
+        "Matchup": "Inter Escaldes vs Lincoln Red Imps",
+        "Services": [
+            "OneFootball"
         ]
     }
 ]
