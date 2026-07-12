@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-12 15:27 VN",
+  "updated": "2026-07-12 17:38 VN",
   "days": {
     "20260712": {
       "date": "Sunday, 12/07",
@@ -84,48 +84,16 @@
         },
         {
           "league": "Tennis",
-          "match": "H. Guo / K. Mladenovic - G. Dabrowski / L. Stefani",
-          "kick_utc": 1783857600,
-          "time": "12/07 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Fubo Sports",
-                "ESPN Unlimited",
-                "ESPN",
-                "RDS",
-                "TSN1"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Jannik Sinner",
-          "kick_utc": 1783868400,
-          "time": "12/07 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Fubo Sports",
-                "ESPN Unlimited",
-                "ESPN",
-                "ESPN Deportes",
-                "RDS"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
           "match": "Wimbledon",
           "kick_utc": 1783850400,
           "time": "12/07 05:00 PM",
           "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "TSN+"
+              ]
+            },
             {
               "country": "Wheresthematch",
               "channels": [
@@ -136,7 +104,7 @@
               ]
             }
           ],
-          "source": "wheresthematch"
+          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
@@ -205,6 +173,60 @@
             }
           ],
           "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "H. Guo / K. Mladenovic - G. Dabrowski / L. Stefani",
+          "kick_utc": 1783857600,
+          "time": "12/07 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Fubo Sports",
+                "ESPN Unlimited",
+                "ESPN",
+                "RDS",
+                "TSN1"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Jannik Sinner",
+          "kick_utc": 1783868400,
+          "time": "12/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Fubo Sports",
+                "ESPN Unlimited",
+                "ESPN",
+                "ESPN Deportes",
+                "RDS"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP Tennis",
+          "kick_utc": 1783931400,
+          "time": "13/07 03:30 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "ATP Tennis Broadcasted on Sky Sports Tennis",
+                "ATP Tennis Broadcasted on Sky Sports+"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
@@ -411,6 +433,36 @@
             }
           ],
           "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Gstaad 2026",
+          "kick_utc": 1783931400,
+          "time": "13/07 03:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": ": EFG Swiss Open - Gstaad",
+          "kick_utc": 1783931400,
+          "time": "13/07 03:30 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 5"
+              ]
+            }
+          ],
+          "source": "nowtv"
         }
       ]
     }
