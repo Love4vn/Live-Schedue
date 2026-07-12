@@ -1,40 +1,9 @@
 {
-  "updated": "2026-07-12 20:43 VN",
+  "updated": "2026-07-12 23:04 VN",
   "days": {
     "20260712": {
       "date": "Sunday, 12/07",
       "games": [
-        {
-          "league": "Premier League",
-          "match": "Arsenal Dzyarzhynsk vs Vitebsk",
-          "kick_utc": 1783861200,
-          "time": "12/07 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Belarus 5 HD",
-                "Belarus 5 Internet"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "AEK Athens vs De Graafschap",
-          "kick_utc": 1783864800,
-          "time": "12/07 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Cosmote Sport 1 HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "International Friendly",
           "match": "Pafos FC vs Jagiellonia",
@@ -84,25 +53,6 @@
         },
         {
           "league": "Tennis",
-          "match": "H. Guo / K. Mladenovic - G. Dabrowski / L. Stefani",
-          "kick_utc": 1783857600,
-          "time": "12/07 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Fubo Sports",
-                "ESPN Unlimited",
-                "ESPN",
-                "RDS",
-                "TSN1"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
           "match": "Jannik Sinner",
           "kick_utc": 1783868400,
           "time": "12/07 10:00 PM",
@@ -119,22 +69,6 @@
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Wimbledon",
-          "kick_utc": 1783857600,
-          "time": "12/07 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Bbc2 France",
-                "beIN Sports 2 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -206,102 +140,19 @@
         },
         {
           "league": "Tennis",
-          "match": "2026 Wimbledon Championships",
-          "kick_utc": 1783857600,
-          "time": "12/07 07:00 PM",
+          "match": "",
+          "kick_utc": 1783951200,
+          "time": "13/07 09:00 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "TSN 1",
-                "TSN Hd"
+                "beIN Sports Connect",
+                "beIN SPORTS 3"
               ]
             }
           ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "2026 Wimbledon Championships",
-          "kick_utc": 1783868400,
-          "time": "12/07 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "TSN 1",
-                "TSN 4",
-                "TSN 4 Hd",
-                "TSN Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Wimbledon 2026",
-          "kick_utc": 1783857600,
-          "time": "12/07 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Réseau Des Sports (Rds)",
-                "Réseau Des Sports (Rds) Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Wimbledon 2026",
-          "kick_utc": 1783868400,
-          "time": "12/07 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Réseau Des Sports (Rds)",
-                "Réseau Des Sports (Rds) Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Wimbledon 2026 - Final Pares Femininos",
-          "kick_utc": 1783859340,
-          "time": "12/07 07:29 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv1 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Breakfast at Wimbledon",
-          "kick_utc": 1783864800,
-          "time": "12/07 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "TSN 1",
-                "TSN 4",
-                "TSN 4 Hd",
-                "TSN Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -328,6 +179,40 @@
               "country": "Hubsport",
               "channels": [
                 "Sport Tv1 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "2026 Wimbledon Championships",
+          "kick_utc": 1783868400,
+          "time": "12/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "TSN 1",
+                "TSN 4",
+                "TSN 4 Hd",
+                "TSN Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Wimbledon 2026",
+          "kick_utc": 1783868400,
+          "time": "12/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Réseau Des Sports (Rds)",
+                "Réseau Des Sports (Rds) Hd"
               ]
             }
           ],
@@ -444,6 +329,22 @@
         },
         {
           "league": "Tennis",
+          "match": "Tenis Ziua 1",
+          "kick_utc": 1783953000,
+          "time": "13/07 09:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "ATP World Tour 250 - Gstaad 2026",
           "kick_utc": 1783931400,
           "time": "13/07 03:30 PM",
@@ -474,6 +375,21 @@
         },
         {
           "league": "Tennis",
+          "match": "ATP World Tour 250 - Gstaad 2026",
+          "kick_utc": 1783956600,
+          "time": "13/07 10:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "ATP World Tour 250 - Bastad 2026",
           "kick_utc": 1783942080,
           "time": "13/07 06:28 PM",
@@ -482,6 +398,37 @@
               "country": "Hubsport",
               "channels": [
                 "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Umag 2026",
+          "kick_utc": 1783951200,
+          "time": "13/07 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv 6 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: WTA Iasi Ziua 1",
+          "kick_utc": 1783954800,
+          "time": "13/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
               ]
             }
           ],
@@ -529,6 +476,21 @@
                 "Ziggo Sport 1",
                 "Ziggo Sport 4",
                 "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Nordea Open - Bastad",
+          "kick_utc": 1783956900,
+          "time": "13/07 10:35 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
               ]
             }
           ],
