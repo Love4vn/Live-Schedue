@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-13 02:15 VN",
+  "updated": "2026-07-13 04:58 VN",
   "days": {
     "20260712": {
       "date": "Sunday, 12/07",
@@ -35,22 +35,6 @@
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: ATP Iasi Finala",
-          "kick_utc": 1783882800,
-          "time": "13/07 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -157,6 +141,21 @@
               "channels": [
                 "Digi Sport 4 Hd Romania",
                 "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 1",
+          "kick_utc": 1783978200,
+          "time": "14/07 04:30 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Romania"
               ]
             }
           ],
@@ -310,6 +309,21 @@
               "country": "Hubsport",
               "channels": [
                 "Srf Zwei France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: WTA Iasi Ziua 2",
+          "kick_utc": 1783972800,
+          "time": "14/07 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania"
               ]
             }
           ],
