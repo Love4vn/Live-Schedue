@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-12 17:38 VN",
+  "updated": "2026-07-12 20:43 VN",
   "days": {
     "20260712": {
       "date": "Sunday, 12/07",
@@ -84,23 +84,37 @@
         },
         {
           "league": "Tennis",
-          "match": "Wimbledon",
-          "kick_utc": 1783850400,
-          "time": "12/07 05:00 PM",
+          "match": "H. Guo / K. Mladenovic - G. Dabrowski / L. Stefani",
+          "kick_utc": 1783857600,
+          "time": "12/07 07:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN+"
+                "Fubo Sports",
+                "ESPN Unlimited",
+                "ESPN",
+                "RDS",
+                "TSN1"
               ]
-            },
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Jannik Sinner",
+          "kick_utc": 1783868400,
+          "time": "12/07 10:00 PM",
+          "tv_channels": [
             {
-              "country": "Wheresthematch",
+              "country": "LiveSportsOnTV",
               "channels": [
-                "Wimbledon Broadcasted on BBC2",
-                "Wimbledon Broadcasted on BBC iPlayer",
-                "Wimbledon Broadcasted on BBC Sport Website",
-                "Wimbledon Broadcasted on BBC Red Button"
+                "Fubo Sports",
+                "ESPN Unlimited",
+                "ESPN",
+                "ESPN Deportes",
+                "RDS"
               ]
             }
           ],
@@ -173,44 +187,6 @@
             }
           ],
           "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "H. Guo / K. Mladenovic - G. Dabrowski / L. Stefani",
-          "kick_utc": 1783857600,
-          "time": "12/07 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Fubo Sports",
-                "ESPN Unlimited",
-                "ESPN",
-                "RDS",
-                "TSN1"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Jannik Sinner",
-          "kick_utc": 1783868400,
-          "time": "12/07 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Fubo Sports",
-                "ESPN Unlimited",
-                "ESPN",
-                "ESPN Deportes",
-                "RDS"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
@@ -436,6 +412,38 @@
         },
         {
           "league": "Tennis",
+          "match": "Tenis Ziua 1",
+          "kick_utc": 1783942200,
+          "time": "13/07 06:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 1",
+          "kick_utc": 1783949400,
+          "time": "13/07 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "ATP World Tour 250 - Gstaad 2026",
           "kick_utc": 1783931400,
           "time": "13/07 03:30 PM",
@@ -451,6 +459,36 @@
         },
         {
           "league": "Tennis",
+          "match": "ATP World Tour 250 - Gstaad 2026",
+          "kick_utc": 1783947600,
+          "time": "13/07 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Bastad 2026",
+          "kick_utc": 1783942080,
+          "time": "13/07 06:28 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": ": EFG Swiss Open - Gstaad",
           "kick_utc": 1783931400,
           "time": "13/07 03:30 PM",
@@ -459,6 +497,38 @@
               "country": "NowTV",
               "channels": [
                 "Ziggo Sport 5"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": EFG Swiss Open - Gstaad",
+          "kick_utc": 1783947600,
+          "time": "13/07 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 5"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Nordea Open - Bastad",
+          "kick_utc": 1783942200,
+          "time": "13/07 06:30 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
               ]
             }
           ],
