@@ -1,9 +1,87 @@
 {
-  "updated": "2026-07-12 10:38 VN",
+  "updated": "2026-07-12 15:27 VN",
   "days": {
     "20260712": {
       "date": "Sunday, 12/07",
       "games": [
+        {
+          "league": "Premier League",
+          "match": "Arsenal Dzyarzhynsk vs Vitebsk",
+          "kick_utc": 1783861200,
+          "time": "12/07 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Belarus 5 HD",
+                "Belarus 5 Internet"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "AEK Athens vs De Graafschap",
+          "kick_utc": 1783864800,
+          "time": "12/07 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Cosmote Sport 1 HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Pafos FC vs Jagiellonia",
+          "kick_utc": 1783868400,
+          "time": "12/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Cytavision Sports 1 HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "IMT Novi Belgrade vs Radnicki 1923",
+          "kick_utc": 1783872000,
+          "time": "12/07 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena Premium 2 BiH HD",
+                "Arena Sport 1 Srbija HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Zenit St Petersburg vs Red Star Belgrade",
+          "kick_utc": 1783872000,
+          "time": "12/07 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "MATCH! Premier HD",
+                "MATCH! Russia HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
         {
           "league": "Tennis",
           "match": "H. Guo / K. Mladenovic - G. Dabrowski / L. Stefani",
@@ -164,6 +242,38 @@
         },
         {
           "league": "Tennis",
+          "match": "Wimbledon 2026",
+          "kick_utc": 1783857600,
+          "time": "12/07 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Réseau Des Sports (Rds)",
+                "Réseau Des Sports (Rds) Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Wimbledon 2026",
+          "kick_utc": 1783868400,
+          "time": "12/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Réseau Des Sports (Rds)",
+                "Réseau Des Sports (Rds) Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Wimbledon 2026 - Final Pares Femininos",
           "kick_utc": 1783859340,
           "time": "12/07 07:29 PM",
@@ -220,22 +330,6 @@
               "country": "Hubsport",
               "channels": [
                 "Sport Tv1 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Wimbledon 2026",
-          "kick_utc": 1783868400,
-          "time": "12/07 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Réseau Des Sports (Rds)",
-                "Réseau Des Sports (Rds) Hd"
               ]
             }
           ],
