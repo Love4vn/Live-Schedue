@@ -1,24 +1,23 @@
 {
-  "updated": "2026-07-13 16:41 VN",
+  "updated": "2026-07-13 21:51 VN",
   "days": {
     "20260713": {
       "date": "Monday, 13/07",
       "games": [
         {
           "league": "Tennis",
-          "match": "ATP Tennis",
-          "kick_utc": 1783931400,
-          "time": "13/07 03:30 PM",
+          "match": "Croatia Open",
+          "kick_utc": 1783951200,
+          "time": "13/07 09:00 PM",
           "tv_channels": [
             {
-              "country": "Wheresthematch",
+              "country": "LiveSportsOnTV",
               "channels": [
-                "ATP Tennis Broadcasted on Sky Sports Tennis",
-                "ATP Tennis Broadcasted on Sky Sports+"
+                "TSN+"
               ]
             }
           ],
-          "source": "wheresthematch"
+          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
@@ -39,14 +38,15 @@
         {
           "league": "Tennis",
           "match": "",
-          "kick_utc": 1783951200,
-          "time": "13/07 09:00 PM",
+          "kick_utc": 1784019600,
+          "time": "14/07 04:00 PM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
                 "beIN Sports Connect",
-                "beIN SPORTS 3"
+                "beIN SPORTS 2",
+                "beIN SPORTS 1"
               ]
             }
           ],
@@ -55,15 +55,15 @@
         {
           "league": "Tennis",
           "match": "",
-          "kick_utc": 1784019600,
-          "time": "14/07 04:00 PM",
+          "kick_utc": 1784034000,
+          "time": "14/07 08:00 PM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
                 "beIN Sports Connect",
-                "beIN SPORTS 1",
-                "beIN SPORTS 2"
+                "beIN SPORTS 2",
+                "beIN SPORTS 1"
               ]
             }
           ],
@@ -71,18 +71,19 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP World Tour 250 - Gstaad 2026",
-          "kick_utc": 1783931400,
-          "time": "13/07 03:30 PM",
+          "match": "",
+          "kick_utc": 1784037600,
+          "time": "14/07 09:00 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "Sport Tv2 Hd Portugal"
+                "beIN SPORTS 3",
+                "beIN Sports Connect"
               ]
             }
           ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -131,45 +132,14 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP World Tour 250 - Bastad 2026",
-          "kick_utc": 1783942080,
-          "time": "13/07 06:28 PM",
+          "match": "ATP World Tour 250 - Gstaad 2026",
+          "kick_utc": 1784034000,
+          "time": "14/07 08:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Bastad 2026",
-          "kick_utc": 1784019480,
-          "time": "14/07 03:58 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 1",
-          "kick_utc": 1783942200,
-          "time": "13/07 06:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
+                "Sport Tv2 Hd Portugal"
               ]
             }
           ],
@@ -301,6 +271,21 @@
         },
         {
           "league": "Tennis",
+          "match": "ATP World Tour 250 - Umag 2026",
+          "kick_utc": 1784037600,
+          "time": "14/07 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv4 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Tenis: WTA Iasi Ziua 1",
           "kick_utc": 1783954800,
           "time": "13/07 10:00 PM",
@@ -395,18 +380,82 @@
         },
         {
           "league": "Tennis",
-          "match": ": EFG Swiss Open - Gstaad",
-          "kick_utc": 1783931400,
-          "time": "13/07 03:30 PM",
+          "match": "ATP World Tour 250 - Bastad 2026",
+          "kick_utc": 1784019480,
+          "time": "14/07 03:58 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Ziggo Sport 5"
+                "Sport Tv3 Hd Portugal"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 2",
+          "kick_utc": 1784028600,
+          "time": "14/07 06:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 2",
+          "kick_utc": 1784035800,
+          "time": "14/07 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: WTA Iasi Ziua 2",
+          "kick_utc": 1784030400,
+          "time": "14/07 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: WTA Iasi Ziua 2",
+          "kick_utc": 1784037600,
+          "time": "14/07 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -440,16 +489,14 @@
         },
         {
           "league": "Tennis",
-          "match": ": Nordea Open - Bastad",
-          "kick_utc": 1783942200,
-          "time": "13/07 06:30 PM",
+          "match": ": EFG Swiss Open - Gstaad",
+          "kick_utc": 1784034000,
+          "time": "14/07 08:00 PM",
           "tv_channels": [
             {
               "country": "NowTV",
               "channels": [
-                "Ziggo Sport 1",
-                "Ziggo Sport 4",
-                "Ziggo Sport Kanaal 14"
+                "Ziggo Sport 5"
               ]
             }
           ],
@@ -482,6 +529,21 @@
                 "Ziggo Sport 1",
                 "Ziggo Sport 4",
                 "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Nordea Open - Bastad",
+          "kick_utc": 1784034000,
+          "time": "14/07 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
               ]
             }
           ],
