@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-13 10:40 VN",
+  "updated": "2026-07-13 16:41 VN",
   "days": {
     "20260713": {
       "date": "Monday, 13/07",
@@ -22,6 +22,22 @@
         },
         {
           "league": "Tennis",
+          "match": "ATP Tennis",
+          "kick_utc": 1784017800,
+          "time": "14/07 03:30 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "ATP Tennis Broadcasted on Sky Sports Tennis",
+                "ATP Tennis Broadcasted on Sky Sports+"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
           "match": "",
           "kick_utc": 1783951200,
           "time": "13/07 09:00 PM",
@@ -31,6 +47,23 @@
               "channels": [
                 "beIN Sports Connect",
                 "beIN SPORTS 3"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1784019600,
+          "time": "14/07 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 1",
+                "beIN SPORTS 2"
               ]
             }
           ],
@@ -83,9 +116,39 @@
         },
         {
           "league": "Tennis",
+          "match": "ATP World Tour 250 - Gstaad 2026",
+          "kick_utc": 1784017800,
+          "time": "14/07 03:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "ATP World Tour 250 - Bastad 2026",
           "kick_utc": 1783942080,
           "time": "13/07 06:28 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Bastad 2026",
+          "kick_utc": 1784019480,
+          "time": "14/07 03:58 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -301,7 +364,7 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis: WTA Iasi Ziua 2",
+          "match": "Tenis: WTA Iasi Ziua 3",
           "kick_utc": 1783972800,
           "time": "14/07 03:00 AM",
           "tv_channels": [
@@ -316,7 +379,7 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 2",
+          "match": "Tenis Ziua 3",
           "kick_utc": 1783980000,
           "time": "14/07 05:00 AM",
           "tv_channels": [
@@ -362,6 +425,21 @@
         },
         {
           "league": "Tennis",
+          "match": ": EFG Swiss Open - Gstaad",
+          "kick_utc": 1784017800,
+          "time": "14/07 03:30 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 5"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
           "match": ": Nordea Open - Bastad",
           "kick_utc": 1783942200,
           "time": "13/07 06:30 PM",
@@ -387,6 +465,23 @@
               "country": "NowTV",
               "channels": [
                 "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Nordea Open - Bastad",
+          "kick_utc": 1784019600,
+          "time": "14/07 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
               ]
             }
           ],
