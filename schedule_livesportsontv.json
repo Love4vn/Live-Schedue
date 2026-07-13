@@ -139,6 +139,7 @@
             "BarTV Mundial HD",
             "beIN Sports France 1 HD",
             "beIN Sports MENA 4K UHD",
+            "beIN Sports MENA HD",
             "beIN Sports MENA Max 1 HD",
             "beIN Sports MENA Max 2 HD",
             "beIN Sports MENA Max 3 HD",
@@ -156,6 +157,8 @@
             "ETV+ Estonia",
             "Fast Sports",
             "Fast Sports TV Armenia",
+            "Futbol TV Tajikistan",
+            "Futbol TV Uzbekistan",
             "Go3 World Cup Baltics",
             "HRT 2 Hrvatska HD",
             "Ictimai TV HD",
@@ -165,6 +168,7 @@
             "JOJ TV Slovakia HD",
             "JOJ Šport SVK HD",
             "Jurnal TV Moldova",
+            "KC2 Rwanda",
             "M4 Sport Hungary HD",
             "M6 France 4K UHD",
             "M6 France HD",
@@ -178,6 +182,7 @@
             "NPO 1 Nederland HD",
             "ORF 1 Austria HD",
             "ORF 4K UHD",
+            "ORTB Benin",
             "Play RTS Sport",
             "Qazaqstan TV HD",
             "QazSport HD",
@@ -191,10 +196,13 @@
             "RTÉ Player",
             "Rustavi 2",
             "RUV Sjonvarpid",
+            "Rwanda TV HD",
             "Setanta Sports 1 Georgia HD",
             "SIC Portugal HD",
+            "Sigma TV Cyprus HD",
             "Slovenija TV2 HD",
             "Sport TV Belarus",
+            "Sport TV Uzbekistan",
             "Sport TV1 Portugal HD",
             "Sport TV5 Portugal HD",
             "SRF Zwei Schweiz HD",
@@ -315,6 +323,7 @@
             "BBC Sport Website",
             "beIN Sports France 1 HD",
             "beIN Sports MENA 4K UHD",
+            "beIN Sports MENA HD",
             "beIN Sports MENA Max 1 HD",
             "beIN Sports MENA Max 5 HD",
             "beIN Sports MENA Max 6 HD",
@@ -367,8 +376,9 @@
             "RTÉ Player",
             "Rustavi 2",
             "RUV Sjonvarpid",
+            "Rwanda TV HD",
             "Setanta Sports 1 Georgia HD",
-            "Sigma TV Cyprus",
+            "Sigma TV Cyprus HD",
             "Slovenija TV2 HD",
             "Sport TV Belarus",
             "Sport TV1 Portugal HD",
@@ -433,6 +443,15 @@
         "Matchup": "Athens Open",
         "Services": [
             "DAZN Canada"
+        ]
+    },
+    {
+        "Date": "2026-07-16",
+        "Time": "22:00",
+        "League": "UEFA Europa Conference League",
+        "Matchup": "Yelimay Semey vs Alashkert",
+        "Services": [
+            "QazSport HD"
         ]
     },
     {
@@ -572,6 +591,121 @@
         "Time": "00:00",
         "League": "UEFA Europa Conference League",
         "Matchup": "BATE Borisov vs Elbasani",
+        "Services": [
+            "- - -"
+        ]
+    },
+    {
+        "Date": "2026-07-17",
+        "Time": "00:30",
+        "League": "UEFA Europa League",
+        "Matchup": "Universitatea Cluj vs Dynamo Kyiv",
+        "Services": [
+            "2+2 Ukraine",
+            "Digi Sport 1 Romania HD",
+            "Kyivstar TV Football",
+            "OneFootball",
+            "Prima Sport RO 1 HD"
+        ]
+    },
+    {
+        "Date": "2026-07-17",
+        "Time": "00:30",
+        "League": "UEFA Europa League",
+        "Matchup": "Derry City vs CSKA Sofia",
+        "Services": [
+            "Diema Sport HD",
+            "Solidsport Broadcast"
+        ]
+    },
+    {
+        "Date": "2026-07-17",
+        "Time": "00:30",
+        "League": "UEFA Europa Conference League",
+        "Matchup": "Hamrun Spartans vs NSI Runavik",
+        "Services": [
+            "OneFootball"
+        ]
+    },
+    {
+        "Date": "2026-07-17",
+        "Time": "01:00",
+        "League": "UEFA Europa League",
+        "Matchup": "Aluminij vs Sheriff Tiraspol",
+        "Services": [
+            "SportKlub 6 Hrvatska"
+        ]
+    },
+    {
+        "Date": "2026-07-17",
+        "Time": "01:00",
+        "League": "UEFA Europa Conference League",
+        "Matchup": "Sileks vs Dynamo Minsk",
+        "Services": [
+            "- - -"
+        ]
+    },
+    {
+        "Date": "2026-07-17",
+        "Time": "01:00",
+        "League": "UEFA Europa Conference League",
+        "Matchup": "Shkëndija vs Europa",
+        "Services": [
+            "MRT 2 North Macedonia"
+        ]
+    },
+    {
+        "Date": "2026-07-17",
+        "Time": "01:00",
+        "League": "UEFA Europa Conference League",
+        "Matchup": "Ballkani vs Connah's Quay",
+        "Services": [
+            "RTK 1 Kosovo HD"
+        ]
+    },
+    {
+        "Date": "2026-07-17",
+        "Time": "01:15",
+        "League": "UEFA Europa League",
+        "Matchup": "Ferencváros vs Vojvodina",
+        "Services": [
+            "Arena Premium 2 Srbija HD",
+            "M4 Sport Hungary HD"
+        ]
+    },
+    {
+        "Date": "2026-07-17",
+        "Time": "01:30",
+        "League": "UEFA Europa League",
+        "Matchup": "MSK Zilina vs Hajduk Split",
+        "Services": [
+            "DvojkaHD",
+            "Hajduk TV"
+        ]
+    },
+    {
+        "Date": "2026-07-17",
+        "Time": "01:45",
+        "League": "UEFA Europa Conference League",
+        "Matchup": "Mornar vs Atletic Escaldes",
+        "Services": [
+            "TVCG 3"
+        ]
+    },
+    {
+        "Date": "2026-07-17",
+        "Time": "01:45",
+        "League": "UEFA Europa Conference League",
+        "Matchup": "Linfield vs Nõmme Kalju",
+        "Services": [
+            "NIFL TV"
+        ]
+    },
+    {
+        "Date": "2026-07-17",
+        "Time": "02:00",
+        "League": "UEFA Europa Conference League",
+        "Matchup": "Virtus vs Dila Gori",
         "Services": [
             "- - -"
         ]
