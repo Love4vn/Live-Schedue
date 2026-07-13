@@ -1,8 +1,8 @@
 {
-  "updated": "2026-07-13 04:58 VN",
+  "updated": "2026-07-13 10:40 VN",
   "days": {
-    "20260712": {
-      "date": "Sunday, 12/07",
+    "20260713": {
+      "date": "Monday, 13/07",
       "games": [
         {
           "league": "Tennis",
@@ -38,14 +38,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 1",
-          "kick_utc": 1783891800,
-          "time": "13/07 04:30 AM",
+          "match": "ATP World Tour 250 - Gstaad 2026",
+          "kick_utc": 1783931400,
+          "time": "13/07 03:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 2 Hd Romania"
+                "Sport Tv2 Hd Portugal"
               ]
             }
           ],
@@ -53,14 +53,44 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 1",
-          "kick_utc": 1783895400,
-          "time": "13/07 05:30 AM",
+          "match": "ATP World Tour 250 - Gstaad 2026",
+          "kick_utc": 1783947600,
+          "time": "13/07 08:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 4 Hd Romania"
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Gstaad 2026",
+          "kick_utc": 1783956600,
+          "time": "13/07 10:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Bastad 2026",
+          "kick_utc": 1783942080,
+          "time": "13/07 06:28 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
               ]
             }
           ],
@@ -163,59 +193,14 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP World Tour 250 - Gstaad 2026",
-          "kick_utc": 1783931400,
-          "time": "13/07 03:30 PM",
+          "match": "Tenis Ziua 1",
+          "kick_utc": 1783981800,
+          "time": "14/07 05:30 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Sport Tv2 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Gstaad 2026",
-          "kick_utc": 1783947600,
-          "time": "13/07 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Gstaad 2026",
-          "kick_utc": 1783956600,
-          "time": "13/07 10:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Bastad 2026",
-          "kick_utc": 1783942080,
-          "time": "13/07 06:28 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
+                "Digi Sport 4 Romania"
               ]
             }
           ],
@@ -324,6 +309,22 @@
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 2 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 2",
+          "kick_utc": 1783980000,
+          "time": "14/07 05:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 4 Hd Romania"
               ]
             }
           ],
