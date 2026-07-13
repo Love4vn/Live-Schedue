@@ -1,24 +1,6 @@
 [
     {
         "Date": "2026-07-13",
-        "Time": "15:30",
-        "League": "Tennis (ATP)",
-        "Matchup": "Swiss Open Gstaad",
-        "Services": [
-            "TSN+"
-        ]
-    },
-    {
-        "Date": "2026-07-13",
-        "Time": "18:30",
-        "League": "Tennis (ATP)",
-        "Matchup": "Swedish Open",
-        "Services": [
-            "TSN+"
-        ]
-    },
-    {
-        "Date": "2026-07-13",
         "Time": "21:00",
         "League": "Tennis (ATP)",
         "Matchup": "Croatia Open",
@@ -33,6 +15,7 @@
         "Matchup": "KuPS Kuopio vs Vardar Skopje",
         "Services": [
             "Jalkapallo TV",
+            "KuPS TV",
             "Solidsport Broadcast"
         ]
     },
@@ -71,6 +54,7 @@
         "League": "UEFA Champions League",
         "Matchup": "FC Riga vs Ararat-Armenia",
         "Services": [
+            "Armenia First TV",
             "OneFootball",
             "Sporta Centrs TV",
             "TV4 Latvija"
@@ -143,7 +127,7 @@
         "League": "UEFA Europa Conference League",
         "Matchup": "La Fiorita vs UNA Strassen",
         "Services": [
-            "- - -"
+            "Rtv San Marino DTT"
         ]
     },
     {
@@ -152,14 +136,20 @@
         "League": "FIFA World Cup",
         "Matchup": "France vs Spain",
         "Services": [
+            "AFN Sports HD",
             "Antena 1 Romania HD",
             "Arena Premium 1 Srbija HD",
             "Arena Sport 1 BiH HD",
             "Arena Sport 1 Slovenija HD",
+            "Azam Sports 2 HD",
+            "Azam Sports 4 HD",
             "BarTV Mundial HD",
             "beIN Sports France 1 HD",
             "beIN Sports MENA 4K UHD",
             "beIN Sports MENA Max 1 HD",
+            "beIN Sports MENA Max 2 HD",
+            "beIN Sports MENA Max 3 HD",
+            "beIN Sports MENA Max 4 HD",
             "beIN Sports MENA Max 5 HD",
             "beIN Sports MENA Max 6 HD",
             "BNT 1 Bulgaria HD",
@@ -185,6 +175,7 @@
             "M6 France 4K UHD",
             "M6 France HD",
             "M6 Suisse HD",
+            "Mafken TV Zambia",
             "Magenta Sport",
             "MATCH! TV",
             "Megogo Futbol 1",
@@ -194,23 +185,28 @@
             "ORF 1 Austria HD",
             "ORF 4K UHD",
             "Play RTS Sport",
+            "Qazaqstan TV HD",
             "QazSport HD",
             "RAI 1 Italia HD",
             "RAI 4K UHD",
             "RSI La 2 Svizzera HD",
             "RTBF Tipik Belgique",
+            "RTS 1 Srbija HD",
             "RTS 2 Suisse HD",
             "RTÉ 2 Ireland HD",
             "RTÉ Player",
+            "Rustavi 2",
             "RUV Sjonvarpid",
-            "Servus TV Österreich HD",
             "Setanta Sports 1 Georgia HD",
+            "SIC Portugal HD",
             "Slovenija TV2 HD",
+            "Sport TV Belarus",
             "Sport TV1 Portugal HD",
             "Sport TV5 Portugal HD",
             "SRF Zwei Schweiz HD",
             "STV Player",
             "STV Scotland HD",
+            "Sun Sports TV Zambia",
             "SuperSport 2 Albania HD",
             "SuperSport Grandstand HD",
             "SuperSport MáXimo 1 HD",
@@ -225,6 +221,10 @@
             "TV2 Play Danmark",
             "TV3 Lietuva HD",
             "TV6 Latvija",
+            "TVCG 1 HD",
+            "TVE La 1 HD España",
+            "TVE La 1 UHD 4K",
+            "TVE La 2 Cat",
             "TVP 1 Polska HD",
             "TVP Sport Polska HD",
             "UTV Northern Ireland HD",
@@ -233,6 +233,7 @@
             "YLE AREENA",
             "YLE TV2 Suomi HD",
             "ZDF Deutschland HD",
+            "ZNBC TV 1",
             "Fubo Sports",
             "Peacock ES",
             "FOX",
@@ -265,6 +266,7 @@
         "League": "UEFA Champions League",
         "Matchup": "Atert Bissen vs KÍ Klaksvík",
         "Services": [
+            "Arena Sport 1 Slovakia HD",
             "Solidsport Broadcast"
         ]
     },
@@ -274,7 +276,25 @@
         "League": "UEFA Europa Conference League",
         "Matchup": "Decic Tuzi vs FK Liepaja",
         "Services": [
-            "- - -"
+            "TVCG 3"
+        ]
+    },
+    {
+        "Date": "2026-07-16",
+        "Time": "02:00",
+        "League": "UEFA Champions League",
+        "Matchup": "Sutjeska vs Kairat Almaty",
+        "Services": [
+            "TVCG 2 HD"
+        ]
+    },
+    {
+        "Date": "2026-07-16",
+        "Time": "02:00",
+        "League": "UEFA Champions League",
+        "Matchup": "Egnatia vs Petrocub",
+        "Services": [
+            "Moldova 1 HD"
         ]
     },
     {
@@ -283,11 +303,14 @@
         "League": "FIFA World Cup",
         "Matchup": "England vs Argentina",
         "Services": [
+            "AFN Sports HD",
             "Antena 1 Romania HD",
             "ARD Das Erste HD",
             "Arena Premium 1 Srbija HD",
             "Arena Sport 1 BiH HD",
             "Arena Sport 1 Slovenija HD",
+            "Azam Sports 2 HD",
+            "Azam Sports 4 HD",
             "BarTV Mundial HD",
             "BBC iPlayer",
             "BBC One HD",
@@ -304,6 +327,7 @@
             "DAZN España",
             "DAZN Italia",
             "DAZN Mundial Espana HD",
+            "ENTV Algérie HD",
             "ETV Estonia",
             "ETV+ Estonia",
             "Fast Sports",
@@ -313,10 +337,12 @@
             "Ictimai TV HD",
             "JOJ Play",
             "Jurnal TV Moldova",
+            "KVF Sjónvarp Faroes",
             "M4 Sport Hungary HD",
             "M6 France 4K UHD",
             "M6 France HD",
             "M6 Suisse HD",
+            "Mafken TV Zambia",
             "Magenta Sport",
             "MATCH! Futbol 1 HD",
             "MATCH! Premier HD",
@@ -337,17 +363,21 @@
             "RAI 4K UHD",
             "RSI La 2 Svizzera HD",
             "RTBF Tipik Belgique",
+            "RTS 1 Srbija HD",
             "RTS 2 Suisse HD",
             "RTÉ 2 Ireland HD",
             "RTÉ Player",
+            "Rustavi 2",
             "RUV Sjonvarpid",
             "Setanta Sports 1 Georgia HD",
             "Sigma TV Cyprus",
             "Slovenija TV2 HD",
+            "Sport TV Belarus",
             "Sport TV1 Portugal HD",
             "Sport TV5 Portugal HD",
             "SRF Zwei Schweiz HD",
             "STVR Šport Slovakia HD",
+            "Sun Sports TV Zambia",
             "SuperSport 2 Albania HD",
             "SuperSport Grandstand HD",
             "SuperSport MáXimo 1 HD",
@@ -361,11 +391,17 @@
             "TV4 Play Sverige",
             "TV4 Sverige HD",
             "TV6 Latvija",
+            "TVCG 1 HD",
             "TVCG 2 HD",
+            "TVE La 1 HD España",
+            "TVE La 1 UHD 4K",
+            "TVE La 2 Cat",
+            "TVi Portugal HD",
             "TVP 1 Polska HD",
             "TVP Sport Polska HD",
             "VRT 1 Belgium HD",
             "We Sport Moldova",
+            "ZNBC TV 1",
             "Fubo Sports",
             "Peacock ES",
             "FOX",
@@ -380,6 +416,47 @@
         "Matchup": "Swiss Open Gstaad",
         "Services": [
             "Tennis Channel"
+        ]
+    },
+    {
+        "Date": "2026-07-16",
+        "Time": "17:00",
+        "League": "Tennis (WTA)",
+        "Matchup": "Iasi Open",
+        "Services": [
+            "Tennis Channel",
+            "DAZN Canada"
+        ]
+    },
+    {
+        "Date": "2026-07-16",
+        "Time": "21:30",
+        "League": "Tennis (WTA)",
+        "Matchup": "Athens Open",
+        "Services": [
+            "DAZN Canada"
+        ]
+    },
+    {
+        "Date": "2026-07-16",
+        "Time": "22:00",
+        "League": "UEFA Europa Conference League",
+        "Matchup": "Inter Turku vs FK Sarajevo",
+        "Services": [
+            "Jalkapallo TV",
+            "MY TV BiH",
+            "Solidsport Broadcast"
+        ]
+    },
+    {
+        "Date": "2026-07-16",
+        "Time": "22:00",
+        "League": "UEFA Europa Conference League",
+        "Matchup": "Astana vs Dinamo City",
+        "Services": [
+            "Arena Sport 1 Slovakia HD",
+            "Qazaqstan TV HD",
+            "SuperSport 2 Albania HD"
         ]
     }
 ]
