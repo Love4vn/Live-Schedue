@@ -1,19 +1,102 @@
 {
-  "updated": "2026-07-13 21:51 VN",
+  "updated": "2026-07-14 00:19 VN",
   "days": {
     "20260713": {
       "date": "Monday, 13/07",
       "games": [
         {
-          "league": "Tennis",
-          "match": "Croatia Open",
-          "kick_utc": 1783951200,
-          "time": "13/07 09:00 PM",
+          "league": "UEFA Champions League",
+          "match": "KuPS Kuopio vs Vardar Skopje",
+          "kick_utc": 1784041200,
+          "time": "14/07 10:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN+"
+                "Jalkapallo TV",
+                "KuPS TV",
+                "Solidsport Broadcast"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Champions League",
+          "match": "Iberia 1999 vs Flora Tallinn",
+          "kick_utc": 1784044800,
+          "time": "14/07 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Soccernet TV Estonia"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Champions League",
+          "match": "Inter Escaldes vs Lincoln Red Imps",
+          "kick_utc": 1784044800,
+          "time": "14/07 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "OneFootball"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Champions League",
+          "match": "Györ vs Víkingur Reykjavík",
+          "kick_utc": 1784048400,
+          "time": "15/07 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena Premium 1 BiH HD",
+                "Arena Premium 2 Srbija HD",
+                "Arena Sport 1 Slovakia HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Champions League",
+          "match": "FC Riga vs Ararat-Armenia",
+          "kick_utc": 1784048400,
+          "time": "15/07 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Armenia First TV",
+                "OneFootball",
+                "Sporta Centrs TV",
+                "TV4 Latvija"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Champions League",
+          "match": "Víkingur Reykjavík vs Győri ETO",
+          "kick_utc": 1784048400,
+          "time": "15/07 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "ESPN Select",
+                "ESPN Unlimited"
               ]
             }
           ],
@@ -44,9 +127,9 @@
             {
               "country": "Ausport",
               "channels": [
-                "beIN Sports Connect",
                 "beIN SPORTS 2",
-                "beIN SPORTS 1"
+                "beIN SPORTS 1",
+                "beIN Sports Connect"
               ]
             }
           ],
@@ -61,9 +144,9 @@
             {
               "country": "Ausport",
               "channels": [
-                "beIN Sports Connect",
                 "beIN SPORTS 2",
-                "beIN SPORTS 1"
+                "beIN SPORTS 1",
+                "beIN Sports Connect"
               ]
             }
           ],
@@ -84,21 +167,6 @@
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Gstaad 2026",
-          "kick_utc": 1783947600,
-          "time": "13/07 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -147,31 +215,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 1",
-          "kick_utc": 1783949400,
-          "time": "13/07 08:30 PM",
+          "match": "ATP World Tour 250 - Gstaad 2026",
+          "kick_utc": 1784043000,
+          "time": "14/07 10:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 1",
-          "kick_utc": 1783953000,
-          "time": "13/07 09:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
+                "Sport Tv2 Hd Portugal"
               ]
             }
           ],
@@ -241,67 +292,6 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP World Tour 250 - Umag 2026",
-          "kick_utc": 1783951200,
-          "time": "13/07 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv 6 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Umag 2026",
-          "kick_utc": 1783969200,
-          "time": "14/07 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv 6 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Umag 2026",
-          "kick_utc": 1784037600,
-          "time": "14/07 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv4 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: WTA Iasi Ziua 1",
-          "kick_utc": 1783954800,
-          "time": "13/07 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
           "match": "Tenis: WTA Iasi Ziua 1",
           "kick_utc": 1783962000,
           "time": "14/07 12:00 AM",
@@ -342,6 +332,36 @@
               "country": "Hubsport",
               "channels": [
                 "Srf Zwei France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Umag 2026",
+          "kick_utc": 1783969200,
+          "time": "14/07 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv 6 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Umag 2026",
+          "kick_utc": 1784037600,
+          "time": "14/07 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv4 Hd Portugal"
               ]
             }
           ],
@@ -395,6 +415,21 @@
         },
         {
           "league": "Tennis",
+          "match": "ATP World Tour 250 - Bastad 2026",
+          "kick_utc": 1784041200,
+          "time": "14/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Tenis Ziua 2",
           "kick_utc": 1784028600,
           "time": "14/07 06:30 PM",
@@ -414,6 +449,22 @@
           "match": "Tenis Ziua 2",
           "kick_utc": 1784035800,
           "time": "14/07 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 2",
+          "kick_utc": 1784043000,
+          "time": "14/07 10:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -459,48 +510,19 @@
         },
         {
           "league": "Tennis",
-          "match": ": EFG Swiss Open - Gstaad",
-          "kick_utc": 1783947600,
-          "time": "13/07 08:00 PM",
+          "match": "Tenis: WTA Iasi Ziua 2",
+          "kick_utc": 1784044800,
+          "time": "14/07 11:00 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Ziggo Sport 5"
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
               ]
             }
           ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": ": EFG Swiss Open - Gstaad",
-          "kick_utc": 1784017800,
-          "time": "14/07 03:30 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 5"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": ": EFG Swiss Open - Gstaad",
-          "kick_utc": 1784034000,
-          "time": "14/07 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 5"
-              ]
-            }
-          ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -574,6 +596,51 @@
               "country": "NowTV",
               "channels": [
                 "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Plava Laguna Croatia Open - Umag",
+          "kick_utc": 1784048400,
+          "time": "15/07 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": EFG Swiss Open - Gstaad",
+          "kick_utc": 1784017800,
+          "time": "14/07 03:30 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 5"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": EFG Swiss Open - Gstaad",
+          "kick_utc": 1784034000,
+          "time": "14/07 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 5"
               ]
             }
           ],
