@@ -1,34 +1,6 @@
 [
     {
         "Date": "2026-07-15",
-        "Time": "20:00",
-        "League": "International Friendlies",
-        "Matchup": "Salzburg vs Gamba Osaka",
-        "Services": [
-            "YouTube: RB Salzburg"
-        ]
-    },
-    {
-        "Date": "2026-07-15",
-        "Time": "21:30",
-        "League": "UEFA Europa Conference League",
-        "Matchup": "Malisheva vs Vllaznia Shkodër",
-        "Services": [
-            "RTK 1 Kosovo HD",
-            "SuperSport 2 Albania HD"
-        ]
-    },
-    {
-        "Date": "2026-07-15",
-        "Time": "22:00",
-        "League": "International Friendlies",
-        "Matchup": "Ajax vs Bochum",
-        "Services": [
-            "YouTube: Ajax TV"
-        ]
-    },
-    {
-        "Date": "2026-07-15",
         "Time": "23:00",
         "League": "International Friendlies",
         "Matchup": "FC Kharkiv vs Jablonec",
@@ -78,6 +50,7 @@
         "League": "UEFA Champions League",
         "Matchup": "Universitatea Craiova vs Vitebsk",
         "Services": [
+            "Belarus 5 HD",
             "Digi Sport 1 Romania HD",
             "Prima Sport RO 1 HD"
         ]
@@ -108,7 +81,6 @@
         "League": "UEFA Champions League",
         "Matchup": "Sutjeska vs Kairat Almaty",
         "Services": [
-            "Qazaqstan TV HD",
             "TVCG 2 HD"
         ]
     },
@@ -151,6 +123,7 @@
             "beIN Sports MENA HD",
             "beIN Sports MENA Max 1 HD",
             "beIN Sports MENA Max 2 HD",
+            "beIN Sports MENA Max 3 HD",
             "beIN Sports MENA Max 4 HD",
             "beIN Sports MENA Max 5 HD",
             "beIN Sports MENA Max 6 HD",
@@ -178,6 +151,7 @@
             "Fox TV USA 4K",
             "Fox TV USA HD",
             "Futbol TV Tajikistan",
+            "Futbol TV Uzbekistan",
             "Gabon 1ère",
             "GEM Sport HD",
             "Go3 World Cup Baltics",
@@ -222,11 +196,12 @@
             "ORF 1 Austria HD",
             "ORF 4K UHD",
             "ORTB Benin",
-            "ORTM 1 Mali",
+            "ORTM 2 Mali",
             "Persiana Sport HD",
             "Persiana Sports 2 HD",
             "Play RTS Sport",
             "PTV Sports",
+            "Qazaqstan TV HD",
             "QazSport HD",
             "RAI 1 Italia HD",
             "RAI 4K UHD",
@@ -254,6 +229,7 @@
             "Slovenija TV2 HD",
             "Sport 24 In Flight HD",
             "Sport TV Belarus",
+            "Sport TV Uzbekistan",
             "Sport TV1 Portugal HD",
             "Sport TV5 Portugal HD",
             "SporTV Brazil HD",
@@ -530,7 +506,8 @@
         "League": "UEFA Europa Conference League",
         "Matchup": "BATE Borisov vs Elbasani",
         "Services": [
-            "- - -"
+            "- - -",
+            "Belarus 5 HD"
         ]
     },
     {
@@ -599,7 +576,11 @@
         "League": "UEFA Europa Conference League",
         "Matchup": "Ballkani vs Connah's Quay",
         "Services": [
-            "RTK 1 Kosovo HD"
+            "BBC iPlayer",
+            "RTK 1 Kosovo HD",
+            "S4C Clic",
+            "S4C Sgorio Cymru",
+            "YouTube: Sgorio"
         ]
     },
     {
@@ -787,6 +768,24 @@
         "Matchup": "Athens Open",
         "Services": [
             "DAZN Canada"
+        ]
+    },
+    {
+        "Date": "2026-07-19",
+        "Time": "00:00",
+        "League": "Tennis (ATP)",
+        "Matchup": "Croatia Open",
+        "Services": [
+            "Tennis Channel"
+        ]
+    },
+    {
+        "Date": "2026-07-19",
+        "Time": "01:30",
+        "League": "Tennis (WTA)",
+        "Matchup": "Athens Open",
+        "Services": [
+            "Tennis Channel"
         ]
     }
 ]
