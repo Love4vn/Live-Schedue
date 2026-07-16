@@ -1,8 +1,8 @@
 {
-  "updated": "2026-07-16 05:08 VN",
+  "updated": "2026-07-16 10:21 VN",
   "days": {
-    "20260715": {
-      "date": "Wednesday, 15/07",
+    "20260716": {
+      "date": "Thursday, 16/07",
       "games": [
         {
           "league": "UEFA Europa Conference League",
@@ -586,55 +586,6 @@
         {
           "league": "Tennis",
           "match": "",
-          "kick_utc": 1784192400,
-          "time": "16/07 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 2",
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1784196000,
-          "time": "16/07 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1784206800,
-          "time": "16/07 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1",
-                "beIN SPORTS 2"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
           "kick_utc": 1784210400,
           "time": "16/07 09:00 PM",
           "tv_channels": [
@@ -665,15 +616,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 3",
-          "kick_utc": 1784152800,
-          "time": "16/07 05:00 AM",
+          "match": "ATP World Tour 250 - Gstaad 2026",
+          "kick_utc": 1784190600,
+          "time": "16/07 03:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 2 Romania",
-                "Digi Sport 4 Romania"
+                "Sport Tv2 Hd Portugal"
               ]
             }
           ],
@@ -681,15 +631,44 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 4",
-          "kick_utc": 1784152800,
-          "time": "16/07 05:00 AM",
+          "match": "ATP World Tour 250 - Gstaad 2026",
+          "kick_utc": 1784215800,
+          "time": "16/07 10:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 4 Hd Romania"
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Bastad 2026",
+          "kick_utc": 1784192400,
+          "time": "16/07 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv4 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Bastad 2026",
+          "kick_utc": 1784214000,
+          "time": "16/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv4 Hd Portugal"
               ]
             }
           ],
@@ -787,66 +766,6 @@
               "channels": [
                 "Digi Sport 2 Romania",
                 "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Gstaad 2026",
-          "kick_utc": 1784190600,
-          "time": "16/07 03:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Gstaad 2026",
-          "kick_utc": 1784215800,
-          "time": "16/07 10:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Bastad 2026",
-          "kick_utc": 1784192400,
-          "time": "16/07 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv4 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Bastad 2026",
-          "kick_utc": 1784214000,
-          "time": "16/07 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv4 Hd Portugal"
               ]
             }
           ],
