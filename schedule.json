@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-16 18:05 VN",
+  "updated": "2026-07-16 21:10 VN",
   "days": {
     "20260716": {
       "date": "Thursday, 16/07",
@@ -341,8 +341,8 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Diema Sport HD",
-                "Solidsport Broadcast"
+                "Solidsport Broadcast",
+                "Diema Sport HD"
               ]
             },
             {
@@ -564,38 +564,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Iasi Open",
-          "kick_utc": 1784196000,
-          "time": "16/07 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "DAZN Canada"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Iasi Open",
-          "kick_utc": 1784282400,
-          "time": "17/07 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "DAZN Canada"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
           "match": "Croatia Open",
           "kick_utc": 1784210400,
           "time": "16/07 09:00 PM",
@@ -658,6 +626,21 @@
         },
         {
           "league": "Tennis",
+          "match": "Swiss Open Gstaad",
+          "kick_utc": 1784291400,
+          "time": "17/07 07:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
           "match": "Swedish Open",
           "kick_utc": 1784278800,
           "time": "17/07 04:00 PM",
@@ -666,6 +649,22 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Iasi Open",
+          "kick_utc": 1784282400,
+          "time": "17/07 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel",
+                "DAZN Canada"
               ]
             }
           ],
@@ -688,15 +687,14 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1784210400,
-          "time": "16/07 09:00 PM",
+          "match": "Tereza Valentova vs Aliaksandra Sasnovich",
+          "kick_utc": 1784212200,
+          "time": "16/07 09:30 PM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 3"
+                "beIN Sports Connect"
               ]
             }
           ],
@@ -704,13 +702,29 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1784219400,
-          "time": "16/07 11:30 PM",
+          "match": "Damir Dzumhur vs Matteo Arnaldi",
+          "kick_utc": 1784217600,
+          "time": "16/07 11:00 PM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Raphael Collignon vs Valentin Vacherot",
+          "kick_utc": 1784275200,
+          "time": "17/07 03:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN SPORTS 1",
                 "beIN Sports Connect"
               ]
             }
@@ -726,9 +740,8 @@
             {
               "country": "Ausport",
               "channels": [
-                "beIN Sports Connect",
                 "beIN SPORTS 2",
-                "beIN SPORTS 1"
+                "beIN Sports Connect"
               ]
             }
           ],
@@ -752,145 +765,20 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 4",
-          "kick_utc": 1784201400,
-          "time": "16/07 06:30 PM",
+          "match": "",
+          "kick_utc": 1784293200,
+          "time": "17/07 08:00 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania",
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
+                "beIN SPORTS 1",
+                "beIN Sports Connect",
+                "beIN SPORTS 2"
               ]
             }
           ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 4",
-          "kick_utc": 1784210400,
-          "time": "16/07 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 4",
-          "kick_utc": 1784217600,
-          "time": "16/07 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 4",
-          "kick_utc": 1784224800,
-          "time": "17/07 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 4",
-          "kick_utc": 1784232000,
-          "time": "17/07 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 4",
-          "kick_utc": 1784239200,
-          "time": "17/07 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania",
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA d'Iasi",
-          "kick_utc": 1784203200,
-          "time": "16/07 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 4 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA d'Iasi",
-          "kick_utc": 1784213400,
-          "time": "16/07 09:50 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 4 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA d'Iasi",
-          "kick_utc": 1784223600,
-          "time": "17/07 12:40 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 4 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -1033,6 +921,130 @@
         },
         {
           "league": "Tennis",
+          "match": "Tenis Ziua 4",
+          "kick_utc": 1784210400,
+          "time": "16/07 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 4",
+          "kick_utc": 1784217600,
+          "time": "16/07 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 4",
+          "kick_utc": 1784224800,
+          "time": "17/07 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 4",
+          "kick_utc": 1784232000,
+          "time": "17/07 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 4",
+          "kick_utc": 1784239200,
+          "time": "17/07 05:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi WTA d'Iasi",
+          "kick_utc": 1784213400,
+          "time": "16/07 09:50 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "beIN Sports Max 4 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi WTA d'Iasi",
+          "kick_utc": 1784223600,
+          "time": "17/07 12:40 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "beIN Sports Max 4 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi WTA d'Iasi",
+          "kick_utc": 1784289600,
+          "time": "17/07 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "beIN Sports Max 4 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "ATP World Tour 250 - Bastad 2026",
           "kick_utc": 1784214000,
           "time": "16/07 10:00 PM",
@@ -1123,6 +1135,38 @@
         },
         {
           "league": "Tennis",
+          "match": "Tenis Sferturi",
+          "kick_utc": 1784287800,
+          "time": "17/07 06:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: WTA Iasi Sferturi",
+          "kick_utc": 1784293200,
+          "time": "17/07 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": ": EFG Swiss Open - Gstaad",
           "kick_utc": 1784206800,
           "time": "16/07 08:00 PM",
@@ -1153,6 +1197,21 @@
         },
         {
           "league": "Tennis",
+          "match": ": EFG Swiss Open - Gstaad",
+          "kick_utc": 1784293200,
+          "time": "17/07 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 5"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
           "match": ": Nordea Open - Bastad",
           "kick_utc": 1784207100,
           "time": "16/07 08:05 PM",
@@ -1171,6 +1230,21 @@
           "match": ": Nordea Open - Bastad",
           "kick_utc": 1784278800,
           "time": "17/07 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Nordea Open - Bastad",
+          "kick_utc": 1784293200,
+          "time": "17/07 08:00 PM",
           "tv_channels": [
             {
               "country": "NowTV",
