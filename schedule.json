@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-16 10:21 VN",
+  "updated": "2026-07-16 15:25 VN",
   "days": {
     "20260716": {
       "date": "Thursday, 16/07",
@@ -49,6 +49,21 @@
                 "Arena Sport 1 Slovakia HD",
                 "Qazaqstan TV HD",
                 "SuperSport 2 Albania HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "FC Kharkiv vs Hradec Králové",
+          "kick_utc": 1784215800,
+          "time": "16/07 10:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "UPL TV Ukraine HD"
               ]
             }
           ],
@@ -166,6 +181,22 @@
           "source": "livesportsontv"
         },
         {
+          "league": "International Friendly",
+          "match": "Apollon Limassol vs AEK Larnaca",
+          "kick_utc": 1784219400,
+          "time": "16/07 11:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Cytavision Sports 1 HD",
+                "Cytavision Sports PPV 1 HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
           "league": "UEFA Europa Conference League",
           "match": "Zalgiris vs Petrovac",
           "kick_utc": 1784221200,
@@ -253,8 +284,25 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "- - -",
                 "Belarus 5 HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Omonia Nicosia vs Panetolikos",
+          "kick_utc": 1784221200,
+          "time": "17/07 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Cosmote Sport 1 HD",
+                "Cytavision Sports 2 HD",
+                "Cytavision Sports PPV 2 HD",
+                "Omonoia TV on Cyta"
               ]
             }
           ],
@@ -288,8 +336,8 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Solidsport Broadcast",
-                "Diema Sport HD"
+                "Diema Sport HD",
+                "Solidsport Broadcast"
               ]
             },
             {
@@ -409,6 +457,37 @@
               "channels": [
                 "DvojkaHD",
                 "Hajduk TV"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Pafos FC vs Slovan Bratislava",
+          "kick_utc": 1784226600,
+          "time": "17/07 01:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Cytavision Sports 4 HD",
+                "Cytavision Sports PPV 3 HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Glenavon vs Doncaster Rovers",
+          "kick_utc": 1784226600,
+          "time": "17/07 01:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "NIFL TV"
               ]
             }
           ],
@@ -632,6 +711,21 @@
         {
           "league": "Tennis",
           "match": "ATP World Tour 250 - Gstaad 2026",
+          "kick_utc": 1784206800,
+          "time": "16/07 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Gstaad 2026",
           "kick_utc": 1784215800,
           "time": "16/07 10:30 PM",
           "tv_channels": [
@@ -647,8 +741,8 @@
         {
           "league": "Tennis",
           "match": "ATP World Tour 250 - Bastad 2026",
-          "kick_utc": 1784192400,
-          "time": "16/07 04:00 PM",
+          "kick_utc": 1784192340,
+          "time": "16/07 03:59 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -950,6 +1044,21 @@
               "country": "Hubsport",
               "channels": [
                 "Tva Sports 2 Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ultimate Tennis Showdown",
+          "kick_utc": 1784242800,
+          "time": "17/07 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "beIN Sports Max 5 France"
               ]
             }
           ],
