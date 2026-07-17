@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-17 17:53 VN",
+  "updated": "2026-07-17 20:54 VN",
   "days": {
     "20260717": {
       "date": "Friday, 17/07",
@@ -130,53 +130,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Swedish Open",
-          "kick_utc": 1784278800,
-          "time": "17/07 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "TSN+"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Swedish Open",
-          "kick_utc": 1784293200,
-          "time": "17/07 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Iasi Open",
-          "kick_utc": 1784282400,
-          "time": "17/07 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "DAZN Canada"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
           "match": "Swiss Open Gstaad",
           "kick_utc": 1784291400,
           "time": "17/07 07:30 PM",
@@ -222,6 +175,36 @@
         },
         {
           "league": "Tennis",
+          "match": "Swedish Open",
+          "kick_utc": 1784293200,
+          "time": "17/07 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Swedish Open",
+          "kick_utc": 1784372400,
+          "time": "18/07 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
           "match": "Athens Open",
           "kick_utc": 1784298600,
           "time": "17/07 09:30 PM",
@@ -238,6 +221,21 @@
         },
         {
           "league": "Tennis",
+          "match": "Athens Open",
+          "kick_utc": 1784313000,
+          "time": "18/07 01:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
           "match": "Croatia Open",
           "kick_utc": 1784307600,
           "time": "18/07 12:00 AM",
@@ -245,8 +243,8 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN+",
-                "Tennis Channel"
+                "Tennis Channel",
+                "TSN+"
               ]
             }
           ],
@@ -285,49 +283,82 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP World Tour 250 - Bastad 2026",
-          "kick_utc": 1784278800,
-          "time": "17/07 04:00 PM",
+          "match": "Panna Udvardy vs Paula Badosa Gibert",
+          "kick_utc": 1784298600,
+          "time": "17/07 09:30 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "Sport Tv1 Hd Portugal"
+                "beIN Sports Connect"
               ]
             }
           ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
-          "match": "ATP World Tour 250 - Bastad 2026",
-          "kick_utc": 1784300400,
-          "time": "17/07 10:00 PM",
+          "match": "Barbora Krejcikova vs Qinwen Zheng",
+          "kick_utc": 1784298600,
+          "time": "17/07 09:30 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "Sport Tv1 Hd Portugal"
+                "beIN Sports Connect",
+                "Stan Sport"
               ]
             }
           ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
-          "match": "Tenis Sferturi",
-          "kick_utc": 1784287800,
-          "time": "17/07 06:30 PM",
+          "match": "Roman Andres Burruchaga vs Daniel Merida Aguilar",
+          "kick_utc": 1784305800,
+          "time": "17/07 11:30 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
+                "beIN Sports Connect",
+                "beIN SPORTS 3"
               ]
             }
           ],
-          "source": "hubsport"
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1784365200,
+          "time": "18/07 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1784372400,
+          "time": "18/07 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 2"
+              ]
+            }
+          ],
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -440,6 +471,21 @@
         },
         {
           "league": "Tennis",
+          "match": "ATP World Tour 250 - Bastad 2026",
+          "kick_utc": 1784300400,
+          "time": "17/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv1 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "ATP World Tour 250 - Gstaad 2026",
           "kick_utc": 1784302200,
           "time": "17/07 10:30 PM",
@@ -515,6 +561,36 @@
         },
         {
           "league": "Tennis",
+          "match": "Tennis",
+          "kick_utc": 1784372400,
+          "time": "18/07 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Srf Zwei France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tennis",
+          "kick_utc": 1784381400,
+          "time": "18/07 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Srf Zwei France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Tenis Ziua 5",
           "kick_utc": 1784323800,
           "time": "18/07 04:30 AM",
@@ -560,9 +636,40 @@
         },
         {
           "league": "Tennis",
-          "match": ": Nordea Open - Bastad",
-          "kick_utc": 1784278800,
-          "time": "17/07 04:00 PM",
+          "match": "Tenis: ATP Gstaad Semifinala",
+          "kick_utc": 1784376000,
+          "time": "18/07 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": ": EFG Swiss Open - Gstaad",
+          "kick_utc": 1784293200,
+          "time": "17/07 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 5"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": EFG Swiss Open - Gstaad",
+          "kick_utc": 1784365200,
+          "time": "18/07 04:00 PM",
           "tv_channels": [
             {
               "country": "NowTV",
@@ -590,14 +697,14 @@
         },
         {
           "league": "Tennis",
-          "match": ": EFG Swiss Open - Gstaad",
-          "kick_utc": 1784293200,
-          "time": "17/07 08:00 PM",
+          "match": ": Nordea Open - Bastad",
+          "kick_utc": 1784372400,
+          "time": "18/07 06:00 PM",
           "tv_channels": [
             {
               "country": "NowTV",
               "channels": [
-                "Ziggo Sport 5"
+                "Ziggo Sport 4"
               ]
             }
           ],
@@ -605,9 +712,9 @@
         },
         {
           "league": "Tennis",
-          "match": ": EFG Swiss Open - Gstaad",
-          "kick_utc": 1784365200,
-          "time": "18/07 04:00 PM",
+          "match": ": Nordea Open - Bastad",
+          "kick_utc": 1784379600,
+          "time": "18/07 08:00 PM",
           "tv_channels": [
             {
               "country": "NowTV",
