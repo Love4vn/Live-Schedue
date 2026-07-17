@@ -1,16 +1,6 @@
 [
     {
         "Date": "2026-07-17",
-        "Time": "17:00",
-        "League": "Tennis (WTA)",
-        "Matchup": "Iasi Open",
-        "Services": [
-            "Tennis Channel",
-            "DAZN Canada"
-        ]
-    },
-    {
-        "Date": "2026-07-17",
         "Time": "19:30",
         "League": "Tennis (ATP)",
         "Matchup": "Swiss Open Gstaad",
@@ -132,22 +122,23 @@
         "Date": "2026-07-18",
         "Time": "01:45",
         "League": "International Friendlies",
-        "Matchup": "Hearts vs Rayo Vallecano",
+        "Matchup": "Benfica vs Villarreal",
         "Services": [
-            "Hearts TV"
+            "Benfica TV HD",
+            "DAZN 1 Portugal HD",
+            "DAZN Belgium",
+            "DAZN Portugal",
+            "GOL España HD",
+            "TVi Portugal HD"
         ]
     },
     {
         "Date": "2026-07-18",
         "Time": "01:45",
         "League": "International Friendlies",
-        "Matchup": "Benfica vs Villarreal",
+        "Matchup": "Hearts vs Rayo Vallecano",
         "Services": [
-            "Benfica TV HD",
-            "DAZN Belgium",
-            "DAZN Portugal",
-            "GOL España HD",
-            "TVi Portugal HD"
+            "Hearts TV"
         ]
     },
     {
@@ -580,6 +571,15 @@
     {
         "Date": "2026-07-20",
         "Time": "16:00",
+        "League": "Tennis (WTA)",
+        "Matchup": "Hamburg Open",
+        "Services": [
+            "Tennis Channel"
+        ]
+    },
+    {
+        "Date": "2026-07-20",
+        "Time": "18:30",
         "League": "Tennis (WTA)",
         "Matchup": "Hamburg Open",
         "Services": [
