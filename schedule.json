@@ -1,24 +1,9 @@
 {
-  "updated": "2026-07-17 20:54 VN",
+  "updated": "2026-07-17 23:20 VN",
   "days": {
     "20260717": {
       "date": "Friday, 17/07",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Mainz 05 vs Kaiserslautern",
-          "kick_utc": 1784295000,
-          "time": "17/07 08:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "YouTube: FSV Mainz 05"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "International Friendly",
           "match": "Olympiacos vs Fortuna Sittard",
@@ -96,6 +81,26 @@
         },
         {
           "league": "International Friendly",
+          "match": "Benfica vs Villarreal",
+          "kick_utc": 1784313900,
+          "time": "18/07 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Benfica TV HD",
+                "DAZN 1 Portugal HD",
+                "DAZN Belgium",
+                "DAZN Portugal",
+                "GOL España HD",
+                "TVi Portugal HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
           "match": "Hearts vs Rayo Vallecano",
           "kick_utc": 1784313900,
           "time": "18/07 01:45 AM",
@@ -110,19 +115,16 @@
           "source": "livesportsontv"
         },
         {
-          "league": "International Friendly",
-          "match": "Benfica vs Villarreal",
-          "kick_utc": 1784313900,
-          "time": "18/07 01:45 AM",
+          "league": "Tennis",
+          "match": "Athens Open",
+          "kick_utc": 1784298600,
+          "time": "17/07 09:30 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Benfica TV HD",
-                "DAZN Belgium",
-                "DAZN Portugal",
-                "GOL España HD",
-                "TVi Portugal HD"
+                "Tennis Channel",
+                "DAZN Canada"
               ]
             }
           ],
@@ -130,9 +132,9 @@
         },
         {
           "league": "Tennis",
-          "match": "Swiss Open Gstaad",
-          "kick_utc": 1784291400,
-          "time": "17/07 07:30 PM",
+          "match": "Athens Open",
+          "kick_utc": 1784313000,
+          "time": "18/07 01:30 AM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
@@ -175,9 +177,25 @@
         },
         {
           "league": "Tennis",
-          "match": "Swedish Open",
-          "kick_utc": 1784293200,
-          "time": "17/07 08:00 PM",
+          "match": "Croatia Open",
+          "kick_utc": 1784307600,
+          "time": "18/07 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel",
+                "TSN+"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Croatia Open",
+          "kick_utc": 1784314800,
+          "time": "18/07 02:00 AM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
@@ -205,61 +223,15 @@
         },
         {
           "league": "Tennis",
-          "match": "Athens Open",
-          "kick_utc": 1784298600,
-          "time": "17/07 09:30 PM",
+          "match": "Iasi Open",
+          "kick_utc": 1784383200,
+          "time": "18/07 09:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
                 "Tennis Channel",
                 "DAZN Canada"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Athens Open",
-          "kick_utc": 1784313000,
-          "time": "18/07 01:30 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Croatia Open",
-          "kick_utc": 1784307600,
-          "time": "18/07 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "TSN+"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Croatia Open",
-          "kick_utc": 1784314800,
-          "time": "18/07 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel"
               ]
             }
           ],
@@ -362,14 +334,30 @@
         },
         {
           "league": "Tennis",
-          "match": "Tournoi WTA d'Iasi",
-          "kick_utc": 1784289600,
-          "time": "17/07 07:00 PM",
+          "match": "",
+          "kick_utc": 1784383200,
+          "time": "18/07 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Bastad 2026",
+          "kick_utc": 1784300400,
+          "time": "17/07 10:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "beIN Sports Max 4 France"
+                "Sport Tv1 Hd Portugal"
               ]
             }
           ],
@@ -407,15 +395,29 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis: WTA Iasi Sferturi",
-          "kick_utc": 1784293200,
-          "time": "17/07 08:00 PM",
+          "match": "Tournoi WTA d'Iasi",
+          "kick_utc": 1784390400,
+          "time": "18/07 11:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
+                "beIN Sports Max 4 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Gstaad 2026",
+          "kick_utc": 1784302200,
+          "time": "17/07 10:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
               ]
             }
           ],
@@ -464,36 +466,6 @@
               "channels": [
                 "Digi Sport 2 Hd Romania",
                 "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Bastad 2026",
-          "kick_utc": 1784300400,
-          "time": "17/07 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv1 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Gstaad 2026",
-          "kick_utc": 1784302200,
-          "time": "17/07 10:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
               ]
             }
           ],
@@ -636,6 +608,21 @@
         },
         {
           "league": "Tennis",
+          "match": "Ultimate Tennis Showdown",
+          "kick_utc": 1784390400,
+          "time": "18/07 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Tva Sports 2 Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Tenis: ATP Gstaad Semifinala",
           "kick_utc": 1784376000,
           "time": "18/07 07:00 PM",
@@ -652,14 +639,45 @@
         },
         {
           "league": "Tennis",
-          "match": ": EFG Swiss Open - Gstaad",
-          "kick_utc": 1784293200,
-          "time": "17/07 08:00 PM",
+          "match": "Tenis: ATP Gstaad Semifinala",
+          "kick_utc": 1784385000,
+          "time": "18/07 09:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Plava Laguna Croatia Open - Umag",
+          "kick_utc": 1784307900,
+          "time": "18/07 12:05 AM",
           "tv_channels": [
             {
               "country": "NowTV",
               "channels": [
-                "Ziggo Sport 5"
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Plava Laguna Croatia Open - Umag",
+          "kick_utc": 1784314800,
+          "time": "18/07 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
               ]
             }
           ],
@@ -682,9 +700,9 @@
         },
         {
           "league": "Tennis",
-          "match": ": Nordea Open - Bastad",
-          "kick_utc": 1784293500,
-          "time": "17/07 08:05 PM",
+          "match": ": EFG Swiss Open - Gstaad",
+          "kick_utc": 1784386800,
+          "time": "18/07 10:00 PM",
           "tv_channels": [
             {
               "country": "NowTV",
@@ -715,36 +733,6 @@
           "match": ": Nordea Open - Bastad",
           "kick_utc": 1784379600,
           "time": "18/07 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": ": Plava Laguna Croatia Open - Umag",
-          "kick_utc": 1784307900,
-          "time": "18/07 12:05 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": ": Plava Laguna Croatia Open - Umag",
-          "kick_utc": 1784314800,
-          "time": "18/07 02:00 AM",
           "tv_channels": [
             {
               "country": "NowTV",
