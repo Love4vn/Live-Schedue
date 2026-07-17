@@ -1,39 +1,9 @@
 {
-  "updated": "2026-07-17 23:20 VN",
+  "updated": "2026-07-18 02:20 VN",
   "days": {
     "20260717": {
       "date": "Friday, 17/07",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Olympiacos vs Fortuna Sittard",
-          "kick_utc": 1784305800,
-          "time": "17/07 11:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Cosmote Sport 1 HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Club Brugge vs Heerenveen",
-          "kick_utc": 1784307600,
-          "time": "18/07 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "DAZN Belgium"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "International Friendly",
           "match": "Austria Vienna vs Paks",
@@ -117,22 +87,6 @@
         {
           "league": "Tennis",
           "match": "Athens Open",
-          "kick_utc": 1784298600,
-          "time": "17/07 09:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "DAZN Canada"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Athens Open",
           "kick_utc": 1784313000,
           "time": "18/07 01:30 AM",
           "tv_channels": [
@@ -147,14 +101,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Swiss Open Gstaad",
-          "kick_utc": 1784302200,
-          "time": "17/07 10:30 PM",
+          "match": "Athens Open",
+          "kick_utc": 1784392200,
+          "time": "18/07 11:30 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Tennis Channel"
+                "DAZN Canada"
               ]
             }
           ],
@@ -162,30 +116,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Swiss Open Gstaad",
-          "kick_utc": 1784365200,
-          "time": "18/07 04:00 PM",
+          "match": "Athens Open",
+          "kick_utc": 1784399400,
+          "time": "19/07 01:30 AM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
                 "Tennis Channel"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Croatia Open",
-          "kick_utc": 1784307600,
-          "time": "18/07 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "TSN+"
               ]
             }
           ],
@@ -196,6 +134,42 @@
           "match": "Croatia Open",
           "kick_utc": 1784314800,
           "time": "18/07 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Croatia Open",
+          "kick_utc": 1784394000,
+          "time": "19/07 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            },
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Croatia Open Broadcasted on Sky Sports Tennis"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Swiss Open Gstaad",
+          "kick_utc": 1784365200,
+          "time": "18/07 04:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
@@ -255,50 +229,18 @@
         },
         {
           "league": "Tennis",
-          "match": "Panna Udvardy vs Paula Badosa Gibert",
-          "kick_utc": 1784298600,
-          "time": "17/07 09:30 PM",
+          "match": "WTA Athens Open",
+          "kick_utc": 1784401200,
+          "time": "19/07 02:00 AM",
           "tv_channels": [
             {
-              "country": "Ausport",
+              "country": "Wheresthematch",
               "channels": [
-                "beIN Sports Connect"
+                "WTA Athens Open Broadcasted on Sky Sports Tennis"
               ]
             }
           ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Barbora Krejcikova vs Qinwen Zheng",
-          "kick_utc": 1784298600,
-          "time": "17/07 09:30 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "Stan Sport"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Roman Andres Burruchaga vs Daniel Merida Aguilar",
-          "kick_utc": 1784305800,
-          "time": "17/07 11:30 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 3"
-              ]
-            }
-          ],
-          "source": "ausport"
+          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
@@ -350,94 +292,20 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP World Tour 250 - Bastad 2026",
-          "kick_utc": 1784300400,
-          "time": "17/07 10:00 PM",
+          "match": "",
+          "kick_utc": 1784394000,
+          "time": "19/07 12:00 AM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "Sport Tv1 Hd Portugal"
+                "beIN SPORTS 1",
+                "Stan Sport",
+                "beIN Sports Connect"
               ]
             }
           ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA d'Iasi",
-          "kick_utc": 1784302200,
-          "time": "17/07 10:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 4 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA d'Iasi",
-          "kick_utc": 1784314800,
-          "time": "18/07 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 4 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA d'Iasi",
-          "kick_utc": 1784390400,
-          "time": "18/07 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 4 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Gstaad 2026",
-          "kick_utc": 1784302200,
-          "time": "17/07 10:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: WTA Iasi Sferturi",
-          "kick_utc": 1784302200,
-          "time": "17/07 10:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -466,51 +334,6 @@
               "channels": [
                 "Digi Sport 2 Hd Romania",
                 "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA d'Athènes",
-          "kick_utc": 1784305800,
-          "time": "17/07 11:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 5 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Umag 2026",
-          "kick_utc": 1784305800,
-          "time": "17/07 11:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv 6 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Umag 2026",
-          "kick_utc": 1784314800,
-          "time": "18/07 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv 6 Hd Portugal"
               ]
             }
           ],
@@ -556,6 +379,66 @@
               "country": "Hubsport",
               "channels": [
                 "Srf Zwei France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi WTA d'Iasi",
+          "kick_utc": 1784314800,
+          "time": "18/07 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "beIN Sports Max 4 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi WTA d'Iasi",
+          "kick_utc": 1784390400,
+          "time": "18/07 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "beIN Sports Max 4 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi WTA d'Iasi",
+          "kick_utc": 1784397600,
+          "time": "19/07 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "beIN Sports Max 4 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Umag 2026",
+          "kick_utc": 1784314800,
+          "time": "18/07 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv 6 Hd Portugal"
               ]
             }
           ],
@@ -623,6 +506,21 @@
         },
         {
           "league": "Tennis",
+          "match": "Ultimate Tennis Showdown",
+          "kick_utc": 1784394000,
+          "time": "19/07 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "beIN Sports Max 7 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Tenis: ATP Gstaad Semifinala",
           "kick_utc": 1784376000,
           "time": "18/07 07:00 PM",
@@ -655,9 +553,56 @@
         },
         {
           "league": "Tennis",
+          "match": "Tenis: WTA Iasi Semifinala",
+          "kick_utc": 1784394000,
+          "time": "19/07 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: WTA Iasi Semifinala",
+          "kick_utc": 1784401200,
+          "time": "19/07 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi ATP d'Umag",
+          "kick_utc": 1784401200,
+          "time": "19/07 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 2 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": ": Plava Laguna Croatia Open - Umag",
-          "kick_utc": 1784307900,
-          "time": "18/07 12:05 AM",
+          "kick_utc": 1784314800,
+          "time": "18/07 02:00 AM",
           "tv_channels": [
             {
               "country": "NowTV",
@@ -671,8 +616,8 @@
         {
           "league": "Tennis",
           "match": ": Plava Laguna Croatia Open - Umag",
-          "kick_utc": 1784314800,
-          "time": "18/07 02:00 AM",
+          "kick_utc": 1784394000,
+          "time": "19/07 12:00 AM",
           "tv_channels": [
             {
               "country": "NowTV",
