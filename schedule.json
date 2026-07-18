@@ -1,125 +1,9 @@
 {
-  "updated": "2026-07-18 23:02 VN",
+  "updated": "2026-07-19 02:14 VN",
   "days": {
     "20260718": {
       "date": "Saturday, 18/07",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Borussia Dortmund vs Rot-Weiss Oberhausen",
-          "kick_utc": 1784386800,
-          "time": "18/07 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Premier Sports GB Player HD",
-                "Sky Sport Bundesliga 1 HD",
-                "Sky Sport News Deutsch HD",
-                "Sky Sport Top Event HD",
-                "Sport TV1 Slovenija",
-                "Sport TV5 Portugal HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Manchester United vs Wrexham",
-          "kick_utc": 1784386800,
-          "time": "18/07 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "beIN Connect Australia",
-                "beIN Connect NZ",
-                "MUTV HD",
-                "Stan Sport Australia",
-                "VG+ Sport Norge"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Aris Limassol vs Legia Warsaw",
-          "kick_utc": 1784386800,
-          "time": "18/07 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Cytavision Sports 1 HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Girona XI vs Al Qadisiyah",
-          "kick_utc": 1784390400,
-          "time": "18/07 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Esport 3 Catalunya"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Osijek vs Honvéd",
-          "kick_utc": 1784390400,
-          "time": "18/07 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "MAX Sport 1 Hrvatska HD",
-                "MAX Sport 2 Hrvatska HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Slavia Prague vs Lyon",
-          "kick_utc": 1784394000,
-          "time": "19/07 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "OL Play",
-                "OnePlay Sport 1 HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Rapid Vienna vs Hamburg",
-          "kick_utc": 1784394000,
-          "time": "19/07 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "ORF Sport+ Austria HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "International Friendly",
           "match": "Olot vs Espanyol XI",
@@ -160,179 +44,426 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "RTÉ Player",
-                "ZBC Zimbabwe HD",
-                "Media Sports Infos",
-                "Magenta Sport",
-                "TVCG 1 HD",
-                "Fox Sports USA 4K",
-                "Hagerie TV Ethiopia",
-                "New World Sport 1 Mauritius",
-                "Persiana Sports 2 HD",
-                "RDS 2 Canada",
-                "FOX Sports 4K",
-                "JOJ Play",
-                "M4 Sport Hungary HD",
-                "KTRK Sport",
-                "BBC *RED Button HD",
-                "beIN Sports MENA Max 1 HD",
-                "KVF Sjónvarp Faroes",
-                "TRT 1 Türkiye HD",
-                "Ice Xtra Maldives",
-                "Sun Sports TV Zambia",
-                "Mafken TV Zambia",
-                "RTG Guinea",
-                "Arena Sport 1 BiH HD",
-                "MTV Katsomon+",
-                "RTNB Burundi",
-                "beIN Sports MENA 4K UHD",
-                "Sigma TV Cyprus HD",
-                "TV Malagasy Madagascar",
-                "beIN Sports MENA Max 3 HD",
-                "ORTB Benin",
-                "SuperSport MáXimo 1 HD",
-                "ZNBC TV 1",
-                "CT Sport Plus HD",
-                "VRT 1 Belgium HD",
-                "Rwanda TV HD",
-                "Zor TV Uzbekistan",
-                "TPA 2 Angola",
-                "KC2 Rwanda",
-                "FOX 4K",
-                "TV Klan HD",
-                "Persiana Sport HD",
-                "KBC 1 Kenya",
-                "SuperSport PSL HD",
-                "Megogo Futbol 1",
-                "Arena Sport 1 Slovenija HD",
-                "Télé Tchad",
-                "NHK BS Premium 4K",
-                "Peacock ES",
-                "SVT 1 Sverige HD",
-                "JOJ TV Slovakia HD",
-                "RTB Zénith",
-                "SuperSport Grandstand HD",
-                "ETV+ Estonia",
-                "TV3 Lietuva HD",
-                "MTV 3 Suomi HD",
-                "BBC Sport",
-                "NTA Sports 24",
-                "TVM 1 Mozambique",
-                "TV3 Estonia HD",
-                "GEM Sport HD",
-                "TBC 1 Tanzania",
-                "beIN Sports MENA Max 5 HD",
-                "Servus TV Österreich HD",
-                "Antena 1 Romania HD",
-                "beIN Sports MENA Max 4 HD",
-                "Sport TV1 Portugal HD",
-                "M6 France 4K UHD",
-                "Setanta Sports 1 Georgia HD",
-                "SuperSport 2 Albania HD",
-                "beIN Sports MENA Max 2 HD",
-                "beIN Sports MENA Max 6 HD",
-                "NOW Sports HK 4K 616",
-                "BBC iPlayer 4K",
-                "Klan Sport 1 HD",
-                "RTS 2 Suisse HD",
-                "TVT Togo",
                 "DAZN Mundial Espana HD",
-                "GTV Sports + HD",
-                "HRT 2 Hrvatska HD",
-                "RTS 1 Senegal HD",
-                "World Cup HD",
-                "RUV Sjonvarpid",
-                "BNT 3 Bulgaria HD",
-                "TVP 1 Polska HD",
-                "We Sport Moldova",
-                "Azam Sports 4 HD",
-                "Sport TV5 Portugal HD",
-                "Ictimai TV HD",
-                "Tele Congo",
-                "TSN Canada 3 HD",
-                "TV Miramar Mozambique",
-                "TSN Canada 4 HD",
-                "TV6 Latvija",
-                "Grand Sport HD",
-                "TVP Sport Polska HD",
-                "DAZN Italia",
-                "JOJ Šport SVK HD",
-                "CRTV Sports Cameroon",
-                "Sporty TV Africa",
+                "Fast Sports",
                 "SVT Play HD",
-                "NBC 2 Namibia",
-                "Azam Sports 2 HD",
-                "Z Sports 1 Angola",
-                "BarTV Mundial HD",
-                "RTi La 3 Côte d’Ivoire",
-                "RTÉ 2 Ireland HD",
-                "Canal 2 International",
-                "RTS 2 Senegal HD",
-                "Qazaqstan TV HD",
-                "SABC 3 HD",
-                "NRK 1 Norge HD",
-                "RTNC Congo DR",
-                "RAI 1 Italia HD",
-                "NBC Universo USA",
-                "RSI La 2 Svizzera HD",
-                "TVM+ Malta HD",
-                "Go3 World Cup Baltics",
-                "Turkmenistan Sport HD",
+                "Sport TV Belarus",
+                "PTV Sports",
+                "BBC Sport Website",
+                "Sun Sports TV Zambia",
+                "ZBC Zimbabwe HD",
+                "RTG Guinea",
+                "Setanta Sports 1 Georgia HD",
+                "HRT 2 Hrvatska HD",
+                "Azam Sports 4 HD",
+                "RAI 4K UHD",
+                "Sigma TV Cyprus HD",
+                "GTV Sports + HD",
+                "New World Sport 1 Mauritius",
                 "M6 Suisse HD",
-                "Sport TV Uzbekistan",
-                "Play RTS Sport",
-                "DAZN Japan",
-                "Gabon 1ère",
-                "Fox TV USA HD",
+                "CRTV Sports Cameroon",
+                "Sport 24 In Flight HD",
+                "FOX Sports 4K",
+                "DAZN Italia",
+                "ENTV Algérie HD",
+                "MATCH! TV",
+                "Peacock ES",
+                "BBC iPlayer",
+                "GTV Ghana",
+                "TVP Sport Polska HD",
+                "NPO 1 4K UHD",
+                "AFN Sports HD",
+                "RTi La 3 Côte d’Ivoire",
+                "NPO 1 Nederland HD",
+                "ETV Estonia",
+                "Sport TV1 Portugal HD",
+                "Qazaqstan TV HD",
+                "M4 Sport Hungary HD",
                 "BNT 1 Bulgaria HD",
                 "M6 France HD",
-                "Megogo Sport Ukraine HD",
-                "SRF Zwei Schweiz HD",
-                "AFN Sports HD",
-                "La Nouvelle Chaîne Ivorienne",
-                "TSN Canada 1 HD",
-                "DAZN España",
-                "GRTS Gambia",
-                "Sport TV Belarus",
-                "CT Sport Czech HD",
-                "BBC One HD",
-                "Futbol TV Uzbekistan",
-                "RAI 4K UHD",
-                "GTV Ghana",
-                "beIN Sports France 1 HD",
-                "Telemundo USA",
-                "TVM Sport+ HD",
-                "Fox TV USA 4K",
-                "RTBF Tipik Belgique",
-                "RTS 1 Srbija HD",
-                "BBC Sport Website",
+                "RDS 2 Canada",
+                "beIN Sports MENA Max 1 HD",
+                "Play RTS Sport",
+                "SuperSport Grandstand HD",
+                "TV6 Latvija",
+                "TV Klan HD",
+                "TVE La 1 HD España",
+                "Media Sports Infos",
+                "TVE La 2 Cat",
                 "FOX",
-                "Télé Sahel Niger",
-                "MTV Urheilu 1 Suomi HD",
-                "Arena Premium 1 Srbija HD",
-                "Fussball.TV1 UHD",
-                "Slovenija TV2 HD",
+                "SporTV Brazil HD",
+                "Eswatini TV",
+                "Canal 2 International",
+                "Fox TV USA 4K",
+                "Mafken TV Zambia",
+                "Go3 World Cup Baltics",
+                "TSN Canada 3 HD",
+                "IRIB TV3 HD",
+                "Ictimai TV HD",
+                "RTÉ Player",
+                "SuperSport MáXimo 1 HD",
+                "RTÉ 2 Ireland HD",
+                "TVM+ Malta HD",
+                "TVP 1 Polska HD",
+                "BBC Sport",
+                "MTV Katsomon+",
+                "FOX 4K",
+                "Zor TV Uzbekistan",
+                "JOJ Play",
+                "SuperSport PSL HD",
+                "KC2 Rwanda",
+                "Megogo Futbol 1",
+                "BNT 3 Bulgaria HD",
+                "Servus TV Österreich HD",
+                "Magenta Sport",
+                "KTRK Sport",
+                "SuperSport 2 Albania HD",
+                "Azam Sports 2 HD",
+                "SVT 1 Sverige HD",
+                "NBC Universo USA",
+                "TVCG 1 HD",
+                "Sporty TV Africa",
+                "Rwanda TV HD",
+                "Telemundo USA",
+                "Persiana Sports 2 HD",
+                "World Cup HD",
+                "TV3 Lietuva HD",
+                "Klan Sport 1 HD",
+                "beIN Sports MENA 4K UHD",
+                "TVM Sport+ HD",
+                "SRF Zwei Schweiz HD",
+                "Ice Xtra Maldives",
+                "La Nouvelle Chaîne Ivorienne",
+                "GEM Sport HD",
                 "TV3 Ghana",
+                "Arena Sport 1 Slovenija HD",
+                "BBC *RED Button HD",
+                "BBC One HD",
+                "NTA Sports 24",
+                "beIN Sports MENA Max 6 HD",
+                "Télé Tchad",
+                "Slovenija TV2 HD",
+                "beIN Sports MENA Max 2 HD",
+                "Sport TV5 Portugal HD",
+                "TV Pública Argentina HD",
+                "ETV+ Estonia",
                 "Fast Sports TV Armenia",
-                "MATCH! TV",
-                "NPO 1 Nederland HD",
-                "Sport 24 In Flight HD",
-                "ETV Estonia",
-                "PTV Sports",
-                "QazSport HD",
-                "Fast Sports",
-                "NPO 1 4K UHD",
+                "TV Malagasy Madagascar",
+                "CT Sport Czech HD",
+                "Hagerie TV Ethiopia",
+                "ZNBC TV 1",
+                "TBC 1 Tanzania",
+                "Grand Sport HD",
+                "Arena Sport 1 BiH HD",
+                "BarTV Mundial HD",
+                "RTS 2 Senegal HD",
+                "Sport TV Uzbekistan",
+                "Z Sports 1 Angola",
+                "GRTS Gambia",
+                "Fox TV USA HD",
+                "Fussball.TV1 UHD",
+                "RTS 1 Srbija HD",
+                "RSI La 2 Svizzera HD",
+                "RTBF Tipik Belgique",
+                "Tele Congo",
+                "ORTB Benin",
+                "BBC iPlayer 4K",
                 "Fubo Sports",
+                "Antena 1 Romania HD",
+                "RTNC Congo DR",
+                "KBC 1 Kenya",
+                "MTV 3 Suomi HD",
+                "QazSport HD",
+                "RTS 1 Senegal HD",
+                "beIN Sports MENA Max 5 HD",
+                "Futbol TV Uzbekistan",
+                "beIN Sports MENA Max 4 HD",
+                "ORTM 2 Mali",
+                "NOW Sports HK 4K 616",
+                "RTS 2 Suisse HD",
+                "JOJ Šport SVK HD",
+                "VRT 1 Belgium HD",
+                "Megogo Sport Ukraine HD",
+                "DAZN España",
+                "TSN Canada 1 HD",
+                "NHK BS Premium 4K",
+                "TSN Canada 4 HD",
+                "Nova Action HD",
+                "TRT 1 Türkiye HD",
+                "Arena M1 Premium MKD HD",
+                "Persiana Sport HD",
+                "RAI 1 Italia HD",
+                "DAZN Japan",
+                "TPA 2 Angola",
+                "TV3 Estonia HD",
+                "beIN Sports MENA HD",
+                "Turkmenistan Sport HD",
                 "Rustavi 2",
-                "BBC iPlayer",
-                "Arena M1 Premium MKD HD"
+                "Gabon 1ère",
+                "KVF Sjónvarp Faroes",
+                "NBC 2 Namibia",
+                "TV Miramar Mozambique",
+                "RTNB Burundi",
+                "beIN Sports MENA Max 3 HD",
+                "TVM 1 Mozambique",
+                "Zap Viva Internacional HD",
+                "JOJ TV Slovakia HD",
+                "KSA Sports 1 HD",
+                "We Sport Moldova",
+                "IRIB 4K UHD",
+                "UBC TV Uganda",
+                "CT Sport Plus HD",
+                "beIN Sports France 1 HD",
+                "NRK 1 Norge HD",
+                "Télé Sahel Niger",
+                "Teledeporte España",
+                "SABC 3 HD",
+                "RTB Zénith",
+                "MTV Urheilu 1 Suomi HD",
+                "RUV Sjonvarpid",
+                "TVE La 1 UHD 4K",
+                "M6 France 4K UHD",
+                "Arena Premium 1 Srbija HD",
+                "Fox Sports USA 4K",
+                "TVT Togo"
               ]
             },
             {
               "country": "Ausport",
               "channels": [
-                "SBS Melbourne",
-                "SBS On Demand"
+                "SBS On Demand",
+                "SBS Melbourne"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "FIFA World Cup",
+          "match": "Spain vs Argentina",
+          "kick_utc": 1784487600,
+          "time": "20/07 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DAZN Mundial Espana HD",
+                "Fast Sports",
+                "Sport TV Belarus",
+                "América Peru HD",
+                "PTV Sports",
+                "BBC Sport Website",
+                "MATCH! Russia HD",
+                "Sun Sports TV Zambia",
+                "ZBC Zimbabwe HD",
+                "DR1 Dansk HD",
+                "RTG Guinea",
+                "Setanta Sports 1 Georgia HD",
+                "HRT 2 Hrvatska HD",
+                "Azam Sports 4 HD",
+                "RAI 4K UHD",
+                "Sigma TV Cyprus HD",
+                "GTV Sports + HD",
+                "New World Sport 1 Mauritius",
+                "M6 Suisse HD",
+                "CRTV Sports Cameroon",
+                "Sport 24 In Flight HD",
+                "FOX Sports 4K",
+                "TV2 Play Danmark",
+                "DAZN Italia",
+                "ENTV Algérie HD",
+                "MATCH! TV",
+                "Peacock ES",
+                "BBC iPlayer",
+                "GTV Ghana",
+                "TVP Sport Polska HD",
+                "NPO 1 4K UHD",
+                "AFN Sports HD",
+                "MATCH! Futbol 1 HD",
+                "RTi La 3 Côte d’Ivoire",
+                "NPO 1 Nederland HD",
+                "ETV Estonia",
+                "Canal 5 Mexico HD",
+                "Sport TV1 Portugal HD",
+                "YLE TV2 Suomi HD",
+                "Qazaqstan TV HD",
+                "M4 Sport Hungary HD",
+                "BNT 1 Bulgaria HD",
+                "M6 France HD",
+                "TVE La 2 Cat",
+                "beIN Sports MENA Max 1 HD",
+                "Play RTS Sport",
+                "SuperSport Grandstand HD",
+                "TV6 Latvija",
+                "TV Klan HD",
+                "TVE La 1 HD España",
+                "Media Sports Infos",
+                "FOX",
+                "SporTV Brazil HD",
+                "TV2 Danmark HD",
+                "Eswatini TV",
+                "Canal 2 International",
+                "Fox TV USA 4K",
+                "Mafken TV Zambia",
+                "Go3 World Cup Baltics",
+                "TSN Canada 3 HD",
+                "STV Player",
+                "Ictimai TV HD",
+                "RTÉ Player",
+                "ITV X",
+                "RTÉ 2 Ireland HD",
+                "RTP 1 Portugal HD",
+                "SuperSport MáXimo 1 HD",
+                "TVM+ Malta HD",
+                "ORF On",
+                "BBC Sport",
+                "TVP 1 Polska HD",
+                "FOX 4K",
+                "Zor TV Uzbekistan",
+                "JOJ Play",
+                "SuperSport PSL HD",
+                "KC2 Rwanda",
+                "ITV 1 England HD",
+                "Megogo Futbol 1",
+                "BNT 3 Bulgaria HD",
+                "Magenta Sport",
+                "KTRK Sport",
+                "MATCH! Premier HD",
+                "SuperSport 2 Albania HD",
+                "Azam Sports 2 HD",
+                "DAZN Sverige",
+                "RDS Canada",
+                "TV2 Play Norge",
+                "NBC Universo USA",
+                "TVCG 1 HD",
+                "STVR Šport Slovakia HD",
+                "Sporty TV Africa",
+                "Rwanda TV HD",
+                "Telemundo USA",
+                "Persiana Sports 2 HD",
+                "TVNZ 1",
+                "World Cup HD",
+                "TV3 Lietuva HD",
+                "Klan Sport 1 HD",
+                "DR TV",
+                "beIN Sports MENA 4K UHD",
+                "TVM Sport+ HD",
+                "SRF Zwei Schweiz HD",
+                "Ice Xtra Maldives",
+                "GEM Sport HD",
+                "La Nouvelle Chaîne Ivorienne",
+                "TV3 Ghana",
+                "Arena Sport 1 Slovenija HD",
+                "TyC Sports Argentina",
+                "BBC *RED Button HD",
+                "BBC One HD",
+                "NTA Sports 24",
+                "Teletica 7",
+                "Caracol Nacional",
+                "beIN Sports MENA Max 6 HD",
+                "Télé Tchad",
+                "Slovenija TV2 HD",
+                "beIN Sports MENA Max 2 HD",
+                "Sport TV5 Portugal HD",
+                "TV Pública Argentina HD",
+                "ETV+ Estonia",
+                "Fast Sports TV Armenia",
+                "TV Malagasy Madagascar",
+                "CT Sport Czech HD",
+                "Hagerie TV Ethiopia",
+                "ZNBC TV 1",
+                "TBC 1 Tanzania",
+                "Grand Sport HD",
+                "Arena Sport 1 BiH HD",
+                "BarTV Mundial HD",
+                "RTS 2 Senegal HD",
+                "Sport TV Uzbekistan",
+                "RTB Burkina Faso",
+                "UTV Northern Ireland HD",
+                "Z Sports 1 Angola",
+                "GRTS Gambia",
+                "Fox TV USA HD",
+                "ChileVision",
+                "TSN Canada 5 HD",
+                "Fussball.TV1 UHD",
+                "RTS 1 Srbija HD",
+                "RSI La 2 Svizzera HD",
+                "Tele Congo",
+                "ORTB Benin",
+                "RCN TV HD",
+                "BBC iPlayer 4K",
+                "Fubo Sports",
+                "Antena 1 Romania HD",
+                "RTNC Congo DR",
+                "KBC 1 Kenya",
+                "QazSport HD",
+                "RTS 1 Senegal HD",
+                "JednotkaHD",
+                "beIN Sports MENA Max 5 HD",
+                "Futbol TV Uzbekistan",
+                "beIN Sports MENA Max 4 HD",
+                "NOW Sports HK 4K 616",
+                "RTS 2 Suisse HD",
+                "JOJ Šport SVK HD",
+                "VRT 1 Belgium HD",
+                "Megogo Sport Ukraine HD",
+                "DAZN España",
+                "TSN Canada 1 HD",
+                "RTBF La Une HD",
+                "NHK BS Premium 4K",
+                "STV Scotland HD",
+                "TSN Canada 4 HD",
+                "Nova Action HD",
+                "ORF 1 Austria HD",
+                "TRT 1 Türkiye HD",
+                "Arena M1 Premium MKD HD",
+                "Persiana Sport HD",
+                "RAI 1 Italia HD",
+                "DAZN Japan",
+                "TPA 2 Angola",
+                "TV3 Estonia HD",
+                "beIN Sports MENA HD",
+                "Turkmenistan Sport HD",
+                "YLE AREENA",
+                "Rustavi 2",
+                "Gabon 1ère",
+                "ORF 4K UHD",
+                "KVF Sjónvarp Faroes",
+                "NBC 2 Namibia",
+                "ORTM 1 Mali",
+                "TV Miramar Mozambique",
+                "RTNB Burundi",
+                "beIN Sports MENA Max 3 HD",
+                "Jurnal TV Moldova",
+                "TVM 1 Mozambique",
+                "Zap Viva Internacional HD",
+                "CTV Canada HD",
+                "JOJ TV Slovakia HD",
+                "KSA Sports 1 HD",
+                "ZDF Deutschland HD",
+                "UBC TV Uganda",
+                "CT Sport Plus HD",
+                "beIN Sports France 1 HD",
+                "NRK 1 Norge HD",
+                "TV4 Sverige HD",
+                "Télé Sahel Niger",
+                "Teledeporte España",
+                "SABC 3 HD",
+                "RTB Zénith",
+                "TV4 Play Sverige",
+                "RUV Sjonvarpid",
+                "TVE La 1 UHD 4K",
+                "M6 France 4K UHD",
+                "Arena Premium 1 Srbija HD",
+                "Fox Sports USA 4K",
+                "TVT Togo"
+              ]
+            },
+            {
+              "country": "Ausport",
+              "channels": [
+                "SBS On Demand",
+                "SBS Melbourne"
               ]
             }
           ],
@@ -355,19 +486,21 @@
           "source": "nowtv"
         },
         {
-          "league": "Tennis",
-          "match": "Athens Open",
-          "kick_utc": 1784392200,
-          "time": "18/07 11:30 PM",
+          "league": "FIFA World Cup",
+          "match": "Final vs Spain vs Argentina",
+          "kick_utc": 1784482200,
+          "time": "20/07 12:30 AM",
           "tv_channels": [
             {
-              "country": "LiveSportsOnTV",
+              "country": "NowTV",
               "channels": [
-                "DAZN Canada"
+                "Now Sports 4K 616",
+                "Now Sports 618",
+                "Now Sports Prime"
               ]
             }
           ],
-          "source": "livesportsontv"
+          "source": "nowtv"
         },
         {
           "league": "Tennis",
@@ -386,15 +519,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Croatia Open",
-          "kick_utc": 1784394000,
-          "time": "19/07 12:00 AM",
+          "match": "Athens Open",
+          "kick_utc": 1784480400,
+          "time": "20/07 12:00 AM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Tennis Channel",
-                "TSN+"
+                "DAZN Canada"
               ]
             }
           ],
@@ -465,38 +597,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Maria Sakkari vs Alina Korneeva",
-          "kick_utc": 1784392200,
-          "time": "18/07 11:30 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "Stan Sport"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Daniel Merida Aguilar vs Damir Dzumhur",
-          "kick_utc": 1784394000,
-          "time": "19/07 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
           "match": "",
           "kick_utc": 1784453400,
           "time": "19/07 04:30 PM",
@@ -545,37 +645,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis: ATP Gstaad Semifinala",
-          "kick_utc": 1784385000,
-          "time": "18/07 09:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA d'Iasi",
-          "kick_utc": 1784390400,
-          "time": "18/07 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 4 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
           "match": "Tournoi WTA d'Iasi",
           "kick_utc": 1784397600,
           "time": "19/07 01:00 AM",
@@ -606,61 +675,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Ultimate Tennis Showdown",
-          "kick_utc": 1784390400,
-          "time": "18/07 11:00 PM",
+          "match": "Tournoi WTA d'Iasi",
+          "kick_utc": 1784478600,
+          "time": "19/07 11:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Tva Sports 2 Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ultimate Tennis Showdown",
-          "kick_utc": 1784394000,
-          "time": "19/07 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 7 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: WTA Iasi Semifinala",
-          "kick_utc": 1784394000,
-          "time": "19/07 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: WTA Iasi Semifinala",
-          "kick_utc": 1784401200,
-          "time": "19/07 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
+                "beIN Sports 2 France"
               ]
             }
           ],
@@ -676,6 +698,22 @@
               "country": "Hubsport",
               "channels": [
                 "Eurosport 2 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: WTA Iasi Semifinala",
+          "kick_utc": 1784401200,
+          "time": "19/07 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
               ]
             }
           ],
@@ -820,18 +858,35 @@
         },
         {
           "league": "Tennis",
-          "match": ": EFG Swiss Open - Gstaad",
-          "kick_utc": 1784387100,
-          "time": "18/07 10:05 PM",
+          "match": "Asii Tenisului",
+          "kick_utc": 1784480400,
+          "time": "20/07 12:00 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Ziggo Sport 4"
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: WTA Iasi Finala",
+          "kick_utc": 1784482200,
+          "time": "20/07 12:30 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -845,21 +900,6 @@
                 "Ziggo Sport 1",
                 "Ziggo Sport 4",
                 "Ziggo Sport Kanaal 14"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": ": Plava Laguna Croatia Open - Umag",
-          "kick_utc": 1784394000,
-          "time": "19/07 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 4"
               ]
             }
           ],
