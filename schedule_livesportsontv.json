@@ -1,49 +1,6 @@
 [
     {
         "Date": "2026-07-18",
-        "Time": "17:30",
-        "League": "International Friendlies",
-        "Matchup": "PSV Eindhoven vs Union St Gilloise",
-        "Services": [
-            "PSV Play"
-        ]
-    },
-    {
-        "Date": "2026-07-18",
-        "Time": "18:00",
-        "League": "International Friendlies",
-        "Matchup": "Twente vs AA Gent",
-        "Services": []
-    },
-    {
-        "Date": "2026-07-18",
-        "Time": "18:30",
-        "League": "International Friendlies",
-        "Matchup": "Crystal Palace vs Swindon Town",
-        "Services": [
-            "Palace TV+"
-        ]
-    },
-    {
-        "Date": "2026-07-18",
-        "Time": "19:00",
-        "League": "International Friendlies",
-        "Matchup": "Burton Albion vs Leicester City",
-        "Services": [
-            "Leicester City TV"
-        ]
-    },
-    {
-        "Date": "2026-07-18",
-        "Time": "19:00",
-        "League": "International Friendlies",
-        "Matchup": "AEK Athens vs Groningen",
-        "Services": [
-            "Cosmote Sport 2 HD"
-        ]
-    },
-    {
-        "Date": "2026-07-18",
         "Time": "20:00",
         "League": "International Friendlies",
         "Matchup": "Dundee vs Everton",
@@ -102,6 +59,17 @@
         "Date": "2026-07-18",
         "Time": "21:00",
         "League": "International Friendlies",
+        "Matchup": "Celtic vs Middlesbrough",
+        "Services": [
+            "Celtic Player",
+            "Okko Futbol HD",
+            "Sport TV+ Portugal"
+        ]
+    },
+    {
+        "Date": "2026-07-18",
+        "Time": "21:00",
+        "League": "International Friendlies",
         "Matchup": "Falkirk vs Racing Genk",
         "Services": [
             "Falkirk TV"
@@ -120,29 +88,9 @@
         "Date": "2026-07-18",
         "Time": "21:00",
         "League": "International Friendlies",
-        "Matchup": "Celtic vs Middlesbrough",
-        "Services": [
-            "Celtic Player",
-            "Sport TV+ Portugal"
-        ]
-    },
-    {
-        "Date": "2026-07-18",
-        "Time": "21:00",
-        "League": "International Friendlies",
         "Matchup": "Salzburg vs Mamelodi Sundowns",
         "Services": [
             "YouTube: RB Salzburg"
-        ]
-    },
-    {
-        "Date": "2026-07-18",
-        "Time": "21:00",
-        "League": "Tennis (WTA)",
-        "Matchup": "Iasi Open",
-        "Services": [
-            "Tennis Channel",
-            "DAZN Canada"
         ]
     },
     {
@@ -289,6 +237,7 @@
             "BBC Sport Website",
             "beIN Sports France 1 HD",
             "beIN Sports MENA 4K UHD",
+            "beIN Sports MENA HD",
             "beIN Sports MENA Max 1 HD",
             "beIN Sports MENA Max 2 HD",
             "beIN Sports MENA Max 3 HD",
@@ -305,6 +254,8 @@
             "DAZN Italia",
             "DAZN Japan",
             "DAZN Mundial Espana HD",
+            "ENTV Algérie HD",
+            "Eswatini TV",
             "ETV Estonia",
             "ETV+ Estonia",
             "Fast Sports",
@@ -325,12 +276,15 @@
             "HRT 2 Hrvatska HD",
             "Ice Xtra Maldives",
             "Ictimai TV HD",
+            "IRIB 4K UHD",
+            "IRIB TV3 HD",
             "JOJ Play",
             "JOJ TV Slovakia HD",
             "JOJ Šport SVK HD",
             "KBC 1 Kenya",
             "KC2 Rwanda",
             "Klan Sport 1 HD",
+            "KSA Sports 1 HD",
             "KTRK Sport",
             "KVF Sjónvarp Faroes",
             "La Nouvelle Chaîne Ivorienne",
@@ -351,12 +305,14 @@
             "NBC Universo USA",
             "New World Sport 1 Mauritius",
             "NHK BS Premium 4K",
+            "Nova Action HD",
             "NOW Sports HK 4K 616",
             "NPO 1 4K UHD",
             "NPO 1 Nederland HD",
             "NRK 1 Norge HD",
             "NTA Sports 24",
             "ORTB Benin",
+            "ORTM 2 Mali",
             "Persiana Sport HD",
             "Persiana Sports 2 HD",
             "Play RTS Sport",
@@ -392,6 +348,7 @@
             "Sport TV Uzbekistan",
             "Sport TV1 Portugal HD",
             "Sport TV5 Portugal HD",
+            "SporTV Brazil HD",
             "Sporty TV Africa",
             "SRF Zwei Schweiz HD",
             "Sun Sports TV Zambia",
@@ -403,6 +360,7 @@
             "SVT Play HD",
             "TBC 1 Tanzania",
             "Tele Congo",
+            "Teledeporte España",
             "Telemundo USA",
             "TPA 2 Angola",
             "TRT 1 Türkiye HD",
@@ -413,11 +371,15 @@
             "TV Klan HD",
             "TV Malagasy Madagascar",
             "TV Miramar Mozambique",
+            "TV Pública Argentina HD",
             "TV3 Estonia HD",
             "TV3 Ghana",
             "TV3 Lietuva HD",
             "TV6 Latvija",
             "TVCG 1 HD",
+            "TVE La 1 HD España",
+            "TVE La 1 UHD 4K",
+            "TVE La 2 Cat",
             "TVM 1 Mozambique",
             "TVM Sport+ HD",
             "TVM+ Malta HD",
@@ -426,10 +388,12 @@
             "TVT Togo",
             "Télé Sahel Niger",
             "Télé Tchad",
+            "UBC TV Uganda",
             "VRT 1 Belgium HD",
             "We Sport Moldova",
             "World Cup HD",
             "Z Sports 1 Angola",
+            "Zap Viva Internacional HD",
             "ZBC Zimbabwe HD",
             "ZNBC TV 1",
             "Zor TV Uzbekistan",
@@ -495,6 +459,7 @@
         "Matchup": "Spain vs Argentina",
         "Services": [
             "AFN Sports HD",
+            "América Peru HD",
             "Antena 1 Romania HD",
             "Arena M1 Premium MKD HD",
             "Arena Premium 1 Srbija HD",
@@ -511,6 +476,7 @@
             "BBC Sport Website",
             "beIN Sports France 1 HD",
             "beIN Sports MENA 4K UHD",
+            "beIN Sports MENA HD",
             "beIN Sports MENA Max 1 HD",
             "beIN Sports MENA Max 2 HD",
             "beIN Sports MENA Max 3 HD",
@@ -520,6 +486,9 @@
             "BNT 1 Bulgaria HD",
             "BNT 3 Bulgaria HD",
             "Canal 2 International",
+            "Canal 5 Mexico HD",
+            "Caracol Nacional",
+            "ChileVision",
             "CRTV Sports Cameroon",
             "CT Sport Czech HD",
             "CT Sport Plus HD",
@@ -531,6 +500,8 @@
             "DAZN Sverige",
             "DR TV",
             "DR1 Dansk HD",
+            "ENTV Algérie HD",
+            "Eswatini TV",
             "ETV Estonia",
             "ETV+ Estonia",
             "Fast Sports",
@@ -561,6 +532,7 @@
             "KBC 1 Kenya",
             "KC2 Rwanda",
             "Klan Sport 1 HD",
+            "KSA Sports 1 HD",
             "KTRK Sport",
             "KVF Sjónvarp Faroes",
             "La Nouvelle Chaîne Ivorienne",
@@ -591,6 +563,7 @@
             "ORF 4K UHD",
             "ORF On",
             "ORTB Benin",
+            "ORTM 1 Mali",
             "Persiana Sport HD",
             "Persiana Sports 2 HD",
             "Play RTS Sport",
@@ -599,6 +572,7 @@
             "QazSport HD",
             "RAI 1 Italia HD",
             "RAI 4K UHD",
+            "RCN TV HD",
             "RDS Canada",
             "RSI La 2 Svizzera HD",
             "RTB Burkina Faso",
@@ -627,6 +601,7 @@
             "Sport TV Uzbekistan",
             "Sport TV1 Portugal HD",
             "Sport TV5 Portugal HD",
+            "SporTV Brazil HD",
             "Sporty TV Africa",
             "SRF Zwei Schweiz HD",
             "STV Player",
@@ -641,6 +616,7 @@
             "Tele Congo",
             "Teledeporte España",
             "Telemundo USA",
+            "Teletica 7",
             "TPA 2 Angola",
             "TRT 1 Türkiye HD",
             "TSN Canada 1 HD",
@@ -651,6 +627,7 @@
             "TV Klan HD",
             "TV Malagasy Madagascar",
             "TV Miramar Mozambique",
+            "TV Pública Argentina HD",
             "TV2 Danmark HD",
             "TV2 Play Danmark",
             "TV2 Play Norge",
@@ -671,14 +648,17 @@
             "TVP 1 Polska HD",
             "TVP Sport Polska HD",
             "TVT Togo",
+            "TyC Sports Argentina",
             "Télé Sahel Niger",
             "Télé Tchad",
+            "UBC TV Uganda",
             "UTV Northern Ireland HD",
             "VRT 1 Belgium HD",
             "World Cup HD",
             "YLE AREENA",
             "YLE TV2 Suomi HD",
             "Z Sports 1 Angola",
+            "Zap Viva Internacional HD",
             "ZBC Zimbabwe HD",
             "ZDF Deutschland HD",
             "ZNBC TV 1",
@@ -733,6 +713,25 @@
         "Matchup": "Hamburg Open",
         "Services": [
             "Tennis Channel"
+        ]
+    },
+    {
+        "Date": "2026-07-21",
+        "Time": "23:00",
+        "League": "UEFA Champions League",
+        "Matchup": "Mjällby AIF vs Lincoln Red Imps",
+        "Services": [
+            "Sport Bladet Play"
+        ]
+    },
+    {
+        "Date": "2026-07-21",
+        "Time": "23:00",
+        "League": "UEFA Champions League",
+        "Matchup": "Shamrock Rovers @ Ararat-Armenia",
+        "Services": [
+            "ESPN Select",
+            "ESPN Unlimited"
         ]
     }
 ]
