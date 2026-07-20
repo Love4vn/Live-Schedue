@@ -1,43 +1,5 @@
 [
     {
-        "Date": "2026-07-20",
-        "Time": "16:00",
-        "League": "Tennis (ATP)",
-        "Matchup": "Austrian Open",
-        "Services": [
-            "Tennis Channel",
-            "TSN+"
-        ]
-    },
-    {
-        "Date": "2026-07-20",
-        "Time": "16:00",
-        "League": "Tennis (WTA)",
-        "Matchup": "Hamburg Open",
-        "Services": [
-            "Tennis Channel"
-        ]
-    },
-    {
-        "Date": "2026-07-20",
-        "Time": "18:00",
-        "League": "Tennis (ATP)",
-        "Matchup": "Estoril Open",
-        "Services": [
-            "Tennis Channel",
-            "TSN+"
-        ]
-    },
-    {
-        "Date": "2026-07-20",
-        "Time": "18:30",
-        "League": "Tennis (WTA)",
-        "Matchup": "Hamburg Open",
-        "Services": [
-            "Tennis Channel"
-        ]
-    },
-    {
         "Date": "2026-07-21",
         "Time": "02:15",
         "League": "International Friendlies",
@@ -72,19 +34,41 @@
         "Date": "2026-07-21",
         "Time": "23:00",
         "League": "UEFA Champions League",
-        "Matchup": "Mjällby AIF vs Lincoln Red Imps",
+        "Matchup": "Ararat-Armenia vs Shamrock Rovers",
         "Services": [
-            "Sport Bladet Play"
+            "Armenia First TV",
+            "Canal 11 Portugal HD",
+            "Solidsport Broadcast",
+            "ESPN Select",
+            "ESPN Unlimited"
         ]
     },
     {
         "Date": "2026-07-21",
         "Time": "23:00",
         "League": "UEFA Champions League",
-        "Matchup": "Shamrock Rovers @ Ararat-Armenia",
+        "Matchup": "Iberia 1999 vs Slovan Bratislava",
         "Services": [
-            "ESPN Select",
-            "ESPN Unlimited"
+            "Silk Universal HD",
+            "STVR Šport Slovakia HD"
+        ]
+    },
+    {
+        "Date": "2026-07-21",
+        "Time": "23:00",
+        "League": "UEFA Champions League",
+        "Matchup": "Sabah vs KuPS Kuopio",
+        "Services": [
+            "Ictimai TV HD"
+        ]
+    },
+    {
+        "Date": "2026-07-21",
+        "Time": "23:00",
+        "League": "UEFA Champions League",
+        "Matchup": "Mjällby AIF vs Lincoln Red Imps",
+        "Services": [
+            "Sport Bladet Play"
         ]
     },
     {
@@ -146,6 +130,11 @@
         "League": "UEFA Champions League",
         "Matchup": "Sturm Graz vs Hearts",
         "Services": [
+            "Arena M1 Premium MKD HD",
+            "Arena Premium 2 BiH HD",
+            "Arena Premium 2 Srbija HD",
+            "Arena Sport 1 Slovakia HD",
+            "Canal 11 Portugal HD",
             "ORF 1 Austria HD",
             "Premier Sports 1 Ireland HD",
             "Premier Sports 1 UK HD",
@@ -156,10 +145,22 @@
     },
     {
         "Date": "2026-07-22",
+        "Time": "01:45",
+        "League": "UEFA Champions League",
+        "Matchup": "KÍ Klaksvík vs Kauno Zalgiris",
+        "Services": [
+            "Solidsport Broadcast",
+            "TV KI Faroes"
+        ]
+    },
+    {
+        "Date": "2026-07-22",
         "Time": "02:00",
         "League": "UEFA Champions League",
         "Matchup": "Larne vs Red Star Belgrade",
         "Services": [
+            "Arena Premium 1 BiH HD",
+            "Arena Premium 1 Srbija HD",
             "NIFL TV"
         ]
     },
@@ -178,7 +179,11 @@
         "League": "UEFA Champions League",
         "Matchup": "Omonia Nicosia vs Kairat Almaty",
         "Services": [
-            "Cytavision Sports 1 HD"
+            "Arena Premium 1 BiH HD",
+            "Arena Premium 2 Srbija HD",
+            "Arena Sport 1 Slovakia HD",
+            "Cytavision Sports 1 HD",
+            "QazSport HD"
         ]
     },
     {
@@ -187,6 +192,7 @@
         "League": "UEFA Champions League",
         "Matchup": "Levski Sofia vs Universitatea Craiova",
         "Services": [
+            "Canal 11 Portugal HD",
             "Diema Sport HD",
             "Digi Sport 1 Romania HD",
             "Prima Sport RO 1 HD"
@@ -217,7 +223,8 @@
         "League": "UEFA Europa Conference League",
         "Matchup": "Zeleznicar vs Sporting Braga",
         "Services": [
-            "Arena Premium 1 BiH HD"
+            "Arena Premium 1 BiH HD",
+            "Arena Premium 1 Srbija HD"
         ]
     },
     {
@@ -237,6 +244,24 @@
         "Matchup": "Prague Open",
         "Services": [
             "DAZN Canada"
+        ]
+    },
+    {
+        "Date": "2026-07-23",
+        "Time": "20:00",
+        "League": "Tennis (ATP)",
+        "Matchup": "Austrian Open",
+        "Services": [
+            "Tennis Channel"
+        ]
+    },
+    {
+        "Date": "2026-07-23",
+        "Time": "21:00",
+        "League": "Tennis (WTA)",
+        "Matchup": "Prague Open",
+        "Services": [
+            "Tennis Channel"
         ]
     }
 ]
