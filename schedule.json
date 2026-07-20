@@ -1,28 +1,9 @@
 {
-  "updated": "2026-07-21 02:50 VN",
+  "updated": "2026-07-21 05:06 VN",
   "days": {
     "20260720": {
       "date": "Monday, 20/07",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Sporting Lisbon vs Strasbourg",
-          "kick_utc": 1784574900,
-          "time": "21/07 02:15 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "DAZN 1 Portugal HD",
-                "DAZN Belgium",
-                "DAZN Portugal",
-                "Okko Futbol HD",
-                "Sporting TV"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "UEFA Champions League",
           "match": "Ararat-Armenia vs Shamrock Rovers",
@@ -100,6 +81,7 @@
                 "OneFootball",
                 "TV3+ Dansk HD",
                 "TVP Sport Polska HD",
+                "Veikkaus TV",
                 "ViaPlay Danmark HD",
                 "ViaPlay Sport News Dansk"
               ]
@@ -116,7 +98,23 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Sport Bladet Play"
+                "Sport Bladet Play",
+                "Veikkaus TV"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa Conference League",
+          "match": "Floriana vs Drita",
+          "kick_utc": 1784655000,
+          "time": "22/07 12:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "TVM Sport+ HD"
               ]
             }
           ],
@@ -206,7 +204,8 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Solidsport Broadcast",
-                "TV KI Faroes"
+                "TV KI Faroes",
+                "TV6 Lietuva"
               ]
             }
           ],
@@ -262,15 +261,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 1",
-          "kick_utc": 1784570400,
-          "time": "21/07 01:00 AM",
+          "match": "ATP World Tour 250 - Kitzbühel 2026",
+          "kick_utc": 1784624400,
+          "time": "21/07 04:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
+                "Sport Tv3 Hd Portugal"
               ]
             }
           ],
@@ -278,29 +276,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 1",
-          "kick_utc": 1784577600,
-          "time": "21/07 03:00 AM",
+          "match": "ATP World Tour 250 - Kitzbühel 2026",
+          "kick_utc": 1784646000,
+          "time": "21/07 10:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 2",
-          "kick_utc": 1784577600,
-          "time": "21/07 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania"
+                "Sport Tv3 Hd Portugal"
               ]
             }
           ],
@@ -388,14 +371,14 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP World Tour 250 - Kitzbühel 2026",
-          "kick_utc": 1784624400,
-          "time": "21/07 04:00 PM",
+          "match": "Tenis Ziua 2",
+          "kick_utc": 1784664000,
+          "time": "22/07 03:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Sport Tv3 Hd Portugal"
+                "Digi Sport 2 Romania"
               ]
             }
           ],
@@ -403,14 +386,14 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP World Tour 250 - Kitzbühel 2026",
-          "kick_utc": 1784646000,
-          "time": "21/07 10:00 PM",
+          "match": "Tenis Ziua 3",
+          "kick_utc": 1784667600,
+          "time": "22/07 04:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Sport Tv3 Hd Portugal"
+                "Digi Sport 2 Hd Romania"
               ]
             }
           ],
