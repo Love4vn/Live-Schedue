@@ -1,9 +1,28 @@
 {
-  "updated": "2026-07-20 10:49 VN",
+  "updated": "2026-07-20 16:29 VN",
   "days": {
     "20260720": {
       "date": "Monday, 20/07",
       "games": [
+        {
+          "league": "International Friendly",
+          "match": "Sporting Lisbon vs Strasbourg",
+          "kick_utc": 1784574900,
+          "time": "21/07 02:15 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DAZN 1 Portugal HD",
+                "DAZN Belgium",
+                "DAZN Portugal",
+                "Okko Futbol HD",
+                "Sporting TV"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
         {
           "league": "Tennis",
           "match": "Austrian Open",
@@ -51,6 +70,21 @@
         },
         {
           "league": "Tennis",
+          "match": "Hamburg Open",
+          "kick_utc": 1784624400,
+          "time": "21/07 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
           "match": "Los Cabos",
           "kick_utc": 1784595600,
           "time": "21/07 08:00 AM",
@@ -67,8 +101,8 @@
         {
           "league": "Tennis",
           "match": "ATP World Tour 250 - Kitzbühel 2026",
-          "kick_utc": 1784537880,
-          "time": "20/07 03:58 PM",
+          "kick_utc": 1784537940,
+          "time": "20/07 03:59 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -84,6 +118,21 @@
           "match": "ATP World Tour 250 - Kitzbühel 2026",
           "kick_utc": 1784559600,
           "time": "20/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Kitzbühel 2026",
+          "kick_utc": 1784624400,
+          "time": "21/07 04:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -175,9 +224,9 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 3",
-          "kick_utc": 1784581200,
-          "time": "21/07 04:00 AM",
+          "match": "Tenis Ziua 2",
+          "kick_utc": 1784577600,
+          "time": "21/07 03:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -260,6 +309,23 @@
               "country": "NowTV",
               "channels": [
                 "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ":",
+          "kick_utc": 1784624400,
+          "time": "21/07 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
               ]
             }
           ],
