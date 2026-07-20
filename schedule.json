@@ -1,8 +1,8 @@
 {
-  "updated": "2026-07-20 04:59 VN",
+  "updated": "2026-07-20 10:49 VN",
   "days": {
-    "20260719": {
-      "date": "Sunday, 19/07",
+    "20260720": {
+      "date": "Monday, 20/07",
       "games": [
         {
           "league": "Tennis",
@@ -51,33 +51,18 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 2",
-          "kick_utc": 1784491200,
-          "time": "20/07 03:00 AM",
+          "match": "Los Cabos",
+          "kick_utc": 1784595600,
+          "time": "21/07 08:00 AM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "LiveSportsOnTV",
               "channels": [
-                "Digi Sport 2 Hd Romania"
+                "Tennis Channel"
               ]
             }
           ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: WTA Atena Finala",
-          "kick_utc": 1784491200,
-          "time": "20/07 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
+          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
