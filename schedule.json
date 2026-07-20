@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-20 23:38 VN",
+  "updated": "2026-07-21 02:50 VN",
   "days": {
     "20260720": {
       "date": "Monday, 20/07",
@@ -89,6 +89,148 @@
           "source": "livesportsontv"
         },
         {
+          "league": "UEFA Champions League",
+          "match": "AGF Aarhus vs Lech Poznan",
+          "kick_utc": 1784653200,
+          "time": "22/07 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "OneFootball",
+                "TV3+ Dansk HD",
+                "TVP Sport Polska HD",
+                "ViaPlay Danmark HD",
+                "ViaPlay Sport News Dansk"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa Conference League",
+          "match": "IFK Gotenberg vs FCI Levadia",
+          "kick_utc": 1784653200,
+          "time": "22/07 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Sport Bladet Play"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Champions League",
+          "match": "Thun vs Dinamo Zagreb",
+          "kick_utc": 1784656800,
+          "time": "22/07 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "OneFootball",
+                "Play RTS Sport",
+                "RSI La 2 Svizzera HD",
+                "RTL Hrvatska",
+                "SRF Zwei Schweiz HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Champions League",
+          "match": "Fenerbahçe vs Górnik Zabrze",
+          "kick_utc": 1784656800,
+          "time": "22/07 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "TV 100 HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa Conference League",
+          "match": "Atert Bissen vs Györ",
+          "kick_utc": 1784657700,
+          "time": "22/07 01:15 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "M4 Sport Hungary HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Champions League",
+          "match": "Sturm Graz vs Hearts",
+          "kick_utc": 1784658600,
+          "time": "22/07 01:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena M1 Premium MKD HD",
+                "Arena Premium 2 BiH HD",
+                "Arena Premium 2 Srbija HD",
+                "Arena Sport 1 Slovakia HD",
+                "Canal 11 Portugal HD",
+                "ORF 1 Austria HD",
+                "Premier Sports 1 Ireland HD",
+                "Premier Sports 1 UK HD",
+                "Premier Sports GB Player HD",
+                "ESPN Select",
+                "ESPN Unlimited"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Champions League",
+          "match": "KÍ Klaksvík vs Kauno Zalgiris",
+          "kick_utc": 1784659500,
+          "time": "22/07 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Solidsport Broadcast",
+                "TV KI Faroes"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Champions League",
+          "match": "Larne vs Red Star Belgrade",
+          "kick_utc": 1784660400,
+          "time": "22/07 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena Premium 1 BiH HD",
+                "Arena Premium 1 Srbija HD",
+                "NIFL TV",
+                "RTS 2 Srbija HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
           "league": "Tennis",
           "match": "Los Cabos",
           "kick_utc": 1784595600,
@@ -117,67 +259,6 @@
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Kitzbühel 2026",
-          "kick_utc": 1784559600,
-          "time": "20/07 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Kitzbühel 2026",
-          "kick_utc": 1784624400,
-          "time": "21/07 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Kitzbühel 2026",
-          "kick_utc": 1784646000,
-          "time": "21/07 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 1",
-          "kick_utc": 1784563200,
-          "time": "20/07 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -291,14 +372,62 @@
         },
         {
           "league": "Tennis",
-          "match": ": Millennium Estoril Open - Estoril",
-          "kick_utc": 1784559600,
-          "time": "20/07 10:00 PM",
+          "match": "Tenis Ziua 2",
+          "kick_utc": 1784656800,
+          "time": "22/07 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Kitzbühel 2026",
+          "kick_utc": 1784624400,
+          "time": "21/07 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Kitzbühel 2026",
+          "kick_utc": 1784646000,
+          "time": "21/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": ":",
+          "kick_utc": 1784624400,
+          "time": "21/07 04:00 PM",
           "tv_channels": [
             {
               "country": "NowTV",
               "channels": [
-                "Ziggo Sport 5"
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
               ]
             }
           ],
@@ -306,9 +435,9 @@
         },
         {
           "league": "Tennis",
-          "match": ": Millennium Estoril Open - Estoril",
-          "kick_utc": 1784567100,
-          "time": "21/07 12:05 AM",
+          "match": ":",
+          "kick_utc": 1784638800,
+          "time": "21/07 08:00 PM",
           "tv_channels": [
             {
               "country": "NowTV",
@@ -351,26 +480,9 @@
         },
         {
           "league": "Tennis",
-          "match": ":",
-          "kick_utc": 1784624400,
-          "time": "21/07 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 1",
-                "Ziggo Sport 4",
-                "Ziggo Sport Kanaal 14"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": ":",
-          "kick_utc": 1784638800,
-          "time": "21/07 08:00 PM",
+          "match": ": Millennium Estoril Open - Estoril",
+          "kick_utc": 1784653200,
+          "time": "22/07 12:00 AM",
           "tv_channels": [
             {
               "country": "NowTV",
