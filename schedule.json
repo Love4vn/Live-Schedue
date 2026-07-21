@@ -1,9 +1,24 @@
 {
-  "updated": "2026-07-21 10:28 VN",
+  "updated": "2026-07-21 15:40 VN",
   "days": {
     "20260721": {
       "date": "Tuesday, 21/07",
       "games": [
+        {
+          "league": "International Friendly",
+          "match": "Queens Park Rangers vs Wycombe Wanderers",
+          "kick_utc": 1784635200,
+          "time": "21/07 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "QPR+ Pass"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
         {
           "league": "UEFA Champions League",
           "match": "Ararat-Armenia vs Shamrock Rovers",
@@ -70,6 +85,37 @@
           "source": "livesportsontv"
         },
         {
+          "league": "International Friendly",
+          "match": "FC Kharkiv vs Fagiano Okayama",
+          "kick_utc": 1784649600,
+          "time": "21/07 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "UPL TV Ukraine HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Slaven Belupo vs Shakhtar Donetsk",
+          "kick_utc": 1784649600,
+          "time": "21/07 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "MAX Sport 1 Hrvatska HD",
+                "MAX Sport 2 Hrvatska HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
           "league": "UEFA Champions League",
           "match": "AGF Aarhus vs Lech Poznan",
           "kick_utc": 1784653200,
@@ -100,6 +146,21 @@
               "channels": [
                 "Sport Bladet Play",
                 "Veikkaus TV"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Espanyol vs Pau",
+          "kick_utc": 1784653200,
+          "time": "22/07 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Esport 3 Catalunya"
               ]
             }
           ],
@@ -148,6 +209,9 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Polsat Sport 1 HD",
+                "Polsat Sport Premium 1 HD",
+                "Super Polsat HD",
                 "TV 100 HD"
               ]
             }
@@ -195,6 +259,51 @@
           "source": "livesportsontv"
         },
         {
+          "league": "International Friendly",
+          "match": "Walsall vs Aston Villa",
+          "kick_utc": 1784658600,
+          "time": "22/07 01:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Villa TV"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "H&W Welders vs Portadown",
+          "kick_utc": 1784658600,
+          "time": "22/07 01:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "NIFL TV"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Crusaders vs Glenavon",
+          "kick_utc": 1784658600,
+          "time": "22/07 01:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "NIFL TV"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
           "league": "UEFA Champions League",
           "match": "KÍ Klaksvík vs Kauno Zalgiris",
           "kick_utc": 1784659500,
@@ -206,6 +315,21 @@
                 "Solidsport Broadcast",
                 "TV KI Faroes",
                 "TV6 Lietuva"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Loughgall vs Dungannon Swifts",
+          "kick_utc": 1784659500,
+          "time": "22/07 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "NIFL TV"
               ]
             }
           ],
