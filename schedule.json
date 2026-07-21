@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-21 15:40 VN",
+  "updated": "2026-07-21 18:13 VN",
   "days": {
     "20260721": {
       "date": "Tuesday, 21/07",
@@ -209,6 +209,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Persiana Sport HD",
                 "Polsat Sport 1 HD",
                 "Polsat Sport Premium 1 HD",
                 "Super Polsat HD",
@@ -355,9 +356,25 @@
         },
         {
           "league": "Tennis",
+          "match": "Estoril Open",
+          "kick_utc": 1784631600,
+          "time": "21/07 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel",
+                "TSN+"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
           "match": "Hamburg Open",
-          "kick_utc": 1784624400,
-          "time": "21/07 04:00 PM",
+          "kick_utc": 1784710800,
+          "time": "22/07 04:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
@@ -367,36 +384,6 @@
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Kitzbühel 2026",
-          "kick_utc": 1784624400,
-          "time": "21/07 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Kitzbühel 2026",
-          "kick_utc": 1784646000,
-          "time": "21/07 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -495,6 +482,36 @@
         },
         {
           "league": "Tennis",
+          "match": "ATP World Tour 250 - Kitzbühel 2026",
+          "kick_utc": 1784646000,
+          "time": "21/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Kitzbühel 2026",
+          "kick_utc": 1784710800,
+          "time": "22/07 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Tenis Ziua 3",
           "kick_utc": 1784667600,
           "time": "22/07 04:00 AM",
@@ -510,35 +527,19 @@
         },
         {
           "league": "Tennis",
-          "match": ":",
-          "kick_utc": 1784624400,
-          "time": "21/07 04:00 PM",
+          "match": "Tenis Ziua 3",
+          "kick_utc": 1784718000,
+          "time": "22/07 06:00 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Ziggo Sport 1",
-                "Ziggo Sport 4",
-                "Ziggo Sport Kanaal 14"
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
               ]
             }
           ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": ":",
-          "kick_utc": 1784638800,
-          "time": "21/07 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -573,13 +574,74 @@
         {
           "league": "Tennis",
           "match": ": Millennium Estoril Open - Estoril",
-          "kick_utc": 1784653200,
-          "time": "22/07 12:00 AM",
+          "kick_utc": 1784653500,
+          "time": "22/07 12:05 AM",
           "tv_channels": [
             {
               "country": "NowTV",
               "channels": [
                 "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Millennium Estoril Open - Estoril",
+          "kick_utc": 1784718000,
+          "time": "22/07 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 5"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ":",
+          "kick_utc": 1784639100,
+          "time": "21/07 08:05 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ":",
+          "kick_utc": 1784710800,
+          "time": "22/07 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ":",
+          "kick_utc": 1784713500,
+          "time": "22/07 04:45 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport Kanaal 14"
               ]
             }
           ],
