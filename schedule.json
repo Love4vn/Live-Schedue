@@ -1,24 +1,9 @@
 {
-  "updated": "2026-07-22 18:14 VN",
+  "updated": "2026-07-22 21:12 VN",
   "days": {
     "20260722": {
       "date": "Wednesday, 22/07",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Blackburn Rovers vs Nottingham Forest",
-          "kick_utc": 1784714400,
-          "time": "22/07 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Forest TV"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "International Friendly",
           "match": "FC Kharkiv vs Schalke 04",
@@ -451,21 +436,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Estoril Open",
-          "kick_utc": 1784718000,
-          "time": "22/07 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "TSN+"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
           "match": "Hamburg Open",
           "kick_utc": 1784797200,
           "time": "23/07 04:00 PM",
@@ -497,19 +467,49 @@
         },
         {
           "league": "Tennis",
-          "match": ":",
-          "kick_utc": 1784713500,
-          "time": "22/07 04:45 PM",
+          "match": "Prague Open",
+          "kick_utc": 1784815200,
+          "time": "23/07 09:00 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "LiveSportsOnTV",
               "channels": [
-                "Ziggo Sport 1",
-                "Ziggo Sport Kanaal 14"
+                "Tennis Channel"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Austrian Open",
+          "kick_utc": 1784811600,
+          "time": "23/07 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Alejandro Tabilo vs Tiago Torres",
+          "kick_utc": 1784736000,
+          "time": "22/07 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 2"
+              ]
+            }
+          ],
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -529,22 +529,6 @@
         {
           "league": "Tennis",
           "match": "",
-          "kick_utc": 1784736000,
-          "time": "22/07 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 2"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
           "kick_utc": 1784797200,
           "time": "23/07 04:00 PM",
           "tv_channels": [
@@ -560,8 +544,8 @@
               "country": "NowTV",
               "channels": [
                 "Ziggo Sport 4",
-                "Ziggo Sport 1",
-                "Ziggo Sport Kanaal 14"
+                "Ziggo Sport Kanaal 14",
+                "Ziggo Sport 1"
               ]
             }
           ],
@@ -585,19 +569,27 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 3",
-          "kick_utc": 1784718000,
-          "time": "22/07 06:00 PM",
+          "match": "",
+          "kick_utc": 1784811600,
+          "time": "23/07 08:00 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
+                "beIN SPORTS 1",
+                "beIN Sports Connect"
+              ]
+            },
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14",
+                "Ziggo Sport 1"
               ]
             }
           ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -725,6 +717,38 @@
         },
         {
           "league": "Tennis",
+          "match": "Tenis Ziua 4",
+          "kick_utc": 1784808000,
+          "time": "23/07 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 4",
+          "kick_utc": 1784815200,
+          "time": "23/07 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Tournoi WTA de Prague",
           "kick_utc": 1784804400,
           "time": "23/07 06:00 PM",
@@ -752,21 +776,6 @@
             }
           ],
           "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": ": Millennium Estoril Open - Estoril",
-          "kick_utc": 1784718000,
-          "time": "22/07 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 5"
-              ]
-            }
-          ],
-          "source": "nowtv"
         },
         {
           "league": "Tennis",
