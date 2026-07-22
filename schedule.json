@@ -1,9 +1,114 @@
 {
-  "updated": "2026-07-22 10:27 VN",
+  "updated": "2026-07-22 15:40 VN",
   "days": {
     "20260722": {
       "date": "Wednesday, 22/07",
       "games": [
+        {
+          "league": "International Friendly",
+          "match": "Blackburn Rovers vs Nottingham Forest",
+          "kick_utc": 1784714400,
+          "time": "22/07 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Forest TV"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "FC Kharkiv vs Schalke 04",
+          "kick_utc": 1784728800,
+          "time": "22/07 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "UPL TV Ukraine HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Bologna vs Heidenheim",
+          "kick_utc": 1784728800,
+          "time": "22/07 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DAZN Italia"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Mainz 05 vs Borussia Dortmund",
+          "kick_utc": 1784732400,
+          "time": "22/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "YouTube: FSV Mainz 05"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Tottenham Hotspur vs Milton Keynes Dons",
+          "kick_utc": 1784732400,
+          "time": "22/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "SpursPlay"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Werder Bremen vs Fagiano Okayama",
+          "kick_utc": 1784734200,
+          "time": "22/07 10:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "YouTube: Werder Bremen"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Torino vs Alcione Milano",
+          "kick_utc": 1784734200,
+          "time": "22/07 10:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DAZN Italia"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
         {
           "league": "UEFA Europa Conference League",
           "match": "Neftchi vs Dynamo Minsk",
@@ -14,6 +119,24 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "CBC Sport HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Napoli vs Arezzo",
+          "kick_utc": 1784736000,
+          "time": "22/07 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DAZN Italia",
+                "OneFootball",
+                "Persiana Sport HD",
+                "Sky Sport 251 Italia HD"
               ]
             }
           ],
@@ -55,6 +178,52 @@
           "source": "livesportsontv"
         },
         {
+          "league": "International Friendly",
+          "match": "Las Palmas vs Orlando Pirates",
+          "kick_utc": 1784739600,
+          "time": "23/07 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "SuperSport Variety 4 HD",
+                "TV Canaria"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Fiorentina vs Gubbio",
+          "kick_utc": 1784739600,
+          "time": "23/07 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DAZN Italia"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Cádiz vs Leicester City",
+          "kick_utc": 1784739600,
+          "time": "23/07 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Foxes HUB"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
           "league": "UEFA Champions League",
           "match": "Levski Sofia vs Universitatea Craiova",
           "kick_utc": 1784741400,
@@ -81,6 +250,8 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Jalkapallo TV",
+                "Solidsport Broadcast",
                 "TRT 1 Türkiye HD"
               ]
             }
@@ -89,14 +260,45 @@
         },
         {
           "league": "UEFA Europa Conference League",
-          "match": "Vardar Skopje vs FC Riga",
+          "match": "Vardar Skopje vs Riga FC",
           "kick_utc": 1784743200,
           "time": "23/07 01:00 AM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Arena M1 Premium MKD HD"
+                "Arena M1 Premium MKD HD",
+                "TV4 Latvija"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Valencia vs Eldense",
+          "kick_utc": 1784743200,
+          "time": "23/07 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "GOL España HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Olot vs Girona XI",
+          "kick_utc": 1784743200,
+          "time": "23/07 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Esport 3 Catalunya"
               ]
             }
           ],
@@ -119,6 +321,66 @@
           "source": "livesportsontv"
         },
         {
+          "league": "International Friendly",
+          "match": "Recreativo Huelva vs Real Betis",
+          "kick_utc": 1784745000,
+          "time": "23/07 01:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "YouTube: Real Betis"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Burton Albion vs Birmingham City",
+          "kick_utc": 1784745000,
+          "time": "23/07 01:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Blues+ TV"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Maidenhead United vs Wolves",
+          "kick_utc": 1784745000,
+          "time": "23/07 01:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Wolves TV"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Rangers vs St Etienne",
+          "kick_utc": 1784745900,
+          "time": "23/07 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Rangers TV"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
           "league": "UEFA Champions League",
           "match": "Egnatia vs Celje",
           "kick_utc": 1784746800,
@@ -128,6 +390,8 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Kanal A Slovenija HD",
+                "RTSH 1 Albania",
+                "RTSH Sport Albania",
                 "Voyo Player Slovenija"
               ]
             }
@@ -145,7 +409,39 @@
               "channels": [
                 "Arena M3 Premium MKD HD",
                 "Arena Premium 1 BiH HD",
-                "Arena Premium 1 Srbija HD"
+                "Arena Premium 1 Srbija HD",
+                "Sport TV5 Portugal HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Gil Vicente vs FC Porto",
+          "kick_utc": 1784746800,
+          "time": "23/07 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Persiana Sport HD",
+                "Sport TV1 Portugal HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Tenerife vs Getafe",
+          "kick_utc": 1784746800,
+          "time": "23/07 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "TV Canaria"
               ]
             }
           ],
@@ -231,8 +527,8 @@
         {
           "league": "Tennis",
           "match": "ATP World Tour 250 - Kitzbühel 2026",
-          "kick_utc": 1784710800,
-          "time": "22/07 04:00 PM",
+          "kick_utc": 1784710740,
+          "time": "22/07 03:59 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
