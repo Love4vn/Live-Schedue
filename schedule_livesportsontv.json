@@ -1,24 +1,6 @@
 [
     {
         "Date": "2026-07-22",
-        "Time": "17:00",
-        "League": "International Friendlies",
-        "Matchup": "Blackburn Rovers vs Nottingham Forest",
-        "Services": [
-            "Forest TV"
-        ]
-    },
-    {
-        "Date": "2026-07-22",
-        "Time": "18:00",
-        "League": "Tennis (ATP)",
-        "Matchup": "Estoril Open",
-        "Services": [
-            "TSN+"
-        ]
-    },
-    {
-        "Date": "2026-07-22",
         "Time": "21:00",
         "League": "International Friendlies",
         "Matchup": "FC Kharkiv vs Schalke 04",
@@ -77,6 +59,8 @@
         "League": "UEFA Europa Conference League",
         "Matchup": "Neftchi vs Dynamo Minsk",
         "Services": [
+            "Belarus 5 HD",
+            "Belarus 5 Internet",
             "CBC Sport HD"
         ]
     },
@@ -348,7 +332,8 @@
         "League": "UEFA Europa Conference League",
         "Matchup": "Alashkert vs CFR Cluj",
         "Services": [
-            "- - -"
+            "- - -",
+            "Armenia First TV"
         ]
     },
     {
@@ -735,15 +720,6 @@
         "Date": "2026-07-24",
         "Time": "01:45",
         "League": "UEFA Europa Conference League",
-        "Matchup": "Motherwell vs HB Tórshavn",
-        "Services": [
-            "Solidsport Broadcast"
-        ]
-    },
-    {
-        "Date": "2026-07-24",
-        "Time": "01:45",
-        "League": "UEFA Europa Conference League",
         "Matchup": "Shelbourne vs Nõmme Kalju",
         "Services": [
             "LOI TV",
@@ -768,6 +744,15 @@
         "Matchup": "NSI Runavik vs Koper",
         "Services": [
             "OneFootball",
+            "Solidsport Broadcast"
+        ]
+    },
+    {
+        "Date": "2026-07-24",
+        "Time": "01:45",
+        "League": "UEFA Europa Conference League",
+        "Matchup": "Motherwell vs HB Tórshavn",
+        "Services": [
             "Solidsport Broadcast"
         ]
     },
@@ -850,6 +835,34 @@
     {
         "Date": "2026-07-24",
         "Time": "17:00",
+        "League": "Tennis (WTA)",
+        "Matchup": "Hamburg Open",
+        "Services": [
+            "Tennis Channel"
+        ]
+    },
+    {
+        "Date": "2026-07-25",
+        "Time": "18:30",
+        "League": "Tennis (WTA)",
+        "Matchup": "Prague Open",
+        "Services": [
+            "DAZN Canada"
+        ]
+    },
+    {
+        "Date": "2026-07-25",
+        "Time": "19:00",
+        "League": "Tennis (WTA)",
+        "Matchup": "Hamburg Open",
+        "Services": [
+            "Tennis Channel",
+            "DAZN Canada"
+        ]
+    },
+    {
+        "Date": "2026-07-25",
+        "Time": "20:30",
         "League": "Tennis (WTA)",
         "Matchup": "Hamburg Open",
         "Services": [
