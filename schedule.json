@@ -1,8 +1,8 @@
 {
-  "updated": "2026-07-22 05:08 VN",
+  "updated": "2026-07-22 10:27 VN",
   "days": {
-    "20260721": {
-      "date": "Tuesday, 21/07",
+    "20260722": {
+      "date": "Wednesday, 22/07",
       "games": [
         {
           "league": "UEFA Europa Conference League",
@@ -230,14 +230,29 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 3",
-          "kick_utc": 1784667600,
-          "time": "22/07 04:00 AM",
+          "match": "ATP World Tour 250 - Kitzbühel 2026",
+          "kick_utc": 1784710800,
+          "time": "22/07 04:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 2 Hd Romania"
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Kitzbühel 2026",
+          "kick_utc": 1784732400,
+          "time": "22/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
               ]
             }
           ],
@@ -333,36 +348,6 @@
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Kitzbühel 2026",
-          "kick_utc": 1784710800,
-          "time": "22/07 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Kitzbühel 2026",
-          "kick_utc": 1784732400,
-          "time": "22/07 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
               ]
             }
           ],
