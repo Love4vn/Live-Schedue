@@ -1,8 +1,8 @@
 {
-  "updated": "2026-07-23 05:10 VN",
+  "updated": "2026-07-23 10:32 VN",
   "days": {
-    "20260722": {
-      "date": "Wednesday, 22/07",
+    "20260723": {
+      "date": "Thursday, 23/07",
       "games": [
         {
           "league": "UEFA Europa Conference League",
@@ -870,68 +870,37 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": ":",
           "kick_utc": 1784797200,
           "time": "23/07 04:00 PM",
           "tv_channels": [
             {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 1",
-                "beIN SPORTS 3",
-                "beIN Sports Connect"
-              ]
-            },
-            {
               "country": "NowTV",
               "channels": [
-                "Ziggo Sport Kanaal 14",
                 "Ziggo Sport 1",
-                "Ziggo Sport 4"
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
               ]
             }
           ],
-          "source": "ausport"
+          "source": "nowtv"
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1784804400,
-          "time": "23/07 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 2"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
+          "match": ":",
           "kick_utc": 1784811600,
           "time": "23/07 08:00 PM",
           "tv_channels": [
             {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 1",
-                "beIN Sports Connect"
-              ]
-            },
-            {
               "country": "NowTV",
               "channels": [
-                "Ziggo Sport Kanaal 14",
                 "Ziggo Sport 1",
-                "Ziggo Sport 4"
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
               ]
             }
           ],
-          "source": "ausport"
+          "source": "nowtv"
         },
         {
           "league": "Tennis",
@@ -951,14 +920,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 3",
-          "kick_utc": 1784754000,
-          "time": "23/07 04:00 AM",
+          "match": "ATP World Tour 250 - Kitzbühel 2026",
+          "kick_utc": 1784797200,
+          "time": "23/07 04:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 2 Romania"
+                "Sport Tv2 Hd Portugal"
               ]
             }
           ],
@@ -966,14 +935,74 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 4",
-          "kick_utc": 1784754000,
-          "time": "23/07 04:00 AM",
+          "match": "ATP World Tour 250 - Kitzbühel 2026",
+          "kick_utc": 1784818800,
+          "time": "23/07 10:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 2 Hd Romania"
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi WTA de Prague",
+          "kick_utc": 1784804400,
+          "time": "23/07 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "beIN Sports Max 4 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi WTA de Prague",
+          "kick_utc": 1784818800,
+          "time": "23/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "beIN Sports Max 4 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi WTA de Hambourg",
+          "kick_utc": 1784804400,
+          "time": "23/07 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "beIN Sports Max 5 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi WTA de Hambourg",
+          "kick_utc": 1784818800,
+          "time": "23/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "beIN Sports Max 5 France"
               ]
             }
           ],
@@ -1069,96 +1098,6 @@
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Kitzbühel 2026",
-          "kick_utc": 1784797200,
-          "time": "23/07 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Kitzbühel 2026",
-          "kick_utc": 1784818800,
-          "time": "23/07 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA de Prague",
-          "kick_utc": 1784804400,
-          "time": "23/07 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 4 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA de Prague",
-          "kick_utc": 1784818800,
-          "time": "23/07 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 4 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA de Hambourg",
-          "kick_utc": 1784804400,
-          "time": "23/07 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 5 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA de Hambourg",
-          "kick_utc": 1784818800,
-          "time": "23/07 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 5 France"
               ]
             }
           ],
