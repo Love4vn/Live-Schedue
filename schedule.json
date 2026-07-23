@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-23 10:32 VN",
+  "updated": "2026-07-23 15:41 VN",
   "days": {
     "20260723": {
       "date": "Thursday, 23/07",
@@ -167,6 +167,22 @@
                 "HJK TV",
                 "NIFL TV",
                 "Solidsport Broadcast"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Gorica vs Shakhtar Donetsk",
+          "kick_utc": 1784822400,
+          "time": "23/07 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "MAX Sport 1 Hrvatska HD",
+                "MAX Sport 2 Hrvatska HD"
               ]
             }
           ],
@@ -383,6 +399,21 @@
           "source": "livesportsontv"
         },
         {
+          "league": "International Friendly",
+          "match": "Cagliari vs Sampdoria",
+          "kick_utc": 1784826000,
+          "time": "24/07 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DAZN Italia"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
           "league": "UEFA Europa Conference League",
           "match": "Vaduz vs Atletic Escaldes",
           "kick_utc": 1784827800,
@@ -425,6 +456,7 @@
                 "JOJ Play",
                 "JOJ Šport SVK HD",
                 "OneFootball",
+                "Persiana Sports 2 HD",
                 "Sport TV5 Portugal HD",
                 "SRF Play",
                 "SRF Zwei Schweiz HD"
@@ -445,7 +477,8 @@
                 "Arena Premium 3 Srbija HD",
                 "S Sport+ Streaming",
                 "Solidsport Broadcast",
-                "TV Tipsport Czechia"
+                "TV Tipsport Czechia",
+                "Persiana Sports 3 HD"
               ]
             }
           ],
@@ -538,6 +571,7 @@
                 "Arena Premium 2 Srbija HD",
                 "Arena Premium 4 BiH HD",
                 "OneFootball",
+                "Persiana Sport HD",
                 "Ziggo Sport 1 HD"
               ]
             }
@@ -555,6 +589,21 @@
               "channels": [
                 "FCK TV ($/geo/R",
                 "Megogo Futbol 1"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Galatasaray vs Monza",
+          "kick_utc": 1784829600,
+          "time": "24/07 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "S Sport+ Streaming"
               ]
             }
           ],
@@ -973,36 +1022,6 @@
               "country": "Hubsport",
               "channels": [
                 "beIN Sports Max 4 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA de Hambourg",
-          "kick_utc": 1784804400,
-          "time": "23/07 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 5 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA de Hambourg",
-          "kick_utc": 1784818800,
-          "time": "23/07 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 5 France"
               ]
             }
           ],
