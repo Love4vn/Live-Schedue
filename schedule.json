@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-23 15:41 VN",
+  "updated": "2026-07-23 18:16 VN",
   "days": {
     "20260723": {
       "date": "Thursday, 23/07",
@@ -475,10 +475,10 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Arena Premium 3 Srbija HD",
+                "Persiana Sports 3 HD",
                 "S Sport+ Streaming",
                 "Solidsport Broadcast",
-                "TV Tipsport Czechia",
-                "Persiana Sports 3 HD"
+                "TV Tipsport Czechia"
               ]
             }
           ],
@@ -699,6 +699,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "AVS TV Belgium",
                 "KS TV | Futbol 2"
               ]
             }
@@ -778,6 +779,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "MRT 2 North Macedonia",
                 "Sport TV1 Slovenija"
               ]
             }
@@ -858,15 +860,15 @@
         },
         {
           "league": "Tennis",
-          "match": "Hamburg Open",
-          "kick_utc": 1784797200,
-          "time": "23/07 04:00 PM",
+          "match": "Estoril Open",
+          "kick_utc": 1784804400,
+          "time": "23/07 06:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
                 "Tennis Channel",
-                "DAZN Canada"
+                "TSN+"
               ]
             }
           ],
@@ -874,24 +876,9 @@
         },
         {
           "league": "Tennis",
-          "match": "Prague Open",
-          "kick_utc": 1784797200,
-          "time": "23/07 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "DAZN Canada"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Prague Open",
-          "kick_utc": 1784815200,
-          "time": "23/07 09:00 PM",
+          "match": "Estoril Open",
+          "kick_utc": 1784890800,
+          "time": "24/07 06:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
@@ -919,26 +906,85 @@
         },
         {
           "league": "Tennis",
-          "match": ":",
-          "kick_utc": 1784797200,
-          "time": "23/07 04:00 PM",
+          "match": "Austrian Open",
+          "kick_utc": 1784889000,
+          "time": "24/07 05:30 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "LiveSportsOnTV",
               "channels": [
-                "Ziggo Sport 1",
-                "Ziggo Sport 4",
-                "Ziggo Sport Kanaal 14"
+                "Tennis Channel"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Prague Open",
+          "kick_utc": 1784815200,
+          "time": "23/07 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Prague Open",
+          "kick_utc": 1784883600,
+          "time": "24/07 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DAZN Canada"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Hamburg Open",
+          "kick_utc": 1784883600,
+          "time": "24/07 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel",
+                "DAZN Canada"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Hamburg Open",
+          "kick_utc": 1784887200,
+          "time": "24/07 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
           "match": ":",
-          "kick_utc": 1784811600,
-          "time": "23/07 08:00 PM",
+          "kick_utc": 1784811900,
+          "time": "23/07 08:05 PM",
           "tv_channels": [
             {
               "country": "NowTV",
@@ -969,33 +1015,45 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP World Tour 250 - Kitzbühel 2026",
-          "kick_utc": 1784797200,
-          "time": "23/07 04:00 PM",
+          "match": "",
+          "kick_utc": 1784883600,
+          "time": "24/07 04:00 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "Sport Tv2 Hd Portugal"
+                "beIN SPORTS 3",
+                "beIN Sports Connect",
+                "Stan Sport"
               ]
             }
           ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
-          "match": "ATP World Tour 250 - Kitzbühel 2026",
-          "kick_utc": 1784818800,
-          "time": "23/07 10:00 PM",
+          "match": "",
+          "kick_utc": 1784890800,
+          "time": "24/07 06:00 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "Sport Tv2 Hd Portugal"
+                "beIN SPORTS 1",
+                "beIN SPORTS 2",
+                "beIN Sports Connect"
+              ]
+            },
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport Kanaal 14",
+                "Ziggo Sport 4"
               ]
             }
           ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -1017,6 +1075,21 @@
           "match": "Tournoi WTA de Prague",
           "kick_utc": 1784818800,
           "time": "23/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "beIN Sports Max 4 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi WTA de Prague",
+          "kick_utc": 1784890800,
+          "time": "24/07 06:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -1124,6 +1197,21 @@
         },
         {
           "league": "Tennis",
+          "match": "ATP World Tour 250 - Kitzbühel 2026",
+          "kick_utc": 1784818800,
+          "time": "23/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Tenis",
           "kick_utc": 1784838600,
           "time": "24/07 03:30 AM",
@@ -1132,6 +1220,21 @@
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 2 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Kitzbühel 2026 - Meia-Final",
+          "kick_utc": 1784889000,
+          "time": "24/07 05:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv4 Hd Portugal"
               ]
             }
           ],
@@ -1170,13 +1273,28 @@
         {
           "league": "Tennis",
           "match": ": Millennium Estoril Open - Estoril",
-          "kick_utc": 1784826000,
-          "time": "24/07 12:00 AM",
+          "kick_utc": 1784826300,
+          "time": "24/07 12:05 AM",
           "tv_channels": [
             {
               "country": "NowTV",
               "channels": [
                 "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Millennium Estoril Open - Estoril",
+          "kick_utc": 1784890800,
+          "time": "24/07 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 5"
               ]
             }
           ],
