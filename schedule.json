@@ -1,29 +1,9 @@
 {
-  "updated": "2026-07-24 21:00 VN",
+  "updated": "2026-07-24 23:47 VN",
   "days": {
     "20260724": {
       "date": "Friday, 24/07",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Bournemouth vs St Pauli",
-          "kick_utc": 1784901600,
-          "time": "24/07 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Okko Futbol HD",
-                "Sport Bladet Play",
-                "Sport TV1 Slovenija",
-                "Sport TV2 Portugal HD",
-                "VG+ Sport Norge",
-                "YouTube: St Pauli"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "International Friendly",
           "match": "Rosenborg vs Manchester United",
@@ -122,36 +102,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Austrian Open",
-          "kick_utc": 1784896200,
-          "time": "24/07 07:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Austrian Open",
-          "kick_utc": 1784982600,
-          "time": "25/07 07:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
           "match": "Prague Open",
           "kick_utc": 1784979000,
           "time": "25/07 06:30 PM",
@@ -198,17 +148,90 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1784901600,
-          "time": "24/07 09:00 PM",
+          "match": "Austrian Open",
+          "kick_utc": 1784982600,
+          "time": "25/07 07:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": ":",
+          "kick_utc": 1784977200,
+          "time": "25/07 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1784997000,
+          "time": "25/07 11:30 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi WTA de Prague",
+          "kick_utc": 1784905200,
+          "time": "24/07 10:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania",
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
+                "beIN Sports Max 4 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi WTA de Prague",
+          "kick_utc": 1784916000,
+          "time": "25/07 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "beIN Sports Max 4 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "WTT Star Contender de São José dos Campos",
+          "kick_utc": 1784908800,
+          "time": "24/07 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
               ]
             }
           ],
@@ -260,51 +283,6 @@
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA de Prague",
-          "kick_utc": 1784905200,
-          "time": "24/07 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 4 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA de Prague",
-          "kick_utc": 1784916000,
-          "time": "25/07 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 4 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "WTT Star Contender de São José dos Campos",
-          "kick_utc": 1784908800,
-          "time": "24/07 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "L'Equipe France"
               ]
             }
           ],
@@ -388,26 +366,87 @@
         },
         {
           "league": "Tennis",
-          "match": ":",
-          "kick_utc": 1784896500,
-          "time": "24/07 07:35 PM",
+          "match": "World Surf League 2026 - Lexus US Open Of Surfing Challenger Series",
+          "kick_utc": 1784989800,
+          "time": "25/07 09:30 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Ziggo Sport 1",
-                "Ziggo Sport 4",
-                "Ziggo Sport Kanaal 14"
+                "Sport Tv 7 Hd Portugal"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
-          "match": ":",
-          "kick_utc": 1784977200,
-          "time": "25/07 06:00 PM",
+          "match": "Tenis: WTA Praga Semifinale",
+          "kick_utc": 1784989800,
+          "time": "25/07 09:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: WTA Praga Semifinale",
+          "kick_utc": 1784997000,
+          "time": "25/07 11:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: WTA Hamburg Semifinala",
+          "kick_utc": 1784991600,
+          "time": "25/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - ATP World Tour 250, Estoril",
+          "kick_utc": 1784997000,
+          "time": "25/07 11:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Millennium Estoril Open - Estoril",
+          "kick_utc": 1784909100,
+          "time": "24/07 11:05 PM",
           "tv_channels": [
             {
               "country": "NowTV",
@@ -421,8 +460,8 @@
         {
           "league": "Tennis",
           "match": ": Millennium Estoril Open - Estoril",
-          "kick_utc": 1784909100,
-          "time": "24/07 11:05 PM",
+          "kick_utc": 1784997000,
+          "time": "25/07 11:30 PM",
           "tv_channels": [
             {
               "country": "NowTV",
