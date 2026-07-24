@@ -1,24 +1,9 @@
 {
-  "updated": "2026-07-24 15:36 VN",
+  "updated": "2026-07-24 18:07 VN",
   "days": {
     "20260724": {
       "date": "Friday, 24/07",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Albacete vs Al Rayyan",
-          "kick_utc": 1784881800,
-          "time": "24/07 03:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "CMM Castilla"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "International Friendly",
           "match": "Al Ahli vs Vitória Guimarães",
@@ -43,8 +28,10 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Sport Bladet Play",
                 "Sport TV2 Portugal HD",
-                "TRT Spor Türkiye HD"
+                "TRT Spor Türkiye HD",
+                "VG+ Sport Norge"
               ]
             }
           ],
@@ -78,6 +65,7 @@
                 "Sport Bladet Play",
                 "Sport TV1 Slovenija",
                 "Sport TV2 Portugal HD",
+                "VG+ Sport Norge",
                 "YouTube: St Pauli"
               ]
             }
@@ -183,22 +171,6 @@
         {
           "league": "Tennis",
           "match": "Hamburg Open",
-          "kick_utc": 1784883600,
-          "time": "24/07 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "DAZN Canada"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Hamburg Open",
           "kick_utc": 1784887200,
           "time": "24/07 05:00 PM",
           "tv_channels": [
@@ -213,21 +185,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Prague Open",
-          "kick_utc": 1784883600,
-          "time": "24/07 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "DAZN Canada"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
           "match": "Austrian Open",
           "kick_utc": 1784889000,
           "time": "24/07 05:30 PM",
@@ -235,7 +192,8 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Tennis Channel"
+                "Tennis Channel",
+                "TSN+"
               ]
             }
           ],
@@ -265,7 +223,8 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Tennis Channel"
+                "Tennis Channel",
+                "TSN+"
               ]
             }
           ],
@@ -291,8 +250,8 @@
         {
           "league": "Tennis",
           "match": ":",
-          "kick_utc": 1784896200,
-          "time": "24/07 07:30 PM",
+          "kick_utc": 1784896500,
+          "time": "24/07 07:35 PM",
           "tv_channels": [
             {
               "country": "NowTV",
@@ -315,6 +274,28 @@
               "country": "Ausport",
               "channels": [
                 "beIN SPORTS 2"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1784977200,
+          "time": "25/07 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
+              ]
+            },
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
               ]
             }
           ],
@@ -499,6 +480,21 @@
         },
         {
           "league": "Tennis",
+          "match": "ATP World Tour 250 - Kitzbühel 2026 - Final",
+          "kick_utc": 1784977200,
+          "time": "25/07 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": ": Millennium Estoril Open - Estoril",
           "kick_utc": 1784890800,
           "time": "24/07 06:00 PM",
@@ -515,8 +511,8 @@
         {
           "league": "Tennis",
           "match": ": Millennium Estoril Open - Estoril",
-          "kick_utc": 1784908800,
-          "time": "24/07 11:00 PM",
+          "kick_utc": 1784909100,
+          "time": "24/07 11:05 PM",
           "tv_channels": [
             {
               "country": "NowTV",
