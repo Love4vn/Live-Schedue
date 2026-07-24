@@ -1,59 +1,9 @@
 {
-  "updated": "2026-07-24 23:47 VN",
+  "updated": "2026-07-25 02:40 VN",
   "days": {
     "20260724": {
       "date": "Friday, 24/07",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Rosenborg vs Manchester United",
-          "kick_utc": 1784908800,
-          "time": "24/07 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "CBS Sports Network USA",
-                "MUTV HD",
-                "Persiana Sport HD",
-                "Sport Bladet Play",
-                "Stan Sport Australia",
-                "VG+ Sport Norge"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "NEOM SC vs Orlando Pirates",
-          "kick_utc": 1784912400,
-          "time": "25/07 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "SuperSport PSL HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Antwerp vs Olympiacos",
-          "kick_utc": 1784912400,
-          "time": "25/07 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Cosmote Sport 1 HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "International Friendly",
           "match": "Galatasaray vs Monza",
@@ -195,21 +145,6 @@
         {
           "league": "Tennis",
           "match": "Tournoi WTA de Prague",
-          "kick_utc": 1784905200,
-          "time": "24/07 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 4 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA de Prague",
           "kick_utc": 1784916000,
           "time": "25/07 01:00 AM",
           "tv_channels": [
@@ -217,39 +152,6 @@
               "country": "Hubsport",
               "channels": [
                 "beIN Sports Max 4 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "WTT Star Contender de São José dos Campos",
-          "kick_utc": 1784908800,
-          "time": "24/07 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "L'Equipe France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1784908800,
-          "time": "24/07 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania",
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
               ]
             }
           ],
@@ -298,6 +200,22 @@
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 2 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: ATP Estoril Semifinale",
+          "kick_utc": 1785007800,
+          "time": "26/07 02:30 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
               ]
             }
           ],
@@ -429,6 +347,22 @@
         },
         {
           "league": "Tennis",
+          "match": "Tenis: WTA Hamburg Semifinala",
+          "kick_utc": 1784998800,
+          "time": "26/07 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Ténis - ATP World Tour 250, Estoril",
           "kick_utc": 1784997000,
           "time": "25/07 11:30 PM",
@@ -445,8 +379,8 @@
         {
           "league": "Tennis",
           "match": ": Millennium Estoril Open - Estoril",
-          "kick_utc": 1784909100,
-          "time": "24/07 11:05 PM",
+          "kick_utc": 1784997000,
+          "time": "25/07 11:30 PM",
           "tv_channels": [
             {
               "country": "NowTV",
@@ -460,13 +394,31 @@
         {
           "league": "Tennis",
           "match": ": Millennium Estoril Open - Estoril",
-          "kick_utc": 1784997000,
-          "time": "25/07 11:30 PM",
+          "kick_utc": 1785000600,
+          "time": "26/07 12:30 AM",
           "tv_channels": [
             {
               "country": "NowTV",
               "channels": [
-                "Ziggo Sport 4"
+                "Ziggo Sport 1",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Millennium Estoril Open - Estoril",
+          "kick_utc": 1785004200,
+          "time": "26/07 01:30 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
               ]
             }
           ],
