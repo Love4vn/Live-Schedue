@@ -1,54 +1,24 @@
 {
-  "updated": "2026-07-25 02:40 VN",
+  "updated": "2026-07-25 05:18 VN",
   "days": {
     "20260724": {
       "date": "Friday, 24/07",
       "games": [
         {
-          "league": "International Friendly",
-          "match": "Galatasaray vs Monza",
-          "kick_utc": 1784916000,
-          "time": "25/07 01:00 AM",
+          "league": "Premier League",
+          "match": "Liverpool vs Sunderland",
+          "kick_utc": 1785016800,
+          "time": "26/07 05:00 AM",
           "tv_channels": [
             {
-              "country": "LiveSportsOnTV",
+              "country": "Ausport",
               "channels": [
-                "S Sport+ Streaming",
-                "Sportitalia HD"
+                "beIN Sports Connect",
+                "Stan Sport"
               ]
             }
           ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Raith Rovers vs Hearts",
-          "kick_utc": 1784917800,
-          "time": "25/07 01:30 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Raith TV Live"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Limavady United vs Linfield",
-          "kick_utc": 1784918700,
-          "time": "25/07 01:45 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "NIFL TV"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -144,39 +114,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Tournoi WTA de Prague",
-          "kick_utc": 1784916000,
-          "time": "25/07 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 4 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1784916000,
-          "time": "25/07 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania",
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
           "match": "Tenis",
           "kick_utc": 1784925000,
           "time": "25/07 03:30 AM",
@@ -215,6 +152,21 @@
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: ATP Estoril Semifinale",
+          "kick_utc": 1785015000,
+          "time": "26/07 04:30 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
                 "Digi Sport 2 Romania"
               ]
             }
