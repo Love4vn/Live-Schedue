@@ -1,8 +1,8 @@
 {
-  "updated": "2026-07-25 05:18 VN",
+  "updated": "2026-07-25 10:26 VN",
   "days": {
-    "20260724": {
-      "date": "Friday, 24/07",
+    "20260725": {
+      "date": "Saturday, 25/07",
       "games": [
         {
           "league": "Premier League",
@@ -111,67 +111,6 @@
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1784925000,
-          "time": "25/07 03:30 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: ATP Estoril Semifinale",
-          "kick_utc": 1784928600,
-          "time": "25/07 04:30 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: ATP Estoril Semifinale",
-          "kick_utc": 1785007800,
-          "time": "26/07 02:30 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: ATP Estoril Semifinale",
-          "kick_utc": 1785015000,
-          "time": "26/07 04:30 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -323,6 +262,37 @@
               "country": "Hubsport",
               "channels": [
                 "Eurosport 2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: ATP Estoril Semifinale",
+          "kick_utc": 1785007800,
+          "time": "26/07 02:30 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: ATP Estoril Semifinale",
+          "kick_utc": 1785015000,
+          "time": "26/07 04:30 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Romania"
               ]
             }
           ],
