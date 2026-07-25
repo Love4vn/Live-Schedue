@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-25 15:17 VN",
+  "updated": "2026-07-25 17:39 VN",
   "days": {
     "20260725": {
       "date": "Saturday, 25/07",
@@ -575,6 +575,36 @@
         },
         {
           "league": "Tennis",
+          "match": "Austrian Open",
+          "kick_utc": 1784977200,
+          "time": "25/07 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "TSN+"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Austrian Open",
+          "kick_utc": 1784982600,
+          "time": "25/07 07:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
           "match": "Prague Open",
           "kick_utc": 1784979000,
           "time": "25/07 06:30 PM",
@@ -598,6 +628,7 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Tennis Channel",
+                "TSN+",
                 "DAZN Canada"
               ]
             }
@@ -621,14 +652,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Austrian Open",
-          "kick_utc": 1784982600,
-          "time": "25/07 07:30 PM",
+          "match": "Estoril Open",
+          "kick_utc": 1784997000,
+          "time": "25/07 11:30 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Tennis Channel"
+                "TSN+"
               ]
             }
           ],
@@ -869,8 +900,8 @@
         {
           "league": "Tennis",
           "match": ": Millennium Estoril Open - Estoril",
-          "kick_utc": 1785000600,
-          "time": "26/07 12:30 AM",
+          "kick_utc": 1785000900,
+          "time": "26/07 12:35 AM",
           "tv_channels": [
             {
               "country": "NowTV",
@@ -885,8 +916,8 @@
         {
           "league": "Tennis",
           "match": ": Millennium Estoril Open - Estoril",
-          "kick_utc": 1785004200,
-          "time": "26/07 01:30 AM",
+          "kick_utc": 1785004500,
+          "time": "26/07 01:35 AM",
           "tv_channels": [
             {
               "country": "NowTV",
