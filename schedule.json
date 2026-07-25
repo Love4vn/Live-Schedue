@@ -1,65 +1,9 @@
 {
-  "updated": "2026-07-25 17:39 VN",
+  "updated": "2026-07-25 20:51 VN",
   "days": {
     "20260725": {
       "date": "Saturday, 25/07",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Lens vs Sporting Charleroi",
-          "kick_utc": 1784973600,
-          "time": "25/07 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Ligue 1+"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Fortuna Düsseldorf vs Borussia Dortmund",
-          "kick_utc": 1784977200,
-          "time": "25/07 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "beIN Sports 2 HD",
-                "OneFootball",
-                "Premier Sports 2 Ireland HD",
-                "Premier Sports 2 UK HD",
-                "Premier Sports GB Player HD",
-                "Sky Sport Bundesliga 1 HD",
-                "Sky Sport News Deutsch HD",
-                "Sport Bladet Play",
-                "Sport TV1 Slovenija",
-                "Sport TV2 Portugal HD",
-                "VG+ Sport Norge"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Werder Bremen vs Bochum",
-          "kick_utc": 1784977200,
-          "time": "25/07 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "DFB Play TV",
-                "YouTube: Werder Bremen"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "International Friendly",
           "match": "Stoke City vs Sheffield Wednesday",
@@ -575,51 +519,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Austrian Open",
-          "kick_utc": 1784977200,
-          "time": "25/07 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "TSN+"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Austrian Open",
-          "kick_utc": 1784982600,
-          "time": "25/07 07:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Prague Open",
-          "kick_utc": 1784979000,
-          "time": "25/07 06:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "DAZN Canada"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
           "match": "Hamburg Open",
           "kick_utc": 1784980800,
           "time": "25/07 07:00 PM",
@@ -652,6 +551,37 @@
         },
         {
           "league": "Tennis",
+          "match": "Hamburg Open",
+          "kick_utc": 1785067200,
+          "time": "26/07 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel",
+                "DAZN Canada"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Austrian Open",
+          "kick_utc": 1784982600,
+          "time": "25/07 07:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
           "match": "Estoril Open",
           "kick_utc": 1784997000,
           "time": "25/07 11:30 PM",
@@ -667,49 +597,36 @@
         },
         {
           "league": "Tennis",
-          "match": ":",
-          "kick_utc": 1784977200,
-          "time": "25/07 06:00 PM",
+          "match": "Prague Open",
+          "kick_utc": 1785067200,
+          "time": "26/07 07:00 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "LiveSportsOnTV",
               "channels": [
-                "Ziggo Sport 4"
+                "TVA Sports",
+                "DAZN Canada"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
           "match": "",
-          "kick_utc": 1784997000,
-          "time": "25/07 11:30 PM",
+          "kick_utc": 1785067200,
+          "time": "26/07 07:00 PM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
+                "beIN SPORTS 1",
+                "Stan Sport",
+                "beIN Sports Connect"
               ]
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Kitzbühel 2026 - Final",
-          "kick_utc": 1784977200,
-          "time": "25/07 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -877,6 +794,53 @@
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: WTA Praga Finala dublu",
+          "kick_utc": 1785067200,
+          "time": "26/07 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi de Prague 2026",
+          "kick_utc": 1785069000,
+          "time": "26/07 07:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Tva Sports Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: WTA Hamburg Finala Dublu",
+          "kick_utc": 1785070500,
+          "time": "26/07 07:55 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
               ]
             }
           ],
