@@ -1,9 +1,194 @@
 {
-  "updated": "2026-07-26 10:39 VN",
+  "updated": "2026-07-26 15:36 VN",
   "days": {
     "20260726": {
       "date": "Sunday, 26/07",
       "games": [
+        {
+          "league": "International Friendly",
+          "match": "Ajax vs Burnley",
+          "kick_utc": 1785067200,
+          "time": "26/07 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Okko Futbol HD",
+                "Persiana Sport HD",
+                "Sport TV+ Portugal",
+                "Sport TV2 Portugal HD",
+                "Ziggo Sport 1 HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "PEC Zwolle vs AEK Athens",
+          "kick_utc": 1785070800,
+          "time": "26/07 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Cosmote Sport 1 HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Eintracht Frankfurt vs Trabzonspor",
+          "kick_utc": 1785072600,
+          "time": "26/07 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "HT Spor Türkiye HD",
+                "Okko Sport HD",
+                "Persiana Sport HD",
+                "Premier Sports GB Player HD",
+                "Sky Sport Bundesliga HD",
+                "Sky Sport News Deutsch HD",
+                "Sport Bladet Play",
+                "Sport TV3 Slovenija",
+                "Sport TV4 Portugal HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Karlsruhe vs Inter Milan",
+          "kick_utc": 1785076200,
+          "time": "26/07 09:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DAZN Italia",
+                "Inter TV HD",
+                "JOJ Play",
+                "JOJ Šport 2 SVK HD",
+                "Okko Futbol HD",
+                "Persiana Sports 2 HD",
+                "Premier Sports 2 Ireland HD",
+                "Premier Sports 2 UK HD",
+                "Premier Sports GB Player HD",
+                "Sky Sport Calcio HD",
+                "Sport Bladet Play",
+                "Sport TV+ Portugal",
+                "Sport TV2 Portugal HD",
+                "Sport TV2 Slovenija"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Rangers vs West Ham United",
+          "kick_utc": 1785078000,
+          "time": "26/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Rangers TV",
+                "West Ham TV"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Cannes vs Roma",
+          "kick_utc": 1785079800,
+          "time": "26/07 10:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DAZN Italia"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Napoli vs Carrarese",
+          "kick_utc": 1785081600,
+          "time": "26/07 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DAZN Italia",
+                "OneFootball",
+                "Sky PrimaFila PPV HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Lazio vs Flaminia",
+          "kick_utc": 1785081600,
+          "time": "26/07 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DAZN Italia"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Bursaspor vs Shakhtar Donetsk",
+          "kick_utc": 1785085200,
+          "time": "27/07 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "TRT Spor Türkiye HD",
+                "YouTube: Shakhtar FC"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Sevilla vs Ceuta",
+          "kick_utc": 1785092400,
+          "time": "27/07 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "JOJ Play",
+                "JOJ Šport 2 SVK HD",
+                "OneFootball",
+                "Premier Sports GB Player HD",
+                "Seville FC+",
+                "Sport Bladet Play",
+                "Sport TV1 Portugal HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
         {
           "league": "Tennis",
           "match": "Hamburg Open",
@@ -115,25 +300,9 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis: WTA Hamburg Finala Dublu",
-          "kick_utc": 1785070500,
-          "time": "26/07 07:55 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
           "match": "World Surf League 2026 - Lexus US Open Of Surfing Challenger Series",
-          "kick_utc": 1785074400,
-          "time": "26/07 09:00 PM",
+          "kick_utc": 1785074340,
+          "time": "26/07 08:59 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -217,6 +386,22 @@
               "country": "Hubsport",
               "channels": [
                 "Eurosport 2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: WTA Hamburg Finala dublu",
+          "kick_utc": 1785085200,
+          "time": "27/07 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
               ]
             }
           ],
@@ -315,6 +500,36 @@
         },
         {
           "league": "Tennis",
+          "match": "Tenis Ziua 1",
+          "kick_utc": 1785124800,
+          "time": "27/07 11:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 1",
+          "kick_utc": 1785132000,
+          "time": "27/07 01:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Tenis",
           "kick_utc": 1785096000,
           "time": "27/07 03:00 AM",
@@ -363,6 +578,21 @@
           "match": "Tenis",
           "kick_utc": 1785117600,
           "time": "27/07 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1785124800,
+          "time": "27/07 11:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
