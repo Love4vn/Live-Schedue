@@ -1,57 +1,9 @@
 {
-  "updated": "2026-07-26 05:02 VN",
+  "updated": "2026-07-26 10:39 VN",
   "days": {
-    "20260725": {
-      "date": "Saturday, 25/07",
+    "20260726": {
+      "date": "Sunday, 26/07",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Wrexham vs Leeds United",
-          "kick_utc": 1785022200,
-          "time": "26/07 06:30 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena 4 Hungary HD",
-                "BBC iPlayer",
-                "BBC iPlayer 4K",
-                "beIN Connect Türkiye",
-                "LUTV",
-                "ON Sport Plus HD",
-                "OneFootball",
-                "Premier Sports 2 Ireland HD",
-                "Premier Sports 2 UK HD",
-                "Premier Sports GB Player HD",
-                "S4C Clic",
-                "S4C Sgorio Cymru",
-                "Sport Bladet Play",
-                "Sport TV4 Portugal HD",
-                "Stan Sport Australia",
-                "VG+ Sport Norge",
-                "Wrexham AFC",
-                "YouTube: Sgorio"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Premier League",
-          "match": "Liverpool vs Sunderland",
-          "kick_utc": 1785016800,
-          "time": "26/07 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "Stan Sport"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
         {
           "league": "Tennis",
           "match": "Hamburg Open",
@@ -101,20 +53,18 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1785067200,
-          "time": "26/07 07:00 PM",
+          "match": "Los Cabos",
+          "kick_utc": 1785114000,
+          "time": "27/07 08:00 AM",
           "tv_channels": [
             {
-              "country": "Ausport",
+              "country": "LiveSportsOnTV",
               "channels": [
-                "beIN SPORTS 1",
-                "Stan Sport",
-                "beIN Sports Connect"
+                "Tennis Channel"
               ]
             }
           ],
-          "source": "ausport"
+          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
@@ -131,21 +81,6 @@
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: ATP Estoril Semifinale",
-          "kick_utc": 1785015000,
-          "time": "26/07 04:30 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -350,6 +285,36 @@
         },
         {
           "league": "Tennis",
+          "match": "Tenis Ziua 1",
+          "kick_utc": 1785110400,
+          "time": "27/07 07:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 1",
+          "kick_utc": 1785117600,
+          "time": "27/07 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Tenis",
           "kick_utc": 1785096000,
           "time": "27/07 03:00 AM",
@@ -373,6 +338,51 @@
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 4 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1785110400,
+          "time": "27/07 07:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1785117600,
+          "time": "27/07 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "WTT Star Contender de São José dos Campos",
+          "kick_utc": 1785106800,
+          "time": "27/07 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
               ]
             }
           ],
