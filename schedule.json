@@ -1,9 +1,24 @@
 {
-  "updated": "2026-07-26 15:36 VN",
+  "updated": "2026-07-26 17:48 VN",
   "days": {
     "20260726": {
       "date": "Sunday, 26/07",
       "games": [
+        {
+          "league": "International Friendly",
+          "match": "Feyenoord vs Rayo Vallecano",
+          "kick_utc": 1785067200,
+          "time": "26/07 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Persiana Sports 3 HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
         {
           "league": "International Friendly",
           "match": "Ajax vs Burnley",
@@ -49,6 +64,7 @@
               "channels": [
                 "HT Spor Türkiye HD",
                 "Okko Sport HD",
+                "OneFootball",
                 "Persiana Sport HD",
                 "Premier Sports GB Player HD",
                 "Sky Sport Bundesliga HD",
@@ -75,6 +91,7 @@
                 "JOJ Play",
                 "JOJ Šport 2 SVK HD",
                 "Okko Futbol HD",
+                "OneFootball",
                 "Persiana Sports 2 HD",
                 "Premier Sports 2 Ireland HD",
                 "Premier Sports 2 UK HD",
@@ -199,6 +216,7 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Tennis Channel",
+                "TSN+",
                 "DAZN Canada"
               ]
             }
@@ -231,6 +249,21 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Estoril Open",
+          "kick_utc": 1785083400,
+          "time": "26/07 11:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "TSN+"
               ]
             }
           ],
