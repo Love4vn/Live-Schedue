@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-26 17:48 VN",
+  "updated": "2026-07-26 20:44 VN",
   "days": {
     "20260726": {
       "date": "Sunday, 26/07",
@@ -241,6 +241,22 @@
         },
         {
           "league": "Tennis",
+          "match": "Prague Open",
+          "kick_utc": 1785157200,
+          "time": "27/07 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel",
+                "TVA Sports"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
           "match": "Estoril Open",
           "kick_utc": 1785079800,
           "time": "26/07 10:30 PM",
@@ -286,7 +302,7 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Luca van Assche vs Alexander Blockx",
           "kick_utc": 1785083400,
           "time": "26/07 11:30 PM",
           "tv_channels": [
@@ -321,6 +337,21 @@
           "match": "Tournoi de Prague 2026",
           "kick_utc": 1785069000,
           "time": "26/07 07:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Tva Sports Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi de Prague 2026",
+          "kick_utc": 1785157200,
+          "time": "27/07 08:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
