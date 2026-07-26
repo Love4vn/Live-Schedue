@@ -1,82 +1,9 @@
 {
-  "updated": "2026-07-26 20:44 VN",
+  "updated": "2026-07-26 23:08 VN",
   "days": {
     "20260726": {
       "date": "Sunday, 26/07",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Feyenoord vs Rayo Vallecano",
-          "kick_utc": 1785067200,
-          "time": "26/07 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Persiana Sports 3 HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Ajax vs Burnley",
-          "kick_utc": 1785067200,
-          "time": "26/07 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Okko Futbol HD",
-                "Persiana Sport HD",
-                "Sport TV+ Portugal",
-                "Sport TV2 Portugal HD",
-                "Ziggo Sport 1 HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "PEC Zwolle vs AEK Athens",
-          "kick_utc": 1785070800,
-          "time": "26/07 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Cosmote Sport 1 HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Eintracht Frankfurt vs Trabzonspor",
-          "kick_utc": 1785072600,
-          "time": "26/07 08:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "HT Spor Türkiye HD",
-                "Okko Sport HD",
-                "OneFootball",
-                "Persiana Sport HD",
-                "Premier Sports GB Player HD",
-                "Sky Sport Bundesliga HD",
-                "Sky Sport News Deutsch HD",
-                "Sport Bladet Play",
-                "Sport TV3 Slovenija",
-                "Sport TV4 Portugal HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "International Friendly",
           "match": "Karlsruhe vs Inter Milan",
@@ -208,55 +135,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Hamburg Open",
-          "kick_utc": 1785067200,
-          "time": "26/07 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "TSN+",
-                "DAZN Canada"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Prague Open",
-          "kick_utc": 1785067200,
-          "time": "26/07 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "TVA Sports",
-                "DAZN Canada"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Prague Open",
-          "kick_utc": 1785157200,
-          "time": "27/07 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "TVA Sports"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
           "match": "Estoril Open",
           "kick_utc": 1785079800,
           "time": "26/07 10:30 PM",
@@ -302,6 +180,55 @@
         },
         {
           "league": "Tennis",
+          "match": "Prague Open",
+          "kick_utc": 1785157200,
+          "time": "27/07 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel",
+                "TVA Sports"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Mubadala Citi DC Open",
+          "kick_utc": 1785164400,
+          "time": "27/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DAZN Canada",
+                "T2",
+                "TSN3"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Hamburg Open",
+          "kick_utc": 1785164400,
+          "time": "27/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel",
+                "TVA Sports"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
           "match": "Luca van Assche vs Alexander Blockx",
           "kick_utc": 1785083400,
           "time": "26/07 11:30 PM",
@@ -318,76 +245,30 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis: WTA Praga Finala dublu",
-          "kick_utc": 1785067200,
-          "time": "26/07 07:00 PM",
+          "match": "",
+          "kick_utc": 1785164400,
+          "time": "27/07 10:00 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
               ]
             }
           ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
-          "match": "Tournoi de Prague 2026",
-          "kick_utc": 1785069000,
-          "time": "26/07 07:30 PM",
+          "match": "Tournoi de Hambourg 2026",
+          "kick_utc": 1785076200,
+          "time": "26/07 09:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
                 "Tva Sports Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi de Prague 2026",
-          "kick_utc": 1785157200,
-          "time": "27/07 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Tva Sports Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "World Surf League 2026 - Lexus US Open Of Surfing Challenger Series",
-          "kick_utc": 1785074340,
-          "time": "26/07 08:59 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv 7 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Asii Tenisului",
-          "kick_utc": 1785074400,
-          "time": "26/07 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
               ]
             }
           ],
@@ -396,8 +277,8 @@
         {
           "league": "Tennis",
           "match": "Tournoi de Hambourg 2026",
-          "kick_utc": 1785076200,
-          "time": "26/07 09:30 PM",
+          "kick_utc": 1785164400,
+          "time": "27/07 10:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -684,6 +565,67 @@
         },
         {
           "league": "Tennis",
+          "match": "Tournoi de Prague 2026",
+          "kick_utc": 1785157200,
+          "time": "27/07 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Tva Sports Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "World Surf League 2026 - Lexus US Open Of Surfing Challenger Series",
+          "kick_utc": 1785160680,
+          "time": "27/07 08:58 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv 6 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 500 - Washington 2026",
+          "kick_utc": 1785164400,
+          "time": "27/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "2026 Mubadala Citi DC Open Tennis",
+          "kick_utc": 1785164400,
+          "time": "27/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "TSN 3",
+                "TSN 3 Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": ": Millennium Estoril Open - Estoril",
           "kick_utc": 1785083400,
           "time": "26/07 11:30 PM",
@@ -692,6 +634,53 @@
               "country": "NowTV",
               "channels": [
                 "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Mubadala DC Open E1",
+          "kick_utc": 1785164400,
+          "time": "27/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Mubadala Citi DC Open -Round 1 (A)",
+          "kick_utc": 1785164400,
+          "time": "27/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Mubadala DC Open vs Washington",
+          "kick_utc": 1785164400,
+          "time": "27/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
               ]
             }
           ],
