@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-27 17:03 VN",
+  "updated": "2026-07-27 21:52 VN",
   "days": {
     "20260727": {
       "date": "Monday, 27/07",
@@ -30,6 +30,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "DAZN Italia",
                 "S Sport+ Streaming"
               ]
             }
@@ -62,9 +63,10 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "T2",
-                "Tennis Channel",
                 "DAZN Canada",
-                "TSN3"
+                "TSN+",
+                "TSN3",
+                "Tennis Channel"
               ]
             }
           ],
@@ -136,6 +138,22 @@
         {
           "league": "Tennis",
           "match": "Los Cabos",
+          "kick_utc": 1785200400,
+          "time": "28/07 08:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel",
+                "TSN+"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Los Cabos",
           "kick_utc": 1785204000,
           "time": "28/07 09:00 AM",
           "tv_channels": [
@@ -165,15 +183,77 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Alejandro Tabilo vs Tallon Griekspoor",
           "kick_utc": 1785164400,
           "time": "27/07 10:00 PM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
+                "beIN SPORTS 1",
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Elisabaetta Cocciaretto vs Clara Tauson",
+          "kick_utc": 1785164400,
+          "time": "27/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Leylah Annie Fernandez vs Magda Linette",
+          "kick_utc": 1785164400,
+          "time": "27/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Kei Nishikori vs Juncheng Shang",
+          "kick_utc": 1785186000,
+          "time": "28/07 04:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN SPORTS 1",
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Liudmila Samsonova vs Madison Keys",
+          "kick_utc": 1785189600,
+          "time": "28/07 05:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
                 "beIN Sports Connect",
-                "beIN SPORTS 1"
+                "Stan Sport"
               ]
             }
           ],
@@ -182,14 +262,14 @@
         {
           "league": "Tennis",
           "match": "",
-          "kick_utc": 1785189600,
-          "time": "28/07 05:00 AM",
+          "kick_utc": 1785200400,
+          "time": "28/07 08:00 AM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
+                "beIN SPORTS 2",
+                "beIN Sports Connect"
               ]
             }
           ],
@@ -215,6 +295,21 @@
           "match": "World Surf League 2026 - Lexus US Open Of Surfing Challenger Series",
           "kick_utc": 1785162600,
           "time": "27/07 09:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv 6 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "World Surf League 2026 - Lexus US Open Of Surfing Challenger Series",
+          "kick_utc": 1785249000,
+          "time": "28/07 09:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
