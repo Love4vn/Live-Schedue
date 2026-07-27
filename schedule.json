@@ -1,26 +1,9 @@
 {
-  "updated": "2026-07-28 00:03 VN",
+  "updated": "2026-07-28 02:45 VN",
   "days": {
     "20260727": {
       "date": "Monday, 27/07",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Caykur Rizespor vs Hull City",
-          "kick_utc": 1785168000,
-          "time": "27/07 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "EXXEN Digital Türkiye",
-                "Tigers+",
-                "TV8.5 Türkiye HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "International Friendly",
           "match": "Galatasaray vs Venezia",
@@ -83,6 +66,7 @@
                 "Arena M1 Premium MKD HD",
                 "Arena Premium 2 BiH HD",
                 "Arena Premium 2 Srbija HD",
+                "OneFootball",
                 "TV4 Latvija"
               ]
             }
@@ -100,6 +84,113 @@
               "channels": [
                 "Cytavision Sports 1 HD",
                 "Cytavision Sports PPV 1 HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa Conference League",
+          "match": "CSKA 1948 Sofia vs Spartak Trnava",
+          "kick_utc": 1785259800,
+          "time": "29/07 12:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "bTV Bulgaria HD",
+                "STVR Šport Slovakia HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Champions League",
+          "match": "Dinamo Zagreb vs Thun",
+          "kick_utc": 1785261600,
+          "time": "29/07 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena Premium 1 BiH HD",
+                "RSI La 2 Svizzera HD",
+                "RTL Hrvatska",
+                "SRF Play",
+                "SRF Zwei Schweiz HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa Conference League",
+          "match": "Drita vs Floriana",
+          "kick_utc": 1785261600,
+          "time": "29/07 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "RTK 1 Kosovo HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Champions League",
+          "match": "Celje vs Egnatia",
+          "kick_utc": 1785262500,
+          "time": "29/07 01:15 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Kanal A Slovenija HD",
+                "Sport 1 Baltic",
+                "Sport 1 Ukraine",
+                "SuperSport 2 Albania HD",
+                "Voyo Player Slovenija"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Champions League",
+          "match": "Hearts vs Sturm Graz",
+          "kick_utc": 1785264300,
+          "time": "29/07 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena Premium 1 Srbija HD",
+                "Arena Premium 3 BiH HD",
+                "Arena Sport 1 Slovakia HD",
+                "Canal 11 Portugal HD",
+                "ESPN+ USA",
+                "Hearts TV",
+                "ORF 1 Austria HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Champions League",
+          "match": "Shamrock Rovers vs Ararat-Armenia",
+          "kick_utc": 1785265200,
+          "time": "29/07 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Armenia First TV",
+                "LOI TV PPV",
+                "OneFootball"
               ]
             }
           ],
@@ -389,6 +480,22 @@
         },
         {
           "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1785261600,
+          "time": "29/07 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Tournoi ATP de Washington",
           "kick_utc": 1785177000,
           "time": "28/07 01:30 AM",
@@ -407,6 +514,21 @@
           "match": "Tournoi ATP de Washington",
           "kick_utc": 1785184200,
           "time": "28/07 03:30 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 2 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi ATP de Washington",
+          "kick_utc": 1785263400,
+          "time": "29/07 01:30 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -502,6 +624,22 @@
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 2 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 2",
+          "kick_utc": 1785261600,
+          "time": "29/07 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
               ]
             }
           ],
@@ -658,6 +796,21 @@
                 "Ziggo Sport 1",
                 "Ziggo Sport 4",
                 "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Mubadala DC Open vs Washington",
+          "kick_utc": 1785265200,
+          "time": "29/07 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
               ]
             }
           ],
