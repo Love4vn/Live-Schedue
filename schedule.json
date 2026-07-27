@@ -1,9 +1,41 @@
 {
-  "updated": "2026-07-27 10:49 VN",
+  "updated": "2026-07-27 17:03 VN",
   "days": {
     "20260727": {
       "date": "Monday, 27/07",
       "games": [
+        {
+          "league": "International Friendly",
+          "match": "Caykur Rizespor vs Hull City",
+          "kick_utc": 1785168000,
+          "time": "27/07 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "EXXEN Digital Türkiye",
+                "Tigers+",
+                "TV8.5 Türkiye HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Galatasaray vs Venezia",
+          "kick_utc": 1785175200,
+          "time": "28/07 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "S Sport+ Streaming"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
         {
           "league": "Tennis",
           "match": "Prague Open",
@@ -29,10 +61,10 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "DAZN Canada",
+                "T2",
                 "Tennis Channel",
-                "TSN3",
-                "T2"
+                "DAZN Canada",
+                "TSN3"
               ]
             }
           ],
@@ -118,6 +150,21 @@
         },
         {
           "league": "Tennis",
+          "match": "Los Cabos",
+          "kick_utc": 1785214800,
+          "time": "28/07 12:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
           "match": "",
           "kick_utc": 1785164400,
           "time": "27/07 10:00 PM",
@@ -150,14 +197,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 1",
-          "kick_utc": 1785117600,
-          "time": "27/07 09:00 AM",
+          "match": "Tournoi de Prague 2026",
+          "kick_utc": 1785157200,
+          "time": "27/07 08:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 2 Hd Romania"
+                "Tva Sports Hd"
               ]
             }
           ],
@@ -165,14 +212,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 1",
-          "kick_utc": 1785124800,
-          "time": "27/07 11:00 AM",
+          "match": "World Surf League 2026 - Lexus US Open Of Surfing Challenger Series",
+          "kick_utc": 1785162600,
+          "time": "27/07 09:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 2 Hd Romania"
+                "Sport Tv 6 Hd Portugal"
               ]
             }
           ],
@@ -180,14 +227,60 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 1",
-          "kick_utc": 1785132000,
-          "time": "27/07 01:00 PM",
+          "match": "ATP World Tour 500 - Washington 2026",
+          "kick_utc": 1785164400,
+          "time": "27/07 10:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 2 Hd Romania"
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 500 - Washington 2026",
+          "kick_utc": 1785186000,
+          "time": "28/07 04:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "2026 Mubadala Citi DC Open Tennis",
+          "kick_utc": 1785164400,
+          "time": "27/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "TSN 3",
+                "TSN 3 Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi de Hambourg 2026",
+          "kick_utc": 1785164400,
+          "time": "27/07 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Tva Sports Hd"
               ]
             }
           ],
@@ -271,14 +364,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1785117600,
-          "time": "27/07 09:00 AM",
+          "match": "Tenis Ziua 1",
+          "kick_utc": 1785211200,
+          "time": "28/07 11:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 4 Hd Romania"
+                "Digi Sport 2 Romania"
               ]
             }
           ],
@@ -286,14 +379,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1785124800,
-          "time": "27/07 11:00 AM",
+          "match": "Tenis Ziua 1",
+          "kick_utc": 1785218400,
+          "time": "28/07 01:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 4 Hd Romania"
+                "Digi Sport 2 Romania"
               ]
             }
           ],
@@ -381,90 +474,15 @@
         },
         {
           "league": "Tennis",
-          "match": "Tournoi de Prague 2026",
-          "kick_utc": 1785157200,
-          "time": "27/07 08:00 PM",
+          "match": "Tenis",
+          "kick_utc": 1785211200,
+          "time": "28/07 11:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Tva Sports Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "World Surf League 2026 - Lexus US Open Of Surfing Challenger Series",
-          "kick_utc": 1785160680,
-          "time": "27/07 08:58 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv 6 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 500 - Washington 2026",
-          "kick_utc": 1785164400,
-          "time": "27/07 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 500 - Washington 2026",
-          "kick_utc": 1785186000,
-          "time": "28/07 04:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "2026 Mubadala Citi DC Open Tennis",
-          "kick_utc": 1785164400,
-          "time": "27/07 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "TSN 3",
-                "TSN 3 Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi de Hambourg 2026",
-          "kick_utc": 1785164400,
-          "time": "27/07 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Tva Sports Hd"
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
               ]
             }
           ],
@@ -562,6 +580,36 @@
         },
         {
           "league": "Tennis",
+          "match": "Tenis Ziua 2",
+          "kick_utc": 1785211200,
+          "time": "28/07 11:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 2",
+          "kick_utc": 1785218400,
+          "time": "28/07 01:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Mubadala Citi DC Open 2026",
           "kick_utc": 1785186000,
           "time": "28/07 04:00 AM",
@@ -586,6 +634,38 @@
               "country": "Hubsport",
               "channels": [
                 "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Los Cabos Ziua 1",
+          "kick_utc": 1785222000,
+          "time": "28/07 02:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Los Cabos Ziua 1",
+          "kick_utc": 1785225600,
+          "time": "28/07 03:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
               ]
             }
           ],
@@ -673,6 +753,21 @@
           "match": ": Mifel Tennis Open by Telcel Oppo - Los Cabos",
           "kick_utc": 1785200400,
           "time": "28/07 08:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Mifel Tennis Open by Telcel Oppo - Los Cabos",
+          "kick_utc": 1785214800,
+          "time": "28/07 12:00 PM",
           "tv_channels": [
             {
               "country": "NowTV",
