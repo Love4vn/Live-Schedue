@@ -1,35 +1,9 @@
 {
-  "updated": "2026-07-28 18:24 VN",
+  "updated": "2026-07-28 21:26 VN",
   "days": {
     "20260728": {
       "date": "Tuesday, 28/07",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Western Sydney vs Chelsea",
-          "kick_utc": 1785231900,
-          "time": "28/07 04:45 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Al Rabiaa Sport Iraq",
-                "CFC+",
-                "Match 4 Hungary HD",
-                "Net4+ Sport",
-                "ON Sport Plus HD",
-                "Sharjah Sports HD",
-                "Sigma TV Cyprus HD",
-                "Sport Bladet Play",
-                "Sport TV1 Portugal HD",
-                "ST World Football HD",
-                "TV Tipsport Czechia",
-                "VG+ Sport Norge"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "UEFA Champions League",
           "match": "KuPS Kuopio vs Sabah",
@@ -123,6 +97,7 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Como TV",
+                "Okko Prime Sport HD",
                 "Palace TV+",
                 "TV Tipsport Czechia",
                 "VG+ Sport Norge"
@@ -172,6 +147,7 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Arena Premium 1 BiH HD",
+                "Persiana Sport HD",
                 "Play RTS Sport",
                 "RSI La 2 Svizzera HD",
                 "RTL Hrvatska",
@@ -191,7 +167,8 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "RTK 1 Kosovo HD"
+                "RTK 1 Kosovo HD",
+                "TVM Sport+ HD"
               ]
             }
           ],
@@ -248,6 +225,25 @@
         },
         {
           "league": "International Friendly",
+          "match": "Famalicão vs Crystal Palace",
+          "kick_utc": 1785263400,
+          "time": "29/07 01:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Como TV",
+                "Okko Prime Sport HD",
+                "Palace TV+",
+                "Sport TV+ Portugal",
+                "Sport TV1 Portugal HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
           "match": "Aston Villa vs Real Sociedad",
           "kick_utc": 1785263400,
           "time": "29/07 01:30 AM",
@@ -257,24 +253,6 @@
               "channels": [
                 "ETB 1 Basque Country",
                 "Villa TV"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Famalicão vs Crystal Palace",
-          "kick_utc": 1785263400,
-          "time": "29/07 01:30 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Como TV",
-                "Palace TV+",
-                "Sport TV+ Portugal",
-                "Sport TV1 Portugal HD"
               ]
             }
           ],
@@ -310,7 +288,8 @@
                 "Canal 11 Portugal HD",
                 "ESPN+ USA",
                 "Hearts TV",
-                "ORF 1 Austria HD"
+                "ORF 1 Austria HD",
+                "Persiana Sports 2 HD"
               ]
             }
           ],
@@ -384,91 +363,13 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Como TV",
+                "Okko Prime Sport HD",
                 "Sport TV1 Portugal HD",
                 "VG+ Sport Norge"
               ]
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1785250800,
-          "time": "28/07 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 1",
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1785258000,
-          "time": "29/07 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "Stan Sport"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1785276000,
-          "time": "29/07 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 1",
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1785281400,
-          "time": "29/07 06:30 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1785286800,
-          "time": "29/07 08:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 2",
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
         },
         {
           "league": "Tennis",
