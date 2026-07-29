@@ -1,81 +1,9 @@
 {
-  "updated": "2026-07-29 18:30 VN",
+  "updated": "2026-07-29 21:25 VN",
   "days": {
     "20260729": {
       "date": "Wednesday, 29/07",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Tottenham Hotspur vs Sydney FC",
-          "kick_utc": 1785318300,
-          "time": "29/07 04:45 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Al Rabiaa Sport Iraq",
-                "DAZN Japan",
-                "Match 4 Hungary HD",
-                "Net4+ Sport",
-                "Okko Futbol HD",
-                "ON Sport Plus HD",
-                "Persiana Sport HD",
-                "Sharjah Sports HD",
-                "Sigma TV Cyprus HD",
-                "Sport Bladet Play",
-                "Sport TV1 Portugal HD",
-                "Sporty TV Africa",
-                "SpursPlay",
-                "ST World Football HD",
-                "TV Tipsport Czechia",
-                "VG+ Sport Norge"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Cerezo Osaka vs Borussia Dortmund",
-          "kick_utc": 1785319200,
-          "time": "29/07 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "beIN Sports 3 HD",
-                "DAZN España",
-                "Diema Sport 3 HD",
-                "Digi Sport 1 Romania HD",
-                "Eleven Sports 1 Polska HD",
-                "Net4+ Sport",
-                "Nova Sport 3 Czech HD",
-                "Nova Sports 3 Cyprus HD",
-                "Nova Sports 3 Hellas HD",
-                "Persiana Sports 2 HD",
-                "S Sport+ Streaming",
-                "Sky Sport Bundesliga 1 HD",
-                "Sky Sport News Deutsch HD",
-                "Sky Sport Top Event HD",
-                "Sport TV1 Slovenija",
-                "SportKlub 2 Slovenija",
-                "SportKlub 3 Hrvatska",
-                "V Sport 2 Norge HD",
-                "V Sport Premium HD",
-                "ViaPlay 2 Urheilu HD",
-                "ViaPlay Danmark HD",
-                "ViaPlay Nederland HD",
-                "ViaPlay Norge HD",
-                "ViaPlay Suomi HD",
-                "ViaPlay Sverige HD",
-                "ViaPlay Ísland HD",
-                "YouTube: Bundesliga",
-                "Z Sports 1 Angola"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "International Friendly",
           "match": "Bayer Leverkusen vs Racing Genk",
@@ -242,7 +170,8 @@
               "channels": [
                 "Como TV",
                 "GOL España HD",
-                "Okko Prime Sport HD"
+                "Okko Prime Sport HD",
+                "Teledeporte España"
               ]
             }
           ],
@@ -317,6 +246,7 @@
                 "Polsat Sport Premium 1 HD",
                 "S Sport+ Streaming",
                 "Sport TV1 Portugal HD",
+                "Sportdigital FUSSBALL HD",
                 "Super Polsat HD"
               ]
             }
@@ -340,6 +270,7 @@
                 "Premier Sports 1 Ireland HD",
                 "Premier Sports 1 UK HD",
                 "Sport TV2 Portugal HD",
+                "Teledeporte España",
                 "TRT Spor Türkiye HD",
                 "VG+ Sport Norge"
               ]
@@ -381,17 +312,16 @@
         },
         {
           "league": "International Friendly",
-          "match": "Villarreal vs Como 1907",
+          "match": "Como 1907 vs Al Ula",
           "kick_utc": 1785349800,
           "time": "30/07 01:30 AM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "GOL España HD",
+                "Como TV",
                 "Okko Prime Sport HD",
-                "Sportitalia HD",
-                "TV Tipsport Czechia"
+                "Sportitalia HD"
               ]
             }
           ],
@@ -446,27 +376,6 @@
         },
         {
           "league": "International Friendly",
-          "match": "Birmingham City vs Barcelona XI",
-          "kick_utc": 1785350700,
-          "time": "30/07 01:45 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena M2 Premium MKD HD",
-                "Arena Premium 2 Srbija HD",
-                "Arena Premium 4 BiH HD",
-                "Blues+ TV",
-                "MAX Sport 4 Bulgaria HD",
-                "SportKlub 1 Hrvatska HD",
-                "Ziggo Sport 2"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
           "match": "Burnley vs Espanyol XI",
           "kick_utc": 1785350700,
           "time": "30/07 01:45 AM",
@@ -498,16 +407,18 @@
         },
         {
           "league": "International Friendly",
-          "match": "Como 1907 vs Al Ula",
+          "match": "Villarreal vs Como 1907",
           "kick_utc": 1785355200,
           "time": "30/07 03:00 AM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Como TV",
+                "GOL España HD",
                 "Okko Prime Sport HD",
-                "Sportitalia HD"
+                "Sportitalia HD",
+                "Teledeporte España",
+                "TV Tipsport Czechia"
               ]
             }
           ],
@@ -531,12 +442,46 @@
                 "Net4+ Sport",
                 "ON Sport Plus HD",
                 "OneFootball",
+                "Sharjah Sports HD",
                 "Sport Bladet Play",
                 "Sport TV1 Portugal HD",
+                "Sporty TV Africa",
                 "Stan Sport Australia",
                 "TRT Spor Türkiye HD",
                 "VG+ Sport Norge",
                 "Wrexham AFC"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa Conference League",
+          "match": "Tobol vs Panevežys",
+          "kick_utc": 1785420000,
+          "time": "30/07 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Delfi TV Lithuania",
+                "QazSport HD",
+                "Sport 1 Ukraine"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa Conference League",
+          "match": "Atletic Escaldes vs Vaduz",
+          "kick_utc": 1785420000,
+          "time": "30/07 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "OneFootball"
               ]
             }
           ],
@@ -560,7 +505,7 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Leylah Annie Fernandez vs Alexandra Eala",
           "kick_utc": 1785337200,
           "time": "29/07 10:00 PM",
           "tv_channels": [
@@ -568,8 +513,7 @@
               "country": "Ausport",
               "channels": [
                 "beIN Sports Connect",
-                "Stan Sport",
-                "beIN SPORTS 1"
+                "Stan Sport"
               ]
             }
           ],
@@ -577,9 +521,9 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1785355200,
-          "time": "30/07 03:00 AM",
+          "match": "Emma Navarro vs Elisabaetta Cocciaretto",
+          "kick_utc": 1785349800,
+          "time": "30/07 01:30 AM",
           "tv_channels": [
             {
               "country": "Ausport",
@@ -592,13 +536,14 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1785364200,
-          "time": "30/07 05:30 AM",
+          "match": "Alex Michelsen vs Adrian Mannarino",
+          "kick_utc": 1785362400,
+          "time": "30/07 05:00 AM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
+                "beIN Sports Connect",
                 "beIN SPORTS 1"
               ]
             }
