@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-29 15:50 VN",
+  "updated": "2026-07-29 18:30 VN",
   "days": {
     "20260729": {
       "date": "Wednesday, 29/07",
@@ -20,6 +20,7 @@
                 "Okko Futbol HD",
                 "ON Sport Plus HD",
                 "Persiana Sport HD",
+                "Sharjah Sports HD",
                 "Sigma TV Cyprus HD",
                 "Sport Bladet Play",
                 "Sport TV1 Portugal HD",
@@ -121,6 +122,7 @@
                 "Arena Sport 1 Slovakia HD",
                 "Cytavision Sports 1 HD",
                 "Cytavision Sports PPV 1 HD",
+                "MAX Sport 4 Bulgaria HD",
                 "Okko Prime Sport HD",
                 "Omonoia TV on Cyta",
                 "QazSport HD"
@@ -444,22 +446,6 @@
         },
         {
           "league": "International Friendly",
-          "match": "Burnley vs Espanyol XI",
-          "kick_utc": 1785350700,
-          "time": "30/07 01:45 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Esport 3 Catalunya",
-                "YouTube: Espanyol TV"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
           "match": "Birmingham City vs Barcelona XI",
           "kick_utc": 1785350700,
           "time": "30/07 01:45 AM",
@@ -471,8 +457,25 @@
                 "Arena Premium 2 Srbija HD",
                 "Arena Premium 4 BiH HD",
                 "Blues+ TV",
+                "MAX Sport 4 Bulgaria HD",
                 "SportKlub 1 Hrvatska HD",
                 "Ziggo Sport 2"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Burnley vs Espanyol XI",
+          "kick_utc": 1785350700,
+          "time": "30/07 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Esport 3 Catalunya",
+                "YouTube: Espanyol TV"
               ]
             }
           ],
@@ -564,9 +567,9 @@
             {
               "country": "Ausport",
               "channels": [
-                "beIN SPORTS 1",
                 "beIN Sports Connect",
-                "Stan Sport"
+                "Stan Sport",
+                "beIN SPORTS 1"
               ]
             }
           ],
@@ -617,38 +620,6 @@
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Los Cabos Ziua 2",
-          "kick_utc": 1785308400,
-          "time": "29/07 02:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Los Cabos Ziua 2",
-          "kick_utc": 1785312000,
-          "time": "29/07 03:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
