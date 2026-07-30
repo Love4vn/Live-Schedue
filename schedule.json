@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-30 15:40 VN",
+  "updated": "2026-07-30 18:15 VN",
   "days": {
     "20260730": {
       "date": "Thursday, 30/07",
@@ -981,38 +981,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Los Cabos Ziua 3",
-          "kick_utc": 1785394800,
-          "time": "30/07 02:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Los Cabos Ziua 3",
-          "kick_utc": 1785398400,
-          "time": "30/07 03:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
           "match": "World Surf League 2026 - Lexus US Open Of Surfing Challenger Series",
           "kick_utc": 1785421740,
           "time": "30/07 09:29 PM",
@@ -1517,6 +1485,21 @@
         },
         {
           "league": "Tennis",
+          "match": "Mubadala DC Open E21",
+          "kick_utc": 1785438000,
+          "time": "31/07 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
           "match": "Mubadala Citi DC Open -Round 2 (D)",
           "kick_utc": 1785443400,
           "time": "31/07 03:30 AM",
@@ -1585,6 +1568,21 @@
               "country": "NowTV",
               "channels": [
                 "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Mifel Tennis Open by Telcel Oppo -QF (1) - C. Wong vs J. Brooksby",
+          "kick_utc": 1785463200,
+          "time": "31/07 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports Prime"
               ]
             }
           ],
