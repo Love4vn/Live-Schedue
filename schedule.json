@@ -1,41 +1,9 @@
 {
-  "updated": "2026-07-30 21:22 VN",
+  "updated": "2026-07-30 23:41 VN",
   "days": {
     "20260730": {
       "date": "Thursday, 30/07",
       "games": [
-        {
-          "league": "UEFA Europa Conference League",
-          "match": "Tobol vs Panevežys",
-          "kick_utc": 1785420000,
-          "time": "30/07 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Delfi TV Lithuania",
-                "QazSport HD",
-                "Sport 1 Ukraine"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Europa Conference League",
-          "match": "Atletic Escaldes vs Vaduz",
-          "kick_utc": 1785420000,
-          "time": "30/07 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "OneFootball"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "International Friendly",
           "match": "Trabzonspor vs Al Sadd",
@@ -999,18 +967,20 @@
         },
         {
           "league": "Tennis",
-          "match": "World Surf League 2026 - Lexus US Open Of Surfing Challenger Series",
-          "kick_utc": 1785421740,
-          "time": "30/07 09:29 PM",
+          "match": "",
+          "kick_utc": 1785513600,
+          "time": "31/07 11:00 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "Sport Tv 6 Hd Portugal"
+                "Stan Sport",
+                "beIN Sports Connect",
+                "beIN SPORTS 2"
               ]
             }
           ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -1443,6 +1413,36 @@
         },
         {
           "league": "Tennis",
+          "match": "World Surf League 2026 - Lexus US Open Of Surfing Challenger Series",
+          "kick_utc": 1785508200,
+          "time": "31/07 09:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv 6 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi de Washington 2026",
+          "kick_utc": 1785513600,
+          "time": "31/07 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Tva Sports Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Mubadala Citi DC Open -Round 2 (C)",
           "kick_utc": 1785423600,
           "time": "30/07 10:00 PM",
@@ -1601,6 +1601,21 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports Prime"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Mubadala DC Open -QF(1)",
+          "kick_utc": 1785513600,
+          "time": "31/07 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
               ]
             }
           ],
