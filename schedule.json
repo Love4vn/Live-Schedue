@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-30 18:15 VN",
+  "updated": "2026-07-30 21:22 VN",
   "days": {
     "20260730": {
       "date": "Thursday, 30/07",
@@ -334,6 +334,7 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Belarus 5 HD",
+                "Belarus 5 Internet",
                 "Ictimai TV HD"
               ]
             }
@@ -431,8 +432,9 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "OneFootball",
-                "TV Republika HD",
-                "TVM Sport+ HD"
+                "TV Republika Plus",
+                "TVM Sport+ HD",
+                "YouTube: Telewizja Republika"
               ]
             }
           ],
@@ -799,6 +801,7 @@
                 "Benfica TV HD",
                 "Persiana Sport HD",
                 "Play RTS Sport",
+                "RSI La 2 Svizzera HD",
                 "SIC Portugal HD",
                 "SRF Play",
                 "SRF Zwei Schweiz HD"
@@ -887,15 +890,15 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Brandon Nakashima vs Jakub Mensik",
           "kick_utc": 1785423600,
           "time": "30/07 10:00 PM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
+                "beIN SPORTS 1",
+                "beIN Sports Connect"
               ]
             }
           ],
@@ -903,7 +906,7 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Kristina Liutova vs Maya Joint",
           "kick_utc": 1785427200,
           "time": "30/07 11:00 PM",
           "tv_channels": [
@@ -918,7 +921,7 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Janice Tjen vs Anna Kalinskaya",
           "kick_utc": 1785430800,
           "time": "31/07 12:00 AM",
           "tv_channels": [
@@ -934,15 +937,15 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Terence Atmane vs Alejandro Tabilo",
           "kick_utc": 1785443400,
           "time": "31/07 03:30 AM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
+                "beIN SPORTS 1",
+                "beIN Sports Connect"
               ]
             }
           ],
@@ -950,7 +953,7 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Diana Shnaider vs Anastasia Potapova",
           "kick_utc": 1785448800,
           "time": "31/07 05:00 AM",
           "tv_channels": [
@@ -965,15 +968,30 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Francisco Cerundolo vs Arthur Gea",
           "kick_utc": 1785459600,
           "time": "31/07 08:00 AM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 2"
+                "beIN SPORTS 2",
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Chak Lam Coleman Wong vs Jenson Brooksby",
+          "kick_utc": 1785463200,
+          "time": "31/07 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
               ]
             }
           ],
