@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-30 09:55 VN",
+  "updated": "2026-07-30 12:50 VN",
   "days": {
     "20260730": {
       "date": "Thursday, 30/07",
@@ -31,6 +31,22 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "OneFootball"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Trabzonspor vs Al Sadd",
+          "kick_utc": 1785425400,
+          "time": "30/07 10:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "HT Spor Türkiye HD",
+                "Persiana Sports 2 HD"
               ]
             }
           ],
@@ -112,7 +128,8 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Moldova 2 HD"
+                "Moldova 2 HD",
+                "Shant TV Armenia"
               ]
             }
           ],
@@ -163,6 +180,37 @@
                 "OneFootball",
                 "TV4 Latvija",
                 "VOYO Pro TV Romania"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Rottach-Egern vs Bayern Munich",
+          "kick_utc": 1785427200,
+          "time": "30/07 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "FC Bayern TV PLUS",
+                "Persiana Sport HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Marseille vs Nîmes",
+          "kick_utc": 1785427200,
+          "time": "30/07 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Ligue 1+"
               ]
             }
           ],
@@ -261,6 +309,23 @@
         },
         {
           "league": "UEFA Europa Conference League",
+          "match": "Brann vs Universitatea Cluj",
+          "kick_utc": 1785430800,
+          "time": "31/07 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Digi Sport 2 Romania HD",
+                "Prima Sport RO 2 HD",
+                "VG+ Sport Norge"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa Conference League",
           "match": "Dynamo Minsk vs Neftchi",
           "kick_utc": 1785430800,
           "time": "31/07 12:00 AM",
@@ -332,23 +397,8 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "M4 Sport",
+                "Duna World HD",
                 "OneFootball"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Europa Conference League",
-          "match": "Brann vs Universitatea Cluj",
-          "kick_utc": 1785430800,
-          "time": "31/07 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "VG+ Sport Norge"
               ]
             }
           ],
@@ -464,6 +514,22 @@
         },
         {
           "league": "UEFA Europa Conference League",
+          "match": "Vestri vs RFS Riga",
+          "kick_utc": 1785434400,
+          "time": "31/07 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "SÝN Sport Island 1 HD",
+                "TV4 Latvija"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa Conference League",
           "match": "Shkëndija vs Bravo",
           "kick_utc": 1785434400,
           "time": "31/07 01:00 AM",
@@ -472,6 +538,7 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Arena Sport 1 Slovakia HD",
+                "MRT 2 North Macedonia",
                 "Sport TV1 Slovenija"
               ]
             }
@@ -507,6 +574,8 @@
                 "Arena Premium 2 Srbija HD",
                 "Arena Sport 1 BiH HD",
                 "KS TV | Futbol 3",
+                "Okko Prime Sport HD",
+                "Persiana Sports 2 HD",
                 "Sport TV1 Portugal HD",
                 "Ziggo Sport 1 HD"
               ]
@@ -728,6 +797,7 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Benfica TV HD",
+                "Persiana Sport HD",
                 "Play RTS Sport",
                 "SIC Portugal HD",
                 "SRF Play",
@@ -795,21 +865,6 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "SuperSport 2 Albania HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Europa Conference League",
-          "match": "Vestri vs RFS Riga",
-          "kick_utc": 1785441600,
-          "time": "31/07 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "SÝN Sport Island 1 HD"
               ]
             }
           ],
@@ -926,147 +981,6 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP World Tour 250 - Los Cabos 2026",
-          "kick_utc": 1785373200,
-          "time": "30/07 08:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Los Cabos 2026",
-          "kick_utc": 1785459600,
-          "time": "31/07 08:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv 6 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1785373200,
-          "time": "30/07 08:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1785380400,
-          "time": "30/07 10:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1785438000,
-          "time": "31/07 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1785445200,
-          "time": "31/07 04:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1785452400,
-          "time": "31/07 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1785459600,
-          "time": "31/07 08:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 4",
-          "kick_utc": 1785376800,
-          "time": "30/07 09:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
           "match": "Tenis Ziua 4",
           "kick_utc": 1785384000,
           "time": "30/07 11:00 AM",
@@ -1173,9 +1087,9 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 3",
-          "kick_utc": 1785376800,
-          "time": "30/07 09:00 AM",
+          "match": "Tenis Ziua 4",
+          "kick_utc": 1785470400,
+          "time": "31/07 11:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -1251,8 +1165,8 @@
         {
           "league": "Tennis",
           "match": "World Surf League 2026 - Lexus US Open Of Surfing Challenger Series",
-          "kick_utc": 1785421800,
-          "time": "30/07 09:30 PM",
+          "kick_utc": 1785421740,
+          "time": "30/07 09:29 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -1387,6 +1301,85 @@
         },
         {
           "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1785438000,
+          "time": "31/07 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1785445200,
+          "time": "31/07 04:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1785452400,
+          "time": "31/07 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1785459600,
+          "time": "31/07 08:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1785466800,
+          "time": "31/07 10:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Mubadala Citi DC Open 2026",
           "kick_utc": 1785443400,
           "time": "31/07 03:30 AM",
@@ -1448,33 +1441,48 @@
         },
         {
           "league": "Tennis",
-          "match": ": Mifel Tennis Open by Telcel Oppo - Los Cabos",
-          "kick_utc": 1785373200,
-          "time": "30/07 08:00 AM",
+          "match": "Tenis Ziua 5",
+          "kick_utc": 1785466800,
+          "time": "31/07 10:00 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Ziggo Sport 5"
+                "Digi Sport 2 Hd Romania"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
-          "match": ": Mifel Tennis Open by Telcel Oppo - Los Cabos",
-          "kick_utc": 1785377100,
-          "time": "30/07 09:05 AM",
+          "match": "Tenis Ziua 5",
+          "kick_utc": 1785475800,
+          "time": "31/07 12:30 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Ziggo Sport 4"
+                "Digi Sport 2 Hd Romania"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - 2026 - Los Cabos 2026",
+          "kick_utc": 1785459480,
+          "time": "31/07 07:58 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv 6 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -1496,6 +1504,21 @@
           "match": ": Mifel Tennis Open by Telcel Oppo - Los Cabos",
           "kick_utc": 1785459600,
           "time": "31/07 08:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Mifel Tennis Open by Telcel Oppo - Los Cabos",
+          "kick_utc": 1785474000,
+          "time": "31/07 12:00 PM",
           "tv_channels": [
             {
               "country": "NowTV",
