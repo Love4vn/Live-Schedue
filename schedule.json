@@ -1,24 +1,9 @@
 {
-  "updated": "2026-07-31 16:12 VN",
+  "updated": "2026-07-31 21:25 VN",
   "days": {
     "20260731": {
       "date": "Friday, 31/07",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "FC Cologne vs Hertha Berlin",
-          "kick_utc": 1785492000,
-          "time": "31/07 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "YouTube: FC Cologne"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "International Friendly",
           "match": "Juventus vs Nice",
@@ -133,8 +118,10 @@
                 "JOJ Šport SVK HD",
                 "Kuwait Sport HD",
                 "OneFootball",
+                "TRT Spor Türkiye HD",
                 "TVi Portugal HD",
-                "VG+ Sport Norge"
+                "VG+ Sport Norge",
+                "Z Sports 2 Angola"
               ]
             }
           ],
@@ -157,6 +144,7 @@
                 "Sharjah Sports HD",
                 "SportKlub 1 Hrvatska HD",
                 "SportKlub 1 Slovenija HD",
+                "Sporty TV Africa",
                 "TV3 Catalunya HD",
                 "VG+ Sport Norge",
                 "YouTube: Barcelona",
@@ -198,16 +186,15 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Jessica Pegula vs Anna Kalinskaya",
           "kick_utc": 1785513600,
           "time": "31/07 11:00 PM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
-                "beIN SPORTS 2",
-                "Stan Sport",
-                "beIN Sports Connect"
+                "beIN Sports Connect",
+                "beIN SPORTS 2"
               ]
             }
           ],
@@ -215,15 +202,31 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Kristina Liutova vs Caty McNally",
+          "kick_utc": 1785513600,
+          "time": "31/07 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Alex De Minaur vs Brandon Nakashima",
           "kick_utc": 1785520800,
           "time": "01/08 01:00 AM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
-                "beIN SPORTS 1",
-                "beIN Sports Connect"
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
               ]
             }
           ],
@@ -231,14 +234,13 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1785528000,
-          "time": "01/08 03:00 AM",
+          "match": "Anastasia Zakharova vs Renata Zarazua",
+          "kick_utc": 1785524400,
+          "time": "01/08 02:00 AM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
-                "beIN SPORTS 2",
                 "beIN Sports Connect"
               ]
             }
@@ -247,15 +249,31 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Diana Shnaider vs Liudmila Samsonova",
+          "kick_utc": 1785526200,
+          "time": "01/08 02:30 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 2"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Rafael Jodar vs Lorenzo Musetti",
           "kick_utc": 1785535200,
           "time": "01/08 05:00 AM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
-                "beIN SPORTS 1",
-                "beIN Sports Connect"
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
               ]
             }
           ],
@@ -263,35 +281,19 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Chak Lam Coleman Wong vs Arthur Gea",
           "kick_utc": 1785551400,
           "time": "01/08 09:30 AM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
-                "beIN SPORTS 2",
-                "beIN Sports Connect"
+                "beIN Sports Connect",
+                "beIN SPORTS 2"
               ]
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Los Cabos Ziua 4",
-          "kick_utc": 1785484800,
-          "time": "31/07 03:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -865,6 +867,21 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Mifel Tennis Open by Telcel Oppo -SF (1) - C. Wong vs A. Gea",
+          "kick_utc": 1785551400,
+          "time": "01/08 09:30 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports Prime"
               ]
             }
           ],
