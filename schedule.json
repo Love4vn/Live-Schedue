@@ -1,93 +1,9 @@
 {
-  "updated": "2026-07-31 23:49 VN",
+  "updated": "2026-08-01 02:54 VN",
   "days": {
     "20260731": {
       "date": "Friday, 31/07",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Juventus vs Nice",
-          "kick_utc": 1785513600,
-          "time": "31/07 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "DAZN 1 Italia HD",
-                "DAZN Italia",
-                "Juventus APP",
-                "Sky Sport Calcio HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Famalicão vs Como 1907",
-          "kick_utc": 1785513600,
-          "time": "31/07 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Como TV",
-                "Sport TV1 Portugal HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Sassuolo vs Folgore Caratese",
-          "kick_utc": 1785517200,
-          "time": "01/08 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Sportitalia SoloCalcio HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "NEC Nijmegen vs Sevilla",
-          "kick_utc": 1785517200,
-          "time": "01/08 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena M1 Premium MKD HD",
-                "Arena Premium 1 Srbija HD",
-                "Arena Premium 2 BiH HD",
-                "Seville FC+",
-                "Sport TV+ Portugal",
-                "Ziggo Sport 1 HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Toulouse vs Real Sociedad",
-          "kick_utc": 1785517200,
-          "time": "01/08 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Ligue 1+"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "International Friendly",
           "match": "Bromley vs Queens Park Rangers",
@@ -98,6 +14,34 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "QPR+ Pass"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Birmingham City vs Barcelona",
+          "kick_utc": 1785523500,
+          "time": "01/08 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena M2 Premium MKD HD",
+                "Arena Premium 2 Srbija HD",
+                "Arena Premium 4 BiH HD",
+                "Blues+ TV",
+                "MAX Sport 4 Bulgaria HD",
+                "Sharjah Sports HD",
+                "Sky Sport Top Event HD",
+                "SportKlub 1 Hrvatska HD",
+                "SportKlub 1 Slovenija HD",
+                "Sporty TV Africa",
+                "TV3 Catalunya HD",
+                "VG+ Sport Norge",
+                "YouTube: Barcelona",
+                "Ziggo Sport 2"
               ]
             }
           ],
@@ -122,33 +66,6 @@
                 "TVi Portugal HD",
                 "VG+ Sport Norge",
                 "Z Sports 2 Angola"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Birmingham City vs Barcelona",
-          "kick_utc": 1785523500,
-          "time": "01/08 01:45 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena M2 Premium MKD HD",
-                "Arena Premium 2 Srbija HD",
-                "Arena Premium 4 BiH HD",
-                "Blues+ TV",
-                "MAX Sport 4 Bulgaria HD",
-                "Sharjah Sports HD",
-                "SportKlub 1 Hrvatska HD",
-                "SportKlub 1 Slovenija HD",
-                "Sporty TV Africa",
-                "TV3 Catalunya HD",
-                "VG+ Sport Norge",
-                "YouTube: Barcelona",
-                "Ziggo Sport 2"
               ]
             }
           ],
@@ -183,38 +100,6 @@
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Jessica Pegula vs Anna Kalinskaya",
-          "kick_utc": 1785513600,
-          "time": "31/07 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 2"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Kristina Liutova vs Caty McNally",
-          "kick_utc": 1785513600,
-          "time": "31/07 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "Stan Sport"
-              ]
-            }
-          ],
-          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -297,18 +182,20 @@
         },
         {
           "league": "Tennis",
-          "match": "Tournoi de Washington 2026",
-          "kick_utc": 1785513600,
-          "time": "31/07 11:00 PM",
+          "match": "",
+          "kick_utc": 1785607200,
+          "time": "02/08 01:00 AM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "Tva Sports Hd"
+                "beIN SPORTS 1",
+                "Stan Sport",
+                "beIN Sports Connect"
               ]
             }
           ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -768,18 +655,34 @@
         },
         {
           "league": "Tennis",
-          "match": "Mubadala DC Open -QF(1)",
-          "kick_utc": 1785513600,
-          "time": "31/07 11:00 PM",
+          "match": "Tournoi de Washington 2026",
+          "kick_utc": 1785607200,
+          "time": "02/08 01:00 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 4"
+                "Tva Sports 2 Hd"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: WTA Washington Finala Dublu",
+          "kick_utc": 1785610800,
+          "time": "02/08 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -912,6 +815,21 @@
               "country": "NowTV",
               "channels": [
                 "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Mubadala DC Open -SF(1-2)",
+          "kick_utc": 1785607200,
+          "time": "02/08 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
               ]
             }
           ],
