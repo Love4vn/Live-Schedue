@@ -1,9 +1,201 @@
 {
-  "updated": "2026-07-31 10:37 VN",
+  "updated": "2026-07-31 16:12 VN",
   "days": {
     "20260731": {
       "date": "Friday, 31/07",
       "games": [
+        {
+          "league": "International Friendly",
+          "match": "FC Cologne vs Hertha Berlin",
+          "kick_utc": 1785492000,
+          "time": "31/07 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "YouTube: FC Cologne"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Juventus vs Nice",
+          "kick_utc": 1785513600,
+          "time": "31/07 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DAZN 1 Italia HD",
+                "DAZN Italia",
+                "Juventus APP",
+                "Sky Sport Calcio HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Famalicão vs Como 1907",
+          "kick_utc": 1785513600,
+          "time": "31/07 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Como TV",
+                "Sport TV1 Portugal HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Sassuolo vs Folgore Caratese",
+          "kick_utc": 1785517200,
+          "time": "01/08 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Sportitalia SoloCalcio HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "NEC Nijmegen vs Sevilla",
+          "kick_utc": 1785517200,
+          "time": "01/08 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena M1 Premium MKD HD",
+                "Arena Premium 1 Srbija HD",
+                "Arena Premium 2 BiH HD",
+                "Seville FC+",
+                "Sport TV+ Portugal",
+                "Ziggo Sport 1 HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Toulouse vs Real Sociedad",
+          "kick_utc": 1785517200,
+          "time": "01/08 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Ligue 1+"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Bromley vs Queens Park Rangers",
+          "kick_utc": 1785522600,
+          "time": "01/08 01:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "QPR+ Pass"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Sporting Lisbon vs Nottingham Forest",
+          "kick_utc": 1785523500,
+          "time": "01/08 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DAZN Portugal",
+                "Forest TV",
+                "JOJ Play",
+                "JOJ Šport SVK HD",
+                "Kuwait Sport HD",
+                "OneFootball",
+                "TVi Portugal HD",
+                "VG+ Sport Norge"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Birmingham City vs Barcelona",
+          "kick_utc": 1785523500,
+          "time": "01/08 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena M2 Premium MKD HD",
+                "Arena Premium 2 Srbija HD",
+                "Arena Premium 4 BiH HD",
+                "Blues+ TV",
+                "MAX Sport 4 Bulgaria HD",
+                "Sharjah Sports HD",
+                "SportKlub 1 Hrvatska HD",
+                "SportKlub 1 Slovenija HD",
+                "TV3 Catalunya HD",
+                "VG+ Sport Norge",
+                "YouTube: Barcelona",
+                "Ziggo Sport 2"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Crystal Palace vs Al Ula",
+          "kick_utc": 1785523500,
+          "time": "01/08 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Palace TV+"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Ballinamallard United vs Bangor",
+          "kick_utc": 1785523500,
+          "time": "01/08 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "NIFL TV"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
         {
           "league": "Tennis",
           "match": "",
@@ -84,233 +276,6 @@
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 4",
-          "kick_utc": 1785463200,
-          "time": "31/07 09:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 4",
-          "kick_utc": 1785470400,
-          "time": "31/07 11:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 4",
-          "kick_utc": 1785477600,
-          "time": "31/07 01:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1785466800,
-          "time": "31/07 10:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1785524400,
-          "time": "01/08 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1785531600,
-          "time": "01/08 04:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1785538800,
-          "time": "01/08 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1785547800,
-          "time": "01/08 08:30 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 5",
-          "kick_utc": 1785466800,
-          "time": "31/07 10:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 5",
-          "kick_utc": 1785524400,
-          "time": "01/08 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 5",
-          "kick_utc": 1785531600,
-          "time": "01/08 04:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 5",
-          "kick_utc": 1785538800,
-          "time": "01/08 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 5",
-          "kick_utc": 1785546000,
-          "time": "01/08 08:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 5",
-          "kick_utc": 1785553200,
-          "time": "01/08 10:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Los Cabos Ziua 5",
-          "kick_utc": 1785475800,
-          "time": "31/07 12:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -444,6 +409,143 @@
               "channels": [
                 "TSN 2",
                 "TSN 2 Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 5",
+          "kick_utc": 1785524400,
+          "time": "01/08 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 5",
+          "kick_utc": 1785531600,
+          "time": "01/08 04:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 5",
+          "kick_utc": 1785538800,
+          "time": "01/08 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 5",
+          "kick_utc": 1785546000,
+          "time": "01/08 08:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 5",
+          "kick_utc": 1785553200,
+          "time": "01/08 10:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1785524400,
+          "time": "01/08 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1785531600,
+          "time": "01/08 04:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1785538800,
+          "time": "01/08 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1785547800,
+          "time": "01/08 08:30 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Romania"
               ]
             }
           ],
@@ -602,48 +704,65 @@
         },
         {
           "league": "Tennis",
-          "match": "Mifel Tennis Open by Telcel Oppo -QF (1) - C. Wong vs J. Brooksby",
-          "kick_utc": 1785463200,
-          "time": "31/07 09:00 AM",
+          "match": "Los Cabos Ziua 5",
+          "kick_utc": 1785562200,
+          "time": "01/08 12:30 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports Prime"
+                "Digi Sport 2 Romania"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
-          "match": ": Mifel Tennis Open by Telcel Oppo - Los Cabos",
-          "kick_utc": 1785474000,
-          "time": "31/07 12:00 PM",
+          "match": "Los Cabos Ziua 5",
+          "kick_utc": 1785567600,
+          "time": "01/08 02:00 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Ziggo Sport 4"
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
-          "match": ": Mifel Tennis Open by Telcel Oppo - Los Cabos",
-          "kick_utc": 1785551400,
-          "time": "01/08 09:30 AM",
+          "match": "Los Cabos Ziua 5",
+          "kick_utc": 1785571200,
+          "time": "01/08 03:00 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Ziggo Sport 4"
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Los Cabos Finala",
+          "kick_utc": 1785564000,
+          "time": "01/08 01:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -746,6 +865,36 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Mifel Tennis Open by Telcel Oppo - Los Cabos",
+          "kick_utc": 1785551400,
+          "time": "01/08 09:30 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Mifel Tennis Open by Telcel Oppo - Los Cabos",
+          "kick_utc": 1785560400,
+          "time": "01/08 12:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
               ]
             }
           ],
