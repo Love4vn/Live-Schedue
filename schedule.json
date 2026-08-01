@@ -1,98 +1,64 @@
 {
-  "updated": "2026-08-01 05:11 VN",
+  "updated": "2026-08-01 10:41 VN",
   "days": {
-    "20260731": {
-      "date": "Friday, 31/07",
+    "20260801": {
+      "date": "Saturday, 01/08",
       "games": [
         {
           "league": "Tennis",
-          "match": "Rafael Jodar vs Lorenzo Musetti",
-          "kick_utc": 1785535200,
-          "time": "01/08 05:00 AM",
+          "match": "Tournoi WTA de Memphis",
+          "kick_utc": 1785549600,
+          "time": "01/08 09:00 AM",
           "tv_channels": [
             {
-              "country": "Ausport",
+              "country": "Hubsport",
               "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
+                "beIN Sports Max 4 France"
               ]
             }
           ],
-          "source": "ausport"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
-          "match": "Chak Lam Coleman Wong vs Arthur Gea",
+          "match": "Tournoi WTA de Memphis",
+          "kick_utc": 1785614400,
+          "time": "02/08 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "beIN Sports 2 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi WTA de Memphis",
+          "kick_utc": 1785625200,
+          "time": "02/08 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "beIN Sports 2 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - 2026 - Los Cabos 2026 - Meia-Final",
           "kick_utc": 1785551400,
           "time": "01/08 09:30 AM",
           "tv_channels": [
             {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 2"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1785607200,
-          "time": "02/08 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1",
-                "Stan Sport"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 5",
-          "kick_utc": 1785531600,
-          "time": "01/08 04:00 AM",
-          "tv_channels": [
-            {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 5",
-          "kick_utc": 1785538800,
-          "time": "01/08 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 5",
-          "kick_utc": 1785546000,
-          "time": "01/08 08:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
+                "Sport Tv2 Hd Portugal"
               ]
             }
           ],
@@ -108,96 +74,6 @@
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1785531600,
-          "time": "01/08 04:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1785538800,
-          "time": "01/08 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1785547800,
-          "time": "01/08 08:30 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Washington Semifinale",
-          "kick_utc": 1785531600,
-          "time": "01/08 04:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Washington Semifinale",
-          "kick_utc": 1785538800,
-          "time": "01/08 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Washington Semifinale",
-          "kick_utc": 1785547800,
-          "time": "01/08 08:30 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania"
               ]
             }
           ],
@@ -235,14 +111,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis: WTA Memphis Semifinala",
-          "kick_utc": 1785531600,
-          "time": "01/08 04:00 AM",
+          "match": "Washington Semifinale",
+          "kick_utc": 1785625200,
+          "time": "02/08 06:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 4 Hd Romania"
+                "Digi Sport 2 Romania"
               ]
             }
           ],
@@ -250,14 +126,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis: WTA Memphis Semifinala",
-          "kick_utc": 1785538800,
-          "time": "01/08 06:00 AM",
+          "match": "Washington Semifinale",
+          "kick_utc": 1785634200,
+          "time": "02/08 08:30 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 4 Hd Romania"
+                "Digi Sport 2 Romania"
               ]
             }
           ],
@@ -265,120 +141,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis: WTA Memphis Semifinala",
-          "kick_utc": 1785618000,
-          "time": "02/08 04:00 AM",
+          "match": "Washington Semifinale",
+          "kick_utc": 1785641400,
+          "time": "02/08 10:30 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA de Memphis",
-          "kick_utc": 1785535200,
-          "time": "01/08 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 4 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA de Memphis",
-          "kick_utc": 1785549600,
-          "time": "01/08 09:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 4 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA de Memphis",
-          "kick_utc": 1785614400,
-          "time": "02/08 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports 2 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi ATP de Washington",
-          "kick_utc": 1785535200,
-          "time": "01/08 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 2 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Mubadala Citi DC Open 2026",
-          "kick_utc": 1785535200,
-          "time": "01/08 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Rds2",
-                "Rds2 Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 500 - Washington 2026",
-          "kick_utc": 1785542400,
-          "time": "01/08 07:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - 2026 - Los Cabos 2026 - Meia-Final",
-          "kick_utc": 1785551400,
-          "time": "01/08 09:30 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
+                "Digi Sport 2 Romania"
               ]
             }
           ],
@@ -524,6 +294,21 @@
         },
         {
           "league": "Tennis",
+          "match": "Tenis Ziua 1",
+          "kick_utc": 1785636000,
+          "time": "02/08 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Tenis: WTA Memphis Finala",
           "kick_utc": 1785616200,
           "time": "02/08 03:30 AM",
@@ -532,6 +317,36 @@
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 4 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: WTA Memphis Semifinala",
+          "kick_utc": 1785618000,
+          "time": "02/08 04:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: WTA Memphis Semifinala",
+          "kick_utc": 1785625200,
+          "time": "02/08 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Romania"
               ]
             }
           ],
@@ -554,49 +369,157 @@
         },
         {
           "league": "Tennis",
-          "match": "Mubadala DC Open vs Washington",
-          "kick_utc": 1785530700,
-          "time": "01/08 03:45 AM",
+          "match": "Washington Finala",
+          "kick_utc": 1785628800,
+          "time": "02/08 07:00 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Ziggo Sport 1",
-                "Ziggo Sport Kanaal 14"
+                "Digi Sport 2 Hd Romania"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
-          "match": "Mubadala DC Open vs Washington",
-          "kick_utc": 1785535500,
-          "time": "01/08 05:05 AM",
+          "match": "ATP World Tour 500 - Washington 2026 - Meia-Final",
+          "kick_utc": 1785623400,
+          "time": "02/08 05:30 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Ziggo Sport 4"
+                "Sport Tv3 Hd Portugal"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
-          "match": "Mubadala DC Open -QF(4)",
-          "kick_utc": 1785537000,
-          "time": "01/08 05:30 AM",
+          "match": "Tenis",
+          "kick_utc": 1785623400,
+          "time": "02/08 05:30 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 4"
+                "Digi Sport 4 Hd Romania"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1785632400,
+          "time": "02/08 08:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1785639600,
+          "time": "02/08 10:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Mubadala Citi DC Open 2026",
+          "kick_utc": 1785623400,
+          "time": "02/08 05:30 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Rds2",
+                "Rds2 Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "2026 Mubadala Citi DC Open Tennis",
+          "kick_utc": 1785623400,
+          "time": "02/08 05:30 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "TSN 2",
+                "TSN 2 Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi ATP de Washington",
+          "kick_utc": 1785630600,
+          "time": "02/08 07:30 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 2 France",
+                "Voosport World1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi ATP de Washington",
+          "kick_utc": 1785637800,
+          "time": "02/08 09:30 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 2 France",
+                "Voosport World1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - 2026 - Los Cabos 2026 - Final",
+          "kick_utc": 1785639600,
+          "time": "02/08 10:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -645,6 +568,21 @@
         },
         {
           "league": "Tennis",
+          "match": ": Mifel Tennis Open by Telcel Oppo - Los Cabos",
+          "kick_utc": 1785639600,
+          "time": "02/08 10:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
           "match": "Mubadala DC Open -SF(1-2)",
           "kick_utc": 1785607200,
           "time": "02/08 01:00 AM",
@@ -653,6 +591,51 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Mubadala Citi DC Open -SF (1-2)",
+          "kick_utc": 1785623400,
+          "time": "02/08 05:30 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Mubadala DC Open vs Washington",
+          "kick_utc": 1785623400,
+          "time": "02/08 05:30 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Mubadala DC Open vs Washington",
+          "kick_utc": 1785630600,
+          "time": "02/08 07:30 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
               ]
             }
           ],
