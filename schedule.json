@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-01 15:30 VN",
+  "updated": "2026-08-01 17:45 VN",
   "days": {
     "20260801": {
       "date": "Saturday, 01/08",
@@ -197,6 +197,21 @@
         },
         {
           "league": "International Friendly",
+          "match": "Energie Cottbus vs Werder Bremen",
+          "kick_utc": 1785589200,
+          "time": "01/08 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DFB.TV Germany"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
           "match": "Manchester United vs Atlético Madrid",
           "kick_utc": 1785589200,
           "time": "01/08 08:00 PM",
@@ -360,13 +375,16 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Arena Sport 2 Srbija HD",
+                "Arena Sport 3 BiH HD",
                 "beIN Sports 2 HD",
                 "beIN Sports Australia 2 HD",
                 "Everton On TV",
                 "JOJ Šport 2 SVK HD",
                 "OneFootball",
                 "Sport Bladet Play",
-                "Sport TV1 Slovenija"
+                "Sport TV1 Slovenija",
+                "Tabii Spor 6",
+                "VG+ Sport Norge"
               ]
             }
           ],
@@ -397,6 +415,22 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Ligue 1+"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Kasimpasa vs Hull City",
+          "kick_utc": 1785600000,
+          "time": "01/08 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "EXXEN Digital Türkiye",
+                "TV8.5 Türkiye HD"
               ]
             }
           ],
@@ -551,6 +585,29 @@
         },
         {
           "league": "International Friendly",
+          "match": "Lens vs Villarreal",
+          "kick_utc": 1785607200,
+          "time": "02/08 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena M3 Premium MKD HD",
+                "Arena Premium 3 BiH HD",
+                "Arena Premium 3 Srbija HD",
+                "Como TV",
+                "Okko Futbol HD",
+                "RTVE Play",
+                "Sport TV3 Portugal HD",
+                "Teledeporte España",
+                "VG+ Sport Norge"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
           "match": "Girona vs Arsenal",
           "kick_utc": 1785607200,
           "time": "02/08 01:00 AM",
@@ -578,26 +635,6 @@
                 "TyC Sports Argentina",
                 "VG+ Sport Norge",
                 "Z Sports 2 Angola"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Lens vs Villarreal",
-          "kick_utc": 1785607200,
-          "time": "02/08 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena M3 Premium MKD HD",
-                "Arena Premium 3 BiH HD",
-                "Arena Premium 3 Srbija HD",
-                "Como TV",
-                "Okko Futbol HD",
-                "Sport TV3 Portugal HD"
               ]
             }
           ],
@@ -633,38 +670,6 @@
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Los Cabos Ziua 5",
-          "kick_utc": 1785567600,
-          "time": "01/08 02:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Los Cabos Ziua 5",
-          "kick_utc": 1785571200,
-          "time": "01/08 03:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
