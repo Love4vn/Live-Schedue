@@ -1,9 +1,24 @@
 {
-  "updated": "2026-08-02 15:33 VN",
+  "updated": "2026-08-02 17:45 VN",
   "days": {
     "20260802": {
       "date": "Sunday, 02/08",
       "games": [
+        {
+          "league": "International Friendly",
+          "match": "Luton Town vs Go Ahead Eagles",
+          "kick_utc": 1785672000,
+          "time": "02/08 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Luton LTFC+"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
         {
           "league": "International Friendly",
           "match": "Union Berlin vs Cagliari",
@@ -312,22 +327,6 @@
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Los Cabos Finala",
-          "kick_utc": 1785654000,
-          "time": "02/08 02:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -1031,8 +1030,8 @@
         {
           "league": "Tennis",
           "match": "Mubadala DC Open -Final",
-          "kick_utc": 1785695400,
-          "time": "03/08 01:30 AM",
+          "kick_utc": 1785686400,
+          "time": "02/08 11:00 PM",
           "tv_channels": [
             {
               "country": "NowTV",
@@ -1046,8 +1045,8 @@
         {
           "league": "Tennis",
           "match": "Mubadala Citi DC Open -Final",
-          "kick_utc": 1785704400,
-          "time": "03/08 04:00 AM",
+          "kick_utc": 1785695400,
+          "time": "03/08 01:30 AM",
           "tv_channels": [
             {
               "country": "NowTV",
