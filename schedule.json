@@ -1,109 +1,9 @@
 {
-  "updated": "2026-08-02 20:43 VN",
+  "updated": "2026-08-02 23:06 VN",
   "days": {
     "20260802": {
       "date": "Sunday, 02/08",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Luton Town vs Go Ahead Eagles",
-          "kick_utc": 1785672000,
-          "time": "02/08 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Luton LTFC+"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Union Berlin vs Cagliari",
-          "kick_utc": 1785672000,
-          "time": "02/08 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena Premium 5 BiH HD",
-                "Arena Premium 5 Srbija HD",
-                "beIN Sports 3 HD",
-                "beIN Sports Australia 2 HD",
-                "DAZN Italia",
-                "JOJ Šport 2 SVK HD",
-                "Premier Sports 1 Ireland HD",
-                "Premier Sports 1 UK HD",
-                "Premier Sports GB Player HD",
-                "Sky Sport Bundesliga HD",
-                "Sky Sport News Deutsch HD",
-                "Sky Sport Top Event HD",
-                "Sport Bladet Play",
-                "Sport TV2 Slovenija",
-                "Sport TV4 Portugal HD",
-                "TRT Spor Türkiye HD",
-                "VG+ Sport Norge",
-                "YouTube: Sky Sport Deutsch"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "AEK Athens vs Sint-Truiden",
-          "kick_utc": 1785672000,
-          "time": "02/08 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Cosmote Sport 1 HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Feyenoord vs Atalanta",
-          "kick_utc": 1785673800,
-          "time": "02/08 07:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena M3 Premium MKD HD",
-                "Arena Premium 3 BiH HD",
-                "Arena Premium 3 Srbija HD",
-                "DAZN Italia",
-                "Okko Futbol HD",
-                "ON Sport Plus HD",
-                "Sport TV1 Portugal HD",
-                "TV Tipsport Czechia"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Burnley vs Torino",
-          "kick_utc": 1785679200,
-          "time": "02/08 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Clarets+ TV",
-                "Sky Sport Calcio HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "International Friendly",
           "match": "Trabzonspor vs Udinese",
@@ -283,22 +183,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis ITF: Pitesti Finala",
-          "kick_utc": 1785672000,
-          "time": "02/08 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
           "match": "World Surf League 2026 - Lexus US Open Of Surfing Challenger Series",
           "kick_utc": 1785680940,
           "time": "02/08 09:29 PM",
@@ -344,6 +228,21 @@
         },
         {
           "league": "Tennis",
+          "match": "ATP Masters 1000 - Montréal 2026",
+          "kick_utc": 1785769200,
+          "time": "03/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "2026 ATP National Bank Open Tennis",
           "kick_utc": 1785682800,
           "time": "02/08 10:00 PM",
@@ -363,6 +262,28 @@
           "match": "2026 ATP National Bank Open Tennis",
           "kick_utc": 1785711600,
           "time": "03/08 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sportsnet (Pacific)",
+                "Sportsnet (Pacific) Hd",
+                "Sportsnet 4K",
+                "Sportsnet East",
+                "Sportsnet East Hd",
+                "Sportsnet Mst",
+                "Sportsnet Ontario Hd",
+                "Sportsnet West Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "2026 ATP National Bank Open Tennis",
+          "kick_utc": 1785769200,
+          "time": "03/08 10:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -460,6 +381,21 @@
           "match": "l'Omnium Banque Nationale 2026",
           "kick_utc": 1785718800,
           "time": "03/08 08:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Tva Sports Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "l'Omnium Banque Nationale 2026",
+          "kick_utc": 1785769200,
+          "time": "03/08 10:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -982,6 +918,23 @@
         },
         {
           "league": "Tennis",
+          "match": ": National Bank Open - Montreal",
+          "kick_utc": 1785769200,
+          "time": "03/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
           "match": "Mubadala DC Open -Final",
           "kick_utc": 1785686400,
           "time": "02/08 11:00 PM",
@@ -1036,6 +989,21 @@
               "channels": [
                 "Ziggo Sport 1",
                 "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "National Bank Open presented by Rogers -Round 1",
+          "kick_utc": 1785769200,
+          "time": "03/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
               ]
             }
           ],
