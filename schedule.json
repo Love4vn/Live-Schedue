@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-02 17:45 VN",
+  "updated": "2026-08-02 20:43 VN",
   "days": {
     "20260802": {
       "date": "Sunday, 02/08",
@@ -199,6 +199,7 @@
                 "beIN Connect Türkiye",
                 "DAZN 1 Bar Deutsch HD",
                 "DAZN Deutsch",
+                "DAZN Japan",
                 "LFC TV HD",
                 "LUTV",
                 "Match 4 Hungary HD",
@@ -250,23 +251,7 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1785682800,
-          "time": "02/08 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
+          "match": "Kristina Liutova vs Darja Vidmanova",
           "kick_utc": 1785691800,
           "time": "03/08 12:30 AM",
           "tv_channels": [
@@ -282,7 +267,7 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Taylor Harry Fritz vs Rafael Jodar",
           "kick_utc": 1785695400,
           "time": "03/08 01:30 AM",
           "tv_channels": [
@@ -291,38 +276,6 @@
               "channels": [
                 "beIN Sports Connect",
                 "beIN SPORTS 3"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1785704400,
-          "time": "03/08 04:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 3"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1785708000,
-          "time": "03/08 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
               ]
             }
           ],
