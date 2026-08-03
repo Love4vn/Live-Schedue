@@ -1,9 +1,86 @@
 {
-  "updated": "2026-08-03 16:59 VN",
+  "updated": "2026-08-03 21:56 VN",
   "days": {
     "20260803": {
       "date": "Monday, 03/08",
       "games": [
+        {
+          "league": "Tennis",
+          "match": "Jessica Pegula vs Alexandra Eala",
+          "kick_utc": 1785772800,
+          "time": "03/08 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Talia Gibson vs Elisabaetta Cocciaretto",
+          "kick_utc": 1785774600,
+          "time": "03/08 11:30 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN SPORTS 2"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Katie Boulter vs Kayla Cross",
+          "kick_utc": 1785774600,
+          "time": "03/08 11:30 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Taylor Harry Fritz vs Rafael Jodar",
+          "kick_utc": 1785776400,
+          "time": "04/08 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Rebecca Marino vs Zeynep Sonmez",
+          "kick_utc": 1785798000,
+          "time": "04/08 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 2"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
         {
           "league": "Tennis",
           "match": "ATP Masters 1000 - Montréal 2026",
@@ -603,33 +680,18 @@
         },
         {
           "league": "Tennis",
-          "match": "National Bank Open presented by Rogers -Round 1",
-          "kick_utc": 1785769200,
-          "time": "03/08 10:00 PM",
+          "match": "WTT Champions de Yokohama",
+          "kick_utc": 1785839400,
+          "time": "04/08 05:30 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 6"
+                "L'Equipe France"
               ]
             }
           ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "National Bank Open presented by Rogers -Round 1",
-          "kick_utc": 1785808800,
-          "time": "04/08 09:00 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports 6"
-              ]
-            }
-          ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -642,6 +704,7 @@
               "channels": [
                 "Ziggo Sport 1",
                 "Ziggo Sport 4",
+                "Ziggo Sport 5",
                 "Ziggo Sport Kanaal 14"
               ]
             }
@@ -651,15 +714,14 @@
         {
           "league": "Tennis",
           "match": ": National Bank Open - Montreal",
-          "kick_utc": 1785783900,
-          "time": "04/08 02:05 AM",
+          "kick_utc": 1785785400,
+          "time": "04/08 02:30 AM",
           "tv_channels": [
             {
               "country": "NowTV",
               "channels": [
-                "Ziggo Sport 1",
                 "Ziggo Sport 4",
-                "Ziggo Sport Kanaal 14"
+                "Ziggo Sport 5"
               ]
             }
           ],
@@ -700,14 +762,76 @@
         },
         {
           "league": "Tennis",
-          "match": "National Bank Open presented by Rogers E1",
-          "kick_utc": 1785774600,
-          "time": "03/08 11:30 PM",
+          "match": "Mubadala DC Open -Final",
+          "kick_utc": 1785772800,
+          "time": "03/08 11:00 PM",
           "tv_channels": [
             {
               "country": "NowTV",
               "channels": [
                 "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "National Bank Open presented by Rogers E1",
+          "kick_utc": 1785776400,
+          "time": "04/08 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Mubadala Citi DC Open -Final",
+          "kick_utc": 1785776400,
+          "time": "04/08 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Mubadala Citi DC Open vs Washington",
+          "kick_utc": 1785776400,
+          "time": "04/08 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "National Bank Open presented by Rogers -Round 1",
+          "kick_utc": 1785785400,
+          "time": "04/08 02:30 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
               ]
             }
           ],
