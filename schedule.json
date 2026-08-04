@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-04 15:49 VN",
+  "updated": "2026-08-04 18:29 VN",
   "days": {
     "20260804": {
       "date": "Tuesday, 04/08",
@@ -105,6 +105,22 @@
         },
         {
           "league": "International Friendly",
+          "match": "Huesca vs UD Logroñes",
+          "kick_utc": 1785862800,
+          "time": "05/08 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Aragon Deporte Stream",
+                "Aragón TV HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
           "match": "Almería vs Al Nassr",
           "kick_utc": 1785862800,
           "time": "05/08 12:00 AM",
@@ -145,12 +161,13 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Arena Premium 3 BiH HD",
-                "Arena Sport 1x2 Srbija",
+                "Arena Premium 3 Srbija HD",
                 "Canal+ Foot HD",
                 "Canal+ France HD",
                 "Canal+ Live 1 France HD",
                 "JOJ Šport SVK HD",
-                "Prima Sport CZ HD"
+                "Prima Sport CZ HD",
+                "Sport TV1 Portugal HD"
               ]
             }
           ],
@@ -172,6 +189,7 @@
                 "ESPN+ USA",
                 "KS TV | Futbol 1",
                 "Okko Prime Sport HD",
+                "Sport TV+ Portugal",
                 "TV Tipsport Czechia",
                 "Ziggo Sport 1 HD"
               ]
@@ -189,9 +207,9 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Arena M3 Premium MKD HD",
-                "Arena Premium 3 Srbija HD",
                 "Arena Premium 5 BiH HD",
                 "Arena Sport 1 Slovakia HD",
+                "Arena Sport 2 Srbija HD",
                 "RTL Club Belgique",
                 "VG+ Sport Norge",
                 "VTM 2 Belgium HD"
@@ -247,12 +265,11 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Arena M2 Premium MKD HD",
                 "Arena Premium 3 BiH HD",
-                "Arena Premium 4 Srbija HD",
+                "Arena Sport 1 Srbija HD",
                 "Ipswich Town Player",
                 "Okko Futbol HD",
-                "Sport TV1 Portugal HD",
+                "Sport TV6 Portugal HD",
                 "VG+ Sport Norge"
               ]
             }
@@ -285,6 +302,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "LOI TV PPV",
                 "Play Sports",
                 "SuperSport 2 Albania HD"
               ]
@@ -329,6 +347,21 @@
           "match": "WTT Champions de Yokohama",
           "kick_utc": 1785839400,
           "time": "04/08 05:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "WTT Champions de Yokohama",
+          "kick_utc": 1785925800,
+          "time": "05/08 05:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -946,8 +979,8 @@
         {
           "league": "Tennis",
           "match": ": National Bank Open - Montreal",
-          "kick_utc": 1785884700,
-          "time": "05/08 06:05 AM",
+          "kick_utc": 1785884400,
+          "time": "05/08 06:00 AM",
           "tv_channels": [
             {
               "country": "NowTV",
