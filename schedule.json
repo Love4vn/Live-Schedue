@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-04 21:32 VN",
+  "updated": "2026-08-04 23:57 VN",
   "days": {
     "20260804": {
       "date": "Tuesday, 04/08",
@@ -283,6 +283,25 @@
           "source": "livesportsontv"
         },
         {
+          "league": "UEFA Champions League",
+          "match": "AGF Aarhus vs Sabah",
+          "kick_utc": 1785947400,
+          "time": "05/08 11:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Ictimai TV HD",
+                "OneFootball",
+                "TV3+ Dansk HD",
+                "Veikkaus TV",
+                "ViaPlay Danmark HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
           "league": "Tennis",
           "match": "ATP Masters 1000 - Montréal 2026",
           "kick_utc": 1785855600,
@@ -302,6 +321,21 @@
           "match": "ATP Masters 1000 - Montréal 2026",
           "kick_utc": 1785880800,
           "time": "05/08 05:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP Masters 1000 - Montréal 2026",
+          "kick_utc": 1785942000,
+          "time": "05/08 10:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -339,6 +373,22 @@
           "match": "2026 ATP National Bank Open Tennis",
           "kick_utc": 1785884400,
           "time": "05/08 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sportsnet One",
+                "Sportsnet One Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "2026 ATP National Bank Open Tennis",
+          "kick_utc": 1785942000,
+          "time": "05/08 10:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -442,6 +492,36 @@
         },
         {
           "league": "Tennis",
+          "match": "l'Omnium Banque Nationale 2026",
+          "kick_utc": 1785942000,
+          "time": "05/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Tva Sports Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "l'Omnium Banque Nationale 2026",
+          "kick_utc": 1785947400,
+          "time": "05/08 11:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Tva Sports Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "2026 WTA National Bank Open Tennis",
           "kick_utc": 1785861000,
           "time": "04/08 11:30 PM",
@@ -461,6 +541,21 @@
           "match": "2026 WTA National Bank Open Tennis",
           "kick_utc": 1785884400,
           "time": "05/08 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sportsnet 360 Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "2026 WTA National Bank Open Tennis",
+          "kick_utc": 1785947400,
+          "time": "05/08 11:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -920,6 +1015,23 @@
         },
         {
           "league": "Tennis",
+          "match": ": National Bank Open - Montreal",
+          "kick_utc": 1785942000,
+          "time": "05/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
           "match": "National Bank Open presented by Rogers E3",
           "kick_utc": 1785861000,
           "time": "04/08 11:30 PM",
@@ -938,6 +1050,36 @@
           "match": "National Bank Open presented by Rogers E4",
           "kick_utc": 1785884400,
           "time": "05/08 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "National Bank Open presented by Rogers -Round 2",
+          "kick_utc": 1785942000,
+          "time": "05/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "National Bank Open presented by Rogers E5",
+          "kick_utc": 1785947400,
+          "time": "05/08 11:30 PM",
           "tv_channels": [
             {
               "country": "NowTV",
