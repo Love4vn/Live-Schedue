@@ -1,28 +1,9 @@
 {
-  "updated": "2026-08-05 15:46 VN",
+  "updated": "2026-08-05 18:25 VN",
   "days": {
     "20260805": {
       "date": "Wednesday, 05/08",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Villarreal vs Levante",
-          "kick_utc": 1785916800,
-          "time": "05/08 03:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "beIN Sports 1 HD",
-                "beIN Sports Australia 3 HD",
-                "Okko Prime Sport HD",
-                "Sport TV1 Portugal HD",
-                "Sport TV1 Slovenija"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "International Friendly",
           "match": "K-League All Stars vs Manchester City",
@@ -155,6 +136,7 @@
               "channels": [
                 "Ictimai TV HD",
                 "OneFootball",
+                "Polsat Sport 3 HD",
                 "TV3+ Dansk HD",
                 "Veikkaus TV",
                 "ViaPlay Danmark HD"
@@ -211,6 +193,7 @@
                 "Arena M1 Premium MKD HD",
                 "Arena Premium 1 BiH HD",
                 "Arena Premium 1 Srbija HD",
+                "Arena Sport 1 Slovakia HD",
                 "ORF 1 Austria HD",
                 "TV 100 HD"
               ]
@@ -387,6 +370,21 @@
         },
         {
           "league": "Tennis",
+          "match": "WTT Champions de Yokohama",
+          "kick_utc": 1786012200,
+          "time": "06/08 05:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "ATP Masters 1000 - Montréal 2026",
           "kick_utc": 1785942000,
           "time": "05/08 10:00 PM",
@@ -410,6 +408,38 @@
               "country": "Hubsport",
               "channels": [
                 "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "2026 WTA National Bank Open Tennis",
+          "kick_utc": 1785942000,
+          "time": "05/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sportsnet 360 Hd",
+                "Sportsnet One Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "2026 WTA National Bank Open Tennis",
+          "kick_utc": 1785970800,
+          "time": "06/08 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sportsnet One",
+                "Sportsnet One Hd"
               ]
             }
           ],
@@ -502,38 +532,6 @@
               "channels": [
                 "Tva Sports 2 Hd",
                 "Tva Sports Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "2026 WTA National Bank Open Tennis",
-          "kick_utc": 1785942000,
-          "time": "05/08 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sportsnet 360 Hd",
-                "Sportsnet One Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "2026 WTA National Bank Open Tennis",
-          "kick_utc": 1785970800,
-          "time": "06/08 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sportsnet One",
-                "Sportsnet One Hd"
               ]
             }
           ],
