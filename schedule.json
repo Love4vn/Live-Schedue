@@ -1,100 +1,9 @@
 {
-  "updated": "2026-08-05 18:25 VN",
+  "updated": "2026-08-05 21:25 VN",
   "days": {
     "20260805": {
       "date": "Wednesday, 05/08",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "K-League All Stars vs Manchester City",
-          "kick_utc": 1785927600,
-          "time": "05/08 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Abu Dhabi Sports 1 HD",
-                "CBS Sports Network USA",
-                "City+",
-                "Sport TV1 Portugal HD",
-                "SuperSport ESPN HD",
-                "VG+ Sport Norge"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "AC Milan vs Inter Milan",
-          "kick_utc": 1785927600,
-          "time": "05/08 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena M1 Premium MKD HD",
-                "Arena Premium 1 Srbija HD",
-                "Arena Premium 2 BiH HD",
-                "Astro Football HD",
-                "Astro Grandstand HD",
-                "DAZN 1 Italia HD",
-                "DAZN España",
-                "DAZN Italia",
-                "DAZN Japan",
-                "DAZN Portugal",
-                "Inter TV HD",
-                "MAX Sport 3 Bulgaria HD",
-                "Nova Sports Prime Cyprus HD",
-                "Nova Sports Prime Hellas HD",
-                "OneFootball",
-                "Polsat Sport 1 HD",
-                "Sharjah Sports HD",
-                "Sky Sport Uno Italia HD",
-                "SportKlub 1 Hrvatska HD",
-                "SportKlub 1 Slovenija HD",
-                "Z Sports 2 Angola",
-                "Ziggo Sport 1 HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Chelsea vs Juventus",
-          "kick_utc": 1785929400,
-          "time": "05/08 06:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena M2 Premium MKD HD",
-                "Arena Premium 1 BiH HD",
-                "Arena Premium 2 Srbija HD",
-                "CBS Sports Golazo N/W",
-                "CFC+",
-                "DAZN Deutsch",
-                "DAZN Italia",
-                "DAZN Switzerland",
-                "IRIB TV3 HD",
-                "Match 4 Hungary HD",
-                "Net4+ Sport",
-                "Okko Prime Sport HD",
-                "Paramount+ USA",
-                "Sky Sport Calcio HD",
-                "Sport Bladet Play",
-                "Sport TV2 Portugal HD",
-                "Sporty TV Africa",
-                "ST World Football HD",
-                "TRT Spor Türkiye HD",
-                "TV Tipsport Czechia",
-                "VG+ Sport Norge"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "International Friendly",
           "match": "Marseille vs Atlético Madrid",
@@ -195,6 +104,7 @@
                 "Arena Premium 1 Srbija HD",
                 "Arena Sport 1 Slovakia HD",
                 "ORF 1 Austria HD",
+                "Sport TV Azerbaijan",
                 "TV 100 HD"
               ]
             }
@@ -230,7 +140,8 @@
                 "M4 Sport Hungary HD",
                 "Play Sports",
                 "Polsat Sport 1 HD",
-                "Polsat Sport Premium 1 HD"
+                "Polsat Sport Premium 1 HD",
+                "Super Polsat HD"
               ]
             }
           ],
@@ -268,6 +179,7 @@
                 "Arena Premium 4 Srbija HD",
                 "Arsenal LIVE",
                 "CBS Sports Network USA",
+                "DAZN 1 Bar Deutsch HD",
                 "DAZN Deutsch",
                 "DAZN Switzerland",
                 "FanCode India",
@@ -275,6 +187,7 @@
                 "Net4+ Sport",
                 "Okko Futbol HD",
                 "OneFootball",
+                "Persiana Sports 2 HD",
                 "Premier Sports 1 Ireland HD",
                 "Premier Sports 1 UK HD",
                 "Premier Sports GB Player HD",
@@ -309,6 +222,7 @@
                 "Net4+ Sport",
                 "Okko Prime Sport HD",
                 "OneFootball",
+                "Persiana Sport HD",
                 "Sky Sport MIX Deutsch HD",
                 "Sky Sport News Deutsch HD",
                 "Sky Sport Top Event HD",
@@ -323,14 +237,28 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Ann Li vs Kayla Cross",
+          "kick_utc": 1785942000,
+          "time": "05/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Daria Kasatkina vs Elena Rybakina",
           "kick_utc": 1785947400,
           "time": "05/08 11:30 PM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
-                "beIN Sports Connect",
                 "beIN SPORTS 2"
               ]
             }
@@ -339,9 +267,24 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1785970800,
-          "time": "06/08 06:00 AM",
+          "match": "Jessica Pegula vs Magdalena Frech",
+          "kick_utc": 1785947400,
+          "time": "05/08 11:30 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Linda Noskova vs Caty McNally",
+          "kick_utc": 1785969000,
+          "time": "06/08 05:30 AM",
           "tv_channels": [
             {
               "country": "Ausport",
@@ -352,36 +295,6 @@
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "WTT Champions de Yokohama",
-          "kick_utc": 1785925800,
-          "time": "05/08 05:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "L'Equipe France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "WTT Champions de Yokohama",
-          "kick_utc": 1786012200,
-          "time": "06/08 05:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "L'Equipe France"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -990,6 +903,21 @@
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 2 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "WTT Champions de Yokohama",
+          "kick_utc": 1786012200,
+          "time": "06/08 05:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
               ]
             }
           ],
