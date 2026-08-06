@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-06 15:48 VN",
+  "updated": "2026-08-06 18:28 VN",
   "days": {
     "20260806": {
       "date": "Thursday, 06/08",
@@ -164,6 +164,7 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Digi Sport 1 Romania HD",
+                "Direkte Sport",
                 "Prima Sport RO 2 HD"
               ]
             }
@@ -184,6 +185,7 @@
                 "Play Sports",
                 "S Sport+ Streaming",
                 "Sport TV Azerbaijan",
+                "Sportdigital FUSSBALL HD",
                 "TV 100 HD"
               ]
             }
@@ -399,7 +401,8 @@
                 "Play Sports",
                 "RTL Club Belgique",
                 "RTL Play Belgium",
-                "Sport TV1 Portugal HD"
+                "Sport TV1 Portugal HD",
+                "VTM 2 Belgium HD"
               ]
             }
           ],
@@ -716,6 +719,21 @@
         },
         {
           "league": "Tennis",
+          "match": "WTT Champions de Yokohama",
+          "kick_utc": 1786098600,
+          "time": "07/08 05:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "ATP Masters 1000 - Montréal 2026",
           "kick_utc": 1786033800,
           "time": "06/08 11:30 PM",
@@ -739,6 +757,44 @@
               "country": "Hubsport",
               "channels": [
                 "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "2026 ATP National Bank Open Tennis",
+          "kick_utc": 1786033800,
+          "time": "06/08 11:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sportsnet One",
+                "Sportsnet One Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "2026 ATP National Bank Open Tennis",
+          "kick_utc": 1786057200,
+          "time": "07/08 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sportsnet (Pacific)",
+                "Sportsnet (Pacific) Hd",
+                "Sportsnet 4K",
+                "Sportsnet East",
+                "Sportsnet East Hd",
+                "Sportsnet Mst",
+                "Sportsnet Ontario Hd",
+                "Sportsnet West Hd"
               ]
             }
           ],
@@ -814,44 +870,6 @@
               "country": "Hubsport",
               "channels": [
                 "Tva Sports Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "2026 ATP National Bank Open Tennis",
-          "kick_utc": 1786033800,
-          "time": "06/08 11:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sportsnet One",
-                "Sportsnet One Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "2026 ATP National Bank Open Tennis",
-          "kick_utc": 1786057200,
-          "time": "07/08 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sportsnet (Pacific)",
-                "Sportsnet (Pacific) Hd",
-                "Sportsnet 4K",
-                "Sportsnet East",
-                "Sportsnet East Hd",
-                "Sportsnet Mst",
-                "Sportsnet Ontario Hd",
-                "Sportsnet West Hd"
               ]
             }
           ],
