@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-06 18:28 VN",
+  "updated": "2026-08-06 21:28 VN",
   "days": {
     "20260806": {
       "date": "Thursday, 06/08",
@@ -62,6 +62,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Persiana Sport HD",
                 "Play Sports",
                 "Polsat Sport 1 HD",
                 "Polsat Sport Premium 1 HD",
@@ -117,7 +118,8 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "OnePlay Sport 1 HD",
-                "Sporta Centrs TV"
+                "Sporta Centrs TV",
+                "TV4 Latvija"
               ]
             }
           ],
@@ -164,6 +166,7 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Digi Sport 1 Romania HD",
+                "Digi Sport 2 Romania HD",
                 "Direkte Sport",
                 "Prima Sport RO 2 HD"
               ]
@@ -442,6 +445,7 @@
                 "Arena Premium 4 Srbija HD",
                 "KS TV | Futbol 2",
                 "Okko Prime Sport HD",
+                "Persiana Sports 2 HD",
                 "Premier Sports 1 Ireland HD",
                 "Premier Sports 1 UK HD",
                 "Premier Sports GB Player HD",
@@ -544,6 +548,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Sport TV Belarus",
                 "Sport TV5 Portugal HD"
               ]
             }
@@ -611,6 +616,7 @@
               "channels": [
                 "Arena Premium 3 Srbija HD",
                 "Benfica TV HD",
+                "Persiana Sport HD",
                 "Play Sports",
                 "Premier Sports 2 Ireland HD",
                 "Premier Sports 2 UK HD",
@@ -630,7 +636,8 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Rtv San Marino DTT"
+                "Rtv San Marino DTT",
+                "Titani TV"
               ]
             }
           ],
@@ -672,15 +679,30 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Talia Gibson vs Ekaterina Alexandrova",
+          "kick_utc": 1786028400,
+          "time": "06/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Viktorija Golubic vs Iga Swiatek",
           "kick_utc": 1786033800,
           "time": "06/08 11:30 PM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 2"
+                "beIN SPORTS 2",
+                "beIN Sports Connect"
               ]
             }
           ],
@@ -688,49 +710,19 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Aryna Sabalenka vs Shuai Zhang",
           "kick_utc": 1786057200,
           "time": "07/08 06:00 AM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 2"
+                "beIN SPORTS 2",
+                "beIN Sports Connect"
               ]
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "WTT Champions de Yokohama",
-          "kick_utc": 1786012200,
-          "time": "06/08 05:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "L'Equipe France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "WTT Champions de Yokohama",
-          "kick_utc": 1786098600,
-          "time": "07/08 05:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "L'Equipe France"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -1237,6 +1229,21 @@
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 2 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "WTT Champions de Yokohama",
+          "kick_utc": 1786098600,
+          "time": "07/08 05:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
               ]
             }
           ],
