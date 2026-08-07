@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-07 14:27 VN",
+  "updated": "2026-08-07 17:05 VN",
   "days": {
     "20260807": {
       "date": "Friday, 07/08",
@@ -131,6 +131,37 @@
         },
         {
           "league": "Tennis",
+          "match": "2026 WTA National Bank Open Tennis",
+          "kick_utc": 1786120200,
+          "time": "07/08 11:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sportsnet One",
+                "Sportsnet One Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "2026 WTA National Bank Open Tennis",
+          "kick_utc": 1786143600,
+          "time": "08/08 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sportsnet 360 Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "l'Omnium Banque Nationale 2026",
           "kick_utc": 1786120200,
           "time": "07/08 11:30 PM",
@@ -204,37 +235,6 @@
               "channels": [
                 "Tva Sports 2 Hd",
                 "Tva Sports Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "2026 WTA National Bank Open Tennis",
-          "kick_utc": 1786120200,
-          "time": "07/08 11:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sportsnet One",
-                "Sportsnet One Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "2026 WTA National Bank Open Tennis",
-          "kick_utc": 1786143600,
-          "time": "08/08 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sportsnet 360 Hd"
               ]
             }
           ],
@@ -625,8 +625,8 @@
         {
           "league": "Tennis",
           "match": ": National Bank Open - Montreal",
-          "kick_utc": 1786143900,
-          "time": "08/08 06:05 AM",
+          "kick_utc": 1786143600,
+          "time": "08/08 06:00 AM",
           "tv_channels": [
             {
               "country": "NowTV",
