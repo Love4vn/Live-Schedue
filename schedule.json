@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-07 17:05 VN",
+  "updated": "2026-08-07 20:19 VN",
   "days": {
     "20260807": {
       "date": "Friday, 07/08",
@@ -55,7 +55,7 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Ann Li vs Elena Rybakina",
           "kick_utc": 1786120200,
           "time": "07/08 11:30 PM",
           "tv_channels": [
@@ -71,9 +71,9 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1786143600,
-          "time": "08/08 06:00 AM",
+          "match": "Taylor Townsend vs Belinda Bencic",
+          "kick_utc": 1786141800,
+          "time": "08/08 05:30 AM",
           "tv_channels": [
             {
               "country": "Ausport",
@@ -83,21 +83,6 @@
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "WTT Champions de Yokohama",
-          "kick_utc": 1786098600,
-          "time": "07/08 05:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "L'Equipe France"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -570,6 +555,21 @@
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 2 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "WTT Champions de Yokohama",
+          "kick_utc": 1786185000,
+          "time": "08/08 05:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
               ]
             }
           ],
