@@ -1,134 +1,9 @@
 {
-  "updated": "2026-08-08 20:02 VN",
+  "updated": "2026-08-08 22:36 VN",
   "days": {
     "20260808": {
       "date": "Saturday, 08/08",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Chelsea vs AC Milan",
-          "kick_utc": 1786190400,
-          "time": "08/08 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Aftonbladet Plus",
-                "Arena M1 Premium MKD HD",
-                "Arena Premium 1 Srbija HD",
-                "Arena Sport 1 BiH HD",
-                "CBS Sports Network USA",
-                "CFC+",
-                "DAZN Deutsch",
-                "DAZN Italia",
-                "DAZN Japan",
-                "DAZN Switzerland",
-                "Fox Deportes USA",
-                "L´Équipe Live Foot",
-                "Match 4 Hungary HD",
-                "Net4+ Sport",
-                "Okko Prime Sport HD",
-                "Persiana Sports 2 HD",
-                "Sky Sport Calcio HD",
-                "Sport TV2 Portugal HD",
-                "Sporty TV Africa",
-                "ST World Football HD",
-                "TRT Spor Türkiye HD",
-                "TV Tipsport Czechia",
-                "VG+ Sport Norge"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Eintracht Frankfurt vs Hull City",
-          "kick_utc": 1786194000,
-          "time": "08/08 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "TV8.5 Türkiye HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Hamburg vs Lille",
-          "kick_utc": 1786194000,
-          "time": "08/08 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Ligue 1+ 2"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Leeds United vs RB Leipzig",
-          "kick_utc": 1786194000,
-          "time": "08/08 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "LUTV",
-                "Red Bull TV"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Bayer Leverkusen vs Sevilla",
-          "kick_utc": 1786195800,
-          "time": "08/08 08:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Aftonbladet Plus",
-                "Arena Premium 4 Srbija HD",
-                "beIN Sports 1 HD",
-                "beIN Sports Australia 1 HD",
-                "L´Équipe Live Foot",
-                "Okko Futbol HD",
-                "OneFootball",
-                "Premier Sports 1 Ireland HD",
-                "Premier Sports 1 UK HD",
-                "Premier Sports GB Player HD",
-                "Sport TV1 Slovenija",
-                "VG+ Sport Norge",
-                "Z Sports 2 Angola"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "FC Cologne vs Real Sociedad",
-          "kick_utc": 1786195800,
-          "time": "08/08 08:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Magenta Sport"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "League Cup",
           "match": "West Ham United vs Portsmouth",
@@ -1130,6 +1005,22 @@
           "match": "Tenis ITF: Curtea de Arges Finala",
           "kick_utc": 1786276800,
           "time": "09/08 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Asii Tenisului",
+          "kick_utc": 1786284000,
+          "time": "09/08 09:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
