@@ -1,64 +1,9 @@
 {
-  "updated": "2026-08-08 16:45 VN",
+  "updated": "2026-08-08 20:02 VN",
   "days": {
     "20260808": {
       "date": "Saturday, 08/08",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Juventus vs Inter Milan",
-          "kick_utc": 1786186800,
-          "time": "08/08 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena M3 Premium MKD HD",
-                "Arena Premium 2 Srbija HD",
-                "Arena Sport 2 BiH HD",
-                "Astro Football HD",
-                "Astro Grandstand HD",
-                "DAZN 1 Italia HD",
-                "DAZN España",
-                "DAZN Italia",
-                "DAZN Portugal",
-                "Inter TV HD",
-                "Juventus APP",
-                "L´Équipe Live Foot",
-                "MAX Sport 3 Bulgaria HD",
-                "Net4+ Sport",
-                "Nova Sports Prime Cyprus HD",
-                "Nova Sports Prime Hellas HD",
-                "OneFootball",
-                "Persiana Sport HD",
-                "Polsat Sport 3 HD",
-                "Sharjah Sports HD",
-                "Sky Sport Uno Italia HD",
-                "SportKlub 1 Hrvatska HD",
-                "SportKlub 1 Slovenija HD",
-                "VG+ Sport Norge",
-                "Z Sports 2 Angola",
-                "Ziggo Sport 2"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Borussia Dortmund vs Roma",
-          "kick_utc": 1786186800,
-          "time": "08/08 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "DAZN Italia"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "International Friendly",
           "match": "Chelsea vs AC Milan",
@@ -696,7 +641,7 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Marta Kostyuk vs Iga Swiatek",
           "kick_utc": 1786206600,
           "time": "08/08 11:30 PM",
           "tv_channels": [
@@ -712,7 +657,7 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Aryna Sabalenka vs Ekaterina Alexandrova",
           "kick_utc": 1786230000,
           "time": "09/08 06:00 AM",
           "tv_channels": [
@@ -724,21 +669,6 @@
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "WTT Champions de Yokohama",
-          "kick_utc": 1786185000,
-          "time": "08/08 05:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "L'Equipe France"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -1175,6 +1105,37 @@
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 4 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "WTT Champions de Yokohama",
+          "kick_utc": 1786275000,
+          "time": "09/08 06:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis ITF: Curtea de Arges Finala",
+          "kick_utc": 1786276800,
+          "time": "09/08 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
               ]
             }
           ],
