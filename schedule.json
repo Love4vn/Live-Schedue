@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-10 17:24 VN",
+  "updated": "2026-08-10 20:24 VN",
   "days": {
     "20260810": {
       "date": "Monday, 10/08",
@@ -21,22 +21,6 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1786402800,
-          "time": "11/08 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "Stan Sport"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
           "match": "Europe Smash",
           "kick_utc": 1786363080,
           "time": "10/08 06:58 PM",
@@ -55,6 +39,21 @@
           "match": "Europe Smash",
           "kick_utc": 1786384800,
           "time": "11/08 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Europe Smash",
+          "kick_utc": 1786449600,
+          "time": "11/08 07:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
