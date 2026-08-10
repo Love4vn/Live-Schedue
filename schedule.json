@@ -1,24 +1,9 @@
 {
-  "updated": "2026-08-11 02:05 VN",
+  "updated": "2026-08-11 04:50 VN",
   "days": {
     "20260810": {
       "date": "Monday, 10/08",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Volos NFC vs Kalamata",
-          "kick_utc": 1786384800,
-          "time": "11/08 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Cosmote Sport 2 HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "UEFA Champions League",
           "match": "Kairat Almaty vs Levski Sofia",
@@ -45,6 +30,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Arena Premium 4 BiH HD",
                 "Arena Premium 4 Srbija HD",
                 "Ictimai TV HD",
                 "TV3+ Dansk HD",
@@ -64,6 +50,7 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Arena M3 Premium MKD HD",
+                "Arena Premium 1 BiH HD",
                 "Arena Premium 3 Srbija HD",
                 "Arena Sport 1 Slovakia HD",
                 "RTL Club Belgique",
@@ -84,6 +71,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "NIFL TV",
                 "Silk Universal HD",
                 "Sport 2 Baltic",
                 "Sport 2 Ukraine"
@@ -120,6 +108,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Arena Premium 5 BiH HD",
                 "Arena Premium 5 Srbija HD",
                 "Cytavision Sports 1 HD",
                 "Cytavision Sports PPV 1 HD",
@@ -211,6 +200,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Arena Premium 4 BiH HD",
                 "Arena Premium 4 Srbija HD",
                 "Arena Sport 1 Slovakia HD",
                 "ESPN+ USA",
@@ -234,6 +224,7 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Arena M3 Premium MKD HD",
+                "Arena Premium 2 BiH HD",
                 "Arena Premium 3 Srbija HD",
                 "Canal+ Foot HD",
                 "Canal+ France HD",
@@ -248,51 +239,6 @@
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Europe Smash",
-          "kick_utc": 1786384800,
-          "time": "11/08 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "L'Equipe France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Europe Smash",
-          "kick_utc": 1786449600,
-          "time": "11/08 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "L'Equipe France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Europe Smash",
-          "kick_utc": 1786471200,
-          "time": "12/08 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "L'Equipe France"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -575,6 +521,36 @@
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Europe Smash",
+          "kick_utc": 1786449600,
+          "time": "11/08 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Europe Smash",
+          "kick_utc": 1786471200,
+          "time": "12/08 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
               ]
             }
           ],
