@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-10 20:24 VN",
+  "updated": "2026-08-10 23:04 VN",
   "days": {
     "20260810": {
       "date": "Monday, 10/08",
@@ -20,19 +20,76 @@
           "source": "livesportsontv"
         },
         {
-          "league": "Tennis",
-          "match": "Europe Smash",
-          "kick_utc": 1786363080,
-          "time": "10/08 06:58 PM",
+          "league": "UEFA Champions League",
+          "match": "Kairat Almaty vs Levski Sofia",
+          "kick_utc": 1786460400,
+          "time": "11/08 10:00 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "LiveSportsOnTV",
               "channels": [
-                "L'Equipe France"
+                "Diema Sport HD",
+                "Play Diema XTRA",
+                "QazSport HD"
               ]
             }
           ],
-          "source": "hubsport"
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Champions League",
+          "match": "Sabah vs AGF Aarhus",
+          "kick_utc": 1786464000,
+          "time": "11/08 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena Premium 4 Srbija HD",
+                "Ictimai TV HD",
+                "TV3+ Dansk HD",
+                "ViaPlay Danmark HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Champions League",
+          "match": "Bodø/Glimt vs Union St Gilloise",
+          "kick_utc": 1786464000,
+          "time": "11/08 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena Premium 3 Srbija HD",
+                "Arena Sport 1 Slovakia HD",
+                "RTL Club Belgique",
+                "Sport TV1 Portugal HD",
+                "VG+ Sport Norge",
+                "VTM 2 Belgium HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa League",
+          "match": "Iberia 1999 vs Larne",
+          "kick_utc": 1786464000,
+          "time": "11/08 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Silk Universal HD",
+                "Sport 2 Baltic",
+                "Sport 2 Ukraine"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
