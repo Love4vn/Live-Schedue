@@ -1,75 +1,9 @@
 {
-  "updated": "2026-08-11 17:04 VN",
+  "updated": "2026-08-11 20:21 VN",
   "days": {
     "20260811": {
       "date": "Tuesday, 11/08",
       "games": [
-        {
-          "league": "UEFA Champions League",
-          "match": "Adelaide United vs Công An Hà Nôi",
-          "kick_utc": 1786440600,
-          "time": "11/08 04:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Futbol TV Uzbekistan"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Juventus vs Palermo",
-          "kick_utc": 1786442700,
-          "time": "11/08 05:05 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena M1 Premium MKD HD",
-                "Arena Premium 1 BiH HD",
-                "Arena Premium 1 Srbija HD",
-                "Astro Football HD",
-                "Astro Grandstand HD",
-                "CBS Sports Golazo N/W",
-                "DAZN España",
-                "DAZN Italia",
-                "DAZN Japan",
-                "DAZN Portugal",
-                "Juventus APP",
-                "Nova Sports Prime Cyprus HD",
-                "Nova Sports Prime Hellas HD",
-                "Persiana Sport HD",
-                "Polsat Sport 1 HD",
-                "Sharjah Sports HD",
-                "Sky Sport Calcio HD",
-                "SportKlub 1 Hrvatska HD",
-                "SportKlub 1 Slovenija HD",
-                "Sporty TV Africa",
-                "VG+ Sport Norge",
-                "Z Sports 1 Angola"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Champions League",
-          "match": "Gangwon vs Gamba Osaka",
-          "kick_utc": 1786444200,
-          "time": "11/08 05:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Sport TV Uzbekistan"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "UEFA Champions League",
           "match": "Kairat Almaty vs Levski Sofia",
@@ -344,22 +278,6 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1786489200,
-          "time": "12/08 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "Stan Sport"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
           "match": "Europe Smash",
           "kick_utc": 1786449600,
           "time": "11/08 07:00 PM",
@@ -378,6 +296,21 @@
           "match": "Europe Smash",
           "kick_utc": 1786471200,
           "time": "12/08 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Europe Smash",
+          "kick_utc": 1786536060,
+          "time": "12/08 07:01 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
