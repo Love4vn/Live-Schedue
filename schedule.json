@@ -1,157 +1,9 @@
 {
-  "updated": "2026-08-11 23:04 VN",
+  "updated": "2026-08-12 02:12 VN",
   "days": {
     "20260811": {
       "date": "Tuesday, 11/08",
       "games": [
-        {
-          "league": "UEFA Champions League",
-          "match": "Kairat Almaty vs Levski Sofia",
-          "kick_utc": 1786460400,
-          "time": "11/08 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Diema Sport HD",
-                "Persiana Sports 2 HD",
-                "Play Diema XTRA",
-                "QazSport HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Champions League",
-          "match": "Pakhtakor vs Al Hussein",
-          "kick_utc": 1786460400,
-          "time": "11/08 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Futbol TV Uzbekistan",
-                "Persiana Sport HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Champions League",
-          "match": "Sabah vs AGF Aarhus",
-          "kick_utc": 1786464000,
-          "time": "11/08 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena Premium 4 BiH HD",
-                "Arena Premium 4 Srbija HD",
-                "Ictimai TV HD",
-                "TV3+ Dansk HD",
-                "ViaPlay Danmark HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Champions League",
-          "match": "Bodø/Glimt vs Union St Gilloise",
-          "kick_utc": 1786464000,
-          "time": "11/08 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena M3 Premium MKD HD",
-                "Arena Premium 1 BiH HD",
-                "Arena Premium 3 Srbija HD",
-                "Arena Sport 1 Slovakia HD",
-                "RTL Club Belgique",
-                "Sport TV1 Portugal HD",
-                "VG+ Sport Norge",
-                "VTM 2 Belgium HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Europa League",
-          "match": "Iberia 1999 vs Larne",
-          "kick_utc": 1786464000,
-          "time": "11/08 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "NIFL TV",
-                "Silk Universal HD",
-                "Sport 2 Baltic",
-                "Sport 2 Ukraine"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Champions League",
-          "match": "Al Jazira vs Al Ittihad",
-          "kick_utc": 1786464000,
-          "time": "11/08 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Abu Dhabi Sports 1 HD",
-                "Persiana Sports 3 HD",
-                "Sport TV Uzbekistan"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Champions League",
-          "match": "Kauno Zalgiris vs Dinamo Zagreb",
-          "kick_utc": 1786467600,
-          "time": "12/08 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena Premium 2 BiH HD",
-                "MAX Sport 1 Hrvatska HD",
-                "MAX Sport 2 Hrvatska HD",
-                "TV3 Lietuva HD",
-                "VG+ Sport Norge"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Europa Conference League",
-          "match": "Apollon Limassol vs Brann",
-          "kick_utc": 1786467600,
-          "time": "12/08 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena Premium 5 BiH HD",
-                "Arena Premium 5 Srbija HD",
-                "Cytavision Sports 1 HD",
-                "Cytavision Sports PPV 1 HD",
-                "VG+ Sport Norge"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "UEFA Champions League",
           "match": "NEC Nijmegen vs Olympiacos",
@@ -242,6 +94,7 @@
                 "ORF 1 Austria HD",
                 "Persiana Sports 2 HD",
                 "S Sport+ Streaming",
+                "Sport TV Azerbaijan",
                 "Sport TV+ Portugal",
                 "TV 100 HD"
               ]
@@ -330,6 +183,21 @@
           "match": "Europe Smash",
           "kick_utc": 1786536060,
           "time": "12/08 07:01 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Europe Smash",
+          "kick_utc": 1786557600,
+          "time": "13/08 01:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -597,21 +465,6 @@
             }
           ],
           "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "National Bank Open presented by Rogers -QF (1-2)",
-          "kick_utc": 1786465800,
-          "time": "11/08 11:30 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports 6"
-              ]
-            }
-          ],
-          "source": "nowtv"
         },
         {
           "league": "Tennis",
