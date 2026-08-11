@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-11 20:21 VN",
+  "updated": "2026-08-11 23:04 VN",
   "days": {
     "20260811": {
       "date": "Tuesday, 11/08",
@@ -277,19 +277,38 @@
           "source": "livesportsontv"
         },
         {
-          "league": "Tennis",
-          "match": "Europe Smash",
-          "kick_utc": 1786449600,
-          "time": "11/08 07:00 PM",
+          "league": "UEFA Europa Conference League",
+          "match": "Rapid Vienna vs Paide Linnameeskond",
+          "kick_utc": 1786550400,
+          "time": "12/08 11:00 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "LiveSportsOnTV",
               "channels": [
-                "L'Equipe France"
+                "ORF 1 Austria HD",
+                "Soccernet TV Estonia"
               ]
             }
           ],
-          "source": "hubsport"
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa Conference League",
+          "match": "FC Copenhagen vs Debrecen",
+          "kick_utc": 1786550400,
+          "time": "12/08 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "ESPN+ USA",
+                "FCK TV ($/geo/R",
+                "M4 Sport Hungary HD",
+                "Sport TV1 Portugal HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
