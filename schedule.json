@@ -1,134 +1,9 @@
 {
-  "updated": "2026-08-12 02:12 VN",
+  "updated": "2026-08-12 04:56 VN",
   "days": {
     "20260811": {
       "date": "Tuesday, 11/08",
       "games": [
-        {
-          "league": "UEFA Champions League",
-          "match": "NEC Nijmegen vs Olympiacos",
-          "kick_utc": 1786469400,
-          "time": "12/08 12:30 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena M2 Premium MKD HD",
-                "Arena Premium 2 Srbija HD",
-                "Arena Premium 3 BiH HD",
-                "KS TV | Futbol 1",
-                "MEGA Hellas HD",
-                "Sport TV2 Portugal HD",
-                "Ziggo Sport 1 HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Europa Conference League",
-          "match": "CSKA 1948 Sofia vs Panathinaikos",
-          "kick_utc": 1786469400,
-          "time": "12/08 12:30 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "bTV Bulgaria HD",
-                "SKAI Hellas HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Champions League",
-          "match": "Slovan Bratislava vs Mjällby AIF",
-          "kick_utc": 1786472100,
-          "time": "12/08 01:15 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Sport Bladet Play",
-                "STVR Šport Slovakia HD",
-                "Voyo Player Slovakia"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Champions League",
-          "match": "Celje vs Ararat-Armenia",
-          "kick_utc": 1786472100,
-          "time": "12/08 01:15 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Armenia First TV",
-                "Kanal A Slovenija HD",
-                "Sport 1 Baltic",
-                "Sport 1 Ukraine",
-                "Voyo Player Slovenija"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Champions League",
-          "match": "Sturm Graz vs Fenerbahçe",
-          "kick_utc": 1786473000,
-          "time": "12/08 01:30 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena Premium 4 BiH HD",
-                "Arena Premium 4 Srbija HD",
-                "Arena Sport 1 Slovakia HD",
-                "ESPN+ USA",
-                "MAX Sport 4 Bulgaria HD",
-                "ORF 1 Austria HD",
-                "Persiana Sports 2 HD",
-                "S Sport+ Streaming",
-                "Sport TV Azerbaijan",
-                "Sport TV+ Portugal",
-                "TV 100 HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Champions League",
-          "match": "Lyon vs Sparta Prague",
-          "kick_utc": 1786474800,
-          "time": "12/08 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena M3 Premium MKD HD",
-                "Arena Premium 2 BiH HD",
-                "Arena Premium 3 Srbija HD",
-                "Canal+ Foot HD",
-                "Canal+ France HD",
-                "Canal+ Live 1 France HD",
-                "ESPN+ USA",
-                "JOJ Play",
-                "JOJ Šport SVK HD",
-                "MAX Sport 3 Bulgaria HD",
-                "Persiana Sport HD",
-                "Prima Sport CZ HD",
-                "Sport TV1 Portugal HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "UEFA Europa Conference League",
           "match": "Rapid Vienna vs Paide Linnameeskond",
@@ -138,6 +13,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "OneFootball",
                 "ORF 1 Austria HD",
                 "Soccernet TV Estonia"
               ]
@@ -162,51 +38,6 @@
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Europe Smash",
-          "kick_utc": 1786471200,
-          "time": "12/08 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "L'Equipe France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Europe Smash",
-          "kick_utc": 1786536060,
-          "time": "12/08 07:01 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "L'Equipe France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Europe Smash",
-          "kick_utc": 1786557600,
-          "time": "13/08 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "L'Equipe France"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -461,6 +292,66 @@
               "channels": [
                 "Digi Sport 4 Hd Romania",
                 "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Europe Smash",
+          "kick_utc": 1786536060,
+          "time": "12/08 07:01 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Europe Smash",
+          "kick_utc": 1786557600,
+          "time": "13/08 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 1",
+          "kick_utc": 1786564800,
+          "time": "13/08 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1786564800,
+          "time": "13/08 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania"
               ]
             }
           ],
