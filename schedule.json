@@ -1,25 +1,9 @@
 {
-  "updated": "2026-08-12 17:14 VN",
+  "updated": "2026-08-12 20:25 VN",
   "days": {
     "20260812": {
       "date": "Wednesday, 12/08",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Chelsea vs W-League All Stars",
-          "kick_utc": 1786527900,
-          "time": "12/08 04:45 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "beIN Sports 1 HD",
-                "DAZN Japan"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "UEFA Europa Conference League",
           "match": "Rapid Vienna vs Paide Linnameeskond",
@@ -253,7 +237,7 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Elina Svitolina vs Iga Swiatek",
           "kick_utc": 1786575600,
           "time": "13/08 06:00 AM",
           "tv_channels": [
@@ -287,6 +271,21 @@
           "match": "Europe Smash",
           "kick_utc": 1786557600,
           "time": "13/08 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Europe Smash",
+          "kick_utc": 1786622400,
+          "time": "13/08 07:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
