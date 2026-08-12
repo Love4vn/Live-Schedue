@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-12 20:25 VN",
+  "updated": "2026-08-12 23:03 VN",
   "days": {
     "20260812": {
       "date": "Wednesday, 12/08",
@@ -57,6 +57,7 @@
                 "DAZN Japan",
                 "Everton On TV",
                 "Fox Deportes USA",
+                "Kuwait Sport HD",
                 "Livey Events",
                 "Net4+ Sport",
                 "NUFC TV",
@@ -68,6 +69,7 @@
                 "Premier Sports 1 UK HD",
                 "Premier Sports GB Player HD",
                 "Sharjah Sports HD",
+                "Sigma TV Cyprus HD",
                 "Sport Bladet Play",
                 "Sport TV2 Portugal HD",
                 "Sporty TV Africa",
@@ -122,6 +124,7 @@
                 "Premier Sports 2 Ireland HD",
                 "Premier Sports 2 UK HD",
                 "Premier Sports GB Player HD",
+                "Sigma TV Cyprus HD",
                 "Sport Bladet Play",
                 "Sport TV1 Portugal HD",
                 "Sporty TV Africa",
@@ -236,6 +239,92 @@
           "source": "livesportsontv"
         },
         {
+          "league": "UEFA Europa Conference League",
+          "match": "Tobol vs Partizan Belgrade",
+          "kick_utc": 1786633200,
+          "time": "13/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena M1 Premium MKD HD",
+                "Arena Premium 1 BiH HD",
+                "Arena Premium 1 Srbija HD",
+                "QazSport HD",
+                "RTS 2 Srbija HD",
+                "Sport 2 Baltic",
+                "Sport 2 Ukraine"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa Conference League",
+          "match": "Qarabagh vs Dynamo Kyiv",
+          "kick_utc": 1786636800,
+          "time": "13/08 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "2+2 Ukraine",
+                "CBC Sport HD",
+                "KS TV | Futbol 1"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa Conference League",
+          "match": "Ilves Tampere vs Rijeka",
+          "kick_utc": 1786636800,
+          "time": "13/08 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena Premium 2 BiH HD",
+                "Ilves+ Football",
+                "RTL Hrvatska"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa Conference League",
+          "match": "Flora Tallinn vs Inter Escaldes",
+          "kick_utc": 1786636800,
+          "time": "13/08 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Soccernet TV Estonia"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa Conference League",
+          "match": "Dunajská Streda vs Twente",
+          "kick_utc": 1786636800,
+          "time": "13/08 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "ESPN 1 Nederland HD",
+                "STVR Šport Slovakia HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
           "league": "Tennis",
           "match": "Elina Svitolina vs Iga Swiatek",
           "kick_utc": 1786575600,
@@ -253,18 +342,18 @@
         },
         {
           "league": "Tennis",
-          "match": "Europe Smash",
-          "kick_utc": 1786536060,
-          "time": "12/08 07:01 PM",
+          "match": "",
+          "kick_utc": 1786633200,
+          "time": "13/08 10:00 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "L'Equipe France"
+                "beIN Sports Connect"
               ]
             }
           ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -646,6 +735,21 @@
         },
         {
           "league": "Tennis",
+          "match": "ATP Masters 1000 - Cincinnati 2026",
+          "kick_utc": 1786633200,
+          "time": "13/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv 6 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "National Bank Open presented by Rogers -SF (1-2)",
           "kick_utc": 1786572000,
           "time": "13/08 05:00 AM",
@@ -685,6 +789,37 @@
               "channels": [
                 "Ziggo Sport 1",
                 "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Cincinnati Open",
+          "kick_utc": 1786633200,
+          "time": "13/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Cincinnati Open",
+          "kick_utc": 1786636800,
+          "time": "13/08 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
                 "Ziggo Sport Kanaal 14"
               ]
             }
