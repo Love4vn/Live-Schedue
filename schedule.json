@@ -1,8 +1,8 @@
 {
-  "updated": "2026-08-13 04:54 VN",
+  "updated": "2026-08-13 09:31 VN",
   "days": {
-    "20260812": {
-      "date": "Wednesday, 12/08",
+    "20260813": {
+      "date": "Thursday, 13/08",
       "games": [
         {
           "league": "UEFA Europa Conference League",
@@ -626,22 +626,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Elina Svitolina vs Iga Swiatek",
-          "kick_utc": 1786575600,
-          "time": "13/08 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 2"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
           "match": "",
           "kick_utc": 1786633200,
           "time": "13/08 10:00 PM",
@@ -672,9 +656,25 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 1",
-          "kick_utc": 1786564800,
-          "time": "13/08 03:00 AM",
+          "match": "",
+          "kick_utc": 1786658400,
+          "time": "14/08 05:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 2"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Toronto Finala",
+          "kick_utc": 1786582800,
+          "time": "13/08 08:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -687,55 +687,9 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 1",
-          "kick_utc": 1786572000,
-          "time": "13/08 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 1",
-          "kick_utc": 1786579200,
-          "time": "13/08 07:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 1",
-          "kick_utc": 1786644000,
-          "time": "14/08 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 1",
-          "kick_utc": 1786651200,
-          "time": "14/08 03:00 AM",
+          "match": "Toronto Finala",
+          "kick_utc": 1786669200,
+          "time": "14/08 08:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -748,14 +702,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1786564800,
-          "time": "13/08 03:00 AM",
+          "match": "Montreal Semifinala",
+          "kick_utc": 1786582800,
+          "time": "13/08 08:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 4 Hd Romania"
+                "Digi Sport 2 Romania"
               ]
             }
           ],
@@ -763,14 +717,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1786572000,
-          "time": "13/08 05:00 AM",
+          "match": "Montreal Semifinala",
+          "kick_utc": 1786590000,
+          "time": "13/08 10:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 4 Hd Romania"
+                "Digi Sport 2 Romania"
               ]
             }
           ],
@@ -778,14 +732,76 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1786579200,
-          "time": "13/08 07:00 AM",
+          "match": "l'Omnium Banque Nationale 2026",
+          "kick_utc": 1786582800,
+          "time": "13/08 08:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 4 Hd Romania"
+                "Tva Sports 2 Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "l'Omnium Banque Nationale 2026",
+          "kick_utc": 1786658400,
+          "time": "14/08 05:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Tva Sports Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "l'Omnium Banque Nationale 2026",
+          "kick_utc": 1786665600,
+          "time": "14/08 07:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Tva Sports Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Masters 1000 du Canada",
+          "kick_utc": 1786586400,
+          "time": "13/08 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 France",
+                "Voosport World1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Masters 1000 du Canada",
+          "kick_utc": 1786672800,
+          "time": "14/08 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 France",
+                "Voosport World1 France"
               ]
             }
           ],
@@ -855,14 +871,15 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP Masters 1000 - Montréal 2026 - Meia-Final",
-          "kick_utc": 1786572000,
-          "time": "13/08 05:00 AM",
+          "match": "Tenis",
+          "kick_utc": 1786658400,
+          "time": "14/08 05:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Sport Tv3 Hd Portugal"
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
               ]
             }
           ],
@@ -870,15 +887,15 @@
         },
         {
           "league": "Tennis",
-          "match": "2026 ATP National Bank Open Tennis",
-          "kick_utc": 1786572000,
-          "time": "13/08 05:00 AM",
+          "match": "Tenis",
+          "kick_utc": 1786665600,
+          "time": "14/08 07:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Sportsnet One",
-                "Sportsnet One Hd"
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
               ]
             }
           ],
@@ -886,151 +903,15 @@
         },
         {
           "league": "Tennis",
-          "match": "l'Omnium Banque Nationale 2026",
-          "kick_utc": 1786572000,
-          "time": "13/08 05:00 AM",
+          "match": "Tenis",
+          "kick_utc": 1786672800,
+          "time": "14/08 09:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Tva Sports Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "l'Omnium Banque Nationale 2026",
-          "kick_utc": 1786575600,
-          "time": "13/08 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Tva Sports 2 Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "l'Omnium Banque Nationale 2026",
-          "kick_utc": 1786579200,
-          "time": "13/08 07:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Tva Sports Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "l'Omnium Banque Nationale 2026",
-          "kick_utc": 1786582800,
-          "time": "13/08 08:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Tva Sports 2 Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "2026 WTA National Bank Open Tennis",
-          "kick_utc": 1786575600,
-          "time": "13/08 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sportsnet 360 Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 du Canada",
-          "kick_utc": 1786579200,
-          "time": "13/08 07:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 France",
-                "Voosport World1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 du Canada",
-          "kick_utc": 1786586400,
-          "time": "13/08 09:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 France",
-                "Voosport World1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Toronto Finala",
-          "kick_utc": 1786582800,
-          "time": "13/08 08:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Montreal Semifinala",
-          "kick_utc": 1786582800,
-          "time": "13/08 08:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Montreal Semifinala",
-          "kick_utc": 1786590000,
-          "time": "13/08 10:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
               ]
             }
           ],
@@ -1189,6 +1070,67 @@
         },
         {
           "league": "Tennis",
+          "match": "Tenis Ziua 1",
+          "kick_utc": 1786644000,
+          "time": "14/08 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania",
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 1",
+          "kick_utc": 1786651200,
+          "time": "14/08 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 1",
+          "kick_utc": 1786658400,
+          "time": "14/08 05:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 1",
+          "kick_utc": 1786665600,
+          "time": "14/08 07:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Tenis Ziua 2",
           "kick_utc": 1786651200,
           "time": "14/08 03:00 AM",
@@ -1204,50 +1146,110 @@
         },
         {
           "league": "Tennis",
-          "match": "National Bank Open presented by Rogers -SF (1-2)",
-          "kick_utc": 1786572000,
-          "time": "13/08 05:00 AM",
+          "match": "Tenis Ziua 2",
+          "kick_utc": 1786658400,
+          "time": "14/08 05:00 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 6"
+                "Digi Sport 2 Hd Romania"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
-          "match": "National Bank Open presented by Rogers -SF(1-2)",
-          "kick_utc": 1786575600,
-          "time": "13/08 06:00 AM",
+          "match": "Tenis Ziua 2",
+          "kick_utc": 1786665600,
+          "time": "14/08 07:00 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 4"
+                "Digi Sport 2 Hd Romania"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
-          "match": ": National Bank Open - Montreal",
-          "kick_utc": 1786572000,
-          "time": "13/08 05:00 AM",
+          "match": "Tenis Ziua 2",
+          "kick_utc": 1786672800,
+          "time": "14/08 09:00 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Ziggo Sport 1",
-                "Ziggo Sport 4",
-                "Ziggo Sport Kanaal 14"
+                "Digi Sport 2 Hd Romania"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "2026 WTA National Bank Open Tennis",
+          "kick_utc": 1786658400,
+          "time": "14/08 05:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sportsnet (Pacific)",
+                "Sportsnet (Pacific) Hd",
+                "Sportsnet 360 Hd",
+                "Sportsnet East",
+                "Sportsnet East Hd",
+                "Sportsnet Mst",
+                "Sportsnet Ontario Hd",
+                "Sportsnet West Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP Masters 1000 - Montréal026 - Final",
+          "kick_utc": 1786665600,
+          "time": "14/08 07:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "2026 ATP National Bank Open Tennis",
+          "kick_utc": 1786665600,
+          "time": "14/08 07:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sportsnet (Pacific)",
+                "Sportsnet (Pacific) Hd",
+                "Sportsnet 360 Hd",
+                "Sportsnet 4K",
+                "Sportsnet East",
+                "Sportsnet East Hd",
+                "Sportsnet Mst",
+                "Sportsnet One",
+                "Sportsnet One Hd",
+                "Sportsnet Ontario Hd",
+                "Sportsnet West Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -1305,6 +1307,53 @@
               "country": "NowTV",
               "channels": [
                 "Ziggo Sport 1",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "National Bank Open presented by Rogers -Final",
+          "kick_utc": 1786658400,
+          "time": "14/08 05:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "National Bank Open presented by Rogers -Final",
+          "kick_utc": 1786665600,
+          "time": "14/08 07:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": National Bank Open - Montreal",
+          "kick_utc": 1786665600,
+          "time": "14/08 07:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
                 "Ziggo Sport Kanaal 14"
               ]
             }
