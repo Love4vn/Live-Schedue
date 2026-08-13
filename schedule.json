@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-13 17:15 VN",
+  "updated": "2026-08-13 20:27 VN",
   "days": {
     "20260813": {
       "date": "Thursday, 13/08",
@@ -627,7 +627,7 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Martin Landaluce vs Jack Draper",
           "kick_utc": 1786633200,
           "time": "13/08 10:00 PM",
           "tv_channels": [
@@ -642,9 +642,9 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1786654800,
-          "time": "14/08 04:00 AM",
+          "match": "Mariano Navone vs Raphael Collignon",
+          "kick_utc": 1786651200,
+          "time": "14/08 03:00 AM",
           "tv_channels": [
             {
               "country": "Ausport",
@@ -657,15 +657,15 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Iga Swiatek vs Elena Rybakina",
           "kick_utc": 1786658400,
           "time": "14/08 05:00 AM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 2"
+                "beIN SPORTS 2",
+                "beIN Sports Connect"
               ]
             }
           ],
@@ -691,6 +691,21 @@
           "match": "Europe Smash",
           "kick_utc": 1786644060,
           "time": "14/08 01:01 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Europe Smash",
+          "kick_utc": 1786708800,
+          "time": "14/08 07:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
