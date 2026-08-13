@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-13 20:27 VN",
+  "updated": "2026-08-13 23:03 VN",
   "days": {
     "20260813": {
       "date": "Thursday, 13/08",
@@ -140,6 +140,7 @@
                 "Arena Sport 2 BiH HD",
                 "Nova Sport 5 Czech HD",
                 "Nova Sport 5 Slovakia HD",
+                "S Sport 1 Türkiye HD",
                 "S Sport+ Streaming",
                 "Sport TV Azerbaijan"
               ]
@@ -161,6 +162,7 @@
                 "Arena Premium 4 BiH HD",
                 "Cytavision Sports 2 HD",
                 "Cytavision Sports PPV 2 HD",
+                "Persiana Sports 3 HD",
                 "Servus TV Österreich HD",
                 "Sport TV4 Portugal HD"
               ]
@@ -198,6 +200,7 @@
                 "OneFootball",
                 "Polsat Sport 1 HD",
                 "Polsat Sport Premium 1 HD",
+                "TV6 Polska HD",
                 "Veikkaus TV"
               ]
             }
@@ -214,7 +217,8 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Direkte Sport",
-                "Prima Sport RO 2 HD"
+                "Prima Sport RO 2 HD",
+                "VG+ Sport Norge"
               ]
             }
           ],
@@ -455,9 +459,11 @@
                 "Arena M3 Premium MKD HD",
                 "Arena Premium 2 BiH HD",
                 "Arena Premium 3 Srbija HD",
+                "Persiana Sports 2 HD",
                 "Polsat Sport 2 HD",
                 "Polsat Sport Premium 2 HD",
-                "Rangers TV"
+                "Rangers TV",
+                "Super Polsat HD"
               ]
             }
           ],
@@ -549,6 +555,7 @@
               "channels": [
                 "ESPN+ USA",
                 "Hearts TV",
+                "Persiana Sport HD",
                 "Sport TV5 Portugal HD"
               ]
             }
@@ -566,6 +573,7 @@
               "channels": [
                 "LOI TV PPV",
                 "OneFootball",
+                "Persiana Sports 3 HD",
                 "Polsat Sport Extra 1 HD",
                 "Premier Sports 1 Ireland HD",
                 "Premier Sports 1 UK HD",
@@ -673,48 +681,19 @@
         },
         {
           "league": "Tennis",
-          "match": "Europe Smash",
-          "kick_utc": 1786622400,
-          "time": "13/08 07:00 PM",
+          "match": "",
+          "kick_utc": 1786719600,
+          "time": "14/08 10:00 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "L'Equipe France"
+                "beIN SPORTS 1",
+                "beIN Sports Connect"
               ]
             }
           ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Europe Smash",
-          "kick_utc": 1786644060,
-          "time": "14/08 01:01 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "L'Equipe France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Europe Smash",
-          "kick_utc": 1786708800,
-          "time": "14/08 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "L'Equipe France"
-              ]
-            }
-          ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -741,6 +720,21 @@
               "country": "Hubsport",
               "channels": [
                 "Sport Tv 6 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP Masters 1000 - Cincinnati 2026",
+          "kick_utc": 1786719600,
+          "time": "14/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv 7 Hd Portugal"
               ]
             }
           ],
@@ -944,6 +938,36 @@
               "channels": [
                 "Digi Sport 4 Hd Romania",
                 "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Europe Smash",
+          "kick_utc": 1786644060,
+          "time": "14/08 01:01 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Europe Smash",
+          "kick_utc": 1786708800,
+          "time": "14/08 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
               ]
             }
           ],
@@ -1227,6 +1251,37 @@
         },
         {
           "league": "Tennis",
+          "match": ": Cincinnati Open",
+          "kick_utc": 1786719600,
+          "time": "14/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Cincinnati Open",
+          "kick_utc": 1786723200,
+          "time": "14/08 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
           "match": "National Bank Open presented by Rogers -Final",
           "kick_utc": 1786658400,
           "time": "14/08 05:00 AM",
@@ -1267,6 +1322,36 @@
                 "Ziggo Sport 1",
                 "Ziggo Sport 4",
                 "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Cincinnati Open E1",
+          "kick_utc": 1786719600,
+          "time": "14/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Cincinnati Open -Round 1",
+          "kick_utc": 1786719600,
+          "time": "14/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
               ]
             }
           ],
