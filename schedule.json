@@ -1,9 +1,85 @@
 {
-  "updated": "2026-08-14 09:30 VN",
+  "updated": "2026-08-14 11:54 VN",
   "days": {
     "20260814": {
       "date": "Friday, 14/08",
       "games": [
+        {
+          "league": "Premier League",
+          "match": "Arsenal Dzyarzhynsk vs Slavia Mozyr",
+          "kick_utc": 1786716000,
+          "time": "14/08 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Belarus 5 HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Marseille vs Atlético Madrid",
+          "kick_utc": 1786721400,
+          "time": "14/08 10:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Ligue 1+ 2"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Ruzomberok vs Fortuna Düsseldorf",
+          "kick_utc": 1786723200,
+          "time": "14/08 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "YouTube: F35 TV"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Coventry City vs Monaco",
+          "kick_utc": 1786732200,
+          "time": "15/08 01:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Ligue 1+ 2"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Atalanta vs Athletic Bilbao",
+          "kick_utc": 1786733100,
+          "time": "15/08 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Sky Sport 251 Italia HD",
+                "TV8 Italia HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
         {
           "league": "Tennis",
           "match": "",
@@ -38,45 +114,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Toronto Finala",
-          "kick_utc": 1786669200,
-          "time": "14/08 08:00 AM",
+          "match": "Montreal Finala",
+          "kick_utc": 1786676400,
+          "time": "14/08 10:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 du Canada",
-          "kick_utc": 1786672800,
-          "time": "14/08 09:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 France",
-                "Voosport World1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 2",
-          "kick_utc": 1786672800,
-          "time": "14/08 09:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania"
               ]
             }
           ],
@@ -175,15 +220,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1786672800,
-          "time": "14/08 09:00 AM",
+          "match": "Tenis Ziua 2",
+          "kick_utc": 1786766400,
+          "time": "15/08 11:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
+                "Digi Sport 2 Romania"
               ]
             }
           ],
@@ -287,14 +331,15 @@
         },
         {
           "league": "Tennis",
-          "match": "Montreal Finala",
-          "kick_utc": 1786676400,
-          "time": "14/08 10:00 AM",
+          "match": "Tenis",
+          "kick_utc": 1786766400,
+          "time": "15/08 11:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 2 Romania"
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
               ]
             }
           ],
@@ -348,8 +393,8 @@
         {
           "league": "Tennis",
           "match": "ATP Masters 1000 - Cincinnati 2026",
-          "kick_utc": 1786741200,
-          "time": "15/08 04:00 AM",
+          "kick_utc": 1786741260,
+          "time": "15/08 04:01 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -456,6 +501,21 @@
           "match": "Tenis Ziua 3",
           "kick_utc": 1786759200,
           "time": "15/08 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 3",
+          "kick_utc": 1786766400,
+          "time": "15/08 11:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
