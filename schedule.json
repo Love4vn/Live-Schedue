@@ -1,87 +1,9 @@
 {
-  "updated": "2026-08-15 02:03 VN",
+  "updated": "2026-08-15 04:32 VN",
   "days": {
     "20260814": {
       "date": "Friday, 14/08",
       "games": [
-        {
-          "league": "UEFA Europa League",
-          "match": "KÍ Klaksvík vs Lech Poznan",
-          "kick_utc": 1786730400,
-          "time": "15/08 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena Sport 2 Srbija HD",
-                "TV KI Faroes",
-                "TVP 2 Polska HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Coventry City vs Monaco",
-          "kick_utc": 1786732200,
-          "time": "15/08 01:30 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Ligue 1+ 2"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Atalanta vs Athletic Bilbao",
-          "kick_utc": 1786733100,
-          "time": "15/08 01:45 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Sky Sport 251 Italia HD",
-                "TV8 Italia HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Adam Walton vs Nicolas Mejia",
-          "kick_utc": 1786735800,
-          "time": "15/08 02:30 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 1"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Daniel Merida Aguilar vs Marin Cilic",
-          "kick_utc": 1786735800,
-          "time": "15/08 02:30 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
         {
           "league": "Tennis",
           "match": "Jaime Faria vs Jenson Brooksby",
@@ -116,64 +38,19 @@
         },
         {
           "league": "Tennis",
-          "match": "Europe Smash",
-          "kick_utc": 1786730400,
-          "time": "15/08 01:00 AM",
+          "match": "",
+          "kick_utc": 1786827600,
+          "time": "16/08 04:00 AM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "L'Equipe France"
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
               ]
             }
           ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Europe Smash",
-          "kick_utc": 1786795200,
-          "time": "15/08 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "L'Equipe France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Europe Smash",
-          "kick_utc": 1786816800,
-          "time": "16/08 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "L'Equipe France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 2",
-          "kick_utc": 1786730400,
-          "time": "15/08 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -245,22 +122,6 @@
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1786730400,
-          "time": "15/08 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
               ]
             }
           ],
@@ -364,44 +225,15 @@
         },
         {
           "league": "Tennis",
-          "match": "Masters 1000 de Cincinnati",
-          "kick_utc": 1786734000,
-          "time": "15/08 02:00 AM",
+          "match": "Tenis",
+          "kick_utc": 1786824000,
+          "time": "16/08 03:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Eurosport 1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Cincinnati",
-          "kick_utc": 1786813200,
-          "time": "16/08 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Cincinnati",
-          "kick_utc": 1786820400,
-          "time": "16/08 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 France"
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
               ]
             }
           ],
@@ -530,6 +362,36 @@
         },
         {
           "league": "Tennis",
+          "match": "Europe Smash",
+          "kick_utc": 1786795200,
+          "time": "15/08 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Europe Smash",
+          "kick_utc": 1786816800,
+          "time": "16/08 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Cincinnati Open 2026",
           "kick_utc": 1786806000,
           "time": "15/08 10:00 PM",
@@ -562,6 +424,36 @@
         },
         {
           "league": "Tennis",
+          "match": "Masters 1000 de Cincinnati",
+          "kick_utc": 1786813200,
+          "time": "16/08 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Masters 1000 de Cincinnati",
+          "kick_utc": 1786820400,
+          "time": "16/08 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Asii Tenisului",
           "kick_utc": 1786813200,
           "time": "16/08 12:00 AM",
@@ -578,18 +470,18 @@
         },
         {
           "league": "Tennis",
-          "match": ": Cincinnati Open",
-          "kick_utc": 1786734300,
-          "time": "15/08 02:05 AM",
+          "match": "Tenis Ziua 4",
+          "kick_utc": 1786824000,
+          "time": "16/08 03:00 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Ziggo Sport 4"
+                "Digi Sport 2 Hd Romania"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
