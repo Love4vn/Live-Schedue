@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-14 17:11 VN",
+  "updated": "2026-08-14 20:21 VN",
   "days": {
     "20260814": {
       "date": "Friday, 14/08",
@@ -98,14 +98,28 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Sho Shimabukuro vs Hubert Hurkacz",
           "kick_utc": 1786719600,
           "time": "14/08 10:00 PM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
-                "beIN SPORTS 1",
+                "beIN SPORTS 1"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Valentin Royer vs Stefanos Tsitsipas",
+          "kick_utc": 1786719600,
+          "time": "14/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
                 "beIN Sports Connect"
               ]
             }
@@ -114,15 +128,75 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1786741200,
-          "time": "15/08 04:00 AM",
+          "match": "Jessica Bouzas Maneiro vs Anna Bondar",
+          "kick_utc": 1786719600,
+          "time": "14/08 10:00 PM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
-                "beIN SPORTS 1",
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Daria Snigur vs Yulia Starodubtseva",
+          "kick_utc": 1786719600,
+          "time": "14/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
                 "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Adam Walton vs Nicolas Mejia",
+          "kick_utc": 1786735800,
+          "time": "15/08 02:30 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN SPORTS 1"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Daniel Merida Aguilar vs Marin Cilic",
+          "kick_utc": 1786735800,
+          "time": "15/08 02:30 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Jaime Faria vs Jenson Brooksby",
+          "kick_utc": 1786748400,
+          "time": "15/08 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "Stan Sport"
               ]
             }
           ],
@@ -148,6 +222,21 @@
           "match": "Europe Smash",
           "kick_utc": 1786730400,
           "time": "15/08 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Europe Smash",
+          "kick_utc": 1786795200,
+          "time": "15/08 07:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
