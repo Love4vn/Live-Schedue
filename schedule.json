@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-14 20:21 VN",
+  "updated": "2026-08-14 22:58 VN",
   "days": {
     "20260814": {
       "date": "Friday, 14/08",
@@ -58,6 +58,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Arena Sport 2 Srbija HD",
                 "TV KI Faroes",
                 "TVP 2 Polska HD"
               ]
@@ -204,48 +205,19 @@
         },
         {
           "league": "Tennis",
-          "match": "Europe Smash",
-          "kick_utc": 1786708800,
-          "time": "14/08 07:00 PM",
+          "match": "",
+          "kick_utc": 1786806000,
+          "time": "15/08 10:00 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "L'Equipe France"
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
               ]
             }
           ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Europe Smash",
-          "kick_utc": 1786730400,
-          "time": "15/08 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "L'Equipe France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Europe Smash",
-          "kick_utc": 1786795200,
-          "time": "15/08 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "L'Equipe France"
-              ]
-            }
-          ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -348,6 +320,52 @@
               "channels": [
                 "Réseau Des Sports (Rds)",
                 "Réseau Des Sports (Rds) Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Cincinnati Open 2026",
+          "kick_utc": 1786806000,
+          "time": "15/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Rds2",
+                "Rds2 Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Europe Smash",
+          "kick_utc": 1786730400,
+          "time": "15/08 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Europe Smash",
+          "kick_utc": 1786795200,
+          "time": "15/08 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
               ]
             }
           ],
@@ -587,6 +605,22 @@
         },
         {
           "league": "Tennis",
+          "match": "2026 Cincinnati Open Tennis",
+          "kick_utc": 1786806000,
+          "time": "15/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "TSN 3",
+                "TSN 3 Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Cincinnati Open -C. Wong vs D. Altmaier",
           "kick_utc": 1786719600,
           "time": "14/08 10:00 PM",
@@ -726,6 +760,21 @@
         },
         {
           "league": "Tennis",
+          "match": ": Cincinnati Open",
+          "kick_utc": 1786806000,
+          "time": "15/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
           "match": "Cincinnati Open E2",
           "kick_utc": 1786726800,
           "time": "15/08 12:00 AM",
@@ -749,6 +798,36 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Cincinnati Open E4",
+          "kick_utc": 1786806000,
+          "time": "15/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Cincinnati Open -Round 2 (A)",
+          "kick_utc": 1786806000,
+          "time": "15/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
               ]
             }
           ],
