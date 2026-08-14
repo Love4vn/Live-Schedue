@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-14 14:41 VN",
+  "updated": "2026-08-14 17:11 VN",
   "days": {
     "20260814": {
       "date": "Friday, 14/08",
@@ -498,6 +498,21 @@
         },
         {
           "league": "Tennis",
+          "match": "Cincinnati Open -C. Wong vs D. Altmaier",
+          "kick_utc": 1786719600,
+          "time": "14/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports Prime"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
           "match": "Cincinnati Open E1",
           "kick_utc": 1786719600,
           "time": "14/08 10:00 PM",
@@ -559,8 +574,8 @@
         {
           "league": "Tennis",
           "match": ": Cincinnati Open",
-          "kick_utc": 1786723200,
-          "time": "14/08 11:00 PM",
+          "kick_utc": 1786723500,
+          "time": "14/08 11:05 PM",
           "tv_channels": [
             {
               "country": "NowTV",
