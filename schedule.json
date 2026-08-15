@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-15 16:32 VN",
+  "updated": "2026-08-15 19:51 VN",
   "days": {
     "20260815": {
       "date": "Saturday, 15/08",
@@ -13,8 +13,8 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "DAZN Italia",
                 "beIN Sports 2 HD",
+                "DAZN Italia",
                 "ST Sports Focus"
               ]
             }
@@ -30,23 +30,23 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Sky Sport News Deutsch HD",
                 "DAZN Italia",
-                "Arena 4 Hungary HD",
-                "Kuwait Sport HD",
-                "Sky Sport Bundesliga HD",
-                "DAZN Ireland",
-                "Veikkaus TV",
-                "Persiana Sports 3 HD",
-                "Fox Deportes USA",
-                "VG+ Sport Norge",
-                "DAZN Canada",
                 "ST Sports Premium HD",
-                "YouTube: Sky Bundesliga",
-                "DAZN Great Britain",
                 "TV Tipsport Czechia",
+                "DAZN Canada",
+                "Sky Sport News Deutsch HD",
+                "Veikkaus TV",
+                "Kuwait Sport HD",
+                "DAZN Great Britain",
+                "DAZN Ireland",
                 "Okko Prime Sport HD",
-                "Sky Sport Top Event HD"
+                "VG+ Sport Norge",
+                "Arena 4 Hungary HD",
+                "Sky Sport Top Event HD",
+                "Persiana Sports 3 HD",
+                "YouTube: Sky Bundesliga",
+                "Fox Deportes USA",
+                "Sky Sport Bundesliga HD"
               ]
             }
           ],
@@ -425,9 +425,69 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Miomir Kecmanovic vs Flavio Cobolli",
           "kick_utc": 1786806000,
           "time": "15/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN SPORTS 1"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Martin Landaluce vs Matteo Arnaldi",
+          "kick_utc": 1786806000,
+          "time": "15/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Zeynep Sonmez vs Amanda Anisimova",
+          "kick_utc": 1786806000,
+          "time": "15/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Cristina Bucsa vs Maja Chwalinska",
+          "kick_utc": 1786806000,
+          "time": "15/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Terence Atmane vs Tomas Martin Etcheverry",
+          "kick_utc": 1786824000,
+          "time": "16/08 03:00 AM",
           "tv_channels": [
             {
               "country": "Ausport",
@@ -441,15 +501,14 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1786827600,
-          "time": "16/08 04:00 AM",
+          "match": "Peyton Stearns vs Clara Tauson",
+          "kick_utc": 1786834800,
+          "time": "16/08 06:00 AM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
+                "beIN Sports Connect"
               ]
             }
           ],
@@ -475,6 +534,21 @@
           "match": "Europe Smash",
           "kick_utc": 1786816800,
           "time": "16/08 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "L'Equipe France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Europe Smash",
+          "kick_utc": 1786881600,
+          "time": "16/08 07:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
