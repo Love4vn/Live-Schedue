@@ -1,41 +1,9 @@
 {
-  "updated": "2026-08-16 19:52 VN",
+  "updated": "2026-08-16 22:28 VN",
   "days": {
     "20260816": {
       "date": "Sunday, 16/08",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Tottenham Hotspur vs Hoffenheim",
-          "kick_utc": 1786878000,
-          "time": "16/08 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "SpursPlay",
-                "Veikkaus TV"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Nottingham Forest vs Brest",
-          "kick_utc": 1786885200,
-          "time": "16/08 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Forest TV",
-                "Ligue 1+ 2"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "International Friendly",
           "match": "Basel vs Barcelona",
@@ -172,21 +140,6 @@
         {
           "league": "Tennis",
           "match": "Europe Smash",
-          "kick_utc": 1786881600,
-          "time": "16/08 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "L'Equipe France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Europe Smash",
           "kick_utc": 1786890660,
           "time": "16/08 09:31 PM",
           "tv_channels": [
@@ -262,6 +215,22 @@
         },
         {
           "league": "Tennis",
+          "match": "2026 Cincinnati Open Tennis",
+          "kick_utc": 1786978800,
+          "time": "17/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "TSN 3 Hd",
+                "TSN 4 Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Cincinnati Open 2026",
           "kick_utc": 1786892400,
           "time": "16/08 10:00 PM",
@@ -286,6 +255,21 @@
               "channels": [
                 "Rds2",
                 "Rds2 Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Cincinnati Open 2026",
+          "kick_utc": 1786978800,
+          "time": "17/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Réseau Des Sports (Rds) Hd"
               ]
             }
           ],
@@ -629,6 +613,23 @@
         },
         {
           "league": "Tennis",
+          "match": ": Cincinnati Open",
+          "kick_utc": 1786978800,
+          "time": "17/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
           "match": "Cincinnati Open E9",
           "kick_utc": 1786906800,
           "time": "17/08 02:00 AM",
@@ -667,6 +668,36 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Cincinnati Open E12",
+          "kick_utc": 1786978800,
+          "time": "17/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Cincinnati Open -Round 3 (A)",
+          "kick_utc": 1786978800,
+          "time": "17/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
               ]
             }
           ],
