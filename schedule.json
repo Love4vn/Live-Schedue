@@ -1,40 +1,9 @@
 {
-  "updated": "2026-08-16 04:28 VN",
+  "updated": "2026-08-16 08:48 VN",
   "days": {
-    "20260815": {
-      "date": "Saturday, 15/08",
+    "20260816": {
+      "date": "Sunday, 16/08",
       "games": [
-        {
-          "league": "Tennis",
-          "match": "Terence Atmane vs Tomas Martin Etcheverry",
-          "kick_utc": 1786824000,
-          "time": "16/08 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Peyton Stearns vs Clara Tauson",
-          "kick_utc": 1786834800,
-          "time": "16/08 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
         {
           "league": "Tennis",
           "match": "",
@@ -66,38 +35,6 @@
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1786824000,
-          "time": "16/08 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1786831200,
-          "time": "16/08 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -165,14 +102,15 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 4",
-          "kick_utc": 1786824000,
-          "time": "16/08 03:00 AM",
+          "match": "Tenis",
+          "kick_utc": 1786917600,
+          "time": "17/08 05:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 2 Hd Romania"
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
               ]
             }
           ],
@@ -180,14 +118,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 4",
-          "kick_utc": 1786831200,
-          "time": "16/08 05:00 AM",
+          "match": "Tenis",
+          "kick_utc": 1786924800,
+          "time": "17/08 07:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 2 Hd Romania"
+                "Digi Sport 4 Hd Romania"
               ]
             }
           ],
@@ -259,6 +197,21 @@
           "match": "Tenis Ziua 4",
           "kick_utc": 1786910400,
           "time": "17/08 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 4",
+          "kick_utc": 1786917600,
+          "time": "17/08 05:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -513,63 +466,18 @@
         },
         {
           "league": "Tennis",
-          "match": "Cincinnati Open E6",
-          "kick_utc": 1786834800,
-          "time": "16/08 06:00 AM",
+          "match": "Tenis Ziua 5",
+          "kick_utc": 1786924800,
+          "time": "17/08 07:00 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 4"
+                "Digi Sport 2 Hd Romania"
               ]
             }
           ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": ": Cincinnati Open",
-          "kick_utc": 1786834800,
-          "time": "16/08 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": ": Cincinnati Open",
-          "kick_utc": 1786892400,
-          "time": "16/08 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": ": Cincinnati Open",
-          "kick_utc": 1786907100,
-          "time": "17/08 02:05 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -633,9 +541,102 @@
         },
         {
           "league": "Tennis",
+          "match": ": Cincinnati Open",
+          "kick_utc": 1786892400,
+          "time": "16/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Cincinnati Open",
+          "kick_utc": 1786907100,
+          "time": "17/08 02:05 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Cincinnati Open",
+          "kick_utc": 1786915800,
+          "time": "17/08 04:30 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Cincinnati Open",
+          "kick_utc": 1786921500,
+          "time": "17/08 06:05 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
           "match": "Cincinnati Open E9",
           "kick_utc": 1786906800,
           "time": "17/08 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Cincinnati Open E10",
+          "kick_utc": 1786921200,
+          "time": "17/08 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Cincinnati Open E11",
+          "kick_utc": 1786926600,
+          "time": "17/08 07:30 AM",
           "tv_channels": [
             {
               "country": "NowTV",
