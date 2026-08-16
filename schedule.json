@@ -1,9 +1,189 @@
 {
-  "updated": "2026-08-16 08:48 VN",
+  "updated": "2026-08-16 10:53 VN",
   "days": {
     "20260816": {
       "date": "Sunday, 16/08",
       "games": [
+        {
+          "league": "International Friendly",
+          "match": "Liverpool vs Como 1907",
+          "kick_utc": 1786876200,
+          "time": "16/08 05:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "All Red Video"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Liverpool vs Como 1907",
+          "kick_utc": 1786899600,
+          "time": "17/08 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "TyC Sports Argentina",
+                "DAZN Canada",
+                "Match 4 Hungary HD",
+                "Fox Deportes USA",
+                "TV Tipsport Czechia",
+                "ST World Football HD",
+                "LFC TV HD",
+                "Okko Futbol HD",
+                "Como TV",
+                "ON Sport Plus HD",
+                "Persiana Sports 3 HD",
+                "Sky Sport Premier League DE HD",
+                "CBS Sports Golazo N/W",
+                "Sky Sport Top Event HD",
+                "Sportitalia HD",
+                "Sporty TV Africa",
+                "Sky Sport News Deutsch HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Tottenham Hotspur vs Hoffenheim",
+          "kick_utc": 1786878000,
+          "time": "16/08 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "SpursPlay",
+                "Veikkaus TV"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Nottingham Forest vs Brest",
+          "kick_utc": 1786885200,
+          "time": "16/08 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Forest TV",
+                "Ligue 1+ 2"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Basel vs Barcelona",
+          "kick_utc": 1786890600,
+          "time": "16/08 09:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "MBC Action HD",
+                "TV3 Catalunya HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Real Madrid vs Schalke 04",
+          "kick_utc": 1786892400,
+          "time": "16/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "CBS Sports Golazo N/W",
+                "DAZN 2 Bar Deutsch HD",
+                "DAZN Canada",
+                "DAZN Great Britain",
+                "DAZN Ireland",
+                "Fox Deportes USA",
+                "Okko Prime Sport HD",
+                "OneFootball",
+                "Persiana Sports 2 HD",
+                "Real Madrid TV",
+                "RTVE Play",
+                "Sporty TV Africa",
+                "ST World Football HD",
+                "stc tv sports HD 1",
+                "Sukan+ RTM HD",
+                "TV Tipsport Czechia",
+                "TVE La 1 HD España",
+                "TyC Sports Argentina",
+                "VG+ Sport Norge",
+                "Ziggo Sport 2"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Newcastle United vs Strasbourg",
+          "kick_utc": 1786892400,
+          "time": "16/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena Sport 4 Srbija HD",
+                "Arena Sport 7 BiH HD",
+                "Ligue 1+",
+                "NUFC TV",
+                "Sport TV7 Portugal HD",
+                "SuperSport ESPN 2 HD",
+                "VOYO Pro TV Romania"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Anorthosis vs APOEL Nicosia",
+          "kick_utc": 1786899600,
+          "time": "17/08 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Cablenet Sports 1 HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Real Zaragoza vs Athletic Bilbao",
+          "kick_utc": 1786901400,
+          "time": "17/08 12:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Aragon Deporte Stream",
+                "Aragón TV HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
         {
           "league": "Tennis",
           "match": "",
@@ -38,15 +218,29 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1786838400,
-          "time": "16/08 07:00 AM",
+          "match": "Tenis Ziua 3",
+          "kick_utc": 1786845600,
+          "time": "16/08 09:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
+                "Digi Sport 2 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 3",
+          "kick_utc": 1786852800,
+          "time": "16/08 11:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Romania"
               ]
             }
           ],
@@ -133,14 +327,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 4",
-          "kick_utc": 1786838400,
-          "time": "16/08 07:00 AM",
+          "match": "Tenis",
+          "kick_utc": 1786932000,
+          "time": "17/08 09:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 2 Hd Romania"
+                "Digi Sport 4 Hd Romania"
               ]
             }
           ],
@@ -224,96 +418,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 3",
-          "kick_utc": 1786840200,
-          "time": "16/08 07:30 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 3",
-          "kick_utc": 1786845600,
-          "time": "16/08 09:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 3",
-          "kick_utc": 1786852800,
-          "time": "16/08 11:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP Masters 1000 - Cincinnati 2026",
-          "kick_utc": 1786842000,
-          "time": "16/08 08:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv4 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP Masters 1000 - Cincinnati 2026",
-          "kick_utc": 1786892400,
-          "time": "16/08 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv5 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP Masters 1000 - Cincinnati 2026",
-          "kick_utc": 1786914000,
-          "time": "17/08 04:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv5 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
           "match": "Europe Smash",
           "kick_utc": 1786881600,
           "time": "16/08 07:00 PM",
@@ -352,6 +456,36 @@
               "country": "Hubsport",
               "channels": [
                 "L'Equipe France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP Masters 1000 - Cincinnati 2026",
+          "kick_utc": 1786892400,
+          "time": "16/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv5 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP Masters 1000 - Cincinnati 2026",
+          "kick_utc": 1786914000,
+          "time": "17/08 04:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv5 Hd Portugal"
               ]
             }
           ],
@@ -481,18 +615,18 @@
         },
         {
           "league": "Tennis",
-          "match": "Cincinnati Open E7",
-          "kick_utc": 1786840200,
-          "time": "16/08 07:30 AM",
+          "match": "Tenis Ziua 5",
+          "kick_utc": 1786932000,
+          "time": "17/08 09:00 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 4"
+                "Digi Sport 2 Hd Romania"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -529,6 +663,21 @@
           "match": "Cincinnati Open -Round 2 (B)",
           "kick_utc": 1786892400,
           "time": "16/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Cincinnati Open -Round 2 (B)",
+          "kick_utc": 1786932000,
+          "time": "17/08 09:00 AM",
           "tv_channels": [
             {
               "country": "NowTV",
