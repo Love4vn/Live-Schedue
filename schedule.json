@@ -1,178 +1,10 @@
 {
-  "updated": "2026-08-17 01:38 VN",
+  "updated": "2026-08-17 04:26 VN",
   "days": {
     "20260816": {
       "date": "Sunday, 16/08",
       "games": [
         {
-          "league": "International Friendly",
-          "match": "Liverpool vs Como 1907",
-          "kick_utc": 1786899600,
-          "time": "17/08 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "CBS Sports Golazo N/W",
-                "Como TV",
-                "DAZN Canada",
-                "FanCode India",
-                "Fox Deportes USA",
-                "Kuwait Sport HD",
-                "Kuwait Sport HD",
-                "LFC TV HD",
-                "Match 4 Hungary HD",
-                "Match 4 Hungary HD",
-                "Okko Futbol HD",
-                "ON Sport Plus HD",
-                "Persiana Sports 3 HD",
-                "Sky Sport News Deutsch HD",
-                "Sky Sport Premier League DE HD",
-                "Sky Sport Top Event HD",
-                "Sport Bladet Play",
-                "Sportitalia HD",
-                "Sporty TV Africa",
-                "Sporty TV Africa",
-                "Sporty TV Africa",
-                "Sporty TV Africa",
-                "ST World Football HD",
-                "ST World Football HD",
-                "ST World Football HD",
-                "TV Tipsport Czechia",
-                "TyC Sports Argentina",
-                "TyC Sports Argentina",
-                "TyC Sports Argentina",
-                "TyC Sports Argentina",
-                "VG+ Sport Norge"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Anorthosis vs APOEL Nicosia",
-          "kick_utc": 1786899600,
-          "time": "17/08 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Cablenet Sports 1 HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Real Zaragoza vs Athletic Bilbao",
-          "kick_utc": 1786901400,
-          "time": "17/08 12:30 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Aragon Deporte Stream",
-                "Aragón TV HD",
-                "Aragón TV HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi WTA de Cincinnati",
-          "kick_utc": 1786899600,
-          "time": "17/08 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "beIN Sports Max 5 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Cincinnati",
-          "kick_utc": 1786899600,
-          "time": "17/08 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Cincinnati",
-          "kick_utc": 1786906800,
-          "time": "17/08 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Masters 1000 de Cincinnati",
-          "kick_utc": 1786986000,
-          "time": "18/08 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Europe Smash",
-          "kick_utc": 1786903200,
-          "time": "17/08 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "L'Equipe France"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 4",
-          "kick_utc": 1786903200,
-          "time": "17/08 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania",
-                "Digi Sport 2 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
           "league": "Tennis",
           "match": "Tenis Ziua 4",
           "kick_utc": 1786910400,
@@ -359,6 +191,21 @@
           "match": "Tenis",
           "kick_utc": 1786989600,
           "time": "18/08 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1786996800,
+          "time": "18/08 03:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -433,33 +280,48 @@
         },
         {
           "league": "Tennis",
-          "match": "Cincinnati Open E9",
-          "kick_utc": 1786906800,
-          "time": "17/08 02:00 AM",
+          "match": "Masters 1000 de Cincinnati",
+          "kick_utc": 1786986000,
+          "time": "18/08 12:00 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 4"
+                "Eurosport 1 France"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
-          "match": ": Cincinnati Open",
-          "kick_utc": 1786907100,
-          "time": "17/08 02:05 AM",
+          "match": "Masters 1000 de Cincinnati",
+          "kick_utc": 1786993200,
+          "time": "18/08 02:00 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Ziggo Sport 4"
+                "Eurosport 1 France"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 6",
+          "kick_utc": 1786996800,
+          "time": "18/08 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -506,6 +368,21 @@
                 "Ziggo Sport 1",
                 "Ziggo Sport 4",
                 "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Cincinnati Open",
+          "kick_utc": 1786993500,
+          "time": "18/08 02:05 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
               ]
             }
           ],
@@ -581,6 +458,21 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports 6"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Cincinnati Open E13",
+          "kick_utc": 1786993200,
+          "time": "18/08 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
               ]
             }
           ],
