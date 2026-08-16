@@ -1,55 +1,9 @@
 {
-  "updated": "2026-08-16 16:33 VN",
+  "updated": "2026-08-16 19:52 VN",
   "days": {
     "20260816": {
       "date": "Sunday, 16/08",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Liverpool vs Como 1907",
-          "kick_utc": 1786876200,
-          "time": "16/08 05:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "All Red Video"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Liverpool vs Como 1907",
-          "kick_utc": 1786899600,
-          "time": "17/08 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "TyC Sports Argentina",
-                "Okko Futbol HD",
-                "Sky Sport Top Event HD",
-                "Persiana Sports 3 HD",
-                "Sky Sport Premier League DE HD",
-                "ST World Football HD",
-                "Sporty TV Africa",
-                "Match 4 Hungary HD",
-                "ON Sport Plus HD",
-                "CBS Sports Golazo N/W",
-                "Sky Sport News Deutsch HD",
-                "TV Tipsport Czechia",
-                "Sportitalia HD",
-                "DAZN Canada",
-                "Fox Deportes USA",
-                "LFC TV HD",
-                "Como TV"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "International Friendly",
           "match": "Tottenham Hotspur vs Hoffenheim",
@@ -155,6 +109,37 @@
         },
         {
           "league": "International Friendly",
+          "match": "Liverpool vs Como 1907",
+          "kick_utc": 1786899600,
+          "time": "17/08 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "CBS Sports Golazo N/W",
+                "Como TV",
+                "DAZN Canada",
+                "Fox Deportes USA",
+                "LFC TV HD",
+                "Match 4 Hungary HD",
+                "Okko Futbol HD",
+                "ON Sport Plus HD",
+                "Persiana Sports 3 HD",
+                "Sky Sport News Deutsch HD",
+                "Sky Sport Premier League DE HD",
+                "Sky Sport Top Event HD",
+                "Sportitalia HD",
+                "Sporty TV Africa",
+                "ST World Football HD",
+                "TV Tipsport Czechia",
+                "TyC Sports Argentina"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
           "match": "Anorthosis vs APOEL Nicosia",
           "kick_utc": 1786899600,
           "time": "17/08 12:00 AM",
@@ -183,38 +168,6 @@
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1786892400,
-          "time": "16/08 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1786914000,
-          "time": "17/08 04:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
-              ]
-            }
-          ],
-          "source": "ausport"
         },
         {
           "league": "Tennis",
