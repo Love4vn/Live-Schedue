@@ -1,20 +1,33 @@
 {
-  "updated": "2026-08-17 16:50 VN",
+  "updated": "2026-08-17 19:57 VN",
   "days": {
     "20260817": {
       "date": "Monday, 17/08",
       "games": [
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Alexander Blockx vs Flavio Cobolli",
           "kick_utc": 1786978800,
           "time": "17/08 10:00 PM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
-                "beIN SPORTS 1",
-                "beIN SPORTS 2",
+                "beIN SPORTS 1"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Thiago Augustin Tirante vs Martin Landaluce",
+          "kick_utc": 1786978800,
+          "time": "17/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
                 "beIN Sports Connect"
               ]
             }
@@ -23,9 +36,55 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1787000400,
-          "time": "18/08 04:00 AM",
+          "match": "Iga Swiatek vs Maria Sakkari",
+          "kick_utc": 1786978800,
+          "time": "17/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 2"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Arthur Fery vs Alex De Minaur",
+          "kick_utc": 1786984200,
+          "time": "17/08 11:30 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Rinky Hijikata vs Jakub Mensik",
+          "kick_utc": 1786989600,
+          "time": "18/08 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Jiri Lehecka vs Arthur Fils",
+          "kick_utc": 1786995000,
+          "time": "18/08 02:30 AM",
           "tv_channels": [
             {
               "country": "Ausport",
@@ -39,7 +98,7 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Alexander Zverev vs Terence Atmane",
           "kick_utc": 1787007600,
           "time": "18/08 06:00 AM",
           "tv_channels": [
