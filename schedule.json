@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-17 08:45 VN",
+  "updated": "2026-08-17 10:56 VN",
   "days": {
     "20260817": {
       "date": "Monday, 17/08",
@@ -56,21 +56,6 @@
         {
           "league": "Tennis",
           "match": "Tenis Ziua 5",
-          "kick_utc": 1786924800,
-          "time": "17/08 07:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 5",
           "kick_utc": 1786932000,
           "time": "17/08 09:00 AM",
           "tv_channels": [
@@ -108,21 +93,6 @@
               "country": "Hubsport",
               "channels": [
                 "Digi Sport 2 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1786924800,
-          "time": "17/08 07:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania"
               ]
             }
           ],
@@ -266,21 +236,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Cincinnati Open E11",
-          "kick_utc": 1786926600,
-          "time": "17/08 07:30 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
           "match": "Cincinnati Open -Round 2 (B)",
           "kick_utc": 1786932000,
           "time": "17/08 09:00 AM",
@@ -314,6 +269,21 @@
           "match": "Cincinnati Open -Round 3 (A)",
           "kick_utc": 1786978800,
           "time": "17/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Cincinnati Open -Round 3 (A)",
+          "kick_utc": 1787018400,
+          "time": "18/08 09:00 AM",
           "tv_channels": [
             {
               "country": "NowTV",
