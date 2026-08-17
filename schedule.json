@@ -1,70 +1,9 @@
 {
-  "updated": "2026-08-17 22:31 VN",
+  "updated": "2026-08-18 01:49 VN",
   "days": {
     "20260817": {
       "date": "Monday, 17/08",
       "games": [
-        {
-          "league": "Tennis",
-          "match": "Alexander Blockx vs Flavio Cobolli",
-          "kick_utc": 1786978800,
-          "time": "17/08 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 1"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Thiago Augustin Tirante vs Martin Landaluce",
-          "kick_utc": 1786978800,
-          "time": "17/08 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Iga Swiatek vs Maria Sakkari",
-          "kick_utc": 1786978800,
-          "time": "17/08 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 2"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Arthur Fery vs Alex De Minaur",
-          "kick_utc": 1786984200,
-          "time": "17/08 11:30 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
         {
           "league": "Tennis",
           "match": "Rinky Hijikata vs Jakub Mensik",
@@ -121,13 +60,258 @@
             {
               "country": "Ausport",
               "channels": [
+                "beIN SPORTS 1",
                 "beIN Sports Connect",
-                "beIN SPORTS 2",
-                "beIN SPORTS 1"
+                "beIN SPORTS 2"
               ]
             }
           ],
           "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Masters 1000 de Cincinnati",
+          "kick_utc": 1786986000,
+          "time": "18/08 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Masters 1000 de Cincinnati",
+          "kick_utc": 1786993200,
+          "time": "18/08 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 France"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 5",
+          "kick_utc": 1786989600,
+          "time": "18/08 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1786989600,
+          "time": "18/08 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1786996800,
+          "time": "18/08 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 6",
+          "kick_utc": 1786996800,
+          "time": "18/08 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Cincinnati Open E13",
+          "kick_utc": 1786993200,
+          "time": "18/08 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Cincinnati Open",
+          "kick_utc": 1786993500,
+          "time": "18/08 02:05 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Cincinnati Open",
+          "kick_utc": 1787004900,
+          "time": "18/08 05:15 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Cincinnati Open",
+          "kick_utc": 1787007900,
+          "time": "18/08 06:05 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Cincinnati Open",
+          "kick_utc": 1787065200,
+          "time": "18/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Cincinnati Open E14",
+          "kick_utc": 1787007600,
+          "time": "18/08 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Cincinnati Open E15",
+          "kick_utc": 1787013000,
+          "time": "18/08 07:30 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Cincinnati Open -Round 3 (A)",
+          "kick_utc": 1787018400,
+          "time": "18/08 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Cincinnati Open E16",
+          "kick_utc": 1787065200,
+          "time": "18/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Cincinnati Open -Round 3 (B)",
+          "kick_utc": 1787065200,
+          "time": "18/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
+              ]
+            }
+          ],
+          "source": "nowtv"
         }
       ]
     }
