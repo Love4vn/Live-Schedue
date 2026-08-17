@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-17 10:56 VN",
+  "updated": "2026-08-17 14:08 VN",
   "days": {
     "20260817": {
       "date": "Monday, 17/08",
@@ -14,8 +14,8 @@
               "country": "Ausport",
               "channels": [
                 "beIN SPORTS 2",
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
+                "beIN SPORTS 1",
+                "beIN Sports Connect"
               ]
             }
           ],
@@ -52,111 +52,6 @@
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 5",
-          "kick_utc": 1786932000,
-          "time": "17/08 09:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 5",
-          "kick_utc": 1786939200,
-          "time": "17/08 11:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 5",
-          "kick_utc": 1786989600,
-          "time": "18/08 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 2 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1786932000,
-          "time": "17/08 09:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1786939200,
-          "time": "17/08 11:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1786989600,
-          "time": "18/08 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1786996800,
-          "time": "18/08 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -221,9 +116,9 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 6",
-          "kick_utc": 1786996800,
-          "time": "18/08 03:00 AM",
+          "match": "Tenis Ziua 5",
+          "kick_utc": 1786989600,
+          "time": "18/08 01:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -236,18 +131,48 @@
         },
         {
           "league": "Tennis",
-          "match": "Cincinnati Open -Round 2 (B)",
-          "kick_utc": 1786932000,
-          "time": "17/08 09:00 AM",
+          "match": "Tenis",
+          "kick_utc": 1786989600,
+          "time": "18/08 01:00 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 6"
+                "Digi Sport 4 Hd Romania"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1786996800,
+          "time": "18/08 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis Ziua 6",
+          "kick_utc": 1786996800,
+          "time": "18/08 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 2 Hd Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
