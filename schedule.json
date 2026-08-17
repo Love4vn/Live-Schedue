@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-17 14:08 VN",
+  "updated": "2026-08-17 16:50 VN",
   "days": {
     "20260817": {
       "date": "Monday, 17/08",
@@ -13,8 +13,8 @@
             {
               "country": "Ausport",
               "channels": [
-                "beIN SPORTS 2",
                 "beIN SPORTS 1",
+                "beIN SPORTS 2",
                 "beIN Sports Connect"
               ]
             }
@@ -279,6 +279,21 @@
                 "Ziggo Sport 1",
                 "Ziggo Sport 4",
                 "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Cincinnati Open E31",
+          "kick_utc": 1786984200,
+          "time": "17/08 11:30 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
               ]
             }
           ],
