@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-18 10:50 VN",
+  "updated": "2026-08-18 13:55 VN",
   "days": {
     "20260818": {
       "date": "Tuesday, 18/08",
@@ -13,7 +13,9 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "FC Bayern TV PLUS",
                 "OneFootball",
+                "TV Tipsport Czechia",
                 "VG+ Sport Norge"
               ]
             }
@@ -70,6 +72,7 @@
                 "Prima Sport RO 3 HD",
                 "Q Sport Football HD",
                 "RTL+ Hungary",
+                "Setanta Sports 2 Georgia HD",
                 "Sky Sport 3 Austria HD",
                 "Sky Sport Calcio HD",
                 "Sport 2 Hungary HD",
@@ -265,6 +268,7 @@
                 "Prime Video UK",
                 "RTL Plug Belgium",
                 "RTL+ Hungary",
+                "Setanta Sports 1 Georgia HD",
                 "Sky Sport 2 Austria HD",
                 "Sky Sport 2 Austria HD",
                 "Sky Sport Uno Italia HD",
@@ -311,8 +315,8 @@
               "country": "Ausport",
               "channels": [
                 "beIN Sports Connect",
-                "beIN SPORTS 1",
-                "beIN SPORTS 2"
+                "beIN SPORTS 2",
+                "beIN SPORTS 1"
               ]
             }
           ],
@@ -349,21 +353,6 @@
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Cincinnati Open -Round 3 (A)",
-          "kick_utc": 1787018400,
-          "time": "18/08 09:00 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports 6"
-              ]
-            }
-          ],
-          "source": "nowtv"
         },
         {
           "league": "Tennis",
