@@ -1,8 +1,8 @@
 {
-  "updated": "2026-08-19 04:30 VN",
+  "updated": "2026-08-19 08:43 VN",
   "days": {
-    "20260818": {
-      "date": "Tuesday, 18/08",
+    "20260819": {
+      "date": "Wednesday, 19/08",
       "games": [
         {
           "league": "UEFA Champions League",
@@ -274,65 +274,52 @@
         },
         {
           "league": "Tennis",
-          "match": "Cincinnati Open E18",
-          "kick_utc": 1787094000,
-          "time": "19/08 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": ": Cincinnati Open",
-          "kick_utc": 1787094300,
-          "time": "19/08 06:05 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": ": Cincinnati Open",
+          "match": "",
           "kick_utc": 1787151600,
           "time": "19/08 10:00 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Ausport",
               "channels": [
-                "Ziggo Sport 1",
-                "Ziggo Sport 4",
-                "Ziggo Sport Kanaal 14"
+                "beIN SPORTS 1",
+                "beIN SPORTS 2",
+                "beIN Sports Connect"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
-          "match": ": Cincinnati Open",
-          "kick_utc": 1787173500,
-          "time": "20/08 04:05 AM",
+          "match": "",
+          "kick_utc": 1787173200,
+          "time": "20/08 04:00 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Ausport",
               "channels": [
-                "Ziggo Sport 4"
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1787180400,
+          "time": "20/08 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 2"
+              ]
+            }
+          ],
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -396,9 +383,104 @@
         },
         {
           "league": "Tennis",
+          "match": ": Cincinnati Open",
+          "kick_utc": 1787151600,
+          "time": "19/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Cincinnati Open",
+          "kick_utc": 1787173500,
+          "time": "20/08 04:05 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Cincinnati Open",
+          "kick_utc": 1787177100,
+          "time": "20/08 05:05 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Cincinnati Open",
+          "kick_utc": 1787180700,
+          "time": "20/08 06:05 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
           "match": "Cincinnati Open E21",
           "kick_utc": 1787166000,
           "time": "20/08 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Cincinnati Open E22",
+          "kick_utc": 1787180400,
+          "time": "20/08 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Cincinnati Open E23",
+          "kick_utc": 1787185800,
+          "time": "20/08 07:30 AM",
           "tv_channels": [
             {
               "country": "NowTV",
