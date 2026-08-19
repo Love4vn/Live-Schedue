@@ -1,333 +1,9 @@
 {
-  "updated": "2026-08-20 01:45 VN",
+  "updated": "2026-08-20 04:35 VN",
   "days": {
     "20260819": {
       "date": "Wednesday, 19/08",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "Barcelona vs Al Ahly",
-          "kick_utc": 1787162400,
-          "time": "20/08 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "ON Sport Max HD",
-                "ON Sport Max HD",
-                "ON Sport Plus HD",
-                "Persiana Sports 2 HD",
-                "TV3 Catalunya HD",
-                "TV3 Catalunya HD",
-                "YouTube: Barcelona"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Ponferradina vs Real Madrid Castilla",
-          "kick_utc": 1787162400,
-          "time": "20/08 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Real Madrid TV",
-                "Real Madrid TV"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Champions League",
-          "match": "NEC Nijmegen vs Bodø/Glimt",
-          "kick_utc": 1787166000,
-          "time": "20/08 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena M1 Premium MKD HD",
-                "Arena Premium 1 Srbija HD",
-                "Arena Premium 1 Srbija HD",
-                "Arena Premium 2 BiH HD",
-                "Arena Sport 3 Hrvatska HD",
-                "ART Motion Sport 3 HD",
-                "beIN Connect MENA",
-                "beIN Sports 3 HD",
-                "beIN Sports HK 3 HD",
-                "beIN Sports MENA 2 HD",
-                "beIN Sports MENA 2 HD",
-                "Blue Sport 3 Live HDR",
-                "Blue Sport D 1 HD",
-                "Canal+ Extra 5 Polska HD",
-                "Canal+ Foot HD",
-                "Canal+ Foot UHD HDR",
-                "Canal+ Live 1 France HD",
-                "Canal+ Sport 6 Polska HD",
-                "CBC Sport HD",
-                "CBC Sport HD",
-                "CBC Sport HD",
-                "Cosmote Sport 2 HD",
-                "Cosmote Sport 4K UHD",
-                "Cytavision Sports 3 HD",
-                "Cytavision Sports 4K 1 UHD",
-                "DAZN Deutsch",
-                "DAZN Portugal",
-                "DAZN USA en Español",
-                "Digi 4K UHD",
-                "Fast Sports",
-                "HBO Max",
-                "M+ Liga de Campeones HD",
-                "M+ Liga de Campeones HD",
-                "Megogo Futbol 1",
-                "MTV Katsomon+",
-                "MTV Urheilu 2 Suomi HD",
-                "Nova Sport 4 Czech HD",
-                "Nova Sport 4 Czech HD",
-                "Okko Futbol HD",
-                "Paramount+ USA",
-                "Pickx+ Sports 1 HD",
-                "Premier Sports 1 Mongolia HD",
-                "Premier Sports 1 Mongolia HD",
-                "Prima Sport RO 3 HD",
-                "Prima Sport RO 3 HD",
-                "Prime Video Italia",
-                "Q Sport Football HD",
-                "Ring Bulgaria HD",
-                "Ring Bulgaria HD",
-                "Ring Bulgaria HD",
-                "Ring Bulgaria HD",
-                "Ring Bulgaria HD",
-                "Ring Bulgaria HD",
-                "RTL Plug Belgium",
-                "RTL+ Hungary",
-                "Setanta Sports 2 Georgia HD",
-                "Silk Universal HD",
-                "Sky Sport 2 Austria HD",
-                "Sky Sport 2 Austria HD",
-                "SÝN Sport ViaPlay HD",
-                "Tabii Spor Türkiye",
-                "TNT Sports 2 HD",
-                "TNT Sports 2 HD",
-                "Tring Sport 1 HD",
-                "TSN Malta 5 HD",
-                "TV2 Play Norge",
-                "TV3 Sport Dansk HD",
-                "TV3 Sport Dansk HD",
-                "TVNet Sport Azerbaijan",
-                "ViaPlay Danmark HD",
-                "ViaPlay Sport Sverige HD",
-                "ViaPlay Sverige HD",
-                "ViaPlay Ísland HD",
-                "Virgin Media PLAY",
-                "Virgin Media TV",
-                "Virgin Media Two HD",
-                "VTM 2 Belgium HD",
-                "Ziggo Sport 1 HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Champions League",
-          "match": "Slovan Bratislava vs Celje",
-          "kick_utc": 1787166000,
-          "time": "20/08 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena M3 Premium MKD HD",
-                "Arena Premium 3 Srbija HD",
-                "Arena Premium 3 Srbija HD",
-                "Arena Premium 4 BiH HD",
-                "Arena Sport 4 Hrvatska HD",
-                "ART Motion Sport 1 HD",
-                "beIN Connect MENA",
-                "beIN Sports HK 2 HD",
-                "beIN Sports MENA 3 HD",
-                "beIN Sports MENA 3 HD",
-                "Blue Sport D 2 HD",
-                "Canal+ Extra 3 Polska HD",
-                "Canal+ Live 4 France HD",
-                "Cosmote Sport 4 HD",
-                "Cytavision Sports 6 HD",
-                "DAZN Deutsch",
-                "DAZN Portugal",
-                "Fast Sports 2 Armenia",
-                "Fast Sports",
-                "HBO Max",
-                "Kanal A Slovenija HD",
-                "M+ Liga de Campeones 3 HD",
-                "M+ Liga de Campeones 3 HD",
-                "Megogo Futbol 2",
-                "MTV Katsomon+",
-                "MTV Urheilu 3 Suomi HD",
-                "Nova Sport 5 Czech HD",
-                "Nova Sport 5 Czech HD",
-                "Nova Sport 5 Czech HD",
-                "Nova Sport 5 Czech HD",
-                "Nova Sport 5 Czech HD",
-                "Nova Sport 5 Slovakia HD",
-                "Paramount+ USA",
-                "Pickx+ Sports 3 HD",
-                "Play Sports 4 Belgium",
-                "Premier Sports 3 Mongolia HD",
-                "Premier Sports 3 Mongolia HD",
-                "Prima Sport RO PPV 2",
-                "Q Sport League HD",
-                "Q Sport League HD",
-                "RTL+ Hungary",
-                "Sky Go Italy",
-                "Sky Sport 3 Austria HD",
-                "Sky Sport Calcio HD",
-                "Tabii Spor 2",
-                "TNT Sports 4 HD",
-                "TNT Sports 4 HD",
-                "Tring Sport 3 HD",
-                "TSN Malta 8 HD",
-                "TV2 Play Norge",
-                "ViaPlay Danmark HD",
-                "ViaPlay Sport News Dansk",
-                "ViaPlay Sverige HD",
-                "ViX TV",
-                "Ziggo Sport 4"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Champions League",
-          "match": "Celtic vs LASK Linz",
-          "kick_utc": 1787166000,
-          "time": "20/08 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena M2 Premium MKD HD",
-                "Arena Premium 1 BiH HD",
-                "Arena Premium 2 Srbija HD",
-                "Arena Premium 2 Srbija HD",
-                "Arena Premium 2 Srbija HD",
-                "Arena Sport 1 Hrvatska HD",
-                "beIN Connect MENA",
-                "beIN Sports 1 HD",
-                "beIN Sports 1 HD",
-                "beIN Sports HK 1 HD",
-                "beIN Sports MENA 1 HD",
-                "beIN Sports MENA 1 HD",
-                "beIN Sports MENA English 1 HD",
-                "Blue Sport 1 Live UHD",
-                "Blue Sport 2 Live HDR",
-                "Blue Sport 3 Live HD",
-                "Blue ZOOM D Schweiz",
-                "Blue ZOOM D Schweiz",
-                "Blue ZOOM F Suisse",
-                "bTV Action HD",
-                "bTV Action HD",
-                "bTV Action HD",
-                "bTV Action HD",
-                "bTV Action HD",
-                "bTV Action HD",
-                "bTV Action HD",
-                "bTV Action HD",
-                "Canal+ Extra 1 Polska HD",
-                "Canal+ Live 2 France HD",
-                "Canal+ Sport 2 Afrique HD",
-                "Canal+ Sport 2 Afrique HD",
-                "Canal+ Sport 2 Afrique HD",
-                "Canal+ Sport France HD",
-                "Canal+ Sport France HD",
-                "Canal+ Sport France HD",
-                "Canal+ Sport France HD",
-                "CBS Sports Golazo N/W",
-                "Cosmote Sport 3 HD",
-                "Cytavision Sports 4 HD",
-                "Cytavision Sports 4K 2 UHD",
-                "DAZN 2 Bar Deutsch HD",
-                "DAZN Deutsch",
-                "Digi Sport 2 Romania HD",
-                "Digi Sport 2 Romania HD",
-                "Fast Sports 1 Armenia",
-                "Fast Sports",
-                "HBO Max",
-                "HRT 2 Hrvatska HD",
-                "HRT 2 Hrvatska HD",
-                "HRT 2 Hrvatska HD",
-                "HRT 2 Hrvatska HD",
-                "M+ Liga de Campeones 2 HD",
-                "M+ Liga de Campeones 2 HD",
-                "MEGA Hellas HD",
-                "MEGA Hellas HD",
-                "MEGA Hellas HD",
-                "MEGA Hellas HD",
-                "Megogo Futbol 3",
-                "MTV Katsomon+",
-                "MTV Urheilu 1 Suomi HD",
-                "Nova Sport 3 Czech HD",
-                "Nova Sport 3 Czech HD",
-                "Paramount+ USA",
-                "Pickx+ Sports 2 HD",
-                "Premier Sports 1 Ireland HD",
-                "Premier Sports 2 Mongolia HD",
-                "Premier Sports 2 Mongolia HD",
-                "Prima Sport RO 2 HD",
-                "Prima Sport RO 2 HD",
-                "Prima Sport RO 2 HD",
-                "Prima Sport RO 2 HD",
-                "Prime Video USA",
-                "RTK 1 Kosovo HD",
-                "RTL+ Hungary",
-                "RTÉ 2 Ireland HD",
-                "RTÉ 2 Ireland HD",
-                "RTÉ 2 Ireland HD",
-                "RTÉ Player",
-                "Setanta Sports 1 Georgia HD",
-                "Sky Go Italy",
-                "Sky Sport Uno Italia HD",
-                "Sony Sports TEN 2 India HD",
-                "Sony Sports TEN 2 India HD",
-                "Sport 1 Hungary HD",
-                "Sport 1 Hungary HD",
-                "Sport 1 Hungary HD",
-                "Sport 1 Hungary HD",
-                "Sport 1 Hungary HD",
-                "Sport TV Azerbaijan",
-                "Sport TV5 Portugal HD",
-                "SportKlub 3 Slovenija",
-                "SÝN Sport 1 Ísland HD",
-                "Tabii Spor 1",
-                "TNT Sports 1 HD",
-                "TNT Sports 1 HD",
-                "TNT Sports 1 HD",
-                "TNT Sports 1 HD",
-                "TNT Sports 1 HD",
-                "TNT Sports 1 HD",
-                "Tring Sport 2 HD",
-                "TSN Malta 7 HD",
-                "TUDN Español USA",
-                "TV2 Play Norge",
-                "TV2 Sport 1 Norge HD",
-                "TV2 Sport 1 Norge HD",
-                "TV3+ Dansk HD",
-                "TV3+ Dansk HD",
-                "V Sport Premium HD",
-                "ViaPlay Danmark HD",
-                "ViaPlay Sverige HD",
-                "ViX TV",
-                "Ziggo Sport 2"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "UEFA Europa League",
           "match": "Kairat Almaty vs Anderlecht",
@@ -366,6 +42,9 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Arena Premium 2 Srbija HD",
+                "Arena Premium 2 Srbija HD",
+                "Arena Premium 2 Srbija HD",
                 "OneFootball",
                 "Servus TV Österreich HD",
                 "Servus TV Österreich HD",
@@ -397,21 +76,6 @@
         },
         {
           "league": "UEFA Europa Conference League",
-          "match": "Lincoln Red Imps vs Larne",
-          "kick_utc": 1787241600,
-          "time": "20/08 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "- - -"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Europa Conference League",
           "match": "Inter Turku vs FC Copenhagen",
           "kick_utc": 1787241600,
           "time": "20/08 11:00 PM",
@@ -421,6 +85,21 @@
               "channels": [
                 "Jalkapallo TV",
                 "Solidsport Broadcast"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa Conference League",
+          "match": "Lincoln Red Imps vs Larne",
+          "kick_utc": 1787241600,
+          "time": "20/08 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "NIFL TV"
               ]
             }
           ],
@@ -492,6 +171,8 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Arena Sport 1 Srbija HD",
+                "Arena Sport 1 Srbija HD",
                 "S Sport+ Streaming",
                 "Sportdigital FUSSBALL HD",
                 "TV6 Lietuva"
@@ -509,6 +190,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Arena Premium 5 Srbija HD",
                 "ATV Türkiye HD",
                 "ATV Türkiye HD",
                 "ATV Türkiye HD",
@@ -551,6 +233,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Arena Sport 4 Srbija HD",
                 "Play RTS Sport",
                 "SRF Play"
               ]
@@ -599,6 +282,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Arena Sport 6 Srbija HD",
                 "Open Beyond TV HD",
                 "Open Beyond TV HD",
                 "Open Beyond TV HD",
@@ -681,7 +365,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Arena Sport 3 Srbija HD",
+                "Arena Sport 9 Srbija HD",
                 "CBC Sport HD",
                 "CBC Sport HD",
                 "CBC Sport HD",
@@ -722,6 +406,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Arena Premium 4 Srbija HD",
                 "SÝN Sport Island 1 HD"
               ]
             }
@@ -752,6 +437,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Arena Sport 2 Srbija HD",
                 "KIJK",
                 "Play RTS Sport",
                 "RTS 2 Suisse HD",
@@ -826,6 +512,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Arena Sport 3 Srbija HD",
                 "Hearts TV",
                 "Kanal 1 Xtra Slovakia HD",
                 "Kanal 1 Xtra Slovakia HD",
@@ -847,6 +534,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Arena Sport 7 Srbija HD",
                 "Rangers TV",
                 "TV Tipsport Czechia"
               ]
@@ -855,20 +543,105 @@
           "source": "livesportsontv"
         },
         {
-          "league": "Tennis",
-          "match": "Nuno Borges vs Brandon Nakashima",
-          "kick_utc": 1787167800,
-          "time": "20/08 02:30 AM",
+          "league": "UEFA Europa League",
+          "match": "Benfica vs AGF Aarhus",
+          "kick_utc": 1787252400,
+          "time": "21/08 02:00 AM",
           "tv_channels": [
             {
-              "country": "Ausport",
+              "country": "LiveSportsOnTV",
               "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
+                "Disney+ Danmark",
+                "OPTO Portugal",
+                "SIC Portugal HD"
               ]
             }
           ],
-          "source": "ausport"
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa Conference League",
+          "match": "Shamrock Rovers vs KuPS Kuopio",
+          "kick_utc": 1787252400,
+          "time": "21/08 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Jalkapallo TV",
+                "KuPS TV",
+                "LOI TV"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa Conference League",
+          "match": "Sporting Braga vs Austria Vienna",
+          "kick_utc": 1787252400,
+          "time": "21/08 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena Premium 5 Srbija HD",
+                "Sport TV5 Portugal HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa Conference League",
+          "match": "Getafe vs Partizan Belgrade",
+          "kick_utc": 1787252400,
+          "time": "21/08 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena M3 Premium MKD HD",
+                "Arena Premium 2 Srbija HD",
+                "Arena Premium 2 Srbija HD",
+                "Arena Premium 2 Srbija HD",
+                "OneFootball"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa Conference League",
+          "match": "Hajduk Split vs Raków Czestochowa",
+          "kick_utc": 1787252400,
+          "time": "21/08 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Hajduk TV",
+                "YouTube: Kanal Sportowy"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa Conference League",
+          "match": "Dinamo City vs Pafos FC",
+          "kick_utc": 1787252400,
+          "time": "21/08 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Cytavision Sports 2 HD",
+                "SuperSport 1 Albania HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
@@ -904,18 +677,19 @@
         },
         {
           "league": "Tennis",
-          "match": "Cincinnati Open E21",
-          "kick_utc": 1787166000,
-          "time": "20/08 02:00 AM",
+          "match": "",
+          "kick_utc": 1787252400,
+          "time": "21/08 02:00 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Ausport",
               "channels": [
-                "Now Sports 4"
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -960,6 +734,21 @@
                 "Ziggo Sport 1",
                 "Ziggo Sport 4",
                 "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Cincinnati Open",
+          "kick_utc": 1787252400,
+          "time": "21/08 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
               ]
             }
           ],
@@ -1020,6 +809,21 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Cincinnati Open -QF (1)",
+          "kick_utc": 1787252400,
+          "time": "21/08 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
               ]
             }
           ],
