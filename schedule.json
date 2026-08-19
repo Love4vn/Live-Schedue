@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-19 16:40 VN",
+  "updated": "2026-08-19 20:09 VN",
   "days": {
     "20260819": {
       "date": "Wednesday, 19/08",
@@ -316,7 +316,7 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Rafael Jodar vs Flavio Cobolli",
           "kick_utc": 1787151600,
           "time": "19/08 10:00 PM",
           "tv_channels": [
@@ -324,7 +324,6 @@
               "country": "Ausport",
               "channels": [
                 "beIN Sports Connect",
-                "beIN SPORTS 2",
                 "beIN SPORTS 1"
               ]
             }
@@ -333,9 +332,25 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1787173200,
-          "time": "20/08 04:00 AM",
+          "match": "Iga Swiatek vs Diane Parry",
+          "kick_utc": 1787151600,
+          "time": "19/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 2"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Nuno Borges vs Brandon Nakashima",
+          "kick_utc": 1787167800,
+          "time": "20/08 02:30 AM",
           "tv_channels": [
             {
               "country": "Ausport",
@@ -349,7 +364,7 @@
         },
         {
           "league": "Tennis",
-          "match": "",
+          "match": "Madison Keys vs Xiyu Wang",
           "kick_utc": 1787180400,
           "time": "20/08 06:00 AM",
           "tv_channels": [
