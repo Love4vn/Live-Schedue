@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-20 08:41 VN",
+  "updated": "2026-08-20 10:52 VN",
   "days": {
     "20260820": {
       "date": "Thursday, 20/08",
@@ -114,7 +114,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "SRF Zwei Schweiz HD",
+                "SRF Info Schweiz HD",
                 "TVP Sport Polska HD"
               ]
             }
@@ -234,6 +234,7 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Arena Sport 4 Srbija HD",
+                "FCN APP",
                 "Play RTS Sport",
                 "SRF Play"
               ]
@@ -251,7 +252,7 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Disney+ Danmark",
-                "MAX Sport 1 Hrvatska HD"
+                "MAX Sport 2 Hrvatska HD"
               ]
             }
           ],
@@ -323,7 +324,6 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Arena M1 Premium MKD HD",
-                "Arena Premium 1 BiH HD",
                 "Arena Premium 1 Srbija HD",
                 "Arena Premium 1 Srbija HD",
                 "Nova Sport 5 Czech HD",
@@ -331,6 +331,7 @@
                 "Nova Sport 5 Czech HD",
                 "Nova Sport 5 Czech HD",
                 "Nova Sport 5 Czech HD",
+                "Nova Sport 5 Slovakia HD",
                 "OneFootball",
                 "RTS 2 Srbija HD",
                 "RTS 2 Srbija HD",
@@ -406,6 +407,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Arena Premium 1 BiH HD",
                 "Arena Premium 4 Srbija HD",
                 "SÝN Sport Island 1 HD"
               ]
@@ -423,6 +425,22 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "RTK 1 Kosovo HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Real Madrid Castilla vs Zamora",
+          "kick_utc": 1787248800,
+          "time": "21/08 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Real Madrid TV",
+                "Real Madrid TV"
               ]
             }
           ],
@@ -586,6 +604,7 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Arena Premium 5 Srbija HD",
+                "ORF On",
                 "Sport TV5 Portugal HD"
               ]
             }
@@ -605,7 +624,8 @@
                 "Arena Premium 2 Srbija HD",
                 "Arena Premium 2 Srbija HD",
                 "Arena Premium 2 Srbija HD",
-                "OneFootball"
+                "OneFootball",
+                "YouTube: Getafe CF"
               ]
             }
           ],
@@ -706,21 +726,6 @@
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Cincinnati Open E23",
-          "kick_utc": 1787185800,
-          "time": "20/08 07:30 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
         },
         {
           "league": "Tennis",
