@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-20 10:52 VN",
+  "updated": "2026-08-20 13:56 VN",
   "days": {
     "20260820": {
       "date": "Thursday, 20/08",
@@ -13,8 +13,10 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Arena M1 Premium MKD HD",
                 "Arena Premium 1 Srbija HD",
                 "Arena Premium 1 Srbija HD",
+                "ESPN+ USA",
                 "Kanal 1 Sport Slovakia HD",
                 "Kanal 1 Sport Slovakia HD",
                 "Kanal 1 Sport Slovakia HD",
@@ -210,22 +212,6 @@
         },
         {
           "league": "UEFA Europa Conference League",
-          "match": "Tromsø vs Brighton H.A.",
-          "kick_utc": 1787245200,
-          "time": "21/08 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Solidsport Broadcast",
-                "VG+ Sport Norge"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Europa Conference League",
           "match": "Nordsjælland vs St Gallen",
           "kick_utc": 1787245200,
           "time": "21/08 12:00 AM",
@@ -236,7 +222,24 @@
                 "Arena Sport 4 Srbija HD",
                 "FCN APP",
                 "Play RTS Sport",
-                "SRF Play"
+                "SRF Play",
+                "SRF Zwei Schweiz HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa Conference League",
+          "match": "Tromsø vs Brighton H.A.",
+          "kick_utc": 1787245200,
+          "time": "21/08 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Solidsport Broadcast",
+                "VG+ Sport Norge"
               ]
             }
           ],
@@ -372,7 +375,8 @@
                 "CBC Sport HD",
                 "ESPN 1 Nederland HD",
                 "KS TV | Futbol 1",
-                "Okko Prime Sport HD"
+                "Okko Prime Sport HD",
+                "VOYO Pro TV Romania"
               ]
             }
           ],
@@ -389,6 +393,7 @@
               "channels": [
                 "Ligue 1+",
                 "OneFootball",
+                "Persiana Sports 3 HD",
                 "Polsat Sport 2 HD",
                 "Polsat Sport 2 HD",
                 "Polsat Sport Premium 2 HD",
@@ -510,6 +515,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "ESPN+ USA",
                 "Kanal 1 Sport Slovakia HD",
                 "Kanal 1 Sport Slovakia HD",
                 "Kanal 1 Sport Slovakia HD",
@@ -726,21 +732,6 @@
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Cincinnati Open -Round 4",
-          "kick_utc": 1787191200,
-          "time": "20/08 09:00 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports 6"
-              ]
-            }
-          ],
-          "source": "nowtv"
         },
         {
           "league": "Tennis",
