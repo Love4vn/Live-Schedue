@@ -1,9 +1,26 @@
 {
-  "updated": "2026-08-21 08:46 VN",
+  "updated": "2026-08-21 10:54 VN",
   "days": {
     "20260821": {
       "date": "Friday, 21/08",
       "games": [
+        {
+          "league": "International Friendly",
+          "match": "Real Zaragoza vs Bilbao Athletic",
+          "kick_utc": 1787337000,
+          "time": "22/08 01:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Aragon Deporte Stream",
+                "Aragón TV HD",
+                "Aragón TV HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
         {
           "league": "Ligue 1",
           "match": "Marseille vs Strasbourg",
@@ -32,6 +49,7 @@
                 "DAZN España",
                 "DAZN Japan",
                 "Eleven Sports 1 Polska HD",
+                "Fast Sports 2 Armenia",
                 "Ligue 1+",
                 "Megogo Futbol 3",
                 "Nova Sport 3 Czech HD",
@@ -41,11 +59,15 @@
                 "Nova Sport Bulgaria HD",
                 "Nova Sport Bulgaria HD",
                 "Nova Sport Bulgaria HD",
+                "Okko Prime Sport HD",
                 "Prime Video UK PPV",
+                "Setanta Sports 2 Georgia HD",
                 "Sport TV2 Portugal HD",
                 "SuperSport 4 Albania HD",
                 "SuperSport Football HD",
                 "SuperSport Football HD",
+                "SuperSport MáXimo 1 HD",
+                "SuperSport MáXimo 1 HD",
                 "TV2 Play Norge",
                 "ViaPlay 1 Urheilu HD",
                 "ViaPlay Danmark HD",
@@ -69,83 +91,95 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Astro Premier League HD",
-                "Canal+ France HD",
-                "NBC Universo USA",
-                "ViaPlay Norge HD",
-                "ViaPlay Suomi HD",
-                "NOW Premier League HK 1",
-                "Astro GO Malaysia",
-                "Sky Sports Main Event UHD",
-                "DAZN 1 Espana HD",
-                "Solh TV",
-                "ViaPlay TV Nederland HD",
-                "Arena Sport 1 Slovenija HD",
-                "USA Network HD",
-                "Arena M1 Premium MKD HD",
-                "Arena Premium 2 BiH HD",
-                "Arena Premium 1 Srbija HD",
-                "Sky Sport Arena Italia HD",
-                "ViaPlay Nederland HD",
-                "Cytavision Sports PPV 3 HD",
-                "DAZN Portugal",
-                "Sky Sport 8 NZ HD",
-                "DAZN España",
-                "ViaPlay TV+ Nederland",
-                "SÝN Sport 1 Ísland HD",
-                "See Dansk HD",
-                "Match 4 Hungary HD",
-                "Canal+ Extra 1 Polska HD",
-                "Canal+ France UHD HDR",
-                "V Sport Premier League HD",
-                "Sky Go UK",
-                "Play Sports 1 Belgium",
-                "beIN MENA 4K UHD",
-                "Arena Sport 1 Hrvatska HD",
-                "DAZN 1 Portugal HD",
-                "beIN Connect MENA",
-                "Diema Sport 2 HD",
-                "Sky Sports Main Event HD",
-                "ViaPlay 2 Urheilu HD",
-                "beIN Sports MENA 1 HD",
                 "V Sport Ultra 4K UHD",
-                "Monomax Streaming",
-                "Idman TV HD",
+                "Canal+ Extra 1 Polska HD",
+                "DAZN Canada",
+                "Match 4 Hungary HD",
                 "beIN Sports Türkiye 3 HD",
-                "ViaPlay Sverige HD",
-                "SuperSport 3 Albania HD",
+                "NOW Sports HK 1 4K",
+                "ESPN 1 Brazil HD",
+                "Fast Sports TV Armenia",
+                "ViaPlay Nederland HD",
                 "beIN Connect Türkiye",
                 "SuperSport Premier League HD",
-                "V Sport Premium HD",
-                "Sky Sport Premier League DE HD",
-                "beIN Sports MENA English 1 HD",
+                "Solh TV",
+                "Setanta Sports 1 Georgia HD",
+                "VOYO Pro TV Romania",
                 "Cytavision Sports 3 HD",
-                "Astro Grandstand HD",
-                "Nova Sports Premier League HD",
-                "Canal+ Foot HD",
-                "Canal+ Premier League HD",
-                "ViaPlay Danmark HD",
-                "Cytavision Sports 4K 1 UHD",
-                "DAZN Canada",
-                "Sky UK Ultra HD 1",
-                "SuperSport Grandstand HD",
-                "Canal+ Foot UHD HDR",
                 "Setanta Sports Ukraine HD",
-                "Hub Premier 1 HD",
-                "Astro Sports UHD",
-                "Sky Sports Premier League HD",
+                "ViaPlay Danmark HD",
+                "SuperSport 3 Albania HD",
+                "Sky Sport Deutsch UHD",
+                "Astro GO Malaysia",
+                "Canal+ Foot HD",
+                "Cytavision Sports 4K 1 UHD",
+                "Arena Premium 2 BiH HD",
+                "Idman TV HD",
+                "Arena Sport 1 Hrvatska HD",
+                "Persiana Sport HD",
+                "Sky Sports Main Event HD",
+                "Premier Sports 2 Mongolia HD",
+                "USA Network HD",
+                "SuperSport Grandstand HD",
+                "ViaPlay TV+ Nederland",
+                "VOYO Sport 1 Romania",
+                "Astro Grandstand HD",
+                "SuperSport MáXimo 2A HD",
+                "Nova Sports Premier League HD",
                 "Setanta Sports 1 Eurasia HD",
-                "Stan Sport Australia",
+                "Cytavision Sports PPV 3 HD",
+                "Sky Go UK",
+                "Sky Sport 2 Austria HD",
+                "Play Sports 1 Belgium",
+                "Sky Sport Arena Italia HD",
+                "NOW Premier League HK 1",
+                "See Dansk HD",
+                "Sky Sport 8 NZ HD",
+                "DAZN 1 Portugal HD",
+                "beIN Sports MENA English 1 HD",
+                "Canal+ France UHD HDR",
+                "Arena Sport 1 Slovenija HD",
+                "ViaPlay 2 Urheilu HD",
+                "beIN MENA 4K UHD",
+                "Arena M1 Premium MKD HD",
+                "DAZN Portugal",
+                "NBC Universo USA",
+                "DAZN España",
+                "SÝN Sport 1 Ísland HD",
+                "V Sport Premium HD",
+                "V Sport Premier League HD",
+                "DAZN 1 Espana HD",
+                "ViaPlay Sverige HD",
+                "Astro Premier League HD",
                 "TSN Malta 2 HD",
-                "Canal+ Sport 1 Czech HD"
+                "Arena Premium 1 Srbija HD",
+                "Canal+ Sport 1 Czech HD",
+                "Sky Sport Italia 4K UHD",
+                "Diema Sport 2 HD",
+                "Canal+ Premier League HD",
+                "beIN Sports MENA 1 HD",
+                "Monomax Streaming",
+                "ViaPlay Norge HD",
+                "ViaPlay Suomi HD",
+                "Canal+ France HD",
+                "Canal+ Foot UHD HDR",
+                "Sky Sport Premier League DE HD",
+                "Sky UK Ultra HD 1",
+                "ViaPlay TV Nederland HD",
+                "beIN Connect MENA",
+                "Sky Sports Main Event UHD",
+                "Stan Sport Australia",
+                "Astro Sports UHD",
+                "Hub Premier 1 HD",
+                "Sky Sports Premier League HD"
               ]
             },
             {
               "country": "NowTV",
               "channels": [
+                "Now Sports Premier League 1",
                 "Now Sports Premier League TV",
-                "Now Sports 4K 1",
-                "Now Sports Premier League 1"
+                "Now Sports 4K 1"
               ]
             }
           ],
@@ -232,14 +266,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Cincinnati Open -QF (2)",
-          "kick_utc": 1787272200,
-          "time": "21/08 07:30 AM",
+          "match": "Cincinnati Open -QF(3)",
+          "kick_utc": 1787331600,
+          "time": "22/08 12:00 AM",
           "tv_channels": [
             {
               "country": "NowTV",
               "channels": [
-                "Now Sports 6"
+                "Now Sports 4"
               ]
             }
           ],
@@ -247,14 +281,14 @@
         },
         {
           "league": "Tennis",
-          "match": ": Cincinnati Open",
-          "kick_utc": 1787272200,
-          "time": "21/08 07:30 AM",
+          "match": "Cincinnati Open -QF (3)",
+          "kick_utc": 1787338800,
+          "time": "22/08 02:00 AM",
           "tv_channels": [
             {
               "country": "NowTV",
               "channels": [
-                "Ziggo Sport 4"
+                "Now Sports 6"
               ]
             }
           ],
@@ -285,36 +319,6 @@
               "country": "NowTV",
               "channels": [
                 "Ziggo Sport 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Cincinnati Open -QF(3)",
-          "kick_utc": 1787331600,
-          "time": "22/08 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Cincinnati Open -QF (3)",
-          "kick_utc": 1787338800,
-          "time": "22/08 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports 6"
               ]
             }
           ],
