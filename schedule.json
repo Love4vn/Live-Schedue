@@ -1,75 +1,9 @@
 {
-  "updated": "2026-08-24 22:46 VN",
+  "updated": "2026-08-25 01:50 VN",
   "days": {
     "20260824": {
       "date": "Monday, 24/08",
       "games": [
-        {
-          "league": "Serie A",
-          "match": "Bologna vs Lazio",
-          "kick_utc": 1787589000,
-          "time": "24/08 11:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "MAX Sport 3 Bulgaria HD",
-                "MATCH! Russia HD",
-                "TV4 Sport Live 2 HD",
-                "DAZN Great Britain",
-                "Peacock Premium USA",
-                "MTV Katsomon+",
-                "Cytavision Sports 4 HD",
-                "VG+ Sport Norge",
-                "Arena Premium 2 Srbija HD",
-                "Cytavision Sports PPV 4 HD",
-                "SuperSport Football HD",
-                "MTV Urheilu 1 Suomi HD",
-                "Arena Sport 2 Slovenija HD",
-                "CBS Sports Network USA",
-                "Sport TV2 Portugal HD",
-                "Setanta Sports 1 Baltic",
-                "Prima Sport RO 2 HD",
-                "Ziggo Sport 1 HD",
-                "NBC Universo USA",
-                "DAZN Ireland",
-                "Astro Football HD",
-                "Cosmote Sport 2 HD",
-                "MATCH! Futbol 1 HD",
-                "S Sport+ Streaming",
-                "Sport 1 Czechia HD",
-                "DAZN Belgium",
-                "Digi Sport 2 Romania HD",
-                "Arena 4 Hungary HD",
-                "S Sport 2 Türkiye HD",
-                "Arena Sport 1 Hrvatska HD",
-                "DAZN Deutsch",
-                "TSN Malta 6 HD",
-                "ART Motion Sport 2 HD",
-                "ESPN 4 Brazil HD",
-                "Fast Sports TV Armenia",
-                "TV4 Play Sverige",
-                "Tring Sport 1 HD",
-                "MATCH! TV",
-                "TV2 Play Danmark",
-                "Eleven Sports 1 Polska HD",
-                "DAZN España",
-                "DAZN Italia",
-                "Paramount+ USA",
-                "beIN Sports Australia 3 HD",
-                "DAZN France"
-              ]
-            },
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 3",
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "Serie A",
           "match": "Roma vs Fiorentina",
@@ -81,7 +15,9 @@
               "channels": [
                 "Arena 4 Hungary HD",
                 "Arena 4 Hungary HD",
+                "Arena M3 Premium MKD HD",
                 "Arena Premium 1 Slovenija",
+                "Arena Premium 2 BiH HD",
                 "Arena Premium 2 Srbija HD",
                 "Arena Premium 2 Srbija HD",
                 "Arena Premium 2 Srbija HD",
@@ -89,10 +25,12 @@
                 "Arena Sport 2 Hrvatska HD",
                 "ART Motion Sport 2 HD",
                 "Astro Football HD",
+                "Azam Sports 3 HD",
                 "beIN Sports Australia 3 HD",
                 "Cosmote Sport 3 HD",
                 "Cytavision Sports 4 HD",
                 "Cytavision Sports PPV 4 HD",
+                "DAZN 2 Bar Deutsch HD",
                 "DAZN Belgium",
                 "DAZN Deutsch",
                 "DAZN España",
@@ -133,6 +71,7 @@
                 "MAX Sport 3 Bulgaria HD",
                 "MAX Sport 3 Bulgaria HD",
                 "MAX Sport 3 Bulgaria HD",
+                "Megogo Futbol 1",
                 "MTV Katsomon+",
                 "MTV Urheilu 1 Suomi HD",
                 "Paramount+ USA",
@@ -154,6 +93,7 @@
                 "Sport TV2 Portugal HD",
                 "SuperSport Football HD",
                 "SuperSport Football HD",
+                "SuperSport MáXimo 360",
                 "Tring Sport 1 HD",
                 "TSN Malta 3 HD",
                 "TV2 Play Danmark",
@@ -177,67 +117,77 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Sky Go UK",
-                "ViaPlay Suomi HD",
-                "SuperSport Grandstand HD",
-                "Go3 Extra Sport Baltics",
-                "TSN Malta 2 HD",
-                "beIN Connect Türkiye",
-                "USA Network HD",
-                "Diema Sport 2 HD",
-                "Sky Sport Calcio HD",
-                "Arena Premium 1 Srbija HD",
-                "beIN Connect MENA",
-                "beIN Sports MENA 1 HD",
-                "DAZN 1 Portugal HD",
-                "Cytavision Sports PPV 3 HD",
-                "DAZN Canada",
-                "Canal+ Foot HD",
-                "SuperSport Premier League HD",
-                "SÝN Sport 1 Ísland HD",
                 "ViaPlay Danmark HD",
-                "ViaPlay Nederland HD",
-                "ViaPlay 2 Urheilu HD",
-                "ViaPlay TV+ Nederland",
-                "VOYO Sport 1 Romania",
-                "Sky Sports Premier League HD",
-                "Hub Premier 1 HD",
-                "Play Sports 1 Belgium",
-                "See Dansk HD",
-                "TVNet Sport Azerbaijan",
-                "Sky Sport Premier League DE HD",
-                "Cytavision Sports 3 HD",
-                "Astro Premier League HD",
-                "Astro GO Malaysia",
-                "Canal+ Sport 1 Czech HD",
-                "Sky Sport 8 NZ HD",
-                "Sky Sport Deutsch UHD",
-                "V Sport Premier League HD",
-                "beIN Sports Türkiye 3 HD",
-                "Sky Sports Main Event UHD",
-                "Canal+ Extra 1 Polska HD",
-                "Sky Sports Main Event HD",
-                "Arena Sport 1 Slovenija HD",
-                "Arena Sport 1 Hrvatska HD",
-                "ViaPlay Sverige HD",
-                "V Sport Premium HD",
-                "Sky Sport 1 Austria HD",
-                "SuperSport 3 Albania HD",
-                "DAZN Portugal",
-                "Sport 24 In Flight HD",
-                "Fast Sports TV Armenia",
-                "Monomax Streaming",
+                "NBC Universo USA",
+                "TSN Malta 2 HD",
                 "Sky UK Ultra HD 1",
-                "beIN Sports MENA English 1 HD",
-                "Nova Sports Prime Hellas HD",
-                "ViaPlay Norge HD",
-                "ViaPlay TV Nederland HD",
-                "Stan Sport Australia",
-                "Canal+ Foot UHD HDR",
+                "DAZN 1 Portugal HD",
                 "Match 4 Hungary HD",
+                "Hub Premier 1 HD",
+                "SuperSport MáXimo 1 HD",
+                "Sky Sport Deutsch UHD",
+                "IRIB Varzesh HD",
+                "Sky Sports Premier League HD",
+                "ViaPlay Norge HD",
+                "beIN Sports Türkiye 3 HD",
+                "Canal+ Extra 1 Polska HD",
+                "Sky Sport 1 Austria HD",
+                "Sky Sport Calcio HD",
+                "DAZN Canada",
+                "Sky Sport Italia 4K UHD",
+                "beIN Connect Türkiye",
+                "SuperSport Grandstand HD",
+                "Sky Sport Premier League DE HD",
+                "Arena Sport 1 Hrvatska HD",
+                "Arena Sport 1 Slovenija HD",
+                "Cytavision Sports 3 HD",
+                "Stan Sport Australia",
+                "SÝN Sport 1 Ísland HD",
+                "Setanta Sports 1 Eurasia HD",
+                "V Sport Premium HD",
+                "beIN Connect MENA",
+                "See Dansk HD",
+                "Sky Sport 8 NZ HD",
+                "USA Network HD",
+                "ViaPlay Suomi HD",
+                "Fast Sports TV Armenia",
+                "ViaPlay Sverige HD",
+                "VOYO Sport 1 Romania",
+                "Sky Sports Main Event UHD",
+                "ViaPlay TV+ Nederland",
+                "SuperSport MáXimo 2A HD",
+                "Astro Premier League HD",
+                "Sport 24 In Flight HD",
+                "ViaPlay TV Nederland HD",
+                "Nova Sports Prime Hellas HD",
+                "TVNet Sport Azerbaijan",
+                "ViaPlay Nederland HD",
+                "Sky Sports Main Event HD",
+                "V Sport Premier League HD",
+                "Persiana Sports 2 HD",
+                "Play Sports 1 Belgium",
                 "DAZN España",
+                "beIN Sports MENA English 1 HD",
+                "DAZN Portugal",
+                "Arena Premium 1 Srbija HD",
+                "Astro GO Malaysia",
+                "Canal+ Foot UHD HDR",
+                "Arena M1 Premium MKD HD",
+                "beIN Sports MENA 1 HD",
+                "Diema Sport 2 HD",
+                "Setanta Sports 1 Georgia HD",
+                "Sky Go UK",
+                "SuperSport Premier League HD",
+                "Canal+ Foot HD",
+                "Monomax Streaming",
+                "Solh TV",
+                "SuperSport 3 Albania HD",
+                "ViaPlay 2 Urheilu HD",
                 "Sport 24 At Sea HD",
-                "NBC Universo USA"
+                "Setanta Sports Ukraine HD",
+                "Canal+ Sport 1 Czech HD",
+                "Cytavision Sports PPV 3 HD",
+                "Go3 Extra Sport Baltics"
               ]
             },
             {
@@ -249,8 +199,8 @@
             {
               "country": "NowTV",
               "channels": [
-                "Now Sports Premier League TV",
-                "Now Sports Premier League 1"
+                "Now Sports Premier League 1",
+                "Now Sports Premier League TV"
               ]
             }
           ],
@@ -352,9 +302,55 @@
         },
         {
           "league": "Tennis",
+          "match": ":",
+          "kick_utc": 1787610600,
+          "time": "25/08 05:30 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1787680800,
+          "time": "26/08 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN SPORTS 1",
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
           "match": ": Winston-Salem Open",
           "kick_utc": 1787594400,
           "time": "25/08 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Winston-Salem Open",
+          "kick_utc": 1787680800,
+          "time": "26/08 01:00 AM",
           "tv_channels": [
             {
               "country": "NowTV",
@@ -390,21 +386,6 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": ":",
-          "kick_utc": 1787610600,
-          "time": "25/08 05:30 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 4"
               ]
             }
           ],
