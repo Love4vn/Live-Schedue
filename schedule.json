@@ -1,9 +1,40 @@
 {
-  "updated": "2026-08-25 08:41 VN",
+  "updated": "2026-08-25 10:53 VN",
   "days": {
     "20260825": {
       "date": "Tuesday, 25/08",
       "games": [
+        {
+          "league": "League Cup",
+          "match": "Southampton vs West Ham United",
+          "kick_utc": 1787683500,
+          "time": "26/08 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena Premium 5 Srbija HD",
+                "Arena Sport 2 Slovenija HD",
+                "beIN Sports Australia 2 HD",
+                "beIN Sports France 4 HD max",
+                "beIN Sports France 4 HD max",
+                "beIN Sports MENA 6 HD",
+                "beIN Sports MENA 6 HD",
+                "Cytavision Sports 7 HD",
+                "Cytavision Sports PPV 4 HD",
+                "Paramount+ USA",
+                "Sky Sports+",
+                "ViaPlay Danmark HD",
+                "ViaPlay Nederland HD",
+                "ViaPlay Norge HD",
+                "ViaPlay Suomi HD",
+                "ViaPlay Sverige HD",
+                "ViaPlay Ísland HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
         {
           "league": "UEFA Champions League",
           "match": "Bodø/Glimt vs NEC Nijmegen",
@@ -68,6 +99,7 @@
                 "RTL+ Hungary",
                 "Sky Sport 3 Austria HD",
                 "Sky Sport Uno Italia HD",
+                "Sport TV 2 Azerbaijan",
                 "SportKlub 1 Slovenija HD",
                 "SÝN Sport 1 Ísland HD",
                 "Tabii Spor Türkiye",
@@ -80,6 +112,9 @@
                 "TV2 Play Norge",
                 "ViaPlay Danmark HD",
                 "ViaPlay Sverige HD",
+                "Virgin Media PLAY",
+                "Virgin Media TV",
+                "Virgin Media Two HD",
                 "Ziggo Sport 1 HD"
               ]
             }
@@ -158,6 +193,7 @@
                 "Sport 1 Hungary HD",
                 "Sport 1 Hungary HD",
                 "Sport 1 Hungary HD",
+                "Sport TV Azerbaijan",
                 "Tabii Spor 1",
                 "TUDN Español USA",
                 "TV2 Play Norge",
@@ -173,19 +209,108 @@
           "source": "livesportsontv"
         },
         {
-          "league": "Tennis",
-          "match": "Abierto GNP Seguros E2",
-          "kick_utc": 1787621400,
-          "time": "25/08 08:30 AM",
+          "league": "League Cup",
+          "match": "Nottingham Forest vs Leeds United",
+          "kick_utc": 1787684400,
+          "time": "26/08 02:00 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "LiveSportsOnTV",
               "channels": [
-                "Now Sports 4"
+                "Action 24 Hellas",
+                "Action 24 Hellas",
+                "Arena M3 Premium MKD HD",
+                "Arena Premium 3 Srbija HD",
+                "Arena Premium 3 Srbija HD",
+                "Arena Sport 1 Slovenija HD",
+                "Arena Sport 3 Hrvatska HD",
+                "beIN Sports Australia 3 HD",
+                "beIN Sports France 1 HD",
+                "beIN Sports France 1 HD",
+                "beIN Sports MENA 5 HD",
+                "beIN Sports MENA 5 HD",
+                "beIN Sports MENA French 1 HD",
+                "Cytavision Sports 8 HD",
+                "Cytavision Sports PPV 5 HD",
+                "Diema Sport 2 HD",
+                "Diema Sport 2 HD",
+                "Diema Sport 2 HD",
+                "Digi Sport 3 Romania",
+                "ITV 1 England HD",
+                "ITV 1 England HD",
+                "ITV 1 England HD",
+                "ITV 1 England HD",
+                "ITV 1 England HD",
+                "ITV 1 England HD",
+                "ITV 1 England HD",
+                "ITV X",
+                "Sky Go UK",
+                "Sky Sports Football HD",
+                "Sky Sports Football HD",
+                "Sky Sports Football HD",
+                "Sky Sports Main Event HD",
+                "Sky Sports Main Event HD",
+                "Sky Sports Main Event HD",
+                "Sky Sports Main Event HD",
+                "Sky Sports Main Event UHD",
+                "STV Player",
+                "STV Scotland HD",
+                "STV Scotland HD",
+                "STV Scotland HD",
+                "STV Scotland HD",
+                "STV Scotland HD",
+                "UTV Northern Ireland HD",
+                "UTV Northern Ireland HD",
+                "V Sport 1 Norge HD",
+                "V Sport 1 Norge HD",
+                "ViaPlay 2 Urheilu HD",
+                "ViaPlay Danmark HD",
+                "ViaPlay Nederland HD",
+                "ViaPlay Norge HD",
+                "ViaPlay Suomi HD",
+                "ViaPlay Sverige HD",
+                "ViaPlay Ísland HD"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "livesportsontv"
+        },
+        {
+          "league": "League Cup",
+          "match": "Birmingham City vs Brentford",
+          "kick_utc": 1787684400,
+          "time": "26/08 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena Premium 1 Slovenija",
+                "Arena Sport 5 Hrvatska HD",
+                "beIN Sports France 2 HD",
+                "beIN Sports France 2 HD",
+                "beIN Sports MENA French 1 HD",
+                "Diema Sport 3 HD",
+                "Diema Sport 3 HD",
+                "Diema Sport 3 HD",
+                "Diema Sport 3 HD",
+                "Diema Sport 3 HD",
+                "Paramount+ USA",
+                "Setanta Sports+ Ukraine HD",
+                "Sky Sports+",
+                "Sky Sports+ TV HD",
+                "Sky Sports+ TV HD",
+                "V Sport 2 Norge HD",
+                "V Sport 2 Norge HD",
+                "ViaPlay Danmark HD",
+                "ViaPlay Nederland HD",
+                "ViaPlay Norge HD",
+                "ViaPlay Suomi HD",
+                "ViaPlay Sverige HD",
+                "ViaPlay Ísland HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
