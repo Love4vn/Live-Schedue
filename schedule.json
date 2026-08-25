@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-25 22:50 VN",
+  "updated": "2026-08-26 01:49 VN",
   "days": {
     "20260825": {
       "date": "Tuesday, 25/08",
@@ -60,6 +60,7 @@
                 "Arena Premium 2 Srbija HD",
                 "Arena Sport 2 Hrvatska HD",
                 "Arena Sport 2 Hrvatska HD",
+                "ART Motion Sport 2 HD",
                 "beIN Connect MENA",
                 "beIN Sports 3 HD",
                 "beIN Sports MENA 2 HD",
@@ -83,6 +84,8 @@
                 "Fast Sports",
                 "Fast Sports TV Armenia",
                 "HBO Max",
+                "M+ Liga de Campeones 2 HD",
+                "M+ Liga de Campeones 2 HD",
                 "MAX Sport 2 Bulgaria HD",
                 "MAX Sport 2 Bulgaria HD",
                 "MAX Sport 2 Bulgaria HD",
@@ -125,6 +128,7 @@
                 "TNT Sports 1 HD",
                 "TNT Sports 1 HD",
                 "TNT Sports 1 HD",
+                "Tring Sport 1 HD",
                 "TV2 Play Norge",
                 "TV3 Sport Dansk HD",
                 "TV3 Sport Dansk HD",
@@ -134,9 +138,7 @@
                 "Virgin Media PLAY",
                 "Virgin Media TV",
                 "Virgin Media Two HD",
-                "Ziggo Sport 1 HD",
-                "M+ Liga de Campeones 2 HD",
-                "M+ Liga de Campeones 2 HD"
+                "Ziggo Sport 1 HD"
               ]
             }
           ],
@@ -155,6 +157,7 @@
                 "Arena Premium 1 Srbija HD",
                 "Arena Premium 1 Srbija HD",
                 "Arena Sport 1 Hrvatska HD",
+                "ART Motion Sport 1 HD",
                 "beIN Connect MENA",
                 "beIN Sports 1 HD",
                 "beIN Sports 1 HD",
@@ -170,6 +173,9 @@
                 "Canal+ Sport France HD",
                 "Canal+ Sport France HD",
                 "Canal+ Sport France HD",
+                "CBC Sport HD",
+                "CBC Sport HD",
+                "CBC Sport HD",
                 "Cosmote Sport 3 HD",
                 "Cytavision Sports 4 HD",
                 "Cytavision Sports 4K 2 UHD",
@@ -180,6 +186,8 @@
                 "Fast Sports 1 Armenia",
                 "Fast Sports",
                 "Kanal A Slovenija HD",
+                "M+ Liga de Campeones HD",
+                "M+ Liga de Campeones HD",
                 "MAX Sport 3 Bulgaria HD",
                 "MAX Sport 3 Bulgaria HD",
                 "MAX Sport 3 Bulgaria HD",
@@ -226,6 +234,7 @@
                 "Sport TV Azerbaijan",
                 "Sport TV5 Portugal HD",
                 "Tabii Spor 1",
+                "Tring Sport 2 HD",
                 "TUDN Español USA",
                 "TV2 Play Norge",
                 "TV3+ Dansk HD",
@@ -236,9 +245,7 @@
                 "ViaPlay Ísland HD",
                 "ViX TV",
                 "Ziggo Sport 2",
-                "Ziggo Sport 3",
-                "M+ Liga de Campeones HD",
-                "M+ Liga de Campeones HD"
+                "Ziggo Sport 3"
               ]
             }
           ],
@@ -260,6 +267,7 @@
                 "Arena Premium 3 Srbija HD",
                 "Arena Sport 1 Slovenija HD",
                 "Arena Sport 3 Hrvatska HD",
+                "Azam Sports 2 HD",
                 "beIN Sports Australia 3 HD",
                 "beIN Sports France 1 HD",
                 "beIN Sports France 1 HD",
@@ -281,6 +289,7 @@
                 "ITV 1 England HD",
                 "ITV 1 England HD",
                 "ITV X",
+                "Persiana Sports 3 HD",
                 "Sky Go UK",
                 "Sky Sports Football HD",
                 "Sky Sports Football HD",
@@ -330,6 +339,8 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Arena Premium 1 Slovenija",
+                "Arena Sport 1 Srbija HD",
+                "Arena Sport 1 Srbija HD",
                 "Arena Sport 5 Hrvatska HD",
                 "beIN Sports France 2 HD",
                 "beIN Sports France 2 HD",
@@ -356,7 +367,31 @@
                 "ViaPlay Norge HD",
                 "ViaPlay Suomi HD",
                 "ViaPlay Sverige HD",
-                "ViaPlay Ísland HD"
+                "ViaPlay Ísland HD",
+                "ZBC Channel 2"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa Conference League",
+          "match": "Rapid Vienna vs Hearts",
+          "kick_utc": 1787762700,
+          "time": "26/08 11:45 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena M1 Premium MKD HD",
+                "Arena Premium 1 Srbija HD",
+                "Arena Premium 1 Srbija HD",
+                "Canal 11 Portugal HD",
+                "Hearts TV",
+                "ORF 1 Austria HD",
+                "ORF 1 Austria HD",
+                "ORF 1 Austria HD",
+                "ORF On"
               ]
             }
           ],
@@ -485,6 +520,22 @@
         },
         {
           "league": "Tennis",
+          "match": "",
+          "kick_utc": 1787767200,
+          "time": "27/08 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
           "match": "Oleksandra Oliynykova vs Diane Parry",
           "kick_utc": 1787707800,
           "time": "26/08 08:30 AM",
@@ -498,21 +549,6 @@
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Mixed Doubles Rd 1-2",
-          "kick_utc": 1787670000,
-          "time": "25/08 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports 6"
-              ]
-            }
-          ],
-          "source": "nowtv"
         },
         {
           "league": "Tennis",
