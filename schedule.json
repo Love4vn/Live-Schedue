@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-25 16:42 VN",
+  "updated": "2026-08-25 20:00 VN",
   "days": {
     "20260825": {
       "date": "Tuesday, 25/08",
@@ -360,6 +360,143 @@
         },
         {
           "league": "Tennis",
+          "match": "Adam Walton vs Ignacio Buse",
+          "kick_utc": 1787680800,
+          "time": "26/08 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN SPORTS 1"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Mattia Bellucci vs Luciano Darderi",
+          "kick_utc": 1787680800,
+          "time": "26/08 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "James Duckworth vs Mariano Navone",
+          "kick_utc": 1787691600,
+          "time": "26/08 04:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN SPORTS 1"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Cristina Bucsa vs Anna Bondar",
+          "kick_utc": 1787691600,
+          "time": "26/08 04:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN SPORTS 2",
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Darja Vidmanova vs Kimberly Birrell",
+          "kick_utc": 1787693400,
+          "time": "26/08 04:30 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Adrian Mannarino vs Lorenzo Sonego",
+          "kick_utc": 1787697000,
+          "time": "26/08 05:30 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": ":",
+          "kick_utc": 1787697300,
+          "time": "26/08 05:35 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1787702400,
+          "time": "26/08 07:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Oleksandra Oliynykova vs Diane Parry",
+          "kick_utc": 1787707800,
+          "time": "26/08 08:30 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 2"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
           "match": "Mixed Doubles Rd 1-2",
           "kick_utc": 1787670000,
           "time": "25/08 10:00 PM",
@@ -398,21 +535,6 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": ":",
-          "kick_utc": 1787697300,
-          "time": "26/08 05:35 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 4"
               ]
             }
           ],
