@@ -56,6 +56,9 @@ const teamVariants = {
   "tottenham hotspur": ["tottenham hotspur", "tottenham", "spurs"],
   "west ham united": ["west ham united", "west ham"],
   "wolverhampton": ["wolverhampton", "wolves"],
+  "coventry city": ["coventry city", "coventry"],
+  "hull city": ["hull city", "hull"],
+  "ipswich town": ["ipswich town", "ipswich"],
   "inter milan": ["inter milan", "inter", "internazionale"],
   "ac milan": ["ac milan", "milan", "acmilan"],
   "napoli": ["napoli"],
@@ -78,7 +81,7 @@ const footballAllowedLeagues = {
     "arsenal", "aston villa", "bournemouth", "brentford", "brighton", "chelsea",
     "crystal palace", "everton", "fulham", "leeds united", "liverpool", "manchester city",
     "manchester united", "newcastle", "nottingham forest", "sunderland", "tottenham hotspur",
-    "west ham united", "wolverhampton"
+    "hull city", "ipswich town", "coventry city"
   ]),
   "serie a": new Set([
     "inter milan", "ac milan", "napoli", "juventus", "roma", "atalanta", "lazio"
