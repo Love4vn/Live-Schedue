@@ -32,7 +32,7 @@ PREMIER_LEAGUE_TEAMS = {
     "arsenal", "aston villa", "bournemouth", "brentford", "brighton", "chelsea",
     "crystal palace", "everton", "fulham", "leeds united", "liverpool", "manchester city",
     "manchester united", "newcastle", "nottingham forest", "sunderland", "tottenham",
-    "west ham united", "wolverhampton"
+    "hull city", "ipswich town", "coventry city"
 }
 
 ALLOWED_TEAMS_PER_LEAGUE = {
