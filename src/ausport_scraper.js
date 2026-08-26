@@ -36,7 +36,7 @@ const FOOTBALL_CONFIG = {
     'Premier League': ['arsenal', 'aston villa', 'bournemouth', 'brentford', 'brighton', 'chelsea',
                        'crystal palace', 'everton', 'fulham', 'leeds united', 'liverpool', 'manchester city',
                        'manchester united', 'newcastle', 'nottingham forest', 'sunderland', 'tottenham hotspur',
-                       'west ham united', 'wolverhampton'],
+                       'hull city', 'ipswich town', 'coventry city'],
     'Serie A': ['inter milan', 'ac milan', 'napoli', 'juventus', 'roma', 'atalanta', 'lazio'],
     'La Liga': ['barcelona', 'real madrid', 'atlético'],
     'Bundesliga': ['bayern', 'borussia dortmund', 'bayer leverkusen'],
