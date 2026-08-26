@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-26 20:05 VN",
+  "updated": "2026-08-26 23:23 VN",
   "days": {
     "20260826": {
       "date": "Wednesday, 26/08",
@@ -342,6 +342,7 @@
                 "Qazaqstan TV HD",
                 "Qazaqstan TV HD",
                 "Qazaqstan TV HD",
+                "RTK 1 Kosovo HD",
                 "RTL Club Belgique",
                 "RTL+ Hungary",
                 "RTÉ 2 Ireland HD",
@@ -366,6 +367,7 @@
                 "TNT Sports 1 HD",
                 "TNT Sports 1 HD",
                 "TNT Sports 1 HD",
+                "Tring Sport 1 HD",
                 "TRT 1 Türkiye HD",
                 "TRT 1 Türkiye HD",
                 "TRT 1 Türkiye HD",
@@ -397,6 +399,7 @@
               "channels": [
                 "Arena Sport 1 Hrvatska HD",
                 "Arena Sport 2 Srbija HD",
+                "ART Motion Sport 2 HD",
                 "beIN Connect MENA",
                 "beIN Sports MENA 3 HD",
                 "beIN Sports MENA 3 HD",
@@ -450,6 +453,7 @@
                 "Tabii Spor 1",
                 "TNT Sports 2 HD",
                 "TNT Sports 2 HD",
+                "Tring Sport 3 HD",
                 "TSN Malta 6 HD",
                 "TV2 Play Norge",
                 "TV3 Sport Dansk HD",
@@ -485,6 +489,7 @@
                 "Arena Premium 5 BiH HD",
                 "Arena Sport 6 Hrvatska HD",
                 "Arena Sport 6 Hrvatska HD",
+                "ART Motion Sport 4 HD",
                 "beIN Connect MENA",
                 "beIN Sports MENA 4 HD",
                 "beIN Sports MENA 4 HD",
@@ -544,6 +549,7 @@
                 "Tabii Spor Türkiye",
                 "TNT Sports 4 HD",
                 "TNT Sports 4 HD",
+                "Tring Sport 2 HD",
                 "TSN Malta 5 HD",
                 "TUDN Español USA",
                 "TV2 Play Norge",
@@ -571,6 +577,7 @@
                 "Arena Sport 1 Srbija HD",
                 "Arena Sport 1 Srbija HD",
                 "Arena Sport 3 Hrvatska HD",
+                "ART Motion Sport 3 HD",
                 "beIN Connect MENA",
                 "beIN Sports MENA 5 HD",
                 "beIN Sports MENA 5 HD",
@@ -613,6 +620,7 @@
                 "Tabii Spor 2",
                 "TNT Sports 5 HD",
                 "TNT Sports 5 HD",
+                "Tring Sport 4 HD",
                 "TSN Malta 8 HD",
                 "TV2 Play Norge",
                 "ViaPlay Danmark HD",
@@ -675,6 +683,98 @@
                 "ViaPlay Suomi HD",
                 "ViaPlay Sverige HD",
                 "ViaPlay Ísland HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa Conference League",
+          "match": "KuPS Kuopio vs Shamrock Rovers",
+          "kick_utc": 1787842800,
+          "time": "27/08 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Jalkapallo TV",
+                "KuPS TV",
+                "Solidsport Broadcast"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa League",
+          "match": "Ararat-Armenia vs Universitatea Craiova",
+          "kick_utc": 1787846400,
+          "time": "27/08 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Armenia First TV",
+                "Canal 11 Portugal HD",
+                "VOYO Pro TV Romania"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa League",
+          "match": "Iberia 1999 vs Jagiellonia",
+          "kick_utc": 1787846400,
+          "time": "27/08 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Polsat Sport 1 HD",
+                "Polsat Sport Premium 1 HD",
+                "Silk Universal HD",
+                "Sport 1 Baltic"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa Conference League",
+          "match": "Qarabagh vs Twente",
+          "kick_utc": 1787846400,
+          "time": "27/08 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena M2 Premium MKD HD",
+                "Arena Premium 2 Srbija HD",
+                "Arena Premium 2 Srbija HD",
+                "Arena Premium 2 Srbija HD",
+                "CBC Sport HD",
+                "CBC Sport HD",
+                "CBC Sport HD",
+                "ESPN 1 Nederland HD",
+                "KS TV | Futbol 1",
+                "Sport TV1 Portugal HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa Conference League",
+          "match": "Jablonec vs Rangers",
+          "kick_utc": 1787846400,
+          "time": "27/08 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Rangers TV",
+                "TV Tipsport Czechia"
               ]
             }
           ],
