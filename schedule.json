@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-04 11:09 VN",
+  "updated": "2026-09-04 18:03 VN",
   "days": {
     "20260904": {
       "date": "Friday, 04/09",
@@ -11,56 +11,62 @@
           "time": "05/09 02:00 AM",
           "tv_channels": [
             {
+              "country": "Hubsport",
+              "channels": [
+                "Dazn 2 Portugal"
+              ]
+            },
+            {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Arena Sport 1 Slovenija HD",
-                "Premier League+",
                 "ViaPlay Sverige HD",
-                "Arena Sport 1 Hrvatska HD",
-                "Sky Sport Calcio HD",
-                "DAZN Canada",
-                "beIN Connect Türkiye",
-                "Setanta Sports Ukraine HD",
-                "ViaPlay Suomi HD",
-                "beIN Sports MENA English 1 HD",
-                "Arena Premium 1 BiH HD",
-                "ViaPlay Norge HD",
                 "Sky Go UK",
-                "beIN Connect MENA",
-                "Sky Sport Premier League DE HD",
-                "ViaPlay Nederland HD",
-                "Sky UK Ultra HD 1",
-                "beIN MENA 4K UHD",
-                "Sky Sport 8 NZ HD",
-                "DAZN España",
-                "DAZN Portugal",
-                "Stan Sport Australia",
-                "Monomax Streaming",
-                "Sky Sports Main Event HD",
-                "Setanta Sports 1 Eurasia HD",
-                "beIN Sports Türkiye 3 HD",
                 "Sky Sports Premier League HD",
-                "Sky Sports Main Event UHD",
+                "beIN Connect MENA",
+                "Sky UK Ultra HD 1",
+                "Arena Sport 1 Slovenija HD",
+                "Sky Sport Premier League DE HD",
+                "Stan Sport Australia",
                 "Arena Premium 1 Srbija HD",
-                "AzTV HD",
-                "beIN Sports MENA 2 HD",
-                "Go3 Extra Sport Baltics",
-                "Canal+ Extra 1 Polska HD",
-                "Diema Sport 2 HD",
+                "DAZN Canada",
+                "SuperSport Premier League HD",
+                "Setanta Sports Ukraine HD",
+                "beIN MENA 4K UHD",
+                "ViaPlay Nederland HD",
+                "Sky Sport 8 NZ HD",
+                "beIN Connect Türkiye",
                 "ViaPlay Danmark HD",
-                "SuperSport Premier League HD"
+                "Sky Sports Main Event UHD",
+                "Sky Sport Calcio HD",
+                "beIN Sports MENA 2 HD",
+                "Arena Premium 1 BiH HD",
+                "Sky Sports Main Event HD",
+                "ViaPlay Norge HD",
+                "DAZN España",
+                "Diema Sport 2 HD",
+                "beIN Sports Türkiye 3 HD",
+                "Premier League+",
+                "Canal+ Extra 1 Polska HD",
+                "Arena Sport 1 Hrvatska HD",
+                "Monomax Streaming",
+                "beIN Sports MENA English 1 HD",
+                "ViaPlay Suomi HD",
+                "Go3 Extra Sport Baltics",
+                "Setanta Sports 1 Eurasia HD",
+                "AzTV HD",
+                "DAZN Portugal"
               ]
             },
             {
               "country": "NowTV",
               "channels": [
-                "Now Sports Premier League TV",
+                "Now Sports Premier League 1",
                 "Now Sports 4K 1",
-                "Now Sports Premier League 1"
+                "Now Sports Premier League TV"
               ]
             }
           ],
-          "source": "livesportsontv"
+          "source": "hubsport"
         },
         {
           "league": "La Liga",
@@ -71,49 +77,49 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Premier Sports GB Player HD",
+                "Premier Sports 1 Ireland HD",
                 "DAZN Japan",
-                "Disney+ Danmark",
-                "Premier Sports 1 UK HD",
-                "S Sport+ Streaming",
-                "MATCH! Futbol 2 HD",
-                "Arena Premium 2 Srbija HD",
-                "DAZN Italia",
-                "MATCH! TV",
-                "Setanta Sports 2 Eurasia HD",
-                "beIN Sports Australia 2 HD",
-                "Disney+ Suomi",
-                "TV2 Play Norge",
-                "Cosmote Sport 7 HD",
-                "M+ LaLiga HDR",
-                "ViaPlay Norge HD",
-                "ESPN+ USA",
-                "DAZN Belgium",
                 "LaLiga TV Bar HD",
+                "DAZN Belgium",
+                "MATCH! TV",
+                "beIN Sports MENA 1 HD",
+                "M+ LaLiga HD",
+                "beIN Sports Australia 2 HD",
+                "M+ LaLiga HDR",
+                "S Sport+ Streaming",
+                "Canal+ Sport 2 Polska HD",
+                "Disney+ Danmark",
                 "DAZN Deutsch",
+                "Premier Sports GB Player HD",
                 "S Sport 1 Türkiye HD",
+                "Canal+ Sport 6 Polska HD",
+                "DAZN Italia",
+                "MATCH! Russia HD",
+                "Arena Premium 3 BiH HD",
+                "Arena Premium 2 Srbija HD",
+                "ESPN+ USA",
+                "ViaPlay Norge HD",
+                "Idman TV HD",
+                "TV2 Play Norge",
+                "beIN Sports MENA 3 HD",
+                "Disney+ Suomi",
+                "Cosmote Sport 7 HD",
+                "Setanta Sports 2 Eurasia HD",
                 "SuperSport LaLiga HD",
-                "Fast Sports",
+                "MATCH! Futbol 2 HD",
                 "DAZN France",
+                "Fast Sports",
+                "MAX Sport 4 Bulgaria HD",
                 "Disney+ Sverige",
                 "DAZN Portugal",
-                "Canal+ Sport 2 Polska HD",
-                "Arena Premium 3 BiH HD",
-                "Canal+ Sport 6 Polska HD",
-                "Premier Sports 1 Ireland HD",
-                "MATCH! Russia HD",
-                "MAX Sport 4 Bulgaria HD",
-                "beIN Sports MENA 3 HD",
-                "M+ LaLiga HD",
-                "beIN Sports MENA 1 HD",
-                "Idman TV HD"
+                "Premier Sports 1 UK HD"
               ]
             },
             {
               "country": "Ausport",
               "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 2"
+                "beIN SPORTS 2",
+                "beIN Sports Connect"
               ]
             }
           ],
@@ -148,6 +154,242 @@
             }
           ],
           "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - ATP Challenger Tour 2026 - ATP Ch 75 Ct Porto Cup",
+          "kick_utc": 1788523200,
+          "time": "04/09 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - ATP Challenger Tour 2026 - ATP Ch 75 Ct Porto Cup",
+          "kick_utc": 1788602400,
+          "time": "05/09 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv5 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - US Open",
+          "kick_utc": 1788532200,
+          "time": "04/09 09:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - US Open",
+          "kick_utc": 1788536700,
+          "time": "04/09 10:45 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - US Open",
+          "kick_utc": 1788541200,
+          "time": "05/09 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 Hd Portugal",
+                "Eurosport 2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - US Open",
+          "kick_utc": 1788552000,
+          "time": "05/09 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 Hd Portugal",
+                "Eurosport 2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - US Open",
+          "kick_utc": 1788562800,
+          "time": "05/09 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - US Open",
+          "kick_utc": 1788573600,
+          "time": "05/09 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Internationaux des États-Unis 2026",
+          "kick_utc": 1788534000,
+          "time": "04/09 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Réseau Des Sports (Rds)",
+                "Réseau Des Sports (Rds) Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Internationaux des États-Unis 2026",
+          "kick_utc": 1788561000,
+          "time": "05/09 05:30 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Rds2",
+                "Rds2 Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "2026 US Open Tennis",
+          "kick_utc": 1788534000,
+          "time": "04/09 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "TSN 1",
+                "TSN 3",
+                "TSN 3 Hd",
+                "TSN Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "2026 US Open Tennis",
+          "kick_utc": 1788562800,
+          "time": "05/09 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "TSN 1",
+                "TSN 3",
+                "TSN 3 Hd",
+                "TSN Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "US Open Match Point",
+          "kick_utc": 1788559200,
+          "time": "05/09 05:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "TSN 3",
+                "TSN 3 Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - Grand Slam, US Open",
+          "kick_utc": 1788561900,
+          "time": "05/09 05:45 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - Grand Slam, US Open",
+          "kick_utc": 1788573600,
+          "time": "05/09 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
