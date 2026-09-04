@@ -13,7 +13,7 @@ from collections import defaultdict
 
 EPG_URL_STARHUB = "https://raw.githubusercontent.com/dbghelp/StarHub-TV-EPG/refs/heads/main/starhub.xml"
 EPG_URL_NT74 = "https://raw.githubusercontent.com/nt74/epglist/refs/heads/main/guide.xml"
-EPG_URL_XVB = "https://raw.githubusercontent.com/xvb-lab/xvb-epg/refs/heads/main/epg/epg-fr.xml"
+EPG_URL_XVB = "https://iptv-epg.org/files/epg-fr.xml"
 EPG_URL_PT1 = "https://epgshare01.online/epgshare01/epg_ripper_PT1.xml.gz"
 EPG_URL_RO1 = "https://epgshare01.online/epgshare01/epg_ripper_RO1.xml.gz"
 EPG_URL_CA2 = "https://epgshare01.online/epgshare01/epg_ripper_CA2.xml.gz"  # Nguồn mới
