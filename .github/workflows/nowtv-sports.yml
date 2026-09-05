@@ -3,7 +3,7 @@ name: Fetch Now TV Sports Schedule
 on:
   schedule:
     # Chạy hàng ngày lúc 08:00 UTC (tương đương 15:00 giờ Việt Nam)
-    - cron: '0 8 * * *'
+    - cron: '0 4,8,12 * * *'
   workflow_dispatch:  # Cho phép chạy thủ công từ giao diện GitHub
 
 # Cấp quyền ghi cho GITHUB_TOKEN để có thể push code
