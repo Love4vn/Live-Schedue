@@ -593,7 +593,7 @@ LEAGUES_CONFIG = {
     "Australian Open": {"url": "https://www.livesportsontv.com/league/grand-slam/australian-open/", "is_tennis": True},
     "French Open": {"url": "https://www.livesportsontv.com/league/roland-garros", "is_tennis": True},
     "Wimbledon": {"url": "https://www.livesportsontv.com/league/wimbledon-tennis", "is_tennis": True},
-    "US Open": {"url": "https://www.livesportsontv.com/league/grand-slam/us-open/", "is_tennis": True}
+    "US Open": {"url": "https://www.livesportsontv.com/league/us-open", "is_tennis": True}
 }
 
 # ==================== FOOTONSAT ====================
@@ -690,21 +690,28 @@ async def scrape_livesportsontv(ref_time: datetime):
             print(f"    URL: {url}")
 
             try:
-                await page.goto(url, wait_until="domcontentloaded", timeout=120000)
+                # Đợi cho đến khi mạng ổn định (tải hết dữ liệu)
+                await page.goto(url, wait_until="networkidle", timeout=120000)
             except Exception as e:
-                print(f"    ❌ Lỗi: {e}")
+                print(f"    ❌ Lỗi tải trang: {e}")
                 continue
 
-            # Xử lý nút "more" để hiển thị đầy đủ kênh (cải thiện)
+            # Chờ cho các sự kiện xuất hiện (thay thế skeleton)
+            try:
+                await page.wait_for_selector('.event--wrapp', timeout=30000)
+            except Exception as e:
+                print(f"    ⚠️ Không tìm thấy sự kiện (timeout): {e}")
+                continue  # Bỏ qua giải này nếu không có sự kiện
+
+            # Xử lý nút "more" để hiển thị đầy đủ kênh
             try:
                 more_buttons = await page.query_selector_all('button:has-text("more"), button:has-text("More"), a:has-text("more"), a:has-text("More")')
                 for btn in more_buttons:
                     try:
                         await btn.click()
-                        await page.wait_for_timeout(2000)  # Tăng thời gian chờ
+                        await page.wait_for_timeout(2000)
                     except:
                         pass
-                # Thử click thêm nút "Show more"
                 show_more = await page.query_selector_all('a:has-text("Show more"), button:has-text("Show more")')
                 for btn in show_more:
                     try:
@@ -789,7 +796,6 @@ async def scrape_livesportsontv(ref_time: datetime):
                     if is_youth_or_women(matchup, league_display):
                         continue
 
-                    # Áp dụng bộ lọc
                     if team_filter is not None:
                         if not any(t.lower() in matchup.lower() for t in team_filter):
                             continue
@@ -805,10 +811,8 @@ async def scrape_livesportsontv(ref_time: datetime):
                         if not include_friendly_match(home, away):
                             continue
 
-                    # ========== CẢI THIỆN LẤY DANH SÁCH KÊNH ==========
+                    # Lấy kênh (cải thiện)
                     channels = []
-
-                    # Cách 1: Tìm trong event__tags (cách cũ)
                     tags_container = row.find('ul', class_='event__tags')
                     if not tags_container:
                         tags_container = row.find('div', class_='event__tags')
@@ -822,14 +826,12 @@ async def scrape_livesportsontv(ref_time: datetime):
                                 if text:
                                     channels.append(text)
 
-                    # Cách 2: Nếu chưa có, tìm tất cả các thẻ a có text như tên kênh
                     if not channels:
                         for a_tag in row.find_all('a'):
                             text = a_tag.get_text(strip=True)
                             if text and len(text) > 2 and text.lower() not in ['more', 'watch', 'live', 'stream', 'buy', 'tickets']:
                                 channels.append(text)
 
-                    # Cách 3: Tìm theo class cụ thể (mở rộng)
                     channel_selectors = [
                         '.event__channel', '.channel-name', '.service-name', 
                         '.broadcaster', '.tv-channel', '[class*="channel"]',
@@ -841,10 +843,9 @@ async def scrape_livesportsontv(ref_time: datetime):
                             if text and len(text) > 1 and text not in channels:
                                 channels.append(text)
 
-                    # Loại bỏ trùng lặp
                     channels = list(dict.fromkeys(channels))
 
-                    # Debug cho French Open (có thể comment sau)
+                    # Debug (tùy chọn)
                     if "French Open" in matchup and "TSN" not in [c.lower() for c in channels]:
                         print(f"    ⚠️ French Open channels found: {channels}")
                         print(f"    Snippet: {row.prettify()[:800]}")
@@ -862,7 +863,6 @@ async def scrape_livesportsontv(ref_time: datetime):
             print(f"    ✅ Thêm {added} trận")
         await browser.close()
     return all_games
-
 # ==================== MAIN ====================
 async def main():
     ref_time = datetime.now(VN_TZ)
