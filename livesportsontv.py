@@ -674,71 +674,84 @@ async def scrape_livesportsontv(ref_time: datetime):
     all_games = []
     current_year = ref_time.year
 
-    async with async_playwright() as p:
-        print("🚀 Khởi động trình duyệt...")
-        browser = await p.chromium.launch(headless=True, args=["--no-sandbox"])
-        page = await browser.new_page()
-        page.set_default_navigation_timeout(120000)
-        page.set_default_timeout(60000)
+    # Hàm xử lý một giải đấu (sẽ chạy song song)
+    async def process_league(league_name, cfg):
+        url = cfg["url"]
+        team_filter = cfg.get("teams")
+        custom_filter = cfg.get("custom_filter")
+        is_tennis = cfg.get("is_tennis", False)
+        print(f"\n--- {league_name} ---")
+        print(f"    URL: {url}")
 
-        for league_name, cfg in LEAGUES_CONFIG.items():
-            url = cfg["url"]
-            team_filter = cfg.get("teams")
-            custom_filter = cfg.get("custom_filter")
-            is_tennis = cfg.get("is_tennis", False)
-            print(f"\n--- {league_name} ---")
-            print(f"    URL: {url}")
+        # Mở trình duyệt mới cho mỗi giải (nếu chạy song song)
+        async with async_playwright() as p:
+            browser = await p.chromium.launch(
+                headless=True,
+                args=["--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage"]
+            )
+            page = await browser.new_page()
+            page.set_default_navigation_timeout(60000)
+            page.set_default_timeout(30000)
 
             try:
-                # Đợi cho đến khi mạng ổn định (tải hết dữ liệu)
-                await page.goto(url, wait_until="networkidle", timeout=120000)
+                # 1. Load trang với domcontentloaded, không đợi networkidle
+                await page.goto(url, wait_until="domcontentloaded", timeout=60000)
             except Exception as e:
                 print(f"    ❌ Lỗi tải trang: {e}")
-                continue
+                await browser.close()
+                return []
 
-            # Chờ cho các sự kiện xuất hiện (thay thế skeleton)
+            # 2. Chờ selector sự kiện xuất hiện (tối đa 20s)
             try:
-                await page.wait_for_selector('.event--wrapp', timeout=30000)
-            except Exception as e:
-                print(f"    ⚠️ Không tìm thấy sự kiện (timeout): {e}")
-                continue  # Bỏ qua giải này nếu không có sự kiện
+                await page.wait_for_selector('.event--wrapp', timeout=20000)
+            except:
+                print(f"    ⚠️ Không tìm thấy sự kiện, bỏ qua giải này")
+                await browser.close()
+                return []
 
-            # Xử lý nút "more" để hiển thị đầy đủ kênh
+            # 3. Click các nút "more"
             try:
-                more_buttons = await page.query_selector_all('button:has-text("more"), button:has-text("More"), a:has-text("more"), a:has-text("More")')
+                more_buttons = await page.query_selector_all(
+                    'button:has-text("more"), button:has-text("More"), a:has-text("more"), a:has-text("More")'
+                )
                 for btn in more_buttons:
                     try:
                         await btn.click()
-                        await page.wait_for_timeout(2000)
+                        await page.wait_for_timeout(1000)  # giảm xuống 1s
                     except:
                         pass
-                show_more = await page.query_selector_all('a:has-text("Show more"), button:has-text("Show more")')
+                show_more = await page.query_selector_all(
+                    'a:has-text("Show more"), button:has-text("Show more")'
+                )
                 for btn in show_more:
                     try:
                         await btn.click()
-                        await page.wait_for_timeout(2000)
+                        await page.wait_for_timeout(1000)
                     except:
                         pass
             except:
                 pass
 
-            # Cuộn trang để tải hết nội dung
-            for _ in range(6):
+            # 4. Cuộn trang (chỉ 3 lần)
+            for _ in range(3):
                 await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-                await page.wait_for_timeout(2000)
+                await page.wait_for_timeout(1500)
 
             html = await page.content()
+            await browser.close()
+
             soup = BeautifulSoup(html, 'html.parser')
             page_tz = extract_timezone_from_html(soup)
-
             rows = soup.find_all('div', class_='event--wrapp')
             print(f"    📊 {len(rows)} sự kiện")
 
-            added = 0
+            games = []
             for row in rows:
                 try:
+                    # (toàn bộ logic parse giữ nguyên như cũ)
                     date_div = row.find('div', class_='event__info--date')
-                    if not date_div: continue
+                    if not date_div:
+                        continue
                     date_text = date_div.get_text(separator=' ').strip()
                     day_str, month_str = parse_date_from_text(date_text)
                     if not day_str or not month_str:
@@ -747,13 +760,15 @@ async def scrape_livesportsontv(ref_time: datetime):
                         if day_tag and month_tag:
                             day_str = day_tag.get_text(strip=True)
                             month_str = month_tag.get_text(strip=True).lower()
-                    if not day_str or not month_str: continue
+                    if not day_str or not month_str:
+                        continue
 
                     month_num = get_month_number(month_str)
                     day_num = int(day_str)
 
                     time_tag = row.find('time')
-                    if not time_tag: continue
+                    if not time_tag:
+                        continue
                     time_str = time_tag.get_text(strip=True)
                     try:
                         hour, minute = parse_time_with_ampm(time_str)
@@ -767,7 +782,7 @@ async def scrape_livesportsontv(ref_time: datetime):
                     if not is_within_time_range(vn_dt, ref_time):
                         continue
 
-                    # Lấy tên trận / giải
+                    # Lấy tên trận
                     if is_tennis:
                         home_elem = row.find('div', class_=lambda c: c and 'event_participant--home' in c)
                         if not home_elem:
@@ -811,7 +826,7 @@ async def scrape_livesportsontv(ref_time: datetime):
                         if not include_friendly_match(home, away):
                             continue
 
-                    # Lấy kênh (cải thiện)
+                    # Lấy kênh
                     channels = []
                     tags_container = row.find('ul', class_='event__tags')
                     if not tags_container:
@@ -833,7 +848,7 @@ async def scrape_livesportsontv(ref_time: datetime):
                                 channels.append(text)
 
                     channel_selectors = [
-                        '.event__channel', '.channel-name', '.service-name', 
+                        '.event__channel', '.channel-name', '.service-name',
                         '.broadcaster', '.tv-channel', '[class*="channel"]',
                         '[class*="service"]', '[class*="broadcast"]'
                     ]
@@ -845,24 +860,19 @@ async def scrape_livesportsontv(ref_time: datetime):
 
                     channels = list(dict.fromkeys(channels))
 
-                    # Debug (tùy chọn)
-                    if "French Open" in matchup and "TSN" not in [c.lower() for c in channels]:
-                        print(f"    ⚠️ French Open channels found: {channels}")
-                        print(f"    Snippet: {row.prettify()[:800]}")
-
-                    all_games.append({
+                    games.append({
                         "Date": vn_dt.strftime("%Y-%m-%d"),
                         "Time": vn_dt.strftime("%H:%M"),
                         "League": league_display,
                         "Matchup": matchup,
                         "Services": channels
                     })
-                    added += 1
-                except Exception as e:
+                except Exception:
                     continue
-            print(f"    ✅ Thêm {added} trận")
-        await browser.close()
-    return all_games
+
+            print(f"    ✅ Thêm {len(games)} trận")
+            return games
+
 # ==================== MAIN ====================
 async def main():
     ref_time = datetime.now(VN_TZ)
