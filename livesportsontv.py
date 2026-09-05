@@ -672,177 +672,197 @@ def parse_footonsat_items(items, ref_time):
 # ==================== LIVESPORTSONTV SCRAPING (cập nhật xử lý nút "more") ====================
 async def scrape_livesportsontv(ref_time: datetime):
     """
-    Scrape trang chủ livesportsontv.com, duyệt các ngày và lấy dữ liệu bằng evaluate.
+    Scrape từng giải đấu trong LEAGUES_CONFIG, chạy song song.
+    Nếu một giải không có dữ liệu, vẫn tiếp tục các giải khác.
     """
     all_games = []
-    num_days = 7  # Số ngày cần scrape
+    semaphore = asyncio.Semaphore(4)  # Giới hạn 4 luồng
 
-    async with async_playwright() as p:
-        print("🚀 Khởi động trình duyệt...")
-        browser = await p.chromium.launch(
-            headless=True,
-            args=["--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage"]
-        )
-        page = await browser.new_page()
-        page.set_default_navigation_timeout(60000)
-        page.set_default_timeout(30000)
+    async def scrape_one(league_name, cfg):
+        async with semaphore:
+            return await scrape_league(league_name, cfg, ref_time)
 
-        # Điều hướng đến trang chủ
-        await page.goto("https://www.livesportsontv.com/", wait_until="domcontentloaded")
-        
-        # Chờ các nút ngày xuất hiện
-        try:
-            await page.wait_for_selector('button:has-text("Sun"), button:has-text("Mon"), button:has-text("Tue"), button:has-text("Wed"), button:has-text("Thu"), button:has-text("Fri"), button:has-text("Sat")', timeout=20000)
-        except:
-            print("⚠️ Không tìm thấy nút điều hướng ngày, thoát.")
+    tasks = [scrape_one(name, cfg) for name, cfg in LEAGUES_CONFIG.items()]
+    results = await asyncio.gather(*tasks, return_exceptions=True)
+
+    for result in results:
+        if isinstance(result, Exception):
+            print(f"⚠️ Lỗi khi scrape một giải: {result}")
+            continue
+        if result:
+            all_games.extend(result)
+
+    return all_games
+
+
+async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
+    """Scrape một giải đấu cụ thể."""
+    url = cfg["url"]
+    team_filter = cfg.get("teams")
+    custom_filter = cfg.get("custom_filter")
+    is_tennis = cfg.get("is_tennis", False)
+    current_year = ref_time.year
+    games = []
+
+    try:
+        async with async_playwright() as p:
+            browser = await p.chromium.launch(
+                headless=True,
+                args=["--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage"]
+            )
+            page = await browser.new_page()
+            page.set_default_navigation_timeout(60000)
+            page.set_default_timeout(30000)
+
+            print(f"\n--- {league_name} ---")
+            print(f"    URL: {url}")
+
+            # Load trang với domcontentloaded (nhanh hơn)
+            await page.goto(url, wait_until="domcontentloaded", timeout=60000)
+
+            # Chờ một chút để dữ liệu render
+            await page.wait_for_timeout(2000)
+
+            # Lấy HTML và parse bằng BeautifulSoup
+            html = await page.content()
             await browser.close()
-            return []
 
-        # Lấy timezone từ trang (một lần)
-        html = await page.content()
-        soup = BeautifulSoup(html, 'html.parser')
-        page_tz = extract_timezone_from_html(soup)
+            soup = BeautifulSoup(html, 'html.parser')
+            page_tz = extract_timezone_from_html(soup)
 
-        # Lấy danh sách các nút ngày
-        date_buttons = await page.locator('button:has-text("Sun"), button:has-text("Mon"), button:has-text("Tue"), button:has-text("Wed"), button:has-text("Thu"), button:has-text("Fri"), button:has-text("Sat")').all()
-        num_buttons = min(len(date_buttons), num_days)
-        if num_buttons == 0:
-            print("⚠️ Không có nút ngày nào.")
-            await browser.close()
-            return []
+            # Tìm tất cả các sự kiện (dùng class cũ, nếu không có thử tìm theo cấu trúc khác)
+            rows = soup.find_all('div', class_='event--wrapp')
+            if not rows:
+                # Thử tìm theo cách khác: tìm tất cả các div có chứa time và date
+                rows = soup.find_all('div', class_=lambda c: c and ('event' in c or 'fixture' in c.lower()))
+            
+            print(f"    📊 {len(rows)} sự kiện")
 
-        # Duyệt qua từng ngày
-        for day_index in range(num_buttons):
-            button = date_buttons[day_index]
-            button_text = await button.inner_text()
-            await button.click(force=True)
-            await page.wait_for_timeout(1500)  # Chờ dữ liệu tải
-
-            # Lấy dữ liệu sự kiện bằng evaluate (dựa trên class động)
-            raw_events = await page.evaluate('''
-                () => {
-                    const output = [];
-                    const sportBlocks = document.querySelectorAll('[class*="FixtureListBySport_sport__"]');
-                    for (const sportBlock of sportBlocks) {
-                        const sport = sportBlock.querySelector('[class*="SectionDivider_label__"]')?.textContent?.trim() || '';
-                        const leagueCards = sportBlock.querySelectorAll(':scope > [class*="Card_card__"]');
-                        for (const leagueCard of leagueCards) {
-                            const league = leagueCard.querySelector('[class*="LeagueCard_cardTitleLink__"]')?.textContent?.trim() || '';
-                            const eventElements = leagueCard.querySelectorAll('[class*="FixtureItem_container__"]');
-                            for (const eventElement of eventElements) {
-                                if (eventElement.getClientRects().length === 0) continue;
-                                const link = eventElement.querySelector('a[href^="/match/"]');
-                                const title = link?.getAttribute('aria-label')?.trim();
-                                const href = link?.getAttribute('href');
-                                const time = eventElement.querySelector('[class*="FixtureItem_time__"]')?.textContent?.trim() || '';
-                                const channelElements = eventElement.querySelectorAll('[class*="FixtureItem_channelChip__"]');
-                                const channels = channelElements.map(el => {
-                                    const name = el.querySelector('[class*="FixtureItem_channelChipText__"]')?.textContent?.trim() ||
-                                                 el.querySelector('img')?.getAttribute('alt')?.trim() || '';
-                                    const channelLink = el.closest('a');
-                                    return {
-                                        name,
-                                        type: el.className.includes('nonStreaming') ? 'tv' : 'streaming',
-                                        sourceUrl: channelLink?.href || null
-                                    };
-                                }).filter(ch => ch.name);
-                                if (title && href && time) {
-                                    output.push({ sport, league, title, href, time, channels });
-                                }
-                            }
-                        }
-                    }
-                    return output;
-                }
-            ''')
-
-            # Xử lý từng sự kiện
-            for raw in raw_events:
-                # Parse thời gian từ raw['time'] (vd "7:00 PM")
-                match = re.match(r'(\d{1,2}):(\d{2})\s*(AM|PM)', raw['time'])
-                if not match:
-                    continue
-                hour = int(match.group(1))
-                minute = int(match.group(2))
-                meridiem = match.group(3).upper()
-                if meridiem == 'PM' and hour != 12:
-                    hour += 12
-                elif meridiem == 'AM' and hour == 12:
-                    hour = 0
-
-                # Lấy ngày từ button_text (FRI 04, SAT 05, ...)
-                # Do ta đã click vào button thứ day_index, ngày đó là ngày bắt đầu + day_index
-                # Nhưng trong raw event không có ngày, ta dùng ngày đã biết.
-                # Tuy nhiên, tốt hơn là lấy ngày từ chính button_text.
-                # Mỗi button có dạng "FRI 04", ta parse ngày đó.
-                # Ta có thể lấy ngày từ button_text hiện tại.
-                # Nhưng vì đã click, ta biết ngày đó là ngày nào? Không chính xác nếu có sự lệch ngày.
-                # Cách tốt: lấy ngày từ raw event? Không có.
-                # Ta sẽ dùng ngày từ date_buttons[day_index] và parse.
-                # parse_date_from_button đã có ở trên.
-                # Tuy nhiên, để đơn giản, ta dùng ngày từ button_text.
-                # Do site hiển thị theo giờ US, nhưng ta đã có page_tz.
-                # Ta sẽ tạo datetime từ ngày hiện tại + giờ parse.
-
-                # Lấy ngày từ button_text của ngày hiện tại
-                current_button_text = await button.inner_text()
-                parsed = parse_date_from_button(current_button_text, ref_time)
-                if not parsed:
-                    continue
-                # parsed là datetime naive (UTC) của ngày đó
-                # Tạo datetime cho sự kiện với giờ đã parse
-                dt = datetime(parsed.year, parsed.month, parsed.day, hour, minute)
-                # Gán timezone từ page_tz
-                dt = dt.replace(tzinfo=page_tz)
-                vn_dt = dt.astimezone(VN_TZ)
-
-                if not is_within_time_range(vn_dt, ref_time):
-                    continue
-
-                matchup = raw['title']
-                league_display = raw['league'] if raw['league'] else "Unknown"
-                # Chuẩn hóa league
-                league_display = normalize_league(league_display)
-
-                # Áp dụng bộ lọc
-                if not is_match_allowed(league_display, matchup):
-                    continue
-                if is_youth_or_women(matchup, league_display):
-                    continue
-                if league_display in ["FA Cup", "Carabao Cup"] and not has_premier_league_team(matchup):
-                    continue
-                if league_display == "International Friendlies":
-                    parts = matchup.split(' @ ')
-                    if len(parts) == 2:
-                        away, home = parts
-                    else:
-                        home, away = "?", "?"
-                    if not include_friendly_match(home, away):
+            for row in rows:
+                try:
+                    # Parse ngày
+                    date_div = row.find('div', class_='event__info--date')
+                    if not date_div:
+                        continue
+                    date_text = date_div.get_text(separator=' ').strip()
+                    day_str, month_str = parse_date_from_text(date_text)
+                    if not day_str or not month_str:
+                        day_tag = date_div.find('b')
+                        month_tag = date_div.find('span')
+                        if day_tag and month_tag:
+                            day_str = day_tag.get_text(strip=True)
+                            month_str = month_tag.get_text(strip=True).lower()
+                    if not day_str or not month_str:
                         continue
 
-                # Lấy channels từ raw['channels']
-                channels = []
-                for ch in raw.get('channels', []):
-                    name = ch.get('name', '').strip()
-                    if name:
-                        # Nếu có tên kênh, có thể thêm hậu tố (US) sau này
-                        channels.append(name)
-                # Loại bỏ trùng lặp
-                channels = list(dict.fromkeys(channels))
+                    month_num = get_month_number(month_str)
+                    day_num = int(day_str)
 
-                all_games.append({
-                    "Date": vn_dt.strftime("%Y-%m-%d"),
-                    "Time": vn_dt.strftime("%H:%M"),
-                    "League": league_display,
-                    "Matchup": matchup,
-                    "Services": channels
-                })
+                    # Parse giờ
+                    time_tag = row.find('time')
+                    if not time_tag:
+                        continue
+                    time_str = time_tag.get_text(strip=True)
+                    try:
+                        hour, minute = parse_time_with_ampm(time_str)
+                    except:
+                        continue
 
-            print(f"    📅 Ngày {day_index+1}/{num_buttons} ({button_text}): {len(raw_events)} sự kiện thô, {len([e for e in raw_events if True])} hợp lệ (chưa lọc)")
+                    # Tạo datetime
+                    page_dt = datetime(current_year, month_num, day_num, hour, minute)
+                    page_dt = page_dt.replace(tzinfo=page_tz)
+                    vn_dt = page_dt.astimezone(VN_TZ)
 
-        await browser.close()
-        return all_games
+                    if not is_within_time_range(vn_dt, ref_time):
+                        continue
 
+                    # Lấy tên trận
+                    if is_tennis:
+                        home_elem = row.find('div', class_=lambda c: c and 'event_participant--home' in c)
+                        if not home_elem:
+                            home_elem = row.find('div', class_='event__participant--home')
+                        if home_elem:
+                            matchup = home_elem.get_text(strip=True)
+                        else:
+                            title_elem = row.find('a', class_='event__title')
+                            matchup = title_elem.get_text(strip=True) if title_elem else "Tennis Match"
+                        if league_name in ["Australian Open", "French Open", "Wimbledon", "US Open"]:
+                            league_display = "Tennis (Grand Slam)"
+                        else:
+                            league_display = league_name
+                    else:
+                        home_elem = row.find('div', class_=lambda c: c and 'event_participant--home' in c)
+                        away_elem = row.find('div', class_=lambda c: c and 'event_participant--away' in c)
+                        home = home_elem.get_text(strip=True) if home_elem else "?"
+                        away = away_elem.get_text(strip=True) if away_elem else "?"
+                        matchup = f"{away} @ {home}"
+                        if home == "?" and away == "?":
+                            title_elem = row.find('a', class_='event__title')
+                            if title_elem:
+                                matchup = title_elem.get_text(strip=True)
+                        league_display = league_name
+
+                    # Lọc
+                    if is_youth_or_women(matchup, league_display):
+                        continue
+
+                    if team_filter is not None:
+                        if not any(t.lower() in matchup.lower() for t in team_filter):
+                            continue
+                    if custom_filter == "premier_league_only":
+                        if not has_premier_league_team(matchup):
+                            continue
+                    elif custom_filter == "friendly":
+                        parts = matchup.split(' @ ')
+                        if len(parts) == 2:
+                            away, home = parts
+                        else:
+                            home, away = "?", "?"
+                        if not include_friendly_match(home, away):
+                            continue
+
+                    # Lấy kênh
+                    channels = []
+                    tags_container = row.find('ul', class_='event__tags')
+                    if not tags_container:
+                        tags_container = row.find('div', class_='event__tags')
+                    if tags_container:
+                        for link in tags_container.find_all('a'):
+                            aria = link.get('aria-label')
+                            if aria:
+                                channels.append(aria.strip())
+                            else:
+                                text = link.get_text(strip=True)
+                                if text:
+                                    channels.append(text)
+
+                    # Fallback: tìm tất cả thẻ a có text dài
+                    if not channels:
+                        for a_tag in row.find_all('a'):
+                            text = a_tag.get_text(strip=True)
+                            if text and len(text) > 2 and text.lower() not in ['more', 'watch', 'live', 'stream', 'buy', 'tickets']:
+                                channels.append(text)
+
+                    channels = list(dict.fromkeys(channels))
+
+                    games.append({
+                        "Date": vn_dt.strftime("%Y-%m-%d"),
+                        "Time": vn_dt.strftime("%H:%M"),
+                        "League": league_display,
+                        "Matchup": matchup,
+                        "Services": channels
+                    })
+
+                except Exception as e:
+                    # Bỏ qua lỗi từng dòng
+                    continue
+
+            print(f"    ✅ Thêm {len(games)} trận")
+            return games
+
+    except Exception as e:
+        print(f"    ❌ Lỗi scrape {league_name}: {e}")
+        return []
 
 def parse_date_from_button(button_text: str, ref_time: datetime):
     """Giải mã chuỗi ngày từ nút (vd 'FRI 04') thành datetime UTC."""
