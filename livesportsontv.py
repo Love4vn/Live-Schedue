@@ -1,6 +1,6 @@
 # File: livesportsontv.py
-# Hoàn chỉnh: scrape livesportsontv + footonsat + nowstreams
-# Xử lý nút "more" cho từng sự kiện, lấy đủ kênh
+# Hoàn chỉnh: scrape livesportsontv + footonsat
+# Đã bỏ NowStreams do API lỗi
 
 import asyncio
 import json
@@ -27,8 +27,6 @@ FOOTONSAT_URLS = [
     "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/worldcup.json",
     "https://raw.githubusercontent.com/fairbird/footonsat-api/refs/heads/main/today.json"
 ]
-
-NOWSTREAMS_URL = "https://nowstreams.top/api_proxy.php"
 
 # ==================== DANH SÁCH GIẢI ĐẤU ĐƯỢC PHÉP ====================
 ALLOWED_LEAGUES = {
@@ -62,19 +60,7 @@ ALLOWED_TEAMS_PER_LEAGUE = {
     "International Friendlies": None,
 }
 
-LANGUAGE_MAP = {
-    "GB": "Great Britain", "US": "United States", "DE": "Germany", "AU": "Australia",
-    "ES": "Spain", "FR": "France", "IT": "Italy", "PT": "Portugal", "GR": "Greece",
-    "BG": "Bulgaria", "BE": "Belgium", "CZ": "Czech Republic", "CH": "Switzerland",
-    "SE": "Sweden", "CA": "Canada", "NZ": "New Zealand", "MX": "Mexico", "BR": "Brazil",
-    "NL": "Netherlands", "PL": "Poland", "TR": "Turkey", "RU": "Russia", "UA": "Ukraine",
-    "RO": "Romania", "HU": "Hungary", "AT": "Austria", "HR": "Croatia", "RS": "Serbia",
-    "SI": "Slovenia", "SK": "Slovakia", "NO": "Norway", "DK": "Denmark", "FI": "Finland",
-    "IE": "Ireland", "ZA": "South Africa", "JP": "Japan", "KR": "South Korea", "CN": "China",
-    "IN": "India", "AE": "UAE", "SA": "Saudi Arabia", "QA": "Qatar",
-}
-
-# ==================== HÀM TIỆN ÍCH (giữ nguyên) ====================
+# ==================== HÀM TIỆN ÍCH ====================
 def parse_time_with_ampm(time_str: str):
     time_str = time_str.strip().upper()
     if ' ' not in time_str and ('AM' in time_str or 'PM' in time_str):
@@ -241,6 +227,20 @@ TEAM_NAME_MAPPING = {
     "the clarets": "Burnley",
     "west bromwich albion": "West Brom",
     "west brom": "West Brom",
+    # Ipswich Town
+    "ipswich town": "Ipswich Town",
+    "ipswich": "Ipswich Town",
+    "the tractor boys": "Ipswich Town",
+
+    # Coventry City
+    "coventry city": "Coventry City",
+    "coventry": "Coventry City",
+    "the sky blues": "Coventry City",
+
+    # Hull City
+    "hull city": "Hull City",
+    "hull": "Hull City",
+    "the tigers": "Hull City",
     
     # Bundesliga
     "bayern munich": "Bayern Munich",
@@ -499,7 +499,7 @@ TEAM_NAME_MAPPING = {
     "tartan army": "Scotland",
     "wales": "Wales",
     "dragons": "Wales",
-    }
+}
 
 def normalize_team_name(name: str) -> str:
     if not name:
@@ -667,76 +667,6 @@ def parse_footonsat_items(items, ref_time):
                         })
         except Exception:
             pass
-    return matches
-
-# ==================== NOWSTREAMS ====================
-async def fetch_nowstreams_data(ref_time: datetime):
-    matches = []
-    async with aiohttp.ClientSession() as session:
-        try:
-            async with session.get(NOWSTREAMS_URL, timeout=30) as resp:
-                if resp.status != 200:
-                    print(f"⚠️ nowstreams -> HTTP {resp.status}")
-                    return []
-                text = await resp.text()
-                data = json.loads(text)
-                items = data.get("matches", [])
-        except Exception as e:
-            print(f"⚠️ Lỗi fetch nowstreams: {e}")
-            return []
-
-    for item in items:
-        try:
-            if item.get("sport") != "Football":
-                continue
-            match_date = item.get("matchDate")
-            time_str = item.get("time")
-            if not match_date or not time_str:
-                continue
-            dt_orig = datetime.strptime(f"{match_date} {time_str}", "%Y-%m-%d %H:%M")
-            dt_vn = dt_orig + timedelta(hours=4)
-            dt_vn = dt_vn.replace(tzinfo=VN_TZ)
-            if not is_within_time_range(dt_vn, ref_time):
-                continue
-            league_raw = item.get("league", "")
-            matchup_raw = item.get("matchstr", "")
-            if not matchup_raw:
-                continue
-            if is_youth_or_women(matchup_raw, league_raw):
-                continue
-            league = normalize_league(league_raw)
-            if not is_match_allowed(league, matchup_raw):
-                continue
-            services = []
-            for ch in item.get("channels", []):
-                ch_name = ch.get("name", "").strip()
-                lang_code = ch.get("language", "").upper()
-                if ch_name and lang_code:
-                    full_country = LANGUAGE_MAP.get(lang_code, lang_code)
-                    services.append(f"{ch_name} {full_country}")
-                elif ch_name:
-                    services.append(ch_name)
-            main_channel = item.get("channel")
-            if main_channel and main_channel not in services:
-                parts = main_channel.rsplit(" ", 1)
-                if len(parts) == 2 and parts[1].upper() in LANGUAGE_MAP:
-                    ch_name = parts[0]
-                    lang_code = parts[1].upper()
-                    full_country = LANGUAGE_MAP.get(lang_code, lang_code)
-                    services.append(f"{ch_name} {full_country}")
-                else:
-                    services.append(main_channel)
-            matches.append({
-                "Date": dt_vn.strftime("%Y-%m-%d"),
-                "Time": dt_vn.strftime("%H:%M"),
-                "League": league,
-                "Matchup": matchup_raw,
-                "Services": services
-            })
-        except Exception as e:
-            print(f"⚠️ Lỗi xử lý match nowstreams: {e}")
-            continue
-    print(f"📡 nowstreams: {len(matches)} trận")
     return matches
 
 # ==================== LIVESPORTSONTV SCRAPING (cập nhật xử lý nút "more") ====================
@@ -914,7 +844,7 @@ async def scrape_livesportsontv(ref_time: datetime):
                     # Loại bỏ trùng lặp
                     channels = list(dict.fromkeys(channels))
 
-                    # Debug cho French Open
+                    # Debug cho French Open (có thể comment sau)
                     if "French Open" in matchup and "TSN" not in [c.lower() for c in channels]:
                         print(f"    ⚠️ French Open channels found: {channels}")
                         print(f"    Snippet: {row.prettify()[:800]}")
@@ -932,6 +862,7 @@ async def scrape_livesportsontv(ref_time: datetime):
             print(f"    ✅ Thêm {added} trận")
         await browser.close()
     return all_games
+
 # ==================== MAIN ====================
 async def main():
     ref_time = datetime.now(VN_TZ)
@@ -944,12 +875,13 @@ async def main():
     games_foot = await fetch_footonsat_data(ref_time)
     print(f"🛰️ Từ footonsat: {len(games_foot)} trận")
 
-    games_now = await fetch_nowstreams_data(ref_time)
-    print(f"📺 Từ nowstreams: {len(games_now)} trận")
+    # Đã bỏ nowstreams do API lỗi
+    # games_now = await fetch_nowstreams_data(ref_time)
+    # print(f"📺 Từ nowstreams: {len(games_now)} trận")
 
     # Gộp và loại trùng
     unique = {}
-    for g in games_foot + games_now + games_live:
+    for g in games_foot + games_live:  # chỉ còn 2 nguồn
         norm_league = normalize_league(g["League"])
         norm_key = normalize_matchup(g["Matchup"])
         key = (g["Date"], g["Time"], norm_league, norm_key)
