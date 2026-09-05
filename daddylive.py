@@ -11,7 +11,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # === CẤU HÌNH ===
 # True: chỉ lấy sự kiện trong ngày hiện tại (UTC)
 # False: lấy ngày đầu tiên xuất hiện trên trang (có thể là ngày hôm qua)
-USE_CURRENT_DATE_ONLY = True  # Bạn có thể đổi thành False nếu muốn lấy ngày đang hiển thị
+USE_CURRENT_DATE_ONLY = False  # Bạn có thể đổi thành False nếu muốn lấy ngày đang hiển thị
 
 ALLOWED_CATEGORIES = {"All Soccer Events", "Tennis"}
 
