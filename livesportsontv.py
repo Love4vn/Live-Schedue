@@ -873,6 +873,20 @@ async def scrape_livesportsontv(ref_time: datetime):
             print(f"    ✅ Thêm {len(games)} trận")
             return games
 
+    # Chạy tuần tự (cũ) – nếu bạn muốn nhanh hơn, dùng gather bên dưới
+    for league_name, cfg in LEAGUES_CONFIG.items():
+        games = await process_league(league_name, cfg)
+        all_games.extend(games)
+
+    # ==== NẾU MUỐN CHẠY SONG SONG, thay đoạn for bằng code này ====
+    # tasks = []
+    # for league_name, cfg in LEAGUES_CONFIG.items():
+    #     tasks.append(process_league(league_name, cfg))
+    # results = await asyncio.gather(*tasks)
+    # for games in results:
+    #     all_games.extend(games)
+
+    return all_games
 # ==================== MAIN ====================
 async def main():
     ref_time = datetime.now(VN_TZ)
