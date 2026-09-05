@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Combined Now TV & Ziggo Sport Live Sports Schedule Extractor
-Output: nowtv_sports_schedule_en.json (events from both sources)
+Combined Now TV & Ziggo Sport & StarHub Live Sports Schedule Extractor
+Output: nowtv_sports_schedule_en.json (events from all sources)
 """
 
 import asyncio
@@ -17,6 +17,7 @@ from bs4 import BeautifulSoup
 
 # ========== CONFIG ==========
 VIETNAM_TZ = pytz.timezone("Asia/Ho_Chi_Minh")
+SINGAPORE_TZ = pytz.timezone("Asia/Singapore")
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
 
 ALLOWED_FOOTBALL_LEAGUES = {
@@ -97,7 +98,7 @@ def extract_league_matchup(title: str) -> Tuple[str, str]:
     # No separators
     return "", cleaned
 
-# ---------- Now TV Fetcher (unchanged apart from filtering) ----------
+# ---------- Now TV Fetcher (unchanged) ----------
 class NowTVFetcher:
     def __init__(self):
         self.base_url = "https://nowplayer.now.com"
@@ -189,7 +190,7 @@ class NowTVFetcher:
                     })
         return events
 
-# ---------- Ziggo Sport Fetcher ----------
+# ---------- Ziggo Sport Fetcher (unchanged) ----------
 class ZiggoFetcher:
     def __init__(self):
         self.base_url = "https://www.ziggosport.nl"
@@ -269,6 +270,138 @@ class ZiggoFetcher:
                     })
         return events
 
+# ========== NEW: StarHub Fetcher ==========
+class StarhubFetcher:
+    """
+    Fetcher for Premier League fixtures from StarHub website.
+    Source: https://www.starhub.com/personal/bundles/premier-league/fixtures.html
+    """
+    def __init__(self):
+        self.url = "https://www.starhub.com/personal/bundles/premier-league/fixtures.html"
+        # Pattern to match date/time in format: "5 Sep 2026 (Sat), 19:30"
+        self.datetime_pattern = re.compile(
+            r'(\d{1,2})\s+(\w+)\s+(\d{4})\s*\([^)]+\)\s*,\s*(\d{2}):(\d{2})'
+        )
+        # Month name to number mapping
+        self.month_map = {
+            "Jan": 1, "Feb": 2, "Mar": 3, "Apr": 4, "May": 5, "Jun": 6,
+            "Jul": 7, "Aug": 8, "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12
+        }
+
+    def _parse_datetime(self, date_str: str) -> datetime:
+        """
+        Parse date string like "5 Sep 2026 (Sat), 19:30" (Singapore time, GMT+8)
+        Returns datetime object in Vietnam timezone (GMT+7)
+        """
+        match = self.datetime_pattern.search(date_str)
+        if not match:
+            raise ValueError(f"Could not parse date: {date_str}")
+
+        day, month_name, year, hour, minute = match.groups()
+        month = self.month_map.get(month_name)
+        if not month:
+            raise ValueError(f"Unknown month: {month_name}")
+
+        # Create datetime in Singapore timezone (GMT+8)
+        dt_sg = SINGAPORE_TZ.localize(
+            datetime(int(year), month, int(day), int(hour), int(minute))
+        )
+        # Convert to Vietnam timezone (GMT+7)
+        dt_vn = dt_sg.astimezone(VIETNAM_TZ)
+        return dt_vn
+
+    def _parse_matchup(self, text: str) -> str:
+        """Extract matchup from text like 'Newcastle United vs Bournemouth'"""
+        # Clean up extra spaces and newlines
+        text = re.sub(r'\s+', ' ', text).strip()
+        # Remove any trailing channel info if accidentally included
+        text = re.sub(r'\s*\([^)]*\)\s*$', '', text)
+        return text
+
+    def _parse_channel(self, text: str) -> str:
+        """Extract channel name from text like 'Hub Premier 1 (Ch 221)'"""
+        text = re.sub(r'\s+', ' ', text).strip()
+        # Extract just the channel name before the parentheses
+        match = re.match(r'^([^(]+)', text)
+        if match:
+            return match.group(1).strip()
+        return text
+
+    def fetch_events(self) -> List[Dict]:
+        """
+        Fetch Premier League fixtures from StarHub website.
+        Returns list of events with fields: Date, Time, League, Matchup, Services
+        """
+        print("📡 [StarHub] Fetching Premier League fixtures...")
+        events = []
+        now_vn = datetime.now(VIETNAM_TZ)
+
+        try:
+            headers = {"User-Agent": USER_AGENT}
+            resp = requests.get(self.url, headers=headers, timeout=15)
+            resp.raise_for_status()
+            soup = BeautifulSoup(resp.text, "html.parser")
+
+            # Find the table containing fixtures
+            # Look for the table with class 'fftable' or find by structure
+            table = soup.find("table", class_="fftable")
+            if not table:
+                # Fallback: find any table that contains "Hub Premier"
+                for tbl in soup.find_all("table"):
+                    if "Hub Premier" in str(tbl):
+                        table = tbl
+                        break
+
+            if not table:
+                print("⚠️ [StarHub] Could not find fixtures table")
+                return []
+
+            # Parse rows
+            rows = table.find_all("tr")
+            # Skip header row (first row)
+            for row in rows[1:]:
+                cells = row.find_all("td")
+                if len(cells) < 3:
+                    continue
+
+                # Extract text from each cell
+                date_time_text = cells[0].get_text(strip=True)
+                matchup_text = cells[1].get_text(strip=True)
+                channel_text = cells[2].get_text(strip=True)
+
+                if not date_time_text or not matchup_text:
+                    continue
+
+                try:
+                    # Parse datetime (Singapore time)
+                    dt_event = self._parse_datetime(date_time_text)
+                except ValueError as e:
+                    print(f"  ⚠️ [StarHub] Skip row: {e}")
+                    continue
+
+                # Filter: only events that are at most 4 hours old
+                time_diff = (now_vn - dt_event).total_seconds() / 3600
+                if time_diff > 4:
+                    continue
+
+                matchup = self._parse_matchup(matchup_text)
+                channel = self._parse_channel(channel_text)
+
+                events.append({
+                    "Date": dt_event.strftime("%Y-%m-%d"),
+                    "Time": dt_event.strftime("%H:%M"),
+                    "League": "Premier League",
+                    "Matchup": matchup,
+                    "Services": [channel],
+                })
+
+            print(f"✅ [StarHub] {len(events)} events fetched")
+            return events
+
+        except Exception as e:
+            print(f"❌ [StarHub] Failed to fetch: {e}")
+            return []
+
 # ---------- Deduplication ----------
 def deduplicate_events(events: List[Dict]) -> List[Dict]:
     groups = {}
@@ -329,8 +462,9 @@ def enrich_leagues(events: List[Dict]) -> List[Dict]:
 
 # ---------- Main ----------
 async def main():
-    print("🚀 Combined Now TV & Ziggo Sport Live Schedule Extractor")
+    print("🚀 Combined Now TV & Ziggo Sport & StarHub Live Schedule Extractor")
 
+    # Now TV
     nowtv = NowTVFetcher()
     nowtv_channels = nowtv.fetch_channels()
     nowtv_events = []
@@ -342,11 +476,17 @@ async def main():
     else:
         print("⚠️ [NowTV] No channels, skipping.")
 
+    # Ziggo
     ziggo = ZiggoFetcher()
     ziggo_events = ziggo.parse_events(days=7)
     print(f"🎯 [Ziggo] {len(ziggo_events)} raw events")
 
-    all_events = nowtv_events + ziggo_events
+    # StarHub (NEW)
+    starhub = StarhubFetcher()
+    starhub_events = starhub.fetch_events()
+    print(f"🎯 [StarHub] {len(starhub_events)} raw events")
+
+    all_events = nowtv_events + ziggo_events + starhub_events
     print(f"📊 Combined raw events: {len(all_events)}")
 
     all_events = deduplicate_events(all_events)
