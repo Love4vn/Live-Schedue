@@ -1,0 +1,43 @@
+name: Daddylive Scraper (Bóng đá & Tennis)
+
+on:
+  schedule:
+    - cron: '30 */3 * * *'   # Chạy mỗi 3 giờ
+  workflow_dispatch:         # Cho phép chạy thủ công
+
+permissions:
+  contents: write            # Cho phép ghi vào repository
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Lấy mã nguồn
+        uses: actions/checkout@v3
+
+      - name: Thiết lập Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Cài đặt thư viện cần thiết
+        run: |
+          pip install cloudscraper
+          pip install bs4
+          pip install python-dateutil
+
+      - name: Chạy script lấy lịch Daddylive
+        run: |
+          python daddylive.py
+
+      - name: Commit và Push kết quả
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add daddylive_schedule.json
+          if git diff --staged --quiet; then
+            echo "Không có thay đổi để commit"
+          else
+            git commit -m "Cập nhật lịch Daddylive [skip ci]"
+            git push
+          fi
