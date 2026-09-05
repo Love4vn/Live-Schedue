@@ -56,9 +56,6 @@ const teamVariants = {
   "tottenham hotspur": ["tottenham hotspur", "tottenham", "spurs"],
   "west ham united": ["west ham united", "west ham"],
   "wolverhampton": ["wolverhampton", "wolves"],
-  "coventry city": ["coventry city", "coventry"],
-  "hull city": ["hull city", "hull"],
-  "ipswich town": ["ipswich town", "ipswich"],
   "inter milan": ["inter milan", "inter", "internazionale"],
   "ac milan": ["ac milan", "milan", "acmilan"],
   "napoli": ["napoli"],
@@ -81,7 +78,7 @@ const footballAllowedLeagues = {
     "arsenal", "aston villa", "bournemouth", "brentford", "brighton", "chelsea",
     "crystal palace", "everton", "fulham", "leeds united", "liverpool", "manchester city",
     "manchester united", "newcastle", "nottingham forest", "sunderland", "tottenham hotspur",
-    "hull city", "ipswich town", "coventry city"
+    "west ham united", "wolverhampton"
   ]),
   "serie a": new Set([
     "inter milan", "ac milan", "napoli", "juventus", "roma", "atalanta", "lazio"
@@ -166,6 +163,7 @@ function buildDailyUrl(dateYYYYMMDD) {
   return `https://www.wheresthematch.com/live-sport-on-tv/?showdatestart=${dateYYYYMMDD}`;
 }
 
+// Chuyển đổi thời gian từ chuỗi isoZ (giờ UK BST) sang giờ Việt Nam (cộng 6 giờ)
 function isoToVietnamParts(isoZ) {
   if (!isoZ) return null;
   let raw = isoZ.trim();
@@ -176,6 +174,7 @@ function isoToVietnamParts(isoZ) {
     dt = new Date(raw);
     if (isNaN(dt.getTime())) return null;
   }
+  // UK hiện tại BST = UTC+1, VN = UTC+7, chênh 6 giờ
   const vnTime = new Date(dt.getTime() + 6 * 3600000);
   const yyyy = vnTime.getUTCFullYear();
   const mm = String(vnTime.getUTCMonth() + 1).padStart(2, '0');
@@ -217,7 +216,11 @@ function uniqKeepOrder(arr) {
   return out;
 }
 
-// ========== HÀM PARSE (SỬA LỖI CHANNELS) ==========
+function titleCase(s) {
+  return s.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+// ========== HÀM PARSE (DỰA TRÊN CODE THAM KHẢO) ==========
 function parseWTMEvents($, pageNum, sourceDate) {
   const rows = [];
 
@@ -226,59 +229,101 @@ function parseWTMEvents($, pageNum, sourceDate) {
     const $fx = $tr.find("td.fixture-details");
     if ($fx.length === 0) return;
 
-    const matchContent = ($fx.attr("content") || "").trim();
-    const parts = matchContent.split(" v ");
-    const home = parts[0]?.trim() || "";
-    const away = parts[1]?.trim() || "";
+    // --- Tên đội hoặc title sự kiện ---
+    const teams = $fx
+      .find("span.fixture a em")
+      .map((_, el) => $(el).text().replace(/\s+/g, " ").trim())
+      .get()
+      .filter(Boolean);
 
-    // Lấy sport từ cột competition-name (ưu tiên)
-    let sport = "";
-    const $compImg = $tr.find("td.competition-name img");
-    if ($compImg.length) {
-      sport = $compImg.attr("alt")?.trim() || $compImg.attr("title")?.trim() || "";
+    let home = "";
+    let away = "";
+    let title = "";
+
+    if (teams.length >= 2) {
+      home = teams[0];
+      away = teams[1];
+      title = `${home} vs ${away}`;
+    } else {
+      title =
+        $fx.find("span.fixture strong").first().text().replace(/\s+/g, " ").trim() ||
+        $fx.find("span.fixture").first().text().replace(/\s+/g, " ").trim();
     }
-    if (!sport) {
-      const $sportImg = $fx.find(".fixture-sport img");
-      sport = $sportImg.attr("alt")?.trim() || $sportImg.attr("title")?.trim() || "";
-      if (!sport) {
-        sport = $fx.find(".fixture-sport").text().trim();
-      }
-    }
 
-    const competition = $fx.find(".fixture-comp a").first().text().trim() || "";
-
-    const isoZ =
-      $tr.find("td.start-details").attr("content") ||
-      $tr.find('meta[itemprop="startDate"]').attr("content") ||
-      "";
-
+    // --- Thời gian: lấy từ <time datetime="..."> trong cột start-details ---
+    const isoZ = $tr.find("td.start-details time").attr("datetime") || "";
     const w = isoToVietnamParts(isoZ);
     if (!w) return;
 
-    // ---- XỬ LÝ CHANNELS (LẤY TÊN KÊNH SAU " Live on ") ----
-    const channels = [];
-    $tr.find("td.channel-details img").each((_, img) => {
-      let t = $(img).attr("title") || $(img).attr("alt") || "";
-      // Tìm vị trí " Live on "
-      const liveOnIndex = t.indexOf(" Live on ");
-      if (liveOnIndex !== -1) {
-        t = t.substring(liveOnIndex + " Live on ".length).trim();
-      } else {
-        // Fallback: nếu không có "Live on", thử lấy phần sau " - " hoặc giữ nguyên
-        // Một số ảnh có thể có title trực tiếp là tên kênh
-        t = t.trim();
-      }
-      // Loại bỏ " logo" nếu có ở cuối
-      t = t.replace(/\s*logo\s*$/i, "").trim();
-      if (t) channels.push(t);
-    });
+    // --- Sport: lấy từ tên file ảnh (ví dụ /sports/cricket.gif) ---
+    let sport = "";
+    const sportSrc =
+      $fx.find(".fixture-sport img").attr("src") ||
+      $tr.find("td.competition-name img").attr("src") ||
+      "";
+    const ms = sportSrc.match(/\/sports\/([^./]+)\./);
+    if (ms) sport = titleCase(ms[1]);
 
-    const href = $fx.find("a[href*='/match/']").attr("href") || "";
+    // Fallback: lấy từ alt của ảnh competition-name
+    if (!sport) {
+      const altComp = $tr.find("td.competition-name img").attr("alt") || "";
+      const ma = altComp.match(/-\s*Live\s+(.+)$/i);
+      if (ma) sport = ma[1].trim();
+    }
+
+    // --- Competition ---
+    let competition =
+      $tr.find("td.competition-name a span").first().text().trim() ||
+      $tr.find("td.competition-name > span").not(".stage").first().text().trim();
+
+    if (!competition) {
+      const $fc = $fx.find("span.fixture-comp").first().clone();
+      $fc.children("span").remove();
+      competition = $fc.text().replace(/\s+/g, " ").trim();
+    }
+    if (!competition) {
+      competition = $fx.find("span.event-text").first().text().trim();
+    }
+
+    // --- Stage (ghép vào competition nếu có) ---
+    const stage =
+      $tr.find("td.competition-name span.stage").first().text().trim() ||
+      $fx.find("span.fixture-stage").first().text().trim();
+    if (stage) competition = competition ? `${competition} — ${stage}` : stage;
+
+    // --- Channels: ưu tiên lấy từ span.sr-only, nếu không có thì từ alt của img ---
+    let channels = $tr
+      .find("td.channel-details a span.sr-only")
+      .map((_, el) => $(el).text().trim())
+      .get();
+
+    if (channels.length === 0) {
+      channels = $tr
+        .find("td.channel-details img")
+        .map((_, el) =>
+          ($(el).attr("alt") || $(el).attr("title") || "")
+            .replace(/^.*\bBroadcast on\s*/i, "")
+            .replace(/^Live on\s*/i, "")
+            .replace(/\s*logo\s*$/i, "")
+            .trim()
+        )
+        .get();
+    }
+    channels = uniqKeepOrder(channels);
+
+    // --- URL event ---
+    let href =
+      $tr.find("td.home-team a[href]").attr("href") ||
+      $fx.find("a[href*='/match/'], a[href*='/event/']").attr("href") ||
+      "";
     const event_url = href
       ? href.startsWith("http")
         ? href
         : `https://www.wheresthematch.com${href}`
       : "";
+
+    // Bỏ qua hàng rỗng
+    if (!title && channels.length === 0) return;
 
     rows.push({
       source_date: sourceDate,
@@ -288,10 +333,10 @@ function parseWTMEvents($, pageNum, sourceDate) {
       time: w.time,
       sport,
       competition,
-      title: home && away ? `${home} vs ${away}` : matchContent,
+      title,
       home,
       away,
-      channels: uniqKeepOrder(channels),
+      channels,
       event_url,
     });
   });
@@ -304,13 +349,13 @@ function dedupRows(rows) {
   for (const r of rows) {
     const key =
       (r.event_url && r.event_url.trim()) ||
-      `${r.source_date}|${r.tanggal}|${r.time}|${r.home}|${r.away}|${r.sport}|${r.competition}`;
+      `${r.tanggal}|${r.time}|${r.title}|${r.competition}`;
     if (!map.has(key)) map.set(key, r);
   }
   return Array.from(map.values());
 }
 
-// ========== SCRAPE MỘT NGÀY ==========
+// ========== SCRAPE MỘT NGÀY (CHỈ LẤY PAGE 1) ==========
 async function scrapeOneDate(dateYYYYMMDD) {
   const url = buildDailyUrl(dateYYYYMMDD);
   console.log(`\n== DATE ${dateYYYYMMDD} ==`);
