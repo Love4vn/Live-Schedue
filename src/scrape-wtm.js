@@ -399,8 +399,26 @@ function isTennis(sport, competition) {
   return false;
 }
 
+// ---- BỘ LỌC LOẠI BỎ NỮ VÀ TRẺ (CHỈ ÁP DỤNG CHO BÓNG ĐÁ) ----
+function isWomenOrYouth(competition) {
+  const low = normalize(competition);
+  // Mảng các biểu thức chính quy để phát hiện nữ và trẻ
+  const patterns = [
+    /\bwomen\b/, /\bwomens?\b/, /\bladies\b/, /\bfemale\b/,
+    /\bu\d{1,2}\b/, /\byouth\b/, /\bjunior\b/, /\bgirls\b/, /\bboys\b/,
+    /\bunder\s?\d{1,2}\b/
+  ];
+  for (let p of patterns) {
+    if (p.test(low)) return true;
+  }
+  return false;
+}
+
 function filterFootballEvent(event) {
   if (!isFootball(event.sport)) return false;
+
+  // Loại bỏ các giải nữ và trẻ
+  if (isWomenOrYouth(event.competition)) return false;
 
   const competitionLow = normalize(event.competition);
   const homeLow = normalize(event.home);
