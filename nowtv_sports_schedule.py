@@ -34,6 +34,14 @@ TENNIS_KEYWORDS = {
     "wta 1000", "wta 500", "wta 250",
     "davis cup", "billie jean king cup", "laver cup"
 }
+
+# Keywords to exclude women's and youth football matches
+EXCLUDED_FOOTBALL_KEYWORDS = [
+    r'\bwomen\b', r'\bwomens\b', r"women's",
+    r'\bu[- ]?\d{1,2}\b',  # U-21, U21, U 21, U19, etc.
+    r'\byouth\b', r'\bjunior\b', r'\bgirls\b', r'\bladies\b', r'\bfemale\b'
+]
+EXCLUDED_FOOTBALL_PATTERN = re.compile('|'.join(EXCLUDED_FOOTBALL_KEYWORDS), re.IGNORECASE)
 # ===============================
 
 # ---------- Helpers ----------
@@ -56,6 +64,10 @@ def is_football_league_allowed(text: str) -> bool:
 def is_tennis_event(text: str) -> bool:
     text_lower = text.lower()
     return any(kw in text_lower for kw in TENNIS_KEYWORDS)
+
+def is_excluded_football(text: str) -> bool:
+    """Return True if text contains keywords indicating women's or youth football."""
+    return bool(EXCLUDED_FOOTBALL_PATTERN.search(text))
 
 def extract_league_matchup(title: str) -> Tuple[str, str]:
     """Extract League and Matchup. Returns (league, matchup)."""
@@ -98,7 +110,7 @@ def extract_league_matchup(title: str) -> Tuple[str, str]:
     # No separators
     return "", cleaned
 
-# ---------- Now TV Fetcher (unchanged) ----------
+# ---------- Now TV Fetcher ----------
 class NowTVFetcher:
     def __init__(self):
         self.base_url = "https://nowplayer.now.com"
@@ -179,6 +191,11 @@ class NowTVFetcher:
                     if is_football_league_allowed(title) and " vs " not in matchup:
                         continue
 
+                    # Exclude women's and youth football
+                    if is_football_league_allowed(title) or league.lower() in ["football", "sports"]:
+                        if is_excluded_football(title) or is_excluded_football(matchup):
+                            continue
+
                     start_ts = epg_item.get("start", 0) / 1000
                     dt_start = datetime.fromtimestamp(start_ts, tz=VIETNAM_TZ)
                     events.append({
@@ -190,7 +207,7 @@ class NowTVFetcher:
                     })
         return events
 
-# ---------- Ziggo Sport Fetcher (unchanged) ----------
+# ---------- Ziggo Sport Fetcher ----------
 class ZiggoFetcher:
     def __init__(self):
         self.base_url = "https://www.ziggosport.nl"
@@ -252,6 +269,11 @@ class ZiggoFetcher:
                     if sport_name == "voetbal" and " vs " not in matchup:
                         continue
 
+                    # Exclude women's and youth football
+                    if sport_name == "voetbal" or league.lower() in ["football", "sports"]:
+                        if is_excluded_football(title) or is_excluded_football(matchup):
+                            continue
+
                     start_ts = prog.get("timeStart")
                     if start_ts:
                         dt_start = datetime.fromtimestamp(start_ts, tz=VIETNAM_TZ)
@@ -270,7 +292,7 @@ class ZiggoFetcher:
                     })
         return events
 
-# ========== NEW: StarHub Fetcher ==========
+# ---------- StarHub Fetcher ----------
 class StarhubFetcher:
     """
     Fetcher for Premier League fixtures from StarHub website.
@@ -312,16 +334,13 @@ class StarhubFetcher:
 
     def _parse_matchup(self, text: str) -> str:
         """Extract matchup from text like 'Newcastle United vs Bournemouth'"""
-        # Clean up extra spaces and newlines
         text = re.sub(r'\s+', ' ', text).strip()
-        # Remove any trailing channel info if accidentally included
-        text = re.sub(r'\s*\([^)]*\)\s*$', '', text)
+        text = re.sub(r'\s*\([^)]*\)\s*$', '', text)  # Remove channel info if any
         return text
 
     def _parse_channel(self, text: str) -> str:
         """Extract channel name from text like 'Hub Premier 1 (Ch 221)'"""
         text = re.sub(r'\s+', ' ', text).strip()
-        # Extract just the channel name before the parentheses
         match = re.match(r'^([^(]+)', text)
         if match:
             return match.group(1).strip()
@@ -343,10 +362,8 @@ class StarhubFetcher:
             soup = BeautifulSoup(resp.text, "html.parser")
 
             # Find the table containing fixtures
-            # Look for the table with class 'fftable' or find by structure
             table = soup.find("table", class_="fftable")
             if not table:
-                # Fallback: find any table that contains "Hub Premier"
                 for tbl in soup.find_all("table"):
                     if "Hub Premier" in str(tbl):
                         table = tbl
@@ -356,15 +373,12 @@ class StarhubFetcher:
                 print("⚠️ [StarHub] Could not find fixtures table")
                 return []
 
-            # Parse rows
             rows = table.find_all("tr")
-            # Skip header row (first row)
-            for row in rows[1:]:
+            for row in rows[1:]:  # skip header
                 cells = row.find_all("td")
                 if len(cells) < 3:
                     continue
 
-                # Extract text from each cell
                 date_time_text = cells[0].get_text(strip=True)
                 matchup_text = cells[1].get_text(strip=True)
                 channel_text = cells[2].get_text(strip=True)
@@ -373,19 +387,22 @@ class StarhubFetcher:
                     continue
 
                 try:
-                    # Parse datetime (Singapore time)
                     dt_event = self._parse_datetime(date_time_text)
                 except ValueError as e:
                     print(f"  ⚠️ [StarHub] Skip row: {e}")
                     continue
 
-                # Filter: only events that are at most 4 hours old
+                # Only events that are at most 4 hours old
                 time_diff = (now_vn - dt_event).total_seconds() / 3600
                 if time_diff > 4:
                     continue
 
                 matchup = self._parse_matchup(matchup_text)
                 channel = self._parse_channel(channel_text)
+
+                # Exclude women's and youth football (though StarHub only lists top EPL)
+                if is_excluded_football(matchup):
+                    continue
 
                 events.append({
                     "Date": dt_event.strftime("%Y-%m-%d"),
@@ -446,7 +463,6 @@ def enrich_leagues(events: List[Dict]) -> List[Dict]:
     For events with unknown/generic League ('Football','Sports'), try to fill
     from events that have a clear league on the same date and same normalized matchup.
     """
-    # Build a lookup: (date, norm_matchup) -> best league (from events that have a known league)
     league_map = {}
     for ev in events:
         if ev["League"] not in ("Football", "Sports", "Unknown", ""):
@@ -481,7 +497,7 @@ async def main():
     ziggo_events = ziggo.parse_events(days=7)
     print(f"🎯 [Ziggo] {len(ziggo_events)} raw events")
 
-    # StarHub (NEW)
+    # StarHub
     starhub = StarhubFetcher()
     starhub_events = starhub.fetch_events()
     print(f"🎯 [StarHub] {len(starhub_events)} raw events")
