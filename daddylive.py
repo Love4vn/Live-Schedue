@@ -14,7 +14,7 @@ FILTER_PAST_EVENTS = True       # True: chỉ lấy sự kiện chưa qua
 
 # Danh sách các giải đấu bóng đá được phép (cấp cao nhất)
 ALLOWED_LEAGUES = [
-    "Premier League",          # đặc biệt: chỉ lấy của Anh
+    "Premier League",
     "Serie A",
     "La Liga",
     "Bundesliga",
@@ -80,34 +80,33 @@ def is_valid_soccer_event(title):
 
     # Kiểm tra từng giải đấu
     for league in ALLOWED_LEAGUES:
-        # Xử lý đặc biệt cho "Premier League"
         if league == "Premier League":
-            # Phải có "Premier League" nhưng không có tiền tố quốc gia bị cấm
             if re.search(r'\bPremier League\b', title, re.IGNORECASE):
-                # Nếu có "English" hoặc "England" thì chấp nhận
                 if re.search(r'\b(?:English|England)\b', title, re.IGNORECASE):
                     return True
-                # Nếu không có, kiểm tra xem có tiền tố bị cấm không
                 for prefix in PREMIER_LEAGUE_EXCLUDED_PREFIXES:
                     if re.search(r'\b' + prefix + r'\s+Premier League\b', title, re.IGNORECASE):
                         return False
-                # Nếu không có tiền tố bị cấm, coi là Premier League Anh
                 return True
             else:
-                continue  # không tìm thấy "Premier League"
+                continue
         else:
-            # Các giải khác: dùng regex để khớp chính xác, không cho phép hạng dưới (số hoặc II)
             if re.search(r'\d', league):
-                # Giải có số (ví dụ Ligue 1) -> khớp chính xác
                 pattern = r'\b' + re.escape(league) + r'\b'
             else:
-                # Giải không có số: không cho phép theo sau bởi số hoặc II
                 pattern = r'\b' + re.escape(league) + r'\b(?!\s+[0-9]{1,2}\b|\s+II\b)'
 
             if re.search(pattern, title, re.IGNORECASE):
                 return True
 
     return False
+
+def format_channel_name(name):
+    """Định dạng tên kênh: TSN1 -> TSN 1, TSN2 -> TSN 2, ..."""
+    match = re.match(r'^(TSN)(\d+)$', name.strip())
+    if match:
+        return f"{match.group(1)} {match.group(2)}"
+    return name
 
 def get_schedule_api_json():
     session = requests.Session()
@@ -227,8 +226,10 @@ def get_schedule_api_json():
                         else:
                             id_match = re.search(r'(\d+)', ch_href.split("/")[-1])
                             ch_id = id_match.group(1) if id_match else ch_href.split("/")[-1].replace(".php", "")
+                        # Định dạng tên kênh
+                        ch_name_formatted = format_channel_name(ch_name)
                         channels_list.append({
-                            "channel_name": ch_name,
+                            "channel_name": ch_name_formatted,
                             "channel_id": ch_id
                         })
 
