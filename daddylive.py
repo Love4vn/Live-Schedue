@@ -9,12 +9,12 @@ import dateutil.parser
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # ===== CẤU HÌNH =====
-USE_CURRENT_DATE_ONLY = False   # False: lấy ngày đầu tiên trên trang (hiện là 4/9)
+USE_CURRENT_DATE_ONLY = False   # False: lấy ngày đầu tiên trên trang
 FILTER_PAST_EVENTS = True       # True: chỉ lấy sự kiện chưa qua
 
-# Danh sách các giải đấu được phép (chỉ lấy cấp cao nhất)
+# Danh sách các giải đấu bóng đá được phép (cấp cao nhất)
 ALLOWED_LEAGUES = [
-    "Premier League",
+    "Premier League",          # đặc biệt: chỉ lấy của Anh
     "Serie A",
     "La Liga",
     "Bundesliga",
@@ -29,14 +29,24 @@ ALLOWED_LEAGUES = [
     "FIFA World Cup"
 ]
 
-# Từ khóa loại trừ (giải nữ, trẻ, hạng dưới)
-EXCLUDE_WORDS = ["women", "u19", "u21", "youth", "u-", "nữ", "u20", "u17"]
+# Từ khóa loại trừ cho bóng đá (giải nữ, trẻ, hạng dưới)
+EXCLUDE_WORDS = ["women", "u19", "u21", "youth", "u-", "nữ", "u20", "u17", "junior", "reserve"]
+
+# Các tiền tố quốc gia không được phép đi kèm với "Premier League"
+PREMIER_LEAGUE_EXCLUDED_PREFIXES = [
+    "egyptian", "scottish", "welsh", "spanish", "italian", "german", "french",
+    "dutch", "portuguese", "turkish", "russian", "ukrainian", "belgian", "swiss",
+    "austrian", "danish", "swedish", "norwegian", "finnish", "irish", "greek",
+    "czech", "polish", "hungarian", "romanian", "bulgarian", "croatian", "serbian",
+    "slovenian", "slovakian", "israeli", "saudi", "qatari", "emirati", "chinese",
+    "japanese", "korean", "australian", "brazilian", "argentine", "mexican",
+    "american", "canadian", "indian", "pakistani", "bangladeshi", "south african"
+]
 
 # Danh mục cho phép (chuẩn hóa)
 ALLOWED_CATEGORIES = {"all soccer events", "tennis"}
 
 def normalize_category_name(name):
-    """Chuẩn hóa tên danh mục: xóa ký tự đặc biệt, khoảng trắng thừa, chuyển chữ thường."""
     if not name:
         return ""
     name = re.sub(r'[^a-zA-Z0-9\s]', '', name)
@@ -44,7 +54,6 @@ def normalize_category_name(name):
     return name.lower()
 
 def parse_day_title(day_title):
-    """Chuyển tiêu đề ngày (vd: 'Friday, April 17, 2020') thành đối tượng date."""
     try:
         dt = dateutil.parser.parse(day_title, fuzzy=True)
         return dt.date()
@@ -57,8 +66,8 @@ def parse_day_title(day_title):
                 continue
         return None
 
-def is_valid_event(title):
-    """Kiểm tra sự kiện có thuộc giải đấu cho phép và không bị loại trừ."""
+def is_valid_soccer_event(title):
+    """Kiểm tra sự kiện bóng đá có thuộc giải đấu cho phép và không bị loại trừ."""
     if not title:
         return False
 
@@ -69,18 +78,34 @@ def is_valid_event(title):
         if w in title_lower:
             return False
 
-    # Kiểm tra từng giải đấu cho phép
+    # Kiểm tra từng giải đấu
     for league in ALLOWED_LEAGUES:
-        # Xây dựng pattern regex
-        if re.search(r'\d', league):
-            # Giải có số trong tên (ví dụ Ligue 1) -> khớp chính xác
-            pattern = r'\b' + re.escape(league) + r'\b'
+        # Xử lý đặc biệt cho "Premier League"
+        if league == "Premier League":
+            # Phải có "Premier League" nhưng không có tiền tố quốc gia bị cấm
+            if re.search(r'\bPremier League\b', title, re.IGNORECASE):
+                # Nếu có "English" hoặc "England" thì chấp nhận
+                if re.search(r'\b(?:English|England)\b', title, re.IGNORECASE):
+                    return True
+                # Nếu không có, kiểm tra xem có tiền tố bị cấm không
+                for prefix in PREMIER_LEAGUE_EXCLUDED_PREFIXES:
+                    if re.search(r'\b' + prefix + r'\s+Premier League\b', title, re.IGNORECASE):
+                        return False
+                # Nếu không có tiền tố bị cấm, coi là Premier League Anh
+                return True
+            else:
+                continue  # không tìm thấy "Premier League"
         else:
-            # Giải không có số: không cho phép theo sau bởi số 1-2 chữ số hoặc II (hạng dưới)
-            pattern = r'\b' + re.escape(league) + r'\b(?!\s+[0-9]{1,2}\b|\s+II\b)'
+            # Các giải khác: dùng regex để khớp chính xác, không cho phép hạng dưới (số hoặc II)
+            if re.search(r'\d', league):
+                # Giải có số (ví dụ Ligue 1) -> khớp chính xác
+                pattern = r'\b' + re.escape(league) + r'\b'
+            else:
+                # Giải không có số: không cho phép theo sau bởi số hoặc II
+                pattern = r'\b' + re.escape(league) + r'\b(?!\s+[0-9]{1,2}\b|\s+II\b)'
 
-        if re.search(pattern, title, re.IGNORECASE):
-            return True
+            if re.search(pattern, title, re.IGNORECASE):
+                return True
 
     return False
 
@@ -121,13 +146,12 @@ def get_schedule_api_json():
             print(f"⚠️ Không parse được ngày: '{day_title}'")
             continue
 
-        # Lọc ngày theo chế độ
         if USE_CURRENT_DATE_ONLY:
             if day_date != today_utc:
                 print(f"⏩ Bỏ qua ngày '{day_title}' (không phải hôm nay)")
                 continue
         else:
-            if filtered_data:  # đã có dữ liệu từ ngày đầu tiên -> thoát
+            if filtered_data:
                 break
             print(f"📅 Lấy ngày đầu tiên: {day_title}")
 
@@ -148,7 +172,6 @@ def get_schedule_api_json():
 
             print(f"   ✅ Chấp nhận danh mục: {cat_name_raw}")
 
-            # Dùng tên gốc làm key để giữ nguyên hiển thị
             if cat_name_raw not in filtered_data[day_title]:
                 filtered_data[day_title][cat_name_raw] = []
 
@@ -165,21 +188,30 @@ def get_schedule_api_json():
                 title_el = event.find("span", class_="schedule__eventTitle")
                 event_title = title_el.get_text(strip=True) if title_el else "No Title"
 
-                # Lọc sự kiện đã qua nếu bật
+                # Lọc thời gian đã qua
                 if FILTER_PAST_EVENTS:
                     if day_date == today_utc:
                         if event_time < current_time:
-                            print(f"      ⏳ Bỏ qua sự kiện đã qua: {event_title} lúc {raw_time}")
+                            print(f"      ⏳ Bỏ qua (đã qua): {event_title} lúc {raw_time}")
                             continue
                     else:
                         if day_date < today_utc:
-                            print(f"      ⏳ Bỏ qua sự kiện ngày cũ: {event_title}")
+                            print(f"      ⏳ Bỏ qua (ngày cũ): {event_title}")
                             continue
 
-                # Kiểm tra giải đấu hợp lệ
-                if not is_valid_event(event_title):
-                    print(f"      ❌ Bỏ qua (không đúng giải): {event_title}")
-                    continue
+                # Phân biệt danh mục để lọc giải đấu
+                is_tennis = (cat_name_norm == "tennis")
+                is_soccer = (cat_name_norm == "all soccer events")
+
+                if is_soccer:
+                    if not is_valid_soccer_event(event_title):
+                        print(f"      ❌ Bỏ qua (không đúng giải): {event_title}")
+                        continue
+                elif is_tennis:
+                    # Tennis: không lọc giải, giữ tất cả
+                    pass
+                else:
+                    continue  # không nên xảy ra
 
                 channels_list = []
                 channels_div = event.find("div", class_="schedule__channels")
@@ -209,12 +241,11 @@ def get_schedule_api_json():
                 found_any_event = True
                 print(f"      ✅ Đã thêm: {event_title} lúc {raw_time}")
 
-        # Nếu đang lấy ngày đầu tiên, dừng sau khi xử lý xong ngày đó
         if not USE_CURRENT_DATE_ONLY and filtered_data:
             break
 
     if not found_any_event:
-        print("ℹ️ Không tìm thấy sự kiện nào thuộc danh mục 'All Soccer Events' hoặc 'Tennis' và đáp ứng điều kiện giải đấu.")
+        print("ℹ️ Không tìm thấy sự kiện nào phù hợp.")
 
     return filtered_data
 
