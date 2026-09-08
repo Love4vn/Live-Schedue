@@ -5,6 +5,7 @@ PHIÊN BẢN CẢI THIỆN GỘP TRẬN – DÙNG TỪ ĐIỂN TÊN ĐỘI
 - Chuẩn hóa tên đội để gộp chính xác các trận từ nhiều nguồn.
 - ĐÃ BẬT LẠI SOFASCORE (dùng curl_cffi để tránh 403).
 - Hỗ trợ International Friendly, FIFA World Cup.
+- Bổ sung nguồn Daddylive (daddylive_schedule.json).
 """
 
 import asyncio
@@ -20,11 +21,11 @@ from itertools import groupby
 
 import pycountry
 import aiohttp
-from curl_cffi.requests import AsyncSession      # <--- THÊM IMPORT
+from curl_cffi.requests import AsyncSession
 
 # ================== CẤU HÌNH ==================
 ENABLE_VALIDATION = False
-ENABLE_SOFASCORE = False           # <--- BẬT LẠI SOFASCORE
+ENABLE_SOFASCORE = False           # Bật nếu muốn lấy từ SofaScore
 TIMEZONE = ZoneInfo("Asia/Ho_Chi_Minh")
 M3U_LIST_FILE = "M3U_list.txt"
 SCHEDULE_FILE = "schedule.json"
@@ -298,7 +299,6 @@ async def get_tv_data_sofascore(session, match_id):
                 full_country = pycountry.countries.get(alpha_2=country_code).name
             except:
                 full_country = country_code
-            # Lấy tên kênh đồng thời
             tasks = [get_channel_name_sofascore(session, cid) for cid in channel_ids]
             names = await asyncio.gather(*tasks)
             clean_names = list(set([n for n in names if n != "Unknown Channel"]))
@@ -312,9 +312,8 @@ async def get_tv_data_sofascore(session, match_id):
         return []
 
 def map_sofascore_league(tournament_name: str) -> str:
-    """Ánh xạ tên giải từ SofaScore sang tên chuẩn trong ALLOWED_FOOTBALL_LEAGUES"""
+    """Ánh xạ tên giải sang tên chuẩn trong ALLOWED_FOOTBALL_LEAGUES"""
     name = tournament_name.strip()
-    # Các giải đặc biệt
     if "World Cup" in name:
         return "FIFA World Cup"
     if "International Friendly" in name or "Friendlies" in name:
@@ -341,7 +340,6 @@ def map_sofascore_league(tournament_name: str) -> str:
         return "FA Cup"
     if "League Cup" in name or "Carabao" in name:
         return "League Cup"
-    # Mặc định trả về nguyên bản, sẽ được lọc sau
     return name
 
 async def fetch_sofascore_match_details(session, match_id):
@@ -356,7 +354,6 @@ async def fetch_sofascore_match_details(session, match_id):
         tournament = ev.get('tournament', {})
         league_name = tournament.get('name', 'Unknown')
         league = map_sofascore_league(league_name)
-        # Chỉ giữ lại các giải được phép
         if league not in ALLOWED_FOOTBALL_LEAGUES and league != "Tennis":
             return None
         kick_utc = ev.get('startTimestamp')
@@ -382,7 +379,6 @@ async def fetch_sofascore_games(start_ts: int, max_ts: int) -> List[Dict]:
     end_date = datetime.fromtimestamp(max_ts, tz=TIMEZONE).date()
     all_games = []
     async with AsyncSession() as session:
-        # Duyệt từng ngày
         current = start_date
         while current <= end_date:
             date_str = current.strftime("%Y-%m-%d")
@@ -402,7 +398,6 @@ async def fetch_sofascore_games(start_ts: int, max_ts: int) -> List[Dict]:
                     await asyncio.sleep(2)
                     continue
                 print(f"      Tìm thấy {len(events)} trận, đang lấy chi tiết...")
-                # Xử lý song song có giới hạn để tránh rate limit
                 sem = asyncio.Semaphore(10)
                 async def limited_fetch(match_id):
                     async with sem:
@@ -416,10 +411,10 @@ async def fetch_sofascore_games(start_ts: int, max_ts: int) -> List[Dict]:
             except Exception as e:
                 print(f"      ❌ Lỗi khi lấy ngày {date_str}: {e}")
             current += timedelta(days=1)
-            await asyncio.sleep(2)  # Tránh spam API
+            await asyncio.sleep(2)
     return all_games
 
-# ================== CÁC NGUỒN JSON PHỤ (GIỮ NGUYÊN) ==================
+# ================== CÁC NGUỒN JSON PHỤ ==================
 def load_json_file(filename: str) -> list:
     try:
         with open(filename, 'r', encoding='utf-8') as f:
@@ -491,12 +486,9 @@ def parse_wheresthematch(entry: dict) -> Optional[Dict]:
         dt = datetime.strptime(dt_str, "%Y-%m-%d %H:%M")
         dt = dt.replace(tzinfo=TIMEZONE)
         kick_utc = int(dt.timestamp())
-        
         league = entry.get('competition', '')
         sport = entry.get('sport', '')
         title = entry.get('title', '')
-        
-        # ---- NHẬN DIỆN TENNIS (sửa ở đây) ----
         is_tennis = (
             (sport and "Tennis" in sport) or
             (title and ("ATP" in title or "WTA" in title or "Tennis" in title)) or
@@ -505,7 +497,6 @@ def parse_wheresthematch(entry: dict) -> Optional[Dict]:
         if is_tennis:
             league = "Tennis"
         else:
-            # Xử lý bóng đá
             if "UEFA Europa League" in league:
                 league = "UEFA Europa League"
             elif "UEFA Europa Conference League" in league:
@@ -534,22 +525,16 @@ def parse_wheresthematch(entry: dict) -> Optional[Dict]:
                 league = "FIFA World Cup"
             else:
                 return None
-        
-        # Kiểm tra giải đấu được phép
         if league not in ALLOWED_FOOTBALL_LEAGUES and league != "Tennis":
             return None
-        
-        # Lấy tên trận
         match = entry.get('title', '')
         if not match:
             home = entry.get('home', '')
             away = entry.get('away', '')
             match = f"{home} vs {away}" if home and away else home or away or ''
-        
         channels = entry.get('channels', [])
         if not channels:
             return None
-        
         return {
             "league": league,
             "match": match,
@@ -558,10 +543,9 @@ def parse_wheresthematch(entry: dict) -> Optional[Dict]:
             "tv_channels": [{"country": "Wheresthematch", "channels": channels}],
             "source": "wheresthematch"
         }
-    except Exception as e:
-        # Bỏ qua lỗi để không làm gián đoạn
+    except:
         return None
-        
+
 def parse_ausport(entry: dict) -> Optional[Dict]:
     try:
         day, month, year = entry['vietnam_date'].split('/')
@@ -621,7 +605,107 @@ def parse_ausport(entry: dict) -> Optional[Dict]:
     except:
         return None
 
-# ================== CÁC NGUỒN TỪ GITHUB (GIỮ NGUYÊN) ==================
+# ------------------- BỔ SUNG DADDYLIVE --------------------
+def parse_daddylive(data: dict) -> List[Dict]:
+    """Parse dữ liệu từ daddylive_schedule.json"""
+    games = []
+    month_mapping = {'Jan':1,'Feb':2,'Mar':3,'Apr':4,'May':5,'Jun':6,
+                     'Jul':7,'Aug':8,'Sep':9,'Oct':10,'Nov':11,'Dec':12}
+    for date_key, categories in data.items():
+        # date_key: "Tuesday 08th Sep 2026 - Schedule Time UK GMT"
+        date_match = re.search(r'(\d{1,2})(?:st|nd|rd|th)\s+(\w+)\s+(\d{4})', date_key)
+        if not date_match:
+            continue
+        day = int(date_match.group(1))
+        month_str = date_match.group(2)[:3]
+        year = int(date_match.group(3))
+        month = month_mapping.get(month_str, 0)
+        if month == 0:
+            continue
+
+        for category_name, events in categories.items():
+            is_tennis_category = "Tennis" in category_name
+            for event in events:
+                time_str = event.get('time', '')
+                event_desc = event.get('event', '')
+                channels_list = event.get('channels', [])
+                if not time_str or not event_desc or not channels_list:
+                    continue
+                # Parse time UK (GMT)
+                try:
+                    hour = int(time_str[:2])
+                    minute = int(time_str[3:])
+                except:
+                    continue
+                # Tạo datetime UK (coi là UTC)
+                dt_uk = datetime(year, month, day, hour, minute)
+                dt_utc = dt_uk.replace(tzinfo=ZoneInfo("UTC"))
+                kick_utc = int(dt_utc.timestamp())
+
+                # Tách giải và tên trận
+                if ':' in event_desc:
+                    league_part, match_part = event_desc.split(':', 1)
+                    league_part = league_part.strip()
+                    match_part = match_part.strip()
+                else:
+                    league_part = event_desc
+                    match_part = ''
+
+                # Làm sạch biểu tượng cờ, icon
+                league_clean = re.sub(r'[⚽🎾🇬🇷🇧🇪🇦🇹🇬🇧🇵🇹🇩🇪🇫🇷🇪🇸🇮🇹🇳🇱🇧🇪]', '', league_part).strip()
+                # Xác định giải
+                if is_tennis_category:
+                    league = "Tennis"
+                else:
+                    # Dùng map_sofascore_league hoặc tự map
+                    league = map_sofascore_league(league_clean)
+                    # Nếu không khớp, thử các từ khóa
+                    if league not in ALLOWED_FOOTBALL_LEAGUES:
+                        if "Champions League" in league_clean:
+                            league = "UEFA Champions League"
+                        elif "Europa League" in league_clean:
+                            league = "UEFA Europa League"
+                        elif "Premier League" in league_clean:
+                            league = "Premier League"
+                        elif "Serie A" in league_clean:
+                            league = "Serie A"
+                        elif "Bundesliga" in league_clean:
+                            league = "Bundesliga"
+                        elif "La Liga" in league_clean:
+                            league = "La Liga"
+                        elif "Ligue 1" in league_clean:
+                            league = "Ligue 1"
+                        elif "FA Cup" in league_clean:
+                            league = "FA Cup"
+                        elif "World Cup" in league_clean:
+                            league = "FIFA World Cup"
+                        elif "Friendly" in league_clean:
+                            league = "International Friendly"
+                        else:
+                            # Bỏ qua nếu không nhận diện được
+                            continue
+
+                # Làm sạch tên trận (bỏ cờ)
+                match_clean = re.sub(r'[🇬🇷🇧🇪🇦🇹🇬🇧🇵🇹🇩🇪🇫🇷🇪🇸🇮🇹🇳🇱🇧🇪]', '', match_part).strip()
+                match = match_clean
+
+                # Lấy danh sách kênh
+                channels = [ch.get('channel_name', '') for ch in channels_list if ch.get('channel_name')]
+                channels = [ch for ch in channels if ch]  # lọc rỗng
+                if not channels:
+                    continue
+
+                games.append({
+                    "league": league,
+                    "match": match,
+                    "kick_utc": kick_utc,
+                    "time": vn_time(kick_utc),
+                    "tv_channels": [{"country": "Daddylive", "channels": channels}],
+                    "source": "daddylive"
+                })
+    return games
+
+# ================== CÁC NGUỒN TỪ GITHUB ==================
 async def fetch_json(session, url):
     try:
         async with session.get(url, timeout=aiohttp.ClientTimeout(total=10)) as resp:
@@ -722,6 +806,7 @@ def parse_nowtv(entry: dict) -> Optional[Dict]:
 
 async def load_all_secondary_sources(start_ts: int, max_ts: int) -> List[Dict]:
     games = []
+    # Các file JSON thông thường
     for func, fname in [(parse_livesportsontv, "schedule_livesportsontv.json"),
                         (parse_wheresthematch, "results.json"),
                         (parse_ausport, "ausport_schedule.json")]:
@@ -731,6 +816,18 @@ async def load_all_secondary_sources(start_ts: int, max_ts: int) -> List[Dict]:
             if g and start_ts <= g['kick_utc'] <= max_ts:
                 games.append(g)
 
+    # Xử lý file daddylive_schedule.json (cấu trúc đặc biệt)
+    try:
+        with open("daddylive_schedule.json", 'r', encoding='utf-8') as f:
+            daddylive_data = json.load(f)
+        daddylive_games = parse_daddylive(daddylive_data)
+        for g in daddylive_games:
+            if start_ts <= g['kick_utc'] <= max_ts:
+                games.append(g)
+    except Exception as e:
+        print(f"   ⚠️ Lỗi đọc daddylive_schedule.json: {e}")
+
+    # Các nguồn từ GitHub
     remote_sources = [
         ("https://raw.githubusercontent.com/Love4vn/Live-Schedue/refs/heads/1/live_matches.json", parse_hubsport),
         ("https://raw.githubusercontent.com/Love4vn/Live-Schedue/refs/heads/1/nowtv_sports_schedule_en.json", parse_nowtv)
@@ -754,6 +851,7 @@ async def load_all_secondary_sources(start_ts: int, max_ts: int) -> List[Dict]:
         print(f"   📊 Số trận từ các nguồn phụ: {sources}")
     return games
 
+# ================== MERGE & M3U PARSER (giữ nguyên) ==================
 def merge_games(primary: List[Dict], secondary: List[Dict]) -> List[Dict]:
     primary_football = [g for g in primary if g['league'] != "Tennis"]
     primary_tennis = [g for g in primary if g['league'] == "Tennis"]
@@ -827,7 +925,6 @@ def extract_headers_from_extra(extra_lines):
                         headers[header_name] = header_value
     return headers
 
-# ================== M3U PARSER ==================
 def parse_m3u(content):
     channels = []
     current = {}
@@ -906,7 +1003,7 @@ async def main():
 
     print("🔄 Bắt đầu lấy lịch từ 2 GIỜ TRƯỚC đến 24 GIỜ TỚI...")
 
-    # 1. SofaScore (đã bật lại, dùng curl_cffi)
+    # 1. SofaScore
     sofascore_games = []
     if ENABLE_SOFASCORE:
         print("📡 Đang lấy dữ liệu từ SofaScore (có thể mất vài phút)...")
@@ -915,15 +1012,15 @@ async def main():
     else:
         print("   ⚠️ SofaScore đang tắt (ENABLE_SOFASCORE = False)")
 
-    # 2. Nguồn phụ (JSON cục bộ + từ xa)
-    print("📡 Đang đọc các nguồn JSON phụ (cục bộ + từ xa)...")
+    # 2. Nguồn phụ (JSON cục bộ + từ xa + Daddylive)
+    print("📡 Đang đọc các nguồn JSON phụ (cục bộ + từ xa + Daddylive)...")
     secondary_games = await load_all_secondary_sources(start_ts, max_ts)
     print(f"   ✅ Các nguồn phụ: {len(secondary_games)} trận")
 
     all_games = merge_games(sofascore_games, secondary_games)
 
-    # ================== GỘP TRẬN TRÙNG (≤30 PHÚT) ==================
-    print("🔄 Đang gộp các trận trùng lặp (chương trình dạo đầu)...")
+    # ================== GỘP TRẬN TRÙNG ==================
+    print("🔄 Đang gộp các trận trùng lặp...")
 
     def get_match_key(match_str: str, league: str) -> str:
         if league == "Tennis":
