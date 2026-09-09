@@ -1,8 +1,8 @@
 {
-  "updated": "2026-09-09 04:01 VN",
+  "updated": "2026-09-09 11:20 VN",
   "days": {
-    "20260908": {
-      "date": "Tuesday, 08/09",
+    "20260909": {
+      "date": "Wednesday, 09/09",
       "games": [
         {
           "league": "UEFA Champions League",
@@ -542,8 +542,24 @@
         {
           "league": "Tennis",
           "match": "US Open",
-          "kick_utc": 1788908400,
-          "time": "09/09 06:00 AM",
+          "kick_utc": 1788967800,
+          "time": "09/09 10:30 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Sky Sports Tennis",
+                "Sky Sports+"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "US Open",
+          "kick_utc": 1788989400,
+          "time": "10/09 04:30 AM",
           "tv_channels": [
             {
               "country": "Wheresthematch",
@@ -559,60 +575,15 @@
         },
         {
           "league": "Tennis",
-          "match": "US Open",
+          "match": "2026 US Open Tennis",
           "kick_utc": 1788967800,
           "time": "09/09 10:30 PM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Tennis",
-                "Sky Sports+"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1788967800,
-          "time": "09/09 10:30 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "9Gem"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1788984000,
-          "time": "10/09 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "9Gem"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ténis - US Open",
-          "kick_utc": 1788907500,
-          "time": "09/09 05:45 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Eurosport 1 Hd Portugal"
+                "TSN 3",
+                "TSN 3 Hd"
               ]
             }
           ],
@@ -620,14 +591,47 @@
         },
         {
           "league": "Tennis",
-          "match": "Ténis - US Open",
-          "kick_utc": 1788915600,
-          "time": "09/09 08:00 AM",
+          "match": "2026 US Open Tennis",
+          "kick_utc": 1788996600,
+          "time": "10/09 06:30 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Eurosport 1 Hd Portugal"
+                "TSN 3",
+                "TSN 3 Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Internationaux des États-Unis 2026",
+          "kick_utc": 1788967800,
+          "time": "09/09 10:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Réseau Des Sports (Rds)",
+                "Réseau Des Sports (Rds) Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Internationaux des États-Unis 2026",
+          "kick_utc": 1788996600,
+          "time": "10/09 06:30 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Réseau Des Sports (Rds)",
+                "Réseau Des Sports (Rds) Hd"
               ]
             }
           ],
@@ -665,72 +669,6 @@
         },
         {
           "league": "Tennis",
-          "match": "2026 US Open Tennis",
-          "kick_utc": 1788908400,
-          "time": "09/09 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "TSN 1",
-                "TSN 4",
-                "TSN 4 Hd",
-                "TSN Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "2026 US Open Tennis",
-          "kick_utc": 1788967800,
-          "time": "09/09 10:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "TSN 3",
-                "TSN 3 Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Internationaux des États-Unis 2026",
-          "kick_utc": 1788908400,
-          "time": "09/09 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Réseau Des Sports (Rds)",
-                "Réseau Des Sports (Rds) Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Internationaux des États-Unis 2026",
-          "kick_utc": 1788967800,
-          "time": "09/09 10:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Réseau Des Sports (Rds)",
-                "Réseau Des Sports (Rds) Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
           "match": "Ténis - Grand Slam, US Open",
           "kick_utc": 1788975000,
           "time": "10/09 12:30 AM",
@@ -746,9 +684,24 @@
         },
         {
           "league": "Tennis",
-          "match": "Day 10 QF (B)",
-          "kick_utc": 1788908400,
-          "time": "09/09 06:00 AM",
+          "match": "Ténis - Grand Slam, US Open",
+          "kick_utc": 1788996600,
+          "time": "10/09 06:30 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Eurosport 1 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Day 11 QF (A)",
+          "kick_utc": 1788967800,
+          "time": "09/09 10:30 PM",
           "tv_channels": [
             {
               "country": "NowTV",
@@ -761,9 +714,9 @@
         },
         {
           "league": "Tennis",
-          "match": "Day 11 QF (A)",
-          "kick_utc": 1788967800,
-          "time": "09/09 10:30 PM",
+          "match": "Day 11 QF (B)",
+          "kick_utc": 1788996600,
+          "time": "10/09 06:30 AM",
           "tv_channels": [
             {
               "country": "NowTV",
