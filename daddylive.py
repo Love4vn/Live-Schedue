@@ -43,9 +43,17 @@ PREMIER_LEAGUE_EXCLUDED_PREFIXES = [
     "american", "canadian", "indian", "pakistani", "bangladeshi", "south african"
 ]
 
+# Các danh mục bóng đá được phép (chuẩn hóa, chứa từ khóa này và không bị loại trừ)
+ALLOWED_SOCCER_CATEGORIES_KEYWORDS = ["soccer"]   # sẽ kiểm tra chứa từ này
+EXCLUDED_SOCCER_CATEGORY_WORDS = ["beach", "futsal", "indoor", "5v5", "panna", "street"]
+
+# Từ khóa nhận diện danh mục Tennis (bất kỳ chứa "tennis")
+TENNIS_KEYWORD = "tennis"
+
 def normalize_category_name(name):
     if not name:
         return ""
+    # Loại bỏ ký tự đặc biệt, chỉ giữ chữ và số
     name = re.sub(r'[^a-zA-Z0-9\s]', '', name)
     name = re.sub(r'\s+', ' ', name).strip()
     return name.lower()
@@ -105,6 +113,23 @@ def format_channel_name(name):
         return f"{match.group(1)} {match.group(2)}"
     return name
 
+def is_soccer_category(cat_norm):
+    """Kiểm tra danh mục có phải là bóng đá hợp lệ không (loại bỏ beach, futsal...)"""
+    if not cat_norm:
+        return False
+    # Phải chứa một trong các từ khóa soccer
+    has_soccer = any(kw in cat_norm for kw in ALLOWED_SOCCER_CATEGORIES_KEYWORDS)
+    if not has_soccer:
+        return False
+    # Loại bỏ nếu chứa từ loại trừ
+    for excl in EXCLUDED_SOCCER_CATEGORY_WORDS:
+        if excl in cat_norm:
+            return False
+    return True
+
+def is_tennis_category(cat_norm):
+    return TENNIS_KEYWORD in cat_norm
+
 def get_schedule_api_json():
     session = requests.Session()
     session.headers.update({
@@ -163,14 +188,15 @@ def get_schedule_api_json():
             cat_name_norm = normalize_category_name(cat_name_raw)
             print(f"   📂 Danh mục thực tế: '{cat_name_raw}' -> chuẩn hóa: '{cat_name_norm}'")
 
-            # Xác định loại danh mục (tennis / soccer)
+            # Xác định loại danh mục
             cat_type = None
-            if "tennis" in cat_name_norm and "soccer" not in cat_name_norm:
+            if is_tennis_category(cat_name_norm):
                 cat_type = "tennis"
-            elif "soccer" in cat_name_norm or "football" in cat_name_norm:
+            elif is_soccer_category(cat_name_norm):
                 cat_type = "soccer"
             else:
-                continue  # bỏ qua danh mục không phải
+                print(f"   ⏭️ Bỏ qua danh mục (không thuộc Tennis hoặc Soccer hợp lệ)")
+                continue
 
             print(f"   ✅ Nhận diện danh mục: {cat_type}")
 
