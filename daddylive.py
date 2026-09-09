@@ -43,9 +43,6 @@ PREMIER_LEAGUE_EXCLUDED_PREFIXES = [
     "american", "canadian", "indian", "pakistani", "bangladeshi", "south african"
 ]
 
-# Danh mục cho phép (chuẩn hóa)
-ALLOWED_CATEGORIES = {"all soccer events", "tennis"}
-
 def normalize_category_name(name):
     if not name:
         return ""
@@ -166,10 +163,16 @@ def get_schedule_api_json():
             cat_name_norm = normalize_category_name(cat_name_raw)
             print(f"   📂 Danh mục thực tế: '{cat_name_raw}' -> chuẩn hóa: '{cat_name_norm}'")
 
-            if cat_name_norm not in ALLOWED_CATEGORIES:
-                continue
+            # Xác định loại danh mục (tennis / soccer)
+            cat_type = None
+            if "tennis" in cat_name_norm and "soccer" not in cat_name_norm:
+                cat_type = "tennis"
+            elif "soccer" in cat_name_norm or "football" in cat_name_norm:
+                cat_type = "soccer"
+            else:
+                continue  # bỏ qua danh mục không phải
 
-            print(f"   ✅ Chấp nhận danh mục: {cat_name_raw}")
+            print(f"   ✅ Nhận diện danh mục: {cat_type}")
 
             if cat_name_raw not in filtered_data[day_title]:
                 filtered_data[day_title][cat_name_raw] = []
@@ -198,19 +201,14 @@ def get_schedule_api_json():
                             print(f"      ⏳ Bỏ qua (ngày cũ): {event_title}")
                             continue
 
-                # Phân biệt danh mục để lọc giải đấu
-                is_tennis = (cat_name_norm == "tennis")
-                is_soccer = (cat_name_norm == "all soccer events")
-
-                if is_soccer:
+                # Lọc theo loại
+                if cat_type == "soccer":
                     if not is_valid_soccer_event(event_title):
                         print(f"      ❌ Bỏ qua (không đúng giải): {event_title}")
                         continue
-                elif is_tennis:
-                    # Tennis: không lọc giải, giữ tất cả
+                elif cat_type == "tennis":
+                    # Tennis: giữ tất cả, không lọc giải
                     pass
-                else:
-                    continue  # không nên xảy ra
 
                 channels_list = []
                 channels_div = event.find("div", class_="schedule__channels")
