@@ -1,8 +1,8 @@
 {
-  "updated": "2026-09-10 06:08 VN",
+  "updated": "2026-09-10 11:17 VN",
   "days": {
-    "20260909": {
-      "date": "Wednesday, 09/09",
+    "20260910": {
+      "date": "Thursday, 10/09",
       "games": [
         {
           "league": "UEFA Champions League",
@@ -523,22 +523,34 @@
           "source": "livesportsontv"
         },
         {
-          "league": "Tennis",
-          "match": "US Open",
-          "kick_utc": 1788989400,
-          "time": "10/09 04:30 AM",
+          "league": "Premier League",
+          "match": "Bournemouth vs Everton",
+          "kick_utc": 1789012800,
+          "time": "10/09 11:00 AM",
           "tv_channels": [
             {
-              "country": "Wheresthematch",
+              "country": "NowTV",
               "channels": [
-                "Sky Sports Main Event",
-                "Sky Sports Tennis",
-                "Sky Sports Ultra HDR",
-                "Sky Sports+"
+                "Now Sports Premier League 3"
               ]
             }
           ],
-          "source": "wheresthematch"
+          "source": "nowtv"
+        },
+        {
+          "league": "Premier League",
+          "match": "Tottenham Hotspur vs Newcastle United",
+          "kick_utc": 1789027200,
+          "time": "10/09 03:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports Premier League 3"
+              ]
+            }
+          ],
+          "source": "nowtv"
         },
         {
           "league": "Tennis",
@@ -576,133 +588,6 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1789081200,
-          "time": "11/09 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "9Gem"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Louis Armstrong Stadium — Robin Montgomery 🇺/Ashlyn Krueger 🇺 vs Luisa Stefani /Gabriela Dabrowski 🇨",
-          "kick_utc": 1788989400,
-          "time": "10/09 04:30 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Court 11 — Kevin Krawietz /Tim Puetz  vs Marcelo Arevalo 🇻/Mate Pavic 🇭",
-          "kick_utc": 1788991200,
-          "time": "10/09 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Court 5 — Joe Salisbury /Rajeev Ram 🇺 vs Marcel Granollers /Horacio Zeballos",
-          "kick_utc": 1788991200,
-          "time": "10/09 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Court 12 — Harri Heliovaara /Henry Patten  vs Manuel Guinard /Guido Andreozzi",
-          "kick_utc": 1788994800,
-          "time": "10/09 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Arthur Ashe Stadium — Simone Bolelli /Andrea Vavassori  vs Neal Skupski /Christian Harrison 🇺",
-          "kick_utc": 1788994800,
-          "time": "10/09 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Arthur Ashe Stadium — Alexander Zverev  vs Botic van de Zandschulp",
-          "kick_utc": 1788996600,
-          "time": "10/09 06:30 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ténis - Grand Slam, US Open",
-          "kick_utc": 1788996600,
-          "time": "10/09 06:30 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Eurosport 1 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
           "match": "Ténis - Grand Slam, US Open",
           "kick_utc": 1789079400,
           "time": "11/09 05:30 AM",
@@ -718,15 +603,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Internationaux des États-Unis 2026",
-          "kick_utc": 1788996600,
-          "time": "10/09 06:30 AM",
+          "match": "Ténis - Grand Slam, US Open",
+          "kick_utc": 1789088400,
+          "time": "11/09 08:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Réseau Des Sports (Rds)",
-                "Réseau Des Sports (Rds) Hd"
+                "Eurosport 1 Hd Portugal"
               ]
             }
           ],
@@ -743,22 +627,6 @@
               "channels": [
                 "Réseau Des Sports (Rds)",
                 "Réseau Des Sports (Rds) Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "2026 US Open Tennis",
-          "kick_utc": 1788996600,
-          "time": "10/09 06:30 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "TSN 3",
-                "TSN 3 Hd"
               ]
             }
           ],
@@ -781,21 +649,6 @@
             }
           ],
           "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Day 11 QF (B)",
-          "kick_utc": 1788996600,
-          "time": "10/09 06:30 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports 6"
-              ]
-            }
-          ],
-          "source": "nowtv"
         },
         {
           "league": "Tennis",
