@@ -2,26 +2,6 @@
     "<strong>Thursday 10th Sep 2026 - Schedule Time UK GMT</strong>": {
         "All Soccer Events ⚽": [
             {
-                "time": "16:00",
-                "event": "⚽ 🇧🇭 Bahraini Premier League : Muharraq 🇧🇭 vs Manama 🇧🇭",
-                "channels": [
-                    {
-                        "channel_name": "Bahrain Sport 1",
-                        "channel_id": "3"
-                    }
-                ]
-            },
-            {
-                "time": "16:00",
-                "event": "⚽ 🇧🇭 Bahraini Premier League : Al Riffa 🇧🇭 vs Khalidiya 🇧🇭",
-                "channels": [
-                    {
-                        "channel_name": "Bahrain Sport 2",
-                        "channel_id": "4"
-                    }
-                ]
-            },
-            {
                 "time": "16:45",
                 "event": "⚽ 🌍 UEFA Champions League : Simulcast",
                 "channels": [
@@ -50,6 +30,10 @@
                     {
                         "channel_name": "TNT Sports 2 UK",
                         "channel_id": "32"
+                    },
+                    {
+                        "channel_name": "Event SD Stream",
+                        "channel_id": "166"
                     },
                     {
                         "channel_name": "CBS Sports Network",
@@ -242,6 +226,10 @@
                     {
                         "channel_name": "Event Stream",
                         "channel_id": "4108"
+                    },
+                    {
+                        "channel_name": "Event Stream",
+                        "channel_id": "1651"
                     }
                 ]
             },
@@ -256,6 +244,10 @@
                     {
                         "channel_name": "TNT Sports 3 UK",
                         "channel_id": "33"
+                    },
+                    {
+                        "channel_name": "Event SD Stream",
+                        "channel_id": "167"
                     },
                     {
                         "channel_name": "Ziggo Sport 1 NL",
@@ -396,6 +388,10 @@
                     {
                         "channel_name": "Event Stream",
                         "channel_id": "4115"
+                    },
+                    {
+                        "channel_name": "Event Stream",
+                        "channel_id": "1652"
                     }
                 ]
             },
@@ -594,6 +590,10 @@
                     {
                         "channel_name": "Event Stream",
                         "channel_id": "4104"
+                    },
+                    {
+                        "channel_name": "Event Stream",
+                        "channel_id": "1654"
                     }
                 ]
             },
@@ -776,6 +776,10 @@
                     {
                         "channel_name": "Event Stream",
                         "channel_id": "4114"
+                    },
+                    {
+                        "channel_name": "Event Stream",
+                        "channel_id": "1652"
                     }
                 ]
             },
@@ -950,6 +954,10 @@
                     {
                         "channel_name": "Event Stream",
                         "channel_id": "4115"
+                    },
+                    {
+                        "channel_name": "Event Stream",
+                        "channel_id": "1653"
                     }
                 ]
             },
@@ -1104,417 +1112,20 @@
                     {
                         "channel_name": "Event Stream",
                         "channel_id": "4107"
+                    },
+                    {
+                        "channel_name": "Event Stream",
+                        "channel_id": "1651"
                     }
                 ]
             }
         ],
         "Tennis US OPEN [All Court 🏟️] 🎾": [],
-        "Tennis 🎾": [
-            {
-                "time": "15:00",
-                "event": "🎾 2026 US Open Grand Slam Tennis Men's Doubles Semifinals",
-                "channels": [
-                    {
-                        "channel_name": "Tennis Channel",
-                        "channel_id": "40"
-                    },
-                    {
-                        "channel_name": "ABC NY USA",
-                        "channel_id": "766"
-                    },
-                    {
-                        "channel_name": "ABC USA",
-                        "channel_id": "51"
-                    },
-                    {
-                        "channel_name": "Sky Sports Mix UK",
-                        "channel_id": "449"
-                    },
-                    {
-                        "channel_name": "ESPN2 USA",
-                        "channel_id": "45"
-                    },
-                    {
-                        "channel_name": "ESPN USA",
-                        "channel_id": "44"
-                    },
-                    {
-                        "channel_name": "RDS CA",
-                        "channel_id": "839"
-                    },
-                    {
-                        "channel_name": "TSN 1",
-                        "channel_id": "111"
-                    },
-                    {
-                        "channel_name": "TSN 5",
-                        "channel_id": "115"
-                    },
-                    {
-                        "channel_name": "TSN 3",
-                        "channel_id": "113"
-                    },
-                    {
-                        "channel_name": "TSN 4",
-                        "channel_id": "114"
-                    },
-                    {
-                        "channel_name": "Sky Sports Tennis UK",
-                        "channel_id": "46"
-                    },
-                    {
-                        "channel_name": "Sky Sports Main Event UK",
-                        "channel_id": "38"
-                    },
-                    {
-                        "channel_name": "Sky Sports+",
-                        "channel_id": "36"
-                    },
-                    {
-                        "channel_name": "Sky Sport Uno Italy",
-                        "channel_id": "461"
-                    },
-                    {
-                        "channel_name": "SRF zwei",
-                        "channel_id": "493"
-                    },
-                    {
-                        "channel_name": "Sportsnet Ontario",
-                        "channel_id": "406"
-                    },
-                    {
-                        "channel_name": "Sportsnet West",
-                        "channel_id": "407"
-                    },
-                    {
-                        "channel_name": "Sportsnet East",
-                        "channel_id": "408"
-                    },
-                    {
-                        "channel_name": "Sportsnet One",
-                        "channel_id": "411"
-                    },
-                    {
-                        "channel_name": "Sportsnet 360",
-                        "channel_id": "409"
-                    },
-                    {
-                        "channel_name": "TVA Sports",
-                        "channel_id": "833"
-                    },
-                    {
-                        "channel_name": "TVA Sports 2 CA",
-                        "channel_id": "834"
-                    },
-                    {
-                        "channel_name": "ESPN Deportes",
-                        "channel_id": "375"
-                    },
-                    {
-                        "channel_name": "Sky Sports Tennis Germany",
-                        "channel_id": "884"
-                    },
-                    {
-                        "channel_name": "Sky Sport Tennis Italy",
-                        "channel_id": "576"
-                    },
-                    {
-                        "channel_name": "TV4 Tennis",
-                        "channel_id": "701"
-                    },
-                    {
-                        "channel_name": "Canal+ Sport 2 Czechia",
-                        "channel_id": "1043"
-                    },
-                    {
-                        "channel_name": "beIN Sports 3 France",
-                        "channel_id": "118"
-                    },
-                    {
-                        "channel_name": "Ziggo Sport 1 NL",
-                        "channel_id": "393"
-                    },
-                    {
-                        "channel_name": "Ziggo Sport 4 NL",
-                        "channel_id": "396"
-                    },
-                    {
-                        "channel_name": "Cytavision Sports 5 Cyprus",
-                        "channel_id": "915"
-                    },
-                    {
-                        "channel_name": "Sport TV2 Portugal",
-                        "channel_id": "74"
-                    },
-                    {
-                        "channel_name": "Movistar Plus+",
-                        "channel_id": "437"
-                    },
-                    {
-                        "channel_name": "Movistar Deportes Spain",
-                        "channel_id": "436"
-                    },
-                    {
-                        "channel_name": "Movistar Deportes 2 Spain",
-                        "channel_id": "438"
-                    },
-                    {
-                        "channel_name": "Movistar Deportes 3 Spain",
-                        "channel_id": "526"
-                    },
-                    {
-                        "channel_name": "MAX Sport 1 Bulgaria",
-                        "channel_id": "472"
-                    },
-                    {
-                        "channel_name": "ESPN Mexico",
-                        "channel_id": "925"
-                    },
-                    {
-                        "channel_name": "Digi Sport 2 Romania",
-                        "channel_id": "401"
-                    },
-                    {
-                        "channel_name": "Digi Sport 4 Romania",
-                        "channel_id": "403"
-                    },
-                    {
-                        "channel_name": "NovaSports 6 GR",
-                        "channel_id": "636"
-                    },
-                    {
-                        "channel_name": "Polsat Sport 1 Poland",
-                        "channel_id": "47"
-                    },
-                    {
-                        "channel_name": "Polsat Sport Premium 1 Poland",
-                        "channel_id": "991"
-                    },
-                    {
-                        "channel_name": "Polsat Sport Premium 2 Poland",
-                        "channel_id": "992"
-                    },
-                    {
-                        "channel_name": "Canal+ Sport 2 Poland",
-                        "channel_id": "73"
-                    },
-                    {
-                        "channel_name": "ESPN 3 Argentina",
-                        "channel_id": "798"
-                    },
-                    {
-                        "channel_name": "ESPN2 Argentina",
-                        "channel_id": "150"
-                    },
-                    {
-                        "channel_name": "beIN SPORTS Australia 1",
-                        "channel_id": "491"
-                    },
-                    {
-                        "channel_name": "beIN SPORTS Australia 2",
-                        "channel_id": "492"
-                    },
-                    {
-                        "channel_name": "ESPN2 Brazil",
-                        "channel_id": "82"
-                    },
-                    {
-                        "channel_name": "ESPN3 Brazil",
-                        "channel_id": "83"
-                    },
-                    {
-                        "channel_name": "beIN Sports MENA 7",
-                        "channel_id": "97"
-                    },
-                    {
-                        "channel_name": "beIN Sports MENA 8",
-                        "channel_id": "98"
-                    },
-                    {
-                        "channel_name": "beIN Sports MENA 9",
-                        "channel_id": "99"
-                    },
-                    {
-                        "channel_name": "Sport 4 Israel",
-                        "channel_id": "143"
-                    },
-                    {
-                        "channel_name": "Sport 2 Israel",
-                        "channel_id": "141"
-                    },
-                    {
-                        "channel_name": "EuroSport 2 UK",
-                        "channel_id": "42"
-                    },
-                    {
-                        "channel_name": "EuroSport 2 Poland",
-                        "channel_id": "58"
-                    },
-                    {
-                        "channel_name": "EuroSport 2 Spain",
-                        "channel_id": "525"
-                    },
-                    {
-                        "channel_name": "EuroSport 2 France",
-                        "channel_id": "773"
-                    },
-                    {
-                        "channel_name": "Eurosport 2 SE",
-                        "channel_id": "232"
-                    },
-                    {
-                        "channel_name": "EuroSport 2 Italy",
-                        "channel_id": "879"
-                    },
-                    {
-                        "channel_name": "EuroSport 2 Greece",
-                        "channel_id": "42"
-                    },
-                    {
-                        "channel_name": "EuroSport 1 UK",
-                        "channel_id": "41"
-                    },
-                    {
-                        "channel_name": "EuroSport 1 Poland",
-                        "channel_id": "57"
-                    },
-                    {
-                        "channel_name": "EuroSport 1 Spain",
-                        "channel_id": "524"
-                    },
-                    {
-                        "channel_name": "EuroSport 1 France",
-                        "channel_id": "772"
-                    },
-                    {
-                        "channel_name": "Eurosport 1 SE",
-                        "channel_id": "231"
-                    },
-                    {
-                        "channel_name": "EuroSport 1 Italy",
-                        "channel_id": "878"
-                    },
-                    {
-                        "channel_name": "EuroSport 1 Greece",
-                        "channel_id": "41"
-                    },
-                    {
-                        "channel_name": "EuroSport 1 AL",
-                        "channel_id": "890"
-                    },
-                    {
-                        "channel_name": "EuroSport 2 AL",
-                        "channel_id": "891"
-                    },
-                    {
-                        "channel_name": "EuroSport 1 BG",
-                        "channel_id": "892"
-                    },
-                    {
-                        "channel_name": "EuroSport 2 BG",
-                        "channel_id": "893"
-                    },
-                    {
-                        "channel_name": "EuroSport 1 CZ",
-                        "channel_id": "894"
-                    },
-                    {
-                        "channel_name": "EuroSport 2 CZ",
-                        "channel_id": "895"
-                    },
-                    {
-                        "channel_name": "EuroSport 1 DK",
-                        "channel_id": "896"
-                    },
-                    {
-                        "channel_name": "EuroSport 2 DK",
-                        "channel_id": "897"
-                    },
-                    {
-                        "channel_name": "EuroSport 1 SR",
-                        "channel_id": "898"
-                    },
-                    {
-                        "channel_name": "EuroSport 2 SR",
-                        "channel_id": "899"
-                    },
-                    {
-                        "channel_name": "EuroSport 1 HU",
-                        "channel_id": "900"
-                    },
-                    {
-                        "channel_name": "EuroSport 2 HU",
-                        "channel_id": "902"
-                    },
-                    {
-                        "channel_name": "EuroSport 1 PT",
-                        "channel_id": "903"
-                    },
-                    {
-                        "channel_name": "EuroSport 2 PT",
-                        "channel_id": "904"
-                    },
-                    {
-                        "channel_name": "EuroSport 1 RO",
-                        "channel_id": "905"
-                    },
-                    {
-                        "channel_name": "EuroSport 2 RO",
-                        "channel_id": "906"
-                    },
-                    {
-                        "channel_name": "EuroSport 1 TR",
-                        "channel_id": "907"
-                    },
-                    {
-                        "channel_name": "EuroSport 2 TR",
-                        "channel_id": "920"
-                    },
-                    {
-                        "channel_name": "5 Star Israel",
-                        "channel_id": "147"
-                    }
-                ]
-            }
-        ],
-        "Tennis 🎾 WTA - Singles: US Open (USA)": [
-            {
-                "time": "23:00",
-                "event": "🎾 WTA - Singles: 🇧🇾 Aryna Sabalenka vs 🇺🇸 Jessica Pegula",
-                "channels": [
-                    {
-                        "channel_name": "Channel Not Listed #JustAsk",
-                        "channel_id": "00"
-                    }
-                ]
-            }
-        ],
-        "Tennis 🎾 ATP - Doubles: US Open (USA)": [
-            {
-                "time": "20:00",
-                "event": "🎾 ATP - Doubles: 🇩🇪 Kevin Krawietz / 🇩🇪 Tim Puetz vs 🇺🇸 Rajeev Ram / 🇬🇧 Joe Salisbury",
-                "channels": [
-                    {
-                        "channel_name": "Channel Not Listed #JustAsk",
-                        "channel_id": "00"
-                    }
-                ]
-            }
-        ],
+        "Tennis 🎾": [],
         "Table Tennis 🏓": [
             {
                 "time": "19:00",
                 "event": "🏓 WTT Champions Table Tennis Macau, China - First Session",
-                "channels": [
-                    {
-                        "channel_name": "SporTV2 Brazil",
-                        "channel_id": "79"
-                    }
-                ]
-            },
-            {
-                "time": "12:30",
-                "event": "🏓 WTT Champions Table Tennis Macau, China - Round of 16",
                 "channels": [
                     {
                         "channel_name": "SporTV2 Brazil",
