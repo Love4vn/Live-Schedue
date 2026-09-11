@@ -1,8 +1,8 @@
 {
-  "updated": "2026-09-11 06:03 VN",
+  "updated": "2026-09-11 11:16 VN",
   "days": {
-    "20260910": {
-      "date": "Thursday, 10/09",
+    "20260911": {
+      "date": "Friday, 11/09",
       "games": [
         {
           "league": "Ligue 1",
@@ -13,56 +13,38 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "ViaPlay Nederland HD",
-                "SuperSport Football Plus HD",
-                "ViaPlay Norge HD",
-                "beIN Connect Türkiye",
-                "beIN Sports MENA 2 HD",
                 "Arena Premium 5 BiH HD",
-                "Ligue 1+",
-                "DAZN España",
-                "DAZN Deutsch",
+                "SuperSport Football Plus HD",
+                "ViaPlay Nederland HD",
                 "Eleven Sports 2 Polska HD",
-                "ViaPlay Sverige HD",
-                "beIN Sports MENA French 1 HD",
-                "ViaPlay Suomi HD",
-                "Star Sports Select HD2",
-                "Prime Video UK PPV",
-                "Arena Sport 2 Srbija HD",
-                "Arena Sport 3 Slovenija HD",
-                "ViaPlay Danmark HD",
+                "beIN Connect Türkiye",
+                "DAZN España",
                 "Arena Sport 2 Hrvatska HD",
+                "ViaPlay Danmark HD",
+                "Ligue 1+",
+                "DAZN Japan",
+                "Arena Sport 2 Srbija HD",
+                "beIN Sports MENA French 1 HD",
+                "Prime Video UK PPV",
+                "ViaPlay Sverige HD",
+                "Arena Sport 3 Slovenija HD",
+                "beIN Sports MENA 2 HD",
+                "Star Sports Select HD2",
                 "Canal+ Sport 2 Afrique HD",
-                "DAZN Japan"
+                "DAZN Deutsch",
+                "ViaPlay Norge HD",
+                "ViaPlay Suomi HD"
               ]
             },
             {
               "country": "Wheresthematch",
               "channels": [
-                "Amazon Prime Video",
-                "Ligue 1+"
+                "Ligue 1+",
+                "Amazon Prime Video"
               ]
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "US Open",
-          "kick_utc": 1789081200,
-          "time": "11/09 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Main Event",
-                "Sky Sports Tennis",
-                "Sky Sports Ultra HDR",
-                "Sky Sports+"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
@@ -117,37 +99,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Aryna Sabalenka vs Jessica Pegula",
-          "kick_utc": 1789081200,
-          "time": "11/09 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "9Gem",
-                "Stan Sport"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Cori Gauff vs Elena Rybakina",
-          "kick_utc": 1789086600,
-          "time": "11/09 07:30 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "Stan Sport"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
           "match": "",
           "kick_utc": 1789153200,
           "time": "12/09 02:00 AM",
@@ -163,65 +114,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Internationaux des États-Unis 2026",
-          "kick_utc": 1789081200,
-          "time": "11/09 06:00 AM",
+          "match": "Judo Grand Slam, Budapeste - Dia 1",
+          "kick_utc": 1789138800,
+          "time": "11/09 10:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Réseau Des Sports (Rds)",
-                "Réseau Des Sports (Rds) Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Internationaux des États-Unis 2026",
-          "kick_utc": 1789153200,
-          "time": "12/09 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Réseau Des Sports (Rds)",
-                "Réseau Des Sports (Rds) Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Internationaux des États-Unis 2026",
-          "kick_utc": 1789167600,
-          "time": "12/09 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Réseau Des Sports (Rds)",
-                "Réseau Des Sports (Rds) Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "2026 US Open Tennis",
-          "kick_utc": 1789081200,
-          "time": "11/09 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "TSN 3",
-                "TSN 3 Hd",
-                "TSN 5",
-                "TSN 5 Hd"
+                "Sport Tv2 Hd Portugal"
               ]
             }
           ],
@@ -281,14 +181,15 @@
         },
         {
           "league": "Tennis",
-          "match": "Judo Grand Slam, Budapeste - Dia 1",
-          "kick_utc": 1789138800,
-          "time": "11/09 10:00 PM",
+          "match": "2026 US Open Tennis",
+          "kick_utc": 1789176600,
+          "time": "12/09 08:30 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Sport Tv2 Hd Portugal"
+                "TSN 5",
+                "TSN 5 Hd"
               ]
             }
           ],
@@ -296,18 +197,35 @@
         },
         {
           "league": "Tennis",
-          "match": "Day 12 Women's Singles SFs",
-          "kick_utc": 1789081200,
-          "time": "11/09 06:00 AM",
+          "match": "Internationaux des États-Unis 2026",
+          "kick_utc": 1789153200,
+          "time": "12/09 02:00 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 6"
+                "Réseau Des Sports (Rds)",
+                "Réseau Des Sports (Rds) Hd"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Internationaux des États-Unis 2026",
+          "kick_utc": 1789167600,
+          "time": "12/09 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Réseau Des Sports (Rds)",
+                "Réseau Des Sports (Rds) Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
