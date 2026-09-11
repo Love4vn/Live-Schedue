@@ -1,11 +1,20 @@
 [
   {
     "competition": "ATP US Open",
-    "home": "",
-    "away": "",
+    "home": "Alexander Zverev",
+    "away": "Karen Khachanov",
     "vietnam_time": "02:00",
     "vietnam_date": "12/09/2026",
-    "channels": "9Gem",
+    "channels": "9Gem | Stan Sport",
+    "sport": "Tennis"
+  },
+  {
+    "competition": "ATP US Open",
+    "home": "Frances Tiafoe",
+    "away": "Ben Shelton",
+    "vietnam_time": "06:00",
+    "vietnam_date": "12/09/2026",
+    "channels": "Stan Sport",
     "sport": "Tennis"
   },
   {
@@ -19,8 +28,8 @@
   },
   {
     "competition": "Premier League",
-    "home": "Liverpool",
-    "away": "Fulham",
+    "home": "Chelsea",
+    "away": "Hull City",
     "vietnam_time": "21:00",
     "vietnam_date": "12/09/2026",
     "channels": "Stan Sport",
@@ -28,8 +37,8 @@
   },
   {
     "competition": "Premier League",
-    "home": "Crystal Palace",
-    "away": "Ipswich",
+    "home": "Liverpool",
+    "away": "Fulham",
     "vietnam_time": "21:00",
     "vietnam_date": "12/09/2026",
     "channels": "Stan Sport",
@@ -46,8 +55,8 @@
   },
   {
     "competition": "Premier League",
-    "home": "Chelsea",
-    "away": "Hull City",
+    "home": "Bournemouth",
+    "away": "Brentford",
     "vietnam_time": "21:00",
     "vietnam_date": "12/09/2026",
     "channels": "Stan Sport",
@@ -55,8 +64,8 @@
   },
   {
     "competition": "Premier League",
-    "home": "Bournemouth",
-    "away": "Brentford",
+    "home": "Crystal Palace",
+    "away": "Ipswich",
     "vietnam_time": "21:00",
     "vietnam_date": "12/09/2026",
     "channels": "Stan Sport",
@@ -68,7 +77,7 @@
     "away": "AC Milan",
     "vietnam_time": "23:00",
     "vietnam_date": "12/09/2026",
-    "channels": "beIN SPORTS 3 | beIN Sports Connect",
+    "channels": "beIN Sports Connect | beIN SPORTS 3",
     "sport": "Soccer"
   },
   {
@@ -86,7 +95,7 @@
     "away": "Cagliari",
     "vietnam_time": "01:45",
     "vietnam_date": "13/09/2026",
-    "channels": "beIN SPORTS 3 | beIN Sports Connect",
+    "channels": "beIN Sports Connect | beIN SPORTS 3",
     "sport": "Soccer"
   },
   {
@@ -95,7 +104,7 @@
     "away": "Rayo Vallecano",
     "vietnam_time": "02:00",
     "vietnam_date": "13/09/2026",
-    "channels": "beIN SPORTS 2 | beIN Sports Connect",
+    "channels": "beIN Sports Connect | beIN SPORTS 2",
     "sport": "Soccer"
   },
   {
@@ -108,12 +117,57 @@
     "sport": "Soccer"
   },
   {
-    "competition": "ATP US Open",
-    "home": "",
-    "away": "",
+    "competition": "WTA US Open",
+    "home": "Aryna Sabalenka",
+    "away": "Elena Rybakina",
     "vietnam_time": "03:00",
     "vietnam_date": "13/09/2026",
     "channels": "9Gem",
     "sport": "Tennis"
+  },
+  {
+    "competition": "Premier League",
+    "home": "Coventry",
+    "away": "Brighton & Hove Albion",
+    "vietnam_time": "20:00",
+    "vietnam_date": "13/09/2026",
+    "channels": "Stan Sport",
+    "sport": "Soccer"
+  },
+  {
+    "competition": "La Liga",
+    "home": "Levante",
+    "away": "Barcelona",
+    "vietnam_time": "21:15",
+    "vietnam_date": "13/09/2026",
+    "channels": "beIN Sports Connect | beIN SPORTS 2",
+    "sport": "Soccer"
+  },
+  {
+    "competition": "Bundesliga",
+    "home": "Elversberg",
+    "away": "Bayern Munich",
+    "vietnam_time": "22:30",
+    "vietnam_date": "13/09/2026",
+    "channels": "beIN Sports Connect | beIN SPORTS 1",
+    "sport": "Soccer"
+  },
+  {
+    "competition": "Premier League",
+    "home": "Manchester United",
+    "away": "Manchester City",
+    "vietnam_time": "22:30",
+    "vietnam_date": "13/09/2026",
+    "channels": "Youtube | Stan Sport",
+    "sport": "Soccer"
+  },
+  {
+    "competition": "Serie A",
+    "home": "Napoli",
+    "away": "Bologna",
+    "vietnam_time": "23:00",
+    "vietnam_date": "13/09/2026",
+    "channels": "beIN Sports Connect | beIN SPORTS 3",
+    "sport": "Soccer"
   }
 ]
