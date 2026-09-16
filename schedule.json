@@ -1,28 +1,9 @@
 {
-  "updated": "2026-09-16 11:31 VN",
+  "updated": "2026-09-16 18:19 VN",
   "days": {
     "20260916": {
       "date": "Wednesday, 16/09",
       "games": [
-        {
-          "league": "UEFA Champions League",
-          "match": "FC Seoul vs Persib Bandung",
-          "kick_utc": 1789552800,
-          "time": "16/09 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Astro Arena Bola 2 HD",
-                "Azam Sports 3 HD",
-                "beIN Sports MENA 6 HD",
-                "beIN Sports MENA 6 HD",
-                "Spor Smart 2 Türkiye HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "UEFA Champions League",
           "match": "Jeonbuk Motors vs Kashiwa Reysol",
@@ -36,8 +17,45 @@
                 "Azam Sports 4 HD",
                 "beIN Sports MENA 5 HD",
                 "beIN Sports MENA 5 HD",
+                "Diema Sport 3 HD",
+                "Diema Sport 3 HD",
+                "Diema Sport 3 HD",
+                "Diema Sport 3 HD",
+                "Diema Sport 3 HD",
                 "Spor Smart Türkiye HD",
+                "Sport 1 Ukraine",
+                "TV Start Russia HD",
+                "TV Start Russia HD",
+                "TV Start Russia HD",
+                "TV Start Russia HD",
+                "TV Start Russia HD",
                 "VOYO Pro TV Romania"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Champions League",
+          "match": "FC Seoul vs Persib Bandung",
+          "kick_utc": 1789552800,
+          "time": "16/09 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Astro Arena Bola 2 HD",
+                "Azam Sports 3 HD",
+                "beIN Sports MENA 6 HD",
+                "beIN Sports MENA 6 HD",
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Spor Smart 2 Türkiye HD",
+                "TV Start Triumph HD",
+                "TV Start Triumph HD"
               ]
             }
           ],
@@ -55,7 +73,18 @@
                 "Astro Arena Bola 2 HD",
                 "beIN Sports MENA 3 HD",
                 "beIN Sports MENA 3 HD",
+                "Diema Sport 3 HD",
+                "Diema Sport 3 HD",
+                "Diema Sport 3 HD",
+                "Diema Sport 3 HD",
+                "Diema Sport 3 HD",
                 "Spor Smart Türkiye HD",
+                "Sport 1 Ukraine",
+                "TV Start Russia HD",
+                "TV Start Russia HD",
+                "TV Start Russia HD",
+                "TV Start Russia HD",
+                "TV Start Russia HD",
                 "ZBC Channel 2"
               ]
             }
@@ -71,6 +100,51 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Spor Smart 2 Türkiye HD",
+                "TV Start Triumph HD",
+                "TV Start Triumph HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Champions League",
+          "match": "Al Khalidiya vs Nasaf Qarshi",
+          "kick_utc": 1789574400,
+          "time": "16/09 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Spor Smart Türkiye HD",
+                "Sport 1 Ukraine",
+                "TV Start Triumph HD",
+                "TV Start Triumph HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Champions League",
+          "match": "Al Nahda vs Al Taawoun",
+          "kick_utc": 1789574400,
+          "time": "16/09 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
                 "Spor Smart 2 Türkiye HD"
               ]
             }
@@ -108,36 +182,6 @@
           "source": "livesportsontv"
         },
         {
-          "league": "UEFA Champions League",
-          "match": "Al Nahda vs Al Taawoun",
-          "kick_utc": 1789574400,
-          "time": "16/09 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Spor Smart 2 Türkiye HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Champions League",
-          "match": "Al Khalidiya vs Nasaf Qarshi",
-          "kick_utc": 1789574400,
-          "time": "16/09 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Spor Smart Türkiye HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
           "league": "UEFA Europa League",
           "match": "Omonia Nicosia vs Celta Vigo",
           "kick_utc": 1789577100,
@@ -146,28 +190,36 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "beIN Sports MENA 1 HD",
-                "Megogo Futbol 3",
-                "Prima Sport RO 1 HD",
-                "Magenta Hellas Sport 5 HD",
-                "DAZN 2 Portugal HD",
-                "TNT Sports 4 HD",
-                "Digi 4K UHD",
-                "Tabii Spor Türkiye",
-                "Digi Sport 1 Romania HD",
-                "HBO Max",
+                "beIN Sports HK 1 HD",
+                "Arena Premium 1 Srbija HD",
+                "Ziggo Sport 1 HD",
                 "Premier Sports 2 Ireland HD",
+                "Megogo Sport Ukraine HD",
+                "SportKlub 2 Slovenija",
+                "Omonoia TV on Cyta",
+                "Arena Sport 3 Hrvatska HD",
+                "Magenta Hellas Sport 5 HD",
+                "Tabii Spor Türkiye",
+                "Sport 1 Czechia HD",
+                "HBO Max",
+                "TNT Sports 4 HD",
+                "DAZN Portugal",
+                "Ring Bulgaria HD",
+                "Fast Sports 1 Armenia",
+                "Arena Premium 2 BiH HD",
+                "Ziggo Sport 2",
+                "Megogo Futbol 3",
+                "Sport 1 Slovakia HD",
+                "Okko Prime Sport HD",
+                "beIN Connect Hong Kong",
+                "Digi Sport 1 Romania HD",
+                "beIN Sports MENA 1 HD",
+                "Polsat Sport Premium 2 HD",
+                "Digi 4K UHD",
+                "DAZN 2 Portugal HD",
                 "Canal+ Live 1 France HD",
                 "Blue Sport 8 Live HD",
-                "DAZN Portugal",
-                "Omonoia TV on Cyta",
-                "Arena Premium 1 Srbija HD",
-                "Ziggo Sport 2",
-                "Ziggo Sport 1 HD",
-                "Megogo Sport Ukraine HD",
-                "Fast Sports 1 Armenia",
-                "Arena Sport 3 Hrvatska HD",
-                "Okko Prime Sport HD"
+                "Prima Sport RO 1 HD"
               ]
             },
             {
@@ -190,7 +242,10 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Arena Premium 4 Srbija HD",
+                "Arena Sport 1 BiH HD",
                 "Arena Sport 4 Hrvatska HD",
+                "beIN Connect Hong Kong",
+                "beIN Sports HK 3 HD",
                 "beIN Sports MENA 8 HD",
                 "beIN Sports MENA 8 HD",
                 "Blue Sport 9 Live HD",
@@ -210,10 +265,18 @@
                 "MAX Sport 3 Bulgaria HD",
                 "MAX Sport 3 Bulgaria HD",
                 "Megogo Futbol 4",
+                "Nova Sport 5 Czech HD",
+                "Nova Sport 5 Czech HD",
+                "Nova Sport 5 Czech HD",
+                "Nova Sport 5 Czech HD",
+                "Nova Sport 5 Czech HD",
+                "Polsat Sport Extra 1 HD",
                 "Prima Sport RO 2 HD",
                 "Prima Sport RO 2 HD",
                 "Prima Sport RO 2 HD",
                 "Prima Sport RO 2 HD",
+                "Q Sport League HD",
+                "Q Sport League HD",
                 "Tabii Spor 1",
                 "TNT Sports 3 HD",
                 "TNT Sports 3 HD",
@@ -235,7 +298,15 @@
               "channels": [
                 "beIN Sports MENA 3 HD",
                 "beIN Sports MENA 3 HD",
-                "Spor Smart Türkiye HD"
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Spor Smart Türkiye HD",
+                "Sport 1 Ukraine",
+                "TV Start Triumph HD",
+                "TV Start Triumph HD"
               ]
             }
           ],
@@ -270,6 +341,13 @@
                 "beIN Sports MENA 6 HD",
                 "beIN Sports MENA 6 HD",
                 "Como TV",
+                "Diema Sport HD",
+                "Diema Sport HD",
+                "Diema Sport HD",
+                "Diema Sport HD",
+                "Diema Sport HD",
+                "Nova Sport 6 Czech HD",
+                "Nova Sport 6 Czech HD",
                 "Setanta Sports Ukraine HD",
                 "Sky Sports+",
                 "Sport TV2 Portugal HD",
@@ -287,55 +365,6 @@
         },
         {
           "league": "UEFA Europa League",
-          "match": "Bayer Leverkusen vs Celje",
-          "kick_utc": 1789585200,
-          "time": "17/09 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena Sport 5 Hrvatska HD",
-                "Arena Sport 7 Srbija HD",
-                "ART Motion Sport 5 HD",
-                "beIN Sports MENA Xtra 2 HD",
-                "beIN Sports MENA Xtra 2 HD",
-                "beIN Sports MENA Xtra 3 HD",
-                "beIN Sports MENA Xtra 3 HD",
-                "Blue Sport 2 Live HD",
-                "Canal+ Live 4 France HD",
-                "Cytavision Sports 7 HD",
-                "DAZN 4 Portugal HD",
-                "DAZN Portugal",
-                "Fast Sports 2 Armenia",
-                "HBO Max",
-                "Magenta Hellas Sport 5 HD",
-                "Megogo Sport Ukraine HD",
-                "Megogo Sport Ukraine HD",
-                "RTL Deutschland HD",
-                "RTL Deutschland HD",
-                "RTL Deutschland HD",
-                "RTL Deutschland HD",
-                "RTL Deutschland HD",
-                "RTL Deutschland HD",
-                "RTL Schweiz HD",
-                "RTL Schweiz HD",
-                "RTL Österreich HD",
-                "RTL Österreich HD",
-                "RTL+ Deutschland",
-                "Sport TV1 Slovenija",
-                "Tabii Spor 1",
-                "TNT Sports 3 HD",
-                "TNT Sports 3 HD",
-                "TNT Sports 5 HD",
-                "TNT Sports 5 HD",
-                "Ziggo Sport 3"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Europa League",
           "match": "Olympiacos vs Jagiellonia",
           "kick_utc": 1789585200,
           "time": "17/09 02:00 AM",
@@ -346,8 +375,10 @@
                 "ANT 1 Hellas HD",
                 "ANT 1 Hellas HD",
                 "ANT 1 Hellas HD",
+                "Arena Sport 4 BiH HD",
                 "Arena Sport 5 Srbija HD",
                 "Arena Sport 9 Hrvatska HD",
+                "beIN Connect Hong Kong",
                 "beIN Sports MENA Xtra 3 HD",
                 "beIN Sports MENA Xtra 3 HD",
                 "Blue Sport 4 Live HD",
@@ -361,6 +392,8 @@
                 "MAX Sport 2 Bulgaria HD",
                 "MAX Sport 2 Bulgaria HD",
                 "MAX Sport 2 Bulgaria HD",
+                "Polsat Sport 1 HD",
+                "Polsat Sport Premium 1 HD",
                 "Tabii Spor 5",
                 "TNT Sports 8",
                 "ViaPlay Ísland HD"
@@ -378,25 +411,29 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Arena Sport 6 Srbija HD",
-                "Arena Sport 10 Hrvatska HD",
-                "Blue Sport 6 Live HD",
-                "beIN Sports MENA Xtra 2 HD",
-                "Canal+ Sport France HD",
-                "Magenta Hellas Sport 8 HD",
-                "Tabii Spor 4",
                 "TNT Sports 9",
                 "Canal+ Live 2 France HD",
+                "Arena Sport 6 Srbija HD",
+                "Blue Sport 6 Live HD",
+                "Magenta Hellas Sport 8 HD",
+                "beIN Sports MENA Xtra 2 HD",
                 "HBO Max",
+                "Arena Sport 6 BiH HD",
+                "Polsat Sport Extra 4 HD",
+                "Canal+ Sport France HD",
+                "Q Sport Football HD",
                 "beIN Sports MENA Xtra 1 HD",
-                "ViaPlay Ísland HD"
+                "Arena Sport 10 Hrvatska HD",
+                "beIN Connect Hong Kong",
+                "ViaPlay Ísland HD",
+                "Tabii Spor 4"
               ]
             },
             {
               "country": "Wheresthematch",
               "channels": [
-                "HBO Max",
-                "TNT Sports 9"
+                "TNT Sports 9",
+                "HBO Max"
               ]
             }
           ],
@@ -411,12 +448,16 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "Arena Premium 5 BiH HD",
                 "Arena Sport 3 Srbija HD",
                 "Arena Sport 8 Hrvatska HD",
                 "Arena Sport 8 Hrvatska HD",
+                "beIN Connect Hong Kong",
+                "beIN Sports HK 2 HD",
                 "beIN Sports MENA 8 HD",
                 "beIN Sports MENA 8 HD",
                 "Blue Sport 1 Live HD",
+                "Blue Sport 1 Live UHD",
                 "Canal+ Foot HD",
                 "Canal+ Foot UHD HDR",
                 "Canal+ Live 1 France HD",
@@ -425,8 +466,16 @@
                 "Digi Sport 3 Romania",
                 "HBO Max",
                 "Megogo Futbol 4",
+                "Polsat Sport Extra 3 HD",
                 "Prima Sport RO 3 HD",
                 "Prima Sport RO 3 HD",
+                "Ring Bulgaria HD",
+                "Ring Bulgaria HD",
+                "Ring Bulgaria HD",
+                "Ring Bulgaria HD",
+                "Ring Bulgaria HD",
+                "Ring Bulgaria HD",
+                "Sport 3 Czech",
                 "SuperSport 4 Albania HD",
                 "Tabii Spor 2",
                 "TNT Sports 4 HD",
@@ -448,39 +497,110 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "beIN Sports MENA 1 HD",
+                "beIN Sports HK 1 HD",
+                "Arena Premium 1 Srbija HD",
+                "Premier Sports 2 Ireland HD",
+                "beIN Sports MENA English 1 HD",
+                "Arena M1 Premium MKD HD",
+                "Canal+ Live 3 France HD",
+                "Megogo Futbol 1",
+                "SportKlub 3 Slovenija",
+                "Arena Sport 3 Hrvatska HD",
+                "Prima Sport RO 2 HD",
+                "SuperSport 2 Albania HD",
+                "Tabii Spor Türkiye",
+                "bTV Action HD",
+                "Sport 1 Czechia HD",
+                "Cytavision Sports 4K 2 UHD",
+                "HBO Max",
+                "ART Motion Sport 3 HD",
                 "Sport TV5 Portugal HD",
                 "Blue Sport D 2 HD",
-                "Blue Sport 4 Live HDR",
-                "Tabii Spor Türkiye",
-                "GEM Sport 1 HD",
-                "Digi Sport 1 Romania HD",
-                "beIN Sports MENA English 1 HD",
-                "HBO Max",
-                "Premier Sports 2 Ireland HD",
-                "Cytavision Sports 4 HD",
-                "Megogo Futbol 1",
-                "Prima Sport RO 2 HD",
-                "TNT Sports 2 HD",
-                "Blue Sport 5 Live HD",
-                "Arena Premium 1 Srbija HD",
-                "Magenta Hellas Sport 3 HD",
-                "Ziggo Sport 2",
-                "SuperSport 2 Albania HD",
                 "Fast Sports 1 Armenia",
-                "Canal+ Live 3 France HD",
-                "ART Motion Sport 3 HD",
-                "Cytavision Sports 4K 2 UHD",
-                "Arena Sport 3 Hrvatska HD",
-                "Arena M1 Premium MKD HD",
-                "Okko Prime Sport HD"
+                "Ziggo Sport 2",
+                "Blue Sport 5 Live HD",
+                "Q Sport League HD",
+                "beIN Connect Hong Kong",
+                "Okko Prime Sport HD",
+                "Digi Sport 1 Romania HD",
+                "beIN Sports MENA 1 HD",
+                "Cytavision Sports 4 HD",
+                "Polsat Sport Premium 2 HD",
+                "SportKlub 4 Slovenija",
+                "Arena Premium 1 BiH HD",
+                "TNT Sports 2 HD",
+                "GEM Sport 1 HD",
+                "Blue Sport 4 Live HDR",
+                "Magenta Hellas Sport 3 HD"
               ]
             },
             {
               "country": "Wheresthematch",
               "channels": [
+                "TNT Sports 2",
+                "HBO Max"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Europa League",
+          "match": "Bayer Leverkusen vs Celje",
+          "kick_utc": 1789585200,
+          "time": "17/09 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena Premium 2 BiH HD",
+                "Arena Sport 5 Hrvatska HD",
+                "Arena Sport 7 Srbija HD",
+                "ART Motion Sport 5 HD",
+                "beIN Connect Hong Kong",
+                "beIN Sports HK 3 HD",
+                "beIN Sports MENA Xtra 2 HD",
+                "beIN Sports MENA Xtra 2 HD",
+                "beIN Sports MENA Xtra 3 HD",
+                "beIN Sports MENA Xtra 3 HD",
+                "Blue Sport 2 Live HD",
+                "Blue Sport 2 Live HDR",
+                "Blue ZOOM D Schweiz",
+                "Blue ZOOM D Schweiz",
+                "Canal+ Live 4 France HD",
+                "Cytavision Sports 7 HD",
+                "DAZN 4 Portugal HD",
+                "DAZN Portugal",
+                "Fast Sports 2 Armenia",
                 "HBO Max",
-                "TNT Sports 2"
+                "Magenta Hellas Sport 5 HD",
+                "Megogo Sport Ukraine HD",
+                "Megogo Sport Ukraine HD",
+                "Polsat Sport Extra 2 HD",
+                "RTL Deutschland HD",
+                "RTL Deutschland HD",
+                "RTL Deutschland HD",
+                "RTL Deutschland HD",
+                "RTL Deutschland HD",
+                "RTL Deutschland HD",
+                "RTL Schweiz HD",
+                "RTL Schweiz HD",
+                "RTL Österreich HD",
+                "RTL Österreich HD",
+                "RTL+ Deutschland",
+                "Sport 1 Slovakia HD",
+                "Sport 1 Slovakia HD",
+                "Sport 1 Slovakia HD",
+                "Sport 1 Slovakia HD",
+                "Sport 1 Slovakia HD",
+                "Sport 3 Czech",
+                "Sport TV1 Slovenija",
+                "Tabii Spor 1",
+                "TNT Sports 3 HD",
+                "TNT Sports 3 HD",
+                "TNT Sports 5 HD",
+                "TNT Sports 5 HD",
+                "Ziggo Sport 3"
               ]
             }
           ],
@@ -507,6 +627,9 @@
                 "beIN Sports MENA English 1 HD",
                 "Como TV",
                 "Cytavision Sports 8 HD",
+                "Diema Sport 2 HD",
+                "Diema Sport 2 HD",
+                "Diema Sport 2 HD",
                 "Digi Sport 4 Romania",
                 "ITV 1 England HD",
                 "ITV 1 England HD",
@@ -516,11 +639,16 @@
                 "ITV 1 England HD",
                 "ITV 1 England HD",
                 "ITV X",
+                "Nova Sport 2 Czech HD",
+                "Nova Sport 2 Czech HD",
+                "Nova Sport 2 Czech HD",
+                "Nova Sport 2 Czech HD",
                 "Paramount+ USA",
                 "S Sport+ Streaming",
                 "Setanta Sports 1 Eurasia HD",
                 "Setanta Sports 1 Eurasia HD",
                 "Setanta Sports 1 Eurasia HD",
+                "Setanta Sports 2 Baltic",
                 "Setanta Sports+ Ukraine HD",
                 "Sky Sports Football HD",
                 "Sky Sports Football HD",
@@ -571,6 +699,16 @@
                 "beIN Sports France 4 HD max",
                 "beIN Sports France 4 HD max",
                 "Como TV",
+                "Diema Sport 3 HD",
+                "Diema Sport 3 HD",
+                "Diema Sport 3 HD",
+                "Diema Sport 3 HD",
+                "Diema Sport 3 HD",
+                "Nova Sport 1 Czech HD",
+                "Nova Sport 1 Czech HD",
+                "Nova Sport 1 Czech HD",
+                "Nova Sport 1 Czech HD",
+                "Nova Sport 1 Czech HD",
                 "Paramount+ USA",
                 "S Sport+ Streaming",
                 "Sky Go UK",
@@ -599,44 +737,47 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Cytavision Sports 6 HD",
-                "Disney+ Sverige",
-                "Disney+ Suomi",
-                "Digi Sport 2 Romania HD",
-                "beIN Sports MENA 2 HD",
-                "Prima Sport RO 1 HD",
-                "S Sport+ Streaming",
-                "SuperSport 1 Albania HD",
-                "DAZN 2 Portugal HD",
-                "Ziggo Sport 6",
-                "Spíler 2 TV Hungary HD",
-                "Fast Sports TV Armenia",
-                "TSN Malta 4 HD",
+                "MATCH! Russia HD",
+                "S Sport 1 Türkiye HD",
+                "Arena M2 Premium MKD HD",
+                "DAZN Japan",
                 "Azam Sports 4 HD",
-                "Megogo Futbol 2",
-                "DAZN France",
+                "Ziggo Sport 6",
+                "Disney+ Suomi",
+                "DAZN 1 Bar Deutsch HD",
+                "Setanta Sports 2 Eurasia HD",
+                "beIN Sports MENA 2 HD",
+                "Disney+ Danmark",
+                "ESPN+ USA",
+                "Premier Sports GB Player HD",
+                "Digi Sport 2 Romania HD",
+                "Cytavision Sports 6 HD",
+                "MAX Sport 4 Bulgaria HD",
+                "SuperSport 1 Albania HD",
+                "TSN Malta 4 HD",
+                "DAZN Portugal",
+                "MATCH! Futbol 2 HD",
                 "DAZN Belgium",
+                "Setanta Sports 1 Baltic",
                 "Premier Sports 1 Ireland HD",
                 "TV2 Play Norge",
-                "DAZN Deutsch",
-                "ViaPlay Norge HD",
-                "DAZN Portugal",
-                "Arena M2 Premium MKD HD",
-                "Premier Sports 1 UK HD",
-                "DAZN Japan",
-                "DAZN 1 Bar Deutsch HD",
-                "S Sport 1 Türkiye HD",
-                "Magenta Hellas Sport 3 HD",
-                "Setanta Sports 2 Eurasia HD",
-                "Premier Sports GB Player HD",
-                "MATCH! Futbol 2 HD",
-                "Fast Sports",
-                "ESPN+ USA",
-                "Idman TV HD",
-                "Disney+ Danmark",
+                "S Sport+ Streaming",
+                "Disney+ Sverige",
                 "DAZN Italia",
-                "MATCH! Russia HD",
-                "MAX Sport 4 Bulgaria HD"
+                "Idman TV HD",
+                "Nova Sport 3 Czech HD",
+                "Megogo Futbol 2",
+                "Premier Sports 1 UK HD",
+                "DAZN 2 Portugal HD",
+                "Fast Sports TV Armenia",
+                "Fast Sports",
+                "ViaPlay Norge HD",
+                "Spíler 2 TV Hungary HD",
+                "DAZN France",
+                "Go3 Sport 1 Baltic HD",
+                "DAZN Deutsch",
+                "Magenta Hellas Sport 3 HD",
+                "Prima Sport RO 1 HD"
               ]
             },
             {
