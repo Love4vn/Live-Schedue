@@ -1,8 +1,8 @@
 {
-  "updated": "2026-09-18 04:12 VN",
+  "updated": "2026-09-18 11:21 VN",
   "days": {
-    "20260917": {
-      "date": "Thursday, 17/09",
+    "20260918": {
+      "date": "Friday, 18/09",
       "games": [
         {
           "league": "Bundesliga",
@@ -13,30 +13,31 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "ViaPlay Suomi HD",
-                "ViaPlay Sverige HD",
-                "ViaPlay Ísland HD",
-                "beIN Sports France 2 HD",
-                "Sky Sport Bundesliga 1 HD",
-                "MBC Action HD",
-                "ViaPlay Nederland HD",
-                "BBC Sport Website",
-                "Fast Sports 1 Armenia",
-                "Sky Sport Bundesliga HD",
-                "WOW Deutsch",
-                "Sky Sport Bundesliga UHD",
-                "Sky Sport Top Event HD",
-                "Setanta Sports 2 Eurasia HD",
-                "Arena M3 Premium MKD HD",
-                "BBC iPlayer",
-                "OneFootball",
-                "Tring Sport 3 HD",
                 "S Sport+ Streaming",
-                "beIN Sports Australia 2 HD",
-                "BBC iPlayer 4K",
                 "ViaPlay Danmark HD",
+                "BBC iPlayer 4K",
+                "ViaPlay Suomi HD",
+                "Sky Sport Bundesliga 1 HD",
+                "Sky Sport Bundesliga UHD",
+                "BBC Sport Website",
+                "YouTube: Bundesliga",
+                "Tring Sport 3 HD",
                 "ViaPlay Norge HD",
-                "Setanta Sports+ Ukraine HD"
+                "Sky Sport Top Event HD",
+                "ViaPlay Ísland HD",
+                "Arena M3 Premium MKD HD",
+                "Setanta Sports+ Ukraine HD",
+                "ViaPlay Nederland HD",
+                "Sky Sport Bundesliga HD",
+                "beIN Sports France 2 HD",
+                "BBC iPlayer",
+                "beIN Sports Australia 2 HD",
+                "OneFootball",
+                "MBC Action HD",
+                "Setanta Sports 2 Eurasia HD",
+                "ViaPlay Sverige HD",
+                "Fast Sports 1 Armenia",
+                "WOW Deutsch"
               ]
             },
             {
@@ -56,50 +57,56 @@
           "time": "19/09 02:00 AM",
           "tv_channels": [
             {
+              "country": "Hubsport",
+              "channels": [
+                "Dazn 1 Portugal"
+              ]
+            },
+            {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Canal+ Sport 1 Czech HD",
-                "beIN Connect Türkiye",
-                "beIN Sports MENA English 1 HD",
-                "Fast Sports TV Armenia",
-                "Sky Sport 8 NZ HD",
-                "Sport 24 In Flight HD",
-                "Sky UK Ultra HD 1",
-                "Setanta Sports Ukraine HD",
-                "Arena Sport 1 Hrvatska HD",
-                "beIN Connect MENA",
-                "Setanta Sports 1 Eurasia HD",
-                "Sky Sports Main Event UHD",
-                "ViaPlay Suomi HD",
-                "beIN Sports MENA 1 HD",
-                "ViaPlay Sverige HD",
-                "GEM Sport 1 HD",
-                "beIN Sports Türkiye 3 HD",
-                "ViaPlay TV+ Nederland",
                 "Premier League+",
-                "ViaPlay Nederland HD",
-                "Sport 24 At Sea HD",
-                "Cytavision Sports 3 HD",
-                "Arena M1 Premium MKD HD",
-                "Diema Sport 2 HD",
-                "Sky Go UK",
-                "Sky Sports Premier League HD",
+                "Sky Sport 8 NZ HD",
+                "ViaPlay Danmark HD",
+                "Sky UK Ultra HD 1",
+                "ViaPlay Suomi HD",
+                "Arena Sport 1 Hrvatska HD",
+                "Stan Sport Australia",
+                "Canal+ Sport 1 Czech HD",
+                "Sky Sports Main Event UHD",
+                "beIN Sports Türkiye 3 HD",
+                "GEM Sport 1 HD",
+                "DAZN Portugal",
+                "Sport 24 In Flight HD",
                 "ViaPlay Norge HD",
+                "DAZN Canada",
+                "Diema Sport 2 HD",
+                "Sky Sports Premier League HD",
+                "Sky Sports Main Event HD",
                 "Canal+ Foot HD",
                 "DAZN España",
+                "Arena M1 Premium MKD HD",
+                "Fast Sports TV Armenia",
+                "Setanta Sports Ukraine HD",
+                "ViaPlay Nederland HD",
+                "beIN Connect Türkiye",
+                "Cytavision Sports 3 HD",
+                "ViaPlay TV+ Nederland",
+                "beIN Sports MENA English 1 HD",
+                "beIN Sports MENA 1 HD",
+                "beIN Connect MENA",
+                "Sport 24 At Sea HD",
+                "ViaPlay Sverige HD",
                 "Monomax Streaming",
-                "ViaPlay Danmark HD",
-                "DAZN Canada",
-                "DAZN Portugal",
-                "Sky Sports Main Event HD",
-                "Stan Sport Australia"
+                "Sky Go UK",
+                "Setanta Sports 1 Eurasia HD"
               ]
             },
             {
               "country": "Wheresthematch",
               "channels": [
-                "Sky Sports Ultra HDR",
                 "Sky Sports Main Event",
+                "Sky Sports Ultra HDR",
                 "Sky Sports Premier League"
               ]
             },
@@ -110,21 +117,15 @@
               ]
             },
             {
-              "country": "Hubsport",
-              "channels": [
-                "Dazn 1 Portugal"
-              ]
-            },
-            {
               "country": "NowTV",
               "channels": [
                 "Now Sports Premier League TV",
-                "Now Sports Premier League 1",
-                "Hub Premier 1"
+                "Hub Premier 1",
+                "Now Sports Premier League 1"
               ]
             }
           ],
-          "source": "livesportsontv"
+          "source": "hubsport"
         },
         {
           "league": "Bundesliga",
@@ -144,46 +145,6 @@
           "source": "wheresthematch"
         },
         {
-          "league": "La Liga",
-          "match": "Málaga  vs Villarreal",
-          "kick_utc": 1789673400,
-          "time": "18/09 02:30 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "DAZN LaLiga",
-                "DAZN LaLiga 2",
-                "ESPN+ USA",
-                "Viaplay Sports 1 UK",
-                "Premier Sports 1 Ireland",
-                "DAZN1 DE",
-                "Match TV Russia",
-                "MagentaSport 3 League Greece",
-                "Canal+ Sport 6 Poland",
-                "Nova Sport 4 SK",
-                "Nova Sport 4 CZ",
-                "ESPN Deportes",
-                "Match! Football 2 Russia",
-                "Canal+ Sport Poland",
-                "Arena 5 Premium Serbia",
-                "TV2 Sport Norway",
-                "MAX Sport 4 Bulgaria",
-                "SuperSport Laliga",
-                "beIN Sports MENA 6",
-                "Sportklub 1 Croatia",
-                "DAZN LaLiga",
-                "Viaplay Sports 1 UK",
-                "ESPN Deportes",
-                "Premier Sports 1 UK",
-                "Event Stream",
-                "Event Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
           "league": "Tennis",
           "match": "ATP Tennis",
           "kick_utc": 1789747200,
@@ -197,37 +158,6 @@
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Peyton Stearns vs Sloane Stephens",
-          "kick_utc": 1789691400,
-          "time": "18/09 07:30 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1789677000,
-          "time": "18/09 03:30 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Sportklub 5 Croatia"
-              ]
-            }
-          ],
-          "source": "daddylive"
         },
         {
           "league": "Tennis",
@@ -261,93 +191,19 @@
         },
         {
           "league": "Tennis",
-          "match": "🇺 Eva Lys vs  Nadia Podoroska",
-          "kick_utc": 1789677000,
-          "time": "18/09 03:30 AM",
+          "match": "",
+          "kick_utc": 1789772400,
+          "time": "19/09 06:00 AM",
           "tv_channels": [
             {
-              "country": "Daddylive",
+              "country": "Ausport",
               "channels": [
-                "Channel Not Listed #JustAsk"
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
               ]
             }
           ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ingrid Martins /  Jazmin Ortenzi vs 🇺 Alycia Parks? / 🇺 Anna Zmarripa",
-          "kick_utc": 1789677000,
-          "time": "18/09 03:30 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Channel Not Listed #JustAsk"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Kaitlin Quevedo / 🇨🇿 Dominika Salkova vs  Julia Riera /  Solana Sierra",
-          "kick_utc": 1789677000,
-          "time": "18/09 03:30 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Channel Not Listed #JustAsk"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "🇺 Ekaterina Ovccharenko /  Laura Pigossi vs 🇺 Mary Stoiana / 🇨🇿 Vendula Valdmannova",
-          "kick_utc": 1789682400,
-          "time": "18/09 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Channel Not Listed #JustAsk"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Cristina Bucsa / 🇺 Nicole Melichar-Martinez vs 🇺 Maria Kozyreva /  Maia Lumsden",
-          "kick_utc": 1789677000,
-          "time": "18/09 03:30 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Channel Not Listed #JustAsk"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1789689600,
-          "time": "18/09 07:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -366,9 +222,39 @@
         },
         {
           "league": "Tennis",
-          "match": "Guadalajara Open presentado por Santander -QF(3-4)",
-          "kick_utc": 1789686000,
-          "time": "18/09 06:00 AM",
+          "match": "Tournoi de Guadalajara 2026",
+          "kick_utc": 1789779600,
+          "time": "19/09 08:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Tva Sports 2 Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi de Guadalajara 2026",
+          "kick_utc": 1789786800,
+          "time": "19/09 10:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Tva Sports 2 Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Guadalajara Open presentado por Santander -SF(1-2)",
+          "kick_utc": 1789772400,
+          "time": "19/09 06:00 AM",
           "tv_channels": [
             {
               "country": "NowTV",
