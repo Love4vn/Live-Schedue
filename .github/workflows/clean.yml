@@ -1,17 +1,19 @@
 name: Clean M3U Playlist
 
 on:
-  #schedule:
-  #  - cron: '10 */6 * * *'   # chạy mỗi 6 giờ
   push:
     paths:
       - 'live_schedule.m3u'
       - '.github/workflows/clean.yml'
   workflow_dispatch:
-# Đảm bảo chỉ 1 workflow chạy tại 1 thời điểm
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
+
+permissions:
+  contents: write
+
 jobs:
   clean:
     runs-on: ubuntu-latest
@@ -20,8 +22,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0  # Lấy toàn bộ lịch sử để tránh xung đột
+
+      # ✅ Đồng bộ local khớp hoàn toàn với remote trước khi làm gì
+      - name: Sync with remote
+        run: |
+          git fetch origin "${GITHUB_REF_NAME}"
+          git reset --hard "origin/${GITHUB_REF_NAME}"
 
       - name: Setup Rust
         uses: actions-rust-lang/setup-rust-toolchain@v1
@@ -29,7 +38,7 @@ jobs:
           toolchain: stable
 
       - name: Cache cargo registry
-        uses: actions/cache@v3
+        uses: actions/cache@v4          # v3 -> v4 (Node 24 ready)
         with:
           path: |
             ~/.cargo/registry
@@ -52,5 +61,5 @@ jobs:
           file_pattern: live_schedule_clean.m3u
           commit_user_name: "CXT Cleaner Bot"
           commit_user_email: "cxt-bot@users.noreply.github.com"
-          # Không sử dụng skip_fetch, action sẽ tự fetch trước khi commit
-          push_options: '--force-with-lease'  # Tránh ghi đè commit mới
+          branch: ${{ github.ref_name }}
+          # ❌ BỎ dòng push_options --force-with-lease
