@@ -9,7 +9,10 @@ on:
 # Cấp quyền ghi cho GITHUB_TOKEN để có thể push code
 permissions:
   contents: write
-
+# Đảm bảo chỉ 1 workflow chạy tại 1 thời điểm
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   fetch-and-commit:
     runs-on: ubuntu-latest
