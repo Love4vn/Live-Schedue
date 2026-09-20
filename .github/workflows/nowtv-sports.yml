@@ -41,4 +41,6 @@ jobs:
           git add nowtv_sports_schedule_en.json
           # Chỉ commit nếu có thay đổi
           git diff --cached --quiet || git commit -m "Update Now TV sports schedule [skip ci]"
-          git push
+          # Đồng bộ với remote trước khi push để tránh bị reject
+          git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
