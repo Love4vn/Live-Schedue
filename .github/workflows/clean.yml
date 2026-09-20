@@ -8,7 +8,10 @@ on:
       - 'live_schedule.m3u'
       - '.github/workflows/clean.yml'
   workflow_dispatch:
-
+# Đảm bảo chỉ 1 workflow chạy tại 1 thời điểm
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   clean:
     runs-on: ubuntu-latest
