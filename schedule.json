@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-21 19:35 VN",
+  "updated": "2026-09-22 02:56 VN",
   "days": {
     "20260921": {
       "date": "Monday, 21/09",
@@ -18,6 +18,21 @@
             }
           ],
           "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "Maria Sakkari vs Linda Fruhvirtova",
+          "kick_utc": 1790042400,
+          "time": "22/09 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -45,6 +60,22 @@
               "country": "Ausport",
               "channels": [
                 "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Czech Republic W vs Great Britain W",
+          "kick_utc": 1790067600,
+          "time": "22/09 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 2"
               ]
             }
           ],
