@@ -1,19 +1,20 @@
 {
-  "updated": "2026-09-22 06:59 VN",
+  "updated": "2026-09-22 11:43 VN",
   "days": {
-    "20260921": {
-      "date": "Monday, 21/09",
+    "20260922": {
+      "date": "Tuesday, 22/09",
       "games": [
         {
           "league": "Tennis",
           "match": "ATP Tennis",
-          "kick_utc": 1790046000,
-          "time": "22/09 10:00 AM",
+          "kick_utc": 1790049600,
+          "time": "22/09 11:00 AM",
           "tv_channels": [
             {
               "country": "Wheresthematch",
               "channels": [
-                "Sky Sports Tennis"
+                "Sky Sports Tennis",
+                "Sky Sports+"
               ]
             }
           ],
@@ -21,65 +22,34 @@
         },
         {
           "league": "Tennis",
-          "match": "Maria Sakkari vs Linda Fruhvirtova",
-          "kick_utc": 1790042400,
-          "time": "22/09 09:00 AM",
+          "match": "ATP Tennis",
+          "kick_utc": 1790132400,
+          "time": "23/09 10:00 AM",
           "tv_channels": [
             {
-              "country": "Ausport",
+              "country": "Wheresthematch",
               "channels": [
-                "beIN Sports Connect"
+                "Sky Sports Tennis",
+                "Sky Sports+"
               ]
             }
           ],
-          "source": "ausport"
+          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1790046000,
-          "time": "22/09 10:00 AM",
+          "match": "WTA Singapore Open",
+          "kick_utc": 1790074800,
+          "time": "22/09 06:00 PM",
           "tv_channels": [
             {
-              "country": "Ausport",
+              "country": "Wheresthematch",
               "channels": [
-                "beIN Sports Connect",
-                "Stan Sport"
+                "Sky Sports+"
               ]
             }
           ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1790073000,
-          "time": "22/09 05:30 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Czech Republic W vs Great Britain W",
-          "kick_utc": 1790067600,
-          "time": "22/09 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 2"
-              ]
-            }
-          ],
-          "source": "ausport"
+          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
