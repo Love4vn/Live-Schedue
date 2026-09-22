@@ -1,24 +1,9 @@
 {
-  "updated": "2026-09-22 18:22 VN",
+  "updated": "2026-09-22 23:45 VN",
   "days": {
     "20260922": {
       "date": "Tuesday, 22/09",
       "games": [
-        {
-          "league": "Tennis",
-          "match": "WTA Singapore Open",
-          "kick_utc": 1790074800,
-          "time": "22/09 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports+"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
-        },
         {
           "league": "Tennis",
           "match": "ATP Tennis",
@@ -37,6 +22,21 @@
         },
         {
           "league": "Tennis",
+          "match": "WTA Singapore Open",
+          "kick_utc": 1790170200,
+          "time": "23/09 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Sky Sports+"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
           "match": "",
           "kick_utc": 1790139600,
           "time": "23/09 12:00 PM",
@@ -45,6 +45,7 @@
               "country": "Ausport",
               "channels": [
                 "beIN Sports Connect",
+                "Stan Sport",
                 "beIN SPORTS 1"
               ]
             }
@@ -56,6 +57,36 @@
           "match": "",
           "kick_utc": 1790143200,
           "time": "23/09 01:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1790159400,
+          "time": "23/09 05:30 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1790163000,
+          "time": "23/09 06:30 PM",
           "tv_channels": [
             {
               "country": "Ausport",
@@ -81,21 +112,6 @@
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ténis - WTA Tour - WTA 125 Porto Open",
-          "kick_utc": 1790078280,
-          "time": "22/09 06:58 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -129,18 +145,33 @@
         },
         {
           "league": "Tennis",
-          "match": "Singapore Tennis Open presented by BNP Paribas E3",
-          "kick_utc": 1790073000,
-          "time": "22/09 05:30 PM",
+          "match": "ATP World Tour 250 - Hangzhou 2026",
+          "kick_utc": 1790163000,
+          "time": "23/09 06:30 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 4"
+                "Sport Tv 6 Hd Portugal"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - WTA Tour - WTA 125 Porto Open",
+          "kick_utc": 1790164800,
+          "time": "23/09 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -162,21 +193,6 @@
           "match": ": Chengdu Open",
           "kick_utc": 1790139600,
           "time": "23/09 12:00 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 5"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": ": Chengdu Open",
-          "kick_utc": 1790154000,
-          "time": "23/09 04:00 PM",
           "tv_channels": [
             {
               "country": "NowTV",
