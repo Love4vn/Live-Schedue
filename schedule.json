@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-23 11:27 VN",
+  "updated": "2026-09-23 15:24 VN",
   "days": {
     "20260923": {
       "date": "Wednesday, 23/09",
@@ -13,9 +13,12 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "beIN Sports MENA 3 HD",
+                "beIN Sports MENA 3 HD",
                 "Megogo Futbol 1",
                 "SportKlub 3 Slovenija",
                 "SportKlub 5 Hrvatska",
+                "TV2 Sport X Dansk HD",
                 "ViaPlay Norge HD",
                 "ViaPlay Sverige HD",
                 "ViaPlay Ísland HD"
@@ -46,14 +49,13 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP Tennis",
-          "kick_utc": 1790132400,
-          "time": "23/09 10:00 AM",
+          "match": "WTA Singapore Open",
+          "kick_utc": 1790170200,
+          "time": "23/09 08:30 PM",
           "tv_channels": [
             {
               "country": "Wheresthematch",
               "channels": [
-                "Sky Sports Tennis",
                 "Sky Sports+"
               ]
             }
@@ -78,39 +80,248 @@
         },
         {
           "league": "Tennis",
-          "match": "WTA Singapore Open",
-          "kick_utc": 1790170200,
-          "time": "23/09 08:30 PM",
+          "match": "Kazakhstan W vs Spain W",
+          "kick_utc": 1790154000,
+          "time": "23/09 04:00 PM",
           "tv_channels": [
             {
-              "country": "Wheresthematch",
+              "country": "Ausport",
               "channels": [
-                "Sky Sports+"
+                "beIN Sports Connect",
+                "beIN SPORTS 2"
               ]
             }
           ],
-          "source": "wheresthematch"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
-          "match": "ATP World Tour 250 - Chengdu Open 2026",
-          "kick_utc": 1790139600,
-          "time": "23/09 12:00 PM",
+          "match": "Mirra Andreeva vs Aliaksandra Sasnovich",
+          "kick_utc": 1790159400,
+          "time": "23/09 05:30 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "Sport Tv2 Hd Portugal"
+                "beIN Sports Connect"
+              ]
+            },
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis Stream"
               ]
             }
           ],
-          "source": "hubsport"
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Valentin Royer vs Adam Walton",
+          "kick_utc": 1790163000,
+          "time": "23/09 06:30 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
+              ]
+            },
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ukraine vs Belgium W",
+          "kick_utc": 1790215200,
+          "time": "24/09 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect",
+                "beIN SPORTS 2"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1790159400,
+          "time": "23/09 05:30 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Sportklub 1 Croatia"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1790218800,
+          "time": "24/09 10:00 AM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1790227800,
+          "time": "24/09 12:30 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN SPORTS 1",
+                "beIN Sports Connect",
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ESP vs 🇰🇿 KAZ; Seoul-WTA, Singapore-WTA, Chengdu-ATP, &amp; Han",
+          "kick_utc": 1790157600,
+          "time": "23/09 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis Channel",
+                "Sky Sports+",
+                "Sky Sports Tennis UK",
+                "Sky Sports Tennis Germany",
+                "Sky Sport Tennis Italy",
+                "TV4 Tennis",
+                "Canal+ Sport 2 Czechia",
+                "Cytavision Sports 5 Cyprus",
+                "beIN Sports 3 France",
+                "beIN Sports 4 Max France",
+                "Movistar Deportes 2 Spain",
+                "Cytavision Sports 6 Cyprus",
+                "MAX Sport 1 Bulgaria",
+                "MAX Sport 2 Bulgaria",
+                "MAX Sport 3 Bulgaria",
+                "Arena Tennis",
+                "TyC Sports Argentina",
+                "Digi Sport 2 Romania",
+                "Ziggo Sport 5 NL",
+                "NovaSports Prime GR",
+                "Polsat Sport 1 Poland",
+                "Canal+ Sport 2 Poland",
+                "Polsat Sport Premium 2 Poland",
+                "Polsat Sport 3 Poland",
+                "Canal+ Sport 2 Poland",
+                "ESPN2 Argentina",
+                "beIN SPORTS Australia 1",
+                "beIN SPORTS Australia 2",
+                "NovaSports 6 GR",
+                "beIN Sports MENA 7",
+                "beIN Sports MENA 9",
+                "ESPN2 Brazil",
+                "ESPN3 Brazil",
+                "Sport 5 Israel"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "Spain vs 🇰🇿 Kazakhstan",
+          "kick_utc": 1790154000,
+          "time": "23/09 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis Channel",
+                "beIN Sports 1 France",
+                "Ziggo Sport 1 NL",
+                "Ziggo Sport 4 NL",
+                "Sport TV4 Portugal",
+                "Polsat Sport 1 Poland",
+                "Polsat Sport 2 Poland",
+                "Sport 5 Plus Israel",
+                "Tennis Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "🇺 Alycia Parks vs 🇨 Leylah Fernandez",
+          "kick_utc": 1790164800,
+          "time": "23/09 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "🇲 Anastasia Detiuc / 🇺 Irina Khromacheva vs 🇨 Eudice? Liang / 🇨 Yuan Yue",
+          "kick_utc": 1790155800,
+          "time": "23/09 04:30 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Channel Not Listed #JustAsk"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "Maja Chwalinska / 🇨🇿 Barbora Krejcikova vs 🇿 Erin Routliffe /  Aldila Sutjiadi",
+          "kick_utc": 1790154000,
+          "time": "23/09 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Channel Not Listed #JustAsk"
+              ]
+            }
+          ],
+          "source": "daddylive"
         },
         {
           "league": "Tennis",
           "match": "ATP World Tour 250 - Hangzhou 2026",
-          "kick_utc": 1790143200,
-          "time": "23/09 01:00 PM",
+          "kick_utc": 1790163000,
+          "time": "23/09 06:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -124,8 +335,8 @@
         {
           "league": "Tennis",
           "match": "ATP World Tour 250 - Hangzhou 2026",
-          "kick_utc": 1790163000,
-          "time": "23/09 06:30 PM",
+          "kick_utc": 1790227800,
+          "time": "24/09 12:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -153,9 +364,39 @@
         },
         {
           "league": "Tennis",
-          "match": "Singapore Tennis Open presented by BNP Paribas E4",
-          "kick_utc": 1790139600,
-          "time": "23/09 12:00 PM",
+          "match": "ATP World Tour 250 - Chengdu Open 2026",
+          "kick_utc": 1790226000,
+          "time": "24/09 12:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Singapore Tennis Open presented by BNP Paribas E5",
+          "kick_utc": 1790159400,
+          "time": "23/09 05:30 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Singapore Tennis Open presented by BNP Paribas E6",
+          "kick_utc": 1790226000,
+          "time": "24/09 12:00 PM",
           "tv_channels": [
             {
               "country": "NowTV",
@@ -169,28 +410,13 @@
         {
           "league": "Tennis",
           "match": ": Chengdu Open",
-          "kick_utc": 1790139600,
-          "time": "23/09 12:00 PM",
+          "kick_utc": 1790226000,
+          "time": "24/09 12:00 PM",
           "tv_channels": [
             {
               "country": "NowTV",
               "channels": [
                 "Ziggo Sport 5"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Singapore Tennis Open presented by BNP Paribas E5",
-          "kick_utc": 1790159400,
-          "time": "23/09 05:30 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports 4"
               ]
             }
           ],
