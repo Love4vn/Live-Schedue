@@ -1,5 +1,5 @@
 # File: livesportsontv.py
-# Hoàn chỉnh: scrape livesportsontv + footonsat
+# Hoàn chỉnh: scrape livesportsontv (DOM Next.js) + footonsat
 # Đã bỏ NowStreams do API lỗi
 
 import asyncio
@@ -8,7 +8,6 @@ import re
 import aiohttp
 from datetime import datetime, timedelta, timezone
 from playwright.async_api import async_playwright
-from bs4 import BeautifulSoup
 
 # ==================== CẤU HÌNH ====================
 VN_TZ = timezone(timedelta(hours=7))
@@ -82,37 +81,6 @@ def parse_time_with_ampm(time_str: str):
     elif meridiem == 'AM' and hour == 12:
         hour = 0
     return hour, minute
-
-def parse_date_from_text(text):
-    text = text.strip().lower()
-    match = re.search(r'(\d{1,2})\s+([a-zà-ỹ0-9\s]+)', text)
-    if match:
-        day = match.group(1)
-        month_str = match.group(2).strip()
-        return day, month_str
-    return None, None
-
-def get_month_number(month_str: str) -> int:
-    month_str = month_str.lower()
-    month_map = {
-        "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
-        "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12,
-        "tháng 1": 1, "tháng 2": 2, "tháng 3": 3, "tháng 4": 4, "tháng 5": 5,
-        "tháng 6": 6, "tháng 7": 7, "tháng 8": 8, "tháng 9": 9, "tháng 10": 10,
-        "tháng 11": 11, "tháng 12": 12
-    }
-    for k, v in month_map.items():
-        if k in month_str:
-            return v
-    return 1
-
-def extract_timezone_from_html(soup):
-    text = soup.get_text()
-    match = re.search(r'ALL TIME GMT([+-]\d+)', text, re.IGNORECASE)
-    if match:
-        offset = int(match.group(1))
-        return timezone(timedelta(hours=offset))
-    return timezone.utc
 
 def is_within_time_range(dt: datetime, ref: datetime) -> bool:
     start = ref - timedelta(hours=TIME_RANGE_HOURS_BEFORE)
@@ -227,21 +195,16 @@ TEAM_NAME_MAPPING = {
     "the clarets": "Burnley",
     "west bromwich albion": "West Brom",
     "west brom": "West Brom",
-    # Ipswich Town
     "ipswich town": "Ipswich Town",
     "ipswich": "Ipswich Town",
     "the tractor boys": "Ipswich Town",
-
-    # Coventry City
     "coventry city": "Coventry City",
     "coventry": "Coventry City",
     "the sky blues": "Coventry City",
-
-    # Hull City
     "hull city": "Hull City",
     "hull": "Hull City",
     "the tigers": "Hull City",
-    
+
     # Bundesliga
     "bayern munich": "Bayern Munich",
     "bayern münchen": "Bayern Munich",
@@ -285,7 +248,7 @@ TEAM_NAME_MAPPING = {
     "darmstadt": "Darmstadt 98",
     "fc heidenheim": "Heidenheim",
     "heidenheim": "Heidenheim",
-    
+
     # La Liga
     "real madrid": "Real Madrid",
     "madrid": "Real Madrid",
@@ -331,7 +294,7 @@ TEAM_NAME_MAPPING = {
     "girona fc": "Girona",
     "celta vigo": "Celta Vigo",
     "celta": "Celta Vigo",
-    
+
     # Serie A
     "ac milan": "AC Milan",
     "milan": "AC Milan",
@@ -384,7 +347,7 @@ TEAM_NAME_MAPPING = {
     "azzurri": "Empoli",
     "spezia": "Spezia",
     "aquilotti": "Spezia",
-    
+
     # Ligue 1
     "psg": "Paris Saint-Germain",
     "paris saint-germain": "Paris Saint-Germain",
@@ -432,73 +395,38 @@ TEAM_NAME_MAPPING = {
     "ac ajaccio": "Ajaccio",
     "auxerre": "Auxerre",
     "aja": "Auxerre",
-    
-    # Giải vô địch thế giới và các đội tuyển quốc gia
-    "germany": "Germany",
-    "deutschland": "Germany",
-    "nationalelf": "Germany",
-    "dfb elf": "Germany",
-    "die mannschaft": "Germany",
-    "france": "France",
-    "les bleus": "France",
-    "england": "England",
-    "three lions": "England",
-    "spain": "Spain",
-    "la roja": "Spain",
-    "furias rojas": "Spain",
-    "italy": "Italy",
-    "azzurri": "Italy",
-    "squadra azzurra": "Italy",
-    "portugal": "Portugal",
-    "selecao das quinas": "Portugal",
-    "netherlands": "Netherlands",
-    "holland": "Netherlands",
-    "oranje": "Netherlands",
-    "belgium": "Belgium",
-    "red devils": "Belgium",
-    "croats": "Croatia",
-    "vatreni": "Croatia",
-    "argentina": "Argentina",
-    "albiceleste": "Argentina",
-    "brazil": "Brazil",
-    "selecao": "Brazil",
-    "canarinho": "Brazil",
-    "japan": "Japan",
-    "blue samurai": "Japan",
-    "south korea": "South Korea",
-    "republic of korea": "South Korea",
+
+    # Đội tuyển quốc gia
+    "germany": "Germany", "deutschland": "Germany", "nationalelf": "Germany",
+    "dfb elf": "Germany", "die mannschaft": "Germany",
+    "france": "France", "les bleus": "France",
+    "england": "England", "three lions": "England",
+    "spain": "Spain", "la roja": "Spain", "furias rojas": "Spain",
+    "italy": "Italy", "squadra azzurra": "Italy",
+    "portugal": "Portugal", "selecao das quinas": "Portugal",
+    "netherlands": "Netherlands", "holland": "Netherlands", "oranje": "Netherlands",
+    "belgium": "Belgium", "red devils": "Belgium",
+    "croatia": "Croatia", "vatreni": "Croatia",
+    "argentina": "Argentina", "albiceleste": "Argentina",
+    "brazil": "Brazil", "selecao": "Brazil", "canarinho": "Brazil",
+    "japan": "Japan", "blue samurai": "Japan",
+    "south korea": "South Korea", "republic of korea": "South Korea",
     "tigers of asia": "South Korea",
-    "usa": "United States",
-    "usmnt": "United States",
+    "usa": "United States", "usmnt": "United States",
     "the stars and stripes": "United States",
-    
-    # European National Teams
-    "austria": "Austria",
-    "wunderteam": "Austria",
-    "czech republic": "Czech Republic",
-    "czechia": "Czech Republic",
-    "denmark": "Denmark",
-    "danish dynamite": "Denmark",
-    "poland": "Poland",
-    "bialo-czerwoni": "Poland",
-    "sweden": "Sweden",
-    "blagult": "Sweden",
-    "switzerland": "Switzerland",
-    "nati": "Switzerland",
-    "turkey": "Turkey",
-    "ayyildizlilar": "Turkey",
-    "russia": "Russia",
-    "sbornaya": "Russia",
-    "ukraine": "Ukraine",
-    "z birna": "Ukraine",
-    "serbia": "Serbia",
-    "orlovi": "Serbia",
-    "greece": "Greece",
-    "pirasma": "Greece",
-    "scotland": "Scotland",
-    "tartan army": "Scotland",
-    "wales": "Wales",
-    "dragons": "Wales",
+    "austria": "Austria", "wunderteam": "Austria",
+    "czech republic": "Czech Republic", "czechia": "Czech Republic",
+    "denmark": "Denmark", "danish dynamite": "Denmark",
+    "poland": "Poland", "bialo-czerwoni": "Poland",
+    "sweden": "Sweden", "blagult": "Sweden",
+    "switzerland": "Switzerland", "nati": "Switzerland",
+    "turkey": "Turkey", "ayyildizlilar": "Turkey",
+    "russia": "Russia", "sbornaya": "Russia",
+    "ukraine": "Ukraine", "z birna": "Ukraine",
+    "serbia": "Serbia", "orlovi": "Serbia",
+    "greece": "Greece", "pirasma": "Greece",
+    "scotland": "Scotland", "tartan army": "Scotland",
+    "wales": "Wales", "dragons": "Wales",
 }
 
 def normalize_team_name(name: str) -> str:
@@ -584,10 +512,11 @@ LEAGUES_CONFIG = {
     "UEFA Europa Conference League": {"url": "https://www.livesportsontv.com/league/uefa-conference-league", "teams": None},
     "UEFA European Championship": {"url": "https://www.livesportsontv.com/league/uefa-european-championship", "teams": None},
     "FIFA World Cup": {"url": "https://www.livesportsontv.com/league/world-cup-5", "teams": None},
-    "International Friendlies": {"url": "https://www.livesportsontv.com/league/friendly", "teams": None, "custom_filter": "friendly"},
+    # ✅ SỬA URL: dùng international-friendly-2
+    "International Friendlies": {"url": "https://www.livesportsontv.com/league/international-friendly-2", "teams": None, "custom_filter": "friendly"},
     "FA Cup": {"url": "https://www.livesportsontv.com/league/fa-cup", "teams": None, "custom_filter": "premier_league_only"},
     "Carabao Cup": {"url": "https://www.livesportsontv.com/league/carabao-cup", "teams": None, "custom_filter": "premier_league_only"},
-    # Tennis – Cập nhật URL mới
+    # Tennis
     "Tennis (ATP)": {"url": "https://www.livesportsontv.com/league/atp/", "is_tennis": True},
     "Tennis (WTA)": {"url": "https://www.livesportsontv.com/league/wta/", "is_tennis": True},
     "Australian Open": {"url": "https://www.livesportsontv.com/league/grand-slam/australian-open/", "is_tennis": True},
@@ -595,6 +524,254 @@ LEAGUES_CONFIG = {
     "Wimbledon": {"url": "https://www.livesportsontv.com/league/wimbledon-tennis", "is_tennis": True},
     "US Open": {"url": "https://www.livesportsontv.com/league/us-open", "is_tennis": True}
 }
+
+# ==================== LIVESPORTSONTV SCRAPING (DOM MỚI) ====================
+async def scrape_livesportsontv(ref_time: datetime):
+    """
+    Scrape từng giải đấu trong LEAGUES_CONFIG, chạy song song (Semaphore 4).
+    Dùng page.evaluate() để lấy dữ liệu từ DOM Next.js mới.
+    """
+    all_games = []
+    semaphore = asyncio.Semaphore(4)
+
+    async def scrape_one(league_name, cfg):
+        async with semaphore:
+            return await scrape_league(league_name, cfg, ref_time)
+
+    tasks = [scrape_one(name, cfg) for name, cfg in LEAGUES_CONFIG.items()]
+    results = await asyncio.gather(*tasks, return_exceptions=True)
+
+    for result in results:
+        if isinstance(result, Exception):
+            print(f"⚠️ Lỗi khi scrape một giải: {result}")
+            continue
+        if result:
+            all_games.extend(result)
+
+    return all_games
+
+
+async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
+    """Scrape một giải đấu cụ thể bằng Playwright + page.evaluate()."""
+    url = cfg["url"]
+    team_filter = cfg.get("teams")
+    custom_filter = cfg.get("custom_filter")
+    is_tennis = cfg.get("is_tennis", False)
+    games = []
+
+    async with async_playwright() as p:
+        browser = await p.chromium.launch(
+            headless=True,
+            args=["--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage"]
+        )
+        context = await browser.new_context(
+            locale="en-US",
+            timezone_id="Asia/Makassar",
+            user_agent=(
+                "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+                "(KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36"
+            )
+        )
+        page = await context.new_page()
+        page.set_default_navigation_timeout(60000)
+        page.set_default_timeout(30000)
+
+        print(f"\n--- {league_name} ---")
+        print(f"    URL: {url}")
+
+        try:
+            await page.goto(url, wait_until="domcontentloaded", timeout=60000)
+            # Chờ các thẻ match link xuất hiện (dữ liệu đã render)
+            try:
+                await page.locator('a[href^="/match/"]').first.wait_for(
+                    state="visible", timeout=15000
+                )
+            except Exception:
+                print(f"    ⚠️ Không có sự kiện render (timeout)")
+                await context.close()
+                await browser.close()
+                return []
+
+            # Trích xuất dữ liệu bằng JavaScript
+            raw_events = await page.evaluate("""
+                () => {
+                    const output = [];
+                    const sportBlocks = [
+                        ...document.querySelectorAll('[class*="FixtureListBySport_sport__"]')
+                    ];
+
+                    if (sportBlocks.length > 0) {
+                        for (const sportBlock of sportBlocks) {
+                            const sport = sportBlock.querySelector(
+                                '[class*="SectionDivider_label__"]'
+                            )?.textContent?.trim() || "";
+                            const leagueCards = [
+                                ...sportBlock.querySelectorAll(':scope > [class*="Card_card__"]')
+                            ];
+                            for (const leagueCard of leagueCards) {
+                                const league = leagueCard.querySelector(
+                                    '[class*="LeagueCard_cardTitleLink__"]'
+                                )?.textContent?.trim() || "";
+                                const eventElements = [
+                                    ...leagueCard.querySelectorAll(
+                                        '[class*="FixtureItem_container__"]'
+                                    )
+                                ];
+                                for (const eventElement of eventElements) {
+                                    if (eventElement.getClientRects().length === 0) continue;
+                                    const link = eventElement.querySelector('a[href^="/match/"]');
+                                    const title = link?.getAttribute("aria-label")?.trim();
+                                    const href = link?.getAttribute("href");
+                                    const time = eventElement.querySelector(
+                                        '[class*="FixtureItem_time__"]'
+                                    )?.textContent?.trim() || "";
+                                    const channelElements = [
+                                        ...eventElement.querySelectorAll(
+                                            '[class*="FixtureItem_channelChip__"]'
+                                        )
+                                    ];
+                                    const channels = channelElements
+                                        .map((element) => {
+                                            const name =
+                                                element.querySelector(
+                                                    '[class*="FixtureItem_channelChipText__"]'
+                                                )?.textContent?.trim() ||
+                                                element.querySelector("img")?.getAttribute("alt")?.trim() ||
+                                                "";
+                                            const channelLink = element.closest("a");
+                                            return {
+                                                name,
+                                                type: element.className.includes("nonStreaming")
+                                                    ? "tv" : "streaming",
+                                                sourceUrl: channelLink?.href || null
+                                            };
+                                        })
+                                        .filter((channel) => channel.name);
+                                    if (title && href && time) {
+                                        output.push({ sport, league, title, href, time, channels });
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        // Fallback: cấu trúc cũ
+                        const rows = document.querySelectorAll('.event--wrapp');
+                        for (const row of rows) {
+                            const timeTag = row.querySelector('time');
+                            const titleEl = row.querySelector('a.event__title');
+                            if (!timeTag || !titleEl) continue;
+                            const home = row.querySelector('[class*="event__participant--home"]')?.textContent?.trim() || "?";
+                            const away = row.querySelector('[class*="event__participant--away"]')?.textContent?.trim() || "?";
+                            const title = `${away} @ ${home}`;
+                            const href = titleEl.getAttribute('href');
+                            const time = timeTag.textContent.trim();
+                            const channels = [];
+                            row.querySelectorAll('.event__tags a').forEach(a => {
+                                const aria = a.getAttribute('aria-label');
+                                if (aria) channels.push({ name: aria, type: 'tv', sourceUrl: a.href });
+                                else if (a.textContent.trim()) channels.push({ name: a.textContent.trim(), type: 'tv', sourceUrl: a.href });
+                            });
+                            output.push({ sport: '', league: '', title, href, time, channels });
+                        }
+                    }
+                    return output;
+                }
+            """)
+
+            if not raw_events:
+                print(f"    📊 0 sự kiện")
+                await context.close()
+                await browser.close()
+                return []
+
+            print(f"    📊 {len(raw_events)} sự kiện thô")
+
+            added = 0
+            for raw in raw_events:
+                try:
+                    # Parse giờ (AM/PM)
+                    match = re.match(r'(\d{1,2}):(\d{2})\s*(AM|PM)', raw['time'], re.IGNORECASE)
+                    if not match:
+                        continue
+                    hour = int(match.group(1))
+                    minute = int(match.group(2))
+                    meridiem = match.group(3).upper()
+                    if meridiem == 'PM' and hour != 12:
+                        hour += 12
+                    elif meridiem == 'AM' and hour == 12:
+                        hour = 0
+
+                    # Ngày: dùng ngày hiện tại của ref_time (WITA)
+                    now_wita = ref_time
+                    page_dt = datetime(now_wita.year, now_wita.month, now_wita.day, hour, minute)
+                    page_dt = page_dt.replace(tzinfo=timezone(timedelta(hours=8)))  # WITA
+                    vn_dt = page_dt.astimezone(VN_TZ)
+
+                    if not is_within_time_range(vn_dt, ref_time):
+                        continue
+
+                    matchup = raw['title']
+                    league_raw = raw.get('league', '') or league_name
+                    league_display = normalize_league(league_raw) if league_raw else league_name
+                    if is_tennis:
+                        if league_name in ["Australian Open", "French Open", "Wimbledon", "US Open"]:
+                            league_display = "Tennis (Grand Slam)"
+                        else:
+                            league_display = league_name
+
+                    # Lọc nữ/trẻ
+                    if is_youth_or_women(matchup, league_display):
+                        continue
+
+                    # Lọc theo team/giải
+                    if team_filter is not None:
+                        if not any(t.lower() in matchup.lower() for t in team_filter):
+                            continue
+                    if custom_filter == "premier_league_only":
+                        if not has_premier_league_team(matchup):
+                            continue
+                    elif custom_filter == "friendly":
+                        parts = matchup.split(' @ ')
+                        if len(parts) == 2:
+                            away, home = parts
+                        else:
+                            home, away = "?", "?"
+                        if not include_friendly_match(home, away):
+                            continue
+
+                    # Kênh
+                    channels = []
+                    for ch in raw.get('channels', []):
+                        name = ch.get('name', '').strip()
+                        if name:
+                            channels.append(name)
+                    channels = list(dict.fromkeys(channels))
+
+                    games.append({
+                        "Date": vn_dt.strftime("%Y-%m-%d"),
+                        "Time": vn_dt.strftime("%H:%M"),
+                        "League": league_display,
+                        "Matchup": matchup,
+                        "Services": channels
+                    })
+                    added += 1
+                except Exception:
+                    continue
+
+            print(f"    ✅ Thêm {added} trận")
+            await context.close()
+            await browser.close()
+            return games
+
+        except Exception as e:
+            print(f"    ❌ Lỗi scrape {league_name}: {e}")
+            try:
+                await context.close()
+                await browser.close()
+            except Exception:
+                pass
+            return []
+
 
 # ==================== FOOTONSAT ====================
 async def fetch_footonsat_data(ref_time: datetime):
@@ -669,215 +846,6 @@ def parse_footonsat_items(items, ref_time):
             pass
     return matches
 
-# ==================== LIVESPORTSONTV SCRAPING (cập nhật xử lý nút "more") ====================
-async def scrape_livesportsontv(ref_time: datetime):
-    """
-    Scrape từng giải đấu trong LEAGUES_CONFIG, chạy song song.
-    Nếu một giải không có dữ liệu, vẫn tiếp tục các giải khác.
-    """
-    all_games = []
-    semaphore = asyncio.Semaphore(4)  # Giới hạn 4 luồng
-
-    async def scrape_one(league_name, cfg):
-        async with semaphore:
-            return await scrape_league(league_name, cfg, ref_time)
-
-    tasks = [scrape_one(name, cfg) for name, cfg in LEAGUES_CONFIG.items()]
-    results = await asyncio.gather(*tasks, return_exceptions=True)
-
-    for result in results:
-        if isinstance(result, Exception):
-            print(f"⚠️ Lỗi khi scrape một giải: {result}")
-            continue
-        if result:
-            all_games.extend(result)
-
-    return all_games
-
-
-async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
-    """Scrape một giải đấu cụ thể."""
-    url = cfg["url"]
-    team_filter = cfg.get("teams")
-    custom_filter = cfg.get("custom_filter")
-    is_tennis = cfg.get("is_tennis", False)
-    current_year = ref_time.year
-    games = []
-
-    try:
-        async with async_playwright() as p:
-            browser = await p.chromium.launch(
-                headless=True,
-                args=["--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage"]
-            )
-            page = await browser.new_page()
-            page.set_default_navigation_timeout(60000)
-            page.set_default_timeout(30000)
-
-            print(f"\n--- {league_name} ---")
-            print(f"    URL: {url}")
-
-            # Load trang với domcontentloaded (nhanh hơn)
-            await page.goto(url, wait_until="domcontentloaded", timeout=60000)
-
-            # Chờ một chút để dữ liệu render
-            await page.wait_for_timeout(2000)
-
-            # Lấy HTML và parse bằng BeautifulSoup
-            html = await page.content()
-            await browser.close()
-
-            soup = BeautifulSoup(html, 'html.parser')
-            page_tz = extract_timezone_from_html(soup)
-
-            # Tìm tất cả các sự kiện (dùng class cũ, nếu không có thử tìm theo cấu trúc khác)
-            rows = soup.find_all('div', class_='event--wrapp')
-            if not rows:
-                # Thử tìm theo cách khác: tìm tất cả các div có chứa time và date
-                rows = soup.find_all('div', class_=lambda c: c and ('event' in c or 'fixture' in c.lower()))
-            
-            print(f"    📊 {len(rows)} sự kiện")
-
-            for row in rows:
-                try:
-                    # Parse ngày
-                    date_div = row.find('div', class_='event__info--date')
-                    if not date_div:
-                        continue
-                    date_text = date_div.get_text(separator=' ').strip()
-                    day_str, month_str = parse_date_from_text(date_text)
-                    if not day_str or not month_str:
-                        day_tag = date_div.find('b')
-                        month_tag = date_div.find('span')
-                        if day_tag and month_tag:
-                            day_str = day_tag.get_text(strip=True)
-                            month_str = month_tag.get_text(strip=True).lower()
-                    if not day_str or not month_str:
-                        continue
-
-                    month_num = get_month_number(month_str)
-                    day_num = int(day_str)
-
-                    # Parse giờ
-                    time_tag = row.find('time')
-                    if not time_tag:
-                        continue
-                    time_str = time_tag.get_text(strip=True)
-                    try:
-                        hour, minute = parse_time_with_ampm(time_str)
-                    except:
-                        continue
-
-                    # Tạo datetime
-                    page_dt = datetime(current_year, month_num, day_num, hour, minute)
-                    page_dt = page_dt.replace(tzinfo=page_tz)
-                    vn_dt = page_dt.astimezone(VN_TZ)
-
-                    if not is_within_time_range(vn_dt, ref_time):
-                        continue
-
-                    # Lấy tên trận
-                    if is_tennis:
-                        home_elem = row.find('div', class_=lambda c: c and 'event_participant--home' in c)
-                        if not home_elem:
-                            home_elem = row.find('div', class_='event__participant--home')
-                        if home_elem:
-                            matchup = home_elem.get_text(strip=True)
-                        else:
-                            title_elem = row.find('a', class_='event__title')
-                            matchup = title_elem.get_text(strip=True) if title_elem else "Tennis Match"
-                        if league_name in ["Australian Open", "French Open", "Wimbledon", "US Open"]:
-                            league_display = "Tennis (Grand Slam)"
-                        else:
-                            league_display = league_name
-                    else:
-                        home_elem = row.find('div', class_=lambda c: c and 'event_participant--home' in c)
-                        away_elem = row.find('div', class_=lambda c: c and 'event_participant--away' in c)
-                        home = home_elem.get_text(strip=True) if home_elem else "?"
-                        away = away_elem.get_text(strip=True) if away_elem else "?"
-                        matchup = f"{away} @ {home}"
-                        if home == "?" and away == "?":
-                            title_elem = row.find('a', class_='event__title')
-                            if title_elem:
-                                matchup = title_elem.get_text(strip=True)
-                        league_display = league_name
-
-                    # Lọc
-                    if is_youth_or_women(matchup, league_display):
-                        continue
-
-                    if team_filter is not None:
-                        if not any(t.lower() in matchup.lower() for t in team_filter):
-                            continue
-                    if custom_filter == "premier_league_only":
-                        if not has_premier_league_team(matchup):
-                            continue
-                    elif custom_filter == "friendly":
-                        parts = matchup.split(' @ ')
-                        if len(parts) == 2:
-                            away, home = parts
-                        else:
-                            home, away = "?", "?"
-                        if not include_friendly_match(home, away):
-                            continue
-
-                    # Lấy kênh
-                    channels = []
-                    tags_container = row.find('ul', class_='event__tags')
-                    if not tags_container:
-                        tags_container = row.find('div', class_='event__tags')
-                    if tags_container:
-                        for link in tags_container.find_all('a'):
-                            aria = link.get('aria-label')
-                            if aria:
-                                channels.append(aria.strip())
-                            else:
-                                text = link.get_text(strip=True)
-                                if text:
-                                    channels.append(text)
-
-                    # Fallback: tìm tất cả thẻ a có text dài
-                    if not channels:
-                        for a_tag in row.find_all('a'):
-                            text = a_tag.get_text(strip=True)
-                            if text and len(text) > 2 and text.lower() not in ['more', 'watch', 'live', 'stream', 'buy', 'tickets']:
-                                channels.append(text)
-
-                    channels = list(dict.fromkeys(channels))
-
-                    games.append({
-                        "Date": vn_dt.strftime("%Y-%m-%d"),
-                        "Time": vn_dt.strftime("%H:%M"),
-                        "League": league_display,
-                        "Matchup": matchup,
-                        "Services": channels
-                    })
-
-                except Exception as e:
-                    # Bỏ qua lỗi từng dòng
-                    continue
-
-            print(f"    ✅ Thêm {len(games)} trận")
-            return games
-
-    except Exception as e:
-        print(f"    ❌ Lỗi scrape {league_name}: {e}")
-        return []
-
-def parse_date_from_button(button_text: str, ref_time: datetime):
-    """Giải mã chuỗi ngày từ nút (vd 'FRI 04') thành datetime UTC."""
-    match = re.match(r'(Mon|Tue|Wed|Thu|Fri|Sat|Sun)\s*(\d{1,2})', button_text.strip(), re.IGNORECASE)
-    if not match:
-        return None
-    weekday_abbr = match.group(1).capitalize()
-    day = int(match.group(2))
-    ref_utc = ref_time.astimezone(timezone.utc)
-    # Tìm ngày trong khoảng -7 đến +7 ngày
-    for offset in range(-7, 8):
-        candidate = ref_utc + timedelta(days=offset)
-        if candidate.strftime('%a') == weekday_abbr[:3] and candidate.day == day:
-            return candidate.replace(tzinfo=None)
-    return None
 # ==================== MAIN ====================
 async def main():
     ref_time = datetime.now(VN_TZ)
@@ -890,13 +858,9 @@ async def main():
     games_foot = await fetch_footonsat_data(ref_time)
     print(f"🛰️ Từ footonsat: {len(games_foot)} trận")
 
-    # Đã bỏ nowstreams do API lỗi
-    # games_now = await fetch_nowstreams_data(ref_time)
-    # print(f"📺 Từ nowstreams: {len(games_now)} trận")
-
     # Gộp và loại trùng
     unique = {}
-    for g in games_foot + games_live:  # chỉ còn 2 nguồn
+    for g in games_foot + games_live:
         norm_league = normalize_league(g["League"])
         norm_key = normalize_matchup(g["Matchup"])
         key = (g["Date"], g["Time"], norm_league, norm_key)
