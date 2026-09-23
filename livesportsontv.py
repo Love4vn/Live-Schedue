@@ -1,6 +1,7 @@
 # File: livesportsontv.py
 # Hoàn chỉnh: scrape livesportsontv (DOM Next.js) + footonsat
 # Đã bỏ NowStreams do API lỗi
+# ✅ FIX: Lấy được kênh phát (channel chips) với 5 tầng fallback
 
 import asyncio
 import json
@@ -364,7 +365,6 @@ TEAM_NAME_MAPPING = {
     "loscilly": "Monaco",
     "losc lille": "Lille",
     "lille": "Lille",
-    "loscilly": "Lille",
     "ogc nice": "Nice",
     "nice": "Nice",
     "fc nantes": "Nantes",
@@ -510,25 +510,200 @@ LEAGUES_CONFIG = {
     "UEFA Champions League": {"url": "https://www.livesportsontv.com/league/uefa-champions-league", "teams": None},
     "UEFA Europa League": {"url": "https://www.livesportsontv.com/league/uefa-europa-league", "teams": None},
     "UEFA Europa Conference League": {"url": "https://www.livesportsontv.com/league/uefa-conference-league", "teams": None},
-    # ✅ UEFA Euro: thử URL này, nếu không có sự kiện sẽ tự bỏ qua
     "UEFA European Championship": {"url": "https://www.livesportsontv.com/league/uefa-european-championship", "teams": None},
     "FIFA World Cup": {"url": "https://www.livesportsontv.com/league/world-cup-5", "teams": None},
     "International Friendlies": {"url": "https://www.livesportsontv.com/league/international-friendly-2", "teams": None, "custom_filter": "friendly"},
     "FA Cup": {"url": "https://www.livesportsontv.com/league/fa-cup", "teams": None, "custom_filter": "premier_league_only"},
-    # ✅ SỬA: Carabao Cup dùng slug /league/league-cup
     "Carabao Cup": {"url": "https://www.livesportsontv.com/league/league-cup", "teams": None, "custom_filter": "premier_league_only"},
-    
+
     # Tennis
     "Tennis (ATP)": {"url": "https://www.livesportsontv.com/league/atp/", "is_tennis": True},
     "Tennis (WTA)": {"url": "https://www.livesportsontv.com/league/wta/", "is_tennis": True},
-    # ✅ SỬA: Australian Open dùng slug /league/australian-open
     "Australian Open": {"url": "https://www.livesportsontv.com/league/australian-open", "is_tennis": True},
     "French Open": {"url": "https://www.livesportsontv.com/league/roland-garros", "is_tennis": True},
     "Wimbledon": {"url": "https://www.livesportsontv.com/league/wimbledon-tennis", "is_tennis": True},
     "US Open": {"url": "https://www.livesportsontv.com/league/us-open", "is_tennis": True}
 }
 
-# ==================== LIVESPORTSONTV SCRAPING (DOM MỚI) ====================
+# ==================== JAVASCRIPT EXTRACTOR (chạy trong browser) ====================
+# Đây là script JS dùng để bóc tách DOM, tách riêng ra cho dễ đọc / bảo trì
+EXTRACT_JS = r"""
+() => {
+    const output = [];
+
+    // ============ HÀM BÓC KÊNH (5 TẦNG FALLBACK) ============
+    const extractChannels = (eventElement) => {
+        const channels = [];
+        const seen = new Set();
+
+        const add = (name, type, url) => {
+            name = (name || '').replace(/\s+/g, ' ').trim();
+            if (!name) return;
+            // Bỏ alt rác của logo/team/icon
+            const low = name.toLowerCase();
+            if (['logo', 'image', 'icon', 'team logo', 'channel'].includes(low)) return;
+            if (low.length < 2 || low.length > 80) return;
+            if (seen.has(low)) return;
+            seen.add(low);
+            channels.push({ name, type: type || 'tv', sourceUrl: url || null });
+        };
+
+        // ---- Tầng 1: class chứa "channelChip" (không phân biệt prefix) ----
+        let chips = Array.from(eventElement.querySelectorAll(
+            '[class*="channelChip" i], [class*="ChannelChip"], [class*="channel-chip"]'
+        ));
+        // Chỉ giữ outer (loại bỏ chip lồng trong chip khác)
+        chips = chips.filter(el =>
+            !chips.some(other => other !== el && other.contains(el))
+        );
+
+        for (const el of chips) {
+            let name = '';
+            // Ưu tiên text của chip
+            const textEl = el.querySelector(
+                '[class*="channelChipText" i], [class*="ChannelChipText"]'
+            );
+            if (textEl) name = textEl.textContent || '';
+            // Fallback: img alt
+            if (!name) {
+                const img = el.querySelector('img');
+                name = img?.getAttribute('alt') || '';
+            }
+            // Fallback: toàn bộ text chip
+            if (!name) name = el.textContent || '';
+
+            const link = el.tagName === 'A' ? el : el.closest('a');
+            const cls = (typeof el.className === 'string') ? el.className : '';
+            const isNonStreaming = /nonStreaming|NonStreaming/.test(cls);
+            add(name, isNonStreaming ? 'tv' : 'streaming', link?.href);
+        }
+
+        // ---- Tầng 2: link tới /channel/ ----
+        if (channels.length === 0) {
+            const links = eventElement.querySelectorAll('a[href*="/channel/"]');
+            for (const link of links) {
+                const img = link.querySelector('img');
+                const name = link.textContent?.trim()
+                          || img?.getAttribute('alt')?.trim()
+                          || '';
+                add(name, 'tv', link.href);
+            }
+        }
+
+        // ---- Tầng 3: img alt có sprite hoặc class chứa 'channel' ----
+        if (channels.length === 0) {
+            const imgs = eventElement.querySelectorAll('img[alt]');
+            for (const img of imgs) {
+                const alt = img.getAttribute('alt')?.trim() || '';
+                const src = img.getAttribute('src') || '';
+                const cls = (typeof img.className === 'string') ? img.className : '';
+                if (alt && (
+                    src.includes('sprite') ||
+                    src.includes('channel') ||
+                    /channel/i.test(cls)
+                )) {
+                    add(alt, 'tv', img.closest('a')?.href);
+                }
+            }
+        }
+
+        // ---- Tầng 4: quét mọi a/span/div có class chứa 'channel' ----
+        if (channels.length === 0) {
+            const candidates = eventElement.querySelectorAll(
+                'a[class*="channel" i], span[class*="channel" i], div[class*="channel" i]'
+            );
+            for (const el of candidates) {
+                // Bỏ phần tử cha chứa quá nhiều con
+                if (el.querySelectorAll('*').length > 5) continue;
+                const name = el.textContent?.trim() || '';
+                if (name && name.length < 60) {
+                    const link = el.tagName === 'A' ? el : el.closest('a');
+                    add(name, 'tv', link?.href);
+                }
+            }
+        }
+
+        // ---- Tầng 5: quét img alt tổng quát (bỏ logo team) ----
+        if (channels.length === 0) {
+            const imgs = eventElement.querySelectorAll('img[alt]');
+            for (const img of imgs) {
+                const alt = img.getAttribute('alt')?.trim() || '';
+                if (!alt) continue;
+                const low = alt.toLowerCase();
+                // Bỏ alt team/logo
+                if (low.includes('logo') || low.includes('team')) continue;
+                const src = img.getAttribute('src') || '';
+                // Chỉ nhận nếu ảnh nhỏ (chip kênh thường <= 100x100)
+                if (img.naturalWidth && img.naturalWidth < 200) {
+                    add(alt, 'tv', img.closest('a')?.href);
+                }
+            }
+        }
+
+        return channels;
+    };
+
+    // ============ QUÉT CÁC SỰ KIỆN ============
+    const sportBlocks = [
+        ...document.querySelectorAll('[class*="FixtureListBySport_sport__"]')
+    ];
+
+    if (sportBlocks.length > 0) {
+        for (const sportBlock of sportBlocks) {
+            const sport = sportBlock.querySelector(
+                '[class*="SectionDivider_label__"]'
+            )?.textContent?.trim() || "";
+            const leagueCards = [
+                ...sportBlock.querySelectorAll(':scope > [class*="Card_card__"]')
+            ];
+            for (const leagueCard of leagueCards) {
+                const league = leagueCard.querySelector(
+                    '[class*="LeagueCard_cardTitleLink__"]'
+                )?.textContent?.trim() || "";
+                const eventElements = [
+                    ...leagueCard.querySelectorAll('[class*="FixtureItem_container__"]')
+                ];
+                for (const eventElement of eventElements) {
+                    if (eventElement.getClientRects().length === 0) continue;
+                    const link = eventElement.querySelector('a[href*="/match/"]');
+                    const title = link?.getAttribute("aria-label")?.trim();
+                    const href = link?.getAttribute("href");
+                    const time = eventElement.querySelector(
+                        '[class*="FixtureItem_time__"]'
+                    )?.textContent?.trim() || "";
+                    if (title && href && time) {
+                        output.push({
+                            sport, league, title, href, time,
+                            channels: extractChannels(eventElement)
+                        });
+                    }
+                }
+            }
+        }
+    }
+
+    // Fallback khi không có sportBlocks
+    if (output.length === 0) {
+        const items = document.querySelectorAll('[class*="FixtureItem_container__"]');
+        for (const item of items) {
+            const link = item.querySelector('a[href*="/match/"]');
+            const title = link?.getAttribute("aria-label")?.trim();
+            const href = link?.getAttribute("href");
+            const time = item.querySelector('[class*="FixtureItem_time__"]')?.textContent?.trim() || "";
+            if (title && href && time) {
+                output.push({
+                    sport: '', league: '', title, href, time,
+                    channels: extractChannels(item)
+                });
+            }
+        }
+    }
+
+    return output;
+}
+"""
+
+# ==================== LIVESPORTSONTV SCRAPING ====================
 async def scrape_livesportsontv(ref_time: datetime):
     """
     Scrape từng giải đấu trong LEAGUES_CONFIG, chạy song song (Semaphore 4).
@@ -576,8 +751,8 @@ async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
             )
         )
         page = await context.new_page()
-        page.set_default_navigation_timeout(90000)   # Tăng lên 90s
-        page.set_default_timeout(45000)              # Tăng lên 45s
+        page.set_default_navigation_timeout(90000)
+        page.set_default_timeout(45000)
 
         print(f"\n--- {league_name} ---")
         print(f"    URL: {url}")
@@ -585,7 +760,7 @@ async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
         try:
             await page.goto(url, wait_until="domcontentloaded", timeout=90000)
 
-            # Chờ cho ít nhất một container sự kiện xuất hiện (thay vì link)
+            # Chờ container sự kiện
             try:
                 await page.wait_for_selector(
                     '[class*="FixtureItem_container__"]',
@@ -593,7 +768,6 @@ async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
                 )
             except Exception:
                 print(f"    ⚠️ Không tìm thấy container sự kiện (timeout 30s)")
-                # Thử fallback: chờ link match (dùng * thay vì ^)
                 try:
                     await page.wait_for_selector(
                         'a[href*="/match/"]',
@@ -605,84 +779,21 @@ async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
                     await browser.close()
                     return []
 
-            # Trích xuất dữ liệu bằng JavaScript
-            raw_events = await page.evaluate("""
-                () => {
-                    const output = [];
-                    const sportBlocks = [
-                        ...document.querySelectorAll('[class*="FixtureListBySport_sport__"]')
-                    ];
+            # ✅ FIX: Chờ thêm cho chip kênh render (Next.js render client-side)
+            try:
+                await page.wait_for_selector(
+                    '[class*="channelChip" i], a[href*="/channel/"]',
+                    timeout=8000
+                )
+            except Exception:
+                # Không phải giải nào cũng có kênh → không sao
+                pass
 
-                    if (sportBlocks.length > 0) {
-                        for (const sportBlock of sportBlocks) {
-                            const sport = sportBlock.querySelector(
-                                '[class*="SectionDivider_label__"]'
-                            )?.textContent?.trim() || "";
-                            const leagueCards = [
-                                ...sportBlock.querySelectorAll(':scope > [class*="Card_card__"]')
-                            ];
-                            for (const leagueCard of leagueCards) {
-                                const league = leagueCard.querySelector(
-                                    '[class*="LeagueCard_cardTitleLink__"]'
-                                )?.textContent?.trim() || "";
-                                const eventElements = [
-                                    ...leagueCard.querySelectorAll(
-                                        '[class*="FixtureItem_container__"]'
-                                    )
-                                ];
-                                for (const eventElement of eventElements) {
-                                    if (eventElement.getClientRects().length === 0) continue;
-                                    const link = eventElement.querySelector('a[href*="/match/"]');
-                                    const title = link?.getAttribute("aria-label")?.trim();
-                                    const href = link?.getAttribute("href");
-                                    const time = eventElement.querySelector(
-                                        '[class*="FixtureItem_time__"]'
-                                    )?.textContent?.trim() || "";
-                                    const channelElements = [
-                                        ...eventElement.querySelectorAll(
-                                            '[class*="FixtureItem_channelChip__"]'
-                                        )
-                                    ];
-                                    const channels = channelElements
-                                        .map((element) => {
-                                            const name =
-                                                element.querySelector(
-                                                    '[class*="FixtureItem_channelChipText__"]'
-                                                )?.textContent?.trim() ||
-                                                element.querySelector("img")?.getAttribute("alt")?.trim() ||
-                                                "";
-                                            const channelLink = element.closest("a");
-                                            return {
-                                                name,
-                                                type: element.className.includes("nonStreaming")
-                                                    ? "tv" : "streaming",
-                                                sourceUrl: channelLink?.href || null
-                                            };
-                                        })
-                                        .filter((channel) => channel.name);
-                                    if (title && href && time) {
-                                        output.push({ sport, league, title, href, time, channels });
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    // Nếu không có sportBlocks, thử tìm trực tiếp các FixtureItem_container
-                    if (output.length === 0) {
-                        const items = document.querySelectorAll('[class*="FixtureItem_container__"]');
-                        for (const item of items) {
-                            const link = item.querySelector('a[href*="/match/"]');
-                            const title = link?.getAttribute("aria-label")?.trim();
-                            const href = link?.getAttribute("href");
-                            const time = item.querySelector('[class*="FixtureItem_time__"]')?.textContent?.trim() || "";
-                            if (title && href && time) {
-                                output.push({ sport: '', league: '', title, href, time, channels: [] });
-                            }
-                        }
-                    }
-                    return output;
-                }
-            """)
+            # Cho JS render nốt (network idle-ish)
+            await page.wait_for_timeout(1500)
+
+            # Trích xuất dữ liệu
+            raw_events = await page.evaluate(EXTRACT_JS)
 
             if not raw_events:
                 print(f"    📊 0 sự kiện")
@@ -691,6 +802,23 @@ async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
                 return []
 
             print(f"    📊 {len(raw_events)} sự kiện thô")
+
+            # ✅ DEBUG: đếm số sự kiện có kênh
+            events_with_channels = sum(1 for e in raw_events if e.get('channels'))
+            print(f"    📺 Sự kiện có kênh: {events_with_channels}/{len(raw_events)}")
+
+            # ✅ DEBUG: nếu không có kênh nào, dump event HTML đầu tiên để soi
+            if events_with_channels == 0:
+                try:
+                    sample_html = await page.evaluate("""
+                        () => {
+                            const el = document.querySelector('[class*="FixtureItem_container__"]');
+                            return el ? el.outerHTML.slice(0, 4000) : 'NO_ELEMENT';
+                        }
+                    """)
+                    print(f"    🐞 DEBUG event HTML (4000 ký tự đầu):\n{sample_html}")
+                except Exception as e:
+                    print(f"    🐞 Debug lỗi: {e}")
 
             added = 0
             for raw in raw_events:
@@ -741,11 +869,13 @@ async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
                         if not include_friendly_match(home, away):
                             continue
 
+                    # ✅ Xử lý kênh
                     channels = []
                     for ch in raw.get('channels', []):
-                        name = ch.get('name', '').strip()
+                        name = (ch.get('name') or '').strip()
                         if name:
                             channels.append(name)
+                    # Loại trùng, giữ thứ tự
                     channels = list(dict.fromkeys(channels))
 
                     games.append({
@@ -756,7 +886,8 @@ async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
                         "Services": channels
                     })
                     added += 1
-                except Exception:
+                except Exception as e:
+                    print(f"    ⚠️ Parse lỗi 1 event: {e}")
                     continue
 
             print(f"    ✅ Thêm {added} trận")
