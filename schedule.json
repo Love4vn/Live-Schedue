@@ -1,14 +1,70 @@
 {
-  "updated": "2026-09-23 04:10 VN",
+  "updated": "2026-09-23 11:27 VN",
   "days": {
-    "20260922": {
-      "date": "Tuesday, 22/09",
+    "20260923": {
+      "date": "Wednesday, 23/09",
       "games": [
+        {
+          "league": "International Friendly",
+          "match": "Azerbaijan vs Tajikistan",
+          "kick_utc": 1790179200,
+          "time": "23/09 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Megogo Futbol 1",
+                "SportKlub 3 Slovenija",
+                "SportKlub 5 Hrvatska",
+                "ViaPlay Norge HD",
+                "ViaPlay Sverige HD",
+                "ViaPlay Ísland HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Gibraltar vs São Tomé & Príncipe",
+          "kick_utc": 1790179200,
+          "time": "23/09 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Megogo Futbol 2",
+                "SportKlub 4 Hrvatska",
+                "SportKlub 4 Slovenija",
+                "ViaPlay Norge HD",
+                "ViaPlay Sverige HD",
+                "ViaPlay Ísland HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
         {
           "league": "Tennis",
           "match": "ATP Tennis",
           "kick_utc": 1790132400,
           "time": "23/09 10:00 AM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Sky Sports Tennis",
+                "Sky Sports+"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP Tennis",
+          "kick_utc": 1790218800,
+          "time": "24/09 10:00 AM",
           "tv_channels": [
             {
               "country": "Wheresthematch",
@@ -34,84 +90,6 @@
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1790139600,
-          "time": "23/09 12:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1",
-                "Stan Sport"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1790143200,
-          "time": "23/09 01:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1790159400,
-          "time": "23/09 05:30 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1790163000,
-          "time": "23/09 06:30 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Kazakhstan W vs Spain W",
-          "kick_utc": 1790154000,
-          "time": "23/09 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 2"
-              ]
-            }
-          ],
-          "source": "ausport"
         },
         {
           "league": "Tennis",
