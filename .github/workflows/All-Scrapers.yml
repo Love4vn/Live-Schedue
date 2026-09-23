@@ -1,0 +1,200 @@
+name: All Scrapers (Sequential)
+
+on:
+  schedule:
+    # Chạy mỗi 6 tiếng, phút thứ 30 (tránh trùng giờ cao điểm GitHub)
+    # 05:30, 11:30, 17:30, 23:30 giờ VN
+    - cron: '30 23,5,11,17 * * *'
+  workflow_dispatch:
+  repository_dispatch:
+    types: [run-all-scrapers]
+
+permissions:
+  contents: write
+
+# 🔒 Cực kỳ quan trọng: 1 group duy nhất, KHÔNG cancel
+concurrency:
+  group: all-scrapers-main
+  cancel-in-progress: false
+
+jobs:
+  run-all:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90          # toàn bộ chuỗi, đủ cho 7 script
+    env:
+      TZ: Asia/Ho_Chi_Minh
+
+    steps:
+      # ============================================================
+      # 0. CHUẨN BỊ MÔI TRƯỜNG
+      # ============================================================
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: '1'
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4 pytz \
+                      cloudscraper python-dateutil \
+                      curl_cffi pycountry lxml \
+                      playwright aiohttp
+
+      - name: Install Playwright Chromium
+        run: playwright install chromium --with-deps
+
+      - name: Install Node dependencies
+        run: npm install
+
+      # ============================================================
+      # 1. DADDYLIVE
+      # ============================================================
+      - name: "① Chạy daddylive.py"
+        run: python daddylive.py
+
+      - name: "① Commit daddylive_schedule.json"
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add daddylive_schedule.json
+          git diff --cached --quiet && echo "⏭️ Không có thay đổi" && exit 0
+          git commit -m "① Update daddylive_schedule.json [skip ci]"
+          for i in 1 2 3; do
+            git pull --rebase origin 1 && git push origin 1 && exit 0
+            echo "Retry $i..."; sleep 5
+          done
+          exit 1
+
+      # ============================================================
+      # 2. UPDATE EPG (cần dữ liệu mới từ bước 1 nếu có)
+      # ============================================================
+      - name: "② Chạy epg_to_json.py"
+        run: python epg_to_json.py
+
+      - name: "② Commit live_matches.json"
+        run: |
+          git add live_matches.json
+          git diff --cached --quiet && echo "⏭️ Không có thay đổi" && exit 0
+          git commit -m "② Update live_matches.json [skip ci]"
+          for i in 1 2 3; do
+            git pull --rebase origin 1 && git push origin 1 && exit 0
+            echo "Retry $i..."; sleep 5
+          done
+          exit 1
+
+      # ============================================================
+      # 3. NOWTV SPORTS
+      # ============================================================
+      - name: "③ Chạy nowtv_sports_schedule.py"
+        run: python nowtv_sports_schedule.py
+
+      - name: "③ Commit nowtv_sports_schedule_en.json"
+        run: |
+          git add nowtv_sports_schedule_en.json
+          git diff --cached --quiet && echo "⏭️ Không có thay đổi" && exit 0
+          git commit -m "③ Update nowtv_sports_schedule_en.json [skip ci]"
+          for i in 1 2 3; do
+            git pull --rebase origin 1 && git push origin 1 && exit 0
+            echo "Retry $i..."; sleep 5
+          done
+          exit 1
+
+      # ============================================================
+      # 4. SCRAPE WTM (Node.js)
+      # ============================================================
+      - name: "④ Chạy scrape-wtm.js"
+        run: node src/scrape-wtm.js
+
+      - name: "④ Commit results.json"
+        run: |
+          git add results.json
+          git diff --cached --quiet && echo "⏭️ Không có thay đổi" && exit 0
+          git commit -m "④ Update results.json [skip ci]"
+          for i in 1 2 3; do
+            git pull --rebase origin 1 && git push origin 1 && exit 0
+            echo "Retry $i..."; sleep 5
+          done
+          exit 1
+
+      # ============================================================
+      # 5. AUSPORT SCRAPER (Node.js)
+      # ============================================================
+      - name: "⑤ Chạy ausport_scraper.js"
+        run: node src/ausport_scraper.js
+
+      - name: "⑤ Upload debug HTML (nếu có)"
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-html
+          path: debug_sat.html
+          if-no-files-found: ignore
+
+      - name: "⑤ Commit ausport_schedule.json"
+        run: |
+          git add ausport_schedule.json
+          git diff --cached --quiet && echo "⏭️ Không có thay đổi" && exit 0
+          git commit -m "⑤ Update ausport_schedule.json [skip ci]"
+          for i in 1 2 3; do
+            git pull --rebase origin 1 && git push origin 1 && exit 0
+            echo "Retry $i..."; sleep 5
+          done
+          exit 1
+
+      # ============================================================
+      # 6. DAILY STREAMING SCRAPER (Playwright)
+      # ============================================================
+      - name: "⑥ Chạy livesportsontv.py"
+        run: python livesportsontv.py
+
+      - name: "⑥ Commit livesportsontv.json"
+        run: |
+          git add livesportsontv.json
+          git diff --cached --quiet && echo "⏭️ Không có thay đổi" && exit 0
+          git commit -m "⑥ Update livesportsontv.json [skip ci]"
+          for i in 1 2 3; do
+            git pull --rebase origin 1 && git push origin 1 && exit 0
+            echo "Retry $i..."; sleep 5
+          done
+          exit 1
+
+      # ============================================================
+      # 7. EURO VN SCHEDULE (Playwright) - chạy CUỐI vì tổng hợp tất cả
+      # ============================================================
+      - name: "⑦ Chạy euro_vn_full_schedule_live.py"
+        run: python euro_vn_full_schedule_live.py
+
+      - name: "⑦ Commit schedule.json + live_schedule.m3u"
+        run: |
+          git add schedule.json live_schedule.m3u
+          git diff --cached --quiet && echo "⏭️ Không có thay đổi" && exit 0
+          git commit -m "⑦ Update schedule.json + live_schedule.m3u [skip ci]"
+          for i in 1 2 3; do
+            git pull --rebase origin 1 && git push origin 1 && exit 0
+            echo "Retry $i..."; sleep 5
+          done
+          exit 1
+
+      # ============================================================
+      # 8. TỔNG KẾT
+      # ============================================================
+      - name: "✅ Tổng kết"
+        if: always()
+        run: |
+          echo "Đã hoàn thành chuỗi scraper."
+          git log --oneline -10
