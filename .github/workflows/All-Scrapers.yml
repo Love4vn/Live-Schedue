@@ -164,9 +164,9 @@ jobs:
 
       - name: "⑥ Commit livesportsontv.json"
         run: |
-          git add livesportsontv.json
+          git add schedule_livesportsontv.json
           git diff --cached --quiet && echo "⏭️ Không có thay đổi" && exit 0
-          git commit -m "⑥ Update livesportsontv.json [skip ci]"
+          git commit -m "⑥ Update schedule_livesportsontv.json [skip ci]"
           for i in 1 2 3; do
             git pull --rebase origin 1 && git push origin 1 && exit 0
             echo "Retry $i..."; sleep 5
