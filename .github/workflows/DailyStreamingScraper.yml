@@ -1,8 +1,8 @@
 name: DailyStreamingScraper livesportsontv
 
 on:
-  schedule:
-    - cron: '25 */3 * * *'
+  #schedule:
+  #  - cron: '25 */3 * * *'
   workflow_dispatch:
 # Đảm bảo chỉ 1 workflow chạy tại 1 thời điểm
 concurrency:
