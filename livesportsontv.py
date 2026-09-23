@@ -510,16 +510,19 @@ LEAGUES_CONFIG = {
     "UEFA Champions League": {"url": "https://www.livesportsontv.com/league/uefa-champions-league", "teams": None},
     "UEFA Europa League": {"url": "https://www.livesportsontv.com/league/uefa-europa-league", "teams": None},
     "UEFA Europa Conference League": {"url": "https://www.livesportsontv.com/league/uefa-conference-league", "teams": None},
+    # ✅ UEFA Euro: thử URL này, nếu không có sự kiện sẽ tự bỏ qua
     "UEFA European Championship": {"url": "https://www.livesportsontv.com/league/uefa-european-championship", "teams": None},
     "FIFA World Cup": {"url": "https://www.livesportsontv.com/league/world-cup-5", "teams": None},
-    # ✅ SỬA URL: dùng international-friendly-2
     "International Friendlies": {"url": "https://www.livesportsontv.com/league/international-friendly-2", "teams": None, "custom_filter": "friendly"},
     "FA Cup": {"url": "https://www.livesportsontv.com/league/fa-cup", "teams": None, "custom_filter": "premier_league_only"},
-    "Carabao Cup": {"url": "https://www.livesportsontv.com/league/carabao-cup", "teams": None, "custom_filter": "premier_league_only"},
+    # ✅ SỬA: Carabao Cup dùng slug /league/league-cup
+    "Carabao Cup": {"url": "https://www.livesportsontv.com/league/league-cup", "teams": None, "custom_filter": "premier_league_only"},
+    
     # Tennis
     "Tennis (ATP)": {"url": "https://www.livesportsontv.com/league/atp/", "is_tennis": True},
     "Tennis (WTA)": {"url": "https://www.livesportsontv.com/league/wta/", "is_tennis": True},
-    "Australian Open": {"url": "https://www.livesportsontv.com/league/grand-slam/australian-open/", "is_tennis": True},
+    # ✅ SỬA: Australian Open dùng slug /league/australian-open
+    "Australian Open": {"url": "https://www.livesportsontv.com/league/australian-open", "is_tennis": True},
     "French Open": {"url": "https://www.livesportsontv.com/league/roland-garros", "is_tennis": True},
     "Wimbledon": {"url": "https://www.livesportsontv.com/league/wimbledon-tennis", "is_tennis": True},
     "US Open": {"url": "https://www.livesportsontv.com/league/us-open", "is_tennis": True}
