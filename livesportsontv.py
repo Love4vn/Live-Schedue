@@ -573,24 +573,34 @@ async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
             )
         )
         page = await context.new_page()
-        page.set_default_navigation_timeout(60000)
-        page.set_default_timeout(30000)
+        page.set_default_navigation_timeout(90000)   # Tăng lên 90s
+        page.set_default_timeout(45000)              # Tăng lên 45s
 
         print(f"\n--- {league_name} ---")
         print(f"    URL: {url}")
 
         try:
-            await page.goto(url, wait_until="domcontentloaded", timeout=60000)
-            # Chờ các thẻ match link xuất hiện (dữ liệu đã render)
+            await page.goto(url, wait_until="domcontentloaded", timeout=90000)
+
+            # Chờ cho ít nhất một container sự kiện xuất hiện (thay vì link)
             try:
-                await page.locator('a[href^="/match/"]').first.wait_for(
-                    state="visible", timeout=15000
+                await page.wait_for_selector(
+                    '[class*="FixtureItem_container__"]',
+                    timeout=30000
                 )
             except Exception:
-                print(f"    ⚠️ Không có sự kiện render (timeout)")
-                await context.close()
-                await browser.close()
-                return []
+                print(f"    ⚠️ Không tìm thấy container sự kiện (timeout 30s)")
+                # Thử fallback: chờ link match (dùng * thay vì ^)
+                try:
+                    await page.wait_for_selector(
+                        'a[href*="/match/"]',
+                        timeout=15000
+                    )
+                except Exception:
+                    print(f"    ⚠️ Cũng không tìm thấy link match → bỏ qua giải này")
+                    await context.close()
+                    await browser.close()
+                    return []
 
             # Trích xuất dữ liệu bằng JavaScript
             raw_events = await page.evaluate("""
@@ -619,7 +629,7 @@ async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
                                 ];
                                 for (const eventElement of eventElements) {
                                     if (eventElement.getClientRects().length === 0) continue;
-                                    const link = eventElement.querySelector('a[href^="/match/"]');
+                                    const link = eventElement.querySelector('a[href*="/match/"]');
                                     const title = link?.getAttribute("aria-label")?.trim();
                                     const href = link?.getAttribute("href");
                                     const time = eventElement.querySelector(
@@ -653,25 +663,18 @@ async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
                                 }
                             }
                         }
-                    } else {
-                        // Fallback: cấu trúc cũ
-                        const rows = document.querySelectorAll('.event--wrapp');
-                        for (const row of rows) {
-                            const timeTag = row.querySelector('time');
-                            const titleEl = row.querySelector('a.event__title');
-                            if (!timeTag || !titleEl) continue;
-                            const home = row.querySelector('[class*="event__participant--home"]')?.textContent?.trim() || "?";
-                            const away = row.querySelector('[class*="event__participant--away"]')?.textContent?.trim() || "?";
-                            const title = `${away} @ ${home}`;
-                            const href = titleEl.getAttribute('href');
-                            const time = timeTag.textContent.trim();
-                            const channels = [];
-                            row.querySelectorAll('.event__tags a').forEach(a => {
-                                const aria = a.getAttribute('aria-label');
-                                if (aria) channels.push({ name: aria, type: 'tv', sourceUrl: a.href });
-                                else if (a.textContent.trim()) channels.push({ name: a.textContent.trim(), type: 'tv', sourceUrl: a.href });
-                            });
-                            output.push({ sport: '', league: '', title, href, time, channels });
+                    }
+                    // Nếu không có sportBlocks, thử tìm trực tiếp các FixtureItem_container
+                    if (output.length === 0) {
+                        const items = document.querySelectorAll('[class*="FixtureItem_container__"]');
+                        for (const item of items) {
+                            const link = item.querySelector('a[href*="/match/"]');
+                            const title = link?.getAttribute("aria-label")?.trim();
+                            const href = link?.getAttribute("href");
+                            const time = item.querySelector('[class*="FixtureItem_time__"]')?.textContent?.trim() || "";
+                            if (title && href && time) {
+                                output.push({ sport: '', league: '', title, href, time, channels: [] });
+                            }
                         }
                     }
                     return output;
@@ -689,7 +692,6 @@ async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
             added = 0
             for raw in raw_events:
                 try:
-                    # Parse giờ (AM/PM)
                     match = re.match(r'(\d{1,2}):(\d{2})\s*(AM|PM)', raw['time'], re.IGNORECASE)
                     if not match:
                         continue
@@ -701,10 +703,9 @@ async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
                     elif meridiem == 'AM' and hour == 12:
                         hour = 0
 
-                    # Ngày: dùng ngày hiện tại của ref_time (WITA)
                     now_wita = ref_time
                     page_dt = datetime(now_wita.year, now_wita.month, now_wita.day, hour, minute)
-                    page_dt = page_dt.replace(tzinfo=timezone(timedelta(hours=8)))  # WITA
+                    page_dt = page_dt.replace(tzinfo=timezone(timedelta(hours=8)))
                     vn_dt = page_dt.astimezone(VN_TZ)
 
                     if not is_within_time_range(vn_dt, ref_time):
@@ -719,11 +720,9 @@ async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
                         else:
                             league_display = league_name
 
-                    # Lọc nữ/trẻ
                     if is_youth_or_women(matchup, league_display):
                         continue
 
-                    # Lọc theo team/giải
                     if team_filter is not None:
                         if not any(t.lower() in matchup.lower() for t in team_filter):
                             continue
@@ -739,7 +738,6 @@ async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
                         if not include_friendly_match(home, away):
                             continue
 
-                    # Kênh
                     channels = []
                     for ch in raw.get('channels', []):
                         name = ch.get('name', '').strip()
@@ -771,7 +769,6 @@ async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
             except Exception:
                 pass
             return []
-
 
 # ==================== FOOTONSAT ====================
 async def fetch_footonsat_data(ref_time: datetime):
