@@ -29,10 +29,10 @@ ALLOWED_LEAGUES = [
     "International Friendly",
     "FIFA World Cup",
     # Một số giải quốc tế phổ biến khác (có thể bỏ nếu không cần)
-    "CONCACAF Nations League",
-    "Africa Cup of Nations",
-    "Copa America",
-    "ASEAN Championship",
+    #"CONCACAF Nations League",
+    #"Africa Cup of Nations",
+    #"Copa America",
+    #"ASEAN Championship",
 ]
 
 # Từ khóa loại trừ cho bóng đá (giải nữ, trẻ, hạng dưới) - áp dụng cho tên sự kiện
