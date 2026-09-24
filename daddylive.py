@@ -23,10 +23,16 @@ ALLOWED_LEAGUES = [
     "UEFA Europa League",
     "UEFA Europa Conference League",
     "UEFA Euro",
+    "UEFA Nations League",          # <-- BỔ SUNG
     "FA Cup",
     "League Cup",
     "International Friendly",
-    "FIFA World Cup"
+    "FIFA World Cup",
+    # Một số giải quốc tế phổ biến khác (có thể bỏ nếu không cần)
+    "CONCACAF Nations League",
+    "Africa Cup of Nations",
+    "Copa America",
+    "ASEAN Championship",
 ]
 
 # Từ khóa loại trừ cho bóng đá (giải nữ, trẻ, hạng dưới) - áp dụng cho tên sự kiện
@@ -118,10 +124,8 @@ def is_soccer_category(cat_norm):
     """Kiểm tra danh mục có phải là bóng đá hợp lệ không (loại bỏ college, beach, ...)"""
     if not cat_norm:
         return False
-    # Phải chứa từ "soccer"
     if "soccer" not in cat_norm:
         return False
-    # Loại bỏ nếu chứa từ loại trừ
     for excl in EXCLUDED_SOCCER_CATEGORY_WORDS:
         if excl in cat_norm:
             return False
@@ -188,7 +192,6 @@ def get_schedule_api_json():
             cat_name_norm = normalize_category_name(cat_name_raw)
             print(f"   📂 Danh mục thực tế: '{cat_name_raw}' -> chuẩn hóa: '{cat_name_norm}'")
 
-            # Xác định loại danh mục
             cat_type = None
             if is_tennis_category(cat_name_norm):
                 cat_type = "tennis"
@@ -216,7 +219,6 @@ def get_schedule_api_json():
                 title_el = event.find("span", class_="schedule__eventTitle")
                 event_title = title_el.get_text(strip=True) if title_el else "No Title"
 
-                # Lọc thời gian đã qua
                 if FILTER_PAST_EVENTS:
                     if day_date == today_utc:
                         if event_time < current_time:
@@ -227,13 +229,11 @@ def get_schedule_api_json():
                             print(f"      ⏳ Bỏ qua (ngày cũ): {event_title}")
                             continue
 
-                # Lọc theo loại
                 if cat_type == "soccer":
                     if not is_valid_soccer_event(event_title):
                         print(f"      ❌ Bỏ qua (không đúng giải): {event_title}")
                         continue
                 elif cat_type == "tennis":
-                    # Tennis: giữ tất cả, không lọc giải
                     pass
 
                 channels_list = []
@@ -250,7 +250,6 @@ def get_schedule_api_json():
                         else:
                             id_match = re.search(r'(\d+)', ch_href.split("/")[-1])
                             ch_id = id_match.group(1) if id_match else ch_href.split("/")[-1].replace(".php", "")
-                        # Định dạng tên kênh
                         ch_name_formatted = format_channel_name(ch_name)
                         channels_list.append({
                             "channel_name": ch_name_formatted,
