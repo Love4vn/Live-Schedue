@@ -1,14 +1,71 @@
 {
-    "Wednesday 23rd Sep 2026 - Schedule Time UK GMT": {
+    "Thursday 24th Sep 2026 - Schedule Time UK GMT": {
         "All Soccer Events ⚽": [],
-        "Major League Soccer ⚽": [],
         "Tennis 🎾": [],
         "Tennis 🎾 ATP - Singles: Chengdu (China)": [],
-        "Tennis 🎾 ATP - Singles: Hangzhou (China)": [],
-        "Tennis 🎾 ATP - Singles: Chengdu (China) - Qualification": [],
-        "Tennis 🎾 ATP - Singles: Hangzhou (China) - Qualification": [],
+        "Tennis 🎾 ATP - Singles: Hangzhou (China)": [
+            {
+                "time": "11:30",
+                "event": "🎾 ATP - Singles: 🇨🇳 Zhizhen Zhang vs 🇭🇰 Coleman Wong",
+                "channels": [
+                    {
+                        "channel_name": "Tennis HD Stream",
+                        "channel_id": "1078"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1508"
+                    }
+                ]
+            }
+        ],
         "Tennis 🎾 WTA - Singles: Seoul (South Korea)": [],
-        "Tennis 🎾 WTA - Singles: Singapore (Singapore)": [],
+        "Tennis 🎾 WTA - Singles: Singapore (Singapore)": [
+            {
+                "time": "10:30",
+                "event": "🎾 WTA - Singles: 🇷🇺 Tatiana Prozorova vs 🇵🇭 Alexandra Eala",
+                "channels": [
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1673"
+                    },
+                    {
+                        "channel_name": "Tennis HD Stream",
+                        "channel_id": "1090"
+                    },
+                    {
+                        "channel_name": "Tennis Channel",
+                        "channel_id": "1524"
+                    },
+                    {
+                        "channel_name": "Tennis Channel",
+                        "channel_id": "1501"
+                    }
+                ]
+            },
+            {
+                "time": "12:00",
+                "event": "🎾 WTA - Singles: 🇬🇷 Maria Sakkari vs 🇯🇵 Nao Hibino",
+                "channels": [
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1674"
+                    },
+                    {
+                        "channel_name": "Tennis HD Stream",
+                        "channel_id": "1091"
+                    },
+                    {
+                        "channel_name": "Tennis Channel",
+                        "channel_id": "1524"
+                    },
+                    {
+                        "channel_name": "Tennis Channel",
+                        "channel_id": "1501"
+                    }
+                ]
+            }
+        ],
         "Tennis 🎾 WTA - Doubles: Seoul (South Korea)": [],
         "Tennis 🎾 WTA - Doubles: Singapore (Singapore)": [],
         "Tennis 🎾 ATP - Doubles: Chengdu (China)": [],
