@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-26 16:44 VN",
+  "updated": "2026-09-26 17:08 VN",
   "days": {
     "20260926": {
       "date": "Saturday, 26/09",
@@ -332,49 +332,13 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "RDS",
-                "TSN4",
                 "DAZN Canada",
-                "TSN+"
+                "TSN+",
+                "TSN4"
               ]
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Laver Cup",
-          "kick_utc": 1790424000,
-          "time": "26/09 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Main Event",
-                "Sky Sports Tennis",
-                "Sky Sports Ultra HDR",
-                "TNT Sports 2",
-                "HBO Max"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Laver Cup",
-          "kick_utc": 1790445600,
-          "time": "27/09 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Tennis",
-                "TNT Sports 2",
-                "HBO Max"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
@@ -391,28 +355,6 @@
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Leylah Annie Fernandez vs Maja Chwalinska",
-          "kick_utc": 1790416800,
-          "time": "26/09 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect"
-              ]
-            },
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis Stream",
-                "Tennis HD Stream"
-              ]
-            }
-          ],
-          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -553,8 +495,8 @@
             {
               "country": "Ausport",
               "channels": [
-                "beIN SPORTS 1",
-                "beIN Sports Connect"
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
               ]
             }
           ],
@@ -569,28 +511,13 @@
             {
               "country": "Ausport",
               "channels": [
-                "beIN SPORTS 1",
                 "beIN Sports Connect",
-                "beIN SPORTS 2"
+                "beIN SPORTS 2",
+                "beIN SPORTS 1"
               ]
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "1/2 Final B",
-          "kick_utc": 1790416800,
-          "time": "26/09 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Sportklub 2 Croatia"
-              ]
-            }
-          ],
-          "source": "daddylive"
         },
         {
           "league": "Tennis",
@@ -918,6 +845,21 @@
               "country": "Hubsport",
               "channels": [
                 "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - WTA Tour - WTA 125 Porto Open - Final",
+          "kick_utc": 1790503200,
+          "time": "27/09 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv1 Hd Portugal"
               ]
             }
           ],
