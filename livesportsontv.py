@@ -2,6 +2,7 @@
 # Hoàn chỉnh: scrape livesportsontv (DOM Next.js) + footonsat
 # Đã bỏ NowStreams do API lỗi
 # ✅ FIX: Lấy được kênh phát (channel chips) với 5 tầng fallback
+# ✅ ADD: UEFA Nations League
 
 import asyncio
 import json
@@ -33,6 +34,7 @@ ALLOWED_LEAGUES = {
     "Premier League", "Serie A", "La Liga", "Bundesliga", "Ligue 1",
     "UEFA Champions League", "UEFA Europa League", "UEFA Europa Conference League",
     "UEFA European Championship", "FIFA World Cup",
+    "UEFA Nations League",  # ✅ ADD
     "International Friendlies", "FA Cup", "Carabao Cup",
     "Tennis (ATP)", "Tennis (WTA)", "Tennis (Grand Slam)"
 }
@@ -57,6 +59,7 @@ ALLOWED_TEAMS_PER_LEAGUE = {
     "UEFA Europa Conference League": None,
     "UEFA European Championship": None,
     "FIFA World Cup": None,
+    "UEFA Nations League": None,  # ✅ ADD (không lọc theo đội)
     "International Friendlies": None,
 }
 
@@ -130,6 +133,8 @@ def normalize_league(league: str) -> str:
         return "UEFA Europa League"
     if "conference league" in league_lower:
         return "UEFA Europa Conference League"
+    if "nations league" in league_lower:  # ✅ ADD (trước "european championship" để tránh nhầm)
+        return "UEFA Nations League"
     if "european championship" in league_lower or "euro" in league_lower:
         return "UEFA European Championship"
     if "world cup" in league_lower:
@@ -512,6 +517,8 @@ LEAGUES_CONFIG = {
     "UEFA Europa Conference League": {"url": "https://www.livesportsontv.com/league/uefa-conference-league", "teams": None},
     "UEFA European Championship": {"url": "https://www.livesportsontv.com/league/uefa-european-championship", "teams": None},
     "FIFA World Cup": {"url": "https://www.livesportsontv.com/league/world-cup-5", "teams": None},
+    # ✅ ADD: UEFA Nations League
+    "UEFA Nations League": {"url": "https://www.livesportsontv.com/league/uefa-nations-league", "teams": None},
     "International Friendlies": {"url": "https://www.livesportsontv.com/league/international-friendly-2", "teams": None, "custom_filter": "friendly"},
     "FA Cup": {"url": "https://www.livesportsontv.com/league/fa-cup", "teams": None, "custom_filter": "premier_league_only"},
     "Carabao Cup": {"url": "https://www.livesportsontv.com/league/league-cup", "teams": None, "custom_filter": "premier_league_only"},
@@ -526,7 +533,6 @@ LEAGUES_CONFIG = {
 }
 
 # ==================== JAVASCRIPT EXTRACTOR (chạy trong browser) ====================
-# Đây là script JS dùng để bóc tách DOM, tách riêng ra cho dễ đọc / bảo trì
 EXTRACT_JS = r"""
 () => {
     const output = [];
@@ -539,7 +545,6 @@ EXTRACT_JS = r"""
         const add = (name, type, url) => {
             name = (name || '').replace(/\s+/g, ' ').trim();
             if (!name) return;
-            // Bỏ alt rác của logo/team/icon
             const low = name.toLowerCase();
             if (['logo', 'image', 'icon', 'team logo', 'channel'].includes(low)) return;
             if (low.length < 2 || low.length > 80) return;
@@ -548,28 +553,24 @@ EXTRACT_JS = r"""
             channels.push({ name, type: type || 'tv', sourceUrl: url || null });
         };
 
-        // ---- Tầng 1: class chứa "channelChip" (không phân biệt prefix) ----
+        // ---- Tầng 1: class chứa "channelChip" ----
         let chips = Array.from(eventElement.querySelectorAll(
             '[class*="channelChip" i], [class*="ChannelChip"], [class*="channel-chip"]'
         ));
-        // Chỉ giữ outer (loại bỏ chip lồng trong chip khác)
         chips = chips.filter(el =>
             !chips.some(other => other !== el && other.contains(el))
         );
 
         for (const el of chips) {
             let name = '';
-            // Ưu tiên text của chip
             const textEl = el.querySelector(
                 '[class*="channelChipText" i], [class*="ChannelChipText"]'
             );
             if (textEl) name = textEl.textContent || '';
-            // Fallback: img alt
             if (!name) {
                 const img = el.querySelector('img');
                 name = img?.getAttribute('alt') || '';
             }
-            // Fallback: toàn bộ text chip
             if (!name) name = el.textContent || '';
 
             const link = el.tagName === 'A' ? el : el.closest('a');
@@ -613,7 +614,6 @@ EXTRACT_JS = r"""
                 'a[class*="channel" i], span[class*="channel" i], div[class*="channel" i]'
             );
             for (const el of candidates) {
-                // Bỏ phần tử cha chứa quá nhiều con
                 if (el.querySelectorAll('*').length > 5) continue;
                 const name = el.textContent?.trim() || '';
                 if (name && name.length < 60) {
@@ -623,17 +623,14 @@ EXTRACT_JS = r"""
             }
         }
 
-        // ---- Tầng 5: quét img alt tổng quát (bỏ logo team) ----
+        // ---- Tầng 5: img alt tổng quát (bỏ logo team) ----
         if (channels.length === 0) {
             const imgs = eventElement.querySelectorAll('img[alt]');
             for (const img of imgs) {
                 const alt = img.getAttribute('alt')?.trim() || '';
                 if (!alt) continue;
                 const low = alt.toLowerCase();
-                // Bỏ alt team/logo
                 if (low.includes('logo') || low.includes('team')) continue;
-                const src = img.getAttribute('src') || '';
-                // Chỉ nhận nếu ảnh nhỏ (chip kênh thường <= 100x100)
                 if (img.naturalWidth && img.naturalWidth < 200) {
                     add(alt, 'tv', img.closest('a')?.href);
                 }
@@ -682,7 +679,6 @@ EXTRACT_JS = r"""
         }
     }
 
-    // Fallback khi không có sportBlocks
     if (output.length === 0) {
         const items = document.querySelectorAll('[class*="FixtureItem_container__"]');
         for (const item of items) {
@@ -705,10 +701,6 @@ EXTRACT_JS = r"""
 
 # ==================== LIVESPORTSONTV SCRAPING ====================
 async def scrape_livesportsontv(ref_time: datetime):
-    """
-    Scrape từng giải đấu trong LEAGUES_CONFIG, chạy song song (Semaphore 4).
-    Dùng page.evaluate() để lấy dữ liệu từ DOM Next.js mới.
-    """
     all_games = []
     semaphore = asyncio.Semaphore(4)
 
@@ -730,7 +722,6 @@ async def scrape_livesportsontv(ref_time: datetime):
 
 
 async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
-    """Scrape một giải đấu cụ thể bằng Playwright + page.evaluate()."""
     url = cfg["url"]
     team_filter = cfg.get("teams")
     custom_filter = cfg.get("custom_filter")
@@ -760,7 +751,6 @@ async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
         try:
             await page.goto(url, wait_until="domcontentloaded", timeout=90000)
 
-            # Chờ container sự kiện
             try:
                 await page.wait_for_selector(
                     '[class*="FixtureItem_container__"]',
@@ -779,20 +769,16 @@ async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
                     await browser.close()
                     return []
 
-            # ✅ FIX: Chờ thêm cho chip kênh render (Next.js render client-side)
             try:
                 await page.wait_for_selector(
                     '[class*="channelChip" i], a[href*="/channel/"]',
                     timeout=8000
                 )
             except Exception:
-                # Không phải giải nào cũng có kênh → không sao
                 pass
 
-            # Cho JS render nốt (network idle-ish)
             await page.wait_for_timeout(1500)
 
-            # Trích xuất dữ liệu
             raw_events = await page.evaluate(EXTRACT_JS)
 
             if not raw_events:
@@ -803,11 +789,9 @@ async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
 
             print(f"    📊 {len(raw_events)} sự kiện thô")
 
-            # ✅ DEBUG: đếm số sự kiện có kênh
             events_with_channels = sum(1 for e in raw_events if e.get('channels'))
             print(f"    📺 Sự kiện có kênh: {events_with_channels}/{len(raw_events)}")
 
-            # ✅ DEBUG: nếu không có kênh nào, dump event HTML đầu tiên để soi
             if events_with_channels == 0:
                 try:
                     sample_html = await page.evaluate("""
@@ -869,13 +853,11 @@ async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
                         if not include_friendly_match(home, away):
                             continue
 
-                    # ✅ Xử lý kênh
                     channels = []
                     for ch in raw.get('channels', []):
                         name = (ch.get('name') or '').strip()
                         if name:
                             channels.append(name)
-                    # Loại trùng, giữ thứ tự
                     channels = list(dict.fromkeys(channels))
 
                     games.append({
@@ -989,7 +971,6 @@ async def main():
     games_foot = await fetch_footonsat_data(ref_time)
     print(f"🛰️ Từ footonsat: {len(games_foot)} trận")
 
-    # Gộp và loại trùng
     unique = {}
     for g in games_foot + games_live:
         norm_league = normalize_league(g["League"])
