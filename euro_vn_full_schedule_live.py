@@ -48,7 +48,8 @@ ALLOWED_FOOTBALL_LEAGUES = {
     "UEFA Champions League", "UEFA Europa League", "UEFA Europa Conference League",
     "UEFA Euro", "FA Cup", "League Cup",
     "International Friendly",
-    "FIFA World Cup"
+    "FIFA World Cup",
+    "UEFA Nations League"          # <--- THÊM DÒNG NÀY
 }
 
 PREMIER_LEAGUE_TEAMS = {
@@ -82,7 +83,8 @@ LEAGUE_GROUP_NAME = {
     "League Cup": "Live FA, League Cup",
     "Tennis": "🎾|Live Tennis",
     "FIFA World Cup": "🏆|Live FIFA World Cup",
-    "International Friendly": "🌍|Live International Friendly"
+    "International Friendly": "🌍|Live International Friendly",
+    "UEFA Nations League": "Live UEFA Nations League"      # <--- THÊM DÒNG NÀY
 }
 
 ALLOWED_NON_EURO_TEAMS = {"argentina", "brazil", "japan", "south korea"}
@@ -470,6 +472,8 @@ def map_sofascore_league(tournament_name: str) -> str:
         return "FIFA World Cup"
     if "International Friendly" in name or "Friendlies" in name:
         return "International Friendly"
+    if "UEFA Nations League" in name:                  # <--- THÊM
+        return "UEFA Nations League"                   # <--- THÊM
     if "Premier League" in name:
         return "Premier League"
     if "Serie A" in name and "Italy" in name:
@@ -815,6 +819,8 @@ def parse_daddylive(data: dict) -> List[Dict]:
                     if league not in ALLOWED_FOOTBALL_LEAGUES:
                         if "Champions League" in league_clean:
                             league = "UEFA Champions League"
+                        elif "Nations League" in league_clean:        # <--- THÊM
+                            league = "UEFA Nations League"            # <--- THÊM
                         elif "Europa League" in league_clean:
                             league = "UEFA Europa League"
                         elif "Premier League" in league_clean:
