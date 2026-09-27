@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-27 16:44 VN",
+  "updated": "2026-09-27 17:44 VN",
   "days": {
     "20260927": {
       "date": "Sunday, 27/09",
@@ -261,10 +261,10 @@
             {
               "country": "Daddylive",
               "channels": [
-                "Sport 1 Israel",
                 "Sky Sport Calcio IT",
-                "Nova Sports 1 Greece",
                 "L'Equipe France",
+                "Nova Sports 1 Greece",
+                "Sport 1 Israel",
                 "DAZN CA"
               ]
             }
@@ -280,11 +280,11 @@
             {
               "country": "Daddylive",
               "channels": [
-                "Sport 1 Israel",
-                "Ziggo Sport 1 NL",
                 "Sky Sport Calcio IT",
-                "Nova Sports 1 Greece",
                 "L'Equipe France",
+                "Nova Sports 1 Greece",
+                "Ziggo Sport 1 NL",
+                "Sport 1 Israel",
                 "DAZN CA"
               ]
             }
@@ -652,8 +652,8 @@
               "channels": [
                 "TSN+",
                 "DAZN Canada",
-                "RDS",
-                "TSN4"
+                "TSN4",
+                "RDS"
               ]
             }
           ],
@@ -673,39 +673,6 @@
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Laver Cup",
-          "kick_utc": 1790506800,
-          "time": "27/09 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Tennis",
-                "TNT Sports 2",
-                "HBO Max"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Lloyd George Harris vs Hubert Hurkacz",
-          "kick_utc": 1790503200,
-          "time": "27/09 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
-              ]
-            }
-          ],
-          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -883,21 +850,6 @@
               "channels": [
                 "Tennis Stream",
                 "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Quentin Halys /  Lucas Miedler vs  Jean-Julien Rojer / 🇺 Tristan Boyer",
-          "kick_utc": 1790503200,
-          "time": "27/09 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
                 "Tennis Stream"
               ]
             }
