@@ -1,138 +1,9 @@
 {
-  "updated": "2026-09-27 17:44 VN",
+  "updated": "2026-09-27 22:49 VN",
   "days": {
     "20260927": {
       "date": "Sunday, 27/09",
       "games": [
-        {
-          "league": "Premier League",
-          "match": "Arsenal FC - Leeds United",
-          "kick_utc": 1790508600,
-          "time": "27/09 06:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "NBC Universo"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "Zenit St Petersburg vs Shanghai Shenhua",
-          "kick_utc": 1790510400,
-          "time": "27/09 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "MATCH! Premier HD",
-                "MATCH! Premier HD",
-                "MATCH! Premier HD",
-                "MATCH! Premier HD",
-                "MATCH! Premier HD",
-                "MATCH! Premier HD",
-                "MATCH! Premier HD",
-                "MATCH! Premier HD",
-                "MATCH! Premier HD",
-                "MATCH! Russia HD",
-                "MATCH! Russia HD",
-                "MATCH! Russia HD",
-                "MATCH! Russia HD",
-                "MATCH! Russia HD",
-                "MATCH! Russia HD",
-                "MATCH! Russia HD",
-                "MATCH! Russia HD",
-                "MATCH! Russia HD",
-                "MATCH! Russia HD",
-                "MATCH! Russia HD",
-                "MATCH! Russia HD",
-                "MATCH! Russia HD",
-                "MATCH! Russia HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "La Liga",
-          "match": "Espanyol - Atletico Madrid",
-          "kick_utc": 1790510400,
-          "time": "27/09 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Fubo Sports",
-                "ESPN Select",
-                "ESPN Unlimited"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Bundesliga",
-          "match": "FC Augsburg - Bayern München",
-          "kick_utc": 1790515800,
-          "time": "27/09 08:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Peacock ES"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Bundesliga",
-          "match": "FSV Mainz 05 - Bayer Leverkusen",
-          "kick_utc": 1790515800,
-          "time": "27/09 08:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Peacock ES"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Bundesliga",
-          "match": "Union Berlin - Borussia Dortmund",
-          "kick_utc": 1790515800,
-          "time": "27/09 08:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Peacock ES"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Bundesliga",
-          "match": "Bayer Leverkusen - Freiburg",
-          "kick_utc": 1790515800,
-          "time": "27/09 08:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Peacock ES"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "Premier League",
           "match": "Aston Villa - Brentford",
@@ -217,43 +88,6 @@
         },
         {
           "league": "UEFA Nations League",
-          "match": "Lithuania  vs Azerbaijan 🇿",
-          "kick_utc": 1790514000,
-          "time": "27/09 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "DAZN CA",
-                "Fox Sports 2 USA",
-                "DAZN1 DE",
-                "Sport TV1 Portugal",
-                "Sky Sport Calcio IT",
-                "CBC Sport Azerbaijan",
-                "Prima Sport 1 Romania",
-                "Ziggo Sport 1 NL",
-                "TV2 Sport Norway",
-                "Cytavision Sports 3 Cyprus",
-                "SONY TEN 2 HD",
-                "ESPN3 Argentina",
-                "Arena 1 Premium Serbia",
-                "Nova Sports Prime Greece",
-                "Diema Sport 2 Bulgaria",
-                "SporTV 2 BR",
-                "SuperSport Premier League",
-                "beIN Sports MENA 2",
-                "Sportklub 1 Croatia",
-                "Sport 1 Israel",
-                "Event Stream",
-                "Event Stream",
-                "Event Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "UEFA Nations League",
           "match": "Simulcast",
           "kick_utc": 1790524800,
           "time": "27/09 11:00 PM",
@@ -261,11 +95,11 @@
             {
               "country": "Daddylive",
               "channels": [
-                "Sky Sport Calcio IT",
-                "L'Equipe France",
-                "Nova Sports 1 Greece",
                 "Sport 1 Israel",
-                "DAZN CA"
+                "Nova Sports 1 Greece",
+                "DAZN CA",
+                "Sky Sport Calcio IT",
+                "L'Equipe France"
               ]
             }
           ],
@@ -280,12 +114,12 @@
             {
               "country": "Daddylive",
               "channels": [
+                "Sport 1 Israel",
+                "Nova Sports 1 Greece",
+                "DAZN CA",
                 "Sky Sport Calcio IT",
                 "L'Equipe France",
-                "Nova Sports 1 Greece",
-                "Ziggo Sport 1 NL",
-                "Sport 1 Israel",
-                "DAZN CA"
+                "Ziggo Sport 1 NL"
               ]
             }
           ],
@@ -301,6 +135,7 @@
               "country": "Daddylive",
               "channels": [
                 "DAZN CA",
+                "Event SD Stream",
                 "Fox Sports 2 USA",
                 "NPO 1 NL",
                 "DAZN1 DE",
@@ -341,6 +176,7 @@
               "country": "Daddylive",
               "channels": [
                 "DAZN CA",
+                "Event SD Stream",
                 "ORF eins",
                 "Sport TV4 Portugal",
                 "Polsat Sport Premium 1 Poland",
@@ -368,6 +204,7 @@
               "country": "Daddylive",
               "channels": [
                 "DAZN CA",
+                "Event SD Stream",
                 "Sport TV5 Portugal",
                 "Digi Sport 4 Romania",
                 "Prima Sport 4 Romania",
@@ -389,6 +226,7 @@
               "country": "Daddylive",
               "channels": [
                 "DAZN CA",
+                "Event SD Stream",
                 "BBC One UK",
                 "S4C UK",
                 "DAZN2 DE",
@@ -525,231 +363,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Chengdu Open",
-          "kick_utc": 1790499600,
-          "time": "27/09 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "TSN+"
-              ]
-            },
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 5"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Chengdu Open",
-          "kick_utc": 1790506800,
-          "time": "27/09 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "TSN+"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": ": Chengdu Open",
-          "kick_utc": 1790586000,
-          "time": "28/09 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 1",
-                "Ziggo Sport 4",
-                "Ziggo Sport Kanaal 14"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Singapore Open",
-          "kick_utc": 1790499600,
-          "time": "27/09 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "DAZN Canada"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Hangzhou Open",
-          "kick_utc": 1790501400,
-          "time": "27/09 04:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "T2",
-                "TSN+"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Hangzhou Open",
-          "kick_utc": 1790508600,
-          "time": "27/09 06:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "T2",
-                "TSN+"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Hangzhou Open",
-          "kick_utc": 1790515800,
-          "time": "27/09 08:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "China Open",
-          "kick_utc": 1790506800,
-          "time": "27/09 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "TSN+",
-                "DAZN Canada",
-                "TSN4",
-                "RDS"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "China Open",
-          "kick_utc": 1790514000,
-          "time": "27/09 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1790505900,
-          "time": "27/09 05:45 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "TNT Sports 2 UK",
-                "TSN 5",
-                "Tennis Stream",
-                "beIN Sports 2 Malaysia",
-                "Tennis Channel",
-                "EuroSport 2 Poland",
-                "EuroSport 2 Spain",
-                "EuroSport 2 France",
-                "Eurosport 2 SE",
-                "EuroSport 2 Italy",
-                "EuroSport 2 Greece",
-                "Eurosport 2 SE"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1790514000,
-          "time": "27/09 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "TNT Sports 2 UK",
-                "Tennis Channel",
-                "beIN Sports 2 Malaysia",
-                "EuroSport 2 Poland",
-                "EuroSport 2 Spain",
-                "EuroSport 2 France",
-                "Eurosport 2 SE",
-                "EuroSport 2 Italy",
-                "EuroSport 2 Greece",
-                "Eurosport 2 SE"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1790521200,
-          "time": "27/09 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "TNT Sports 2 UK",
-                "Tennis Channel",
-                "beIN Sports 2 Malaysia",
-                "EuroSport 2 Poland",
-                "EuroSport 2 Spain",
-                "EuroSport 2 France",
-                "Eurosport 2 SE",
-                "EuroSport 2 Italy",
-                "EuroSport 2 Greece",
-                "Eurosport 2 SE"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
           "match": "",
           "kick_utc": 1790528400,
           "time": "28/09 12:00 AM",
@@ -781,171 +394,12 @@
             {
               "country": "Ausport",
               "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
+                "beIN SPORTS 1",
+                "beIN Sports Connect"
               ]
             }
           ],
           "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "🇺 Daniil Medvedev vs 🇭🇰 Coleman Wong",
-          "kick_utc": 1790508600,
-          "time": "27/09 06:30 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Alexander Zverev vs 🇺 Learner Tien",
-          "kick_utc": 1790512200,
-          "time": "27/09 07:30 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Carlos Alcaraz vs 🇺 Alex de Minaur",
-          "kick_utc": 1790517600,
-          "time": "27/09 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Rafael Jodar vs 🇺 Taylor Fritz",
-          "kick_utc": 1790523000,
-          "time": "27/09 10:30 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Flavio Cobolli / 🇨🇿 Jakub Mensik vs 🇺 Alex de Minaur / 🇺 Taylor Fritz",
-          "kick_utc": 1790506800,
-          "time": "27/09 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi de Singapour 2026",
-          "kick_utc": 1790499600,
-          "time": "27/09 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Tva Sports 2 Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ténis - WTA Tour - WTA 125 Porto Open - Final",
-          "kick_utc": 1790503200,
-          "time": "27/09 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv1 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Chengdu Open 2026",
-          "kick_utc": 1790506800,
-          "time": "27/09 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Coupe Laver 2026",
-          "kick_utc": 1790506800,
-          "time": "27/09 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Tva Sports 2 Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Coupe Laver 2026",
-          "kick_utc": 1790514000,
-          "time": "27/09 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Tva Sports 2 Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -972,22 +426,6 @@
               "country": "Hubsport",
               "channels": [
                 "Tva Sports 2 Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "2026 Laver Cup Tennis",
-          "kick_utc": 1790506800,
-          "time": "27/09 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "TSN 5",
-                "TSN 5 Hd"
               ]
             }
           ],
@@ -1027,14 +465,16 @@
         },
         {
           "league": "Tennis",
-          "match": "Singapore Tennis Open presented by BNP Paribas -Final",
-          "kick_utc": 1790499600,
-          "time": "27/09 04:00 PM",
+          "match": ": Chengdu Open",
+          "kick_utc": 1790586000,
+          "time": "28/09 04:00 PM",
           "tv_channels": [
             {
               "country": "NowTV",
               "channels": [
-                "Now Sports 4"
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
               ]
             }
           ],
@@ -1042,29 +482,16 @@
         },
         {
           "league": "Tennis",
-          "match": "The Billie Jean King Cup",
-          "kick_utc": 1790499600,
-          "time": "27/09 04:00 PM",
+          "match": ": Chengdu Open",
+          "kick_utc": 1790593500,
+          "time": "28/09 06:05 PM",
           "tv_channels": [
             {
               "country": "NowTV",
               "channels": [
-                "Ziggo Sport 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "AITO Hangzhou Open -QF(4) - D. Medvedev vs C. Wong",
-          "kick_utc": 1790508600,
-          "time": "27/09 06:30 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports Prime"
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
               ]
             }
           ],
@@ -1080,6 +507,38 @@
               "country": "NowTV",
               "channels": [
                 "Ziggo Sport 5"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Lynk & Co Hangzhou Open",
+          "kick_utc": 1790595000,
+          "time": "28/09 06:30 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 5"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Lynk & Co Hangzhou Open",
+          "kick_utc": 1790600700,
+          "time": "28/09 08:05 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
               ]
             }
           ],
