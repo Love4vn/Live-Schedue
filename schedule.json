@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-28 16:44 VN",
+  "updated": "2026-09-28 18:57 VN",
   "days": {
     "20260928": {
       "date": "Monday, 28/09",
@@ -262,8 +262,8 @@
                 "Sky Sport Calcio IT",
                 "L'Equipe France",
                 "Sport 1 Israel",
-                "DAZN CA",
-                "Nova Sports 1 Greece"
+                "Nova Sports 1 Greece",
+                "DAZN CA"
               ]
             }
           ],
@@ -281,8 +281,8 @@
                 "Sky Sport Calcio IT",
                 "L'Equipe France",
                 "Sport 1 Israel",
-                "DAZN CA",
-                "Nova Sports 1 Greece"
+                "Nova Sports 1 Greece",
+                "DAZN CA"
               ]
             }
           ],
@@ -526,22 +526,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Chengdu Open",
-          "kick_utc": 1790586000,
-          "time": "28/09 04:00 PM",
+          "match": "Hubert Hurkacz - Denis Shapovalov",
+          "kick_utc": 1790593200,
+          "time": "28/09 06:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN+"
-              ]
-            },
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport Kanaal 14",
-                "Ziggo Sport 4",
-                "Ziggo Sport 1"
+                "Tennis Channel"
               ]
             }
           ],
@@ -563,8 +555,8 @@
               "country": "NowTV",
               "channels": [
                 "Ziggo Sport Kanaal 14",
-                "Ziggo Sport 4",
-                "Ziggo Sport 1"
+                "Ziggo Sport 1",
+                "Ziggo Sport 4"
               ]
             }
           ],
@@ -572,15 +564,49 @@
         },
         {
           "league": "Tennis",
-          "match": "Hangzhou Open",
-          "kick_utc": 1790587800,
-          "time": "28/09 04:30 PM",
+          "match": ": Chengdu Open",
+          "kick_utc": 1790679600,
+          "time": "29/09 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "China Open",
+          "kick_utc": 1790593200,
+          "time": "28/09 06:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "T2",
-                "TSN+"
+                "DAZN Canada",
+                "TSN+",
+                "RDS",
+                "TSN4"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "China Open",
+          "kick_utc": 1790600400,
+          "time": "28/09 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
               ]
             }
           ],
@@ -620,115 +646,34 @@
         },
         {
           "league": "Tennis",
-          "match": "Hubert Hurkacz - Denis Shapovalov",
-          "kick_utc": 1790593200,
-          "time": "28/09 06:00 PM",
+          "match": "ATP Tennis",
+          "kick_utc": 1790679600,
+          "time": "29/09 06:00 PM",
           "tv_channels": [
             {
-              "country": "LiveSportsOnTV",
+              "country": "Wheresthematch",
               "channels": [
-                "Tennis Channel"
+                "Sky Sports+"
               ]
             }
           ],
-          "source": "livesportsontv"
+          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
-          "match": "China Open",
-          "kick_utc": 1790593200,
-          "time": "28/09 06:00 PM",
+          "match": "",
+          "kick_utc": 1790681400,
+          "time": "29/09 06:30 PM",
           "tv_channels": [
             {
-              "country": "LiveSportsOnTV",
+              "country": "Ausport",
               "channels": [
-                "TSN+",
-                "DAZN Canada",
-                "TSN4",
-                "RDS"
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
               ]
             }
           ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "China Open",
-          "kick_utc": 1790600400,
-          "time": "28/09 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Hubert Hurkacz vs 🇨 Denis Shapovalov",
-          "kick_utc": 1790593200,
-          "time": "28/09 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "🇺 Daniil Medvedev vs 🇺 Roman Safiullin",
-          "kick_utc": 1790595000,
-          "time": "28/09 06:30 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Chengdu Open 2026 - Meia-Final",
-          "kick_utc": 1790586000,
-          "time": "28/09 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Hangzhou 2026 - Meia-Final",
-          "kick_utc": 1790587800,
-          "time": "28/09 04:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv 6 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -748,18 +693,33 @@
         },
         {
           "league": "Tennis",
-          "match": ": Lynk & Co Hangzhou Open",
-          "kick_utc": 1790587800,
-          "time": "28/09 04:30 PM",
+          "match": "ATP World Tour 250 - Chengdu Open 2026 - Final",
+          "kick_utc": 1790679600,
+          "time": "29/09 06:00 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Ziggo Sport 5"
+                "Sport Tv2 Hd Portugal"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Hangzhou 2026 - Final",
+          "kick_utc": 1790681340,
+          "time": "29/09 06:29 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -788,6 +748,21 @@
                 "Ziggo Sport 1",
                 "Ziggo Sport 4",
                 "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Lynk & Co Hangzhou Open",
+          "kick_utc": 1790681400,
+          "time": "29/09 06:30 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 5"
               ]
             }
           ],
