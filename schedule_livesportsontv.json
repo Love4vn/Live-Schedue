@@ -1,72 +1,11 @@
 [
     {
         "Date": "2026-09-29",
-        "Time": "09:00",
-        "League": "Tennis (ATP)",
-        "Matchup": "Japan Open",
-        "Services": [
-            "Tennis Channel",
-            "TSN+"
-        ]
-    },
-    {
-        "Date": "2026-09-29",
-        "Time": "10:00",
-        "League": "Tennis (ATP)",
-        "Matchup": "China Open",
-        "Services": [
-            "TSN+",
-            "Tennis Channel"
-        ]
-    },
-    {
-        "Date": "2026-09-29",
-        "Time": "10:00",
-        "League": "Tennis (WTA)",
-        "Matchup": "China Open",
-        "Services": [
-            "TSN+",
-            "TSN2",
-            "DAZN Canada"
-        ]
-    },
-    {
-        "Date": "2026-09-29",
-        "Time": "12:00",
-        "League": "Tennis (ATP)",
-        "Matchup": "China Open",
-        "Services": [
-            "Tennis Channel",
-            "TSN+"
-        ]
-    },
-    {
-        "Date": "2026-09-29",
-        "Time": "12:00",
-        "League": "Tennis (WTA)",
-        "Matchup": "China Open",
-        "Services": [
-            "TSN+",
-            "TSN4",
-            "DAZN Canada"
-        ]
-    },
-    {
-        "Date": "2026-09-29",
         "Time": "14:00",
         "League": "Tennis (ATP)",
         "Matchup": "China Open",
         "Services": [
             "TSN+"
-        ]
-    },
-    {
-        "Date": "2026-09-29",
-        "Time": "14:00",
-        "League": "Tennis (ATP)",
-        "Matchup": "Japan Open",
-        "Services": [
-            "Tennis Channel"
         ]
     },
     {
@@ -78,6 +17,15 @@
             "DAZN Canada",
             "TSN+",
             "TSN4"
+        ]
+    },
+    {
+        "Date": "2026-09-29",
+        "Time": "17:00",
+        "League": "International Friendlies",
+        "Matchup": "Australia vs Brazil",
+        "Services": [
+            "SporTV Brazil HD"
         ]
     },
     {
@@ -106,7 +54,8 @@
         "League": "Tennis (ATP)",
         "Matchup": "China Open",
         "Services": [
-            "RDS"
+            "RDS",
+            "TSN+"
         ]
     },
     {
@@ -289,7 +238,8 @@
             "Fubo Sports",
             "ESPN Select",
             "ESPN Unlimited",
-            "ESPN Deportes"
+            "ESPN Deportes",
+            "TSN+"
         ]
     },
     {
@@ -368,6 +318,7 @@
             "Monomax Streaming",
             "Nova Sports Extra 1 Hellas HD",
             "Okko Prime Sport HD",
+            "Polsat Sport 1 HD",
             "Premier Sports 2 Mongolia HD",
             "Premier Sports 2 Mongolia HD",
             "Prima Sport RO 2 HD",
@@ -398,6 +349,23 @@
         ]
     },
     {
+        "Date": "2026-09-29",
+        "Time": "23:00",
+        "League": "International Friendlies",
+        "Matchup": "Russia vs Iran",
+        "Services": [
+            "IRIB TV3 HD",
+            "IRIB TV3 HD",
+            "IRIB TV3 HD",
+            "IRIB TV3 HD",
+            "IRIB TV3 HD",
+            "Okko Futbol HD",
+            "Persiana Sport HD",
+            "Persiana Sport HD",
+            "Persiana Sport HD"
+        ]
+    },
+    {
         "Date": "2026-09-30",
         "Time": "01:45",
         "League": "UEFA Nations League",
@@ -423,6 +391,7 @@
             "Digi Sport 1 Romania HD",
             "Fast Sports TV Armenia",
             "Fox Sports 1 USA HD",
+            "GEM Sport 1 HD",
             "L´Équipe Live Foot",
             "Mediaset 20 Italia HD",
             "Mediaset 20 Italia HD",
@@ -434,6 +403,10 @@
             "Nova Sports Extra 1 Hellas HD",
             "Nova TV Hrvatska HD",
             "Okko Futbol HD",
+            "Persiana Sport HD",
+            "Persiana Sport HD",
+            "Persiana Sport HD",
+            "Polsat Sport 1 HD",
             "Premier Sports 2 Mongolia HD",
             "Premier Sports 2 Mongolia HD",
             "Prima Sport RO 1 HD",
@@ -473,6 +446,7 @@
             "TVE La 1 UHD 4K",
             "TVE La 1 UHD 4K",
             "TVE La 1 UHD 4K",
+            "TVP Sport Polska HD",
             "ViaPlay Sport Sverige HD",
             "ViaPlay Sverige HD",
             "ViaPlay Ísland HD",
@@ -522,6 +496,9 @@
             "MTV Katsomon+",
             "MTV Urheilu 1 Suomi HD",
             "Nova Sports Premier League HD",
+            "Persiana Sports 2 HD",
+            "Polsat Sport 2 HD",
+            "Polsat Sport 2 HD",
             "Premier Sports 1 Mongolia HD",
             "Premier Sports 1 Mongolia HD",
             "Prima Sport RO 2 HD",
@@ -625,6 +602,8 @@
             "Nova Sport Bulgaria HD",
             "Nova Sport Bulgaria HD",
             "Nova Sports News HD",
+            "Persiana Sports 3 HD",
+            "Polsat Sport 3 HD",
             "Premier Sports 3 Mongolia HD",
             "Premier Sports 3 Mongolia HD",
             "Prima Sport RO 4 HD",
@@ -643,6 +622,38 @@
             "SuperSport LaLiga HD",
             "SuperSport LaLiga HD",
             "SuperSport MáXimo 3A HD",
+            "TV2 Play Danmark",
+            "TV2 Play Norge",
+            "ViaPlay Sverige HD",
+            "ViaPlay Ísland HD"
+        ]
+    },
+    {
+        "Date": "2026-09-30",
+        "Time": "01:45",
+        "League": "UEFA Nations League",
+        "Matchup": "Slovenia vs North Macedonia",
+        "Services": [
+            "Arena M1 Premium MKD HD",
+            "Arena Premium 3 BiH HD",
+            "beIN Sports MENA English 2 HD",
+            "DAZN Deutsch",
+            "Digi Sport 4 Romania",
+            "Fox Sports 2 USA HD",
+            "Megogo Futbol 7",
+            "Monomax Streaming",
+            "MTV Katsomon+",
+            "Nova Sports Extra 2 Hellas HD",
+            "Polsat Sport Premium 1 HD",
+            "Prima Sport RO 5 HD",
+            "SportKlub 1 Slovenija HD",
+            "SportKlub 5 Hrvatska",
+            "SporTV 2 Brazil HD",
+            "SuperSport 4 Albania HD",
+            "SuperSport Football HD",
+            "SuperSport Football HD",
+            "SuperSport Kickoff HD",
+            "SuperSport Kickoff HD",
             "TV2 Play Danmark",
             "TV2 Play Norge",
             "ViaPlay Sverige HD",
@@ -675,40 +686,10 @@
             "SporTV 3 Brazil HD",
             "SuperSport Action HD",
             "SuperSport Action HD",
+            "SÝN Sport 1 Ísland HD",
             "TV2 Play Danmark",
             "TV2 Play Norge",
             "ViaPlay Norge HD",
-            "ViaPlay Sverige HD",
-            "ViaPlay Ísland HD"
-        ]
-    },
-    {
-        "Date": "2026-09-30",
-        "Time": "01:45",
-        "League": "UEFA Nations League",
-        "Matchup": "Slovenia vs North Macedonia",
-        "Services": [
-            "Arena M1 Premium MKD HD",
-            "Arena Premium 3 BiH HD",
-            "beIN Sports MENA English 2 HD",
-            "DAZN Deutsch",
-            "Digi Sport 4 Romania",
-            "Fox Sports 2 USA HD",
-            "Megogo Futbol 7",
-            "Monomax Streaming",
-            "MTV Katsomon+",
-            "Nova Sports Extra 2 Hellas HD",
-            "Prima Sport RO 5 HD",
-            "SportKlub 1 Slovenija HD",
-            "SportKlub 5 Hrvatska",
-            "SporTV 2 Brazil HD",
-            "SuperSport 4 Albania HD",
-            "SuperSport Football HD",
-            "SuperSport Football HD",
-            "SuperSport Kickoff HD",
-            "SuperSport Kickoff HD",
-            "TV2 Play Danmark",
-            "TV2 Play Norge",
             "ViaPlay Sverige HD",
             "ViaPlay Ísland HD"
         ]
