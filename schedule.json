@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-29 16:44 VN",
+  "updated": "2026-09-29 18:33 VN",
   "days": {
     "20260929": {
       "date": "Tuesday, 29/09",
@@ -300,9 +300,9 @@
               "country": "Daddylive",
               "channels": [
                 "Nova Sports 1 Greece",
-                "L'Equipe France",
+                "Sky Sport Calcio IT",
                 "DAZN CA",
-                "Sky Sport Calcio IT"
+                "L'Equipe France"
               ]
             }
           ],
@@ -317,11 +317,11 @@
             {
               "country": "Daddylive",
               "channels": [
-                "Nova Sports 1 Greece",
-                "L'Equipe France",
-                "Ziggo Sport 1 NL",
                 "DAZN CA",
-                "Sky Sport Calcio IT"
+                "Sky Sport Calcio IT",
+                "Ziggo Sport 1 NL",
+                "Nova Sports 1 Greece",
+                "L'Equipe France"
               ]
             }
           ],
@@ -578,9 +578,9 @@
             {
               "country": "NowTV",
               "channels": [
-                "Ziggo Sport 4",
+                "Ziggo Sport 1",
                 "Ziggo Sport Kanaal 14",
-                "Ziggo Sport 1"
+                "Ziggo Sport 4"
               ]
             }
           ],
@@ -595,11 +595,11 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN+",
-                "TSN4",
-                "DAZN Canada",
                 "RDS",
-                "Tennis Channel"
+                "TSN4",
+                "Tennis Channel",
+                "TSN+",
+                "DAZN Canada"
               ]
             }
           ],
@@ -668,13 +668,16 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP Tennis",
-          "kick_utc": 1790679600,
-          "time": "29/09 06:00 PM",
+          "match": "Japan Open Tennis Championships",
+          "kick_utc": 1790733600,
+          "time": "30/09 09:00 AM",
           "tv_channels": [
             {
               "country": "Wheresthematch",
               "channels": [
+                "Sky Sports Main Event",
+                "Sky Sports Tennis",
+                "Sky Sports Ultra HDR",
                 "Sky Sports+"
               ]
             }
@@ -698,145 +701,6 @@
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Japan Open Tennis Championships",
-          "kick_utc": 1790733600,
-          "time": "30/09 09:00 AM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Main Event",
-                "Sky Sports Tennis",
-                "Sky Sports Ultra HDR",
-                "Sky Sports+"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Hubert Hurkacz vs Alejandro Davidovich Fokina",
-          "kick_utc": 1790679600,
-          "time": "29/09 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 1",
-                "beIN Sports Connect"
-              ]
-            },
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Daniil Medvedev vs Andrey Rublev",
-          "kick_utc": 1790681400,
-          "time": "29/09 06:30 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect"
-              ]
-            },
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1790679600,
-          "time": "29/09 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis Channel",
-                "Sky Sports+",
-                "Sky Sports Tennis UK",
-                "Sky Sports Tennis Germany",
-                "Sky Sport Tennis Italy",
-                "TV4 Tennis",
-                "Canal+ Sport 2 Czechia",
-                "Cytavision Sports 5 Cyprus",
-                "beIN Sports 3 France",
-                "beIN Sports 4 Max France",
-                "beIN Sports 6 Max France",
-                "Movistar Deportes 2 Spain",
-                "MAX Sport 1 Bulgaria",
-                "MAX Sport 3 Bulgaria",
-                "Ziggo Sport 1 NL",
-                "Ziggo Sport 4 NL",
-                "Ziggo Sport 5 NL",
-                "Arena Tennis",
-                "TyC Sports Argentina",
-                "Digi Sport 2 Romania",
-                "NovaSports Prime GR",
-                "Polsat Sport Premium 2 Poland",
-                "Polsat Sport 3 Poland",
-                "Canal+ Sport 2 Poland",
-                "ESPN2 Argentina",
-                "beIN SPORTS Australia 1",
-                "beIN SPORTS Australia 2",
-                "NovaSports 6 GR",
-                "ESPN2 Brazil",
-                "ESPN3 Brazil",
-                "Sport 5 Israel"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "FINAL 🇨",
-          "kick_utc": 1790679600,
-          "time": "29/09 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Sportklub 2 Croatia",
-                "Sportklub 4 Croatia"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Goncalo Marques vs 🇺 Pavel Nesterov",
-          "kick_utc": 1790676000,
-          "time": "29/09 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
         },
         {
           "league": "Tennis",
@@ -1071,6 +935,22 @@
         },
         {
           "league": "Tennis",
+          "match": "China Open 2026",
+          "kick_utc": 1790766000,
+          "time": "30/09 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Réseau Des Sports (Rds)",
+                "Réseau Des Sports (Rds) Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": ": Lynk & Co Hangzhou Open",
           "kick_utc": 1790681400,
           "time": "29/09 06:30 PM",
@@ -1173,6 +1053,21 @@
                 "Ziggo Sport 1",
                 "Ziggo Sport 4",
                 "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "China Open vs Beijing",
+          "kick_utc": 1790766000,
+          "time": "30/09 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
               ]
             }
           ],
