@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-29 05:40 VN",
+  "updated": "2026-09-29 09:43 VN",
   "days": {
     "20260929": {
       "date": "Tuesday, 29/09",
@@ -291,10 +291,10 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN+",
-                "DAZN Canada",
+                "TSN2",
                 "Tennis Channel",
-                "TSN2"
+                "TSN+",
+                "DAZN Canada"
               ]
             }
           ],
@@ -309,10 +309,10 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN+",
-                "DAZN Canada",
                 "TSN4",
-                "Tennis Channel"
+                "Tennis Channel",
+                "TSN+",
+                "DAZN Canada"
               ]
             }
           ],
@@ -327,9 +327,9 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "TSN4",
                 "TSN+",
-                "DAZN Canada",
-                "TSN4"
+                "DAZN Canada"
               ]
             }
           ],
@@ -344,11 +344,11 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "RDS",
                 "TSN4",
                 "Tennis Channel",
-                "TSN+",
-                "DAZN Canada"
+                "RDS",
+                "DAZN Canada",
+                "TSN+"
               ]
             }
           ],
@@ -384,9 +384,9 @@
             {
               "country": "NowTV",
               "channels": [
+                "Ziggo Sport 4",
                 "Ziggo Sport Kanaal 14",
-                "Ziggo Sport 1",
-                "Ziggo Sport 4"
+                "Ziggo Sport 1"
               ]
             }
           ],
@@ -440,19 +440,21 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1790681400,
-          "time": "29/09 06:30 PM",
+          "match": "Japan Open Tennis Championships",
+          "kick_utc": 1790733600,
+          "time": "30/09 09:00 AM",
           "tv_channels": [
             {
-              "country": "Ausport",
+              "country": "Wheresthematch",
               "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
+                "Sky Sports Main Event",
+                "Sky Sports Tennis",
+                "Sky Sports Ultra HDR",
+                "Sky Sports+"
               ]
             }
           ],
-          "source": "ausport"
+          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
@@ -533,6 +535,69 @@
         },
         {
           "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1790722800,
+          "time": "30/09 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1790726400,
+          "time": "30/09 07:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1790733600,
+          "time": "30/09 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 500 - Tóquio 2026",
+          "kick_utc": 1790733600,
+          "time": "30/09 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": ": Lynk & Co Hangzhou Open",
           "kick_utc": 1790681400,
           "time": "29/09 06:30 PM",
@@ -558,6 +623,36 @@
                 "Ziggo Sport 1",
                 "Ziggo Sport 4",
                 "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Kinoshita Group Japan Open Tennis Championships -Round 1(A)",
+          "kick_utc": 1790733600,
+          "time": "30/09 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports Prime"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Kinoshita Group Japan Open Tennis Championships vs Tokyo",
+          "kick_utc": 1790733600,
+          "time": "30/09 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 5"
               ]
             }
           ],
