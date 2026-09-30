@@ -1,20 +1,117 @@
 {
-    "Tuesday 29th Sep 2026 - Schedule Time UK GMT": {
+    "Wednesday 30th Sep 2026 - Schedule Time UK GMT": {
+        "Friendly Soccer ⚽": [],
         "All Soccer Events ⚽": [],
-        "Tennis 🎾": [],
-        "Tennis 🎾 ATP - Singles: Chengdu (China)": [],
-        "Tennis 🎾 ATP - Singles: Hangzhou (China)": [],
-        "Tennis 🎾 Challenger Men - Singles: Porto (Portugal)": [],
-        "Tennis 🎾 ATP - Singles: Beijing (China) - Qualification": [],
-        "Tennis 🎾 ATP - Singles: Tokyo (Japan) - Qualification": [],
-        "Tennis 🎾 WTA - Singles: Beijing (China) - Qualification": [],
-        "Tennis 🎾 WTA - Singles: Beijing (China)": [],
+        "Tennis 🎾": [
+            {
+                "time": "11:00",
+                "event": "🎾 🇨🇳 WTA 1000 &amp; ATP 500 Beijing 🇨🇳",
+                "channels": [
+                    {
+                        "channel_name": "Sportklub 1 Croatia",
+                        "channel_id": "101"
+                    }
+                ]
+            }
+        ],
+        "Tennis 🎾 ATP - Singles: Beijing (China)": [
+            {
+                "time": "11:00",
+                "event": "🎾 ATP - Singles: 🇵🇹 Nuno Borges vs 🇷🇸 Novak Djokovic",
+                "channels": [
+                    {
+                        "channel_name": "Tennis HD Stream",
+                        "channel_id": "1084"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1507"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1663"
+                    }
+                ]
+            }
+        ],
         "Tennis 🎾 ATP - Singles: Tokyo (Japan)": [],
-        "Tennis 🎾 ATP - Singles: Beijing (China)": [],
-        "Tennis 🎾 ATP - Doubles: Beijing (China) - Qualification": [],
-        "Tennis 🎾 ATP - Doubles: Tokyo (Japan) - Qualification": [],
-        "Tennis 🎾 ATP - Doubles: Chengdu (China)": [],
-        "Tennis 🎾 ATP - Doubles: Hangzhou (China)": [],
-        "Tennis 🎾 ATP - Doubles: Beijing (China)": []
+        "Tennis 🎾 Challenger Men - Singles: Porto (Portugal)": [
+            {
+                "time": "12:00",
+                "event": "🎾 Challenger Men - Singles: 🇫🇮 Otto Virtanen vs 🇵🇹 Tiago Pereira",
+                "channels": [
+                    {
+                        "channel_name": "Tennis HD Stream",
+                        "channel_id": "1101"
+                    }
+                ]
+            },
+            {
+                "time": "13:00",
+                "event": "🎾 Challenger Men - Singles: 🇱🇹 Edas Butvilas vs 🇧🇪 Michael Geerts",
+                "channels": [
+                    {
+                        "channel_name": "Tennis HD Stream",
+                        "channel_id": "1102"
+                    }
+                ]
+            },
+            {
+                "time": "14:30",
+                "event": "🎾 Challenger Men - Singles: 🇹🇳 Moez Echargui vs 🇧🇦 Damir Dzumhur",
+                "channels": [
+                    {
+                        "channel_name": "Tennis HD Stream",
+                        "channel_id": "1103"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1658"
+                    }
+                ]
+            }
+        ],
+        "Tennis 🎾 WTA - Singles: Beijing (China)": [
+            {
+                "time": "11:00",
+                "event": "🎾 WTA - Singles: 🇫🇷 Elsa Jacquemot vs 🇫🇷 Frech M.",
+                "channels": [
+                    {
+                        "channel_name": "Tennis HD Stream",
+                        "channel_id": "1099"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1503"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1676"
+                    }
+                ]
+            },
+            {
+                "time": "12:30",
+                "event": "🎾 WTA - Singles: 🇭🇺 Anna Bondar vs 🇲🇽 Renata Zarazua",
+                "channels": [
+                    {
+                        "channel_name": "Tennis HD Stream",
+                        "channel_id": "1100"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1501"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1677"
+                    }
+                ]
+            }
+        ],
+        "Tennis 🎾 ATP - Doubles: Beijing (China)": [],
+        "Tennis 🎾 ATP - Doubles: Tokyo (Japan)": [],
+        "Tennis 🎾 ATP - Doubles: Beijing - Qualification": [],
+        "Tennis 🎾 ATP - Doubles: Tokyo - Qualification": []
     }
 }
