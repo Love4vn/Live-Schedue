@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-30 04:33 VN",
+  "updated": "2026-09-30 09:20 VN",
   "days": {
     "20260930": {
       "date": "Wednesday, 30/09",
@@ -359,8 +359,8 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN+",
                 "TSN4",
+                "TSN+",
                 "DAZN Canada"
               ]
             }
@@ -377,11 +377,11 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "TSN+",
-                "TSN4",
-                "RDS",
-                "Tennis Channel",
+                "DAZN Canada",
                 "RDS 2",
-                "DAZN Canada"
+                "RDS",
+                "TSN4",
+                "Tennis Channel"
               ]
             }
           ],
@@ -422,6 +422,24 @@
         },
         {
           "league": "Tennis",
+          "match": "Japan Open Tennis Championships",
+          "kick_utc": 1790820000,
+          "time": "01/10 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Sky Sports Main Event",
+                "Sky Sports Tennis",
+                "Sky Sports Ultra HDR",
+                "Sky Sports+"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
           "match": "ATP Tennis",
           "kick_utc": 1790737200,
           "time": "30/09 10:00 AM",
@@ -440,15 +458,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1790719200,
-          "time": "30/09 05:00 AM",
+          "match": "ATP World Tour 500 - Tóquio 2026",
+          "kick_utc": 1790733600,
+          "time": "30/09 09:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
+                "Sport Tv2 Hd Portugal"
               ]
             }
           ],
@@ -456,15 +473,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1790722800,
-          "time": "30/09 06:00 AM",
+          "match": "ATP World Tour 500 - Tóquio 2026",
+          "kick_utc": 1790751600,
+          "time": "30/09 02:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
+                "Sport Tv2 Hd Portugal"
               ]
             }
           ],
@@ -472,15 +488,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1790726400,
-          "time": "30/09 07:00 AM",
+          "match": "ATP World Tour 500 - Tóquio 2026",
+          "kick_utc": 1790820000,
+          "time": "01/10 09:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
+                "Sport Tv2 Hd Portugal"
               ]
             }
           ],
@@ -536,14 +551,15 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP World Tour 500 - Tóquio 2026",
-          "kick_utc": 1790733600,
-          "time": "30/09 09:00 AM",
+          "match": "Tenis",
+          "kick_utc": 1790805600,
+          "time": "01/10 05:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Sport Tv2 Hd Portugal"
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
               ]
             }
           ],
@@ -551,14 +567,47 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP World Tour 500 - Tóquio 2026",
-          "kick_utc": 1790740800,
-          "time": "30/09 11:00 AM",
+          "match": "Tenis",
+          "kick_utc": 1790809200,
+          "time": "01/10 06:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Sport Tv2 Hd Portugal"
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1790812800,
+          "time": "01/10 07:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1790820000,
+          "time": "01/10 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
               ]
             }
           ],
@@ -581,6 +630,21 @@
         },
         {
           "league": "Tennis",
+          "match": "ATP World Tour 500 - Beijing 2026",
+          "kick_utc": 1790758800,
+          "time": "30/09 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv1 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "China Open 2026",
           "kick_utc": 1790766000,
           "time": "30/09 06:00 PM",
@@ -590,6 +654,21 @@
               "channels": [
                 "Réseau Des Sports (Rds)",
                 "Réseau Des Sports (Rds) Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - ATP Challenger Tour 2026 - ATP Ch 125 Porto Open",
+          "kick_utc": 1790769480,
+          "time": "30/09 06:58 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
               ]
             }
           ],
@@ -667,6 +746,36 @@
               "country": "NowTV",
               "channels": [
                 "Ziggo Sport 5"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Kinoshita Group Japan Open Tennis Championships vs Tokyo",
+          "kick_utc": 1790820000,
+          "time": "01/10 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 5"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Kinoshita Group Japan Open Tennis Championships -Round 1(B)",
+          "kick_utc": 1790820000,
+          "time": "01/10 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports Prime"
               ]
             }
           ],
