@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-01 16:44 VN",
+  "updated": "2026-10-01 18:48 VN",
   "days": {
     "20261001": {
       "date": "Thursday, 01/10",
@@ -574,30 +574,13 @@
         },
         {
           "league": "Tennis",
-          "match": "Japan Open",
-          "kick_utc": 1790845200,
-          "time": "01/10 04:00 PM",
+          "match": "Shanghai Masters",
+          "kick_utc": 1790848800,
+          "time": "01/10 05:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Tennis Channel",
-                "TSN+"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "China Open",
-          "kick_utc": 1790845200,
-          "time": "01/10 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
                 "T2"
               ]
             }
@@ -613,13 +596,13 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN4",
-                "Tennis Channel",
+                "RDS",
                 "TSN+",
-                "RDS 2",
-                "RDS Info",
+                "TSN4",
                 "DAZN Canada",
-                "RDS"
+                "Tennis Channel",
+                "RDS Info",
+                "RDS 2"
               ]
             }
           ],
@@ -634,22 +617,9 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "TSN+",
+                "TSN2",
                 "Tennis Channel"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Shanghai Masters",
-          "kick_utc": 1790848800,
-          "time": "01/10 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "T2"
               ]
             }
           ],
@@ -689,23 +659,6 @@
         },
         {
           "league": "Tennis",
-          "match": "🇺 Learner Tien vs  Hubert Hurkacz",
-          "kick_utc": 1790852400,
-          "time": "01/10 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
           "match": "🇰🇿 Alexander Bublik vs 🇨🇿 Jakub Mensik",
           "kick_utc": 1790857800,
           "time": "01/10 07:30 PM",
@@ -716,38 +669,6 @@
                 "Tennis HD Stream",
                 "Tennis Stream",
                 "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Eva Lys vs 🇨 Sun Xinyu",
-          "kick_utc": 1790852400,
-          "time": "01/10 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Goncalo Marques vs  David Jorda Sanchis",
-          "kick_utc": 1790848800,
-          "time": "01/10 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream"
               ]
             }
           ],
@@ -830,9 +751,40 @@
         },
         {
           "league": "Tennis",
+          "match": "ATP World Tour 500 - Beijing 2026",
+          "kick_utc": 1790938800,
+          "time": "02/10 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv1 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "China Open 2026",
           "kick_utc": 1790852400,
           "time": "01/10 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Réseau Des Sports (Rds)",
+                "Réseau Des Sports (Rds) Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "China Open 2026",
+          "kick_utc": 1790938800,
+          "time": "02/10 06:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -987,16 +939,14 @@
         },
         {
           "league": "Tennis",
-          "match": "China Open vs Beijing",
-          "kick_utc": 1790845200,
-          "time": "01/10 04:00 PM",
+          "match": "China Open -Round 1 (C)",
+          "kick_utc": 1790852400,
+          "time": "01/10 06:00 PM",
           "tv_channels": [
             {
               "country": "NowTV",
               "channels": [
-                "Ziggo Sport 1",
-                "Ziggo Sport 4",
-                "Ziggo Sport Kanaal 14"
+                "Now Sports 6"
               ]
             }
           ],
@@ -1034,14 +984,16 @@
         },
         {
           "league": "Tennis",
-          "match": "China Open -Round 1 (C)",
-          "kick_utc": 1790852400,
-          "time": "01/10 06:00 PM",
+          "match": "China Open vs Beijing",
+          "kick_utc": 1790938800,
+          "time": "02/10 06:00 PM",
           "tv_channels": [
             {
               "country": "NowTV",
               "channels": [
-                "Now Sports 6"
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
               ]
             }
           ],
@@ -1148,6 +1100,36 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "China Open E3",
+          "kick_utc": 1790938800,
+          "time": "02/10 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "China Open -Round 2 (B)",
+          "kick_utc": 1790938800,
+          "time": "02/10 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
               ]
             }
           ],
