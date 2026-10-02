@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-02 16:44 VN",
+  "updated": "2026-10-02 18:18 VN",
   "days": {
     "20261002": {
       "date": "Friday, 02/10",
@@ -778,31 +778,15 @@
         },
         {
           "league": "Tennis",
-          "match": "Japan Open",
-          "kick_utc": 1790931600,
-          "time": "02/10 04:00 PM",
+          "match": "Shanghai Masters",
+          "kick_utc": 1790935200,
+          "time": "02/10 05:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Tennis Channel",
-                "TSN+"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "China Open",
-          "kick_utc": 1790931600,
-          "time": "02/10 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "T2"
+                "T2",
+                "Tennis Channel"
               ]
             }
           ],
@@ -817,13 +801,13 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN+",
-                "RDS",
-                "Tennis Channel",
-                "RDS 2",
-                "RDS Info",
                 "DAZN Canada",
-                "TSN4"
+                "RDS Info",
+                "RDS",
+                "RDS 2",
+                "TSN+",
+                "TSN4",
+                "Tennis Channel"
               ]
             }
           ],
@@ -838,24 +822,8 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "TSN+",
                 "TSN2",
-                "Tennis Channel",
-                "TSN+"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Shanghai Masters",
-          "kick_utc": 1790935200,
-          "time": "02/10 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "T2",
                 "Tennis Channel"
               ]
             }
@@ -896,22 +864,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Hubert Hurkacz vs Arthur Gea",
-          "kick_utc": 1790938800,
-          "time": "02/10 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 1",
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
           "match": "",
           "kick_utc": 1790992800,
           "time": "03/10 09:00 AM",
@@ -942,24 +894,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Hubert Hurkacz vs  Alejandro Davidovich Fokina",
-          "kick_utc": 1790938800,
-          "time": "02/10 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
           "match": "🇨 Bu Yunchaokete vs  Novak Djokovic",
           "kick_utc": 1790944200,
           "time": "02/10 07:30 PM",
@@ -971,39 +905,6 @@
                 "Tennis Stream",
                 "Tennis Stream",
                 "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "🇲🇽 Renata Zarazua vs 🇾 Aryna Sabalenka",
-          "kick_utc": 1790938800,
-          "time": "02/10 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Daniel Rincon vs  David Jorda Sanchis",
-          "kick_utc": 1790935200,
-          "time": "02/10 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream"
               ]
             }
           ],
@@ -1125,6 +1026,22 @@
               "channels": [
                 "Réseau Des Sports (Rds)",
                 "Réseau Des Sports (Rds) Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "China Open 2026",
+          "kick_utc": 1791025200,
+          "time": "03/10 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Rds2",
+                "Rds2 Hd"
               ]
             }
           ],
@@ -1273,51 +1190,18 @@
         },
         {
           "league": "Tennis",
-          "match": "Kinoshita Group Japan Open Tennis Championships vs Tokyo",
-          "kick_utc": 1790928900,
-          "time": "02/10 03:15 PM",
+          "match": "Ténis - ATP Challenger Tour 2026 - ATP Ch 125 Porto Open - Meia-Final",
+          "kick_utc": 1791021600,
+          "time": "03/10 05:00 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Ziggo Sport 1",
-                "Ziggo Sport Kanaal 14"
+                "Sport Tv4 Hd Portugal"
               ]
             }
           ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Kinoshita Group Japan Open Tennis Championships vs Tokyo",
-          "kick_utc": 1790992800,
-          "time": "03/10 09:00 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 5"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Kinoshita Group Japan Open Tennis Championships vs Tokyo",
-          "kick_utc": 1791010800,
-          "time": "03/10 02:00 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 1",
-                "Ziggo Sport 5",
-                "Ziggo Sport Kanaal 14"
-              ]
-            }
-          ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -1398,6 +1282,23 @@
         },
         {
           "league": "Tennis",
+          "match": "China Open vs Beijing",
+          "kick_utc": 1791025200,
+          "time": "03/10 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
           "match": "Kinoshita Group Japan Open Tennis Championships -Round 2(B)",
           "kick_utc": 1790992800,
           "time": "03/10 09:00 AM",
@@ -1406,6 +1307,38 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports Prime"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Kinoshita Group Japan Open Tennis Championships vs Tokyo",
+          "kick_utc": 1790992800,
+          "time": "03/10 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 5"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Kinoshita Group Japan Open Tennis Championships vs Tokyo",
+          "kick_utc": 1791010800,
+          "time": "03/10 02:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport 5",
+                "Ziggo Sport Kanaal 14"
               ]
             }
           ],
@@ -1466,6 +1399,21 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports 6"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "China Open E6",
+          "kick_utc": 1791025200,
+          "time": "03/10 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
               ]
             }
           ],
