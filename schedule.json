@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-03 16:44 VN",
+  "updated": "2026-10-03 17:35 VN",
   "days": {
     "20261003": {
       "date": "Saturday, 03/10",
@@ -499,10 +499,10 @@
             {
               "country": "Daddylive",
               "channels": [
-                "Sport 1 Israel",
                 "DAZN CA",
-                "L'Equipe France",
-                "Sky Sport Calcio IT"
+                "Sky Sport Calcio IT",
+                "Sport 1 Israel",
+                "L'Equipe France"
               ]
             }
           ],
@@ -517,12 +517,12 @@
             {
               "country": "Daddylive",
               "channels": [
-                "Ziggo Sport 1 NL",
-                "Nova Sports 1 Greece",
-                "L'Equipe France",
-                "DAZN CA",
+                "Sky Sport Calcio IT",
                 "Sport 1 Israel",
-                "Sky Sport Calcio IT"
+                "Nova Sports 1 Greece",
+                "DAZN CA",
+                "Ziggo Sport 1 NL",
+                "L'Equipe France"
               ]
             }
           ],
@@ -836,9 +836,9 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "T2",
                 "Tennis Channel",
-                "TSN+"
+                "TSN+",
+                "T2"
               ]
             }
           ],
@@ -853,13 +853,13 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN4",
-                "RDS Info",
-                "RDS 2",
                 "RDS",
-                "Tennis Channel",
+                "DAZN Canada",
                 "TSN+",
-                "DAZN Canada"
+                "TSN4",
+                "Tennis Channel",
+                "RDS Info",
+                "RDS 2"
               ]
             }
           ],
@@ -874,8 +874,8 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN2",
                 "Tennis Channel",
+                "TSN2",
                 "TSN+"
               ]
             }
@@ -1093,21 +1093,6 @@
         },
         {
           "league": "Tennis",
-          "match": "David Jorda Sanchis vs  Inaki Montes-De La Torre",
-          "kick_utc": 1791021600,
-          "time": "03/10 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
           "match": "Henrique Rocha vs 🇨🇭 Jerome Kym",
           "kick_utc": 1791027000,
           "time": "03/10 06:30 PM",
@@ -1318,6 +1303,21 @@
               "country": "Hubsport",
               "channels": [
                 "Sport Tv1 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - ATP Challenger Tour 2026 - ATP Ch 125 Porto Open - Final",
+          "kick_utc": 1791107880,
+          "time": "04/10 04:58 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv 6 Hd Portugal"
               ]
             }
           ],
