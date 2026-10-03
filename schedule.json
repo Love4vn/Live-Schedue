@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-03 04:28 VN",
+  "updated": "2026-10-03 09:17 VN",
   "days": {
     "20261003": {
       "date": "Saturday, 03/10",
@@ -17,6 +17,21 @@
                 "Paramount+",
                 "CBSSN",
                 "DAZN Canada"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Fakel Voronezh vs FK Vitebsk",
+          "kick_utc": 1791027000,
+          "time": "03/10 06:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Belarus 5 HD"
               ]
             }
           ],
@@ -177,6 +192,34 @@
               "country": "LiveSportsOnTV",
               "channels": [
                 "Peacock ES"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "India vs Brazil",
+          "kick_utc": 1791036000,
+          "time": "03/10 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DAZN Japan",
+                "M+ #Vamos Bar 1",
+                "M+ Liga de Campeones HD",
+                "M+ Liga de Campeones HD",
+                "M+ Vamos 1 España HD",
+                "M+ Vamos 1 España HD",
+                "Sony Sports TEN 2 India HD",
+                "Sony Sports TEN 2 India HD",
+                "Sony Sports TEN 3 India HD",
+                "Sony Sports TEN 3 India HD",
+                "Sony Sports TEN 4 India HD",
+                "Sport TV1 Portugal HD",
+                "Sport TV1 Slovenija",
+                "SporTV Brazil HD"
               ]
             }
           ],
@@ -370,8 +413,8 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN+",
                 "TSN2",
+                "TSN+",
                 "DAZN Canada"
               ]
             }
@@ -387,10 +430,10 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
+                "DAZN Canada",
                 "TSN+",
                 "TSN4",
-                "Tennis Channel",
-                "DAZN Canada"
+                "Tennis Channel"
               ]
             }
           ],
@@ -421,10 +464,10 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN+",
-                "T2",
+                "DAZN Canada",
                 "TSN4",
-                "DAZN Canada"
+                "T2",
+                "TSN+"
               ]
             }
           ],
@@ -439,9 +482,9 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN+",
                 "T2",
-                "Tennis Channel"
+                "Tennis Channel",
+                "TSN+"
               ]
             }
           ],
@@ -456,13 +499,13 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN4",
-                "DAZN Canada",
                 "RDS 2",
-                "TSN+",
-                "Tennis Channel",
+                "RDS Info",
                 "RDS",
-                "RDS Info"
+                "TSN+",
+                "TSN4",
+                "Tennis Channel",
+                "DAZN Canada"
               ]
             }
           ],
@@ -477,8 +520,8 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN+",
                 "TSN2",
+                "TSN+",
                 "Tennis Channel"
               ]
             }
@@ -553,9 +596,9 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP Tennis",
-          "kick_utc": 1790996400,
-          "time": "03/10 10:00 AM",
+          "match": "Japan Open Tennis Championships",
+          "kick_utc": 1791079200,
+          "time": "04/10 09:00 AM",
           "tv_channels": [
             {
               "country": "Wheresthematch",
@@ -569,65 +612,19 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1790992800,
-          "time": "03/10 09:00 AM",
+          "match": "ATP Tennis",
+          "kick_utc": 1790996400,
+          "time": "03/10 10:00 AM",
           "tv_channels": [
             {
-              "country": "Ausport",
+              "country": "Wheresthematch",
               "channels": [
-                "beIN Sports Connect"
+                "Sky Sports Tennis",
+                "Sky Sports+"
               ]
             }
           ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1791010800,
-          "time": "03/10 02:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1790978400,
-          "time": "03/10 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1790982000,
-          "time": "03/10 06:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
+          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
@@ -666,6 +663,54 @@
           "match": "Tenis",
           "kick_utc": 1791003600,
           "time": "03/10 12:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1791064800,
+          "time": "04/10 05:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1791068400,
+          "time": "04/10 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1791075600,
+          "time": "04/10 08:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -786,6 +831,21 @@
         },
         {
           "league": "Tennis",
+          "match": "ATP World Tour 500 - Tóquio 2026 - Quartos-de-Final",
+          "kick_utc": 1791079200,
+          "time": "04/10 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "Kinoshita Group Japan Open Tennis Championships -Round 2(B)",
           "kick_utc": 1790992800,
           "time": "03/10 09:00 AM",
@@ -863,6 +923,21 @@
         },
         {
           "league": "Tennis",
+          "match": "Kinoshita Group Japan Open Tennis Championships vs Tokyo",
+          "kick_utc": 1791079200,
+          "time": "04/10 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 5"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
           "match": "China Open -Round 2 (D)",
           "kick_utc": 1791018000,
           "time": "03/10 04:00 PM",
@@ -933,6 +1008,21 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Kinoshita Group Japan Open Tennis Championships -QF(1-4)",
+          "kick_utc": 1791079200,
+          "time": "04/10 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports Prime"
               ]
             }
           ],
