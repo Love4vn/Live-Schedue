@@ -4,7 +4,7 @@ on:
   schedule:
     # Chạy mỗi 6 tiếng, phút thứ 30 (tránh trùng giờ cao điểm GitHub)
     # 05:30, 11:30, 17:30, 23:30 giờ VN
-    - cron: '30 23,5,11,17 * * *'
+    - cron: '30 11,17 * * *'
   workflow_dispatch:
   repository_dispatch:
     types: [run-all-scrapers]
