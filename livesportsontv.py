@@ -3,6 +3,8 @@
 # Đã bỏ NowStreams do API lỗi
 # ✅ FIX: Lấy được kênh phát (channel chips) với 5 tầng fallback
 # ✅ ADD: UEFA Nations League
+# ✅ FIX: Parse đúng NGÀY từ page (không gán cứng ref_time)
+# ✅ FIX: Không nhầm giải Nữ (Serie A Women) thành giải Nam
 
 import asyncio
 import json
@@ -13,6 +15,7 @@ from playwright.async_api import async_playwright
 
 # ==================== CẤU HÌNH ====================
 VN_TZ = timezone(timedelta(hours=7))
+WITA_TZ = timezone(timedelta(hours=8))  # Múi giờ page livesportsontv render
 TIME_RANGE_HOURS_BEFORE = 4
 TIME_RANGE_HOURS_AFTER = 72
 
@@ -33,8 +36,7 @@ FOOTONSAT_URLS = [
 ALLOWED_LEAGUES = {
     "Premier League", "Serie A", "La Liga", "Bundesliga", "Ligue 1",
     "UEFA Champions League", "UEFA Europa League", "UEFA Europa Conference League",
-    "UEFA European Championship", "FIFA World Cup",
-    "UEFA Nations League",  # ✅ ADD
+    "UEFA European Championship", "FIFA World Cup", "UEFA Nations League",
     "International Friendlies", "FA Cup", "Carabao Cup",
     "Tennis (ATP)", "Tennis (WTA)", "Tennis (Grand Slam)"
 }
@@ -59,11 +61,38 @@ ALLOWED_TEAMS_PER_LEAGUE = {
     "UEFA Europa Conference League": None,
     "UEFA European Championship": None,
     "FIFA World Cup": None,
-    "UEFA Nations League": None,  # ✅ ADD (không lọc theo đội)
+    "UEFA Nations League": None,
     "International Friendlies": None,
 }
 
 # ==================== HÀM TIỆN ÍCH ====================
+def parse_short_date(date_str: str, ref_date):
+    """
+    Parse 'Sep 23' / '23 Sep' / 'October 04' / 'Oct 4, 2026'.
+    Dùng year của ref_date. Tự rollover năm nếu lệch > 180 ngày.
+    Trả về date object, hoặc None nếu không parse được.
+    """
+    if not date_str:
+        return None
+    s = date_str.strip().replace(',', '')
+    # Bỏ phần năm nếu có
+    s = re.sub(r'\s+\d{4}$', '', s).strip()
+
+    for fmt in ("%b %d", "%d %b", "%B %d", "%d %B"):
+        try:
+            dt = datetime.strptime(s, fmt)
+            dt = dt.replace(year=ref_date.year)
+            delta = (dt.date() - ref_date).days
+            if delta < -180:
+                dt = dt.replace(year=ref_date.year + 1)
+            elif delta > 180:
+                dt = dt.replace(year=ref_date.year - 1)
+            return dt.date()
+        except ValueError:
+            continue
+    return None
+
+
 def parse_time_with_ampm(time_str: str):
     time_str = time_str.strip().upper()
     if ' ' not in time_str and ('AM' in time_str or 'PM' in time_str):
@@ -86,10 +115,12 @@ def parse_time_with_ampm(time_str: str):
         hour = 0
     return hour, minute
 
+
 def is_within_time_range(dt: datetime, ref: datetime) -> bool:
     start = ref - timedelta(hours=TIME_RANGE_HOURS_BEFORE)
     end = ref + timedelta(hours=TIME_RANGE_HOURS_AFTER)
     return start <= dt <= end
+
 
 def is_youth_or_women(matchup: str, league: str) -> bool:
     combined = f"{matchup} {league}".lower()
@@ -110,6 +141,7 @@ def is_youth_or_women(matchup: str, league: str) -> bool:
         if kw in combined:
             return True
     return False
+
 
 def normalize_league(league: str) -> str:
     league_lower = league.lower()
@@ -133,7 +165,7 @@ def normalize_league(league: str) -> str:
         return "UEFA Europa League"
     if "conference league" in league_lower:
         return "UEFA Europa Conference League"
-    if "nations league" in league_lower:  # ✅ ADD (trước "european championship" để tránh nhầm)
+    if "nations league" in league_lower:
         return "UEFA Nations League"
     if "european championship" in league_lower or "euro" in league_lower:
         return "UEFA European Championship"
@@ -148,6 +180,7 @@ def normalize_league(league: str) -> str:
     if "grand slam" in league_lower or "australian open" in league_lower or "french open" in league_lower or "roland garros" in league_lower or "wimbledon" in league_lower or "us open" in league_lower:
         return "Tennis (Grand Slam)"
     return league.strip()
+
 
 # ==================== BẢNG ÁNH XẠ TÊN ĐỘI ====================
 TEAM_NAME_MAPPING = {
@@ -434,6 +467,7 @@ TEAM_NAME_MAPPING = {
     "wales": "Wales", "dragons": "Wales",
 }
 
+
 def normalize_team_name(name: str) -> str:
     if not name:
         return name
@@ -447,6 +481,7 @@ def normalize_team_name(name: str) -> str:
             best_len = len(key)
             best_match = canonical
     return best_match
+
 
 def normalize_matchup(matchup: str):
     matchup = matchup.strip()
@@ -465,6 +500,7 @@ def normalize_matchup(matchup: str):
     home_norm = normalize_team_name(home)
     return (away_norm, home_norm)
 
+
 def is_match_allowed(league: str, matchup: str) -> bool:
     if league not in ALLOWED_LEAGUES:
         return False
@@ -475,6 +511,7 @@ def is_match_allowed(league: str, matchup: str) -> bool:
         return True
     matchup_lower = matchup.lower()
     return any(team in matchup_lower for team in allowed_teams)
+
 
 # ==================== BỘ LỌC GIAO HỮU ====================
 EUROPEAN_COUNTRIES = {
@@ -490,6 +527,7 @@ EUROPEAN_COUNTRIES = {
 AMERICAS_TEAMS = {"argentina", "brazil"}
 ASIA_TEAMS = {"japan", "south korea"}
 
+
 def include_friendly_match(home: str, away: str) -> bool:
     home_low = home.lower()
     away_low = away.lower()
@@ -501,8 +539,10 @@ def include_friendly_match(home: str, away: str) -> bool:
         return True
     return False
 
+
 def has_premier_league_team(matchup: str) -> bool:
     return any(team in matchup.lower() for team in PREMIER_LEAGUE_TEAMS)
+
 
 # ==================== CẤU HÌNH GIẢI LIVESPORTSONTV ====================
 LEAGUES_CONFIG = {
@@ -517,7 +557,6 @@ LEAGUES_CONFIG = {
     "UEFA Europa Conference League": {"url": "https://www.livesportsontv.com/league/uefa-conference-league", "teams": None},
     "UEFA European Championship": {"url": "https://www.livesportsontv.com/league/uefa-european-championship", "teams": None},
     "FIFA World Cup": {"url": "https://www.livesportsontv.com/league/world-cup-5", "teams": None},
-    # ✅ ADD: UEFA Nations League
     "UEFA Nations League": {"url": "https://www.livesportsontv.com/league/uefa-nations-league", "teams": None},
     "International Friendlies": {"url": "https://www.livesportsontv.com/league/international-friendly-2", "teams": None, "custom_filter": "friendly"},
     "FA Cup": {"url": "https://www.livesportsontv.com/league/fa-cup", "teams": None, "custom_filter": "premier_league_only"},
@@ -532,12 +571,48 @@ LEAGUES_CONFIG = {
     "US Open": {"url": "https://www.livesportsontv.com/league/us-open", "is_tennis": True}
 }
 
-# ==================== JAVASCRIPT EXTRACTOR (chạy trong browser) ====================
+
+# ==================== JAVASCRIPT EXTRACTOR ====================
 EXTRACT_JS = r"""
 () => {
     const output = [];
 
-    // ============ HÀM BÓC KÊNH (5 TẦNG FALLBACK) ============
+    // Bóc NGÀY từ event element
+    const extractDate = (eventElement) => {
+        // Ưu tiên class có "date"
+        const dateEl = eventElement.querySelector(
+            '[class*="FixtureItem_date" i], [class*="FixtureListByTime_date" i]'
+        );
+        if (dateEl) {
+            const t = (dateEl.textContent || '').trim();
+            if (t) return t;
+        }
+        // Fallback: quét span/div text match pattern ngày
+        const MONTHS_ABBR = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+        const MONTHS_FULL = ['january','february','march','april','may','june','july','august','september','october','november','december'];
+        const allMonths = MONTHS_ABBR.concat(MONTHS_FULL);
+
+        const candidates = eventElement.querySelectorAll('div, span');
+        for (const el of candidates) {
+            let t = (el.textContent || '').trim();
+            if (!t || t.length > 25) continue;
+            // Bỏ ", 2026" hoặc " 2026" nếu có
+            t = t.replace(/,?\s*\d{4}$/, '').trim();
+
+            let month = null, day = null;
+            const m1 = t.match(/^([A-Za-z]+)\s+(\d{1,2})$/);   // "Sep 23"
+            const m2 = t.match(/^(\d{1,2})\s+([A-Za-z]+)$/);   // "23 Sep"
+            if (m1) { month = m1[1].toLowerCase(); day = parseInt(m1[2]); }
+            else if (m2) { day = parseInt(m2[1]); month = m2[2].toLowerCase(); }
+
+            if (month && day && allMonths.includes(month)) {
+                return t;
+            }
+        }
+        return '';
+    };
+
+    // Bóc KÊNH (5 tầng fallback)
     const extractChannels = (eventElement) => {
         const channels = [];
         const seen = new Set();
@@ -553,14 +628,13 @@ EXTRACT_JS = r"""
             channels.push({ name, type: type || 'tv', sourceUrl: url || null });
         };
 
-        // ---- Tầng 1: class chứa "channelChip" ----
+        // Tầng 1: channelChip
         let chips = Array.from(eventElement.querySelectorAll(
             '[class*="channelChip" i], [class*="ChannelChip"], [class*="channel-chip"]'
         ));
         chips = chips.filter(el =>
             !chips.some(other => other !== el && other.contains(el))
         );
-
         for (const el of chips) {
             let name = '';
             const textEl = el.querySelector(
@@ -572,14 +646,13 @@ EXTRACT_JS = r"""
                 name = img?.getAttribute('alt') || '';
             }
             if (!name) name = el.textContent || '';
-
             const link = el.tagName === 'A' ? el : el.closest('a');
             const cls = (typeof el.className === 'string') ? el.className : '';
             const isNonStreaming = /nonStreaming|NonStreaming/.test(cls);
             add(name, isNonStreaming ? 'tv' : 'streaming', link?.href);
         }
 
-        // ---- Tầng 2: link tới /channel/ ----
+        // Tầng 2: link /channel/
         if (channels.length === 0) {
             const links = eventElement.querySelectorAll('a[href*="/channel/"]');
             for (const link of links) {
@@ -591,7 +664,7 @@ EXTRACT_JS = r"""
             }
         }
 
-        // ---- Tầng 3: img alt có sprite hoặc class chứa 'channel' ----
+        // Tầng 3: img sprite/class channel
         if (channels.length === 0) {
             const imgs = eventElement.querySelectorAll('img[alt]');
             for (const img of imgs) {
@@ -608,7 +681,7 @@ EXTRACT_JS = r"""
             }
         }
 
-        // ---- Tầng 4: quét mọi a/span/div có class chứa 'channel' ----
+        // Tầng 4: quét a/span/div class channel
         if (channels.length === 0) {
             const candidates = eventElement.querySelectorAll(
                 'a[class*="channel" i], span[class*="channel" i], div[class*="channel" i]'
@@ -623,7 +696,7 @@ EXTRACT_JS = r"""
             }
         }
 
-        // ---- Tầng 5: img alt tổng quát (bỏ logo team) ----
+        // Tầng 5: img alt tổng quát
         if (channels.length === 0) {
             const imgs = eventElement.querySelectorAll('img[alt]');
             for (const img of imgs) {
@@ -640,7 +713,6 @@ EXTRACT_JS = r"""
         return channels;
     };
 
-    // ============ QUÉT CÁC SỰ KIỆN ============
     const sportBlocks = [
         ...document.querySelectorAll('[class*="FixtureListBySport_sport__"]')
     ];
@@ -668,9 +740,10 @@ EXTRACT_JS = r"""
                     const time = eventElement.querySelector(
                         '[class*="FixtureItem_time__"]'
                     )?.textContent?.trim() || "";
+                    const dateText = extractDate(eventElement);
                     if (title && href && time) {
                         output.push({
-                            sport, league, title, href, time,
+                            sport, league, title, href, time, date: dateText,
                             channels: extractChannels(eventElement)
                         });
                     }
@@ -686,9 +759,10 @@ EXTRACT_JS = r"""
             const title = link?.getAttribute("aria-label")?.trim();
             const href = link?.getAttribute("href");
             const time = item.querySelector('[class*="FixtureItem_time__"]')?.textContent?.trim() || "";
+            const dateText = extractDate(item);
             if (title && href && time) {
                 output.push({
-                    sport: '', league: '', title, href, time,
+                    sport: '', league: '', title, href, time, date: dateText,
                     channels: extractChannels(item)
                 });
             }
@@ -698,6 +772,7 @@ EXTRACT_JS = r"""
     return output;
 }
 """
+
 
 # ==================== LIVESPORTSONTV SCRAPING ====================
 async def scrape_livesportsontv(ref_time: datetime):
@@ -790,7 +865,9 @@ async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
             print(f"    📊 {len(raw_events)} sự kiện thô")
 
             events_with_channels = sum(1 for e in raw_events if e.get('channels'))
+            events_with_date = sum(1 for e in raw_events if e.get('date'))
             print(f"    📺 Sự kiện có kênh: {events_with_channels}/{len(raw_events)}")
+            print(f"    📅 Sự kiện có ngày: {events_with_date}/{len(raw_events)}")
 
             if events_with_channels == 0:
                 try:
@@ -807,6 +884,7 @@ async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
             added = 0
             for raw in raw_events:
                 try:
+                    # Parse giờ
                     match = re.match(r'(\d{1,2}):(\d{2})\s*(AM|PM)', raw['time'], re.IGNORECASE)
                     if not match:
                         continue
@@ -818,9 +896,16 @@ async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
                     elif meridiem == 'AM' and hour == 12:
                         hour = 0
 
-                    now_wita = ref_time
-                    page_dt = datetime(now_wita.year, now_wita.month, now_wita.day, hour, minute)
-                    page_dt = page_dt.replace(tzinfo=timezone(timedelta(hours=8)))
+                    # ✅ FIX: Parse NGÀY từ page (không gán cứng ref_time)
+                    event_date = parse_short_date(raw.get('date', ''), ref_time.date())
+                    if event_date is None:
+                        # Không bóc được ngày → bỏ qua
+                        continue
+
+                    page_dt = datetime(
+                        event_date.year, event_date.month, event_date.day,
+                        hour, minute, tzinfo=WITA_TZ
+                    )
                     vn_dt = page_dt.astimezone(VN_TZ)
 
                     if not is_within_time_range(vn_dt, ref_time):
@@ -828,15 +913,18 @@ async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
 
                     matchup = raw['title']
                     league_raw = raw.get('league', '') or league_name
+
+                    # ✅ FIX: Check women/youth với RAW name TRƯỚC khi normalize
+                    # (VD: "Serie A Women" → "Serie A" sẽ mất keyword "Women")
+                    if is_youth_or_women(matchup, league_raw):
+                        continue
+
                     league_display = normalize_league(league_raw) if league_raw else league_name
                     if is_tennis:
                         if league_name in ["Australian Open", "French Open", "Wimbledon", "US Open"]:
                             league_display = "Tennis (Grand Slam)"
                         else:
                             league_display = league_name
-
-                    if is_youth_or_women(matchup, league_display):
-                        continue
 
                     if team_filter is not None:
                         if not any(t.lower() in matchup.lower() for t in team_filter):
@@ -886,6 +974,7 @@ async def scrape_league(league_name: str, cfg: dict, ref_time: datetime):
                 pass
             return []
 
+
 # ==================== FOOTONSAT ====================
 async def fetch_footonsat_data(ref_time: datetime):
     all_matches = []
@@ -905,6 +994,7 @@ async def fetch_footonsat_data(ref_time: datetime):
             except Exception as e:
                 print(f"⚠️ Lỗi fetch {url.split('/')[-1]}: {e}")
     return all_matches
+
 
 def parse_footonsat_items(items, ref_time):
     matches = []
@@ -959,6 +1049,7 @@ def parse_footonsat_items(items, ref_time):
             pass
     return matches
 
+
 # ==================== MAIN ====================
 async def main():
     ref_time = datetime.now(VN_TZ)
@@ -971,8 +1062,10 @@ async def main():
     games_foot = await fetch_footonsat_data(ref_time)
     print(f"🛰️ Từ footonsat: {len(games_foot)} trận")
 
+    # Gộp: livesportsontv TRƯỚC (ngày giờ chính xác từ page)
+    # footonsat sau chỉ để BỔ SUNG kênh cho trận trùng key
     unique = {}
-    for g in games_foot + games_live:
+    for g in games_live + games_foot:
         norm_league = normalize_league(g["League"])
         norm_key = normalize_matchup(g["Matchup"])
         key = (g["Date"], g["Time"], norm_league, norm_key)
@@ -982,7 +1075,7 @@ async def main():
                 "Time": g["Time"],
                 "League": norm_league,
                 "Matchup": g["Matchup"],
-                "Services": g["Services"]
+                "Services": list(g["Services"])
             }
         else:
             existing = set(unique[key]["Services"])
@@ -997,6 +1090,7 @@ async def main():
         json.dump(final, f, indent=4, ensure_ascii=False)
 
     print(f"\n🎉 TỔNG KẾT: {len(final)} trận (đã gộp và loại trùng)")
+
 
 if __name__ == "__main__":
     asyncio.run(main())
