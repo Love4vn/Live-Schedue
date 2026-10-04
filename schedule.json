@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-04 09:52 VN",
+  "updated": "2026-10-04 16:43 VN",
   "days": {
     "20261004": {
       "date": "Sunday, 04/10",
@@ -368,66 +368,447 @@
           "source": "livesportsontv"
         },
         {
-          "league": "Tennis",
-          "match": "Japan Open",
-          "kick_utc": 1791079200,
-          "time": "04/10 09:00 AM",
+          "league": "Bundesliga",
+          "match": "Wolfsburg  vs Hamburger SV",
+          "kick_utc": 1791114300,
+          "time": "04/10 06:45 PM",
           "tv_channels": [
             {
-              "country": "LiveSportsOnTV",
+              "country": "Daddylive",
               "channels": [
-                "Tennis Channel",
-                "TSN+"
+                "Magenta Sport 307",
+                "DAZN 1 DE",
+                "Sport1 DE"
               ]
             }
           ],
-          "source": "livesportsontv"
+          "source": "daddylive"
         },
         {
-          "league": "Tennis",
-          "match": "Japan Open",
-          "kick_utc": 1791086400,
-          "time": "04/10 11:00 AM",
+          "league": "Serie A",
+          "match": "Milan  vs Juventus",
+          "kick_utc": 1791118800,
+          "time": "04/10 08:00 PM",
           "tv_channels": [
             {
-              "country": "LiveSportsOnTV",
+              "country": "Daddylive",
               "channels": [
-                "Tennis Channel"
+                "ZONA DAZN Italy"
               ]
             }
           ],
-          "source": "livesportsontv"
+          "source": "daddylive"
         },
         {
-          "league": "Tennis",
-          "match": "Japan Open",
-          "kick_utc": 1791090000,
-          "time": "04/10 12:00 PM",
+          "league": "UEFA Nations League",
+          "match": "Azerbaijan 🇿 vs Lithuania",
+          "kick_utc": 1791118800,
+          "time": "04/10 08:00 PM",
           "tv_channels": [
             {
-              "country": "LiveSportsOnTV",
+              "country": "Daddylive",
               "channels": [
-                "Tennis Channel",
-                "TSN+"
+                "DAZN CA",
+                "LRT Plius Lithuania",
+                "CBC Sport Azerbaijan",
+                "Fox Sports 2 USA",
+                "DAZN2 DE",
+                "Sport TV1 Portugal",
+                "Ziggo Sport 1 NL",
+                "SONY TEN 2",
+                "Sky Sport 255 IT",
+                "Prima Sport 1 Romania",
+                "Cytavision Sports 3 Cyprus",
+                "Arena 1 Premium Serbia",
+                "Nova Sports 1 Greece",
+                "TV2 Sport X Denmark",
+                "Diema Sport 3 Bulgaria",
+                "ESPN2 Argentina",
+                "SporTV BR",
+                "SuperSport Premier League",
+                "beIN SPORTS MENA English 1",
+                "Sportklub 5 Croatia",
+                "beIN SPORTS MENA 3",
+                "Sport 1 Israel",
+                "Event Stream",
+                "Event Stream",
+                "Event Stream",
+                "Event Stream"
               ]
             }
           ],
-          "source": "livesportsontv"
+          "source": "daddylive"
         },
         {
-          "league": "Tennis",
-          "match": "Japan Open",
-          "kick_utc": 1791097200,
-          "time": "04/10 02:00 PM",
+          "league": "La Liga",
+          "match": "1/2 Final A",
+          "kick_utc": 1791118800,
+          "time": "04/10 08:00 PM",
           "tv_channels": [
             {
-              "country": "LiveSportsOnTV",
+              "country": "Daddylive",
               "channels": [
-                "Tennis Channel"
+                "Sportklub 7 Croatia"
               ]
             }
           ],
-          "source": "livesportsontv"
+          "source": "daddylive"
+        },
+        {
+          "league": "La Liga",
+          "match": "1/2 Final B",
+          "kick_utc": 1791121500,
+          "time": "04/10 08:45 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Sportklub 7 Croatia"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Bundesliga",
+          "match": "Stuttgart  vs Union Berlin",
+          "kick_utc": 1791122400,
+          "time": "04/10 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Magenta Sport 308"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "La Liga",
+          "match": "for 3rd place",
+          "kick_utc": 1791126000,
+          "time": "04/10 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Sportklub 7 Croatia"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "La Liga",
+          "match": "FINAL",
+          "kick_utc": 1791127800,
+          "time": "04/10 10:30 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "ESPNU USA",
+                "Sportklub 7 Croatia"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "UEFA Nations League",
+          "match": "Simulcast 🌍",
+          "kick_utc": 1791129600,
+          "time": "04/10 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "DAZN CA",
+                "L'Equipe France",
+                "Sport 1 Israel",
+                "Nova Sports 1 Greece",
+                "Sky Sport Calcio IT"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "UEFA Nations League",
+          "match": "Simulcast 🌍",
+          "kick_utc": 1791139500,
+          "time": "05/10 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "DAZN CA",
+                "L'Equipe France",
+                "Sport 1 Israel",
+                "Nova Sports 1 Greece",
+                "Sky Sport Calcio IT"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "UEFA Nations League",
+          "match": "Kosovo 🇽🇰 vs Austria",
+          "kick_utc": 1791129600,
+          "time": "04/10 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "DAZN CA",
+                "Klan Kosova",
+                "ORF eins",
+                "Fox Sports 2 USA",
+                "Sport TV2 Portugal",
+                "Polsat Sport 3 Poland",
+                "Ziggo Sport 1 NL",
+                "Digi Sport 1 Romania",
+                "Prima Sport 1 Romania",
+                "Nova Sports Start Greece",
+                "Sky Sport 255 IT",
+                "A Spor Turkey",
+                "CBC Sport Azerbaijan",
+                "ESPN2 Argentina",
+                "Cytavision Sports 4 Cyprus",
+                "Diema Sport 3 Bulgaria",
+                "SuperSport Premier League",
+                "Sportklub 1 Croatia",
+                "ESPN Brasil",
+                "beIN Sports MENA 1",
+                "beIN Sports MENA English 1",
+                "Event Stream",
+                "Event Stream",
+                "Event Stream",
+                "Event Stream",
+                "Event Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "UEFA Nations League",
+          "match": "Malta 🇲 vs Andorra",
+          "kick_utc": 1791129600,
+          "time": "04/10 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "DAZN CA",
+                "TVMSport+ Malta",
+                "DAZN2 DE",
+                "Sport TV4 Portugal",
+                "Sky Sport 254 IT",
+                "SONY TEN 2",
+                "SporTV BR",
+                "Digi Sport 4 Romania",
+                "Prima Sport 2 Romania",
+                "Nova Sports 2 Greece",
+                "Diema Sport 2 Bulgaria",
+                "Sportklub 5 Croatia",
+                "beIN Sports MENA 2",
+                "beIN Sports MENA English 2",
+                "Event Stream",
+                "Event Stream",
+                "Event Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Bundesliga",
+          "match": "Nürnberg  vs Hoffenheim",
+          "kick_utc": 1791131400,
+          "time": "04/10 11:30 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Magenta Sport 307",
+                "DAZN 1 DE"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "UEFA Nations League",
+          "match": "Wales 🏴󠁧󠁢󠁷󠁬󠁳󠁿 vs Denmark 🇰",
+          "kick_utc": 1791139500,
+          "time": "05/10 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "DAZN CA",
+                "S4C UK",
+                "BBC Two UK",
+                "Sport TV3 Portugal",
+                "Polsat Sport Premium 1 Poland",
+                "Digi Sport 4 Romania",
+                "Prima Sport 4 Romania",
+                "Arena 4 Premium Serbia",
+                "Nova Sports 4 Greece",
+                "TV2 Denmark",
+                "Nova Sport Bulgaria",
+                "SuperSport Action",
+                "Sportklub 5 Croatia",
+                "beIN Sports MENA 2",
+                "Event Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "UEFA Nations League",
+          "match": "Portugal  vs Norway 🇴",
+          "kick_utc": 1791139500,
+          "time": "05/10 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "DAZN CA",
+                "Sport TV1 Portugal",
+                "RTP 1 Portugal",
+                "TV 2 Direkte Norway",
+                "Fox Sports 2 USA",
+                "SRF zwei",
+                "SONY TEN 2",
+                "TVE La 1 Spain",
+                "TVP Sport Poland",
+                "Polsat Sport 1 Poland",
+                "Sky Sport Arena IT",
+                "TV8 IT",
+                "Digi Sport 1 Romania",
+                "Prima Sport 1 Romania",
+                "CBC Sport Azerbaijan",
+                "Arena 3 Premium Serbia",
+                "Cytavision Sports 6 Cyprus",
+                "SporTV BR",
+                "ESPN Argentina",
+                "Nova Sports Prime Greece",
+                "TV2 Sport X Denmark",
+                "Diema Sport 2 Bulgaria",
+                "SuperSport Premier League",
+                "Sportklub 1 Croatia",
+                "Supersport Grandstand",
+                "beIN SPORTS MENA English 1",
+                "beIN SPORTS MENA 1",
+                "Sport 4 Israel",
+                "Event Stream",
+                "Event Stream",
+                "Event Stream",
+                "Event Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "UEFA Nations League",
+          "match": "Netherlands  vs Serbia",
+          "kick_utc": 1791139500,
+          "time": "05/10 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "DAZN CA",
+                "RTS 1 Serbia",
+                "Arena 1 Premium Serbia",
+                "NPO 1 NL",
+                "Fox Soccer Plus",
+                "a Haber Turkey",
+                "Sport TV4 Portugal",
+                "Polsat Sport 3 Poland",
+                "Cytavision Sports 4 Cyprus",
+                "Prima Sport 3 Romania",
+                "Nova Sports 3 Greece",
+                "V Sport Football",
+                "Diema Sport Bulgaria",
+                "ESPN Brasil",
+                "Sportklub 3 Croatia",
+                "beIN Sports MENA 4",
+                "Sport 3 Israel",
+                "Event Stream",
+                "Event Stream",
+                "Event Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "UEFA Nations League",
+          "match": "Greece  vs Germany",
+          "kick_utc": 1791139500,
+          "time": "05/10 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "DAZN CA",
+                "RTL DE",
+                "Nova Sports Start Greece",
+                "Alpha TV Greece",
+                "Sport TV2 Portugal",
+                "Polsat Sport 2 Poland",
+                "Digi Sport 2 Romania",
+                "Prima Sport 2 Romania",
+                "Sky Sport Max IT",
+                "Ziggo Sport 1 NL",
+                "Cytavision Sports 3 Cyprus",
+                "V Sport Premium",
+                "Arena 2 Premium Serbia",
+                "ESPN2 Argentina",
+                "Diema Sport 3 Bulgaria",
+                "SuperSport Laliga",
+                "Sportklub 4 Croatia",
+                "beIN Sports MENA 3",
+                "Sport 2 Israel",
+                "Event Stream",
+                "Event Stream",
+                "Event Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "UEFA Nations League",
+          "match": "Ireland Republic  vs Israel",
+          "kick_utc": 1791139500,
+          "time": "05/10 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "DAZN CA",
+                "RTE 2 Ireland",
+                "Sport TV6 Portugal",
+                "Arena Sport 1 Serbia",
+                "Nova Sports 2 Greece",
+                "SuperSport Football",
+                "TV2 Sport X Denmark",
+                "beIN SPORTS MENA English 2",
+                "Sportklub 6 Croatia",
+                "5Sport Israel",
+                "Event Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
         },
         {
           "league": "Tennis",
@@ -463,76 +844,6 @@
         {
           "league": "Tennis",
           "match": "China Open",
-          "kick_utc": 1791082800,
-          "time": "04/10 10:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "TSN+",
-                "TSN2",
-                "DAZN Canada"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "China Open",
-          "kick_utc": 1791090000,
-          "time": "04/10 12:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "TSN4",
-                "DAZN Canada",
-                "Tennis Channel",
-                "TSN+"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "China Open",
-          "kick_utc": 1791093600,
-          "time": "04/10 01:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "TSN+"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "China Open",
-          "kick_utc": 1791097200,
-          "time": "04/10 02:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "T2",
-                "TSN+",
-                "DAZN Canada",
-                "TSN4"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "China Open",
           "kick_utc": 1791104400,
           "time": "04/10 04:00 PM",
           "tv_channels": [
@@ -555,12 +866,12 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN2",
-                "TSN+",
+                "TSN4",
                 "DAZN Canada",
                 "RDS",
-                "TSN4",
-                "RDS Info"
+                "RDS Info",
+                "TSN2",
+                "TSN+"
               ]
             }
           ],
@@ -571,42 +882,6 @@
           "match": "China Open",
           "kick_utc": 1791117000,
           "time": "04/10 07:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "TSN+",
-                "TSN2"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Wuhan Open",
-          "kick_utc": 1791082800,
-          "time": "04/10 10:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "T2",
-                "TSN+",
-                "TSN2",
-                "DAZN Canada",
-                "TSN5"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Shanghai Masters",
-          "kick_utc": 1791086400,
-          "time": "04/10 11:00 AM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
@@ -653,15 +928,16 @@
         },
         {
           "league": "Tennis",
-          "match": "Japan Open Tennis Championships",
-          "kick_utc": 1791079200,
-          "time": "04/10 09:00 AM",
+          "match": "WTA China Open",
+          "kick_utc": 1791169200,
+          "time": "05/10 10:00 AM",
           "tv_channels": [
             {
               "country": "Wheresthematch",
               "channels": [
+                "Sky Sports Main Event",
                 "Sky Sports Tennis",
-                "Sky Sports+"
+                "Sky Sports Ultra HDR"
               ]
             }
           ],
@@ -669,31 +945,202 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP Tennis",
-          "kick_utc": 1791082800,
-          "time": "04/10 10:00 AM",
+          "match": "Alexander Zverev vs Novak Djokovic",
+          "kick_utc": 1791111600,
+          "time": "04/10 06:00 PM",
           "tv_channels": [
             {
-              "country": "Wheresthematch",
+              "country": "Ausport",
               "channels": [
-                "Sky Sports Tennis",
-                "Sky Sports+"
+                "beIN SPORTS 1"
+              ]
+            },
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
+                "Tennis Stream"
               ]
             }
           ],
-          "source": "wheresthematch"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1791075600,
-          "time": "04/10 08:00 AM",
+          "match": "",
+          "kick_utc": 1791108000,
+          "time": "04/10 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis Channel",
+                "Sky Sports+",
+                "Sky Sports Tennis UK",
+                "Sky Sports Tennis Germany",
+                "TSN2 CA",
+                "RDS Info",
+                "TVA Sports 2",
+                "Sky Sport Tennis Italy",
+                "TV4 Tennis",
+                "Canal+ Sport 2 Czechia",
+                "Cytavision Sports 5 Cyprus",
+                "beIN Sports 3 France",
+                "beIN Sports 4 Max France",
+                "Movistar Deportes 2 Spain",
+                "Cytavision Sports 6 Cyprus",
+                "MAX Sport 1 Bulgaria",
+                "MAX Sport 2 Bulgaria",
+                "MAX Sport 3 Bulgaria",
+                "Arena Tennis",
+                "TyC Sports Argentina",
+                "Digi Sport 2 Romania",
+                "Ziggo Sport 4 NL",
+                "Ziggo Sport 5 NL",
+                "NovaSports Prime GR",
+                "Nova Sports Start Greece",
+                "Polsat Sport 1 Poland",
+                "Canal+ Sport 2 Poland",
+                "Polsat Sport Premium 2 Poland",
+                "Polsat Sport 3 Poland",
+                "Canal+ Sport 2 Poland",
+                "ESPN2 Argentina",
+                "beIN SPORTS Australia 1",
+                "beIN SPORTS Australia 2",
+                "NovaSports 6 GR",
+                "beIN Sports MENA 7",
+                "beIN Sports MENA 9",
+                "ESPN2 Brazil",
+                "ESPN3 Brazil",
+                "Sport 5 Plus Israel"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1791111600,
+          "time": "04/10 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "SporTV 2 Brazil"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1791115200,
+          "time": "04/10 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "SporTV 2 Brazil"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1791183600,
+          "time": "05/10 02:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
+        {
+          "league": "Tennis",
+          "match": "🇨🇿 Sára Bejlek vs 🇯 Naomi Osaka",
+          "kick_utc": 1791111600,
+          "time": "04/10 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
+                "Tennis Stream",
+                "Tennis Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "🇨🇿 Karolina Muchova vs 🇺 Liudmila Samsonova",
+          "kick_utc": 1791117000,
+          "time": "04/10 07:30 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
+                "Tennis Stream",
+                "Tennis Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "Marcelo Melo /  Alexander Zverev vs 🇺 Robert Cash /  Lloyd Glasspool",
+          "kick_utc": 1791117000,
+          "time": "04/10 07:30 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
+                "Tennis HD Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "Henrique Rocha vs  Inaki Montes-De La Torre",
+          "kick_utc": 1791108000,
+          "time": "04/10 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - ATP Challenger Tour 2026 - ATP Ch 125 Porto Open - Final",
+          "kick_utc": 1791107880,
+          "time": "04/10 04:58 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
+                "Sport Tv 6 Hd Portugal"
               ]
             }
           ],
@@ -701,15 +1148,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1791082800,
-          "time": "04/10 10:00 AM",
+          "match": "ATP World Tour 500 - Beijing 2026 - Quartos-de-Final",
+          "kick_utc": 1791111600,
+          "time": "04/10 06:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
+                "Sport Tv2 Hd Portugal"
               ]
             }
           ],
@@ -717,15 +1163,45 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1791090000,
-          "time": "04/10 12:00 PM",
+          "match": "China Open 2026",
+          "kick_utc": 1791111600,
+          "time": "04/10 06:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
+                "Réseau Des Sports Info"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "2026 China Open Tennis",
+          "kick_utc": 1791111600,
+          "time": "04/10 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "TSN 2"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "2026 China Open Tennis",
+          "kick_utc": 1791169200,
+          "time": "05/10 10:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "TSN 2",
+                "TSN 2 Hd"
               ]
             }
           ],
@@ -749,9 +1225,25 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP World Tour 500 - Tóquio 2026 - Quartos-de-Final",
-          "kick_utc": 1791079200,
-          "time": "04/10 09:00 AM",
+          "match": "Tenis",
+          "kick_utc": 1791172800,
+          "time": "05/10 11:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 500 - Beijing 2026 - Meia-Final",
+          "kick_utc": 1791183420,
+          "time": "05/10 01:57 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -764,199 +1256,18 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP World Tour 500 - Tóquio 2026 - Quartos-de-Final",
-          "kick_utc": 1791097200,
-          "time": "04/10 02:00 PM",
+          "match": "ATP World Tour 500 - Tóquio 2026 - Meia-Final",
+          "kick_utc": 1791183480,
+          "time": "05/10 01:58 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Sport Tv2 Hd Portugal"
+                "Sport Tv3 Hd Portugal"
               ]
             }
           ],
           "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "2026 China Open Tennis",
-          "kick_utc": 1791082800,
-          "time": "04/10 10:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "TSN 2",
-                "TSN 2 Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 500 - Beijing 2026 - Quartos-de-Final",
-          "kick_utc": 1791090000,
-          "time": "04/10 12:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv1 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 500 - Beijing 2026 - Quartos-de-Final",
-          "kick_utc": 1791111600,
-          "time": "04/10 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ténis - ATP Challenger Tour 2026 - ATP Ch 125 Porto Open - Final",
-          "kick_utc": 1791107880,
-          "time": "04/10 04:58 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv 6 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "China Open 2026",
-          "kick_utc": 1791111600,
-          "time": "04/10 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Réseau Des Sports Info"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Kinoshita Group Japan Open Tennis Championships -QF(1-4)",
-          "kick_utc": 1791079200,
-          "time": "04/10 09:00 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports Prime"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "China Open E8",
-          "kick_utc": 1791082800,
-          "time": "04/10 10:00 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "China Open E9",
-          "kick_utc": 1791090000,
-          "time": "04/10 12:00 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "China Open -QF (1-4)",
-          "kick_utc": 1791090000,
-          "time": "04/10 12:00 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports 6"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "China Open vs Beijing",
-          "kick_utc": 1791090000,
-          "time": "04/10 12:00 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "China Open vs Beijing",
-          "kick_utc": 1791111600,
-          "time": "04/10 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Kinoshita Group Japan Open Tennis Championships vs Tokyo",
-          "kick_utc": 1791097200,
-          "time": "04/10 02:00 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 5"
-              ]
-            }
-          ],
-          "source": "nowtv"
         },
         {
           "league": "Tennis",
@@ -975,6 +1286,21 @@
         },
         {
           "league": "Tennis",
+          "match": "China Open vs Beijing",
+          "kick_utc": 1791111600,
+          "time": "04/10 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
           "match": "China Open E25",
           "kick_utc": 1791117000,
           "time": "04/10 07:30 PM",
@@ -983,6 +1309,115 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "China Open E11",
+          "kick_utc": 1791169200,
+          "time": "05/10 10:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Kinoshita Group Japan Open Tennis Championships -SF(1-2)",
+          "kick_utc": 1791183600,
+          "time": "05/10 02:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports Prime"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "China Open E12",
+          "kick_utc": 1791183600,
+          "time": "05/10 02:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "China Open -SF (1)",
+          "kick_utc": 1791183600,
+          "time": "05/10 02:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Kinoshita Group Japan Open Tennis Championships vs Tokyo",
+          "kick_utc": 1791183600,
+          "time": "05/10 02:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Kinoshita Group Japan Open Tennis Championships vs Tokyo",
+          "kick_utc": 1791191100,
+          "time": "05/10 04:05 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "China Open vs Beijing Finale",
+          "kick_utc": 1791183600,
+          "time": "05/10 02:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 5"
               ]
             }
           ],
