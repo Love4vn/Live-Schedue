@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-04 20:39 VN",
+  "updated": "2026-10-04 22:57 VN",
   "days": {
     "20261004": {
       "date": "Sunday, 04/10",
@@ -42,6 +42,50 @@
           "source": "livesportsontv"
         },
         {
+          "league": "International Friendly",
+          "match": "Morocco vs Mali",
+          "kick_utc": 1791136800,
+          "time": "05/10 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arryadia TNT HD",
+                "ORTM 1 Mali",
+                "ORTM 1 Mali",
+                "ORTM 1 Mali",
+                "ORTM 1 Mali",
+                "ORTM 1 Mali",
+                "ORTM 1 Mali",
+                "ORTM 1 Mali"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Egypt vs South Africa",
+          "kick_utc": 1791136800,
+          "time": "05/10 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "ON Sport HD",
+                "ON Sport HD",
+                "SABC 3 HD",
+                "SABC 3 HD",
+                "SABC 3 HD",
+                "SABC 3 HD",
+                "SABC 3 HD",
+                "SABC 3 HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
           "league": "UEFA Nations League",
           "match": "Simulcast 🌍",
           "kick_utc": 1791129600,
@@ -50,11 +94,11 @@
             {
               "country": "Daddylive",
               "channels": [
-                "L'Equipe France",
-                "DAZN CA",
                 "Sport 1 Israel",
+                "Sky Sport Calcio IT",
+                "DAZN CA",
                 "Nova Sports 1 Greece",
-                "Sky Sport Calcio IT"
+                "L'Equipe France"
               ]
             }
           ],
@@ -69,11 +113,11 @@
             {
               "country": "Daddylive",
               "channels": [
-                "L'Equipe France",
-                "DAZN CA",
                 "Sport 1 Israel",
+                "Sky Sport Calcio IT",
+                "DAZN CA",
                 "Nova Sports 1 Greece",
-                "Sky Sport Calcio IT"
+                "L'Equipe France"
               ]
             }
           ],
@@ -370,6 +414,21 @@
         {
           "league": "Tennis",
           "match": "China Open",
+          "kick_utc": 1791176400,
+          "time": "05/10 12:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "China Open",
           "kick_utc": 1791183600,
           "time": "05/10 02:00 PM",
           "tv_channels": [
@@ -600,21 +659,6 @@
             }
           ],
           "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "China Open E25",
-          "kick_utc": 1791117000,
-          "time": "04/10 07:30 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Now Sports 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
         },
         {
           "league": "Tennis",
