@@ -23,20 +23,31 @@ ALLOWED_LEAGUES = [
     "UEFA Europa League",
     "UEFA Europa Conference League",
     "UEFA Euro",
-    "UEFA Nations League",          # <-- BỔ SUNG
+    "UEFA Nations League",
     "FA Cup",
     "League Cup",
     "International Friendly",
     "FIFA World Cup",
-    # Một số giải quốc tế phổ biến khác (có thể bỏ nếu không cần)
-    #"CONCACAF Nations League",
-    #"Africa Cup of Nations",
-    #"Copa America",
-    #"ASEAN Championship",
+    # Một số giải quốc tế phổ biến khác
+    "CONCACAF Nations League",
+    "Africa Cup of Nations",
+    "Copa America",
+    "ASEAN Championship",
 ]
 
-# Từ khóa loại trừ cho bóng đá (giải nữ, trẻ, hạng dưới) - áp dụng cho tên sự kiện
-EXCLUDE_WORDS = ["women", "u19", "u21", "youth", "u-", "nữ", "u20", "u17", "junior", "reserve"]
+# ===== TỪ KHÓA LOẠI TRỪ (áp dụng cho MỌI sự kiện, cả soccer lẫn tennis) =====
+EXCLUDE_WORDS = [
+    # --- Giải nữ (đa ngôn ngữ) ---
+    "women", "woman", "nữ", "frauen", "damen", "femminile", "feminine",
+    "féminine", "femenina", "femenino", "vrouwen", "mulheres", "dames",
+    # --- Giải trẻ / đội dự bị / học viện ---
+    "u19", "u20", "u21", "u23", "u18", "u17", "u16", "u15", "u-",
+    "youth", "junior", "reserve", "reserves", "academy", "academy team",
+    # --- Giải Futures / hạng dưới ---
+    "futures", "future league", "development league",
+    # --- Các môn khác có chứa từ "tennis" (table tennis, ping pong) ---
+    "table tennis", "table-tennis", "ping pong", "ping-pong",
+]
 
 # Các tiền tố quốc gia không được phép đi kèm với "Premier League"
 PREMIER_LEAGUE_EXCLUDED_PREFIXES = [
@@ -55,7 +66,7 @@ EXCLUDED_SOCCER_CATEGORY_WORDS = [
     "college", "school", "university", "women", "girls", "youth"
 ]
 
-# Từ khóa nhận diện danh mục Tennis (bất kỳ chứa "tennis")
+# Từ khóa nhận diện danh mục Tennis
 TENNIS_KEYWORD = "tennis"
 
 def normalize_category_name(name):
@@ -78,17 +89,24 @@ def parse_day_title(day_title):
                 continue
         return None
 
+def is_excluded_title(title):
+    """Trả về True nếu tiêu đề chứa bất kỳ từ khóa loại trừ nào (áp dụng cho mọi loại)."""
+    if not title:
+        return True
+    title_lower = title.lower()
+    for w in EXCLUDE_WORDS:
+        if w in title_lower:
+            return True
+    return False
+
 def is_valid_soccer_event(title):
-    """Kiểm tra sự kiện bóng đá có thuộc giải đấu cho phép và không bị loại trừ."""
+    """Kiểm tra sự kiện bóng đá có thuộc giải đấu cho phép."""
     if not title:
         return False
 
-    title_lower = title.lower()
-
-    # Loại bỏ nếu chứa từ khóa loại trừ
-    for w in EXCLUDE_WORDS:
-        if w in title_lower:
-            return False
+    # Bỏ qua nếu chứa từ khóa loại trừ (đã kiểm tra ở ngoài, nhưng giữ để an toàn)
+    if is_excluded_title(title):
+        return False
 
     # Kiểm tra từng giải đấu
     for league in ALLOWED_LEAGUES:
@@ -121,7 +139,7 @@ def format_channel_name(name):
     return name
 
 def is_soccer_category(cat_norm):
-    """Kiểm tra danh mục có phải là bóng đá hợp lệ không (loại bỏ college, beach, ...)"""
+    """Kiểm tra danh mục bóng đá hợp lệ."""
     if not cat_norm:
         return False
     if "soccer" not in cat_norm:
@@ -132,6 +150,12 @@ def is_soccer_category(cat_norm):
     return True
 
 def is_tennis_category(cat_norm):
+    """Kiểm tra danh mục Tennis (loại trừ Table Tennis)."""
+    if not cat_norm:
+        return False
+    # Loại bỏ table tennis
+    if "table tennis" in cat_norm or "table-tennis" in cat_norm or "ping pong" in cat_norm:
+        return False
     return TENNIS_KEYWORD in cat_norm
 
 def get_schedule_api_json():
@@ -219,6 +243,7 @@ def get_schedule_api_json():
                 title_el = event.find("span", class_="schedule__eventTitle")
                 event_title = title_el.get_text(strip=True) if title_el else "No Title"
 
+                # Lọc thời gian đã qua
                 if FILTER_PAST_EVENTS:
                     if day_date == today_utc:
                         if event_time < current_time:
@@ -229,11 +254,18 @@ def get_schedule_api_json():
                             print(f"      ⏳ Bỏ qua (ngày cũ): {event_title}")
                             continue
 
+                # ===== LỌC TỪ KHÓA LOẠI TRỪ (ÁP DỤNG CHO MỌI SỰ KIỆN) =====
+                if is_excluded_title(event_title):
+                    print(f"      🚫 Bỏ qua (chứa từ khóa loại trừ): {event_title}")
+                    continue
+
+                # ===== LỌC THEO LOẠI DANH MỤC =====
                 if cat_type == "soccer":
                     if not is_valid_soccer_event(event_title):
                         print(f"      ❌ Bỏ qua (không đúng giải): {event_title}")
                         continue
                 elif cat_type == "tennis":
+                    # Tennis: giữ tất cả (đã qua bộ lọc từ khóa loại trừ ở trên)
                     pass
 
                 channels_list = []
