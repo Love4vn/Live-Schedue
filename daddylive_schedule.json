@@ -1,36 +1,655 @@
 {
-    "Sunday 04th Oct 2026 - Schedule Time UK GMT": {
+    "Monday 05th Oct 2026 - Schedule Time UK GMTT": {
         "All Soccer Events ⚽": [
             {
-                "time": "22:00",
-                "event": "⚽ CONCACAF Nations League : Trinidad and Tobago 🇹🇹 vs Curaçao 🇨🇼",
+                "time": "16:00",
+                "event": "⚽ UEFA Nations League : Cyprus 🇨🇾 vs Latvia 🇱🇻",
                 "channels": [
+                    {
+                        "channel_name": "DAZN CA",
+                        "channel_id": "11"
+                    },
                     {
                         "channel_name": "Fox Sports 2 USA",
                         "channel_id": "758"
+                    },
+                    {
+                        "channel_name": "Sport TV1 Portugal",
+                        "channel_id": "49"
+                    },
+                    {
+                        "channel_name": "Sky Sport Calcio IT",
+                        "channel_id": "870"
+                    },
+                    {
+                        "channel_name": "Digi Sport 2 Romania",
+                        "channel_id": "401"
+                    },
+                    {
+                        "channel_name": "Prima Sport 1 Romania",
+                        "channel_id": "583"
+                    },
+                    {
+                        "channel_name": "Nova Sports Prime Greece",
+                        "channel_id": "638"
+                    },
+                    {
+                        "channel_name": "Diema Sport 3 Bulgaria",
+                        "channel_id": "467"
+                    },
+                    {
+                        "channel_name": "ESPN2 Argentina",
+                        "channel_id": "150"
+                    },
+                    {
+                        "channel_name": "TV2 Sport X Denmark",
+                        "channel_id": "808"
+                    },
+                    {
+                        "channel_name": "A Spor Turkey",
+                        "channel_id": "1011"
+                    },
+                    {
+                        "channel_name": "ESPN4 BR",
+                        "channel_id": "85"
+                    },
+                    {
+                        "channel_name": "SuperSport Premier League",
+                        "channel_id": "414"
+                    },
+                    {
+                        "channel_name": "Sportklub 3 Croatia",
+                        "channel_id": "103"
+                    },
+                    {
+                        "channel_name": "Supersport Grandstand",
+                        "channel_id": "412"
+                    },
+                    {
+                        "channel_name": "beIN Sports MENA 2",
+                        "channel_id": "92"
+                    },
+                    {
+                        "channel_name": "beIN Sports MENA English 1",
+                        "channel_id": "61"
+                    },
+                    {
+                        "channel_name": "Sport 4 Israel",
+                        "channel_id": "143"
                     }
                 ]
             },
             {
-                "time": "22:00",
-                "event": "⚽ CONCACAF Nations League : Puerto Rico 🇵🇷 vs Cayman Islands 🇰🇾",
+                "time": "18:45",
+                "event": "⚽ UEFA Nations League : Simulcast",
+                "channels": [
+                    {
+                        "channel_name": "DAZN CA",
+                        "channel_id": "13"
+                    },
+                    {
+                        "channel_name": "Sky Sport Calcio IT",
+                        "channel_id": "870"
+                    },
+                    {
+                        "channel_name": "Nova Sports 1 Greece",
+                        "channel_id": "631"
+                    },
+                    {
+                        "channel_name": "Ziggo Sport 1 NL",
+                        "channel_id": "393"
+                    },
+                    {
+                        "channel_name": "Sport 1 Israel",
+                        "channel_id": "140"
+                    }
+                ]
+            },
+            {
+                "time": "18:45",
+                "event": "⚽ UEFA Nations League : Montenegro 🇲🇪 vs Armenia 🇦🇲",
+                "channels": [
+                    {
+                        "channel_name": "DAZN CA",
+                        "channel_id": "14"
+                    },
+                    {
+                        "channel_name": "Nova Sports 5 Greece",
+                        "channel_id": "635"
+                    },
+                    {
+                        "channel_name": "Arena 5 Premium Serbia",
+                        "channel_id": "21"
+                    },
+                    {
+                        "channel_name": "beIN Sports MENA 5",
+                        "channel_id": "95"
+                    }
+                ]
+            },
+            {
+                "time": "18:45",
+                "event": "⚽ UEFA Nations League : Italy 🇮🇹 vs Turkey 🇹🇷",
+                "channels": [
+                    {
+                        "channel_name": "DAZN CA",
+                        "channel_id": "15"
+                    },
+                    {
+                        "channel_name": "atv Turkey",
+                        "channel_id": "1000"
+                    },
+                    {
+                        "channel_name": "RAI 1 IT",
+                        "channel_id": "850"
+                    },
+                    {
+                        "channel_name": "Fox Sports 2 USA",
+                        "channel_id": "758"
+                    },
+                    {
+                        "channel_name": "DAZN2 DE",
+                        "channel_id": "427"
+                    },
+                    {
+                        "channel_name": "Sport TV2 Portugal",
+                        "channel_id": "74"
+                    },
+                    {
+                        "channel_name": "Polsat Sport 2 Poland",
+                        "channel_id": "50"
+                    },
+                    {
+                        "channel_name": "L'Equipe France",
+                        "channel_id": "645"
+                    },
+                    {
+                        "channel_name": "Digi Sport 2 Romania",
+                        "channel_id": "401"
+                    },
+                    {
+                        "channel_name": "Prima Sport 2 Romania",
+                        "channel_id": "584"
+                    },
+                    {
+                        "channel_name": "Ziggo Sport 4 NL",
+                        "channel_id": "396"
+                    },
+                    {
+                        "channel_name": "Cytavision Sports 4 Cyprus",
+                        "channel_id": "914"
+                    },
+                    {
+                        "channel_name": "Arena 2 Premium Serbia",
+                        "channel_id": "135"
+                    },
+                    {
+                        "channel_name": "TV2 Sport Denmark",
+                        "channel_id": "810"
+                    },
+                    {
+                        "channel_name": "Nova Sports Prime Greece",
+                        "channel_id": "638"
+                    },
+                    {
+                        "channel_name": "V Sport Premium",
+                        "channel_id": "572"
+                    },
+                    {
+                        "channel_name": "Diema Sport 2 Bulgaria",
+                        "channel_id": "466"
+                    },
+                    {
+                        "channel_name": "SporTV BR",
+                        "channel_id": "78"
+                    },
+                    {
+                        "channel_name": "Sportklub 1 Croatia",
+                        "channel_id": "101"
+                    },
+                    {
+                        "channel_name": "beIN Sports MENA 2",
+                        "channel_id": "92"
+                    },
+                    {
+                        "channel_name": "beIN Sports MENA English 2",
+                        "channel_id": "90"
+                    },
+                    {
+                        "channel_name": "Sport 4 Israel",
+                        "channel_id": "143"
+                    },
+                    {
+                        "channel_name": "Event Stream",
+                        "channel_id": "4101"
+                    },
+                    {
+                        "channel_name": "Event Stream",
+                        "channel_id": "4107"
+                    },
+                    {
+                        "channel_name": "Event Stream",
+                        "channel_id": "4110"
+                    }
+                ]
+            },
+            {
+                "time": "18:45",
+                "event": "⚽ UEFA Nations League : France 🇫🇷 vs Belgium 🇧🇪",
+                "channels": [
+                    {
+                        "channel_name": "DAZN CA",
+                        "channel_id": "16"
+                    },
+                    {
+                        "channel_name": "TF1 France",
+                        "channel_id": "469"
+                    },
+                    {
+                        "channel_name": "Sport TV1 Portugal",
+                        "channel_id": "49"
+                    },
+                    {
+                        "channel_name": "Polsat Sport 1 Poland",
+                        "channel_id": "47"
+                    },
+                    {
+                        "channel_name": "TV6 Sweden",
+                        "channel_id": "23"
+                    },
+                    {
+                        "channel_name": "Digi Sport 1 Romania",
+                        "channel_id": "400"
+                    },
+                    {
+                        "channel_name": "Prima Sport 1 Romania",
+                        "channel_id": "583"
+                    },
+                    {
+                        "channel_name": "Sky Sport Uno IT",
+                        "channel_id": "461"
+                    },
+                    {
+                        "channel_name": "Cytavision Sports 3 Cyprus",
+                        "channel_id": "913"
+                    },
+                    {
+                        "channel_name": "Ziggo Sport 2 NL",
+                        "channel_id": "398"
+                    },
+                    {
+                        "channel_name": "Arena 1 Premium Serbia",
+                        "channel_id": "134"
+                    },
+                    {
+                        "channel_name": "Nova Sports 2 Greece",
+                        "channel_id": "632"
+                    },
+                    {
+                        "channel_name": "Diema Sport 3 Bulgaria",
+                        "channel_id": "467"
+                    },
+                    {
+                        "channel_name": "TV2 Sport X Denmark",
+                        "channel_id": "808"
+                    },
+                    {
+                        "channel_name": "ESPN Argentina",
+                        "channel_id": "149"
+                    },
+                    {
+                        "channel_name": "SuperSport Premier League",
+                        "channel_id": "414"
+                    },
+                    {
+                        "channel_name": "Supersport Grandstand",
+                        "channel_id": "412"
+                    },
+                    {
+                        "channel_name": "Sportklub 2 Croatia",
+                        "channel_id": "102"
+                    },
+                    {
+                        "channel_name": "beIN Sports MENA 1",
+                        "channel_id": "91"
+                    },
+                    {
+                        "channel_name": "beIN Sports MENA English 1",
+                        "channel_id": "61"
+                    },
+                    {
+                        "channel_name": "Sport 2 Israel",
+                        "channel_id": "141"
+                    },
+                    {
+                        "channel_name": "Event Stream",
+                        "channel_id": "4104"
+                    },
+                    {
+                        "channel_name": "Event Stream",
+                        "channel_id": "4102"
+                    }
+                ]
+            },
+            {
+                "time": "18:45",
+                "event": "⚽ UEFA Nations League : Ukraine 🇺🇦 vs Hungary 🇭🇺",
+                "channels": [
+                    {
+                        "channel_name": "DAZN CA",
+                        "channel_id": "17"
+                    },
+                    {
+                        "channel_name": "M4 Sports Hungary",
+                        "channel_id": "265"
+                    },
+                    {
+                        "channel_name": "Fox Soccer Plus",
+                        "channel_id": "756"
+                    },
+                    {
+                        "channel_name": "Sport TV6 Portugal",
+                        "channel_id": "291"
+                    },
+                    {
+                        "channel_name": "Polsat Sport Premium 1 Poland",
+                        "channel_id": "991"
+                    },
+                    {
+                        "channel_name": "Digi Sport 4 Romania",
+                        "channel_id": "403"
+                    },
+                    {
+                        "channel_name": "Prima Sport 4 Romania",
+                        "channel_id": "586"
+                    },
+                    {
+                        "channel_name": "Arena Sport 1 Serbia",
+                        "channel_id": "429"
+                    },
+                    {
+                        "channel_name": "Nova Sports 4 Greece",
+                        "channel_id": "634"
+                    },
+                    {
+                        "channel_name": "SporTV2 BR",
+                        "channel_id": "79"
+                    },
+                    {
+                        "channel_name": "Nova Sport Bulgaria",
+                        "channel_id": "468"
+                    },
+                    {
+                        "channel_name": "SuperSport Football",
+                        "channel_id": "56"
+                    },
+                    {
+                        "channel_name": "beIN Sports MENA 6",
+                        "channel_id": "96"
+                    },
+                    {
+                        "channel_name": "Sport 3 Israel",
+                        "channel_id": "142"
+                    }
+                ]
+            },
+            {
+                "time": "18:45",
+                "event": "⚽ UEFA Nations League : Romania 🇷🇴 vs Sweden 🇸🇪",
+                "channels": [
+                    {
+                        "channel_name": "DAZN CA",
+                        "channel_id": "18"
+                    },
+                    {
+                        "channel_name": "Antena 1 Romania",
+                        "channel_id": "5"
+                    },
+                    {
+                        "channel_name": "Sport TV4 Portugal",
+                        "channel_id": "289"
+                    },
+                    {
+                        "channel_name": "Polsat Sport 3 Poland",
+                        "channel_id": "129"
+                    },
+                    {
+                        "channel_name": "Arena 3 Premium Serbia",
+                        "channel_id": "139"
+                    },
+                    {
+                        "channel_name": "Cytavision Sports 6 Cyprus",
+                        "channel_id": "916"
+                    },
+                    {
+                        "channel_name": "ESPN BR",
+                        "channel_id": "81"
+                    },
+                    {
+                        "channel_name": "Nova Sports Start Greece",
+                        "channel_id": "637"
+                    },
+                    {
+                        "channel_name": "Diema Sport Bulgaria",
+                        "channel_id": "465"
+                    },
+                    {
+                        "channel_name": "ESPN2 Argentina",
+                        "channel_id": "150"
+                    },
+                    {
+                        "channel_name": "Sportklub 4 Croatia",
+                        "channel_id": "104"
+                    },
+                    {
+                        "channel_name": "beIN Sports MENA 3",
+                        "channel_id": "93"
+                    }
+                ]
+            },
+            {
+                "time": "18:45",
+                "event": "⚽ UEFA Nations League : Northern Ireland 🏴󠁧󠁢󠁮󠁩󠁲󠁿 vs Georgia 🇬🇪",
+                "channels": [
+                    {
+                        "channel_name": "DAZN CA",
+                        "channel_id": "19"
+                    },
+                    {
+                        "channel_name": "1TV Georgia",
+                        "channel_id": "6"
+                    },
+                    {
+                        "channel_name": "BBC Three UK",
+                        "channel_id": "358"
+                    },
+                    {
+                        "channel_name": "Polsat Sport Premium 2 Poland",
+                        "channel_id": "992"
+                    },
+                    {
+                        "channel_name": "Nova Sports Premier League Greece",
+                        "channel_id": "599"
+                    },
+                    {
+                        "channel_name": "SuperSport Laliga",
+                        "channel_id": "415"
+                    },
+                    {
+                        "channel_name": "beIN Sports MENA 7",
+                        "channel_id": "97"
+                    }
+                ]
+            },
+            {
+                "time": "18:45",
+                "event": "⚽ UEFA Nations League : Bosnia and Herzegovina 🇧🇦 vs Poland 🇵🇱",
+                "channels": [
+                    {
+                        "channel_name": "DAZN CA",
+                        "channel_id": "20"
+                    },
+                    {
+                        "channel_name": "BHT 1 Bosnia",
+                        "channel_id": "7"
+                    },
+                    {
+                        "channel_name": "TVP Sport Poland",
+                        "channel_id": "128"
+                    },
+                    {
+                        "channel_name": "TVP1 Poland",
+                        "channel_id": "560"
+                    },
+                    {
+                        "channel_name": "Sport TV3 Portugal",
+                        "channel_id": "454"
+                    },
+                    {
+                        "channel_name": "Arena 4 Premium Serbia",
+                        "channel_id": "4"
+                    },
+                    {
+                        "channel_name": "Digi Sport 3 Romania",
+                        "channel_id": "402"
+                    },
+                    {
+                        "channel_name": "Prima Sport 3 Romania",
+                        "channel_id": "585"
+                    },
+                    {
+                        "channel_name": "ESPN4 BR",
+                        "channel_id": "85"
+                    },
+                    {
+                        "channel_name": "Nova Sports 3 Greece",
+                        "channel_id": "633"
+                    },
+                    {
+                        "channel_name": "Sportklub 3 Croatia",
+                        "channel_id": "103"
+                    },
+                    {
+                        "channel_name": "SuperSport Action",
+                        "channel_id": "420"
+                    },
+                    {
+                        "channel_name": "beIN Sports MENA 4",
+                        "channel_id": "94"
+                    }
+                ]
+            },
+            {
+                "time": "21:00",
+                "event": "⚽ CONCACAF Nations League : Cuba 🇨🇺 vs St. Kitts and Nevis 🇰🇳",
                 "channels": [
                     {
                         "channel_name": "Fox Soccer Plus",
                         "channel_id": "756"
                     }
                 ]
+            },
+            {
+                "time": "22:00",
+                "event": "⚽ CONCACAF Nations League : Martinique 🇲🇶 vs El Salvador 🇸🇻",
+                "channels": [
+                    {
+                        "channel_name": "Fox Sports 2 USA",
+                        "channel_id": "758"
+                    }
+                ]
             }
         ],
-        "NWSL Soccer ⚽": [],
-        "USL Soccer ⚽": [],
-        "Tennis 🎾": [],
-        "Tennis 🎾 ATP - Singles: Beijing (China)": [],
+        "Friendly Soccer ⚽": [],
+        "Tennis 🎾": [
+            {
+                "time": "11:00",
+                "event": "🎾 ATP 500 Beijing : 1/2 Final B",
+                "channels": [
+                    {
+                        "channel_name": "Sportklub 1 Croatia",
+                        "channel_id": "101"
+                    }
+                ]
+            },
+            {
+                "time": "12:45",
+                "event": "🎾 WTA 1000 Beijing",
+                "channels": [
+                    {
+                        "channel_name": "Sportklub 2 Croatia",
+                        "channel_id": "102"
+                    }
+                ]
+            }
+        ],
+        "Tennis 🎾 ATP - Singles: Beijing (China)": [
+            {
+                "time": "11:00",
+                "event": "🎾 ATP - Singles: 🇷🇸 Novak Djokovic vs 🇷🇺 Daniil Medvedev",
+                "channels": [
+                    {
+                        "channel_name": "Tennis HD Stream",
+                        "channel_id": "1088"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1507"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1520"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1667"
+                    }
+                ]
+            }
+        ],
         "Tennis 🎾 ATP - Singles: Tokyo (Japan)": [],
-        "Tennis 🎾 WTA - Singles: Beijing (China)": [],
-        "Tennis 🎾 ATP - Doubles: Beijing (China)": [],
+        "Tennis 🎾 WTA - Singles: Beijing (China)": [
+            {
+                "time": "12:30",
+                "event": "🎾 WTA - Singles: 🇺🇸 Coco Gauff vs 🇨🇳 Sun Xinyu",
+                "channels": [
+                    {
+                        "channel_name": "Tennis HD Stream",
+                        "channel_id": "1082"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1524"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1501"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1668"
+                    }
+                ]
+            }
+        ],
+        "Tennis 🎾 ATP - Doubles: Beijing (China)": [
+            {
+                "time": "12:30",
+                "event": "🎾 ATP - Doubles: 🇺🇸 Robert Cash / 🇦🇹 Alexander Erler vs 🇺🇸 Jonathan Cash / 🇬🇧 Lloyd Glasspool",
+                "channels": [
+                    {
+                        "channel_name": "Tennis HD Stream",
+                        "channel_id": "1087"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1666"
+                    }
+                ]
+            }
+        ],
         "Tennis 🎾 ATP - Doubles: Tokyo (Japan)": [],
         "Tennis 🎾 WTA - Doubles: Beijing (China)": [],
-        "Tennis 🎾 CHALLENGER MEN - SINGLES Porto (Portugal)": []
+        "Tennis 🎾 ATP - Singles: Shanghai (China) - Qualification": []
     }
 }
