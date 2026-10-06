@@ -1,56 +1,9 @@
 {
-  "updated": "2026-10-06 16:43 VN",
+  "updated": "2026-10-07 00:22 VN",
   "days": {
-    "20261006": {
-      "date": "Tuesday, 06/10",
+    "20261007": {
+      "date": "Wednesday, 07/10",
       "games": [
-        {
-          "league": "International Friendly",
-          "match": "South Korea vs Uzbekistan",
-          "kick_utc": 1791284400,
-          "time": "06/10 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Futbol TV Uzbekistan",
-                "Futbol TV Uzbekistan",
-                "Persiana Sport HD",
-                "Persiana Sport HD",
-                "Persiana Sport HD"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "International Friendly",
-          "match": "India vs Uruguay",
-          "kick_utc": 1791295200,
-          "time": "06/10 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Arena Premium 2 Srbija HD",
-                "Arena Premium 2 Srbija HD",
-                "Arena Premium 2 Srbija HD",
-                "DAZN Japan",
-                "M+ #Vamos Bar 1",
-                "M+ Vamos 1 España HD",
-                "M+ Vamos 1 España HD",
-                "Sony Sports TEN 2 India HD",
-                "Sony Sports TEN 2 India HD",
-                "Sony Sports TEN 3 India HD",
-                "Sony Sports TEN 3 India HD",
-                "Sony Sports TEN 4 India HD",
-                "Sport TV1 Portugal HD",
-                "Sport TV1 Slovenija"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "International Friendly",
           "match": "Russia vs Nigeria",
@@ -83,7 +36,9 @@
                 "ENTV Algérie HD",
                 "ENTV Algérie HD",
                 "ENTV Algérie HD",
-                "ENTV Algérie HD"
+                "ENTV Algérie HD",
+                "ON Sport Max HD",
+                "ON Sport Max HD"
               ]
             }
           ],
@@ -149,6 +104,15 @@
                 "MATCH! Russia HD",
                 "Movistar Plus+ HD",
                 "Movistar Plus+ HD",
+                "ORTB Benin",
+                "ORTB Benin",
+                "ORTB Benin",
+                "ORTB Benin",
+                "ORTB Benin",
+                "ORTB Benin",
+                "Persiana Sport HD",
+                "Persiana Sport HD",
+                "Persiana Sport HD",
                 "Premier Sports 2 Ireland HD",
                 "Premier Sports 2 UK HD",
                 "S Sport+ Streaming",
@@ -184,6 +148,7 @@
                 "Unite8 Sports 1 HD",
                 "VG+ Sport Norge",
                 "ViaPlay Danmark HD",
+                "ViaPlay Sport Sverige HD",
                 "ViaPlay Suomi HD",
                 "ViaPlay Sverige HD",
                 "ViX TV",
@@ -192,41 +157,6 @@
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "UEFA Nations League",
-          "match": "Kazakhstan 🇰🇿 vs Faroe Islands 🇴",
-          "kick_utc": 1791295200,
-          "time": "06/10 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "DAZN CA",
-                "Qazsport",
-                "Fox Sports 2 USA",
-                "DAZN1 DE",
-                "Sport TV2 Portugal",
-                "Sky Sport Calcio IT",
-                "Ziggo Sport 1 NL",
-                "Ziggo Sport 2 NL",
-                "Cytavision Sports 4 Cyprus",
-                "Nova Sports Start Greece",
-                "Nova Sport Bulgaria",
-                "Prima Sport 1 Romania",
-                "SporTV 2 BR",
-                "TV2 Sport 1 Norway",
-                "TV2 Sport X Denmark",
-                "ESPN3 Argentina",
-                "SuperSport Premier League",
-                "Sportklub 2 Croatia",
-                "beIN Sports MENA 2",
-                "beIN Sports MENA English 1",
-                "Sport 1 Israel"
-              ]
-            }
-          ],
-          "source": "daddylive"
         },
         {
           "league": "UEFA Nations League",
@@ -476,9 +406,9 @@
         },
         {
           "league": "Tennis",
-          "match": "Carlos Alcaraz - Jiri Lehecka",
-          "kick_utc": 1791277200,
-          "time": "06/10 04:00 PM",
+          "match": "Shanghai Masters",
+          "kick_utc": 1791345600,
+          "time": "07/10 11:00 AM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
@@ -492,15 +422,14 @@
         },
         {
           "league": "Tennis",
-          "match": "China Open",
-          "kick_utc": 1791277200,
-          "time": "06/10 04:00 PM",
+          "match": "Shanghai Masters",
+          "kick_utc": 1791367200,
+          "time": "07/10 05:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Tennis Channel",
-                "T2"
+                "RDS"
               ]
             }
           ],
@@ -525,32 +454,15 @@
         },
         {
           "league": "Tennis",
-          "match": "Novak Djokovic - Alex de Minaur",
-          "kick_utc": 1791284400,
-          "time": "06/10 06:00 PM",
+          "match": "China Open",
+          "kick_utc": 1791370800,
+          "time": "07/10 06:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Tennis Channel",
                 "TSN+",
-                "RDS"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Shanghai Masters",
-          "kick_utc": 1791345600,
-          "time": "07/10 11:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "TSN+"
+                "TSN4"
               ]
             }
           ],
@@ -611,22 +523,32 @@
         },
         {
           "league": "Tennis",
-          "match": "Novak Djokovic vs Alex De Minaur",
-          "kick_utc": 1791284400,
-          "time": "06/10 06:00 PM",
+          "match": "WTA China Open",
+          "kick_utc": 1791370800,
+          "time": "07/10 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Sky Sports Main Event",
+                "Sky Sports Tennis",
+                "Sky Sports Ultra HDR"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1791345600,
+          "time": "07/10 11:00 AM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
-                "beIN SPORTS 1",
-                "beIN Sports Connect"
-              ]
-            },
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis Stream",
-                "Tennis HD Stream"
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
               ]
             }
           ],
@@ -634,96 +556,19 @@
         },
         {
           "league": "Tennis",
-          "match": "Final",
-          "kick_utc": 1791284400,
-          "time": "06/10 06:00 PM",
+          "match": "",
+          "kick_utc": 1791367200,
+          "time": "07/10 05:00 PM",
           "tv_channels": [
             {
-              "country": "Daddylive",
+              "country": "Ausport",
               "channels": [
-                "Sportklub 1 Croatia"
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
               ]
             }
           ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "🇴 Ulrikke Eikeri / 🇺 Quinn Gleason vs 🇨 Gabriela Dabrowski /  Luisa Stefani",
-          "kick_utc": 1791280800,
-          "time": "06/10 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 500 - Tóquio 2026 - Final",
-          "kick_utc": 1791277200,
-          "time": "06/10 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv1 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 500 - Beijing 2026 - Final",
-          "kick_utc": 1791284400,
-          "time": "06/10 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "China Open 2026",
-          "kick_utc": 1791284400,
-          "time": "06/10 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Réseau Des Sports (Rds)",
-                "Réseau Des Sports (Rds) Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ténis - ATP Challenger Tour 2026 - ATP Ch 75 Braga Open",
-          "kick_utc": 1791287880,
-          "time": "06/10 06:58 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -838,6 +683,21 @@
         },
         {
           "league": "Tennis",
+          "match": "ATP Masters 1000 - Xangai 2026",
+          "kick_utc": 1791367200,
+          "time": "07/10 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
           "match": "2026 China Open Tennis",
           "kick_utc": 1791349200,
           "time": "07/10 12:00 PM",
@@ -854,82 +714,50 @@
         },
         {
           "league": "Tennis",
-          "match": "Kinoshita Group Japan Open Tennis Championships -Final",
-          "kick_utc": 1791277200,
-          "time": "06/10 04:00 PM",
+          "match": "2026 China Open Tennis",
+          "kick_utc": 1791370800,
+          "time": "07/10 06:00 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports Prime"
+                "TSN 4",
+                "TSN 4 Hd"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
-          "match": "Kinoshita Group Japan Open Tennis Championships vs Tokyo",
-          "kick_utc": 1791277200,
-          "time": "06/10 04:00 PM",
+          "match": "Shanghai Masters 2026",
+          "kick_utc": 1791367200,
+          "time": "07/10 05:00 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Ziggo Sport 1",
-                "Ziggo Sport 4",
-                "Ziggo Sport Kanaal 14"
+                "Réseau Des Sports (Rds)",
+                "Réseau Des Sports (Rds) Hd"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
-          "match": "China Open -Final",
-          "kick_utc": 1791284400,
-          "time": "06/10 06:00 PM",
+          "match": "Ténis - ATP Challenger Tour 2026 - ATP Ch 75 Braga Open",
+          "kick_utc": 1791374340,
+          "time": "07/10 06:59 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 6"
+                "Sport Tv3 Hd Portugal"
               ]
             }
           ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "China Open vs Beijing Finale",
-          "kick_utc": 1791284400,
-          "time": "06/10 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 5"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "China Open vs Beijing Finale",
-          "kick_utc": 1791286500,
-          "time": "06/10 06:35 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 1",
-                "Ziggo Sport 4",
-                "Ziggo Sport Kanaal 14"
-              ]
-            }
-          ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -948,14 +776,14 @@
         },
         {
           "league": "Tennis",
-          "match": ": Rolex Shanghai Masters - Shanghai",
-          "kick_utc": 1791345600,
-          "time": "07/10 11:00 AM",
+          "match": "China Open E16",
+          "kick_utc": 1791349200,
+          "time": "07/10 12:00 PM",
           "tv_channels": [
             {
               "country": "NowTV",
               "channels": [
-                "Ziggo Sport 4"
+                "Now Sports 4"
               ]
             }
           ],
@@ -980,9 +808,41 @@
         },
         {
           "league": "Tennis",
-          "match": "China Open E16",
-          "kick_utc": 1791349200,
-          "time": "07/10 12:00 PM",
+          "match": ": Rolex Shanghai Masters - Shanghai",
+          "kick_utc": 1791367500,
+          "time": "07/10 05:05 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Rolex Shanghai Masters -Round 1 - Q. Halys vs C. Wong",
+          "kick_utc": 1791365400,
+          "time": "07/10 04:30 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports Prime"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "China Open E17",
+          "kick_utc": 1791370800,
+          "time": "07/10 06:00 PM",
           "tv_channels": [
             {
               "country": "NowTV",
