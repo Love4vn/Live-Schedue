@@ -1,16 +1,121 @@
 {
-    "Tuesday 06th Oct 2026 - Schedule Time UK GMT": {
-        "EFL Trophy Soccer ⚽": [],
-        "UEFA Nations League Soccer 🏆⚽": [],
-        "Argentina - Reserve League Soccer ⚽": [],
-        "Major League Soccer ⚽": [],
-        "Tennis 🎾": [],
-        "Tennis 🎾 ATP - Singles: Beijing (China)": [],
-        "Tennis 🎾 ATP - Singles: Tokyo (Japan)": [],
-        "Tennis 🎾 ATP - Singles: Shanghai (China) - Qualification": [],
-        "Tennis 🎾 WTA - Singles: Beijing (China)": [],
-        "Tennis 🎾 ATP - Doubles: Beijing (China)": [],
-        "Tennis 🎾 ATP - Doubles: Tokyo (Japan)": [],
-        "Tennis 🎾 WTA - Doubles: Beijing (China)": []
+    "Wednesday 07th Oct 2026 - Schedule Time UK GMT": {
+        "All Soccer Events ⚽": [],
+        "Tennis 🎾": [
+            {
+                "time": "10:00",
+                "event": "🎾 ATP Masters Shanghai",
+                "channels": [
+                    {
+                        "channel_name": "Sportklub 1 Croatia",
+                        "channel_id": "101"
+                    }
+                ]
+            }
+        ],
+        "Tennis 🎾 ATP - Singles: Shanghai (China)": [
+            {
+                "time": "10:00",
+                "event": "🎾 ATP - Singles: 🇨🇳 Wu Yibing vs 🇨🇳 Maofeng Zheng",
+                "channels": [
+                    {
+                        "channel_name": "Tennis HD Stream",
+                        "channel_id": "1083"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1507"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1669"
+                    }
+                ]
+            },
+            {
+                "time": "11:30",
+                "event": "🎾 ATP - Singles: 🇫🇷 Arthur Fery vs 🇭🇷 Marin Cilic",
+                "channels": [
+                    {
+                        "channel_name": "Tennis HD Stream",
+                        "channel_id": "1084"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1507"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1671"
+                    }
+                ]
+            }
+        ],
+        "Tennis 🎾 WTA - Singles: Beijing (China)": [
+            {
+                "time": "13:00",
+                "event": "🎾 WTA - Singles: 🇷🇺 Alina Charaeva vs 🇨🇳 Zheng Qinwen",
+                "channels": [
+                    {
+                        "channel_name": "Tennis HD Stream",
+                        "channel_id": "1092"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1524"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1501"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1672"
+                    }
+                ]
+            },
+            {
+                "time": "14:30",
+                "event": "🎾 WTA - Singles: 🇺🇸 Ann Li vs 🇺🇦 Elina Svitolina",
+                "channels": [
+                    {
+                        "channel_name": "Tennis HD Stream",
+                        "channel_id": "1093"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1524"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1501"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1673"
+                    }
+                ]
+            }
+        ],
+        "Tennis 🎾 WTA - Doubles: Beijing (China)": [
+            {
+                "time": "11:00",
+                "event": "🎾 WTA - Doubles: 🇧🇪 Elise Mertens / 🇷🇺 Diana Shnaider vs 🇸🇰 Tereza Mihalikova / 🇬🇧 Olivia Nicholls",
+                "channels": [
+                    {
+                        "channel_name": "Tennis HD Stream",
+                        "channel_id": "1091"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1502"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1670"
+                    }
+                ]
+            }
+        ]
     }
 }
