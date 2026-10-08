@@ -1,9 +1,140 @@
 {
-    "Wednesday 07th Oct 2026 - Schedule Time UK GMT": {
-        "All Soccer Events ⚽": [],
-        "Tennis 🎾": [],
-        "Tennis 🎾 ATP - Singles: Shanghai (China)": [],
-        "Tennis 🎾 WTA - Singles: Beijing (China)": [],
-        "Tennis 🎾 WTA - Doubles: Beijing (China)": []
+    "Thursday 08th Oct 2026 - Schedule Time UK GMT": {
+        "All Soccer Events ⚽": [
+            {
+                "time": "15:00",
+                "event": "⚽ Iraqi Premier League : Al Mosul 🇮🇶 vs Al Quwa Al Jawiya 🇮🇶",
+                "channels": [
+                    {
+                        "channel_name": "Al Iraqiya Sports",
+                        "channel_id": "2"
+                    }
+                ]
+            },
+            {
+                "time": "15:45",
+                "event": "⚽ UAE League Cup : Khor Fakkan 🇦🇪 vs Al Wasl 🇦🇪",
+                "channels": [
+                    {
+                        "channel_name": "Abu Dhabi Sports 1",
+                        "channel_id": "600"
+                    }
+                ]
+            },
+            {
+                "time": "17:30",
+                "event": "⚽ Iraqi Premier League : Naft Maysan 🇮🇶 vs Erbil 🇮🇶",
+                "channels": [
+                    {
+                        "channel_name": "Al Iraqiya Sports",
+                        "channel_id": "2"
+                    }
+                ]
+            }
+        ],
+        "Tennis 🎾": [
+            {
+                "time": "10:00",
+                "event": "🎾 ATP Masters Shanghai 🇨🇳",
+                "channels": [
+                    {
+                        "channel_name": "Sportklub 1 Croatia",
+                        "channel_id": "101"
+                    }
+                ]
+            },
+            {
+                "time": "22:00",
+                "event": "🏓 PPA Tour Pickleball : PPA Tour Chicago Cup - Round of 16",
+                "channels": [
+                    {
+                        "channel_name": "Fox Sports 1 USA",
+                        "channel_id": "39"
+                    }
+                ]
+            }
+        ],
+        "Tennis 🎾 ATP - Singles: Shanghai (China)": [
+            {
+                "time": "10:00",
+                "event": "🎾 ATP - Singles: 🇫🇷 Luca Van Assche vs 🇨🇳 Bu Yunchaokete",
+                "channels": [
+                    {
+                        "channel_name": "Tennis HD Stream",
+                        "channel_id": "1087"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1507"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1668"
+                    }
+                ]
+            },
+            {
+                "time": "11:30",
+                "event": "🎾 ATP - Singles: 🇬🇧 Cameron Norrie vs 🇨🇿 Dalibor Svrcina",
+                "channels": [
+                    {
+                        "channel_name": "Tennis HD Stream",
+                        "channel_id": "1088"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1507"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1670"
+                    }
+                ]
+            }
+        ],
+        "Tennis 🎾 WTA - Singles: Beijing (China)": [
+            {
+                "time": "11:00",
+                "event": "🎾 WTA - Singles: 🇷🇺 Ekaterina Alexandrova vs 🇷🇺 Mirra Andreeva",
+                "channels": [
+                    {
+                        "channel_name": "Tennis HD Stream",
+                        "channel_id": "1091"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1524"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1501"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1669"
+                    }
+                ]
+            }
+        ],
+        "Tennis 🎾 WTA - Doubles: Beijing (China)": [
+            {
+                "time": "12:30",
+                "event": "🎾 WTA - Doubles: 🇮🇹 Sara Errani / 🇮🇹 Jasmine Paolini vs 🇨🇦 Gabriela Dabrowski / 🇧🇷 Luisa Stefani",
+                "channels": [
+                    {
+                        "channel_name": "Tennis HD Stream",
+                        "channel_id": "1092"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1501"
+                    },
+                    {
+                        "channel_name": "Tennis Stream",
+                        "channel_id": "1671"
+                    }
+                ]
+            }
+        ]
     }
 }
