@@ -168,7 +168,8 @@
     "home": "Napoli",
     "away": "Frosinone",
     "channels": [
-      "DAZN"
+      "DAZN",
+      "DAZN YouTube"
     ],
     "event_url": "https://www.wheresthematch.com/match/napoli-vs-frosinone/215930"
   },
@@ -271,7 +272,8 @@
     "home": "Hull City",
     "away": "Everton",
     "channels": [
-      "Sky Sports Premier League"
+      "Sky Sports Premier League",
+      "Sky Sports Ultra HDR"
     ],
     "event_url": "https://www.wheresthematch.com/match/hull-city-vs-everton/214321"
   },
@@ -349,5 +351,37 @@
       "Ligue 1+"
     ],
     "event_url": "https://www.wheresthematch.com/match/troyes-vs-marseille/215998"
+  },
+  {
+    "hari": "Senin",
+    "tanggal": "12-10-2026",
+    "time": "10:00",
+    "sport": "Tennis",
+    "competition": "WTA Tour",
+    "title": "WTA Wuhan Open",
+    "home": "",
+    "away": "",
+    "channels": [
+      "Sky Sports Tennis",
+      "Sky Sports+"
+    ],
+    "event_url": "https://www.wheresthematch.com/event/wta-wuhan-open/218479"
+  },
+  {
+    "hari": "Senin",
+    "tanggal": "12-10-2026",
+    "time": "11:30",
+    "sport": "Tennis",
+    "competition": "ATP World Tour",
+    "title": "Shanghai Rolex Masters",
+    "home": "",
+    "away": "",
+    "channels": [
+      "Sky Sports Main Event",
+      "Sky Sports Tennis",
+      "Sky Sports Ultra HDR",
+      "Sky Sports+"
+    ],
+    "event_url": "https://www.wheresthematch.com/event/shanghai-rolex-masters/217528"
   }
 ]
