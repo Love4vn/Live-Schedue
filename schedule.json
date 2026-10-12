@@ -1,9 +1,99 @@
 {
-  "updated": "2026-10-12 04:05 VN",
+  "updated": "2026-10-12 16:44 VN",
   "days": {
     "20261012": {
       "date": "Monday, 12/10",
       "games": [
+        {
+          "league": "UEFA Champions League",
+          "match": "Pakhtakor vs Al Qadisiyah",
+          "kick_utc": 1791812700,
+          "time": "12/10 08:45 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Al Kass 6 HD",
+                "Astro Arena Bola 2 HD",
+                "beIN Sports MENA 2 HD",
+                "beIN Sports MENA 2 HD",
+                "DAZN Japan",
+                "ESPN 1 Nederland HD",
+                "Futbol TV Uzbekistan",
+                "Futbol TV Uzbekistan",
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Spor Smart Türkiye HD",
+                "Sport 1 Baltic",
+                "Sport 1 Ukraine",
+                "SportKlub 1 Hrvatska HD",
+                "SportKlub 3 Slovenija",
+                "YouTube: The AFC Hub"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Champions League",
+          "match": "Al Wasl vs Al Ahli",
+          "kick_utc": 1791820800,
+          "time": "12/10 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Al Kass 6 HD",
+                "Astro Football HD",
+                "beIN Sports MENA 1 HD",
+                "beIN Sports MENA 1 HD",
+                "beIN Sports MENA English 1 HD",
+                "Canal 11 Portugal HD",
+                "DAZN Japan",
+                "Futbol TV Uzbekistan",
+                "Futbol TV Uzbekistan",
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Spor Smart 2 Türkiye HD",
+                "Sport 1 Ukraine",
+                "SportKlub 1 Hrvatska HD",
+                "SportKlub 2 Slovenija",
+                "YouTube: The AFC Hub"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Champions League",
+          "match": "Tractor Sazi vs Al Shamal",
+          "kick_utc": 1791820800,
+          "time": "12/10 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Al Kass 5 HD",
+                "Astro Arena Bola HD",
+                "beIN Sports MENA 2 HD",
+                "beIN Sports MENA 2 HD",
+                "IRIB Varzesh HD",
+                "IRIB Varzesh HD",
+                "Sport 1 Baltic",
+                "SportKlub 5 Slovenija",
+                "SportKlub 7 Hrvatska",
+                "YouTube: The AFC Hub"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
         {
           "league": "Serie A",
           "match": "Atalanta - Venezia",
@@ -13,35 +103,38 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Arena Sport 2 Hrvatska HD",
-                "beIN Sports Australia 3 HD",
-                "Prima Sport RO 2 HD",
-                "Ziggo Sport 1 HD",
-                "Paramount+",
-                "Cytavision Sports 4 HD",
-                "MATCH! Futbol 1 HD",
-                "DAZN Ireland",
-                "Digi Sport 2 Romania HD",
-                "DAZN 2 Bar Deutsch HD",
-                "NBC Universo",
-                "Sport TV2 Portugal HD",
-                "TSN Malta 7 HD",
-                "DAZN Canada",
-                "Arena M2 Premium MKD HD",
-                "Tring Sport 1 HD",
                 "VG+ Sport Norge",
-                "Magenta Hellas Sport 2 HD",
-                "TV2 Play Danmark",
-                "TV2 Sport Dansk HD",
-                "S Sport+ Streaming",
-                "Paramount+ USA",
-                "Peacock Premium USA",
-                "S Sport 2 Türkiye HD",
+                "Cytavision Sports 4 HD",
+                "Megogo Futbol 1",
+                "Digi Sport 2 Romania HD",
+                "Prima Sport RO 2 HD",
+                "Paramount+",
+                "MATCH! Russia HD",
                 "DAZN Italia",
+                "TV2 Sport Dansk HD",
+                "Paramount+ USA",
                 "DAZN 1 Italia HD",
+                "MATCH! Futbol 1 HD",
+                "Arena Sport 2 Hrvatska HD",
+                "NBC Universo",
+                "Arena M2 Premium MKD HD",
                 "DAZN Great Britain",
+                "Astro Arena Bola 2 HD",
+                "DAZN Canada",
+                "Magenta Hellas Sport 2 HD",
+                "Ziggo Sport 1 HD",
+                "S Sport+ Streaming",
+                "Sport TV2 Portugal HD",
                 "MAX Sport 3 Bulgaria HD",
+                "DAZN 2 Bar Deutsch HD",
+                "TSN Malta 7 HD",
+                "S Sport 2 Türkiye HD",
+                "Peacock Premium USA",
                 "Arena Premium 2 Srbija HD",
+                "DAZN Ireland",
+                "Tring Sport 1 HD",
+                "beIN Sports Australia 3 HD",
+                "TV2 Play Danmark",
                 "Arena Sport 1 Slovenija HD"
               ]
             },
@@ -56,6 +149,125 @@
               "channels": [
                 "beIN SPORTS 3",
                 "beIN Sports Connect"
+              ]
+            },
+            {
+              "country": "Daddylive",
+              "channels": [
+                "DAZN 2 DE",
+                "Ziggo Sport 1 NL",
+                "Eleven Sports 1 Poland",
+                "Paramount+",
+                "Sport 1 Israel",
+                "Match! Football 1 Russia",
+                "TV4 Sport Live 1",
+                "SuperSport Football",
+                "NBC UNIVERSO",
+                "Sport 1 CZ",
+                "TV2 Sport Denmark",
+                "Prima Sport 2 Romania",
+                "ESPN2 Argentina",
+                "Arena 2 Premium Serbia",
+                "MAX Sport 3 Bulgaria",
+                "DAZN1 IT",
+                "Arena Sport 2 Croatia",
+                "Sport TV2 Portugal",
+                "Digi Sport 2 Romania",
+                "Cytavision Sports 4 Cyprus",
+                "MagentaSport 2 Greece"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Champions League",
+          "match": "Al Nassr vs Neftchi",
+          "kick_utc": 1791828900,
+          "time": "13/10 01:15 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Al Kass 7 HD",
+                "Astro Football HD",
+                "beIN Sports MENA 3 HD",
+                "beIN Sports MENA 3 HD",
+                "Blue Sport 1 Live HD",
+                "Canal 11 Portugal HD",
+                "DAZN Japan",
+                "Diema Sport 3 HD",
+                "Diema Sport 3 HD",
+                "Diema Sport 3 HD",
+                "Diema Sport 3 HD",
+                "Diema Sport 3 HD",
+                "ESPN 1 Nederland HD",
+                "ESPN 4 Brazil HD",
+                "ESPN 4 Brazil HD",
+                "Futbol TV Uzbekistan",
+                "Futbol TV Uzbekistan",
+                "Solh TV",
+                "Spor Smart Türkiye HD",
+                "Sport 1 Ukraine",
+                "Sportdigital 1+ Deutsch HD",
+                "Sportdigital 1+ Deutsch HD",
+                "SportKlub 1 Hrvatska HD",
+                "SportKlub 2 Slovenija",
+                "YouTube: The AFC Hub"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Champions League",
+          "match": "Al Gharafa vs Esteghlal Tehran",
+          "kick_utc": 1791828900,
+          "time": "13/10 01:15 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Al Kass 5 HD",
+                "Astro Arena Bola HD",
+                "beIN Sports MENA 1 HD",
+                "beIN Sports MENA 1 HD",
+                "DAZN Japan",
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Nova Sport Bulgaria HD",
+                "Spor Smart 2 Türkiye HD",
+                "Sport 2 Baltic",
+                "Sport 2 Ukraine",
+                "SportKlub 4 Hrvatska",
+                "SportKlub 4 Slovenija",
+                "YouTube: The AFC Hub"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "UEFA Champions League",
+          "match": "Air Force Club vs Al Ain",
+          "kick_utc": 1791828900,
+          "time": "13/10 01:15 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Al Kass 6 HD",
+                "Astro Stadium HD",
+                "beIN Sports MENA 4 HD",
+                "beIN Sports MENA 4 HD",
+                "DAZN Japan",
+                "Sport 1 Baltic",
+                "SportKlub 3 Hrvatska",
+                "SportKlub 3 Hrvatska",
+                "SportKlub 5 Slovenija",
+                "YouTube: The AFC Hub"
               ]
             }
           ],
@@ -76,72 +288,131 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "ViaPlay TV Nederland HD",
-                "ViaPlay Suomi HD",
-                "TSN Malta 2 HD",
-                "Sky Sport Premier League DE HD",
-                "beIN Sports MENA English 1 HD",
-                "Arena M1 Premium MKD HD",
-                "Sky Go UK",
-                "ViaPlay Norge HD",
-                "Sky Sport Arena Italia HD",
-                "Canal+ Live 1 France HD",
-                "beIN Connect Türkiye",
-                "Arena Premium 1 Srbija HD",
-                "Canal+ Sport 1 Czech HD",
-                "Sky Sport 8 NZ HD",
-                "ViaPlay Sverige HD",
-                "Sky Sports Main Event UHD",
-                "Sport 24 In Flight HD",
-                "ViaPlay TV+ Nederland",
-                "ViaPlay Danmark HD",
-                "DAZN España",
-                "See Dansk HD",
-                "Sky Sport 1 Austria HD",
-                "DAZN Canada",
-                "Sport 24 At Sea HD",
-                "VOYO Pro TV Romania",
-                "USA Network HD",
-                "Arena Sport 1 Hrvatska HD",
-                "beIN Sports Türkiye 3 HD",
-                "Monomax Streaming",
-                "Sky Sport Top Event HD",
-                "Sky UK Ultra HD 1",
-                "Nova Sports Premier League HD",
-                "DAZN Portugal",
-                "VOYO Sport 1 Romania",
-                "Peacock Premium USA",
-                "Hub Premier 1 HD",
                 "Canal+ Extra 1 Polska HD",
-                "Premier League+",
-                "Canal+ Foot HD",
-                "USA Network",
-                "Arena Sport 1 Slovenija HD",
-                "Sky Sports Premier League HD",
-                "ViaPlay Nederland HD",
-                "Cytavision Sports 3 HD",
+                "DAZN Portugal",
+                "ViaPlay Norge HD",
+                "VOYO Sport 1 Romania",
+                "Sky Sport Top Event HD",
+                "Arena Sport 1 Hrvatska HD",
+                "See Dansk HD",
+                "Sky UK Ultra HD 1",
                 "beIN Sports MENA 2 HD",
-                "Sky Sports Main Event HD"
+                "Setanta Sports 1 Eurasia HD",
+                "Setanta Sports 1 Georgia HD",
+                "Sky Go UK",
+                "Sky Sports Main Event HD",
+                "USA Network HD",
+                "Canal+ Foot HD",
+                "Cytavision Sports 3 HD",
+                "Arena Premium 1 Srbija HD",
+                "Setanta Sports Ukraine HD",
+                "Sky Sport 8 NZ HD",
+                "Sky Sport 1 Austria HD",
+                "Sport 24 In Flight HD",
+                "Canal+ Sport 1 Czech HD",
+                "DAZN Canada",
+                "Sky Sport Arena Italia HD",
+                "Hub Premier 1 HD",
+                "DAZN España",
+                "ViaPlay Suomi HD",
+                "Monomax Streaming",
+                "beIN Sports MENA English 1 HD",
+                "USA Network",
+                "Diema Sport 2 HD",
+                "Sky Sport Premier League DE HD",
+                "Nova Sports Premier League HD",
+                "ViaPlay Danmark HD",
+                "Peacock Premium USA",
+                "TSN Malta 2 HD",
+                "Arena M1 Premium MKD HD",
+                "ViaPlay Nederland HD",
+                "Sky Sports Premier League HD",
+                "ViaPlay TV+ Nederland",
+                "Sky Sports Main Event UHD",
+                "Canal+ Live 1 France HD",
+                "ViaPlay Sverige HD",
+                "beIN Connect Türkiye",
+                "ViaPlay TV Nederland HD",
+                "beIN Sports Türkiye 3 HD",
+                "V Sport Premier League HD",
+                "VOYO Pro TV Romania",
+                "Sport 24 At Sea HD",
+                "Premier League+",
+                "Arena Sport 1 Slovenija HD"
               ]
             },
             {
               "country": "Wheresthematch",
               "channels": [
-                "Sky Sports Main Event",
                 "Sky Sports Ultra HDR",
+                "Sky Sports Main Event",
                 "Sky Sports Premier League"
+              ]
+            },
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Canal+ Foot France",
+                "Cytavision Sports 3 Cyprus",
+                "Canal+ Sport SK",
+                "Nova Sports Premier League Greece",
+                "Diema Sport 2 Bulgaria",
+                "Sport 1 Israel",
+                "beIN Sports MENA 2",
+                "Astro Grandstand",
+                "Sky Sport Arena IT",
+                "See Denmark",
+                "ESPN Brazil",
+                "V Sport Premium",
+                "Sky Sport Austria 1",
+                "Canal+ Sport 3 Afrique",
+                "Hub Premier",
+                "DAZN1 Spain",
+                "Sky Sports Main Event UK",
+                "beIN Sports MENA English 1",
+                "Arena Sport 1 Croatia",
+                "SuperSport Premier League",
+                "Sky Sport 8 NZ",
+                "beIN Sports 3 Turkey",
+                "USA Network",
+                "Astro Premier League",
+                "DAZN Eleven 1 Portugal",
+                "Supersport Grandstand",
+                "Canal+ Extra 1 Poland",
+                "Sky Sports Premier League UK",
+                "ESPN3 Argentina",
+                "Sky Sport Premier League DE",
+                "Arena 1 Premium Serbia",
+                "Canal+ Sport CZ"
               ]
             },
             {
               "country": "NowTV",
               "channels": [
+                "Now Sports Premier League TV",
                 "Hub Premier 1",
-                "Now Sports Premier League 1",
-                "Now Sports Premier League TV"
+                "Now Sports Premier League 1"
               ]
             }
           ],
           "source": "hubsport"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Canada vs Denmark",
+          "kick_utc": 1791833400,
+          "time": "13/10 02:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DR TV",
+                "DR2 Dansk HD",
+                "DR2 Dansk HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
         },
         {
           "league": "Premier League",
@@ -159,18 +430,106 @@
           "source": "ausport"
         },
         {
+          "league": "Serie A",
+          "match": "Torino  vs Udinese",
+          "kick_utc": 1791830700,
+          "time": "13/10 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Paramount+",
+                "Sky Sport 251 IT",
+                "Sky Sport Calcio IT",
+                "NBC UNIVERSO",
+                "DAZN2 DE",
+                "Sport TV2 Portugal",
+                "Eleven Sports 1 Poland",
+                "Match! Football 1 Russia",
+                "Cytavision Sports 4 Cyprus",
+                "Digi Sport 2 Romania",
+                "Prima Sport 2 Romania",
+                "Arena Sport 2 Croatia",
+                "Arena 4 Premium Serbia",
+                "ESPN3 Mexico",
+                "MagentaSport 1 Greece",
+                "TV2 Sport Denmark",
+                "MAX Sport 3 Bulgaria",
+                "Sport 1 CZ",
+                "SuperSport Football",
+                "ESPN2 Argentina",
+                "TV4 Sportkanalen"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "La Liga",
+          "match": "Levante  vs Sevilla",
+          "kick_utc": 1791831600,
+          "time": "13/10 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "M+ LALIGA TV",
+                "ESPN+ USA",
+                "Viaplay Sports 1 UK",
+                "Premier Sports 1 Ireland",
+                "DAZN1 DE",
+                "DAZN1 IT",
+                "DAZN Eleven 2 Portugal",
+                "Canal+ Sport Poland",
+                "Canal+ Sport 6 Poland",
+                "beIN Sports Malaysia",
+                "Nova Sport 4 SK",
+                "Nova Sport 4 CZ",
+                "DSports 2 Argentina",
+                "ESPN Deportes",
+                "Ziggo Sport 2 NL",
+                "Match! Football 2 Russia",
+                "Digi Sport 4 Romania",
+                "Prima Sport 3 Romania",
+                "Sportklub 5 Croatia",
+                "Arena 2 Premium Serbia",
+                "MagentaSport 3 League Greece",
+                "MAX Sport 4 Bulgaria",
+                "SuperSport Laliga",
+                "beIN Sports MENA 5"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
           "league": "Tennis",
-          "match": "Wuhan Open",
-          "kick_utc": 1791774000,
-          "time": "12/10 10:00 AM",
+          "match": "Shanghai Masters",
+          "kick_utc": 1791799200,
+          "time": "12/10 05:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "T2",
+                "Tennis Channel",
+                "RDS"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Shanghai Masters",
+          "kick_utc": 1791864000,
+          "time": "13/10 11:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel",
                 "TSN+",
-                "TSN2",
-                "DAZN Canada"
+                "TSN5"
               ]
             }
           ],
@@ -211,52 +570,21 @@
         },
         {
           "league": "Tennis",
-          "match": "Shanghai Masters",
-          "kick_utc": 1791777600,
-          "time": "12/10 11:00 AM",
+          "match": "Wuhan Open",
+          "kick_utc": 1791860400,
+          "time": "13/10 10:00 AM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Tennis Channel",
+                "T2",
                 "TSN+",
-                "TSN5"
+                "TSN2",
+                "DAZN Canada"
               ]
             }
           ],
           "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Shanghai Masters",
-          "kick_utc": 1791799200,
-          "time": "12/10 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "RDS"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "WTA Wuhan Open",
-          "kick_utc": 1791774000,
-          "time": "12/10 10:00 AM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Tennis",
-                "Sky Sports+"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
@@ -276,9 +604,25 @@
         },
         {
           "league": "Tennis",
+          "match": "WTA Wuhan Open",
+          "kick_utc": 1791860400,
+          "time": "13/10 10:00 AM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Sky Sports Tennis",
+                "Sky Sports+"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
           "match": "Shanghai Rolex Masters",
-          "kick_utc": 1791779400,
-          "time": "12/10 11:30 AM",
+          "kick_utc": 1791865800,
+          "time": "13/10 11:30 AM",
           "tv_channels": [
             {
               "country": "Wheresthematch",
@@ -291,67 +635,6 @@
             }
           ],
           "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ekaterina Alexandrova vs Leylah Annie Fernandez",
-          "kick_utc": 1791774000,
-          "time": "12/10 10:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 2",
-                "Stan Sport"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Anhelina Kalinina vs Sonay Kartal",
-          "kick_utc": 1791774000,
-          "time": "12/10 10:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Pablo Carreno-Busta vs Felix Auger-Aliassime",
-          "kick_utc": 1791777600,
-          "time": "12/10 11:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN SPORTS 1"
-              ]
-            }
-          ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Learner Tien vs Casper Ruud",
-          "kick_utc": 1791777600,
-          "time": "12/10 11:00 AM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect"
-              ]
-            }
-          ],
-          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -371,130 +654,123 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1791759600,
-          "time": "12/10 06:00 AM",
+          "match": "",
+          "kick_utc": 1791860400,
+          "time": "13/10 10:00 AM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Ausport",
               "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
+                "beIN Sports Connect",
+                "beIN SPORTS 2"
               ]
             }
           ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1791766800,
-          "time": "12/10 08:00 AM",
+          "match": "Zizou Bergs vs  Carlos Alcaraz",
+          "kick_utc": 1791799200,
+          "time": "12/10 05:00 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Daddylive",
               "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
+                "Tennis HD Stream",
+                "Tennis Stream",
+                "Tennis Stream",
+                "Tennis Stream"
               ]
             }
           ],
-          "source": "hubsport"
+          "source": "daddylive"
         },
         {
           "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1791774000,
-          "time": "12/10 10:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1791781200,
-          "time": "12/10 12:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1791788400,
-          "time": "12/10 02:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "2026 Dongfeng Voyah Wuhan Open Tennis",
-          "kick_utc": 1791774000,
-          "time": "12/10 10:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "TSN 2",
-                "TSN 2 Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "2026 Dongfeng Voyah Wuhan Open Tennis",
+          "match": "🇺 Tommy Paul vs 🇲🇨 Valentin Vacherot",
           "kick_utc": 1791804600,
           "time": "12/10 06:30 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Daddylive",
               "channels": [
-                "TSN 2",
-                "TSN 2 Hd"
+                "Tennis HD Stream",
+                "Tennis Stream",
+                "Tennis Stream",
+                "Tennis Stream"
               ]
             }
           ],
-          "source": "hubsport"
+          "source": "daddylive"
         },
         {
           "league": "Tennis",
-          "match": "ATP Masters 1000 - Xangai 2026",
-          "kick_utc": 1791777600,
-          "time": "12/10 11:00 AM",
+          "match": "🇨 Wang Xinyu vs 🇨 Wang Xin",
+          "kick_utc": 1791804600,
+          "time": "12/10 06:30 PM",
           "tv_channels": [
             {
-              "country": "Hubsport",
+              "country": "Daddylive",
               "channels": [
-                "Sport Tv2 Hd Portugal"
+                "Tennis HD Stream",
+                "Tennis Stream",
+                "Tennis Stream",
+                "Tennis Stream"
               ]
             }
           ],
-          "source": "hubsport"
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "🇭 Alexandra Eala vs 🇨 Shi Han",
+          "kick_utc": 1791810000,
+          "time": "12/10 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
+                "Tennis Stream",
+                "Tennis Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "Andrea Guerrieri vs 🇯🇴 Abdullah Shelbayh",
+          "kick_utc": 1791806400,
+          "time": "12/10 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "Lorenzo Carboni vs 🇺 Mackenzie McDonald",
+          "kick_utc": 1791811800,
+          "time": "12/10 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
         },
         {
           "league": "Tennis",
@@ -513,15 +789,14 @@
         },
         {
           "league": "Tennis",
-          "match": "2026 Rolex Shanghai Masters Tennis",
-          "kick_utc": 1791777600,
-          "time": "12/10 11:00 AM",
+          "match": "ATP Masters 1000 - Xangai 2026",
+          "kick_utc": 1791864000,
+          "time": "13/10 11:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "TSN 5",
-                "TSN 5 Hd"
+                "Sport Tv2 Hd Portugal"
               ]
             }
           ],
@@ -545,39 +820,121 @@
         },
         {
           "league": "Tennis",
-          "match": "Dongfeng · Voyah Wuhan Open E1",
-          "kick_utc": 1791774000,
-          "time": "12/10 10:00 AM",
+          "match": "2026 Dongfeng Voyah Wuhan Open Tennis",
+          "kick_utc": 1791804600,
+          "time": "12/10 06:30 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 4"
+                "TSN 2",
+                "TSN 2 Hd"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
-          "match": "Rolex Shanghai Masters -Round 3 (B)",
-          "kick_utc": 1791777600,
-          "time": "12/10 11:00 AM",
+          "match": "2026 Dongfeng Voyah Wuhan Open Tennis",
+          "kick_utc": 1791860400,
+          "time": "13/10 10:00 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 6"
+                "TSN 2",
+                "TSN 2 Hd"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1791846000,
+          "time": "13/10 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1791853200,
+          "time": "13/10 08:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1791867600,
+          "time": "13/10 12:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1791874800,
+          "time": "13/10 02:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "2026 Rolex Shanghai Masters Tennis",
+          "kick_utc": 1791864000,
+          "time": "13/10 11:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "TSN 5",
+                "TSN 5 Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
           "match": ": Rolex Shanghai Masters - Shanghai",
-          "kick_utc": 1791784800,
-          "time": "12/10 01:00 PM",
+          "kick_utc": 1791799500,
+          "time": "12/10 05:05 PM",
           "tv_channels": [
             {
               "country": "NowTV",
@@ -593,8 +950,8 @@
         {
           "league": "Tennis",
           "match": ": Rolex Shanghai Masters - Shanghai",
-          "kick_utc": 1791799500,
-          "time": "12/10 05:05 PM",
+          "kick_utc": 1791864000,
+          "time": "13/10 11:00 AM",
           "tv_channels": [
             {
               "country": "NowTV",
@@ -617,6 +974,36 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Dongfeng · Voyah Wuhan Open E3",
+          "kick_utc": 1791860400,
+          "time": "13/10 10:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Rolex Shanghai Masters -Round 16 (A)",
+          "kick_utc": 1791864000,
+          "time": "13/10 11:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
               ]
             }
           ],
