@@ -1,9 +1,404 @@
 {
-  "updated": "2026-10-16 16:44 VN",
+  "updated": "2026-10-16 22:29 VN",
   "days": {
     "20261016": {
       "date": "Friday, 16/10",
       "games": [
+        {
+          "league": "Premier League",
+          "match": "Everton - Chelsea",
+          "kick_utc": 1792236600,
+          "time": "17/10 06:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Setanta Sports Ukraine HD",
+                "TNT Sports Ultimate UHD",
+                "beIN Sports Türkiye 3 HD",
+                "Sport 24 In Flight HD",
+                "SÝN Sport 1 Ísland HD",
+                "ViaPlay Norge HD",
+                "DAZN España",
+                "ViaPlay Suomi HD",
+                "DAZN Canada",
+                "Arena Sport 1 BiH HD",
+                "Arena Premium 1 Srbija HD",
+                "Prime Video Sverige",
+                "beIN Connect Türkiye",
+                "Canal+ Extra 1 Polska HD",
+                "Diema Sport 2 HD",
+                "TNT Sports 1 HD",
+                "NBC Universo",
+                "beIN Sports MENA 1 HD",
+                "beIN MENA 4K UHD",
+                "TNT Sports Digital Exclusive",
+                "Go3 Extra Sport Baltics",
+                "Sky Sport 8 NZ HD",
+                "beIN Sports MENA English 1 HD",
+                "GEM Sport 1 HD",
+                "Premier League+",
+                "Nova Sports Premier League HD",
+                "Sport 24 At Sea HD",
+                "Canal+ Sport 1 Czech HD",
+                "Setanta Sports 1 Eurasia HD",
+                "Prime Video Dansk",
+                "ViaPlay Nederland HD",
+                "VOYO Pro TV Romania",
+                "HBO Max",
+                "Monomax Streaming",
+                "USA Network",
+                "DAZN Portugal"
+              ]
+            },
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "TNT Sports Ultimate",
+                "HBO Max",
+                "TNT Sports 1"
+              ]
+            },
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            },
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports Premier League 1",
+                "Now Sports 4K 1",
+                "Now Sports Premier League TV",
+                "Hub Premier 1"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "La Liga",
+          "match": "Espanyol - Atletico Madrid",
+          "kick_utc": 1792238400,
+          "time": "17/10 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "ESPN Deportes",
+                "Fubo Sports",
+                "ESPN Select",
+                "ESPN Unlimited"
+              ]
+            },
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "LaLigaTV"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Serie A",
+          "match": "Venezia - Napoli",
+          "kick_utc": 1792242000,
+          "time": "17/10 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "TV2 Play Danmark",
+                "DAZN Italia",
+                "Peacock Premium USA",
+                "S Sport+ Streaming",
+                "Arena Premium 2 BiH HD",
+                "Magenta Hellas Sport 1 HD",
+                "Arena Premium 5 Srbija HD",
+                "MATCH! Futbol 1 HD",
+                "Tring Sport 1 HD",
+                "Paramount+",
+                "MAX Sport 3 Bulgaria HD",
+                "Paramount+ USA",
+                "DAZN Canada",
+                "VG+ Sport Norge",
+                "beIN Sports Australia 2 HD",
+                "Eleven Sports 1 Polska HD"
+              ]
+            },
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN SPORTS 2",
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Bundesliga",
+          "match": "Union Berlin - Borussia Dortmund",
+          "kick_utc": 1792243800,
+          "time": "17/10 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "ViaPlay Ísland HD",
+                "OneFootball",
+                "Peacock ES",
+                "Diema Sport 3 HD",
+                "Nova Sports 3 Cyprus HD",
+                "ViaPlay Norge HD",
+                "ViaPlay Suomi HD",
+                "beIN Sports France 8 HD max",
+                "Eleven Sports 2 Polska HD",
+                "DAZN Canada",
+                "ViaPlay Danmark HD",
+                "Sky Sport Top Event HD",
+                "NBC Universo",
+                "ViaPlay Sverige HD",
+                "Sky Sport Bundesliga HD",
+                "Nova Sports 3 Hellas HD",
+                "Fandango",
+                "OneSoccer",
+                "Arena Sport 3 Srbija HD",
+                "Setanta Sports 1 Eurasia HD",
+                "Tring Sport 2 HD",
+                "Arena Sport 7 BiH HD",
+                "ViaPlay Nederland HD",
+                "Sky Sport Bundesliga UHD",
+                "Setanta Sports Premium HD",
+                "Sky Sport Bundesliga 1 HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Premier League",
+          "match": "Brentford - Liverpool FC",
+          "kick_utc": 1792245600,
+          "time": "17/10 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Peacock",
+                "NBCS Network",
+                "DAZN Canada"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Premier League",
+          "match": "Fulham - Hull City",
+          "kick_utc": 1792245600,
+          "time": "17/10 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Sky Sport 4 NZ HD",
+                "Arena Premium 1 BiH HD",
+                "beIN Sports MENA 4 HD",
+                "SÝN Sport 4 Ísland HD",
+                "ViaPlay Norge HD",
+                "DAZN España",
+                "ViaPlay Suomi HD",
+                "ViaPlay Danmark HD",
+                "DAZN Canada",
+                "beIN Connect Türkiye",
+                "ViaPlay Sverige HD",
+                "Go3 Extra Sport Baltics",
+                "Premier League+",
+                "Nova Sports Start Hellas HD",
+                "Canal+ Extra 5 Polska HD",
+                "Canal+ Sport 8 Czech HD",
+                "ViaPlay Nederland HD",
+                "VOYO Pro TV Romania",
+                "Peacock",
+                "Arena Sport 2 Srbija HD",
+                "Monomax Streaming",
+                "NBCSN Extra",
+                "DAZN Portugal"
+              ]
+            },
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Not Televised"
+              ]
+            },
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            },
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports Premier League 3",
+                "Hub Premier 3"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Premier League",
+          "match": "Manchester City - Ipswich Town",
+          "kick_utc": 1792245600,
+          "time": "17/10 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Sky Sport 3 NZ HD",
+                "Sky Sport MIX Deutsch HD",
+                "DAZN España",
+                "ViaPlay Norge HD",
+                "ViaPlay Suomi HD",
+                "DAZN Canada",
+                "ViaPlay Danmark HD",
+                "Arena Sport 5 BiH HD",
+                "beIN Connect Türkiye",
+                "Canal+ Sport 7 Czech HD",
+                "beIN Sports MENA 1 HD",
+                "Nova Sport Bulgaria HD",
+                "ViaPlay Sverige HD",
+                "Go3 Extra Sport Baltics",
+                "Telemundo",
+                "beIN Sports MENA English 1 HD",
+                "GEM Sport 1 HD",
+                "Setanta Sports+ Ukraine HD",
+                "Premier League+",
+                "Nova Sports Premier League HD",
+                "SÝN Sport 3 Ísland HD",
+                "Arena Premium 2 Srbija HD",
+                "ViaPlay Nederland HD",
+                "VOYO Pro TV Romania",
+                "Canal+ Extra 3 Polska HD",
+                "Monomax Streaming",
+                "USA Network",
+                "DAZN Portugal"
+              ]
+            },
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Not Televised"
+              ]
+            },
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports Premier League 2",
+                "Hub Premier 2"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Premier League",
+          "match": "Brentford vs Liverpool",
+          "kick_utc": 1792245600,
+          "time": "17/10 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Setanta Sports Ukraine HD",
+                "Sky Sport Premier League DE HD",
+                "ViaPlay Norge HD",
+                "DAZN España",
+                "ViaPlay Suomi HD",
+                "DAZN Canada",
+                "Arena Sport 1 BiH HD",
+                "ViaPlay Danmark HD",
+                "Arena Premium 1 Srbija HD",
+                "Sky Sport 2 NZ HD",
+                "Setanta Sports 2 Eurasia HD",
+                "Canal+ Extra 1 Polska HD",
+                "beIN Connect Türkiye",
+                "Diema Sport 2 HD",
+                "ViaPlay Sverige HD",
+                "Go3 Extra Sport Baltics",
+                "Premier League+",
+                "Canal+ Sport 1 Czech HD",
+                "ViaPlay Nederland HD",
+                "beIN Sports MENA 3 HD",
+                "VOYO Pro TV Romania",
+                "Nova Sports 4 Hellas HD",
+                "Monomax Streaming",
+                "Premier Sports 1 Ireland HD",
+                "SÝN Sport 2 Ísland HD",
+                "DAZN Portugal"
+              ]
+            },
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Not Televised"
+              ]
+            },
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            },
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports Premier League 1",
+                "Now Sports Premier League TV",
+                "Hub Premier 1"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Ligue 1",
+          "match": "Strasbourg - PSG",
+          "kick_utc": 1792250100,
+          "time": "17/10 10:15 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "beIN USA",
+                "beIN USA Espanol",
+                "beIN Canada",
+                "beIN Canada Espanol"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Premier League",
+          "match": "Manchester City vs Ipswich",
+          "kick_utc": 1792245600,
+          "time": "17/10 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Ausport",
+              "channels": [
+                "Stan Sport"
+              ]
+            }
+          ],
+          "source": "ausport"
+        },
         {
           "league": "Bundesliga",
           "match": "Rapid Wien  vs Hartberg",
@@ -169,54 +564,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Mallorca Championship",
-          "kick_utc": 1792137600,
-          "time": "16/10 03:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Mallorca Championship",
-          "kick_utc": 1792155600,
-          "time": "16/10 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Shanghai Masters",
-          "kick_utc": 1792144800,
-          "time": "16/10 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "TSN+",
-                "RDS",
-                "TSN4"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
           "match": "Shanghai Masters",
           "kick_utc": 1792209600,
           "time": "17/10 11:00 AM",
@@ -239,8 +586,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Tennis Channel",
-                "TSN+"
+                "Tennis Channel"
               ]
             }
           ],
@@ -264,17 +610,15 @@
         },
         {
           "league": "Tennis",
-          "match": "Wuhan Open",
-          "kick_utc": 1792148400,
-          "time": "16/10 06:00 PM",
+          "match": "Shanghai Masters",
+          "kick_utc": 1792242000,
+          "time": "17/10 08:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "T2",
-                "TSN+",
-                "TSN2",
-                "TVA Sports"
+                "Tennis Channel",
+                "RDS"
               ]
             }
           ],
@@ -301,71 +645,48 @@
         },
         {
           "league": "Tennis",
-          "match": "Shanghai Rolex Masters",
-          "kick_utc": 1792144800,
-          "time": "16/10 05:00 PM",
+          "match": "Wuhan Open",
+          "kick_utc": 1792242000,
+          "time": "17/10 08:00 PM",
           "tv_channels": [
             {
-              "country": "Wheresthematch",
+              "country": "LiveSportsOnTV",
               "channels": [
-                "Sky Sports Tennis",
-                "Sky Sports+"
+                "Tennis Channel"
               ]
             }
           ],
-          "source": "wheresthematch"
+          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
-          "match": "Shanghai Rolex Masters",
-          "kick_utc": 1792150200,
-          "time": "16/10 06:30 PM",
+          "match": "Mallorca Championship",
+          "kick_utc": 1792231200,
+          "time": "17/10 05:00 PM",
           "tv_channels": [
             {
-              "country": "Wheresthematch",
+              "country": "LiveSportsOnTV",
               "channels": [
-                "Sky Sports Main Event",
-                "Sky Sports Tennis",
-                "Sky Sports Ultra HDR",
-                "Sky Sports+"
+                "Tennis Channel"
               ]
             }
           ],
-          "source": "wheresthematch"
+          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
-          "match": "Shanghai Rolex Masters",
-          "kick_utc": 1792225800,
-          "time": "17/10 03:30 PM",
+          "match": "Australian Open",
+          "kick_utc": 1792242000,
+          "time": "17/10 08:00 PM",
           "tv_channels": [
             {
-              "country": "Wheresthematch",
+              "country": "LiveSportsOnTV",
               "channels": [
-                "Sky Sports Tennis",
-                "Sky Sports+"
+                "Tennis Channel"
               ]
             }
           ],
-          "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "WTA Wuhan Open",
-          "kick_utc": 1792150200,
-          "time": "16/10 06:30 PM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Main Event",
-                "Sky Sports Tennis",
-                "Sky Sports Ultra HDR",
-                "Sky Sports+"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
+          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
@@ -384,35 +705,19 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1792144800,
-          "time": "16/10 05:00 PM",
+          "match": "Shanghai Rolex Masters",
+          "kick_utc": 1792225800,
+          "time": "17/10 03:30 PM",
           "tv_channels": [
             {
-              "country": "Ausport",
+              "country": "Wheresthematch",
               "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
+                "Sky Sports Tennis",
+                "Sky Sports+"
               ]
             }
           ],
-          "source": "ausport"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1792148400,
-          "time": "16/10 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Ausport",
-              "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 2"
-              ]
-            }
-          ],
-          "source": "ausport"
+          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
@@ -440,8 +745,8 @@
               "country": "Ausport",
               "channels": [
                 "beIN Sports Connect",
-                "beIN SPORTS 1",
-                "Stan Sport"
+                "Stan Sport",
+                "beIN SPORTS 1"
               ]
             }
           ],
@@ -449,304 +754,19 @@
         },
         {
           "league": "Tennis",
-          "match": "1/4 Final 4 🇨",
-          "kick_utc": 1792144800,
-          "time": "16/10 05:00 PM",
+          "match": "",
+          "kick_utc": 1792234800,
+          "time": "17/10 06:00 PM",
           "tv_channels": [
             {
-              "country": "Daddylive",
+              "country": "Ausport",
               "channels": [
-                "Sportklub 2 Croatia"
+                "beIN Sports Connect",
+                "beIN SPORTS 1"
               ]
             }
           ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "1/4 Final 4 🇨",
-          "kick_utc": 1792148400,
-          "time": "16/10 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Sportklub 5 Croatia"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "(Couples) 1/4 Final 4 🇨",
-          "kick_utc": 1792154700,
-          "time": "16/10 07:45 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Sportklub 5 Croatia"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "🇺 Daniil Medvedev vs 🇺 Tommy Paul",
-          "kick_utc": 1792144800,
-          "time": "16/10 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "🇺 Ann Li vs  Iga Swiatek",
-          "kick_utc": 1792148400,
-          "time": "16/10 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Sara Errani /  Jasmine Paolini vs 🇰🇿 Anna Danilina / 🇨 Zhang Shuai",
-          "kick_utc": 1792153800,
-          "time": "16/10 07:30 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Maks Kasnikowski vs  Stefano Travaglia",
-          "kick_utc": 1792146600,
-          "time": "16/10 05:30 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Jacob Fearnley vs 🇨🇿 Maxim Mrva",
-          "kick_utc": 1792155600,
-          "time": "16/10 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "🇺 Michael Mmoh vs  Luca Nardi",
-          "kick_utc": 1792162800,
-          "time": "16/10 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP Masters 1000 - Xangai 2026 - Quartos-de-Final",
-          "kick_utc": 1792144800,
-          "time": "16/10 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv1 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ténis - WTA Tour - WTA 125 Belém Open",
-          "kick_utc": 1792144800,
-          "time": "16/10 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "2026 Rolex Shanghai Masters Tennis",
-          "kick_utc": 1792144800,
-          "time": "16/10 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "TSN 4",
-                "TSN 4 Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "2026 Rolex Shanghai Masters Tennis",
-          "kick_utc": 1792225800,
-          "time": "17/10 03:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "TSN 4",
-                "TSN 4 Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Shanghai Masters 2026",
-          "kick_utc": 1792144800,
-          "time": "16/10 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Réseau Des Sports (Rds)",
-                "Réseau Des Sports (Rds) Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "2026 Dongfeng Voyah Wuhan Open Tennis",
-          "kick_utc": 1792148400,
-          "time": "16/10 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "TSN 2",
-                "TSN 2 Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "2026 Dongfeng Voyah Wuhan Open Tennis",
-          "kick_utc": 1792227600,
-          "time": "17/10 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "TSN 5",
-                "TSN 5 Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi de Wuhan 2026",
-          "kick_utc": 1792148400,
-          "time": "16/10 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Tva Sports Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi de Wuhan 2026",
-          "kick_utc": 1792155600,
-          "time": "16/10 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Tva Sports Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tournoi de Wuhan 2026",
-          "kick_utc": 1792227600,
-          "time": "17/10 04:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Tva Sports Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -758,6 +778,21 @@
               "country": "Hubsport",
               "channels": [
                 "Sport Tv2 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Ténis - ATP Challenger Tour 2026 - ATP Ch 100 Maia Open",
+          "kick_utc": 1792231200,
+          "time": "17/10 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv4 Hd Portugal"
               ]
             }
           ],
@@ -868,67 +903,96 @@
         },
         {
           "league": "Tennis",
-          "match": "Rolex Shanghai Masters -QF (4)",
-          "kick_utc": 1792144800,
-          "time": "16/10 05:00 PM",
+          "match": "ATP Masters 1000 - Xangai 2026 - Meia-Final",
+          "kick_utc": 1792234800,
+          "time": "17/10 06:00 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 6"
+                "Sport Tv2 Hd Portugal"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
-          "match": ": Rolex Shanghai Masters - Shanghai",
-          "kick_utc": 1792144800,
-          "time": "16/10 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 1",
-                "Ziggo Sport 4",
-                "Ziggo Sport Kanaal 14"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": ": Rolex Shanghai Masters - Shanghai",
+          "match": "2026 Rolex Shanghai Masters Tennis",
           "kick_utc": 1792225800,
           "time": "17/10 03:30 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Ziggo Sport 1",
-                "Ziggo Sport 4",
-                "Ziggo Sport Kanaal 14"
+                "TSN 4",
+                "TSN 4 Hd"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
-          "match": "Dongfeng · Voyah Wuhan Open -QF(4)",
-          "kick_utc": 1792148400,
-          "time": "16/10 06:00 PM",
+          "match": "2026 Dongfeng Voyah Wuhan Open Tennis",
+          "kick_utc": 1792227600,
+          "time": "17/10 04:00 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 4"
+                "TSN 5",
+                "TSN 5 Hd"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi de Wuhan 2026",
+          "kick_utc": 1792227600,
+          "time": "17/10 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Tva Sports Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi de Wuhan 2026",
+          "kick_utc": 1792234800,
+          "time": "17/10 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Tva Sports Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Shanghai Masters 2026",
+          "kick_utc": 1792242000,
+          "time": "17/10 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Réseau Des Sports (Rds)",
+                "Réseau Des Sports (Rds) Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -947,9 +1011,58 @@
         },
         {
           "league": "Tennis",
+          "match": ": Rolex Shanghai Masters - Shanghai",
+          "kick_utc": 1792225800,
+          "time": "17/10 03:30 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": Rolex Shanghai Masters - Shanghai",
+          "kick_utc": 1792234800,
+          "time": "17/10 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
           "match": "Dongfeng · Voyah Wuhan Open -SF(1)",
           "kick_utc": 1792227600,
           "time": "17/10 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Dongfeng · Voyah Wuhan Open -SF(2)",
+          "kick_utc": 1792233000,
+          "time": "17/10 05:30 PM",
           "tv_channels": [
             {
               "country": "NowTV",
