@@ -2,26 +2,6 @@
     "Friday 23rd Oct 2026 - Schedule Time UK GMT": {
         "All Soccer Events ⚽": [
             {
-                "time": "14:30",
-                "event": "⚽ Iraqi Premier League : Duhok 🇮🇶 vs Karbala 🇮🇶",
-                "channels": [
-                    {
-                        "channel_name": "Al Iraqiya Sports",
-                        "channel_id": "5"
-                    }
-                ]
-            },
-            {
-                "time": "14:30",
-                "event": "⚽ Belarus Premier League : Minsk 🇧🇾 vs Baranovichi 🇧🇾",
-                "channels": [
-                    {
-                        "channel_name": "Belarus 5",
-                        "channel_id": "19"
-                    }
-                ]
-            },
-            {
                 "time": "17:30",
                 "event": "⚽ Austria - Bundesliga : Rheindorf Altach 🇦🇹 vs Austria Wien 🇦🇹",
                 "channels": [
@@ -467,26 +447,6 @@
         "NWSL Soccer ⚽": [],
         "Tennis 🎾": [
             {
-                "time": "12:00",
-                "event": "🎾 Tennis ATP 250 Lyon: 1/4 Final 🇫🇷",
-                "channels": [
-                    {
-                        "channel_name": "Sportklub 2 Croatia",
-                        "channel_id": "102"
-                    }
-                ]
-            },
-            {
-                "time": "14:30",
-                "event": "🎾 ATP 250 Almaty: 1/4 Final 4 🇰🇿",
-                "channels": [
-                    {
-                        "channel_name": "Sportklub 8 Croatia",
-                        "channel_id": "156"
-                    }
-                ]
-            },
-            {
                 "time": "17:00",
                 "event": "🎾 Tennis ATP 250 Lyon: 1/4 Final 🇫🇷",
                 "channels": [
@@ -497,63 +457,8 @@
                 ]
             }
         ],
-        "Tennis 🎾 ATP - Singles: Almaty (Kazakhstan)": [
-            {
-                "time": "14:30",
-                "event": "🎾 ATP - Singles: 🇰🇿 Alexander Bublik vs 🇷🇺 Karen Khachanov",
-                "channels": [
-                    {
-                        "channel_name": "Tennis HD Stream",
-                        "channel_id": "1078"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1507"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1671"
-                    }
-                ]
-            }
-        ],
+        "Tennis 🎾 ATP - Singles: Almaty (Kazakhstan)": [],
         "Tennis 🎾 ATP - Singles: Brussels (Belgium)": [
-            {
-                "time": "12:00",
-                "event": "🎾 ATP - Singles: 🇫🇷 Clement Chidekh vs 🇦🇷 Francisco Cerundolo",
-                "channels": [
-                    {
-                        "channel_name": "Tennis HD Stream",
-                        "channel_id": "1074"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1508"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1667"
-                    }
-                ]
-            },
-            {
-                "time": "14:00",
-                "event": "🎾 ATP - Singles: 🇳🇱 Tallon Griekspoor vs 🇨🇿 Jiri Lehecka",
-                "channels": [
-                    {
-                        "channel_name": "Tennis HD Stream",
-                        "channel_id": "1077"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1508"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1670"
-                    }
-                ]
-            },
             {
                 "time": "16:30",
                 "event": "🎾 ATP - Singles: 🇫🇷 Arthur Fils vs 🇺🇸 Alex Michelsen",
@@ -593,42 +498,6 @@
         ],
         "Tennis 🎾 ATP - Singles: Lyon (France)": [
             {
-                "time": "12:00",
-                "event": "🎾 ATP - Singles: 🇫🇷 Corentin Moutet vs 🇺🇸 Tommy Paul",
-                "channels": [
-                    {
-                        "channel_name": "Tennis HD Stream",
-                        "channel_id": "1075"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1508"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1668"
-                    }
-                ]
-            },
-            {
-                "time": "13:30",
-                "event": "🎾 ATP - Singles: 🇩🇪 Daniel Altmaier vs 🇺🇸 Taylor Fritz",
-                "channels": [
-                    {
-                        "channel_name": "Tennis HD Stream",
-                        "channel_id": "1076"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1508"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1669"
-                    }
-                ]
-            },
-            {
                 "time": "17:00",
                 "event": "🎾 ATP - Singles: 🇮🇹 Flavio Cobolli vs 🇺🇸 Brandon Nakashima",
                 "channels": [
@@ -665,44 +534,10 @@
                 ]
             }
         ],
-        "Tennis 🎾 WTA - Singles: Ningbo (China)": [
-            {
-                "time": "11:00",
-                "event": "🎾 WTA - Singles: 🇰🇿 Elena Rybakina vs 🇵🇱 Katarzyna Kawa",
-                "channels": [
-                    {
-                        "channel_name": "Tennis HD Stream",
-                        "channel_id": "1092"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1524"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1501"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1666"
-                    }
-                ]
-            }
-        ],
+        "Tennis 🎾 WTA - Singles: Ningbo (China)": [],
         "Tennis 🎾 WTA - Singles: Osaka (Japan)": [],
         "Tennis 🎾 ATP - Doubles: Almaty (Kazakhstan)": [],
-        "Tennis 🎾 ATP - Doubles: Lyon (France)": [
-            {
-                "time": "10:00",
-                "event": "🎾 ATP - Doubles: 🇺🇸 Jonathan Cash / 🇬🇧 Lloyd Glasspool vs 🇺🇾 Ariel Behar / 🇺🇸 Joshua Paris",
-                "channels": [
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1665"
-                    }
-                ]
-            }
-        ],
+        "Tennis 🎾 ATP - Doubles: Lyon (France)": [],
         "Tennis 🎾 WTA - Doubles: Ningbo (China)": [],
         "Tennis 🎾 WTA - Doubles: Osaka (Japan)": []
     }
