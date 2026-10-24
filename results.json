@@ -1,20 +1,5 @@
 [
   {
-    "hari": "Sabtu",
-    "tanggal": "24-10-2026",
-    "time": "10:00",
-    "sport": "Tennis",
-    "competition": "WTA Tour",
-    "title": "WTA Tennis",
-    "home": "",
-    "away": "",
-    "channels": [
-      "Sky Sports Tennis",
-      "Sky Sports+"
-    ],
-    "event_url": "https://www.wheresthematch.com/event/wta-tennis/219059"
-  },
-  {
     "hari": "Minggu",
     "tanggal": "24-10-2026",
     "time": "18:30",
@@ -129,7 +114,8 @@
     "home": "Lazio",
     "away": "Parma",
     "channels": [
-      "DAZN"
+      "DAZN",
+      "DAZN YouTube"
     ],
     "event_url": "https://www.wheresthematch.com/match/lazio-vs-parma/215949"
   },
@@ -354,21 +340,6 @@
   {
     "hari": "Senin",
     "tanggal": "26-10-2026",
-    "time": "01:45",
-    "sport": "Football",
-    "competition": "Ligue 1",
-    "title": "Paris Saint Germain vs Olympique Lyonnais",
-    "home": "Paris Saint Germain",
-    "away": "Olympique Lyonnais",
-    "channels": [
-      "Amazon Prime Video PPV",
-      "Ligue 1+"
-    ],
-    "event_url": "https://www.wheresthematch.com/match/paris-saint-germain-vs-olympique-lyonnais/216016"
-  },
-  {
-    "hari": "Senin",
-    "tanggal": "26-10-2026",
     "time": "02:00",
     "sport": "Football",
     "competition": "La Liga",
@@ -394,5 +365,20 @@
       "Sky Sports+"
     ],
     "event_url": "https://www.wheresthematch.com/event/wta-tennis/219566"
+  },
+  {
+    "hari": "Selasa",
+    "tanggal": "26-10-2026",
+    "time": "18:30",
+    "sport": "Tennis",
+    "competition": "ATP World Tour",
+    "title": "ATP Tennis",
+    "home": "",
+    "away": "",
+    "channels": [
+      "Sky Sports Tennis",
+      "Sky Sports+"
+    ],
+    "event_url": "https://www.wheresthematch.com/event/atp-tennis/219559"
   }
 ]
