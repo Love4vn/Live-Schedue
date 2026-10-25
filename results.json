@@ -1,20 +1,5 @@
 [
   {
-    "hari": "Minggu",
-    "tanggal": "25-10-2026",
-    "time": "11:30",
-    "sport": "Tennis",
-    "competition": "WTA Tour",
-    "title": "WTA Tennis",
-    "home": "",
-    "away": "",
-    "channels": [
-      "Sky Sports Tennis",
-      "Sky Sports+"
-    ],
-    "event_url": "https://www.wheresthematch.com/event/wta-tennis/219060"
-  },
-  {
     "hari": "Senin",
     "tanggal": "25-10-2026",
     "time": "17:30",
@@ -197,8 +182,8 @@
     "home": "Udinese",
     "away": "AC Milan",
     "channels": [
-      "DAZN",
       "TNT Sports 1",
+      "DAZN",
       "HBO Max"
     ],
     "event_url": "https://www.wheresthematch.com/match/udinese-vs-ac-milan/215954"
@@ -276,5 +261,34 @@
       "Sky Sports+"
     ],
     "event_url": "https://www.wheresthematch.com/event/wta-tennis/219567"
+  },
+  {
+    "hari": "Rabu",
+    "tanggal": "27-10-2026",
+    "time": "18:30",
+    "sport": "Tennis",
+    "competition": "ATP World Tour",
+    "title": "ATP Tennis",
+    "home": "",
+    "away": "",
+    "channels": [
+      "Sky Sports Tennis",
+      "Sky Sports+"
+    ],
+    "event_url": "https://www.wheresthematch.com/event/atp-tennis/219560"
+  },
+  {
+    "hari": "Rabu",
+    "tanggal": "27-10-2026",
+    "time": "23:30",
+    "sport": "Football",
+    "competition": "Serie A",
+    "title": "Sassuolo vs Lazio",
+    "home": "Sassuolo",
+    "away": "Lazio",
+    "channels": [
+      "DAZN"
+    ],
+    "event_url": "https://www.wheresthematch.com/match/sassuolo-vs-lazio/215955"
   }
 ]
