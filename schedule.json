@@ -1,53 +1,9 @@
 {
-  "updated": "2026-10-26 16:44 VN",
+  "updated": "2026-10-27 00:33 VN",
   "days": {
-    "20261026": {
-      "date": "Monday, 26/10",
+    "20261027": {
+      "date": "Tuesday, 27/10",
       "games": [
-        {
-          "league": "UEFA Champions League",
-          "match": "Neftchi vs Al Ittihad",
-          "kick_utc": 1793022300,
-          "time": "26/10 08:45 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Al Kass 6 HD",
-                "Astro Grandstand HD",
-                "beIN Connect USA",
-                "beIN Sports MENA 1 HD",
-                "beIN Sports MENA 1 HD",
-                "beIN Sports MENA English 1 HD",
-                "Canal 11 Portugal HD",
-                "DAZN Japan",
-                "ESPN 1 Nederland HD",
-                "Futbol TV Uzbekistan",
-                "Futbol TV Uzbekistan",
-                "Nova Sport Bulgaria HD",
-                "Nova Sport Bulgaria HD",
-                "Nova Sport Bulgaria HD",
-                "Nova Sport Bulgaria HD",
-                "Nova Sport Bulgaria HD",
-                "Persiana Sport HD",
-                "Persiana Sport HD",
-                "Persiana Sport HD",
-                "Spor Smart Türkiye HD",
-                "Sport 1 Baltic",
-                "Sport 1 Ukraine",
-                "SportKlub 1 Hrvatska HD",
-                "SportKlub 1 Slovenija HD",
-                "TV Start Russia HD",
-                "TV Start Russia HD",
-                "TV Start Russia HD",
-                "TV Start Russia HD",
-                "TV Start Russia HD",
-                "YouTube: The AFC Hub"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
         {
           "league": "UEFA Champions League",
           "match": "Al Ahli vs Al Gharafa",
@@ -59,6 +15,7 @@
               "channels": [
                 "Al Kass 5 HD",
                 "Astro Grandstand HD",
+                "Azam Sports 2 HD",
                 "beIN Connect USA",
                 "beIN Sports MENA 2 HD",
                 "beIN Sports MENA 2 HD",
@@ -102,7 +59,11 @@
                 "beIN Sports MENA 3 HD",
                 "beIN Sports MENA 3 HD",
                 "DAZN Japan",
+                "IRIB Varzesh HD",
+                "IRIB Varzesh HD",
                 "Persiana Sports 2 HD",
+                "Q Sport Football HD",
+                "Silk Sport 1 HD",
                 "Spor Smart 2 Türkiye HD",
                 "Sport 1 Baltic",
                 "SportKlub 9 Hrvatska",
@@ -126,7 +87,7 @@
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Al Kass 7 HD",
+                "Al Kass 6 HD",
                 "Astro Arena Bola HD",
                 "beIN Connect USA",
                 "beIN Sports MENA 3 HD",
@@ -137,6 +98,7 @@
                 "Sport 2 Baltic",
                 "Sport 2 Ukraine",
                 "SportKlub 10 Hrvatska",
+                "SportKlub 6 Slovenija",
                 "TV Start Triumph HD",
                 "TV Start Triumph HD",
                 "YouTube: The AFC Hub"
@@ -156,6 +118,7 @@
               "channels": [
                 "Al Kass 5 HD",
                 "Astro Arena Bola 2 HD",
+                "Azam Sports 3 HD",
                 "beIN Connect USA",
                 "beIN Sports MENA 2 HD",
                 "beIN Sports MENA 2 HD",
@@ -167,8 +130,14 @@
                 "Nova Sport Bulgaria HD",
                 "Nova Sport Bulgaria HD",
                 "Persiana Sports 3 HD",
+                "Q Sport Football HD",
                 "Sport 1 Baltic",
                 "SportKlub 9 Hrvatska",
+                "TV Start Russia HD",
+                "TV Start Russia HD",
+                "TV Start Russia HD",
+                "TV Start Russia HD",
+                "TV Start Russia HD",
                 "YouTube: The AFC Hub"
               ]
             }
@@ -192,20 +161,72 @@
           "source": "livesportsontv"
         },
         {
-          "league": "Ligue 1",
-          "match": "Paris Saint Germain vs Olympique Lyonnais",
-          "kick_utc": 1793039400,
-          "time": "27/10 01:30 AM",
+          "league": "Serie A",
+          "match": "Sassuolo vs Lazio",
+          "kick_utc": 1793118600,
+          "time": "27/10 11:30 PM",
           "tv_channels": [
             {
               "country": "Wheresthematch",
               "channels": [
-                "Ligue 1+",
-                "Amazon Prime Video PPV"
+                "DAZN"
               ]
             }
           ],
           "source": "wheresthematch"
+        },
+        {
+          "league": "Serie A",
+          "match": "Sassuolo - Lazio",
+          "kick_utc": 1793122200,
+          "time": "28/10 12:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Paramount+",
+                "Arena Premium 2 BiH HD",
+                "DAZN Canada",
+                "VG+ Sport Norge",
+                "DAZN Belgium",
+                "DAZN España",
+                "Sport TV2 Portugal HD",
+                "MATCH! Futbol 1 HD",
+                "Peacock Premium USA",
+                "DAZN Deutsch",
+                "Cytavision Sports PPV 1 HD",
+                "Tring Sport 1 HD",
+                "Fast Sports",
+                "NBC Universo",
+                "TV4 Play Sverige",
+                "Arena Sport 1 Slovenija HD",
+                "DAZN Great Britain",
+                "Prima Sport RO 2 HD",
+                "Magenta Hellas Sport 3 HD",
+                "Paramount+ USA",
+                "MATCH! TV",
+                "TV2 Play Danmark",
+                "DAZN France",
+                "Arena Sport 1 Hrvatska HD",
+                "DAZN Italia",
+                "Cytavision Sports 4 HD",
+                "S Sport+ Streaming",
+                "TV4 Sport Live 2 HD",
+                "MAX Sport 3 Bulgaria HD",
+                "Arena Premium 5 Srbija HD",
+                "DAZN Ireland",
+                "Sport 1 Czechia HD",
+                "MTV Katsomon+"
+              ]
+            },
+            {
+              "country": "Ausport",
+              "channels": [
+                "beIN Sports Connect"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
         },
         {
           "league": "Ligue 1",
@@ -216,22 +237,22 @@
             {
               "country": "Daddylive",
               "channels": [
-                "Nova Sport 3 SK",
                 "Ligue1+ France",
-                "beIN Sports MENA 1",
                 "beIN SPORTS en Español",
-                "Eleven Sports 2 Poland",
-                "Sport TV4 Portugal",
-                "beIN Sports 3 Turkey",
-                "Canal+ Sport 2 Afrique",
-                "Diema Sport 2 Bulgaria",
-                "Arena 4 Premium Serbia",
-                "TV3 MAX Denmark",
-                "ESPN2 Argentina",
-                "Arena Sport 3 Croatia",
                 "DAZN2 DE",
+                "Sport TV4 Portugal",
+                "Eleven Sports 2 Poland",
+                "Canal+ Sport 2 Afrique",
+                "Arena 4 Premium Serbia",
+                "beIN Sports 3 Turkey",
+                "Nova Sport 3 SK",
+                "Nova Sport 3 CZ",
+                "TV3 MAX Denmark",
+                "Arena Sport 3 Croatia",
                 "V Sport Premium",
-                "Nova Sport 3 CZ"
+                "Diema Sport 2 Bulgaria",
+                "ESPN2 Argentina",
+                "beIN Sports MENA 1"
               ]
             }
           ],
@@ -277,39 +298,9 @@
         },
         {
           "league": "Tennis",
-          "match": "Guangzhou Open",
-          "kick_utc": 1793008800,
-          "time": "26/10 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Guangzhou Open",
-          "kick_utc": 1793070000,
-          "time": "27/10 10:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Erste Bank Open",
-          "kick_utc": 1793017800,
-          "time": "26/10 07:30 PM",
+          "match": "Swiss Indoors Basel",
+          "kick_utc": 1793032200,
+          "time": "26/10 11:30 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
@@ -323,9 +314,26 @@
         },
         {
           "league": "Tennis",
-          "match": "Erste Bank Open",
-          "kick_utc": 1793025000,
-          "time": "26/10 09:30 PM",
+          "match": "Swiss Indoors Basel",
+          "kick_utc": 1793034900,
+          "time": "27/10 12:15 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel",
+                "TSN+",
+                "TSN3"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Swiss Indoors Basel",
+          "kick_utc": 1793041200,
+          "time": "27/10 02:00 AM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
@@ -335,6 +343,59 @@
             }
           ],
           "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Swiss Indoors Basel",
+          "kick_utc": 1793102400,
+          "time": "27/10 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel",
+                "TSN+"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Swiss Indoors Basel",
+          "kick_utc": 1793106000,
+          "time": "27/10 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "TSN+",
+                "TSN5"
+              ]
+            },
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 5"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Swiss Indoors Basel",
+          "kick_utc": 1793120400,
+          "time": "28/10 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 5"
+              ]
+            }
+          ],
+          "source": "nowtv"
         },
         {
           "league": "Tennis",
@@ -384,21 +445,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Swiss Indoors Basel",
-          "kick_utc": 1793017800,
-          "time": "26/10 07:30 PM",
+          "match": "Erste Bank Open",
+          "kick_utc": 1793104200,
+          "time": "27/10 07:30 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "TSN+",
-                "TSN3"
-              ]
-            },
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 5"
+                "TSN+"
               ]
             }
           ],
@@ -406,32 +460,15 @@
         },
         {
           "league": "Tennis",
-          "match": "Swiss Indoors Basel",
-          "kick_utc": 1793032200,
-          "time": "26/10 11:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "TSN+",
-                "TSN3"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Swiss Indoors Basel",
-          "kick_utc": 1793034900,
-          "time": "27/10 12:15 AM",
+          "match": "Erste Bank Open",
+          "kick_utc": 1793111400,
+          "time": "27/10 09:30 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
                 "Tennis Channel",
-                "TSN+",
-                "TSN3"
+                "TSN+"
               ]
             }
           ],
@@ -439,20 +476,15 @@
         },
         {
           "league": "Tennis",
-          "match": "Swiss Indoors Basel",
-          "kick_utc": 1793041200,
-          "time": "27/10 02:00 AM",
+          "match": "Erste Bank Open",
+          "kick_utc": 1793118600,
+          "time": "27/10 11:30 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Tennis Channel"
-              ]
-            },
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 5"
+                "Tennis Channel",
+                "RDS 2"
               ]
             }
           ],
@@ -475,19 +507,33 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP Tennis",
-          "kick_utc": 1793014200,
-          "time": "26/10 06:30 PM",
+          "match": "Guangzhou Open",
+          "kick_utc": 1793070000,
+          "time": "27/10 10:00 AM",
           "tv_channels": [
             {
-              "country": "Wheresthematch",
+              "country": "LiveSportsOnTV",
               "channels": [
-                "Sky Sports Tennis",
-                "Sky Sports+"
+                "Tennis Channel"
               ]
             }
           ],
-          "source": "wheresthematch"
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Guangzhou Open",
+          "kick_utc": 1793095200,
+          "time": "27/10 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
@@ -507,44 +553,30 @@
         },
         {
           "league": "Tennis",
-          "match": "Matteo Berrettini vs Tomas Martin Etcheverry",
-          "kick_utc": 1793017800,
-          "time": "26/10 07:30 PM",
+          "match": "ATP Tennis",
+          "kick_utc": 1793100600,
+          "time": "27/10 06:30 PM",
           "tv_channels": [
             {
-              "country": "Ausport",
+              "country": "Wheresthematch",
               "channels": [
-                "beIN Sports Connect",
-                "beIN SPORTS 1"
-              ]
-            },
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
+                "Sky Sports Tennis",
+                "Sky Sports+"
               ]
             }
           ],
-          "source": "ausport"
+          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
-          "match": "Valentin Vacherot vs Mariano Navone",
-          "kick_utc": 1793017800,
-          "time": "26/10 07:30 PM",
+          "match": "Dominic Stephan Stricker vs Casper Ruud",
+          "kick_utc": 1793041200,
+          "time": "27/10 02:00 AM",
           "tv_channels": [
             {
               "country": "Ausport",
               "channels": [
                 "beIN Sports Connect"
-              ]
-            },
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
               ]
             }
           ],
@@ -567,130 +599,67 @@
         },
         {
           "league": "Tennis",
-          "match": "Brunold 🇨🇭 vs Borges",
-          "kick_utc": 1793017800,
-          "time": "26/10 07:30 PM",
+          "match": "",
+          "kick_utc": 1793064600,
+          "time": "27/10 08:30 AM",
           "tv_channels": [
             {
-              "country": "Daddylive",
+              "country": "Ausport",
               "channels": [
-                "Sportklub 5 Croatia"
+                "beIN SPORTS 1",
+                "beIN Sports Connect"
               ]
             }
           ],
-          "source": "daddylive"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
-          "match": "ATP 500 Basel &amp; WTA 250 Guangzhou 🌍",
-          "kick_utc": 1793012400,
-          "time": "26/10 06:00 PM",
+          "match": "",
+          "kick_utc": 1793088000,
+          "time": "27/10 03:00 PM",
           "tv_channels": [
             {
-              "country": "Daddylive",
+              "country": "Ausport",
               "channels": [
-                "Sportklub 2 Croatia",
-                "Sportklub 4 Croatia"
+                "beIN SPORTS 1",
+                "beIN Sports Connect"
               ]
             }
           ],
-          "source": "daddylive"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
-          "match": "ATP 500 Vienna &amp; ATP 500 Basel 🌍",
-          "kick_utc": 1793017800,
-          "time": "26/10 07:30 PM",
+          "match": "",
+          "kick_utc": 1793106000,
+          "time": "27/10 08:00 PM",
           "tv_channels": [
             {
-              "country": "Daddylive",
+              "country": "Ausport",
               "channels": [
-                "Sportklub 2 Croatia"
+                "beIN SPORTS 1",
+                "beIN Sports Connect"
               ]
             }
           ],
-          "source": "daddylive"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
-          "match": "ATP 500 Basel &amp; ATP 500 Vienna &amp; WTA 250 Guangzhou 🌍",
-          "kick_utc": 1793017800,
-          "time": "26/10 07:30 PM",
+          "match": "",
+          "kick_utc": 1793120400,
+          "time": "28/10 12:00 AM",
           "tv_channels": [
             {
-              "country": "Daddylive",
+              "country": "Ausport",
               "channels": [
-                "Sportklub 4 Croatia"
+                "beIN SPORTS 1",
+                "beIN Sports Connect"
               ]
             }
           ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Altmaier  vs J.M. Cerundolo",
-          "kick_utc": 1793025000,
-          "time": "26/10 09:30 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Sportklub 5 Croatia"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "🇨🇭 Mika Brunold vs  Nuno Borges",
-          "kick_utc": 1793017800,
-          "time": "26/10 07:30 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Daniel Altmaier vs  Juan Manuel Cerundolo",
-          "kick_utc": 1793023200,
-          "time": "26/10 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "🇰 Holger Rune vs  Quentin Halys",
-          "kick_utc": 1793023200,
-          "time": "26/10 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
+          "source": "ausport"
         },
         {
           "league": "Tennis",
@@ -703,54 +672,6 @@
               "channels": [
                 "Tennis HD Stream",
                 "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "🇨🇿 Tomas Machac vs 🇺 Alex de Minaur",
-          "kick_utc": 1793023200,
-          "time": "26/10 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Arthur Fery vs  Jacob Fearnley",
-          "kick_utc": 1793032200,
-          "time": "26/10 11:30 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "🇨🇿 Jakub Mensik vs  Lukas Neumayer",
-          "kick_utc": 1793032200,
-          "time": "26/10 11:30 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
                 "Tennis Stream"
               ]
             }
@@ -791,63 +712,15 @@
         },
         {
           "league": "Tennis",
-          "match": "🇺 J. Paul / 🇨🇿 Marek Vocel vs 🇺 Alex Michelsen /  Botic van de Zandschulp",
-          "kick_utc": 1793012400,
-          "time": "26/10 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Kevin Krawietz /  Tim Puetz vs  Jakob Schnaitter /  Mark Wallner",
-          "kick_utc": 1793028600,
-          "time": "26/10 10:30 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Ekaterine Gorgodze / 🇨🇭 Kimberley Zimmermann vs  Janice Tjen / 🇺 Venus Williams",
-          "kick_utc": 1793012400,
-          "time": "26/10 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 1",
-          "kick_utc": 1793005200,
-          "time": "26/10 04:00 PM",
+          "match": "2026 Swiss Indoors Basel Tennis",
+          "kick_utc": 1793034900,
+          "time": "27/10 12:15 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
+                "TSN 3",
+                "TSN 3 Hd"
               ]
             }
           ],
@@ -855,62 +728,15 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis Ziua 1",
-          "kick_utc": 1793012400,
-          "time": "26/10 06:00 PM",
+          "match": "2026 Swiss Indoors Basel Tennis",
+          "kick_utc": 1793106000,
+          "time": "27/10 08:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 1",
-          "kick_utc": 1793019600,
-          "time": "26/10 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis Ziua 1",
-          "kick_utc": 1793026800,
-          "time": "26/10 10:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 500 - Viena 2026",
-          "kick_utc": 1793017740,
-          "time": "26/10 07:29 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv4 Hd Portugal"
+                "TSN 5",
+                "TSN 5 Hd"
               ]
             }
           ],
@@ -933,14 +759,14 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP World Tour 500 - Basileia 2026",
-          "kick_utc": 1793017800,
-          "time": "26/10 07:30 PM",
+          "match": "ATP World Tour 500 - Viena 2026",
+          "kick_utc": 1793104140,
+          "time": "27/10 07:29 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Sport Tv2 Hd Portugal"
+                "Sport Tv3 Hd Portugal"
               ]
             }
           ],
@@ -963,31 +789,14 @@
         },
         {
           "league": "Tennis",
-          "match": "2026 Swiss Indoors Basel Tennis",
-          "kick_utc": 1793017800,
-          "time": "26/10 07:30 PM",
+          "match": "ATP World Tour 500 - Basileia 2026",
+          "kick_utc": 1793105940,
+          "time": "27/10 07:59 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "TSN 3",
-                "TSN 3 Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "2026 Swiss Indoors Basel Tennis",
-          "kick_utc": 1793034900,
-          "time": "27/10 12:15 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "TSN 3",
-                "TSN 3 Hd"
+                "Sport Tv4 Hd Portugal"
               ]
             }
           ],
@@ -998,6 +807,22 @@
           "match": "Tournoi Erste Bank 2026",
           "kick_utc": 1793041200,
           "time": "27/10 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Rds2",
+                "Rds2 Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tournoi Erste Bank 2026",
+          "kick_utc": 1793118600,
+          "time": "27/10 11:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -1075,9 +900,9 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis: WTA Tokyo Ziua 2",
-          "kick_utc": 1793070000,
-          "time": "27/10 10:00 AM",
+          "match": "Tenis Ziua 2",
+          "kick_utc": 1793098800,
+          "time": "27/10 06:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -1091,82 +916,35 @@
         },
         {
           "league": "Tennis",
-          "match": "Swiss Indoor Basel -Round 1(A)",
-          "kick_utc": 1793017800,
-          "time": "26/10 07:30 PM",
+          "match": "Tenis Ziua 2",
+          "kick_utc": 1793106000,
+          "time": "27/10 08:00 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports Prime"
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
-          "match": "Erste Bank Open -Round 1 (A)",
-          "kick_utc": 1793017800,
-          "time": "26/10 07:30 PM",
+          "match": "Tenis: WTA Tokyo Ziua 2",
+          "kick_utc": 1793070000,
+          "time": "27/10 10:00 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 6"
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
               ]
             }
           ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Erste Bank Open vs Wenen",
-          "kick_utc": 1793017800,
-          "time": "26/10 07:30 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 1",
-                "Ziggo Sport 4",
-                "Ziggo Sport Kanaal 14"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Erste Bank Open vs Wenen",
-          "kick_utc": 1793032500,
-          "time": "26/10 11:35 PM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 1",
-                "Ziggo Sport 4",
-                "Ziggo Sport Kanaal 14"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Erste Bank Open vs Wenen",
-          "kick_utc": 1793041200,
-          "time": "27/10 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -1223,6 +1001,68 @@
               "country": "NowTV",
               "channels": [
                 "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Erste Bank Open -Round 1 (B)",
+          "kick_utc": 1793104200,
+          "time": "27/10 07:30 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Erste Bank Open vs Wenen",
+          "kick_utc": 1793104200,
+          "time": "27/10 07:30 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 1",
+                "Ziggo Sport 4",
+                "Ziggo Sport Kanaal 14"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Erste Bank Open vs Wenen",
+          "kick_utc": 1793118900,
+          "time": "27/10 11:35 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Swiss Indoor Basel -Round 1(C)",
+          "kick_utc": 1793106000,
+          "time": "27/10 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports Prime"
               ]
             }
           ],
