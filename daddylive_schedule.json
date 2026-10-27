@@ -8,6 +8,10 @@
                     {
                         "channel_name": "SuperSport Football",
                         "channel_id": "56"
+                    },
+                    {
+                        "channel_name": "Event SD Stream",
+                        "channel_id": "1214"
                     }
                 ]
             },
@@ -18,6 +22,10 @@
                     {
                         "channel_name": "SuperSport PSL",
                         "channel_id": "413"
+                    },
+                    {
+                        "channel_name": "Event SD Stream",
+                        "channel_id": "1212"
                     }
                 ]
             },
@@ -460,139 +468,9 @@
                         "channel_id": "439"
                     }
                 ]
-            },
-            {
-                "time": "10:00",
-                "event": "⚽ Football - LP Asia ELITE : Johor 🇲🇾 vs Port 🇹🇭",
-                "channels": [
-                    {
-                        "channel_name": "Sportklub 4 Croatia",
-                        "channel_id": "104"
-                    }
-                ]
-            },
-            {
-                "time": "11:00",
-                "event": "🎾 Tennis: ATP 500 Basel &amp; WTA 250 Guangzhou",
-                "channels": [
-                    {
-                        "channel_name": "Sportklub 2 Croatia",
-                        "channel_id": "102"
-                    }
-                ]
-            },
-            {
-                "time": "12:00",
-                "event": "🎾 Tennis: ATP 500 Basel &amp; WTA 250 Guangzhou",
-                "channels": [
-                    {
-                        "channel_name": "Sportklub 4 Croatia",
-                        "channel_id": "104"
-                    }
-                ]
-            },
-            {
-                "time": "12:30",
-                "event": "🎾 Tennis: ATP 500 Basel &amp; ATP 500 Vienna &amp; WTA 250 Guangzhou",
-                "channels": [
-                    {
-                        "channel_name": "Sportklub 4 Croatia",
-                        "channel_id": "104"
-                    }
-                ]
-            },
-            {
-                "time": "12:30",
-                "event": "🎾 Tennis: ATP 500 Vienna &amp; ATP 500 Basel",
-                "channels": [
-                    {
-                        "channel_name": "Sportklub 2 Croatia",
-                        "channel_id": "102"
-                    }
-                ]
-            },
-            {
-                "time": "12:30",
-                "event": "🎾 Tennis: ATP 500 Basel &amp; ATP 500 Vienna",
-                "channels": [
-                    {
-                        "channel_name": "Sportklub 5 Croatia",
-                        "channel_id": "152"
-                    }
-                ]
             }
         ],
         "Tennis 🎾 ATP - Singles: Basel (Switzerland)": [
-            {
-                "time": "11:00",
-                "event": "🎾 ATP - Singles: 🇵🇱 Hubert Hurkacz vs 🇧🇪 Zizou Bergs",
-                "channels": [
-                    {
-                        "channel_name": "Tennis HD Stream",
-                        "channel_id": "1072"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1508"
-                    }
-                ]
-            },
-            {
-                "time": "12:30",
-                "event": "🎾 ATP - Singles: 🇨🇭 Jérôme Kym vs 🇫🇷 Arthur Rinderknech",
-                "channels": [
-                    {
-                        "channel_name": "Tennis HD Stream",
-                        "channel_id": "1074"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1508"
-                    }
-                ]
-            },
-            {
-                "time": "13:00",
-                "event": "🎾 ATP - Singles: 🇨🇱 Alejandro Tabilo vs 🇪🇸 Rafael Jodar",
-                "channels": [
-                    {
-                        "channel_name": "Tennis HD Stream",
-                        "channel_id": "1076"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1507"
-                    }
-                ]
-            },
-            {
-                "time": "14:00",
-                "event": "🎾 ATP - Singles: 🇺🇸 Alex Michelsen vs 🇳🇱 Botic van de Zandschulp",
-                "channels": [
-                    {
-                        "channel_name": "Tennis HD Stream",
-                        "channel_id": "1077"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1508"
-                    }
-                ]
-            },
-            {
-                "time": "14:30",
-                "event": "🎾 ATP - Singles: 🇫🇷 Giovanni Mpetshi Perricard vs 🇫🇷 Arthur Fils",
-                "channels": [
-                    {
-                        "channel_name": "Tennis HD Stream",
-                        "channel_id": "1080"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1507"
-                    }
-                ]
-            },
             {
                 "time": "17:00",
                 "event": "🎾 ATP - Singles: 🇺🇸 Ben Shelton vs 🇺🇸 Aleksandar Kovacevic",
@@ -624,84 +502,6 @@
         ],
         "Tennis 🎾 ATP - Singles: Vienna (Austria)": [
             {
-                "time": "12:30",
-                "event": "🎾 ATP - Singles: 🇺🇸 Tommy Paul vs 🇷🇺 Andrey Rublev",
-                "channels": [
-                    {
-                        "channel_name": "Tennis HD Stream",
-                        "channel_id": "1075"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1510"
-                    }
-                ]
-            },
-            {
-                "time": "14:00",
-                "event": "🎾 ATP - Singles: 🇷🇺 Karen Khachanov vs 🇪🇸 Carlos Alcaraz",
-                "channels": [
-                    {
-                        "channel_name": "Tennis HD Stream",
-                        "channel_id": "1078"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1510"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1520"
-                    }
-                ]
-            },
-            {
-                "time": "14:00",
-                "event": "🎾 ATP - Singles: 🇫🇷 Adrian Mannarino vs 🇵🇪 Ignacio Buse",
-                "channels": [
-                    {
-                        "channel_name": "Tennis HD Stream",
-                        "channel_id": "1079"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1511"
-                    }
-                ]
-            },
-            {
-                "time": "16:30",
-                "event": "🎾 ATP - Singles: 🇬🇧 Cameron Norrie vs 🇦🇷 Francisco Cerundolo",
-                "channels": [
-                    {
-                        "channel_name": "Tennis HD Stream",
-                        "channel_id": "1082"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1511"
-                    }
-                ]
-            },
-            {
-                "time": "16:30",
-                "event": "🎾 ATP - Singles: 🇩🇪 Alexander Zverev vs 🇪🇸 Martin Landaluce",
-                "channels": [
-                    {
-                        "channel_name": "Tennis HD Stream",
-                        "channel_id": "1084"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1510"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1520"
-                    }
-                ]
-            },
-            {
                 "time": "19:00",
                 "event": "🎾 ATP - Singles: 🇮🇹 Flavio Cobolli vs 🇧🇬 Grigor Dimitrov",
                 "channels": [
@@ -716,38 +516,9 @@
                 ]
             }
         ],
-        "Tennis 🎾 WTA - Singles: Guangzhou (China)": [
-            {
-                "time": "11:00",
-                "event": "🎾 WTA - Singles: 🇨🇳 Xinyu Sun vs 🇹🇭 Mananchaya Sawangkaew",
-                "channels": [
-                    {
-                        "channel_name": "Tennis HD Stream",
-                        "channel_id": "1107"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1504"
-                    },
-                    {
-                        "channel_name": "Tennis Stream",
-                        "channel_id": "1669"
-                    }
-                ]
-            }
-        ],
+        "Tennis 🎾 WTA - Singles: Guangzhou (China)": [],
         "Tennis 🎾 WTA - Singles: Tokyo (Japan)": [],
         "Tennis 🎾 ATP - Doubles: Basel (Switzerland)": [
-            {
-                "time": "15:30",
-                "event": "🎾 ATP - Doubles: 🇨🇭 Henry Bernet / 🇨🇭 Dominic Stricker vs 🇫🇷 Sadio Doumbia / 🇳🇱 David Pel",
-                "channels": [
-                    {
-                        "channel_name": "Tennis HD Stream",
-                        "channel_id": "1081"
-                    }
-                ]
-            },
             {
                 "time": "17:00",
                 "event": "🎾 ATP - Doubles: 🇵🇹 Francisco Cabral / 🇺🇸 James Tracy vs 🇫🇷 Arthur Reymond / 🇫🇷 Luca Sanchez",
@@ -759,28 +530,7 @@
                 ]
             }
         ],
-        "Tennis 🎾 ATP - Doubles: Vienna (Austria) - Qualification": [
-            {
-                "time": "10:30",
-                "event": "🎾 ATP - Doubles: 🇲🇽 Santiago Gonzalez / 🇺🇸 B. Stevens vs 🇲🇽 Maximo Gonzalez / 🇦🇷 Andres Molteni",
-                "channels": [
-                    {
-                        "channel_name": "Tennis HD Stream",
-                        "channel_id": "1071"
-                    }
-                ]
-            },
-            {
-                "time": "12:00",
-                "event": "🎾 ATP - Doubles: 🇳🇱 Sander Arends / 🇬🇧 Luke Johnson vs 🇹🇳 Skander Mansouri / 🇦🇹 Michael Neuchrist",
-                "channels": [
-                    {
-                        "channel_name": "Tennis HD Stream",
-                        "channel_id": "1073"
-                    }
-                ]
-            }
-        ],
+        "Tennis 🎾 ATP - Doubles: Vienna (Austria) - Qualification": [],
         "Tennis 🎾 WTA - Doubles: Guangzhou (China)": [],
         "Tennis 🎾 WTA - Doubles: Tokyo (Japan)": [],
         "Tennis 🎾 Challenger Men - Singles: Seoul (South Korea)": []
