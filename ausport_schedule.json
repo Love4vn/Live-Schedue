@@ -1,47 +1,11 @@
 [
   {
-    "competition": "ATP Vienna",
-    "home": "",
-    "away": "",
-    "vietnam_time": "19:30",
-    "vietnam_date": "30/10/2026",
-    "channels": "beIN SPORTS 1 | beIN Sports Connect",
-    "sport": "Tennis"
-  },
-  {
-    "competition": "ATP Basel",
-    "home": "",
-    "away": "",
-    "vietnam_time": "20:00",
-    "vietnam_date": "30/10/2026",
-    "channels": "beIN Sports Connect",
-    "sport": "Tennis"
-  },
-  {
-    "competition": "ATP Vienna",
-    "home": "",
-    "away": "",
-    "vietnam_time": "23:30",
-    "vietnam_date": "30/10/2026",
-    "channels": "beIN SPORTS 1 | beIN Sports Connect",
-    "sport": "Tennis"
-  },
-  {
-    "competition": "ATP Basel",
-    "home": "",
-    "away": "",
-    "vietnam_time": "00:00",
-    "vietnam_date": "31/10/2026",
-    "channels": "beIN Sports Connect",
-    "sport": "Tennis"
-  },
-  {
     "competition": "WTA Tokyo",
     "home": "",
     "away": "",
     "vietnam_time": "10:00",
     "vietnam_date": "31/10/2026",
-    "channels": "beIN SPORTS 1 | beIN Sports Connect",
+    "channels": "beIN Sports Connect | beIN SPORTS 1",
     "sport": "Tennis"
   },
   {
@@ -68,7 +32,7 @@
     "away": "",
     "vietnam_time": "21:00",
     "vietnam_date": "31/10/2026",
-    "channels": "beIN SPORTS 1 | beIN Sports Connect",
+    "channels": "beIN Sports Connect | beIN SPORTS 1",
     "sport": "Tennis"
   },
   {
@@ -100,8 +64,8 @@
   },
   {
     "competition": "Premier League",
-    "home": "Coventry",
-    "away": "Sunderland",
+    "home": "Hull City",
+    "away": "Ipswich",
     "vietnam_time": "22:00",
     "vietnam_date": "31/10/2026",
     "channels": "Stan Sport",
@@ -118,8 +82,8 @@
   },
   {
     "competition": "Premier League",
-    "home": "Bournemouth",
-    "away": "Leeds United",
+    "home": "Coventry",
+    "away": "Sunderland",
     "vietnam_time": "22:00",
     "vietnam_date": "31/10/2026",
     "channels": "Stan Sport",
@@ -127,8 +91,8 @@
   },
   {
     "competition": "Premier League",
-    "home": "Hull City",
-    "away": "Ipswich",
+    "home": "Bournemouth",
+    "away": "Leeds United",
     "vietnam_time": "22:00",
     "vietnam_date": "31/10/2026",
     "channels": "Stan Sport",
@@ -140,7 +104,7 @@
     "away": "AS Roma",
     "vietnam_time": "00:00",
     "vietnam_date": "01/11/2026",
-    "channels": "beIN SPORTS 2 | beIN Sports Connect",
+    "channels": "beIN Sports Connect | beIN SPORTS 2",
     "sport": "Soccer"
   },
   {
@@ -149,7 +113,7 @@
     "away": "Dortmund",
     "vietnam_time": "00:30",
     "vietnam_date": "01/11/2026",
-    "channels": "beIN SPORTS 3 | beIN Sports Connect",
+    "channels": "beIN Sports Connect | beIN SPORTS 3",
     "sport": "Soccer"
   },
   {
@@ -167,7 +131,7 @@
     "away": "Inter",
     "vietnam_time": "02:45",
     "vietnam_date": "01/11/2026",
-    "channels": "beIN SPORTS 2 | beIN Sports Connect",
+    "channels": "beIN Sports Connect | beIN SPORTS 2",
     "sport": "Soccer"
   },
   {
@@ -176,7 +140,7 @@
     "away": "Alaves",
     "vietnam_time": "03:00",
     "vietnam_date": "01/11/2026",
-    "channels": "beIN SPORTS 3 | beIN Sports Connect",
+    "channels": "beIN Sports Connect | beIN SPORTS 3",
     "sport": "Soccer"
   },
   {
@@ -194,7 +158,7 @@
     "away": "",
     "vietnam_time": "10:00",
     "vietnam_date": "01/11/2026",
-    "channels": "beIN SPORTS 1 | beIN Sports Connect",
+    "channels": "beIN Sports Connect | beIN SPORTS 1",
     "sport": "Tennis"
   },
   {
@@ -205,5 +169,50 @@
     "vietnam_date": "01/11/2026",
     "channels": "beIN Sports Connect | Stan Sport",
     "sport": "Tennis"
+  },
+  {
+    "competition": "ATP Vienna",
+    "home": "",
+    "away": "",
+    "vietnam_time": "20:00",
+    "vietnam_date": "01/11/2026",
+    "channels": "beIN Sports Connect | beIN SPORTS 1",
+    "sport": "Tennis"
+  },
+  {
+    "competition": "Serie A",
+    "home": "Lazio",
+    "away": "Cagliari",
+    "vietnam_time": "21:00",
+    "vietnam_date": "01/11/2026",
+    "channels": "beIN Sports Connect | beIN SPORTS 2",
+    "sport": "Soccer"
+  },
+  {
+    "competition": "ATP Basel",
+    "home": "",
+    "away": "",
+    "vietnam_time": "21:30",
+    "vietnam_date": "01/11/2026",
+    "channels": "beIN Sports Connect",
+    "sport": "Tennis"
+  },
+  {
+    "competition": "La Liga",
+    "home": "Racing Santander",
+    "away": "Real Madrid",
+    "vietnam_time": "22:15",
+    "vietnam_date": "01/11/2026",
+    "channels": "beIN Sports Connect | beIN SPORTS 3",
+    "sport": "Soccer"
+  },
+  {
+    "competition": "Premier League",
+    "home": "Liverpool",
+    "away": "Arsenal",
+    "vietnam_time": "23:30",
+    "vietnam_date": "01/11/2026",
+    "channels": "Stan Sport",
+    "sport": "Soccer"
   }
 ]
