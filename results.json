@@ -1,20 +1,5 @@
 [
   {
-    "hari": "Sabtu",
-    "tanggal": "31-10-2026",
-    "time": "09:00",
-    "sport": "Tennis",
-    "competition": "WTA Tour",
-    "title": "WTA Tennis",
-    "home": "",
-    "away": "",
-    "channels": [
-      "Sky Sports Tennis",
-      "Sky Sports+"
-    ],
-    "event_url": "https://www.wheresthematch.com/event/wta-tennis/219571"
-  },
-  {
     "hari": "Minggu",
     "tanggal": "31-10-2026",
     "time": "18:30",
@@ -246,7 +231,8 @@
     "home": "Lazio",
     "away": "Cagliari",
     "channels": [
-      "DAZN"
+      "DAZN",
+      "DAZN YouTube"
     ],
     "event_url": "https://www.wheresthematch.com/match/lazio-vs-cagliari/215969"
   },
@@ -310,5 +296,52 @@
       "Ligue 1+"
     ],
     "event_url": "https://www.wheresthematch.com/match/marseille-vs-toulouse/216025"
+  },
+  {
+    "hari": "Senin",
+    "tanggal": "02-11-2026",
+    "time": "12:00",
+    "sport": "Tennis",
+    "competition": "WTA Tour",
+    "title": "WTA Hong Kong Tennis Open",
+    "home": "",
+    "away": "",
+    "channels": [
+      "Sky Sports Tennis",
+      "Sky Sports+"
+    ],
+    "event_url": "https://www.wheresthematch.com/event/wta-hong-kong-tennis-open/219573"
+  },
+  {
+    "hari": "Senin",
+    "tanggal": "02-11-2026",
+    "time": "16:00",
+    "sport": "Tennis",
+    "competition": "ATP World Tour",
+    "title": "Rolex Paris Masters",
+    "home": "",
+    "away": "",
+    "channels": [
+      "Sky Sports Main Event",
+      "Sky Sports Tennis",
+      "Sky Sports Ultra HDR",
+      "Sky Sports+"
+    ],
+    "event_url": "https://www.wheresthematch.com/event/rolex-paris-masters/219579"
+  },
+  {
+    "hari": "Selasa",
+    "tanggal": "02-11-2026",
+    "time": "23:00",
+    "sport": "Tennis",
+    "competition": "ATP World Tour",
+    "title": "Rolex Paris Masters",
+    "home": "",
+    "away": "",
+    "channels": [
+      "Sky Sports Tennis",
+      "Sky Sports+"
+    ],
+    "event_url": "https://www.wheresthematch.com/event/rolex-paris-masters/219591"
   }
 ]
