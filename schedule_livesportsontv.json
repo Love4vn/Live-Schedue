@@ -1,36 +1,6 @@
 [
     {
         "Date": "2026-11-01",
-        "Time": "15:30",
-        "League": "Tennis (WTA)",
-        "Matchup": "Guangzhou Open",
-        "Services": [
-            "DAZN Canada"
-        ]
-    },
-    {
-        "Date": "2026-11-01",
-        "Time": "20:00",
-        "League": "Tennis (ATP)",
-        "Matchup": "Erste Bank Open",
-        "Services": [
-            "TSN+",
-            "RDS"
-        ]
-    },
-    {
-        "Date": "2026-11-01",
-        "Time": "21:00",
-        "League": "Serie A",
-        "Matchup": "Lazio - Cagliari",
-        "Services": [
-            "Paramount+",
-            "NBC Universo",
-            "DAZN Canada"
-        ]
-    },
-    {
-        "Date": "2026-11-01",
         "Time": "21:00",
         "League": "Serie A",
         "Matchup": "Lazio vs Cagliari",
@@ -96,6 +66,10 @@
             "Sport 1 Czechia HD",
             "Sport 1 Czechia HD",
             "Sport TV2 Portugal HD",
+            "Sporty TV Africa HD",
+            "Sporty TV Africa HD",
+            "Sporty TV Africa HD",
+            "Sporty TV Africa HD",
             "SuperSport Football HD",
             "SuperSport Football HD",
             "SuperSport MáXimo 1 HD",
@@ -107,16 +81,6 @@
             "TV4 Play Sverige",
             "VG+ Sport Norge",
             "Ziggo Sport 2"
-        ]
-    },
-    {
-        "Date": "2026-11-01",
-        "Time": "21:30",
-        "League": "Tennis (ATP)",
-        "Matchup": "Swiss Indoors Basel",
-        "Services": [
-            "TSN+",
-            "TSN4"
         ]
     },
     {
@@ -411,6 +375,7 @@
             "Arena Premium 2 BiH HD",
             "Arena Sport 1 Hrvatska HD",
             "Arena Sport 1 Slovenija HD",
+            "ART Motion Sport 1 HD",
             "Astro Football HD",
             "beIN Sports Australia 2 HD",
             "Cytavision Sports 4 HD",
@@ -1232,6 +1197,44 @@
         "Services": [
             "Tennis Channel",
             "T2"
+        ]
+    },
+    {
+        "Date": "2026-11-04",
+        "Time": "17:00",
+        "League": "Tennis (ATP)",
+        "Matchup": "Paris Masters",
+        "Services": [
+            "TSN+",
+            "TSN5"
+        ]
+    },
+    {
+        "Date": "2026-11-04",
+        "Time": "18:00",
+        "League": "Tennis (WTA)",
+        "Matchup": "Chennai Open",
+        "Services": [
+            "Tennis Channel"
+        ]
+    },
+    {
+        "Date": "2026-11-04",
+        "Time": "20:00",
+        "League": "Tennis (ATP)",
+        "Matchup": "Paris Masters",
+        "Services": [
+            "Tennis Channel",
+            "RDS 2"
+        ]
+    },
+    {
+        "Date": "2026-11-04",
+        "Time": "22:30",
+        "League": "UEFA Europa League",
+        "Matchup": "Rennes - Olympiakos Piraeus",
+        "Services": [
+            "Paramount+"
         ]
     }
 ]
