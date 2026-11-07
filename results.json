@@ -1,20 +1,5 @@
 [
   {
-    "hari": "Sabtu",
-    "tanggal": "07-11-2026",
-    "time": "12:00",
-    "sport": "Tennis",
-    "competition": "WTA Tour",
-    "title": "WTA Hong Kong Tennis Open",
-    "home": "",
-    "away": "",
-    "channels": [
-      "Sky Sports Tennis",
-      "Sky Sports+"
-    ],
-    "event_url": "https://www.wheresthematch.com/event/wta-hong-kong-tennis-open/219578"
-  },
-  {
     "hari": "Minggu",
     "tanggal": "07-11-2026",
     "time": "17:00",
@@ -100,6 +85,7 @@
     "away": "Sassuolo",
     "channels": [
       "DAZN",
+      "DAZN YouTube",
       "BBC iPlayer",
       "BBC Sport Website",
       "BBC Alba"
@@ -216,6 +202,7 @@
     "home": "Brighton",
     "away": "Brentford",
     "channels": [
+      "Sky Sports Ultra HDR",
       "Sky Sports+"
     ],
     "event_url": "https://www.wheresthematch.com/match/brighton-vs-brentford/217562"
@@ -245,7 +232,8 @@
     "home": "Sunderland",
     "away": "Chelsea",
     "channels": [
-      "Sky Sports Premier League"
+      "Sky Sports Premier League",
+      "Sky Sports Ultra HDR"
     ],
     "event_url": "https://www.wheresthematch.com/match/sunderland-vs-chelsea/217565"
   },
@@ -354,5 +342,35 @@
       "Sky Sports Tennis"
     ],
     "event_url": "https://www.wheresthematch.com/event/wta-finals/219592"
+  },
+  {
+    "hari": "Selasa",
+    "tanggal": "09-11-2026",
+    "time": "18:00",
+    "sport": "Tennis",
+    "competition": "ATP World Tour",
+    "title": "Stockholm Open",
+    "home": "",
+    "away": "",
+    "channels": [
+      "Sky Sports Tennis",
+      "Sky Sports+"
+    ],
+    "event_url": "https://www.wheresthematch.com/event/stockholm-open/220529"
+  },
+  {
+    "hari": "Selasa",
+    "tanggal": "09-11-2026",
+    "time": "23:00",
+    "sport": "Tennis",
+    "competition": "ATP World Tour",
+    "title": "Stockholm Open",
+    "home": "",
+    "away": "",
+    "channels": [
+      "Sky Sports Tennis",
+      "Sky Sports+"
+    ],
+    "event_url": "https://www.wheresthematch.com/event/stockholm-open/220530"
   }
 ]
