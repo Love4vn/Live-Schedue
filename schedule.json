@@ -1,125 +1,9 @@
 {
-  "updated": "2026-11-09 16:43 VN",
+  "updated": "2026-11-10 04:35 VN",
   "days": {
-    "20261109": {
-      "date": "Monday, 09/11",
+    "20261110": {
+      "date": "Tuesday, 10/11",
       "games": [
-        {
-          "league": "FA Cup",
-          "match": "Plymouth Parkway 🏴󠁧󠁢󠁥󠁮󠁧󠁿 vs Berkhamsted 🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-          "kick_utc": 1794252600,
-          "time": "10/11 02:30 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "TNT Sports 1 UK",
-                "Sportsnet World",
-                "Nova Sport 2 CZ",
-                "Arena 2 Premium Serbia",
-                "Arena Sport 4 Croatia",
-                "Cytavision Sports 7 Cyprus",
-                "Diema Sport 2 Bulgaria"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Stockholm Open",
-          "kick_utc": 1794222000,
-          "time": "09/11 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Tennis",
-                "Sky Sports+"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Stockholm Open",
-          "kick_utc": 1794225600,
-          "time": "09/11 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "TSN+"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Stockholm Open",
-          "kick_utc": 1794240000,
-          "time": "09/11 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Tennis",
-                "Sky Sports+"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Stockholm Open",
-          "kick_utc": 1794250800,
-          "time": "10/11 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Leo Borg - Toby Samuel",
-          "kick_utc": 1794249000,
-          "time": "10/11 01:30 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "WTA Finals",
-          "kick_utc": 1794250800,
-          "time": "10/11 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Main Event",
-                "Sky Sports Tennis",
-                "Sky Sports Ultra HDR"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
-        },
         {
           "league": "Tennis",
           "match": "WTA Finals",
@@ -156,92 +40,101 @@
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1794225600,
-          "time": "09/11 07:00 PM",
+          "match": "WTA Finals",
+          "kick_utc": 1794337200,
+          "time": "11/11 02:00 AM",
           "tv_channels": [
             {
-              "country": "Daddylive",
+              "country": "Wheresthematch",
               "channels": [
-                "Digi Sport 2 Romania",
+                "Sky Sports Main Event",
+                "Sky Sports Tennis",
+                "Sky Sports Ultra HDR"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "WTA Finals",
+          "kick_utc": 1794340800,
+          "time": "11/11 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "TSN+",
                 "TVA Sports 2",
-                "Sky Sports Tennis UK",
-                "TVA Sports",
-                "TV4 Sport Live 1",
-                "Ziggo Sport 4 NL",
-                "beIN Sports MENA 9",
-                "Canal+ Sport 2 Poland",
-                "beIN Sports MENA 7",
-                "beIN SPORTS Australia 1",
-                "NovaSports Prime GR",
-                "Tennis Channel",
-                "Sky Sport Tennis Italy",
-                "Sky Sports Tennis Germany",
-                "MAX Sport 3 Bulgaria",
-                "Arena Tennis",
-                "RDS Info",
-                "MAX Sport 2 Bulgaria",
-                "beIN Sports 3 France",
-                "Ziggo Sport 1 NL",
-                "TSN 2",
-                "TSN 4",
-                "beIN SPORTS Australia 2",
-                "ESPN2 Brazil",
-                "beIN Sports 4 Max France",
-                "Ziggo Sport 5 NL",
-                "NovaSports 6 GR",
-                "Polsat Sport 3 Poland",
-                "Sky Sports+",
-                "Polsat Sport 1 Poland",
-                "ESPN3 Brazil",
-                "TyC Sports Argentina",
-                "TV4 Tennis",
-                "TSN3 CA",
-                "Polsat Sport Premium 2 Poland",
-                "Nova Sports Start Greece",
-                "Cytavision Sports 5 Cyprus",
-                "Cytavision Sports 6 Cyprus",
-                "MAX Sport 1 Bulgaria",
-                "Sportklub 2 Croatia",
-                "Polsat Sport 2 Poland",
-                "ESPN2 Argentina",
-                "Sport 5 Plus Israel",
-                "Movistar Deportes 2 Spain",
-                "Canal+ Sport 2 Czechia"
+                "TSN1",
+                "DAZN Canada"
               ]
             }
           ],
-          "source": "daddylive"
+          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
-          "match": "",
-          "kick_utc": 1794243600,
-          "time": "10/11 12:00 AM",
+          "match": "Stockholm Open",
+          "kick_utc": 1794308400,
+          "time": "10/11 06:00 PM",
           "tv_channels": [
             {
-              "country": "Daddylive",
+              "country": "Wheresthematch",
               "channels": [
-                "Sportklub 2 Croatia"
+                "Sky Sports Tennis",
+                "Sky Sports+"
               ]
             }
           ],
-          "source": "daddylive"
+          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
-          "match": "Sabalenka 🇾 vs Muchova 🇨🇿",
-          "kick_utc": 1794254400,
-          "time": "10/11 03:00 AM",
+          "match": "Stockholm Open",
+          "kick_utc": 1794312000,
+          "time": "10/11 07:00 PM",
           "tv_channels": [
             {
-              "country": "Daddylive",
+              "country": "LiveSportsOnTV",
               "channels": [
-                "Sportklub 1 Croatia"
+                "TSN+",
+                "Tennis Channel"
               ]
             }
           ],
-          "source": "daddylive"
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Stockholm Open",
+          "kick_utc": 1794326400,
+          "time": "10/11 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Sky Sports Tennis",
+                "Sky Sports+"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "Stockholm Open",
+          "kick_utc": 1794330000,
+          "time": "11/11 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
@@ -253,189 +146,6 @@
               "country": "Daddylive",
               "channels": [
                 "Sportklub 2 Croatia"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "🇺 Alex Michelsen vs  Yannick Hanfmann",
-          "kick_utc": 1794223800,
-          "time": "09/11 06:30 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "🇺 James Duckworth vs  Cameron Norrie",
-          "kick_utc": 1794225600,
-          "time": "09/11 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "🇨🇿 Tomas Machac vs 🇭 Borna Gojo",
-          "kick_utc": 1794229200,
-          "time": "09/11 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "🇾 Diego Vallejo vs  Ugo Humbert",
-          "kick_utc": 1794231000,
-          "time": "09/11 08:30 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tomas Martin Etcheverry vs  M. Dahlin",
-          "kick_utc": 1794243600,
-          "time": "10/11 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Leo Borg vs 🇺 Tristan Samuel",
-          "kick_utc": 1794249000,
-          "time": "10/11 01:30 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "🇾 Aryna Sabalenka vs 🇨🇿 Karolina Muchova",
-          "kick_utc": 1794254400,
-          "time": "10/11 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream",
-                "Tennis Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "🇺 Mirra Andreeva vs 🇺 Elina Svitolina",
-          "kick_utc": 1794259800,
-          "time": "10/11 04:30 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream",
-                "Tennis Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Constantin Frantzen /  B. Stevens vs 🇨🇿 Petr Nouza / 🇿 Michael Venus",
-          "kick_utc": 1794218400,
-          "time": "09/11 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Miomir Kecmanovic /  Marcelo Melo vs  Hendrik Jebens / 🇺 Ryan Seggerman",
-          "kick_utc": 1794218400,
-          "time": "09/11 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "E. Grevelius /  A. Heinonen vs  Sadio Doumbia /  David Pel",
-          "kick_utc": 1794234600,
-          "time": "09/11 09:30 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis Stream"
               ]
             }
           ],
@@ -461,130 +171,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Clement Tabur vs  Lukas Neumayer",
-          "kick_utc": 1794238200,
-          "time": "09/11 10:30 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Bonzi B. vs Pellegrino A.",
-          "kick_utc": 1794247200,
-          "time": "10/11 01:00 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "🇴 Nicolai Budkov Kjaer vs S. Gueymard Wayenburg",
-          "kick_utc": 1794252600,
-          "time": "10/11 02:30 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Estocolmo 2026",
-          "kick_utc": 1794225480,
-          "time": "09/11 06:58 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Estocolmo 2026",
-          "kick_utc": 1794232800,
-          "time": "09/11 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Estocolmo 2026",
-          "kick_utc": 1794243420,
-          "time": "09/11 11:57 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Estocolmo 2026",
-          "kick_utc": 1794250740,
-          "time": "10/11 01:59 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis",
-          "kick_utc": 1794232800,
-          "time": "09/11 09:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 3 Hd Romania",
-                "Digi Sport 3 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
           "match": "Finale de la WTA 2026",
           "kick_utc": 1794254400,
           "time": "10/11 03:00 AM",
@@ -603,6 +189,21 @@
           "match": "Finale de la WTA 2026",
           "kick_utc": 1794261600,
           "time": "10/11 05:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Tva Sports 2 Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Finale de la WTA 2026",
+          "kick_utc": 1794340800,
+          "time": "11/11 03:00 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -631,9 +232,131 @@
         },
         {
           "league": "Tennis",
+          "match": "2026 WTA Finals",
+          "kick_utc": 1794340800,
+          "time": "11/11 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "TSN 1",
+                "TSN Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Estocolmo 2026",
+          "kick_utc": 1794311940,
+          "time": "10/11 06:59 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Estocolmo 2026",
+          "kick_utc": 1794319200,
+          "time": "10/11 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Estocolmo 2026",
+          "kick_utc": 1794330000,
+          "time": "11/11 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "ATP World Tour 250 - Estocolmo 2026",
+          "kick_utc": 1794337200,
+          "time": "11/11 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv3 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis",
+          "kick_utc": 1794319200,
+          "time": "10/11 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 3 Hd Romania",
+                "Digi Sport 3 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "FAGE WTA Finals Indian Wells E2",
+          "kick_utc": 1794254400,
+          "time": "10/11 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
           "match": ": BYBIT Stockholm Open",
-          "kick_utc": 1794225600,
-          "time": "09/11 07:00 PM",
+          "kick_utc": 1794312000,
+          "time": "10/11 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": ": BYBIT Stockholm Open",
+          "kick_utc": 1794330000,
+          "time": "11/11 12:00 AM",
           "tv_channels": [
             {
               "country": "NowTV",
@@ -648,24 +371,9 @@
         },
         {
           "league": "Tennis",
-          "match": ": BYBIT Stockholm Open",
-          "kick_utc": 1794243600,
-          "time": "10/11 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "FAGE WTA Finals Indian Wells E2",
-          "kick_utc": 1794254400,
-          "time": "10/11 03:00 AM",
+          "match": "FAGE WTA Finals Indian Wells E3",
+          "kick_utc": 1794340800,
+          "time": "11/11 03:00 AM",
           "tv_channels": [
             {
               "country": "NowTV",
