@@ -1,32 +1,11 @@
 [
     {
         "Date": "2026-11-10",
-        "Time": "03:00",
-        "League": "Tennis (WTA)",
-        "Matchup": "WTA Finals",
-        "Services": [
-            "Tennis Channel",
-            "TSN+",
-            "TVA Sports 2",
-            "TSN2",
-            "DAZN Canada"
-        ]
-    },
-    {
-        "Date": "2026-11-10",
-        "Time": "07:00",
-        "League": "Tennis (WTA)",
-        "Matchup": "WTA Finals",
-        "Services": [
-            "Tennis Channel"
-        ]
-    },
-    {
-        "Date": "2026-11-10",
         "Time": "19:00",
         "League": "Tennis (ATP)",
         "Matchup": "Stockholm Open",
         "Services": [
+            "Tennis Channel",
             "TSN+"
         ]
     },
@@ -34,6 +13,15 @@
         "Date": "2026-11-10",
         "Time": "19:00",
         "League": "Tennis (WTA)",
+        "Matchup": "Stockholm Open",
+        "Services": [
+            "Tennis Channel"
+        ]
+    },
+    {
+        "Date": "2026-11-11",
+        "Time": "00:00",
+        "League": "Tennis (ATP)",
         "Matchup": "Stockholm Open",
         "Services": [
             "Tennis Channel"
@@ -243,6 +231,25 @@
             "TVA Sports 2",
             "TSN4",
             "DAZN Canada"
+        ]
+    },
+    {
+        "Date": "2026-11-13",
+        "Time": "05:00",
+        "League": "Tennis (WTA)",
+        "Matchup": "WTA Finals",
+        "Services": [
+            "Tennis Channel"
+        ]
+    },
+    {
+        "Date": "2026-11-13",
+        "Time": "07:00",
+        "League": "Tennis (WTA)",
+        "Matchup": "WTA Finals",
+        "Services": [
+            "Tennis Channel",
+            "TVA Sports"
         ]
     }
 ]
