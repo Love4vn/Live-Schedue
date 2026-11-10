@@ -1,36 +1,8 @@
 [
     {
-        "Date": "2026-11-10",
-        "Time": "19:00",
-        "League": "Tennis (ATP)",
-        "Matchup": "Stockholm Open",
-        "Services": [
-            "Tennis Channel",
-            "TSN+"
-        ]
-    },
-    {
-        "Date": "2026-11-10",
-        "Time": "19:00",
-        "League": "Tennis (WTA)",
-        "Matchup": "Stockholm Open",
-        "Services": [
-            "Tennis Channel"
-        ]
-    },
-    {
         "Date": "2026-11-11",
         "Time": "00:00",
         "League": "Tennis (ATP)",
-        "Matchup": "Stockholm Open",
-        "Services": [
-            "Tennis Channel"
-        ]
-    },
-    {
-        "Date": "2026-11-11",
-        "Time": "00:00",
-        "League": "Tennis (WTA)",
         "Matchup": "Stockholm Open",
         "Services": [
             "Tennis Channel"
@@ -42,6 +14,7 @@
         "League": "Tennis (WTA)",
         "Matchup": "WTA Finals",
         "Services": [
+            "Tennis Channel",
             "TSN+",
             "TVA Sports 2",
             "TSN1",
@@ -250,6 +223,27 @@
         "Services": [
             "Tennis Channel",
             "TVA Sports"
+        ]
+    },
+    {
+        "Date": "2026-11-13",
+        "Time": "20:00",
+        "League": "Tennis (ATP)",
+        "Matchup": "Stockholm Open",
+        "Services": [
+            "TSN+"
+        ]
+    },
+    {
+        "Date": "2026-11-14",
+        "Time": "00:00",
+        "League": "UEFA Nations League",
+        "Matchup": "Moldova - Kazakhstan",
+        "Services": [
+            "Fubo Sports",
+            "FOX Soccer Plus",
+            "ViX",
+            "DAZN Canada"
         ]
     }
 ]
