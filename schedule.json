@@ -1,9 +1,74 @@
 {
-  "updated": "2026-11-12 01:51 VN",
+  "updated": "2026-11-12 16:43 VN",
   "days": {
     "20261112": {
       "date": "Thursday, 12/11",
       "games": [
+        {
+          "league": "International Friendly",
+          "match": "Uzbekistan vs Russia",
+          "kick_utc": 1794495600,
+          "time": "12/11 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Futbol TV Uzbekistan",
+                "Futbol TV Uzbekistan",
+                "Okko Futbol HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Lithuania vs Suriname",
+          "kick_utc": 1794502800,
+          "time": "13/11 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Fast Sports",
+                "Megogo Futbol 4",
+                "MTV Katsomon+",
+                "S Sport+ Streaming",
+                "SportKlub 4 Hrvatska",
+                "SportKlub 4 Slovenija",
+                "TV2 Play Danmark",
+                "ViaPlay Norge HD",
+                "ViaPlay Sverige HD",
+                "ViaPlay Ísland HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "International Friendly",
+          "match": "Malta vs Eswatini",
+          "kick_utc": 1794504600,
+          "time": "13/11 12:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Fast Sports",
+                "Megogo Futbol 6",
+                "MTV Katsomon+",
+                "SportKlub 2 Hrvatska",
+                "SportKlub 2 Slovenija",
+                "TV2 Play Danmark",
+                "TVM Sport+ HD",
+                "ViaPlay Norge HD",
+                "ViaPlay Sverige HD",
+                "ViaPlay Ísland HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
         {
           "league": "UEFA Euro",
           "match": "Germany U19s vs Sweden U19s",
@@ -21,53 +86,290 @@
           "source": "wheresthematch"
         },
         {
-          "league": "Tennis",
-          "match": "WTA Finals",
-          "kick_utc": 1794427200,
-          "time": "12/11 03:00 AM",
+          "league": "UEFA Nations League",
+          "match": "Simulcast",
+          "kick_utc": 1794502800,
+          "time": "13/11 12:00 AM",
           "tv_channels": [
             {
-              "country": "LiveSportsOnTV",
+              "country": "Daddylive",
               "channels": [
-                "TSN+",
-                "TVA Sports 2",
-                "TSN5",
-                "DAZN Canada"
+                "NovaSports 1 GR"
               ]
             }
           ],
-          "source": "livesportsontv"
+          "source": "daddylive"
         },
         {
-          "league": "Tennis",
-          "match": "WTA Finals",
-          "kick_utc": 1794434400,
-          "time": "12/11 05:00 AM",
+          "league": "UEFA Nations League",
+          "match": "Simulcast",
+          "kick_utc": 1794512700,
+          "time": "13/11 02:45 AM",
           "tv_channels": [
             {
-              "country": "LiveSportsOnTV",
+              "country": "Daddylive",
               "channels": [
-                "Tennis Channel",
-                "TVA Sports 2"
+                "Sky Sport Calcio IT",
+                "Sport 1 Israel",
+                "NovaSports 1 GR",
+                "DAZN CA",
+                "Sportv Brazil"
               ]
             }
           ],
-          "source": "livesportsontv"
+          "source": "daddylive"
         },
         {
-          "league": "Tennis",
-          "match": "WTA Finals",
-          "kick_utc": 1794441600,
-          "time": "12/11 07:00 AM",
+          "league": "UEFA Nations League",
+          "match": "🇲 Armenia vs Cyprus 🇨🇾",
+          "kick_utc": 1794502800,
+          "time": "13/11 12:00 AM",
           "tv_channels": [
             {
-              "country": "LiveSportsOnTV",
+              "country": "Daddylive",
               "channels": [
-                "Tennis Channel"
+                "DAZN CA",
+                "Fox Soccer Plus",
+                "DAZN2 DE",
+                "Sport 2 CZ",
+                "Sport TV2 Portugal",
+                "Digi Sport 2 Romania",
+                "Prima Sport 2 Romania",
+                "Nova Sports Start Greece",
+                "Diema Sport 2 Bulgaria",
+                "ESPN3 Brazil",
+                "beIN Sports MENA 4",
+                "Sportklub 3 Croatia",
+                "Sport 2 Israel"
               ]
             }
           ],
-          "source": "livesportsontv"
+          "source": "daddylive"
+        },
+        {
+          "league": "UEFA Nations League",
+          "match": "Turkey vs Belgium",
+          "kick_utc": 1794502800,
+          "time": "13/11 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "DAZN CA",
+                "Fox Sports 1 USA",
+                "atv Turkey",
+                "DAZN1 DE",
+                "Sport TV1 Portugal",
+                "Polsat Sport 2 Poland",
+                "Digi Sport 1 Romania",
+                "Sport 1 CZ",
+                "Prima Sport 1 Romania",
+                "Sky Sport Uno IT",
+                "Sky Sport Calcio IT",
+                "Ziggo Sport 1 NL",
+                "Ziggo Sport 2 NL",
+                "Arena 1 Premium Serbia",
+                "V Sport Football",
+                "Nova Sports 2 Greece",
+                "TV2 Sport X Denmark",
+                "Cytavision Sports 3 Cyprus",
+                "Diema Sport 3 Bulgaria",
+                "ESPN2 Argentina",
+                "SuperSport Premier League",
+                "Supersport Grandstand",
+                "beIN Sports MENA 1",
+                "beIN SPORTS Xtra 1",
+                "Sportklub 1 Croatia",
+                "Sport 1 Israel"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "UEFA Nations League",
+          "match": "Albania vs Finland",
+          "kick_utc": 1794512700,
+          "time": "13/11 02:45 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "DAZN CA",
+                "Sport TV4 Portugal",
+                "Polsat Sport Premium 1 Poland",
+                "Nova Sport Bulgaria",
+                "beIN SPORTS Xtra 1",
+                "SuperSport Laliga",
+                "beIN Sports MENA 5"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "UEFA Nations League",
+          "match": "🇲 San Marino vs Belarus 🇾",
+          "kick_utc": 1794512700,
+          "time": "13/11 02:45 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "DAZN CA",
+                "Nova Sports News Greece",
+                "beIN Sports MENA 6",
+                "beIN SPORTS Xtra 2"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "UEFA Nations League",
+          "match": "Italy vs France",
+          "kick_utc": 1794512700,
+          "time": "13/11 02:45 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "DAZN CA",
+                "Fox Sports 1 USA",
+                "RAI 1 IT",
+                "TF1 France",
+                "a Haber Turkey",
+                "SRF zwei",
+                "DAZN1 DE",
+                "Sport TV1 Portugal",
+                "TVP Sport Poland",
+                "Polsat Sport 1 Poland",
+                "Sport 2 CZ",
+                "Ziggo Sport 2 NL",
+                "Digi Sport 1 Romania",
+                "Prima Sport 1 Romania",
+                "V Sport Premium",
+                "Cytavision Sports 4 Cyprus",
+                "Arena 3 Premium Serbia",
+                "Nova Sports 2 Greece",
+                "Alpha TV Greece",
+                "TV2 Sport X Denmark",
+                "Diema Sport 3 Bulgaria",
+                "ESPN Argentina",
+                "ESPN Brazil",
+                "beIN Sports MENA 1",
+                "beIN Sports MENA English 2",
+                "Sportklub 4 Croatia",
+                "Sport 2 Israel"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "UEFA Nations League",
+          "match": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 England vs Croatia 🇭",
+          "kick_utc": 1794512700,
+          "time": "13/11 02:45 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "DAZN CA",
+                "ITV 1 UK",
+                "A2 Turkey",
+                "Sport TV3 Portugal",
+                "Polsat Sport 2 Poland",
+                "Digi Sport 3 Romania",
+                "Prima Sport 3 Romania",
+                "Sport 1 CZ",
+                "Ziggo Sport 3 NL",
+                "Sky Sport Uno IT",
+                "Cytavision Sports 3 Cyprus",
+                "Arena 4 Premium Serbia",
+                "Nova TV Croatia",
+                "Nova Sports Premier League Greece",
+                "Diema Sport Bulgaria",
+                "ESPN4 Brazil",
+                "ESPN2 Argentina",
+                "beIN Sports MENA 3",
+                "beIN Sports MENA English 1",
+                "Sport 4 Israel"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "UEFA Nations League",
+          "match": "🇨🇿 Czech Republic vs Spain",
+          "kick_utc": 1794512700,
+          "time": "13/11 02:45 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "DAZN CA",
+                "Fox Soccer Plus",
+                "A Spor Turkey",
+                "TVE La 1 Spain",
+                "Sky Sport 251 IT",
+                "Sport TV2 Portugal",
+                "Polsat Sport 3 Poland",
+                "Prima Sport 2 Romania",
+                "Ziggo Sport 5 NL",
+                "TV2 Sport Norway",
+                "ČT Sport CZ",
+                "Cytavision Sports 6 Cyprus",
+                "Arena 5 Premium Serbia",
+                "Nova Sports 6 Greece",
+                "Diema Sport 2 Bulgaria",
+                "ESPN3 Argentina",
+                "Supersport Grandstand",
+                "beIN Sports MENA 4",
+                "Sportklub 6 Croatia",
+                "Sportklub 7 Croatia",
+                "Sport 3 Israel"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "UEFA Nations League",
+          "match": "🇲 Montenegro vs Latvia 🇻",
+          "kick_utc": 1794512700,
+          "time": "13/11 02:45 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "DAZN CA",
+                "RTCG 2",
+                "Polsat Sport Premium 2 Poland",
+                "Arena Sport 5 Serbia",
+                "SuperSport Football",
+                "beIN Sports MENA 8",
+                "Sportklub 8 Croatia"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "UEFA Nations League",
+          "match": "Antigua and Barbuda vs Trinidad and Tobago",
+          "kick_utc": 1794524400,
+          "time": "13/11 06:00 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Fox Soccer Plus"
+              ]
+            }
+          ],
+          "source": "daddylive"
         },
         {
           "league": "Tennis",
@@ -133,9 +435,134 @@
         },
         {
           "league": "Tennis",
+          "match": "WTA Finals",
+          "kick_utc": 1794510000,
+          "time": "13/11 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Sky Sports Main Event",
+                "Sky Sports Tennis",
+                "Sky Sports Ultra HDR"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "WTA Finals",
+          "kick_utc": 1794513600,
+          "time": "13/11 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "TSN+",
+                "TVA Sports 2",
+                "TSN4",
+                "DAZN Canada"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "WTA Finals",
+          "kick_utc": 1794520800,
+          "time": "13/11 05:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "WTA Finals",
+          "kick_utc": 1794528000,
+          "time": "13/11 07:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Tennis Channel",
+                "TVA Sports"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
           "match": "",
-          "kick_utc": 1794427200,
-          "time": "12/11 03:00 AM",
+          "kick_utc": 1794484800,
+          "time": "12/11 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis Channel",
+                "Sky Sports+",
+                "TSN 2",
+                "Sky Sports Tennis UK",
+                "Sky Sports Tennis Germany",
+                "TVA Sports 2",
+                "TSN3 CA",
+                "RDS Info",
+                "TSN 4",
+                "TVA Sports",
+                "Sky Sport Tennis Italy",
+                "TV4 Tennis",
+                "TV4 Sport Live 1",
+                "Canal+ Sport 2 Czechia",
+                "Cytavision Sports 5 Cyprus",
+                "beIN Sports 3 France",
+                "beIN Sports 4 Max France",
+                "Movistar Deportes 2 Spain",
+                "Cytavision Sports 6 Cyprus",
+                "MAX Sport 1 Bulgaria",
+                "MAX Sport 2 Bulgaria",
+                "MAX Sport 3 Bulgaria",
+                "Arena Tennis",
+                "TyC Sports Argentina",
+                "Digi Sport 2 Romania",
+                "Ziggo Sport 5 NL",
+                "Ziggo Sport 4 NL",
+                "Ziggo Sport 1 NL",
+                "NovaSports Prime GR",
+                "Nova Sports Start Greece",
+                "Polsat Sport 1 Poland",
+                "Canal+ Sport 2 Poland",
+                "Polsat Sport 2 Poland",
+                "Polsat Sport Premium 2 Poland",
+                "Polsat Sport 3 Poland",
+                "Canal+ Sport 2 Poland",
+                "ESPN2 Argentina",
+                "beIN SPORTS Australia 1",
+                "beIN SPORTS Australia 2",
+                "NovaSports 6 GR",
+                "beIN Sports MENA 7",
+                "beIN Sports MENA 9",
+                "ESPN2 Brazil",
+                "ESPN3 Brazil",
+                "Sport 5 Plus Israel"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1794513600,
+          "time": "13/11 03:00 AM",
           "tv_channels": [
             {
               "country": "Daddylive",
@@ -149,8 +576,8 @@
         {
           "league": "Tennis",
           "match": "",
-          "kick_utc": 1794434400,
-          "time": "12/11 05:00 AM",
+          "kick_utc": 1794520800,
+          "time": "13/11 05:00 AM",
           "tv_channels": [
             {
               "country": "Daddylive",
@@ -163,15 +590,127 @@
         },
         {
           "league": "Tennis",
-          "match": "🇺 Elina Svitolina vs 🇨🇿 Karolina Muchova",
-          "kick_utc": 1794427200,
-          "time": "12/11 03:00 AM",
+          "match": "1/4 Final",
+          "kick_utc": 1794484800,
+          "time": "12/11 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Sportklub 2 Croatia"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "🇺 A. Michelsen vs 🇨 A. Tabilo",
+          "kick_utc": 1794484800,
+          "time": "12/11 07:00 PM",
           "tv_channels": [
             {
               "country": "Daddylive",
               "channels": [
                 "Tennis HD Stream",
                 "Tennis Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "T. Tirante vs 🇰🇿 A. Shevchenko",
+          "kick_utc": 1794492000,
+          "time": "12/11 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
+                "Tennis Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "🇺 T. Fritz vs 🇰 H. Rune",
+          "kick_utc": 1794504600,
+          "time": "13/11 12:30 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
+                "Tennis Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "L. Musetti vs  U. Humbert",
+          "kick_utc": 1794510000,
+          "time": "13/11 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
+                "Tennis Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "🇭 N. Mektic /  E. Roger-Vasselin vs  J. Rojer / 🇺 T. Winegar",
+          "kick_utc": 1794484800,
+          "time": "12/11 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "C. Frantzen /  B. Stevens vs 🇺 R. Galloway /  A. Goransson",
+          "kick_utc": 1794504600,
+          "time": "13/11 12:30 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "🇺 M. Kostyuk vs 🇺 C. Gauff",
+          "kick_utc": 1794513600,
+          "time": "13/11 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
                 "Tennis Stream",
                 "Tennis Stream",
                 "Tennis Stream"
@@ -182,15 +721,14 @@
         },
         {
           "league": "Tennis",
-          "match": "🇾 Aryna Sabalenka vs 🇺 Mirra Andreeva",
-          "kick_utc": 1794432600,
-          "time": "12/11 04:30 AM",
+          "match": "🇺 J. Pegula vs 🇨🇿 L. Noskova",
+          "kick_utc": 1794519000,
+          "time": "13/11 04:30 AM",
           "tv_channels": [
             {
               "country": "Daddylive",
               "channels": [
                 "Tennis HD Stream",
-                "Tennis Stream",
                 "Tennis Stream",
                 "Tennis Stream",
                 "Tennis Stream"
@@ -201,15 +739,14 @@
         },
         {
           "league": "Tennis",
-          "match": "🇨 Gabriela Dabrowski /  Luisa Stefani vs 🇨 Guo Hanyu /  Kristina Mladenovic",
-          "kick_utc": 1794438000,
-          "time": "12/11 06:00 AM",
+          "match": "🇨🇿 K. Siniakova / 🇺 T. Townsend vs  C. Bucsa / 🇺 N. Melichar-Martinez",
+          "kick_utc": 1794524400,
+          "time": "13/11 06:00 AM",
           "tv_channels": [
             {
               "country": "Daddylive",
               "channels": [
                 "Tennis HD Stream",
-                "Tennis Stream",
                 "Tennis Stream",
                 "Tennis Stream",
                 "Tennis Stream"
@@ -220,14 +757,15 @@
         },
         {
           "league": "Tennis",
-          "match": "Mattia Bellucci vs S. Gueymard Wayenburg",
-          "kick_utc": 1794425400,
-          "time": "12/11 02:30 AM",
+          "match": "🇨🇿 D. Svrcina vs  O. Virtanen",
+          "kick_utc": 1794488400,
+          "time": "12/11 08:00 PM",
           "tv_channels": [
             {
               "country": "Daddylive",
               "channels": [
-                "Tennis HD Stream"
+                "Tennis HD Stream",
+                "Tennis Stream"
               ]
             }
           ],
@@ -235,29 +773,63 @@
         },
         {
           "league": "Tennis",
-          "match": "ATP World Tour 250 - Estocolmo 2026",
-          "kick_utc": 1794416400,
-          "time": "12/11 12:00 AM",
+          "match": "P. Martinez vs  M. Martineau",
+          "kick_utc": 1794492000,
+          "time": "12/11 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "S. Baez vs  C. Hemery",
+          "kick_utc": 1794506400,
+          "time": "13/11 01:00 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "🇺 N. Basavareddy vs  K. Jacquet",
+          "kick_utc": 1794511800,
+          "time": "13/11 02:30 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: ATP Stockholm",
+          "kick_utc": 1794483000,
+          "time": "12/11 06:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "ATP World Tour 250 - Estocolmo 2026",
-          "kick_utc": 1794423600,
-          "time": "12/11 02:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv3 Hd Portugal"
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
               ]
             }
           ],
@@ -296,8 +868,8 @@
         {
           "league": "Tennis",
           "match": "ATP World Tour 250 - Estocolmo 2026",
-          "kick_utc": 1794504600,
-          "time": "13/11 12:30 AM",
+          "kick_utc": 1794504540,
+          "time": "13/11 12:29 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
@@ -310,61 +882,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Finale de la WTA 2026",
-          "kick_utc": 1794427200,
-          "time": "12/11 03:00 AM",
+          "match": "ATP World Tour 250 - Estocolmo 2026",
+          "kick_utc": 1794511800,
+          "time": "13/11 02:30 AM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Tva Sports 2 Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Finale de la WTA 2026",
-          "kick_utc": 1794434400,
-          "time": "12/11 05:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Tva Sports 2 Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "2026 WTA Finals",
-          "kick_utc": 1794427200,
-          "time": "12/11 03:00 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "TSN 5",
-                "TSN 5 Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: ATP Stockholm",
-          "kick_utc": 1794483000,
-          "time": "12/11 06:30 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
+                "Sport Tv 6 Hd Portugal"
               ]
             }
           ],
@@ -388,18 +913,49 @@
         },
         {
           "league": "Tennis",
-          "match": "FAGE WTA Finals Indian Wells E4",
-          "kick_utc": 1794427200,
-          "time": "12/11 03:00 AM",
+          "match": "Finale de la WTA 2026",
+          "kick_utc": 1794513600,
+          "time": "13/11 03:00 AM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 4"
+                "Tva Sports 2 Hd"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Finale de la WTA 2026",
+          "kick_utc": 1794528000,
+          "time": "13/11 07:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Tva Sports Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "2026 WTA Finals",
+          "kick_utc": 1794513600,
+          "time": "13/11 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "TSN 4",
+                "TSN 4 Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
@@ -442,6 +998,21 @@
               "country": "NowTV",
               "channels": [
                 "Ziggo Sport 4"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "FAGE WTA Finals Indian Wells E5",
+          "kick_utc": 1794513600,
+          "time": "13/11 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 4"
               ]
             }
           ],
