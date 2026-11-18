@@ -1,70 +1,22 @@
 {
-  "updated": "2026-11-18 16:44 VN",
+  "updated": "2026-11-19 02:31 VN",
   "days": {
-    "20261118": {
-      "date": "Wednesday, 18/11",
+    "20261119": {
+      "date": "Thursday, 19/11",
       "games": [
         {
           "league": "Tennis",
-          "match": "Nitto ATP Finals",
-          "kick_utc": 1794994200,
-          "time": "18/11 04:30 PM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Main Event",
-                "Sky Sports Tennis",
-                "Sky Sports Ultra HDR"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Nitto ATP Finals",
-          "kick_utc": 1794997800,
-          "time": "18/11 05:30 PM",
+          "match": "Flavio Cobolli - Frances Tiafoe",
+          "kick_utc": 1795030200,
+          "time": "19/11 02:30 AM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
                 "Tennis Channel",
-                "TSN+"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Nitto ATP Finals",
-          "kick_utc": 1795017600,
-          "time": "18/11 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Main Event",
-                "Sky Sports Tennis",
-                "Sky Sports Ultra HDR"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Nitto ATP Finals",
-          "kick_utc": 1795021200,
-          "time": "19/11 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "TSN+"
+                "TSN+",
+                "TSN5",
+                "RDS 2"
               ]
             }
           ],
@@ -89,14 +41,75 @@
         },
         {
           "league": "Tennis",
-          "match": "Flavio Cobolli - Frances Tiafoe",
-          "kick_utc": 1795030200,
-          "time": "19/11 02:30 AM",
+          "match": "Nitto ATP Finals",
+          "kick_utc": 1795084200,
+          "time": "19/11 05:30 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Tennis Channel",
+                "TSN+"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Nitto ATP Finals",
+          "kick_utc": 1795093200,
+          "time": "19/11 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "TSN+",
+                "RDS",
+                "TSN5"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Nitto ATP Finals",
+          "kick_utc": 1795104000,
+          "time": "19/11 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Sky Sports Tennis"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "Nitto ATP Finals",
+          "kick_utc": 1795107600,
+          "time": "20/11 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "TSN+"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Nitto ATP Finals",
+          "kick_utc": 1795116600,
+          "time": "20/11 02:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
                 "TSN+",
                 "TSN5",
                 "RDS 2"
@@ -108,64 +121,6 @@
         {
           "league": "Tennis",
           "match": "",
-          "kick_utc": 1795006800,
-          "time": "18/11 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Sky Sports Tennis UK",
-                "Polsat Sport 3 Poland",
-                "ESPN3 Brazil",
-                "TyC Sports Argentina",
-                "Sport 5 Plus Israel",
-                "MAX Sport 3 Bulgaria",
-                "beIN Sports MENA 7",
-                "Polsat Sport Premium 2 Poland",
-                "ESPN2 Argentina",
-                "beIN SPORTS Australia 2",
-                "Sky Sports+",
-                "Sky Sports Tennis Germany",
-                "Cytavision Sports 6 Cyprus",
-                "Ziggo Sport 1 NL",
-                "ESPN2 Brazil",
-                "Canal+ Sport 2 Poland",
-                "RDS Info",
-                "beIN Sports 4 Max France",
-                "MAX Sport 1 Bulgaria",
-                "MAX Sport 2 Bulgaria",
-                "Ziggo Sport 5 NL",
-                "Tennis Channel",
-                "Arena Tennis",
-                "TVA Sports 2",
-                "Digi Sport 2 Romania",
-                "Sky Sport Tennis Italy",
-                "TSN 1",
-                "NovaSports 6 GR",
-                "Polsat Sport 1 Poland",
-                "Ziggo Sport 4 NL",
-                "TSN3 CA",
-                "TV4 Tennis",
-                "TVA Sports",
-                "NovaSports Prime GR",
-                "Polsat Sport 2 Poland",
-                "beIN Sports 3 France",
-                "Sportklub 2 Croatia",
-                "TSN 4",
-                "beIN SPORTS Australia 1",
-                "beIN Sports MENA 9",
-                "Movistar Deportes 2 Spain",
-                "Cytavision Sports 5 Cyprus",
-                "Canal+ Sport 2 Czechia",
-                "Nova Sports Start Greece"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
           "kick_utc": 1795030200,
           "time": "19/11 02:30 AM",
           "tv_channels": [
@@ -173,54 +128,6 @@
               "country": "Daddylive",
               "channels": [
                 "Sportklub 2 Croatia"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Doubles",
-          "kick_utc": 1794997800,
-          "time": "18/11 05:30 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Sportklub 2 Croatia"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Doubles",
-          "kick_utc": 1795021200,
-          "time": "19/11 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Sportklub 2 Croatia"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Carlos Alcaraz vs 🇺 Daniil Medvedev",
-          "kick_utc": 1795006800,
-          "time": "18/11 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream",
-                "Tennis Stream",
-                "Tennis Stream"
               ]
             }
           ],
@@ -246,136 +153,6 @@
         },
         {
           "league": "Tennis",
-          "match": "🇺 Christian Harrison /  Neal Skupski vs  Simone Bolelli /  Andrea Vavassori",
-          "kick_utc": 1794997800,
-          "time": "18/11 05:30 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Marcel Granollers /  Horacio Zeballos vs  Kevin Krawietz /  Tim Puetz",
-          "kick_utc": 1795021200,
-          "time": "19/11 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "D. Glinka vs 🇺 Nishesh Basavareddy",
-          "kick_utc": 1795001400,
-          "time": "18/11 06:30 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Jurij Rodionov vs 🇴 Nicolai Budkov Kjaer",
-          "kick_utc": 1795006800,
-          "time": "18/11 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "🇺 James Duckworth vs E. Vasa",
-          "kick_utc": 1795015800,
-          "time": "18/11 10:30 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "J. MacKinlay / J. Nedunchezhiyan vs P. Niklas-Salminen / M. Vrbensky",
-          "kick_utc": 1795021200,
-          "time": "19/11 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Atp Finals 2026",
-          "kick_utc": 1795006800,
-          "time": "18/11 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv2 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Championnat de l'ATP Nitto 2026",
-          "kick_utc": 1795006800,
-          "time": "18/11 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Réseau Des Sports (Rds)",
-                "Réseau Des Sports (Rds) Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
           "match": "Championnat de l'ATP Nitto 2026",
           "kick_utc": 1795030200,
           "time": "19/11 02:30 AM",
@@ -392,15 +169,31 @@
         },
         {
           "league": "Tennis",
-          "match": "2026 Nitto ATP Finals",
-          "kick_utc": 1795006800,
-          "time": "18/11 08:00 PM",
+          "match": "Championnat de l'ATP Nitto 2026",
+          "kick_utc": 1795093200,
+          "time": "19/11 08:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "TSN 5",
-                "TSN 5 Hd"
+                "Réseau Des Sports (Rds)",
+                "Réseau Des Sports (Rds) Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Championnat de l'ATP Nitto 2026",
+          "kick_utc": 1795116600,
+          "time": "20/11 02:30 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Rds2",
+                "Rds2 Hd"
               ]
             }
           ],
@@ -424,21 +217,31 @@
         },
         {
           "league": "Tennis",
-          "match": "Grand Slam of Curling",
-          "kick_utc": 1795017600,
-          "time": "18/11 11:00 PM",
+          "match": "2026 Nitto ATP Finals",
+          "kick_utc": 1795093200,
+          "time": "19/11 08:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Sportsnet (Pacific)",
-                "Sportsnet (Pacific) Hd",
-                "Sportsnet 4K",
-                "Sportsnet East",
-                "Sportsnet East Hd",
-                "Sportsnet Mst",
-                "Sportsnet Ontario Hd",
-                "Sportsnet West Hd"
+                "TSN 5",
+                "TSN 5 Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "2026 Nitto ATP Finals",
+          "kick_utc": 1795116600,
+          "time": "20/11 02:30 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "TSN 5",
+                "TSN 5 Hd"
               ]
             }
           ],
@@ -490,9 +293,98 @@
         },
         {
           "league": "Tennis",
-          "match": "Nitto ATP Finals E7",
-          "kick_utc": 1795006800,
-          "time": "18/11 08:00 PM",
+          "match": "Grand Slam of Curling",
+          "kick_utc": 1795102200,
+          "time": "19/11 10:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sportsnet (Pacific)",
+                "Sportsnet (Pacific) Hd",
+                "Sportsnet 4K",
+                "Sportsnet East",
+                "Sportsnet East Hd",
+                "Sportsnet Mst",
+                "Sportsnet Ontario Hd",
+                "Sportsnet West Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Grand Slam of Curling",
+          "kick_utc": 1795116600,
+          "time": "20/11 02:30 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sportsnet (Pacific)",
+                "Sportsnet (Pacific) Hd",
+                "Sportsnet 4K",
+                "Sportsnet East",
+                "Sportsnet East Hd",
+                "Sportsnet Mst",
+                "Sportsnet Ontario Hd",
+                "Sportsnet West Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Atp Finals 2026",
+          "kick_utc": 1795093200,
+          "time": "19/11 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv1 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Atp Finals 2026",
+          "kick_utc": 1795116600,
+          "time": "20/11 02:30 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv1 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Nitto ATP Finals E8",
+          "kick_utc": 1795030200,
+          "time": "19/11 02:30 AM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Nitto ATP Finals E9",
+          "kick_utc": 1795093200,
+          "time": "19/11 08:00 PM",
           "tv_channels": [
             {
               "country": "NowTV",
@@ -506,8 +398,8 @@
         {
           "league": "Tennis",
           "match": "Groepsfase",
-          "kick_utc": 1795006800,
-          "time": "18/11 08:00 PM",
+          "kick_utc": 1795093200,
+          "time": "19/11 08:00 PM",
           "tv_channels": [
             {
               "country": "NowTV",
@@ -523,8 +415,8 @@
         {
           "league": "Tennis",
           "match": "Groepsfase",
-          "kick_utc": 1795030200,
-          "time": "19/11 02:30 AM",
+          "kick_utc": 1795116600,
+          "time": "20/11 02:30 AM",
           "tv_channels": [
             {
               "country": "NowTV",
@@ -539,9 +431,9 @@
         },
         {
           "league": "Tennis",
-          "match": "Nitto ATP Finals E8",
-          "kick_utc": 1795030200,
-          "time": "19/11 02:30 AM",
+          "match": "Nitto ATP Finals E10",
+          "kick_utc": 1795116600,
+          "time": "20/11 02:30 AM",
           "tv_channels": [
             {
               "country": "NowTV",
