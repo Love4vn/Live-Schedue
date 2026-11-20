@@ -1,8 +1,8 @@
 {
-  "updated": "2026-11-20 16:44 VN",
+  "updated": "2026-11-21 02:15 VN",
   "days": {
-    "20261120": {
-      "date": "Friday, 20/11",
+    "20261121": {
+      "date": "Saturday, 21/11",
       "games": [
         {
           "league": "Bundesliga",
@@ -17,7 +17,7 @@
                 "NBC Universo",
                 "TeleXitos",
                 "USA Network",
-                "Fandango",
+                "DAZN Canada",
                 "Show more"
               ]
             }
@@ -58,17 +58,25 @@
                 "Digi Sport 2 Romania HD",
                 "Eleven Sports 1 Polska HD",
                 "Fast Sports TV Armenia",
+                "Futbol TV Uzbekistan",
+                "Futbol TV Uzbekistan",
+                "GEM Sport 1 HD",
                 "Idman TV HD",
+                "IRIB Varzesh HD",
+                "IRIB Varzesh HD",
                 "NBC Universo USA",
                 "Net4+ Sport",
                 "Nova Sports 3 Cyprus HD",
                 "Nova Sports 3 Hellas HD",
                 "Okko Prime Sport HD",
                 "OneFootball",
+                "Orange Fútbol 3 HD",
                 "Persiana Sport HD",
                 "Persiana Sport HD",
                 "Persiana Sport HD",
                 "Play Sports 1 Belgium",
+                "Premier Sports 5 Mongolia HD",
+                "Premier Sports 5 Mongolia HD",
                 "Prima Sport RO 3 HD",
                 "Prima Sport RO 3 HD",
                 "S Sport+ Streaming",
@@ -82,10 +90,15 @@
                 "Sky Sport Bundesliga HD",
                 "Sky Sport Bundesliga UHD",
                 "Sky Sport Top Event HD",
+                "Sport TV Azerbaijan",
                 "Sport TV Belarus",
                 "Sport TV2 Slovenija",
                 "SportKlub 1 Hrvatska HD",
                 "SporTV Brazil HD",
+                "Sporty TV Africa HD",
+                "Sporty TV Africa HD",
+                "Sporty TV Africa HD",
+                "Sporty TV Africa HD",
                 "ST World Football HD",
                 "ST World Football HD",
                 "ST World Football HD",
@@ -111,41 +124,874 @@
           "source": "livesportsontv"
         },
         {
-          "league": "Bundesliga",
-          "match": "Bayern Munich vs Cologne",
-          "kick_utc": 1795199400,
-          "time": "21/11 01:30 AM",
+          "league": "Premier League",
+          "match": "Manchester City vs Fulham",
+          "kick_utc": 1795260600,
+          "time": "21/11 06:30 PM",
           "tv_channels": [
             {
               "country": "Wheresthematch",
               "channels": [
-                "Bundesliga YouTube",
-                "BBC iPlayer",
-                "BBC Sport Website"
+                "HBO Max",
+                "TNT Sports Ultimate",
+                "TNT Sports 1"
               ]
             }
           ],
           "source": "wheresthematch"
         },
         {
-          "league": "UEFA Nations League",
-          "match": "",
-          "kick_utc": 1795172400,
-          "time": "20/11 06:00 PM",
+          "league": "Premier League",
+          "match": "Manchester City vs Fulham",
+          "kick_utc": 1795264200,
+          "time": "21/11 07:30 PM",
           "tv_channels": [
             {
-              "country": "Daddylive",
+              "country": "Hubsport",
               "channels": [
-                "Fox Sports 1 USA",
-                "L'Equipe France",
-                "DAZN 1 DE",
-                "ČT Sport CZ",
-                "Sportklub 7 Croatia",
-                "Sport 1 Israel"
+                "Dazn 1 Portugal"
+              ]
+            },
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Nova Sports Premier League HD",
+                "Arena Premium 1 Srbija HD",
+                "USA Network",
+                "beIN Sports MENA English 1 HD",
+                "Canal+ Foot HD",
+                "DAZN 1 Portugal HD",
+                "Setanta Sports 1 Eurasia HD",
+                "Spíler 1 TV Hungary HD",
+                "VOYO Pro TV Romania",
+                "TNT Sports Digital Exclusive",
+                "SuperSport 3 Albania HD",
+                "DAZN Portugal",
+                "ViaPlay Nederland HD",
+                "Astro Premier League HD",
+                "SuperSport Premier League HD",
+                "Premier Sports 2 Mongolia HD",
+                "SÝN Sport 1 Ísland HD",
+                "GEM Sport 1 HD",
+                "beIN Sports MENA 1 HD",
+                "Prime Video Sverige",
+                "Arena Sport 1 Hrvatska HD",
+                "TNT Sports Ultimate UHD",
+                "NOW Sports HK 1 4K",
+                "Setanta Sports Ukraine HD",
+                "Canal+ Extra 1 Polska HD",
+                "Canal+ Live 1 France HD",
+                "Premier League+",
+                "beIN Connect Türkiye",
+                "Sky Sport Premier League DE HD",
+                "Coupang Play OTT",
+                "Sky Sport 8 NZ HD",
+                "Sky Sport Calcio HD",
+                "HBO Max",
+                "DAZN Canada",
+                "Play Sports 1 Belgium",
+                "V Sport Premier League HD",
+                "Cytavision Sports 3 HD",
+                "Prime Video Dansk",
+                "Sky Sport 1 Austria HD",
+                "ViaPlay Suomi HD",
+                "DAZN España",
+                "beIN Sports Türkiye 3 HD",
+                "NBC Universo USA",
+                "DAZN 1 Bar Espana",
+                "Arena Sport 1 BiH HD",
+                "beIN MENA 4K UHD",
+                "DAZN 1 Espana HD",
+                "Canal+ Sport Cesko HD",
+                "TNT Sports 1 HD",
+                "Monomax Streaming",
+                "Canal+ France HD",
+                "Hub Premier 1 HD",
+                "ViaPlay Norge HD",
+                "Astro Sports UHD",
+                "Arena Premium 1 Slovenija",
+                "TVNet Sport Azerbaijan",
+                "USA Network HD",
+                "NBC Universo",
+                "Go3 Extra Sport Baltics"
+              ]
+            },
+            {
+              "country": "NowTV",
+              "channels": [
+                "Hub Premier 1",
+                "Now Sports Premier League TV",
+                "Now Sports 4K 1",
+                "Now Sports Premier League 1"
               ]
             }
           ],
-          "source": "daddylive"
+          "source": "hubsport"
+        },
+        {
+          "league": "Serie A",
+          "match": "Lazio - Lecce",
+          "kick_utc": 1795269600,
+          "time": "21/11 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "DAZN France",
+                "Digi Sport",
+                "Arena Premium 3 Srbija HD",
+                "MATCH! Futbol 1 HD",
+                "Peacock Premium USA",
+                "Eleven Sports 4 Polska HD",
+                "Prima Sport RO 5 HD",
+                "Megogo Futbol 3",
+                "Magenta Hellas Sport 2 HD",
+                "Arena Premium 2 BiH HD",
+                "DAZN Italia",
+                "MTV Katsomon+",
+                "Net4+ Sport",
+                "beIN Sports Australia 2 HD",
+                "Fast Sports",
+                "Sport TV1 Portugal HD",
+                "Cytavision Sports 4 HD",
+                "MATCH! TV",
+                "S Sport 2 Türkiye HD",
+                "Paramount+ USA",
+                "DAZN Canada",
+                "VG+ Sport Norge",
+                "Arena Sport 5 Hrvatska HD",
+                "S Sport+ Streaming",
+                "DAZN Ireland",
+                "SuperSport Football HD",
+                "DAZN España",
+                "TV2 Play Danmark",
+                "TV4 Play Sverige",
+                "DAZN Belgium",
+                "Astro Stadium HD",
+                "Paramount+",
+                "Tring Sport 2 HD",
+                "DAZN 1 Italia HD",
+                "DAZN Deutsch"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Bundesliga",
+          "match": "Bayer Leverkusen - Paderborn",
+          "kick_utc": 1795271400,
+          "time": "21/11 09:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena Sport 7 Srbija HD",
+                "Nova Sports 5 Cyprus HD",
+                "OneFootball",
+                "Peacock ES",
+                "ViaPlay Ísland HD",
+                "DAZN Portugal",
+                "ViaPlay Nederland HD",
+                "Arena Sport 6 BiH HD",
+                "beIN Sports 3 HD",
+                "Sky Sport Bundesliga 2 HD",
+                "beIN Sports France 6 HD max",
+                "ViaPlay Sverige HD",
+                "DAZN Canada",
+                "S Sport+ Streaming",
+                "ViaPlay Suomi HD",
+                "DAZN España",
+                "Nova Sports 5 Hellas HD",
+                "ViaPlay Norge HD",
+                "Fandango",
+                "ViaPlay Danmark HD"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Bundesliga",
+          "match": "Borussia Mönchengladbach - Borussia Dortmund",
+          "kick_utc": 1795271400,
+          "time": "21/11 09:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Peacock ES",
+                "Telemundo",
+                "Fandango",
+                "DAZN Canada",
+                "OneSoccer"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Bundesliga",
+          "match": "Mönchengladbach vs Borussia Dortmund",
+          "kick_utc": 1795271400,
+          "time": "21/11 09:30 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Arena Premium 4 BiH HD",
+                "Arena Sport 6 Srbija HD",
+                "beIN Sports France 4 HD max",
+                "beIN Sports France 4 HD max",
+                "DAZN 4 Portugal HD",
+                "DAZN España",
+                "DAZN Portugal",
+                "Digi Sport",
+                "Eleven Sports 1 Polska HD",
+                "Net4+ Sport",
+                "Nova Sports 3 Cyprus HD",
+                "Nova Sports 3 Hellas HD",
+                "OneFootball",
+                "Play Sports 2 Belgium",
+                "Premier Sports 5 Mongolia HD",
+                "Premier Sports 5 Mongolia HD",
+                "Prima Sport RO PPV 1",
+                "S Sport+ Streaming",
+                "See Dansk HD",
+                "See Dansk HD",
+                "See Dansk HD",
+                "Setanta Sports 2 Eurasia HD",
+                "Setanta Sports 2 Eurasia HD",
+                "Setanta Sports 2 Eurasia HD",
+                "Sky Sport Bundesliga 1 HD",
+                "Sky Sport Bundesliga HD",
+                "Sky Sport Bundesliga UHD",
+                "Sky Sport MIX Italia HD",
+                "Sky Sport Top Event HD",
+                "Sport TV1 Slovenija",
+                "Tring Sport 4 HD",
+                "ViaPlay Danmark HD",
+                "ViaPlay Nederland HD",
+                "ViaPlay Norge HD",
+                "ViaPlay Suomi HD",
+                "ViaPlay Sverige HD",
+                "ViaPlay Ísland HD",
+                "YouTube: German Football"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Premier League",
+          "match": "AFC Bournemouth - Nottingham Forest",
+          "kick_utc": 1795273200,
+          "time": "21/11 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Peacock",
+                "NBCSN Extra",
+                "DAZN Canada"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Premier League",
+          "match": "Chelsea vs Leeds United",
+          "kick_utc": 1795269600,
+          "time": "21/11 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Not Televised"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Premier League",
+          "match": "Chelsea vs Leeds United",
+          "kick_utc": 1795273200,
+          "time": "21/11 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Dazn 1 Portugal"
+              ]
+            },
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Nova Sports Premier League HD",
+                "Fubo Sports USA",
+                "Arena Premium 1 Srbija HD",
+                "Spíler 1 TV Hungary HD",
+                "beIN Sports MENA English 1 HD",
+                "DAZN 1 Portugal HD",
+                "Setanta Sports 1 Eurasia HD",
+                "VOYO Pro TV Romania",
+                "SuperSport 3 Albania HD",
+                "DAZN Portugal",
+                "Peacock Premium USA",
+                "ViaPlay Nederland HD",
+                "NBCS Network",
+                "Astro Premier League HD",
+                "SuperSport Premier League HD",
+                "Premier Sports 2 Mongolia HD",
+                "beIN Sports MENA 1 HD",
+                "Arena Sport 1 Hrvatska HD",
+                "TV3 MAX Dansk HD",
+                "Peacock",
+                "Setanta Sports Ukraine HD",
+                "Canal+ Extra 1 Polska HD",
+                "Canal+ Cesko HD",
+                "SÝN Sport 2 Ísland HD",
+                "Premier League+",
+                "beIN Connect Türkiye",
+                "Astro Grandstand HD",
+                "Sky Sport Premier League DE HD",
+                "Coupang Play OTT",
+                "Sky Sport 8 NZ HD",
+                "Sky Sport Calcio HD",
+                "Play Sports 1 Belgium",
+                "DAZN Canada",
+                "V Sport Premier League HD",
+                "ViaPlay Sverige HD",
+                "Cytavision Sports 3 HD",
+                "Hub Premier 6 HD",
+                "ViaPlay Suomi HD",
+                "DAZN España",
+                "beIN Sports Türkiye 3 HD",
+                "NBC Sports Network",
+                "DAZN 1 Bar Espana",
+                "Arena Sport 1 BiH HD",
+                "Canal+ Live 2 France HD",
+                "DAZN 1 Espana HD",
+                "Canal+ Sport Cesko HD",
+                "Idman TV HD",
+                "Monomax Streaming",
+                "Premier Sports 1 Ireland HD",
+                "Hub Premier 1 HD",
+                "ViaPlay Norge HD",
+                "Arena Sport 1 Slovenija HD",
+                "ViaPlay Danmark HD",
+                "Go3 Extra Sport Baltics"
+              ]
+            },
+            {
+              "country": "NowTV",
+              "channels": [
+                "Hub Premier 1",
+                "Now Sports Premier League TV",
+                "Now Sports Premier League 1"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Premier League",
+          "match": "Coventry City vs Crystal Palace",
+          "kick_utc": 1795269600,
+          "time": "21/11 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Not Televised"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Premier League",
+          "match": "Coventry City - Crystal Palace",
+          "kick_utc": 1795273200,
+          "time": "21/11 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Nova Sports News HD",
+                "Fubo Sports USA",
+                "Arena Sport 9 Hrvatska HD",
+                "Astro Premier League 5 HD",
+                "VOYO Pro TV Romania",
+                "Canal+ Live 6 France HD",
+                "Sky Sport 7 NZ HD",
+                "DAZN Portugal",
+                "Peacock Premium USA",
+                "ViaPlay Nederland HD",
+                "beIN Sports Türkiye Max 1 HD",
+                "Peacock",
+                "Arena Sport 3 Srbija HD",
+                "beIN Connect Türkiye",
+                "Premier League+",
+                "beIN Sports MENA 6 HD",
+                "Canal+ Extra 7 Polska HD",
+                "Coupang Play OTT",
+                "SÝN Sport Island 2 HD",
+                "NBCSN Extra",
+                "DAZN Canada",
+                "ViaPlay Sverige HD",
+                "ViaPlay Suomi HD",
+                "DAZN España",
+                "NBC Sports Network",
+                "Hub Premier 5 HD",
+                "Monomax Streaming",
+                "ViaPlay Norge HD",
+                "V Sport Premier League 4 HD",
+                "ViaPlay Danmark HD",
+                "Go3 Extra Sport Baltics",
+                "Canal+ Sport 8 Czech HD"
+              ]
+            },
+            {
+              "country": "NowTV",
+              "channels": [
+                "Hub Premier 5",
+                "Now Sports Premier League 5"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Premier League",
+          "match": "Tottenham Hotspur vs Ipswich Town",
+          "kick_utc": 1795269600,
+          "time": "21/11 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Not Televised"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Premier League",
+          "match": "Tottenham Hotspur vs Ipswich Town",
+          "kick_utc": 1795273200,
+          "time": "21/11 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Dazn 2 Portugal"
+              ]
+            },
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Setanta Sports Premium HD",
+                "USA Network",
+                "Nova Sports Start Hellas HD",
+                "VOYO Pro TV Romania",
+                "DAZN Portugal",
+                "ViaPlay Nederland HD",
+                "SuperSport 4 Albania HD",
+                "Sky Sport 6 NZ HD",
+                "Arena Sport 2 Srbija HD",
+                "Premier Sports 3 Mongolia HD",
+                "TV3+ Norge HD",
+                "beIN Sports Türkiye Max 1 HD",
+                "Canal+ Sport 5 Czech HD",
+                "Cytavision Sports 7 HD",
+                "Net4+ Sport",
+                "Astro Premier League 2 HD",
+                "SÝN Sport 3 Ísland HD",
+                "Premier League+",
+                "Arena Sport 2 Hrvatska HD",
+                "beIN Connect Türkiye",
+                "beIN Sports MENA 3 HD",
+                "Setanta Sports Qazaqstan HD",
+                "ViaPlay TV Nederland HD",
+                "Coupang Play OTT",
+                "Canal+ Live 3 France HD",
+                "ViaPlay Sverige HD",
+                "DAZN Canada",
+                "SuperSport Football Plus HD",
+                "Arena Sport 4 Slovenija HD",
+                "V Sport Premier League 1 HD",
+                "ViaPlay Suomi HD",
+                "DAZN España",
+                "NBC Universo USA",
+                "Monomax Streaming",
+                "DAZN 2 Portugal HD",
+                "Match 4 Hungary HD",
+                "Canal+ Extra 5 Polska HD",
+                "ViaPlay Norge HD",
+                "Hub Premier 2 HD",
+                "USA Network HD",
+                "NBC Universo",
+                "ViaPlay Danmark HD",
+                "Go3 Extra Sport Baltics"
+              ]
+            },
+            {
+              "country": "NowTV",
+              "channels": [
+                "Hub Premier 2",
+                "Now Sports Premier League 2"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Premier League",
+          "match": "Bournemouth vs Nottingham Forest",
+          "kick_utc": 1795273200,
+          "time": "21/11 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Fubo Sports USA",
+                "VOYO Pro TV Romania",
+                "Sky Sport Select NZ HD",
+                "SuperSport Extra HD",
+                "DAZN Portugal",
+                "Peacock Premium USA",
+                "ViaPlay Nederland HD",
+                "Arena Premium 2 Srbija HD",
+                "Arena Sport 7 Hrvatska HD",
+                "Premier League+",
+                "beIN Connect Türkiye",
+                "V Sport Premier League 3 HD",
+                "Coupang Play OTT",
+                "Canal+ Extra 6 Polska HD",
+                "ViaPlay Sverige HD",
+                "DAZN Canada",
+                "Canal+ Live 5 France HD",
+                "beIN Sports MENA 5 HD",
+                "Nova Sports 2 Hellas HD",
+                "Astro Premier League 4 HD",
+                "ViaPlay Suomi HD",
+                "DAZN España",
+                "NBC Sports Network",
+                "SÝN Sport 5 Ísland HD",
+                "Hub Premier 4 HD",
+                "Monomax Streaming",
+                "Canal+ Sport 7 Czech HD",
+                "ViaPlay Norge HD",
+                "ViaPlay Danmark HD",
+                "Go3 Extra Sport Baltics"
+              ]
+            },
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports Premier League 4",
+                "Hub Premier 4"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Ligue 1",
+          "match": "Nice - PSG",
+          "kick_utc": 1795277700,
+          "time": "21/11 11:15 PM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "beIN USA",
+                "beIN USA Espanol",
+                "beIN Canada",
+                "beIN Canada Espanol"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Serie A",
+          "match": "Parma vs Roma",
+          "kick_utc": 1795276800,
+          "time": "21/11 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "DAZN"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Serie A",
+          "match": "Parma - Roma",
+          "kick_utc": 1795280400,
+          "time": "22/11 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Sport TV2 Portugal HD",
+                "Magenta Hellas Sport 1 HD",
+                "DAZN France",
+                "Ziggo Sport 2",
+                "Prima Sport RO 3 HD",
+                "MATCH! Futbol 1 HD",
+                "Peacock Premium USA",
+                "Arena Premium 2 Srbija HD",
+                "CBS Golazo Network",
+                "LaLiga TV Bar 5",
+                "Megogo Futbol 3",
+                "Arena Sport 3 Slovenija HD",
+                "M+ #Vamos Bar 1",
+                "Arena Premium 2 BiH HD",
+                "DAZN Italia",
+                "MTV Katsomon+",
+                "Net4+ Sport",
+                "DAZN Great Britain",
+                "beIN Sports Australia 2 HD",
+                "Fast Sports",
+                "M+ Vamos 1 España HD",
+                "Arena Sport 2 Hrvatska HD",
+                "Cytavision Sports 4 HD",
+                "MATCH! TV",
+                "S Sport 2 Türkiye HD",
+                "Paramount+ USA",
+                "DAZN Canada",
+                "VG+ Sport Norge",
+                "S Sport+ Streaming",
+                "DAZN Ireland",
+                "SuperSport Football HD",
+                "TV2 Sport X Dansk HD",
+                "Astro Football HD",
+                "Digi Sport 3 Romania",
+                "DAZN España",
+                "TV2 Play Danmark",
+                "TV4 Play Sverige",
+                "DAZN Belgium",
+                "Tring Sport 1 HD",
+                "Match 4 Hungary HD",
+                "Paramount+",
+                "Eleven Sports 1 Polska HD",
+                "DAZN 1 Italia HD",
+                "M+ Liga de Campeones HD",
+                "Orange Fútbol 3 HD",
+                "NBC Universo",
+                "DAZN Deutsch"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Premier League",
+          "match": "Newcastle United - Arsenal FC",
+          "kick_utc": 1795282200,
+          "time": "22/11 12:30 AM",
+          "tv_channels": [
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Telemundo",
+                "USA Network",
+                "DAZN Canada"
+              ]
+            }
+          ],
+          "source": "livesportsontv"
+        },
+        {
+          "league": "Premier League",
+          "match": "Newcastle United vs Arsenal",
+          "kick_utc": 1795278600,
+          "time": "21/11 11:30 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Sky Sports Premier League",
+                "Sky Sports Main Event",
+                "Sky Sports Ultra HDR"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Premier League",
+          "match": "Newcastle United vs Arsenal",
+          "kick_utc": 1795282200,
+          "time": "22/11 12:30 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Dazn 1 Portugal"
+              ]
+            },
+            {
+              "country": "LiveSportsOnTV",
+              "channels": [
+                "Setanta Sports Premium HD",
+                "Nova Sports Premier League HD",
+                "Arena Premium 1 Srbija HD",
+                "Canal+ Foot HD",
+                "beIN Sports MENA English 1 HD",
+                "DAZN 1 Portugal HD",
+                "Setanta Sports 1 Eurasia HD",
+                "Spíler 1 TV Hungary HD",
+                "VOYO Pro TV Romania",
+                "SuperSport 3 Albania HD",
+                "DAZN Portugal",
+                "ViaPlay Nederland HD",
+                "Sky Sports Main Event HD",
+                "Sky Go UK",
+                "Astro Premier League HD",
+                "SuperSport Premier League HD",
+                "Premier Sports 2 Mongolia HD",
+                "SÝN Sport 1 Ísland HD",
+                "GEM Sport 1 HD",
+                "beIN Sports MENA 1 HD",
+                "Arena Sport 1 Hrvatska HD",
+                "NOW Sports HK 1 4K",
+                "V Sport Ultra 4K UHD",
+                "Canal+ Extra 1 Polska HD",
+                "Canal+ Live 1 France HD",
+                "Premier League+",
+                "beIN Connect Türkiye",
+                "Astro Grandstand HD",
+                "Sky Sports Main Event UHD",
+                "Sky Sport Premier League DE HD",
+                "Coupang Play OTT",
+                "Sky Sport 8 NZ HD",
+                "Cytavision Sports 4K 1 UHD",
+                "Sky Sport Calcio HD",
+                "Play Sports 1 Belgium",
+                "DAZN Canada",
+                "Sky Sports Premier League HD",
+                "V Sport Premier League HD",
+                "ViaPlay Sverige HD",
+                "Cytavision Sports 3 HD",
+                "USA Network HD",
+                "Arena Premium 1 BiH HD",
+                "ViaPlay Suomi HD",
+                "DAZN España",
+                "beIN Sports Türkiye 3 HD",
+                "DAZN 1 Bar Espana",
+                "beIN MENA 4K UHD",
+                "DAZN 1 Espana HD",
+                "Canal+ Sport Cesko HD",
+                "Idman TV HD",
+                "Monomax Streaming",
+                "Sky UK Ultra HD 1",
+                "Hub Premier 1 HD",
+                "ViaPlay Norge HD",
+                "Astro Sports UHD",
+                "TVNet Sport Azerbaijan",
+                "Arena Sport 1 Slovenija HD",
+                "TV3+ Dansk HD",
+                "ViaPlay Danmark HD",
+                "Go3 Extra Sport Baltics"
+              ]
+            },
+            {
+              "country": "NowTV",
+              "channels": [
+                "Hub Premier 1",
+                "Now Sports Premier League TV",
+                "Now Sports 4K 1",
+                "Now Sports Premier League 1"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Premier League",
+          "match": "Aston Villa vs Sunderland",
+          "kick_utc": 1795269600,
+          "time": "21/11 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Not Televised"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Premier League",
+          "match": "Aston Villa vs Sunderland",
+          "kick_utc": 1795273200,
+          "time": "21/11 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Hub Premier 3",
+                "Now Sports Premier League 3"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Premier League",
+          "match": "Bournemouth AFC vs Nottingham Forest",
+          "kick_utc": 1795269600,
+          "time": "21/11 09:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Not Televised"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Serie A",
+          "match": "Napoli vs Torino",
+          "kick_utc": 1795286700,
+          "time": "22/11 01:45 AM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "DAZN"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "La Liga",
+          "match": "Real Madrid vs Celta Vigo",
+          "kick_utc": 1795287600,
+          "time": "22/11 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Disney+"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
         },
         {
           "league": "Bundesliga",
@@ -250,41 +1096,8 @@
         {
           "league": "Tennis",
           "match": "Nitto ATP Finals",
-          "kick_utc": 1795167000,
-          "time": "20/11 04:30 PM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Sky Sports Main Event",
-                "Sky Sports Tennis",
-                "Sky Sports Ultra HDR"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Nitto ATP Finals",
-          "kick_utc": 1795170600,
-          "time": "20/11 05:30 PM",
-          "tv_channels": [
-            {
-              "country": "LiveSportsOnTV",
-              "channels": [
-                "Tennis Channel",
-                "TSN+"
-              ]
-            }
-          ],
-          "source": "livesportsontv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Nitto ATP Finals",
-          "kick_utc": 1795190400,
-          "time": "20/11 11:00 PM",
+          "kick_utc": 1795255200,
+          "time": "21/11 05:00 PM",
           "tv_channels": [
             {
               "country": "Wheresthematch",
@@ -298,13 +1111,12 @@
         {
           "league": "Tennis",
           "match": "Nitto ATP Finals",
-          "kick_utc": 1795194000,
-          "time": "21/11 12:00 AM",
+          "kick_utc": 1795258800,
+          "time": "21/11 06:00 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Tennis Channel",
                 "TSN+"
               ]
             }
@@ -313,17 +1125,16 @@
         },
         {
           "league": "Tennis",
-          "match": "Carlos Alcaraz - Flavio Cobolli",
-          "kick_utc": 1795179600,
-          "time": "20/11 08:00 PM",
+          "match": "Nitto ATP Finals",
+          "kick_utc": 1795267800,
+          "time": "21/11 08:30 PM",
           "tv_channels": [
             {
               "country": "LiveSportsOnTV",
               "channels": [
-                "Tennis Channel",
                 "TSN+",
-                "RDS",
-                "TSN5"
+                "TSN5",
+                "RDS 2"
               ]
             }
           ],
@@ -331,14 +1142,14 @@
         },
         {
           "league": "Tennis",
-          "match": "Billie Jean King Cup",
-          "kick_utc": 1795172400,
-          "time": "20/11 06:00 PM",
+          "match": "Nitto ATP Finals",
+          "kick_utc": 1795276800,
+          "time": "21/11 11:00 PM",
           "tv_channels": [
             {
               "country": "Wheresthematch",
               "channels": [
-                "Tennis Channel"
+                "Sky Sports Tennis"
               ]
             }
           ],
@@ -346,33 +1157,18 @@
         },
         {
           "league": "Tennis",
-          "match": "Billie Jean King Cup",
-          "kick_utc": 1795186800,
-          "time": "20/11 10:00 PM",
+          "match": "Nitto ATP Finals",
+          "kick_utc": 1795280400,
+          "time": "22/11 12:00 AM",
           "tv_channels": [
             {
-              "country": "Wheresthematch",
+              "country": "LiveSportsOnTV",
               "channels": [
-                "Tennis Channel"
+                "TSN+"
               ]
             }
           ],
-          "source": "wheresthematch"
-        },
-        {
-          "league": "Tennis",
-          "match": "Billie Jean King Cup",
-          "kick_utc": 1795190400,
-          "time": "20/11 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "Wheresthematch",
-              "channels": [
-                "Tennis Channel"
-              ]
-            }
-          ],
-          "source": "wheresthematch"
+          "source": "livesportsontv"
         },
         {
           "league": "Tennis",
@@ -421,106 +1217,48 @@
         },
         {
           "league": "Tennis",
-          "match": "Turin",
-          "kick_utc": 1795170600,
-          "time": "20/11 05:30 PM",
+          "match": "Billie Jean King Cup",
+          "kick_utc": 1795260600,
+          "time": "21/11 06:30 PM",
           "tv_channels": [
             {
-              "country": "Daddylive",
+              "country": "Wheresthematch",
               "channels": [
-                "Tennis Channel",
-                "TSN 1",
-                "Sky Sports+",
-                "Sky Sports Tennis UK",
-                "Sky Sports Tennis Germany",
-                "TVA Sports 2",
-                "TSN3 CA",
-                "RDS Info",
-                "TSN 4",
-                "TVA Sports",
-                "Sky Sport Tennis Italy",
-                "TV4 Tennis",
-                "Canal+ Sport 2 Czechia",
-                "Cytavision Sports 5 Cyprus",
-                "beIN Sports 3 France",
-                "beIN Sports 4 Max France",
-                "Movistar Deportes 2 Spain",
-                "Cytavision Sports 6 Cyprus",
-                "MAX Sport 1 Bulgaria",
-                "MAX Sport 2 Bulgaria",
-                "MAX Sport 3 Bulgaria",
-                "Arena Tennis",
-                "TyC Sports Argentina",
-                "Digi Sport 2 Romania",
-                "Ziggo Sport 5 NL",
-                "Ziggo Sport 4 NL",
-                "Ziggo Sport 1 NL",
-                "NovaSports Prime GR",
-                "Nova Sports Start Greece",
-                "Polsat Sport 1 Poland",
-                "Canal+ Sport 2 Poland",
-                "Polsat Sport 2 Poland",
-                "Polsat Sport Premium 2 Poland",
-                "Polsat Sport 3 Poland",
-                "Canal+ Sport 2 Poland",
-                "ESPN2 Argentina",
-                "beIN SPORTS Australia 1",
-                "beIN SPORTS Australia 2",
-                "NovaSports 6 GR",
-                "beIN Sports MENA 7",
-                "beIN Sports MENA 9",
-                "ESPN2 Brazil",
-                "ESPN3 Brazil",
-                "Sport 5 Plus Israel"
+                "Tennis Channel"
               ]
             }
           ],
-          "source": "daddylive"
+          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
-          "match": "Doubles",
-          "kick_utc": 1795170600,
-          "time": "20/11 05:30 PM",
+          "match": "Billie Jean King Cup",
+          "kick_utc": 1795273200,
+          "time": "21/11 10:00 PM",
           "tv_channels": [
             {
-              "country": "Daddylive",
+              "country": "Wheresthematch",
               "channels": [
-                "Sportklub 2 Croatia"
+                "Tennis Channel"
               ]
             }
           ],
-          "source": "daddylive"
+          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
-          "match": "Doubles",
-          "kick_utc": 1795194000,
-          "time": "21/11 12:00 AM",
+          "match": "Billie Jean King Cup",
+          "kick_utc": 1795282200,
+          "time": "22/11 12:30 AM",
           "tv_channels": [
             {
-              "country": "Daddylive",
+              "country": "Wheresthematch",
               "channels": [
-                "Sportklub 2 Croatia"
+                "Tennis Channel"
               ]
             }
           ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "",
-          "kick_utc": 1795179600,
-          "time": "20/11 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Sportklub 2 Croatia"
-              ]
-            }
-          ],
-          "source": "daddylive"
+          "source": "wheresthematch"
         },
         {
           "league": "Tennis",
@@ -532,75 +1270,6 @@
               "country": "Daddylive",
               "channels": [
                 "Sportklub 2 Croatia"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Slovenia  vs Indonesia",
-          "kick_utc": 1795168800,
-          "time": "20/11 05:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Sport 5 Gold Israel"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Poland W  vs Sweden",
-          "kick_utc": 1795190400,
-          "time": "20/11 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "TVA Sports",
-                "beIN Sports 10 Max France",
-                "Polsat Sport 2 Poland",
-                "Sport 5 Gold Israel"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Brazil W  vs Canada W 🇨",
-          "kick_utc": 1795194000,
-          "time": "21/11 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "TVA Sports",
-                "beIN Sports 10 Max France",
-                "Polsat Sport 2 Poland",
-                "Sport 5 Gold Israel"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Carlos Alcaraz vs  Flavio Cobolli",
-          "kick_utc": 1795179600,
-          "time": "20/11 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream",
-                "Tennis Stream",
-                "Tennis Stream"
               ]
             }
           ],
@@ -626,217 +1295,6 @@
         },
         {
           "league": "Tennis",
-          "match": "D. Jakupović vs M. S. Goenadi",
-          "kick_utc": 1795176000,
-          "time": "20/11 07:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tamara Zidanšek vs L. Naswardhani",
-          "kick_utc": 1795181400,
-          "time": "20/11 08:30 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "G. Feistel vs K. Rinaldo Persson",
-          "kick_utc": 1795190400,
-          "time": "20/11 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "N. V. Leme Da Silva vs 🇨 Bianca Andreescu",
-          "kick_utc": 1795194000,
-          "time": "21/11 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Weronika Kubka vs C. W. Hennemann",
-          "kick_utc": 1795195800,
-          "time": "21/11 12:30 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Laura Pigossi vs K. Cross",
-          "kick_utc": 1795199400,
-          "time": "21/11 01:30 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "🇺 Christian Harrison /  Neal Skupski vs  Marcel Granollers /  Horacio Zeballos",
-          "kick_utc": 1795170600,
-          "time": "20/11 05:30 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Simone Bolelli /  Andrea Vavassori vs  Kevin Krawietz /  Tim Puetz",
-          "kick_utc": 1795194000,
-          "time": "21/11 12:00 AM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream",
-                "Tennis Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "🇴 Nicolai Budkov Kjaer vs  Laslo Djere",
-          "kick_utc": 1795174200,
-          "time": "20/11 06:30 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Edas Butvilas vs 🇺 Nishesh Basavareddy",
-          "kick_utc": 1795179600,
-          "time": "20/11 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "🇨🇿 Dalibor Svrcina vs  Otto Virtanen",
-          "kick_utc": 1795188600,
-          "time": "20/11 10:30 PM",
-          "tv_channels": [
-            {
-              "country": "Daddylive",
-              "channels": [
-                "Tennis HD Stream",
-                "Tennis Stream"
-              ]
-            }
-          ],
-          "source": "daddylive"
-        },
-        {
-          "league": "Tennis",
-          "match": "Tenis: ATP Finals Turneul Campionilor",
-          "kick_utc": 1795172400,
-          "time": "20/11 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 3 Hd Romania",
-                "Digi Sport 3 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Atp Finals 2026",
-          "kick_utc": 1795179600,
-          "time": "20/11 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sport Tv1 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
           "match": "Atp Finals 2026",
           "kick_utc": 1795203000,
           "time": "21/11 02:30 AM",
@@ -845,22 +1303,6 @@
               "country": "Hubsport",
               "channels": [
                 "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Championnat de l'ATP Nitto 2026",
-          "kick_utc": 1795179600,
-          "time": "20/11 08:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Réseau Des Sports (Rds)",
-                "Réseau Des Sports (Rds) Hd"
               ]
             }
           ],
@@ -884,15 +1326,15 @@
         },
         {
           "league": "Tennis",
-          "match": "2026 Nitto ATP Finals",
-          "kick_utc": 1795179600,
-          "time": "20/11 08:00 PM",
+          "match": "Championnat de l'ATP Nitto 2026",
+          "kick_utc": 1795267800,
+          "time": "21/11 08:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "TSN 5",
-                "TSN 5 Hd"
+                "Rds2",
+                "Rds2 Hd"
               ]
             }
           ],
@@ -916,37 +1358,15 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis: ATP Finals Torino",
-          "kick_utc": 1795181400,
-          "time": "20/11 08:30 PM",
+          "match": "2026 Nitto ATP Finals",
+          "kick_utc": 1795267800,
+          "time": "21/11 08:30 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Digi Sport 4 Hd Romania",
-                "Digi Sport 4 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Grand Slam of Curling",
-          "kick_utc": 1795190400,
-          "time": "20/11 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sportsnet (Pacific)",
-                "Sportsnet (Pacific) Hd",
-                "Sportsnet 4K",
-                "Sportsnet East",
-                "Sportsnet East Hd",
-                "Sportsnet Mst",
-                "Sportsnet Ontario Hd",
-                "Sportsnet West Hd"
+                "TSN 5",
+                "TSN 5 Hd"
               ]
             }
           ],
@@ -998,9 +1418,78 @@
         },
         {
           "league": "Tennis",
-          "match": "Nitto ATP Finals E11",
-          "kick_utc": 1795179600,
-          "time": "20/11 08:00 PM",
+          "match": "Grand Slam of Curling",
+          "kick_utc": 1795273200,
+          "time": "21/11 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sportsnet (Pacific)",
+                "Sportsnet (Pacific) Hd",
+                "Sportsnet 4K",
+                "Sportsnet East",
+                "Sportsnet East Hd",
+                "Sportsnet Mst",
+                "Sportsnet Ontario Hd",
+                "Sportsnet West Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Grand Slam of Curling",
+          "kick_utc": 1795287600,
+          "time": "22/11 02:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sportsnet East",
+                "Sportsnet East Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Atp Finals 2026 - Atp Finals 2026 - Meia-Final",
+          "kick_utc": 1795267800,
+          "time": "21/11 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sport Tv 6 Hd Portugal"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: ATP Finals Torino Semifinale",
+          "kick_utc": 1795267800,
+          "time": "21/11 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Digi Sport 4 Hd Romania",
+                "Digi Sport 4 Romania"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Nitto ATP Finals E12",
+          "kick_utc": 1795203000,
+          "time": "21/11 02:30 AM",
           "tv_channels": [
             {
               "country": "NowTV",
@@ -1013,9 +1502,39 @@
         },
         {
           "league": "Tennis",
-          "match": "Groepsfase",
-          "kick_utc": 1795179600,
-          "time": "20/11 08:00 PM",
+          "match": "Nitto ATP Finals -Doubles SF (1)",
+          "kick_utc": 1795258800,
+          "time": "21/11 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Nitto ATP Finals -Singles SF (1)",
+          "kick_utc": 1795267800,
+          "time": "21/11 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "NowTV",
+              "channels": [
+                "Now Sports 6"
+              ]
+            }
+          ],
+          "source": "nowtv"
+        },
+        {
+          "league": "Tennis",
+          "match": "Halve Finale",
+          "kick_utc": 1795267800,
+          "time": "21/11 08:30 PM",
           "tv_channels": [
             {
               "country": "NowTV",
@@ -1028,24 +1547,9 @@
         },
         {
           "league": "Tennis",
-          "match": "Groepsfase",
-          "kick_utc": 1795203000,
-          "time": "21/11 02:30 AM",
-          "tv_channels": [
-            {
-              "country": "NowTV",
-              "channels": [
-                "Ziggo Sport 4"
-              ]
-            }
-          ],
-          "source": "nowtv"
-        },
-        {
-          "league": "Tennis",
-          "match": "Nitto ATP Finals E12",
-          "kick_utc": 1795203000,
-          "time": "21/11 02:30 AM",
+          "match": "Nitto ATP Finals -Doubles SF (2)",
+          "kick_utc": 1795280400,
+          "time": "22/11 12:00 AM",
           "tv_channels": [
             {
               "country": "NowTV",
