@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-20 02:36 VN",
+  "updated": "2026-11-20 16:44 VN",
   "days": {
     "20261120": {
       "date": "Friday, 20/11",
@@ -35,9 +35,11 @@
               "channels": [
                 "Arena 4 Hungary HD",
                 "Arena 4 Hungary HD",
+                "Arena M3 Premium MKD HD",
                 "Arena Premium 3 Srbija HD",
                 "Arena Premium 3 Srbija HD",
                 "Arena Premium 4 BiH HD",
+                "Azam Sports 2 HD",
                 "BBC iPlayer",
                 "BBC iPlayer 4K",
                 "BBC Sport Website",
@@ -47,18 +49,30 @@
                 "DAZN 1 Portugal HD",
                 "DAZN España",
                 "DAZN Portugal",
+                "Diema Sport 3 HD",
+                "Diema Sport 3 HD",
+                "Diema Sport 3 HD",
+                "Diema Sport 3 HD",
+                "Diema Sport 3 HD",
                 "Digi Sport 2 Romania HD",
                 "Digi Sport 2 Romania HD",
                 "Eleven Sports 1 Polska HD",
+                "Fast Sports TV Armenia",
                 "Idman TV HD",
+                "NBC Universo USA",
                 "Net4+ Sport",
                 "Nova Sports 3 Cyprus HD",
                 "Nova Sports 3 Hellas HD",
+                "Okko Prime Sport HD",
                 "OneFootball",
+                "Persiana Sport HD",
+                "Persiana Sport HD",
+                "Persiana Sport HD",
                 "Play Sports 1 Belgium",
                 "Prima Sport RO 3 HD",
                 "Prima Sport RO 3 HD",
                 "S Sport+ Streaming",
+                "Setanta Sports 2 Baltic",
                 "Setanta Sports 2 Eurasia HD",
                 "Setanta Sports 2 Eurasia HD",
                 "Setanta Sports 2 Eurasia HD",
@@ -68,17 +82,28 @@
                 "Sky Sport Bundesliga HD",
                 "Sky Sport Bundesliga UHD",
                 "Sky Sport Top Event HD",
+                "Sport TV Belarus",
                 "Sport TV2 Slovenija",
                 "SportKlub 1 Hrvatska HD",
+                "SporTV Brazil HD",
+                "ST World Football HD",
+                "ST World Football HD",
+                "ST World Football HD",
                 "Tring Sport 2 HD",
                 "TV3 MAX Dansk HD",
                 "TV3 MAX Dansk HD",
+                "USA Network HD",
+                "V Sport 1 Norge HD",
+                "V Sport 1 Norge HD",
+                "V Sport Premium HD",
+                "ViaPlay 2 Urheilu HD",
                 "ViaPlay Danmark HD",
                 "ViaPlay Nederland HD",
                 "ViaPlay Norge HD",
                 "ViaPlay Suomi HD",
                 "ViaPlay Sverige HD",
                 "ViaPlay TV Nederland HD",
+                "Viaplay TV Suomi HD",
                 "ViaPlay Ísland HD"
               ]
             }
@@ -103,22 +128,124 @@
           "source": "wheresthematch"
         },
         {
-          "league": "Tennis",
-          "match": "Alexander Zverev - Arthur Fils",
-          "kick_utc": 1795116600,
-          "time": "20/11 02:30 AM",
+          "league": "UEFA Nations League",
+          "match": "",
+          "kick_utc": 1795172400,
+          "time": "20/11 06:00 PM",
           "tv_channels": [
             {
-              "country": "LiveSportsOnTV",
+              "country": "Daddylive",
               "channels": [
-                "Tennis Channel",
-                "TSN+",
-                "TSN5",
-                "RDS 2"
+                "Fox Sports 1 USA",
+                "L'Equipe France",
+                "DAZN 1 DE",
+                "ČT Sport CZ",
+                "Sportklub 7 Croatia",
+                "Sport 1 Israel"
               ]
             }
           ],
-          "source": "livesportsontv"
+          "source": "daddylive"
+        },
+        {
+          "league": "Bundesliga",
+          "match": "Bayern München  vs Köln",
+          "kick_utc": 1795203000,
+          "time": "21/11 02:30 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Sky Sport Bundesliga 1",
+                "Sky Sport Top Event DE",
+                "NBC UNIVERSO",
+                "USA Network",
+                "DAZN Eleven 1 Portugal",
+                "Eleven Sports 1 Poland",
+                "beIN Sports 2 France",
+                "Sky Sport Arena IT",
+                "ŠTV 2 Slovenia",
+                "Nova Sport 3 SK",
+                "Nova Sport 3 CZ",
+                "beIN Sports 3 Malaysia",
+                "Digi Sport 2 Romania",
+                "Arena 3 Premium Serbia",
+                "V Sport Premium",
+                "Nova Sports 3 Greece",
+                "TV3 MAX Denmark",
+                "Sportv Brazil",
+                "Diema Sport 3 Bulgaria",
+                "ESPN3 Argentina",
+                "Sportklub 1 Croatia",
+                "Sport 1 Israel"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Ligue 1",
+          "match": "Troyes  vs Le Havre",
+          "kick_utc": 1795203900,
+          "time": "21/11 02:45 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Ligue1+ France",
+                "Sport TV2 Portugal",
+                "Eleven Sports 2 Poland",
+                "Nova Sport 4 SK",
+                "Nova Sport 4 CZ",
+                "Arena Sport 1 Serbia",
+                "Arena Sport 1 Croatia",
+                "V Sport Extra",
+                "Nova Sport Bulgaria",
+                "beIN SPORTS Xtra",
+                "beIN Sports MENA 4",
+                "5Plus Israel",
+                "Ligue1+ (FR)"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "La Liga",
+          "match": "Athletic Club  vs Espanyol",
+          "kick_utc": 1795204800,
+          "time": "21/11 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "M. LaLiga",
+                "Viaplay Sports 1 UK",
+                "Premier Sports 1 Ireland",
+                "DAZN Eleven 2 Portugal",
+                "DAZN ZONA 1 IT",
+                "Canal+ Sport 2 Poland",
+                "Canal+ Sport 6 Poland",
+                "Digi Sport 3 Romania",
+                "Prima Sport 2 Romania",
+                "Nova Sport 6 CZ",
+                "Ziggo Sport 2 NL",
+                "beIN Sports Malaysia",
+                "Match TV Russia",
+                "Match! Football 2 Russia",
+                "ESPN Deportes",
+                "Arena 4 Premium Serbia",
+                "MagentaSport 3 League Greece",
+                "DSports 2 Argentina",
+                "MAX Sport 4 Bulgaria",
+                "SuperSport Laliga",
+                "Sportklub 5 Croatia",
+                "beIN Sports MENA 1",
+                "ESPN Deportes (ES)"
+              ]
+            }
+          ],
+          "source": "daddylive"
         },
         {
           "league": "Tennis",
@@ -204,14 +331,490 @@
         },
         {
           "league": "Tennis",
-          "match": "Atp Finals 2026",
-          "kick_utc": 1795116600,
-          "time": "20/11 02:30 AM",
+          "match": "Billie Jean King Cup",
+          "kick_utc": 1795172400,
+          "time": "20/11 06:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "Billie Jean King Cup",
+          "kick_utc": 1795186800,
+          "time": "20/11 10:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "Billie Jean King Cup",
+          "kick_utc": 1795190400,
+          "time": "20/11 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "Billie Jean King Cup",
+          "kick_utc": 1795226400,
+          "time": "21/11 09:00 AM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "Billie Jean King Cup",
+          "kick_utc": 1795237200,
+          "time": "21/11 12:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "Billie Jean King Cup",
+          "kick_utc": 1795251600,
+          "time": "21/11 04:00 PM",
+          "tv_channels": [
+            {
+              "country": "Wheresthematch",
+              "channels": [
+                "Tennis Channel"
+              ]
+            }
+          ],
+          "source": "wheresthematch"
+        },
+        {
+          "league": "Tennis",
+          "match": "Turin",
+          "kick_utc": 1795170600,
+          "time": "20/11 05:30 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis Channel",
+                "TSN 1",
+                "Sky Sports+",
+                "Sky Sports Tennis UK",
+                "Sky Sports Tennis Germany",
+                "TVA Sports 2",
+                "TSN3 CA",
+                "RDS Info",
+                "TSN 4",
+                "TVA Sports",
+                "Sky Sport Tennis Italy",
+                "TV4 Tennis",
+                "Canal+ Sport 2 Czechia",
+                "Cytavision Sports 5 Cyprus",
+                "beIN Sports 3 France",
+                "beIN Sports 4 Max France",
+                "Movistar Deportes 2 Spain",
+                "Cytavision Sports 6 Cyprus",
+                "MAX Sport 1 Bulgaria",
+                "MAX Sport 2 Bulgaria",
+                "MAX Sport 3 Bulgaria",
+                "Arena Tennis",
+                "TyC Sports Argentina",
+                "Digi Sport 2 Romania",
+                "Ziggo Sport 5 NL",
+                "Ziggo Sport 4 NL",
+                "Ziggo Sport 1 NL",
+                "NovaSports Prime GR",
+                "Nova Sports Start Greece",
+                "Polsat Sport 1 Poland",
+                "Canal+ Sport 2 Poland",
+                "Polsat Sport 2 Poland",
+                "Polsat Sport Premium 2 Poland",
+                "Polsat Sport 3 Poland",
+                "Canal+ Sport 2 Poland",
+                "ESPN2 Argentina",
+                "beIN SPORTS Australia 1",
+                "beIN SPORTS Australia 2",
+                "NovaSports 6 GR",
+                "beIN Sports MENA 7",
+                "beIN Sports MENA 9",
+                "ESPN2 Brazil",
+                "ESPN3 Brazil",
+                "Sport 5 Plus Israel"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "Doubles",
+          "kick_utc": 1795170600,
+          "time": "20/11 05:30 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Sportklub 2 Croatia"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "Doubles",
+          "kick_utc": 1795194000,
+          "time": "21/11 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Sportklub 2 Croatia"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1795179600,
+          "time": "20/11 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Sportklub 2 Croatia"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "",
+          "kick_utc": 1795203000,
+          "time": "21/11 02:30 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Sportklub 2 Croatia"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "Slovenia  vs Indonesia",
+          "kick_utc": 1795168800,
+          "time": "20/11 05:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Sport 5 Gold Israel"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "Poland W  vs Sweden",
+          "kick_utc": 1795190400,
+          "time": "20/11 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "TVA Sports",
+                "beIN Sports 10 Max France",
+                "Polsat Sport 2 Poland",
+                "Sport 5 Gold Israel"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "Brazil W  vs Canada W 🇨",
+          "kick_utc": 1795194000,
+          "time": "21/11 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "TVA Sports",
+                "beIN Sports 10 Max France",
+                "Polsat Sport 2 Poland",
+                "Sport 5 Gold Israel"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "Carlos Alcaraz vs  Flavio Cobolli",
+          "kick_utc": 1795179600,
+          "time": "20/11 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
+                "Tennis Stream",
+                "Tennis Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "🇺 Daniil Medvedev vs 🇺 Frances Tiafoe",
+          "kick_utc": 1795203000,
+          "time": "21/11 02:30 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
+                "Tennis Stream",
+                "Tennis Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "D. Jakupović vs M. S. Goenadi",
+          "kick_utc": 1795176000,
+          "time": "20/11 07:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tamara Zidanšek vs L. Naswardhani",
+          "kick_utc": 1795181400,
+          "time": "20/11 08:30 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "G. Feistel vs K. Rinaldo Persson",
+          "kick_utc": 1795190400,
+          "time": "20/11 11:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "N. V. Leme Da Silva vs 🇨 Bianca Andreescu",
+          "kick_utc": 1795194000,
+          "time": "21/11 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "Weronika Kubka vs C. W. Hennemann",
+          "kick_utc": 1795195800,
+          "time": "21/11 12:30 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "Laura Pigossi vs K. Cross",
+          "kick_utc": 1795199400,
+          "time": "21/11 01:30 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "🇺 Christian Harrison /  Neal Skupski vs  Marcel Granollers /  Horacio Zeballos",
+          "kick_utc": 1795170600,
+          "time": "20/11 05:30 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
+                "Tennis Stream",
+                "Tennis Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "Simone Bolelli /  Andrea Vavassori vs  Kevin Krawietz /  Tim Puetz",
+          "kick_utc": 1795194000,
+          "time": "21/11 12:00 AM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
+                "Tennis Stream",
+                "Tennis Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "🇴 Nicolai Budkov Kjaer vs  Laslo Djere",
+          "kick_utc": 1795174200,
+          "time": "20/11 06:30 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "Edas Butvilas vs 🇺 Nishesh Basavareddy",
+          "kick_utc": 1795179600,
+          "time": "20/11 08:00 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "🇨🇿 Dalibor Svrcina vs  Otto Virtanen",
+          "kick_utc": 1795188600,
+          "time": "20/11 10:30 PM",
+          "tv_channels": [
+            {
+              "country": "Daddylive",
+              "channels": [
+                "Tennis HD Stream",
+                "Tennis Stream"
+              ]
+            }
+          ],
+          "source": "daddylive"
+        },
+        {
+          "league": "Tennis",
+          "match": "Tenis: ATP Finals Turneul Campionilor",
+          "kick_utc": 1795172400,
+          "time": "20/11 06:00 PM",
           "tv_channels": [
             {
               "country": "Hubsport",
               "channels": [
-                "Sport Tv1 Hd Portugal"
+                "Digi Sport 3 Hd Romania",
+                "Digi Sport 3 Romania"
               ]
             }
           ],
@@ -242,22 +845,6 @@
               "country": "Hubsport",
               "channels": [
                 "Sport Tv3 Hd Portugal"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Championnat de l'ATP Nitto 2026",
-          "kick_utc": 1795116600,
-          "time": "20/11 02:30 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Rds2",
-                "Rds2 Hd"
               ]
             }
           ],
@@ -297,82 +884,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Grand Slam of Curling",
-          "kick_utc": 1795116600,
-          "time": "20/11 02:30 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sportsnet (Pacific)",
-                "Sportsnet (Pacific) Hd",
-                "Sportsnet 4K",
-                "Sportsnet East",
-                "Sportsnet East Hd",
-                "Sportsnet Mst",
-                "Sportsnet Ontario Hd",
-                "Sportsnet West Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Grand Slam of Curling",
-          "kick_utc": 1795131000,
-          "time": "20/11 06:30 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sportsnet (Pacific)",
-                "Sportsnet (Pacific) Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "Grand Slam of Curling",
-          "kick_utc": 1795190400,
-          "time": "20/11 11:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Sportsnet (Pacific)",
-                "Sportsnet (Pacific) Hd",
-                "Sportsnet 4K",
-                "Sportsnet East",
-                "Sportsnet East Hd",
-                "Sportsnet Mst",
-                "Sportsnet Ontario Hd",
-                "Sportsnet West Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
-          "match": "2026 Nitto ATP Finals",
-          "kick_utc": 1795116600,
-          "time": "20/11 02:30 AM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "TSN 5",
-                "TSN 5 Hd"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
           "match": "2026 Nitto ATP Finals",
           "kick_utc": 1795179600,
           "time": "20/11 08:00 PM",
@@ -405,22 +916,6 @@
         },
         {
           "league": "Tennis",
-          "match": "Tenis: ATP Finals Turneul Campionilor",
-          "kick_utc": 1795172400,
-          "time": "20/11 06:00 PM",
-          "tv_channels": [
-            {
-              "country": "Hubsport",
-              "channels": [
-                "Digi Sport 3 Hd Romania",
-                "Digi Sport 3 Romania"
-              ]
-            }
-          ],
-          "source": "hubsport"
-        },
-        {
-          "league": "Tennis",
           "match": "Tenis: ATP Finals Torino",
           "kick_utc": 1795181400,
           "time": "20/11 08:30 PM",
@@ -437,18 +932,69 @@
         },
         {
           "league": "Tennis",
-          "match": "Nitto ATP Finals E10",
-          "kick_utc": 1795116600,
-          "time": "20/11 02:30 AM",
+          "match": "Grand Slam of Curling",
+          "kick_utc": 1795190400,
+          "time": "20/11 11:00 PM",
           "tv_channels": [
             {
-              "country": "NowTV",
+              "country": "Hubsport",
               "channels": [
-                "Now Sports 6"
+                "Sportsnet (Pacific)",
+                "Sportsnet (Pacific) Hd",
+                "Sportsnet 4K",
+                "Sportsnet East",
+                "Sportsnet East Hd",
+                "Sportsnet Mst",
+                "Sportsnet Ontario Hd",
+                "Sportsnet West Hd"
               ]
             }
           ],
-          "source": "nowtv"
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Grand Slam of Curling",
+          "kick_utc": 1795204800,
+          "time": "21/11 03:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sportsnet (Pacific)",
+                "Sportsnet (Pacific) Hd",
+                "Sportsnet 4K",
+                "Sportsnet East",
+                "Sportsnet East Hd",
+                "Sportsnet Mst",
+                "Sportsnet Ontario Hd",
+                "Sportsnet West Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
+        },
+        {
+          "league": "Tennis",
+          "match": "Grand Slam of Curling",
+          "kick_utc": 1795219200,
+          "time": "21/11 07:00 AM",
+          "tv_channels": [
+            {
+              "country": "Hubsport",
+              "channels": [
+                "Sportsnet (Pacific)",
+                "Sportsnet (Pacific) Hd",
+                "Sportsnet 4K",
+                "Sportsnet East",
+                "Sportsnet East Hd",
+                "Sportsnet Mst",
+                "Sportsnet Ontario Hd",
+                "Sportsnet West Hd"
+              ]
+            }
+          ],
+          "source": "hubsport"
         },
         {
           "league": "Tennis",
