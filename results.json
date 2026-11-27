@@ -1,35 +1,5 @@
 [
   {
-    "hari": "Sabtu",
-    "tanggal": "27-11-2026",
-    "time": "21:00",
-    "sport": "Tennis",
-    "competition": "Davis Cup",
-    "title": "Davis Cup",
-    "home": "",
-    "away": "",
-    "channels": [
-      "Tennis Channel"
-    ],
-    "event_url": "https://www.wheresthematch.com/event/davis-cup/222541"
-  },
-  {
-    "hari": "Sabtu",
-    "tanggal": "28-11-2026",
-    "time": "02:00",
-    "sport": "Football",
-    "competition": "Premier League",
-    "title": "Nottingham Forest vs Chelsea",
-    "home": "Nottingham Forest",
-    "away": "Chelsea",
-    "channels": [
-      "Sky Sports Main Event",
-      "Sky Sports Premier League",
-      "Sky Sports Ultra HDR"
-    ],
-    "event_url": "https://www.wheresthematch.com/match/nottingham-forest-vs-chelsea/217575"
-  },
-  {
     "hari": "Minggu",
     "tanggal": "28-11-2026",
     "time": "17:00",
@@ -231,7 +201,8 @@
     "home": "Brighton",
     "away": "Newcastle United",
     "channels": [
-      "Sky Sports Premier League"
+      "Sky Sports Premier League",
+      "Sky Sports Ultra HDR"
     ],
     "event_url": "https://www.wheresthematch.com/match/brighton-vs-newcastle-united/217569"
   },
@@ -321,5 +292,35 @@
       "DAZN"
     ],
     "event_url": "https://www.wheresthematch.com/match/roma-vs-monza/217915"
+  },
+  {
+    "hari": "Senin",
+    "tanggal": "30-11-2026",
+    "time": "00:30",
+    "sport": "Football",
+    "competition": "Bundesliga",
+    "title": "Borussia Dortmund vs Bayer Leverkusen",
+    "home": "Borussia Dortmund",
+    "away": "Bayer Leverkusen",
+    "channels": [
+      "Amazon Prime Video PPV"
+    ],
+    "event_url": "https://www.wheresthematch.com/match/borussia-dortmund-vs-bayer-leverkusen/216815"
+  },
+  {
+    "hari": "Senin",
+    "tanggal": "30-11-2026",
+    "time": "01:45",
+    "sport": "Football",
+    "competition": "Serie A",
+    "title": "Como vs Juventus",
+    "home": "Como",
+    "away": "Juventus",
+    "channels": [
+      "DAZN",
+      "TNT Sports 1",
+      "HBO Max"
+    ],
+    "event_url": "https://www.wheresthematch.com/match/como-vs-juventus/217916"
   }
 ]
